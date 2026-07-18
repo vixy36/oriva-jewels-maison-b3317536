@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, MessageCircle, ShieldCheck, Sparkles, Globe2, Gem } from "lucide-react";
 
-import heroImg from "@/assets/hero-marquise.jpg";
+
 import engagementImg from "@/assets/collection-engagement.jpg";
 import earringsImg from "@/assets/collection-earrings.jpg";
 import braceletsImg from "@/assets/product-tennis.jpg";
