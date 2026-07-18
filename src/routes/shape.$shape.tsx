@@ -97,7 +97,7 @@ function ShapePage() {
             </div>
           ) : (
             <div className="grid grid-cols-2 gap-x-6 gap-y-14 md:grid-cols-3 md:gap-x-10 md:gap-y-20">
-              {list.map((p, i) => (
+              {list.map((p: Product, i: number) => (
                 <Reveal key={p.slug} delay={i * 60}>
                   <ProductCard product={p} />
                 </Reveal>
