@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, MessageCircle, ShieldCheck, Sparkles, Globe2, Gem } from "lucide-react";
 
 
+import heroImg from "@/assets/hero-marquise.jpg";
 import engagementImg from "@/assets/collection-engagement.jpg";
 import earringsImg from "@/assets/collection-earrings.jpg";
 import braceletsImg from "@/assets/product-tennis.jpg";
@@ -9,6 +10,7 @@ import pendantsImg from "@/assets/collection-pendants.jpg";
 import bridalImg from "@/assets/collection-bridal.jpg";
 import labgrownImg from "@/assets/collection-labgrown.jpg";
 import editorialImg from "@/assets/editorial-emerald.jpg";
+import pearImg from "@/assets/product-pear.jpg";
 
 import insta1 from "@/assets/insta-1.jpg";
 import insta2 from "@/assets/insta-2.jpg";
