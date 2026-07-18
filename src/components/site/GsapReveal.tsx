@@ -40,18 +40,25 @@ export function GsapReveal({
 
     gsap.set(targets, { opacity: 0, y: 70, willChange: "transform, opacity" });
 
+    const rect = el.getBoundingClientRect();
+    const alreadyInView = rect.top < window.innerHeight * 0.9;
+
     const tween = gsap.to(targets, {
       opacity: 1,
       y: 0,
       duration: 1,
       ease: "power3.out",
       stagger: 0.15,
-      scrollTrigger: {
-        trigger: el,
-        start: "top 80%",
-        toggleActions: "play none none none",
-        once: true,
-      },
+      ...(alreadyInView
+        ? { delay: 0.1 }
+        : {
+            scrollTrigger: {
+              trigger: el,
+              start: "top 85%",
+              toggleActions: "play none none none",
+              once: true,
+            },
+          }),
       onComplete: () => {
         gsap.set(targets, { clearProps: "willChange" });
       },
