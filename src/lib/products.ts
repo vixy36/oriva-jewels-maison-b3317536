@@ -165,8 +165,8 @@ export const categories: Record<ProductCategory, { label: string; blurb: string 
   },
 };
 
-export const WHATSAPP_NUMBER = "85200000000"; // Placeholder — replace with Oriva's number
-export const WHATSAPP_DISPLAY = "+852 0000 0000";
+export const WHATSAPP_NUMBER = "85253176253";
+export const WHATSAPP_DISPLAY = "+852 5317 6253";
 
 export function buildWhatsAppLink(message: string) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
