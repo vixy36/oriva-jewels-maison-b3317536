@@ -72,7 +72,7 @@ function ProductPage() {
 
         <div className="mt-10 grid gap-14 md:grid-cols-12 md:gap-20">
           <div className="md:col-span-7">
-            <div className="relative overflow-hidden bg-charcoal aspect-[4/5] group border border-white/5">
+
             <button
               type="button"
               onClick={() => setLightboxIndex(0)}
