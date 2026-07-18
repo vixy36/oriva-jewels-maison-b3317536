@@ -405,23 +405,24 @@ function HomePage() {
       {/* BEST SELLERS */}
       <section className="relative py-24 md:py-36 bg-ink">
         <div className="mx-auto max-w-[1500px] px-6 md:px-16">
-          <Reveal className="flex items-end justify-between gap-6 flex-wrap">
+          <GsapReveal className="flex items-end justify-between gap-6 flex-wrap">
             <div>
-              <p className="eyebrow">- Selected</p>
-              <h2 className="mt-6 font-serif text-5xl md:text-6xl text-ivory">
+              <p data-gsap className="eyebrow">- Selected</p>
+              <h2 data-gsap className="mt-6 font-serif text-5xl md:text-6xl text-ivory">
                 Most <em className="text-gold-gradient">requested.</em>
               </h2>
-              <p className="mt-4 max-w-md text-sm text-ivory/55">
+              <p data-gsap className="mt-4 max-w-md text-sm text-ivory/55">
                 A rotating edit of the pieces our clients return to, season after season.
               </p>
             </div>
             <Link
+              data-gsap
               to="/collections/engagement-rings"
               className="text-[14px] tracking-[0.4em] uppercase text-gold border-b border-gold/50 pb-1 hover:text-ivory hover:border-ivory transition"
             >
               View entire archive
             </Link>
-          </Reveal>
+          </GsapReveal>
 
           <div className="mt-16 grid grid-cols-2 gap-x-6 gap-y-14 md:grid-cols-3 md:gap-x-10 md:gap-y-20">
             {products.slice(0, 6).map((p, i) => (
