@@ -62,31 +62,63 @@ function HomePage() {
         <img
           src={heroImg}
           alt="Marquise diamond solitaire"
-          className="absolute inset-0 h-full w-full object-cover object-center animate-slow-zoom"
+          fetchPriority="high"
+          decoding="async"
+          className="absolute inset-0 h-full w-full object-cover object-center animate-slow-zoom will-change-transform"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-obsidian/70 via-obsidian/30 to-obsidian" />
-        <div className="absolute inset-0 bg-gradient-to-r from-obsidian/80 via-obsidian/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-obsidian/70 via-obsidian/25 to-obsidian" />
+        <div className="absolute inset-0 bg-gradient-to-r from-obsidian/80 via-obsidian/15 to-transparent" />
         <div className="absolute inset-0 vignette" />
 
-        <Sparkle style={{ top: "22%", left: "14%" }} delay={0} />
-        <Sparkle style={{ top: "38%", left: "72%" }} delay={1.6} size={3} />
-        <Sparkle style={{ top: "68%", left: "20%" }} delay={2.4} />
-        <Sparkle style={{ top: "82%", left: "62%" }} delay={0.9} size={2} />
-        <Sparkle style={{ top: "16%", left: "56%" }} delay={3.4} />
+        {/* Aurora gold glow — infinite rotating radial */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -inset-[20%] animate-aurora opacity-70 mix-blend-screen"
+          style={{
+            background:
+              "radial-gradient(closest-side at 30% 30%, oklch(0.79 0.11 82 / 0.35), transparent 60%), radial-gradient(closest-side at 70% 65%, oklch(0.62 0.11 72 / 0.28), transparent 55%)",
+          }}
+        />
+
+        {/* Diagonal light sweep */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-y-0 -left-1/3 w-1/3 animate-light-sweep"
+          style={{
+            background:
+              "linear-gradient(90deg, transparent, oklch(0.95 0.05 84 / 0.18) 40%, oklch(0.95 0.05 84 / 0.3) 50%, oklch(0.95 0.05 84 / 0.18) 60%, transparent)",
+            filter: "blur(6px)",
+          }}
+        />
+
+        {/* Sparkles — bigger, more visible, infinite */}
+        <Sparkle style={{ top: "18%", left: "12%" }} delay={0}   size={3} />
+        <Sparkle style={{ top: "26%", left: "82%" }} delay={0.7} size={4} />
+        <Sparkle style={{ top: "38%", left: "68%" }} delay={1.6} size={3} />
+        <Sparkle style={{ top: "48%", left: "22%" }} delay={2.2} size={2} />
+        <Sparkle style={{ top: "58%", left: "78%" }} delay={0.4} size={3} />
+        <Sparkle style={{ top: "68%", left: "16%" }} delay={2.4} size={4} />
+        <Sparkle style={{ top: "78%", left: "58%" }} delay={0.9} size={3} />
+        <Sparkle style={{ top: "86%", left: "38%" }} delay={1.9} size={2} />
+        <Sparkle style={{ top: "14%", left: "46%" }} delay={3.2} size={3} />
+        <Sparkle style={{ top: "34%", left: "36%" }} delay={1.2} size={2} />
+        <Sparkle style={{ top: "72%", left: "88%" }} delay={2.7} size={3} />
+        <Sparkle style={{ top: "22%", left: "94%" }} delay={0.2} size={2} drift />
+        <Sparkle style={{ top: "82%", left: "6%"  }} delay={1.4} size={2} drift />
 
         <div className="pointer-events-none absolute inset-y-0 left-6 hidden md:flex flex-col justify-between py-32 z-10">
-          <span className="text-[10px] tracking-[0.5em] uppercase text-ivory/50 [writing-mode:vertical-rl] rotate-180">
+          <span className="text-[11px] tracking-[0.5em] uppercase text-ivory/60 [writing-mode:vertical-rl] rotate-180">
             Hong Kong · MMXXV
           </span>
-          <span className="text-[10px] tracking-[0.5em] uppercase text-gold [writing-mode:vertical-rl] rotate-180">
+          <span className="text-[11px] tracking-[0.5em] uppercase text-gold [writing-mode:vertical-rl] rotate-180">
             Maison N° 01
           </span>
         </div>
         <div className="pointer-events-none absolute inset-y-0 right-6 hidden md:flex flex-col justify-between py-32 z-10">
-          <span className="text-[10px] tracking-[0.5em] uppercase text-ivory/50 [writing-mode:vertical-rl]">
+          <span className="text-[11px] tracking-[0.5em] uppercase text-ivory/60 [writing-mode:vertical-rl]">
             Natural · Lab Grown
           </span>
-          <span className="text-[10px] tracking-[0.5em] uppercase text-ivory/50 [writing-mode:vertical-rl]">
+          <span className="text-[11px] tracking-[0.5em] uppercase text-ivory/60 [writing-mode:vertical-rl]">
             GIA · IGI Certified
           </span>
         </div>
