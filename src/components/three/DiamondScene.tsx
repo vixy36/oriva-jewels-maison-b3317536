@@ -194,9 +194,10 @@ export function DiamondScene() {
 
   return (
     <div
-      className="pointer-events-none fixed inset-0 z-0"
+      className="pointer-events-none fixed inset-0 z-40"
       aria-hidden
       style={{
+        mixBlendMode: "screen",
         background:
           "radial-gradient(ellipse at 50% 40%, rgba(214,185,140,0.10), transparent 60%)",
       }}
