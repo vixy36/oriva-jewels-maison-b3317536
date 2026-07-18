@@ -38,7 +38,8 @@ export const Route = createFileRoute("/collections/$category")({
     return { category: params.category as ProductCategory };
   },
   head: ({ params }) => {
-    const cat = categories[params.category as ProductCategory];
+    const key = params.category as ProductCategory;
+    const cat = validCats.includes(key) ? categories[key] : undefined;
     const label = cat?.label ?? "Collection";
     return {
       meta: [
