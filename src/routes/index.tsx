@@ -463,7 +463,7 @@ function HomePage() {
           <div className="mt-20 grid grid-cols-2 gap-6 md:grid-cols-5 md:gap-8">
             {occasions.map((o, i) => (
               <Reveal key={o.label} delay={i * 60} className="group">
-                <Link to="/collections/engagement-rings" className="block">
+                <Link to="/occasions" className="block">
                   <div className="relative aspect-[3/4] overflow-hidden">
                     <img
                       src={o.img}
