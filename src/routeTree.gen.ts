@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as OccasionsRouteImport } from './routes/occasions'
 import { Route as EducationRouteImport } from './routes/education'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
@@ -21,6 +22,11 @@ import { Route as CollectionsCategoryRouteImport } from './routes/collections.$c
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OccasionsRoute = OccasionsRouteImport.update({
+  id: '/occasions',
+  path: '/occasions',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EducationRoute = EducationRouteImport.update({
@@ -64,6 +70,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/education': typeof EducationRoute
+  '/occasions': typeof OccasionsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/collections/$category': typeof CollectionsCategoryRoute
   '/product/$slug': typeof ProductSlugRoute
@@ -74,6 +81,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/education': typeof EducationRoute
+  '/occasions': typeof OccasionsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/collections/$category': typeof CollectionsCategoryRoute
   '/product/$slug': typeof ProductSlugRoute
@@ -85,6 +93,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/education': typeof EducationRoute
+  '/occasions': typeof OccasionsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/collections/$category': typeof CollectionsCategoryRoute
   '/product/$slug': typeof ProductSlugRoute
@@ -97,6 +106,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/education'
+    | '/occasions'
     | '/sitemap.xml'
     | '/collections/$category'
     | '/product/$slug'
@@ -107,6 +117,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/education'
+    | '/occasions'
     | '/sitemap.xml'
     | '/collections/$category'
     | '/product/$slug'
@@ -117,6 +128,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/education'
+    | '/occasions'
     | '/sitemap.xml'
     | '/collections/$category'
     | '/product/$slug'
@@ -128,6 +140,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
   EducationRoute: typeof EducationRoute
+  OccasionsRoute: typeof OccasionsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   CollectionsCategoryRoute: typeof CollectionsCategoryRoute
   ProductSlugRoute: typeof ProductSlugRoute
@@ -141,6 +154,13 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/occasions': {
+      id: '/occasions'
+      path: '/occasions'
+      fullPath: '/occasions'
+      preLoaderRoute: typeof OccasionsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/education': {
@@ -200,6 +220,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
   EducationRoute: EducationRoute,
+  OccasionsRoute: OccasionsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   CollectionsCategoryRoute: CollectionsCategoryRoute,
   ProductSlugRoute: ProductSlugRoute,
