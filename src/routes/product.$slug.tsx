@@ -1,10 +1,11 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { Heart, MessageCircle, ArrowLeft, ShieldCheck, Truck, Sparkles, ArrowRight } from "lucide-react";
+import { Heart, MessageCircle, ArrowLeft, ShieldCheck, Truck, Sparkles, ArrowRight, ZoomIn } from "lucide-react";
 
 import { findProduct, buildWhatsAppLink, products } from "@/lib/products";
 import { ProductCard } from "@/components/site/ProductCard";
 import { Reveal } from "@/components/site/Reveal";
+import { Lightbox } from "@/components/site/Lightbox";
 
 export const Route = createFileRoute("/product/$slug")({
   loader: ({ params }) => {
