@@ -25,7 +25,7 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const headerRef = useRef<HTMLElement | null>(null);
   const logoRef = useRef<HTMLAnchorElement | null>(null);
-  const navItemsRef = useRef<HTMLElement | null>(null);
+  const navItemsRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const { gsap } = ensureGsap();
