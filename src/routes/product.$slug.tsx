@@ -73,25 +73,42 @@ function ProductPage() {
         <div className="mt-10 grid gap-14 md:grid-cols-12 md:gap-20">
           <div className="md:col-span-7">
             <div className="relative overflow-hidden bg-charcoal aspect-[4/5] group border border-white/5">
+            <button
+              type="button"
+              onClick={() => setLightboxIndex(0)}
+              className="relative overflow-hidden bg-charcoal aspect-[4/5] group border border-white/5 w-full text-left cursor-zoom-in"
+              aria-label="Open image gallery"
+            >
               <img
                 src={product.image}
                 alt={product.name}
+                fetchPriority="high"
+                decoding="async"
                 className="h-full w-full object-cover transition-transform duration-[1800ms] ease-out group-hover:scale-[1.06]"
               />
-              <button
+              <span
                 aria-label="Wishlist"
+                onClick={(e) => e.stopPropagation()}
                 className="absolute top-5 right-5 grid h-11 w-11 place-items-center bg-obsidian/70 backdrop-blur border border-white/15 text-ivory hover:border-gold hover:text-gold transition"
               >
                 <Heart className="h-4 w-4" strokeWidth={1.3} />
-              </button>
+              </span>
               <span className="absolute top-5 left-5 text-[11px] tracking-[0.42em] uppercase text-ivory/70 bg-obsidian/60 backdrop-blur-sm px-3 py-1.5 border border-white/10">
                 Ref. OR-{product.slug.slice(0, 4).toUpperCase()}
               </span>
-            </div>
+              <span className="absolute bottom-5 right-5 inline-flex items-center gap-2 bg-obsidian/70 backdrop-blur border border-white/15 px-4 py-2 text-[11px] tracking-[0.35em] uppercase text-ivory opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition duration-500">
+                <ZoomIn className="h-3.5 w-3.5" strokeWidth={1.4} /> Zoom
+              </span>
+            </button>
             <div className="mt-4 grid grid-cols-4 gap-3">
-              {[product.image, product.image, product.image, product.image].map((src, i) => (
-                <button key={i} className="aspect-square overflow-hidden bg-charcoal border border-white/5 hover:border-gold transition">
-                  <img src={src} alt="" className="h-full w-full object-cover" />
+              {gallery.map((src, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  onClick={() => setLightboxIndex(i)}
+                  className="aspect-square overflow-hidden bg-charcoal border border-white/5 hover:border-gold transition"
+                >
+                  <img src={src} alt="" loading="lazy" className="h-full w-full object-cover" />
                 </button>
               ))}
             </div>
