@@ -30,6 +30,11 @@ export const Route = createFileRoute("/")({
         content:
           "A Hong Kong maison of natural and lab grown diamond jewellery. Engagement rings, earrings, bracelets and bridal pieces, made by hand.",
       },
+      { property: "og:image", content: heroImg },
+      { name: "twitter:image", content: heroImg },
+    ],
+    links: [
+      { rel: "preload", as: "image", href: heroImg, fetchpriority: "high" },
     ],
   }),
   component: HomePage,
