@@ -344,14 +344,14 @@ function HomePage() {
       {/* SIGNATURE */}
       <section className="relative isolate overflow-hidden bg-obsidian text-ivory">
         <div className="mx-auto max-w-[1600px] grid md:grid-cols-2 items-stretch">
-          <div className="relative aspect-[4/3] md:aspect-auto md:min-h-[720px] overflow-hidden order-2 md:order-1 bg-ink">
+          <div className="relative aspect-[4/5] md:aspect-[4/5] md:min-h-[720px] overflow-hidden order-2 md:order-1 bg-ink">
             <img
               src={editorialImg}
               alt="Signature marquise on velvet"
               loading="lazy"
-              className="absolute inset-0 h-full w-full object-cover object-center"
+              className="absolute inset-0 h-full w-full object-contain object-center"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-obsidian/60 to-transparent" />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-obsidian/40 via-transparent to-transparent" />
             <div className="absolute bottom-8 left-8 right-8 flex items-end justify-between text-ivory/85">
               <span className="text-[14px] tracking-[0.42em] uppercase">Ref. OR-MRQ-001</span>
               <span className="text-[14px] tracking-[0.42em] uppercase">Plate I</span>
