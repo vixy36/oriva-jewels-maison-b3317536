@@ -76,18 +76,18 @@ export function SiteFooter() {
 
             <FooterCol title="The Maison" links={[
               { label: "Our Story", to: "/about" },
-              { label: "Craftsmanship", to: "/about" },
-              { label: "Diamond Guide", to: "/about" },
-              { label: "Bespoke", to: "/contact" },
-              { label: "Journal", to: "/about" },
+              { label: "Maison Assurance", to: "/assurance" },
+              { label: "Diamond Guide", to: "/education" },
+              { label: "Bespoke Commission", to: "/bespoke" },
+              { label: "Occasions", to: "/occasions" },
             ]} />
 
             <FooterCol title="Client Services" links={[
               { label: "Hong Kong Atelier", to: "/contact" },
+              { label: "Ring Size Guide", to: "/ring-size-guide" },
               { label: WHATSAPP_DISPLAY, to: "/contact" },
               { label: "hello@orivajewels.com", to: "/contact" },
               { label: "Book Consultation", to: "/contact" },
-              { label: "Care & Warranty", to: "/contact" },
             ]} />
           </div>
         </div>
