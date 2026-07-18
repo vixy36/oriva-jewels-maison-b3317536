@@ -38,8 +38,6 @@ export function SiteHeader() {
     gsap.set(logo, { scale: 1.05, transformOrigin: "center center" });
     gsap.set(menuItems, { y: 0 });
 
-    let lastY = window.scrollY;
-    let hidden = false;
     let scrolled = false;
     let ticking = false;
 
@@ -69,27 +67,11 @@ export function SiteHeader() {
       });
     };
 
-    const applyHidden = (next: boolean) => {
-      if (next === hidden) return;
-      hidden = next;
-      gsap.to(header, {
-        yPercent: next ? -100 : 0,
-        duration: 0.5,
-        ease: "power3.out",
-        overwrite: "auto",
-      });
-    };
-
     const onScroll = () => {
       if (ticking) return;
       ticking = true;
       requestAnimationFrame(() => {
-        const y = window.scrollY;
-        applyScrolled(y > 30);
-        // hide on scroll down past threshold, show on scroll up
-        if (y > 120 && y > lastY + 4) applyHidden(true);
-        else if (y < lastY - 4) applyHidden(false);
-        lastY = y;
+        applyScrolled(window.scrollY > 30);
         ticking = false;
       });
     };
