@@ -354,6 +354,49 @@ function HomePage() {
         </div>
       </section>
 
+      {/* SHOP BY SHAPE */}
+      <section className="relative py-24 md:py-36 bg-obsidian overflow-hidden">
+        <div className="mx-auto max-w-[1500px] px-6 md:px-16">
+          <Reveal className="flex items-end justify-between gap-6 flex-wrap">
+            <div className="max-w-xl">
+              <p className="eyebrow">— Shop by Shape</p>
+              <h2 className="mt-6 font-serif text-5xl md:text-7xl leading-[1] text-ivory">
+                Find your <em className="text-gold-gradient">silhouette.</em>
+              </h2>
+              <p className="mt-6 max-w-md text-[15px] text-ivory/70 leading-[1.8]">
+                Six diamond shapes, each with its own quiet character. Choose the one that feels most yours.
+              </p>
+            </div>
+            <Link to="/education" className="hidden md:inline-flex items-center gap-2 text-[14px] tracking-[0.4em] uppercase text-gold border-b border-gold/50 pb-1 hover:text-ivory hover:border-ivory transition">
+              The diamond guide <ArrowUpRight className="h-3.5 w-3.5" />
+            </Link>
+          </Reveal>
+
+          <div className="mt-16 grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-8">
+            {[
+              { key: "marquise", label: "Marquise", img: heroImg },
+              { key: "oval", label: "Oval", img: engagementImg },
+              { key: "emerald", label: "Emerald", img: editorialImg },
+              { key: "pear", label: "Pear", img: bridalImg },
+              { key: "heart", label: "Heart", img: earringsImg },
+              { key: "round", label: "Round", img: braceletsImg },
+            ].map((s, i) => (
+              <Reveal key={s.key} delay={i * 60}>
+                <Link to="/shape/$shape" params={{ shape: s.key }} className="group relative block aspect-[4/5] overflow-hidden">
+                  <img src={s.img} alt={s.label} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1600ms] group-hover:scale-110" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/25 to-transparent" />
+                  <div className="absolute inset-0 border border-transparent group-hover:border-gold/40 transition" />
+                  <div className="absolute inset-x-0 bottom-0 p-5 md:p-7">
+                    <p className="text-[12px] tracking-[0.4em] uppercase text-gold">0{i + 1}</p>
+                    <h3 className="mt-2 font-serif text-2xl md:text-3xl text-ivory italic">{s.label}</h3>
+                  </div>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ATELIER */}
       <section className="relative bg-obsidian py-24 md:py-36 overflow-hidden">
         <div className="mx-auto max-w-[1500px] px-6 md:px-16 grid gap-12 md:grid-cols-12 md:gap-16 items-center">
