@@ -224,6 +224,14 @@ function ProductPage() {
           </div>
         </div>
       </div>
+      {lightboxIndex !== null && (
+        <Lightbox
+          images={gallery}
+          index={lightboxIndex}
+          onClose={() => setLightboxIndex(null)}
+          onIndexChange={setLightboxIndex}
+        />
+      )}
     </div>
   );
 }
