@@ -26,7 +26,7 @@ function ContactPage() {
             A private <em className="text-gold-gradient">conversation</em>,
             at your convenience.
           </h1>
-          <p className="mt-8 max-w-xl text-[15px] leading-[1.8] text-ivory/65">
+          <p className="mt-8 max-w-xl text-[15px] leading-[1.8] text-ivory/80">
             Our client advisors are available in Hong Kong, or virtually — worldwide.
             Every enquiry receives a personal reply within one business day.
           </p>
@@ -69,7 +69,7 @@ function ContactPage() {
             <Input label="Email" type="email" />
             <Input label="Phone / WhatsApp" />
             <div>
-              <label className="text-[12px] tracking-[0.42em] uppercase text-gold">
+              <label className="text-[14px] tracking-[0.42em] uppercase text-gold">
                 Interest
               </label>
               <select className="mt-3 w-full border-b border-white/15 bg-transparent py-2.5 text-sm text-ivory outline-none focus:border-gold transition [&>option]:bg-obsidian">
@@ -82,7 +82,7 @@ function ContactPage() {
               </select>
             </div>
             <div>
-              <label className="text-[12px] tracking-[0.42em] uppercase text-gold">
+              <label className="text-[14px] tracking-[0.42em] uppercase text-gold">
                 Message
               </label>
               <textarea
@@ -93,7 +93,7 @@ function ContactPage() {
             </div>
             <button
               type="submit"
-              className="w-full bg-gold text-obsidian py-5 text-[12px] tracking-[0.4em] uppercase hover:bg-ivory transition mt-4"
+              className="w-full bg-gold text-obsidian py-5 text-[14px] tracking-[0.4em] uppercase hover:bg-ivory transition mt-4"
             >
               Request Appointment
             </button>
@@ -132,13 +132,13 @@ function InfoRow({
   const content = (
     <div className="flex gap-6 border-t border-white/8 pt-6">
       <div className="shrink-0 flex flex-col items-center gap-3">
-        <span className="text-[12px] tracking-[0.42em] text-gold">{n}</span>
+        <span className="text-[14px] tracking-[0.42em] text-gold">{n}</span>
         <div className="grid h-11 w-11 place-items-center border border-white/10 text-gold">
           <Icon className="h-4 w-4" strokeWidth={1.3} />
         </div>
       </div>
       <div>
-        <p className="text-[12px] tracking-[0.42em] uppercase text-ivory/50">{title}</p>
+        <p className="text-[14px] tracking-[0.42em] uppercase text-ivory/50">{title}</p>
         <p className="mt-3 font-serif text-2xl text-ivory whitespace-pre-line leading-tight">{body}</p>
       </div>
     </div>
@@ -155,7 +155,7 @@ function InfoRow({
 function Input({ label, type = "text" }: { label: string; type?: string }) {
   return (
     <div>
-      <label className="text-[12px] tracking-[0.42em] uppercase text-gold">{label}</label>
+      <label className="text-[14px] tracking-[0.42em] uppercase text-gold">{label}</label>
       <input
         type={type}
         className="mt-3 w-full border-b border-white/15 bg-transparent py-2.5 text-sm text-ivory placeholder:text-ivory/25 outline-none focus:border-gold transition"

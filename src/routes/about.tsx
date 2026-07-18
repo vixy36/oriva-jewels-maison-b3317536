@@ -33,7 +33,7 @@ function AboutPage() {
             <span className="block italic text-gold-gradient">house</span>
             <span className="block">of light.</span>
           </h1>
-          <p className="mt-10 max-w-xl text-[15px] leading-[1.8] text-ivory/70">
+          <p className="mt-10 max-w-xl text-[15px] leading-[1.8] text-ivory/85">
             Oriva Jewels is a modern maison of natural and lab grown diamond jewellery — designed
             in Hong Kong, finished by hand, worn for a lifetime.
           </p>
@@ -46,7 +46,7 @@ function AboutPage() {
           <p className="mt-10 font-serif text-3xl md:text-6xl leading-[1.12] italic text-ivory">
             "The most beautiful jewellery <span className="text-gold-gradient not-italic">is the piece</span> you never take off."
           </p>
-          <p className="mt-10 text-[12px] tracking-[0.42em] uppercase text-ivory/65">— Founder's Note</p>
+          <p className="mt-10 text-[14px] tracking-[0.42em] uppercase text-ivory/80">— Founder's Note</p>
         </Reveal>
       </section>
 
@@ -83,7 +83,7 @@ function AboutPage() {
               <div className="relative aspect-[4/5] overflow-hidden">
                 <img src={s.img} alt={s.title} loading="lazy" className="h-full w-full object-cover" />
                 <div className="absolute inset-0 border border-gold/15" />
-                <span className="absolute top-4 left-4 text-[12px] tracking-[0.42em] uppercase text-ivory/70 bg-obsidian/60 px-2.5 py-1 backdrop-blur">
+                <span className="absolute top-4 left-4 text-[14px] tracking-[0.42em] uppercase text-ivory/85 bg-obsidian/60 px-2.5 py-1 backdrop-blur">
                   Plate {s.n}
                 </span>
               </div>
@@ -95,7 +95,7 @@ function AboutPage() {
                 <em className="text-gold-gradient">{s.titleAccent}</em>
               </h2>
               <div className="mt-8 hairline-gold w-16" />
-              <p className="mt-8 text-[15px] leading-[1.8] text-ivory/65 max-w-lg">{s.body}</p>
+              <p className="mt-8 text-[15px] leading-[1.8] text-ivory/80 max-w-lg">{s.body}</p>
             </Reveal>
           </div>
         </section>
@@ -115,7 +115,7 @@ function AboutPage() {
           <h2 className="mt-8 font-serif text-5xl md:text-8xl leading-[0.95]">
             Design something <em className="text-gold-gradient">singular.</em>
           </h2>
-          <p className="mx-auto mt-8 max-w-xl text-[15px] leading-[1.8] text-ivory/65">
+          <p className="mx-auto mt-8 max-w-xl text-[15px] leading-[1.8] text-ivory/80">
             Speak with our atelier about a bespoke piece, an engagement ring, or a family
             heirloom reimagined for the way you live now.
           </p>
