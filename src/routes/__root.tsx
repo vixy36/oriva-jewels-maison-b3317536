@@ -73,21 +73,25 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Oriva Jewels — Natural & Lab Grown Diamond Jewellery, Hong Kong" },
+      { title: "Oriva Jewels — Timeless Brilliance in Natural & Lab Grown Diamonds" },
       {
         name: "description",
         content:
-          "Oriva Jewels is a Hong Kong-based fine jewellery house crafting exceptional natural and lab grown diamond engagement rings, earrings, bracelets and bridal pieces.",
+          "A Hong Kong fine jewellery house. Discover exceptional engagement rings, earrings, bracelets and bridal jewellery in Natural and Lab Grown diamonds.",
       },
       { name: "author", content: "Oriva Jewels" },
       { name: "theme-color", content: "#050505" },
-      { property: "og:title", content: "Oriva Jewels — Fine Diamond Jewellery" },
+      { property: "og:title", content: "Oriva Jewels — Timeless Brilliance in Natural & Lab Grown Diamonds" },
       {
         property: "og:description",
-        content: "Timeless brilliance, crafted for modern elegance. Natural and lab grown diamonds from Hong Kong.",
+        content: "A Hong Kong fine jewellery house. Discover exceptional engagement rings, earrings, bracelets and bridal jewellery in Natural and Lab Grown diamonds.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Oriva Jewels — Timeless Brilliance in Natural & Lab Grown Diamonds" },
+      { name: "twitter:description", content: "A Hong Kong fine jewellery house. Discover exceptional engagement rings, earrings, bracelets and bridal jewellery in Natural and Lab Grown diamonds." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/13213527-747a-40d4-a9f0-8a08b12c219e" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/13213527-747a-40d4-a9f0-8a08b12c219e" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
