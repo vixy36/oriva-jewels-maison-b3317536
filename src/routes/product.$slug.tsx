@@ -65,7 +65,7 @@ function ProductPage() {
         <Link
           to="/collections/$category"
           params={{ category: product.category }}
-          className="inline-flex items-center gap-2 text-[10px] tracking-[0.4em] uppercase text-ivory/50 hover:text-gold transition"
+          className="inline-flex items-center gap-2 text-[12px] tracking-[0.4em] uppercase text-ivory/50 hover:text-gold transition"
         >
           <ArrowLeft className="h-3 w-3" /> Back to {product.category.replace("-", " ")}
         </Link>
@@ -93,10 +93,10 @@ function ProductPage() {
               >
                 <Heart className="h-4 w-4" strokeWidth={1.3} />
               </span>
-              <span className="absolute top-5 left-5 text-[11px] tracking-[0.42em] uppercase text-ivory/70 bg-obsidian/60 backdrop-blur-sm px-3 py-1.5 border border-white/10">
+              <span className="absolute top-5 left-5 text-[12px] tracking-[0.42em] uppercase text-ivory/70 bg-obsidian/60 backdrop-blur-sm px-3 py-1.5 border border-white/10">
                 Ref. OR-{product.slug.slice(0, 4).toUpperCase()}
               </span>
-              <span className="absolute bottom-5 right-5 inline-flex items-center gap-2 bg-obsidian/70 backdrop-blur border border-white/15 px-4 py-2 text-[11px] tracking-[0.35em] uppercase text-ivory opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition duration-500">
+              <span className="absolute bottom-5 right-5 inline-flex items-center gap-2 bg-obsidian/70 backdrop-blur border border-white/15 px-4 py-2 text-[12px] tracking-[0.35em] uppercase text-ivory opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition duration-500">
                 <ZoomIn className="h-3.5 w-3.5" strokeWidth={1.4} /> Zoom
               </span>
             </button>
@@ -146,7 +146,7 @@ function ProductPage() {
                 )}
                 {product.sizes && (
                   <div>
-                    <label className="text-[11px] tracking-[0.42em] uppercase text-gold">
+                    <label className="text-[12px] tracking-[0.42em] uppercase text-gold">
                       Engraving (optional)
                     </label>
                     <input
@@ -160,7 +160,7 @@ function ProductPage() {
               </div>
 
               <div className="mt-10 border border-white/10 bg-charcoal/50 p-6">
-                <p className="text-[11px] tracking-[0.42em] uppercase text-gold">Your Configuration</p>
+                <p className="text-[12px] tracking-[0.42em] uppercase text-gold">Your Configuration</p>
                 <dl className="mt-5 grid grid-cols-2 gap-x-6 gap-y-2.5 text-sm">
                   <dt className="text-ivory/40">Diamond</dt><dd className="text-ivory">{diamondType}</dd>
                   <dt className="text-ivory/40">Metal</dt><dd className="text-ivory">{metal}</dd>
@@ -176,12 +176,12 @@ function ProductPage() {
                 href={buildWhatsAppLink(message)}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-5 flex items-center justify-center gap-3 bg-gold text-obsidian py-5 text-[11px] tracking-[0.4em] uppercase hover:bg-ivory transition group"
+                className="mt-5 flex items-center justify-center gap-3 bg-gold text-obsidian py-5 text-[12px] tracking-[0.4em] uppercase hover:bg-ivory transition group"
               >
                 <MessageCircle className="h-4 w-4" strokeWidth={1.5} />
                 Enquire on WhatsApp
               </a>
-              <p className="mt-4 text-center text-[10px] tracking-[0.35em] uppercase text-ivory/40">
+              <p className="mt-4 text-center text-[12px] tracking-[0.35em] uppercase text-ivory/40">
                 Pricing shared privately · Response within 24h
               </p>
 
@@ -193,7 +193,7 @@ function ProductPage() {
                 ].map((i) => (
                   <div key={i.t} className="border-t border-white/10 pt-4">
                     <i.icon className="mx-auto h-5 w-5 text-gold" strokeWidth={1.2} />
-                    <p className="mt-2.5 text-[11px] tracking-[0.32em] uppercase text-ivory/50">{i.t}</p>
+                    <p className="mt-2.5 text-[12px] tracking-[0.32em] uppercase text-ivory/50">{i.t}</p>
                   </div>
                 ))}
               </div>
@@ -210,7 +210,7 @@ function ProductPage() {
             <Link
               to="/collections/$category"
               params={{ category: product.category }}
-              className="text-[10px] tracking-[0.4em] uppercase text-gold border-b border-gold/50 pb-1 hover:text-ivory hover:border-ivory transition"
+              className="text-[12px] tracking-[0.4em] uppercase text-gold border-b border-gold/50 pb-1 hover:text-ivory hover:border-ivory transition"
             >
               See collection <ArrowRight className="inline h-3 w-3 ml-1" />
             </Link>
@@ -249,7 +249,7 @@ function PillGroup({
 }) {
   return (
     <div>
-      <p className="text-[11px] tracking-[0.42em] uppercase text-gold">{label}</p>
+      <p className="text-[12px] tracking-[0.42em] uppercase text-gold">{label}</p>
       <div className="mt-3.5 flex flex-wrap gap-2">
         {options.map((o) => {
           const active = o === value;
@@ -258,7 +258,7 @@ function PillGroup({
               key={o}
               type="button"
               onClick={() => onChange(o)}
-              className={`px-4 py-2.5 text-[11px] tracking-[0.15em] transition ${
+              className={`px-4 py-2.5 text-[12px] tracking-[0.15em] transition ${
                 active
                   ? "bg-ivory text-obsidian"
                   : "border border-white/15 text-ivory/70 hover:border-gold hover:text-gold"

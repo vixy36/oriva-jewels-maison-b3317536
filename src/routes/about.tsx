@@ -46,7 +46,7 @@ function AboutPage() {
           <p className="mt-10 font-serif text-3xl md:text-6xl leading-[1.12] italic text-ivory">
             "The most beautiful jewellery <span className="text-gold-gradient not-italic">is the piece</span> you never take off."
           </p>
-          <p className="mt-10 text-[10px] tracking-[0.42em] uppercase text-ivory/40">— Founder's Note</p>
+          <p className="mt-10 text-[12px] tracking-[0.42em] uppercase text-ivory/40">— Founder's Note</p>
         </Reveal>
       </section>
 
@@ -83,7 +83,7 @@ function AboutPage() {
               <div className="relative aspect-[4/5] overflow-hidden">
                 <img src={s.img} alt={s.title} loading="lazy" className="h-full w-full object-cover" />
                 <div className="absolute inset-0 border border-gold/15" />
-                <span className="absolute top-4 left-4 text-[10px] tracking-[0.42em] uppercase text-ivory/70 bg-obsidian/60 px-2.5 py-1 backdrop-blur">
+                <span className="absolute top-4 left-4 text-[12px] tracking-[0.42em] uppercase text-ivory/70 bg-obsidian/60 px-2.5 py-1 backdrop-blur">
                   Plate {s.n}
                 </span>
               </div>
