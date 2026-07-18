@@ -1,5 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight, MessageCircle, ShieldCheck, Gem, Globe2, Sparkles } from "lucide-react";
+import { GsapReveal } from "@/components/site/GsapReveal";
+import { Sparkles as GsapSparkles } from "@/components/site/Sparkles";
 
 import heroImg from "@/assets/hero-marquise.jpg";
 import engagementImg from "@/assets/collection-engagement.jpg";
