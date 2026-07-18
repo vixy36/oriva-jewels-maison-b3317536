@@ -529,20 +529,23 @@ function Sparkle({
   style,
   delay = 0,
   size = 2,
+  drift = false,
 }: {
   style: React.CSSProperties;
   delay?: number;
   size?: number;
+  drift?: boolean;
 }) {
   return (
     <span
       aria-hidden
-      className="absolute pointer-events-none rounded-full bg-gold animate-sparkle z-10"
+      className={`absolute pointer-events-none rounded-full bg-gold z-10 ${drift ? "animate-float-drift" : "animate-twinkle"}`}
       style={{
         ...style,
-        width: `${size * 2}px`,
-        height: `${size * 2}px`,
-        boxShadow: "0 0 18px 3px var(--gold), 0 0 40px 6px oklch(0.79 0.11 82 / 0.3)",
+        width: `${size * 2.5}px`,
+        height: `${size * 2.5}px`,
+        boxShadow:
+          "0 0 22px 4px var(--gold), 0 0 55px 10px oklch(0.79 0.11 82 / 0.45), 0 0 90px 20px oklch(0.79 0.11 82 / 0.18)",
         animationDelay: `${delay}s`,
       }}
     />
