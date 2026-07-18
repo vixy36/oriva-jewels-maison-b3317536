@@ -130,7 +130,7 @@ export function SiteHeader() {
             </nav>
           </div>
 
-          <Link to="/" className="group flex flex-col items-center">
+          <Link ref={logoRef} to="/" className="group flex flex-col items-center">
             <span className="font-serif text-2xl md:text-[26px] tracking-[0.5em] text-ivory leading-none">
               ORIVA
             </span>
@@ -145,6 +145,7 @@ export function SiteHeader() {
                 <Link
                   key={n.to}
                   to={n.to}
+                  data-nav-item
                   className="text-[10.5px] tracking-[0.32em] uppercase text-ivory/80 hover:text-gold transition-colors"
                   activeProps={{ className: "text-gold" }}
                 >
