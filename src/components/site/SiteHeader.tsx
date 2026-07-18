@@ -120,6 +120,7 @@ export function SiteHeader() {
                 <Link
                   key={n.to}
                   to={n.to}
+                  data-nav-item
                   className="text-[10.5px] tracking-[0.32em] uppercase text-ivory/80 hover:text-gold transition-colors"
                   activeProps={{ className: "text-gold" }}
                 >
