@@ -33,6 +33,9 @@ function ProductPage() {
   const [backing, setBacking] = useState(product.backings?.[0] ?? "");
   const [length, setLength] = useState(product.lengths?.[1] ?? "");
   const [engraving, setEngraving] = useState("");
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
+  const gallery = [product.image, product.image, product.image, product.image];
 
   const metalOptions = ["18K White Gold", "18K Yellow Gold", "18K Rose Gold", "Platinum 950"];
 
