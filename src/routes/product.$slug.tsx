@@ -80,7 +80,7 @@ function ProductPage() {
               >
                 <Heart className="h-4 w-4" strokeWidth={1.3} />
               </button>
-              <span className="absolute top-5 left-5 text-[9px] tracking-[0.42em] uppercase text-ivory/70 bg-obsidian/60 backdrop-blur-sm px-3 py-1.5 border border-white/10">
+              <span className="absolute top-5 left-5 text-[11px] tracking-[0.42em] uppercase text-ivory/70 bg-obsidian/60 backdrop-blur-sm px-3 py-1.5 border border-white/10">
                 Ref. OR-{product.slug.slice(0, 4).toUpperCase()}
               </span>
             </div>
@@ -125,7 +125,7 @@ function ProductPage() {
                 )}
                 {product.sizes && (
                   <div>
-                    <label className="text-[9.5px] tracking-[0.42em] uppercase text-gold">
+                    <label className="text-[11px] tracking-[0.42em] uppercase text-gold">
                       Engraving (optional)
                     </label>
                     <input
@@ -139,7 +139,7 @@ function ProductPage() {
               </div>
 
               <div className="mt-10 border border-white/10 bg-charcoal/50 p-6">
-                <p className="text-[9.5px] tracking-[0.42em] uppercase text-gold">Your Configuration</p>
+                <p className="text-[11px] tracking-[0.42em] uppercase text-gold">Your Configuration</p>
                 <dl className="mt-5 grid grid-cols-2 gap-x-6 gap-y-2.5 text-sm">
                   <dt className="text-ivory/40">Diamond</dt><dd className="text-ivory">{diamondType}</dd>
                   <dt className="text-ivory/40">Metal</dt><dd className="text-ivory">{metal}</dd>
@@ -172,7 +172,7 @@ function ProductPage() {
                 ].map((i) => (
                   <div key={i.t} className="border-t border-white/10 pt-4">
                     <i.icon className="mx-auto h-5 w-5 text-gold" strokeWidth={1.2} />
-                    <p className="mt-2.5 text-[9.5px] tracking-[0.32em] uppercase text-ivory/50">{i.t}</p>
+                    <p className="mt-2.5 text-[11px] tracking-[0.32em] uppercase text-ivory/50">{i.t}</p>
                   </div>
                 ))}
               </div>
@@ -220,7 +220,7 @@ function PillGroup({
 }) {
   return (
     <div>
-      <p className="text-[9.5px] tracking-[0.42em] uppercase text-gold">{label}</p>
+      <p className="text-[11px] tracking-[0.42em] uppercase text-gold">{label}</p>
       <div className="mt-3.5 flex flex-wrap gap-2">
         {options.map((o) => {
           const active = o === value;

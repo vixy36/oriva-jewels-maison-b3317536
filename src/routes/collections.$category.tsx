@@ -166,7 +166,7 @@ function CollectionPage() {
 function FilterGroup({ title, options }: { title: string; options: string[] }) {
   return (
     <div>
-      <p className="text-[9.5px] tracking-[0.42em] uppercase text-gold pb-3 border-b border-white/10">
+      <p className="text-[11px] tracking-[0.42em] uppercase text-gold pb-3 border-b border-white/10">
         {title}
       </p>
       <ul className="mt-5 space-y-3">

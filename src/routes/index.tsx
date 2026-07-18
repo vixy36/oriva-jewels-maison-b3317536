@@ -267,7 +267,7 @@ function HomePage() {
                   ["Origin", "Hand-set, Hong Kong"],
                 ].map(([k, v]) => (
                   <div key={k} className="border-t border-white/10 pt-3">
-                    <dt className="text-[9.5px] tracking-[0.42em] uppercase text-gold">{k}</dt>
+                    <dt className="text-[11px] tracking-[0.42em] uppercase text-gold">{k}</dt>
                     <dd className="mt-1.5 font-serif text-lg text-ivory">{v}</dd>
                   </div>
                 ))}
@@ -393,7 +393,7 @@ function HomePage() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-obsidian/80 via-obsidian/10 to-transparent" />
                     <div className="absolute inset-x-0 bottom-0 p-4 md:p-6">
-                      <p className="text-[9px] tracking-[0.42em] uppercase text-gold">{o.tag}</p>
+                      <p className="text-[11px] tracking-[0.42em] uppercase text-gold">{o.tag}</p>
                       <p className="mt-1 font-serif text-2xl md:text-3xl text-ivory">{o.label}</p>
                     </div>
                     <span className="absolute inset-0 border border-transparent group-hover:border-gold/40 transition duration-500" />

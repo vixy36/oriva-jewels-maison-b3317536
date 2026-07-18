@@ -25,7 +25,7 @@ export function ProductCard({ product }: { product: Product }) {
         <span aria-hidden className="pointer-events-none absolute bottom-0 left-0 h-6 w-6 border-b border-l border-gold/0 group-hover:border-gold/70 transition duration-700" />
         <span aria-hidden className="pointer-events-none absolute bottom-0 right-0 h-6 w-6 border-b border-r border-gold/0 group-hover:border-gold/70 transition duration-700" />
 
-        <span className="absolute top-4 left-4 text-[9px] tracking-[0.35em] uppercase text-ivory/70 bg-obsidian/60 backdrop-blur-sm px-2.5 py-1 border border-white/10">
+        <span className="absolute top-4 left-4 text-[11px] tracking-[0.35em] uppercase text-ivory/70 bg-obsidian/60 backdrop-blur-sm px-2.5 py-1 border border-white/10">
           {product.diamondTypes.includes("Lab Grown") && product.diamondTypes.includes("Natural")
             ? "Natural · Lab"
             : product.diamondTypes[0]}
@@ -39,7 +39,7 @@ export function ProductCard({ product }: { product: Product }) {
 
       <div className="mt-6 flex items-start justify-between gap-4">
         <div className="min-w-0">
-          <p className="text-[9.5px] tracking-[0.4em] uppercase text-gold">
+          <p className="text-[11px] tracking-[0.4em] uppercase text-gold">
             {product.collection}
           </p>
           <h3 className="mt-2 font-serif text-[22px] leading-tight text-ivory group-hover:text-gold transition">
