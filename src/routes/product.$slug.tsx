@@ -5,6 +5,7 @@ import { Heart, MessageCircle, ArrowLeft, ShieldCheck, Truck, Sparkles } from "l
 import { findProduct, buildWhatsAppLink, products } from "@/lib/products";
 import { ProductCard } from "@/components/site/ProductCard";
 import { Reveal } from "@/components/site/Reveal";
+import { Tilt3D } from "@/components/site/Tilt3D";
 
 export const Route = createFileRoute("/product/$slug")({
   loader: ({ params }) => {
@@ -69,19 +70,21 @@ function ProductPage() {
         <div className="mt-8 grid gap-12 md:grid-cols-2 md:gap-16">
           {/* Gallery */}
           <div className="space-y-4">
-            <div className="relative overflow-hidden bg-secondary aspect-[4/5] group">
-              <img
-                src={product.image}
-                alt={product.name}
-                className="h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-105"
-              />
-              <button
-                aria-label="Wishlist"
-                className="absolute top-5 right-5 grid h-11 w-11 place-items-center rounded-full bg-diamond/85 backdrop-blur border border-white/40"
-              >
-                <Heart className="h-4 w-4" strokeWidth={1.4} />
-              </button>
-            </div>
+            <Tilt3D max={9} className="aspect-[4/5]">
+              <div className="relative h-full w-full overflow-hidden bg-secondary group">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-105"
+                />
+                <button
+                  aria-label="Wishlist"
+                  className="absolute top-5 right-5 grid h-11 w-11 place-items-center rounded-full bg-diamond/85 backdrop-blur border border-white/40"
+                >
+                  <Heart className="h-4 w-4" strokeWidth={1.4} />
+                </button>
+              </div>
+            </Tilt3D>
             <div className="grid grid-cols-4 gap-3">
               {[product.image, product.image, product.image, product.image].map((src, i) => (
                 <button key={i} className="aspect-square overflow-hidden bg-secondary ring-1 ring-transparent hover:ring-champagne transition">
