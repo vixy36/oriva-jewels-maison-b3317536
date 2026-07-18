@@ -309,3 +309,16 @@
   color: transparent;
   animation: shimmer-gold 6s linear infinite;
 }
+
+/* Hide Lovable badge on published deployments */
+#lovable-badge,
+a[href*="lovable.dev"][href*="badge"],
+a[href*="lovable.dev/?utm"],
+a[aria-label*="Lovable" i],
+[data-lovable-badge],
+iframe[src*="lovable.dev"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
