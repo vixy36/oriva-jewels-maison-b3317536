@@ -49,68 +49,49 @@ function Diamond() {
     );
   });
 
+  const diamondMat = (
+    <meshPhysicalMaterial
+      color="#f7f4ee"
+      metalness={0.35}
+      roughness={0.05}
+      clearcoat={1}
+      clearcoatRoughness={0}
+      iridescence={1}
+      iridescenceIOR={2.0}
+      iridescenceThicknessRange={[100, 800]}
+      envMapIntensity={2.2}
+      emissive="#fff2d8"
+      emissiveIntensity={0.15}
+    />
+  );
+
   return (
     <Float speed={1.2} rotationIntensity={0.2} floatIntensity={0.5}>
-      <group ref={group} position={[0, 0.25, 0]}>
+      <group ref={group} position={[0, 0.15, 0]} scale={1.15}>
         {/* Crown */}
         <mesh position={[0, 0.35, 0]}>
           <coneGeometry args={[0.9, 0.55, 12, 1]} />
-          <MeshTransmissionMaterial
-            samples={6}
-            resolution={512}
-            transmission={1}
-            thickness={0.9}
-            roughness={0}
-            ior={2.4}
-            chromaticAberration={0.6}
-            anisotropicBlur={0.1}
-            distortion={0.2}
-            distortionScale={0.3}
-            temporalDistortion={0.1}
-            clearcoat={1}
-            attenuationDistance={1.2}
-            attenuationColor="#fff5e0"
-            color="#ffffff"
-          />
+          {diamondMat}
         </mesh>
-        {/* Table top */}
-        <mesh position={[0, 0.625, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+        {/* Table */}
+        <mesh position={[0, 0.626, 0]} rotation={[-Math.PI / 2, 0, 0]}>
           <circleGeometry args={[0.42, 12]} />
-          <meshPhysicalMaterial
-            color="#ffffff"
-            roughness={0}
-            metalness={0}
-            transmission={0.9}
-            thickness={0.3}
-            ior={2.4}
-            clearcoat={1}
-            envMapIntensity={2}
-          />
+          {diamondMat}
         </mesh>
         {/* Pavilion */}
         <mesh position={[0, 0.05, 0]} rotation={[Math.PI, 0, 0]}>
           <coneGeometry args={[0.9, 1.05, 12, 1]} />
-          <MeshTransmissionMaterial
-            samples={6}
-            resolution={512}
-            transmission={1}
-            thickness={1.1}
-            roughness={0}
-            ior={2.4}
-            chromaticAberration={0.8}
-            anisotropicBlur={0.1}
-            distortion={0.25}
-            distortionScale={0.3}
-            temporalDistortion={0.1}
-            clearcoat={1}
-            attenuationDistance={1.2}
-            attenuationColor="#fff5e0"
-            color="#ffffff"
-          />
+          {diamondMat}
+        </mesh>
+
+        {/* Girdle glow ring */}
+        <mesh position={[0, 0.35, 0]} rotation={[Math.PI / 2, 0, 0]}>
+          <torusGeometry args={[0.9, 0.015, 8, 48]} />
+          <meshBasicMaterial color="#fff5e0" />
         </mesh>
 
         {/* Gold band */}
-        <group position={[0, -0.85, 0]} rotation={[Math.PI / 2, 0, 0]}>
+        <group position={[0, -0.9, 0]} rotation={[Math.PI / 2, 0, 0]}>
           <mesh>
             <torusGeometry args={[0.7, 0.09, 24, 96]} />
             <meshPhysicalMaterial
@@ -120,6 +101,8 @@ function Diamond() {
               clearcoat={1}
               clearcoatRoughness={0.05}
               envMapIntensity={1.6}
+              emissive="#3a2d18"
+              emissiveIntensity={0.25}
             />
           </mesh>
           {Array.from({ length: 4 }).map((_, i) => {
@@ -136,6 +119,8 @@ function Diamond() {
                   metalness={1}
                   roughness={0.22}
                   envMapIntensity={1.6}
+                  emissive="#3a2d18"
+                  emissiveIntensity={0.25}
                 />
               </mesh>
             );
