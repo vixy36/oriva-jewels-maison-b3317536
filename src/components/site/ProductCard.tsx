@@ -45,9 +45,9 @@ export function ProductCard({ product }: { product: Product }) {
           <h3 className="mt-2 font-serif text-[22px] leading-tight text-ivory group-hover:text-gold transition">
             {product.name}
           </h3>
-          <p className="mt-1.5 text-xs text-ivory/45 line-clamp-1">{product.shape} · {product.metal}</p>
+          <p className="mt-1.5 text-sm text-ivory/70 line-clamp-1">{product.shape} · {product.metal}</p>
         </div>
-        <span className="mt-2 shrink-0 text-[12px] tracking-[0.32em] uppercase text-ivory/40">
+        <span className="mt-2 shrink-0 text-[12px] tracking-[0.32em] uppercase text-ivory/70">
           Enquire
         </span>
       </div>
