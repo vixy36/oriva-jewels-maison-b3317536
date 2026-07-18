@@ -112,18 +112,18 @@ function HomePage() {
         <Sparkle style={{ top: "82%", left: "6%"  }} delay={1.4} size={2} drift />
 
         <div className="pointer-events-none absolute inset-y-0 left-6 hidden md:flex flex-col justify-between py-32 z-10">
-          <span className="text-[11px] tracking-[0.5em] uppercase text-ivory/60 [writing-mode:vertical-rl] rotate-180">
+          <span className="text-[12px] tracking-[0.5em] uppercase text-ivory/60 [writing-mode:vertical-rl] rotate-180">
             Hong Kong · MMXXV
           </span>
-          <span className="text-[11px] tracking-[0.5em] uppercase text-gold [writing-mode:vertical-rl] rotate-180">
+          <span className="text-[12px] tracking-[0.5em] uppercase text-gold [writing-mode:vertical-rl] rotate-180">
             Maison N° 01
           </span>
         </div>
         <div className="pointer-events-none absolute inset-y-0 right-6 hidden md:flex flex-col justify-between py-32 z-10">
-          <span className="text-[11px] tracking-[0.5em] uppercase text-ivory/60 [writing-mode:vertical-rl]">
+          <span className="text-[12px] tracking-[0.5em] uppercase text-ivory/60 [writing-mode:vertical-rl]">
             Natural · Lab Grown
           </span>
-          <span className="text-[11px] tracking-[0.5em] uppercase text-ivory/60 [writing-mode:vertical-rl]">
+          <span className="text-[12px] tracking-[0.5em] uppercase text-ivory/60 [writing-mode:vertical-rl]">
             GIA · IGI Certified
           </span>
         </div>
@@ -182,7 +182,7 @@ function HomePage() {
                 "Insured Worldwide",
                 "By Appointment",
               ].map((t) => (
-                <span key={t} className="flex items-center gap-24 font-serif italic text-2xl md:text-3xl text-ivory/40">
+                <span key={t} className="flex items-center gap-24 font-serif italic text-2xl md:text-3xl text-ivory/65">
                   <span className="text-gold text-3xl md:text-4xl">✦</span>
                   {t}
                 </span>
@@ -211,7 +211,7 @@ function HomePage() {
               </p>
               <div className="mt-12 flex items-center gap-6">
                 <span className="h-px flex-1 bg-white/10" />
-                <span className="text-[10px] tracking-[0.42em] uppercase text-gold">Oriva · Hong Kong</span>
+                <span className="text-[12px] tracking-[0.42em] uppercase text-gold">Oriva · Hong Kong</span>
               </div>
             </Reveal>
           </div>
@@ -231,7 +231,7 @@ function HomePage() {
             </div>
             <Link
               to="/about"
-              className="hidden md:inline-flex items-center gap-2 text-[10px] tracking-[0.4em] uppercase text-gold border-b border-gold/60 pb-1 hover:text-ivory hover:border-ivory transition"
+              className="hidden md:inline-flex items-center gap-2 text-[12px] tracking-[0.4em] uppercase text-gold border-b border-gold/60 pb-1 hover:text-ivory hover:border-ivory transition"
             >
               Our craftsmanship <ArrowUpRight className="h-3.5 w-3.5" />
             </Link>
@@ -244,7 +244,7 @@ function HomePage() {
                   to={c.to}
                   className="group grid grid-cols-12 items-center gap-6 border-t border-white/10 py-6 md:py-8 hover:bg-white/[0.02] transition"
                 >
-                  <span className="col-span-2 md:col-span-1 text-[10px] tracking-[0.4em] uppercase text-gold">
+                  <span className="col-span-2 md:col-span-1 text-[12px] tracking-[0.4em] uppercase text-gold">
                     {c.n}
                   </span>
                   <h3 className="col-span-10 md:col-span-5 font-serif text-3xl md:text-5xl text-ivory group-hover:text-gold group-hover:italic transition-all duration-500">
@@ -255,7 +255,7 @@ function HomePage() {
                       <img src={c.img} alt={c.title} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
                     </div>
                   </div>
-                  <span className="col-span-4 md:col-span-2 justify-self-end flex items-center gap-2 text-[10px] tracking-[0.4em] uppercase text-ivory/50 group-hover:text-gold transition">
+                  <span className="col-span-4 md:col-span-2 justify-self-end flex items-center gap-2 text-[12px] tracking-[0.4em] uppercase text-ivory/50 group-hover:text-gold transition">
                     View
                     <ArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-1" strokeWidth={1.4} />
                   </span>
@@ -279,8 +279,8 @@ function HomePage() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-obsidian/60 to-transparent" />
             <div className="absolute bottom-8 left-8 right-8 flex items-end justify-between text-ivory/70">
-              <span className="text-[10px] tracking-[0.42em] uppercase">Ref. OR-MRQ-001</span>
-              <span className="text-[10px] tracking-[0.42em] uppercase">Plate I</span>
+              <span className="text-[12px] tracking-[0.42em] uppercase">Ref. OR-MRQ-001</span>
+              <span className="text-[12px] tracking-[0.42em] uppercase">Plate I</span>
             </div>
           </div>
 
@@ -304,7 +304,7 @@ function HomePage() {
                   ["Origin", "Hand-set, Hong Kong"],
                 ].map(([k, v]) => (
                   <div key={k} className="border-t border-white/10 pt-3">
-                    <dt className="text-[11px] tracking-[0.42em] uppercase text-gold">{k}</dt>
+                    <dt className="text-[12px] tracking-[0.42em] uppercase text-gold">{k}</dt>
                     <dd className="mt-1.5 font-serif text-lg text-ivory">{v}</dd>
                   </div>
                 ))}
@@ -338,7 +338,7 @@ function HomePage() {
             </div>
             <Link
               to="/collections/engagement-rings"
-              className="text-[10px] tracking-[0.4em] uppercase text-gold border-b border-gold/50 pb-1 hover:text-ivory hover:border-ivory transition"
+              className="text-[12px] tracking-[0.4em] uppercase text-gold border-b border-gold/50 pb-1 hover:text-ivory hover:border-ivory transition"
             >
               View entire archive
             </Link>
@@ -362,7 +362,7 @@ function HomePage() {
               <img src={atelier} alt="Oriva atelier, Hong Kong" loading="lazy" className="h-full w-full object-cover" />
               <div className="absolute inset-0 border border-gold/20" />
             </div>
-            <p className="mt-4 text-[10px] tracking-[0.42em] uppercase text-ivory/40">
+            <p className="mt-4 text-[12px] tracking-[0.42em] uppercase text-ivory/65">
               Plate II · The Atelier
             </p>
           </Reveal>
@@ -392,7 +392,7 @@ function HomePage() {
               ].map(([k, v]) => (
                 <div key={k}>
                   <p className="font-serif text-3xl md:text-4xl text-gold-gradient">{k}</p>
-                  <p className="mt-2 text-[10px] tracking-[0.32em] uppercase text-ivory/50">{v}</p>
+                  <p className="mt-2 text-[12px] tracking-[0.32em] uppercase text-ivory/50">{v}</p>
                 </div>
               ))}
             </div>
@@ -430,7 +430,7 @@ function HomePage() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-obsidian/80 via-obsidian/10 to-transparent" />
                     <div className="absolute inset-x-0 bottom-0 p-4 md:p-6">
-                      <p className="text-[11px] tracking-[0.42em] uppercase text-gold">{o.tag}</p>
+                      <p className="text-[12px] tracking-[0.42em] uppercase text-gold">{o.tag}</p>
                       <p className="mt-1 font-serif text-2xl md:text-3xl text-ivory">{o.label}</p>
                     </div>
                     <span className="absolute inset-0 border border-transparent group-hover:border-gold/40 transition duration-500" />
@@ -497,7 +497,7 @@ function HomePage() {
               href="https://instagram.com/orivajewels"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 text-[10px] tracking-[0.4em] uppercase text-gold border-b border-gold/50 pb-1 hover:text-ivory hover:border-ivory transition"
+              className="inline-flex items-center gap-2 text-[12px] tracking-[0.4em] uppercase text-gold border-b border-gold/50 pb-1 hover:text-ivory hover:border-ivory transition"
             >
               Follow on Instagram <ArrowUpRight className="h-3.5 w-3.5" />
             </a>

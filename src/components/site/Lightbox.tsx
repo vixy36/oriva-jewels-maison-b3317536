@@ -95,14 +95,14 @@ export function Lightbox({
         <button
           onClick={() => setZoomed((z) => !z)}
           aria-label="Toggle zoom"
-          className="absolute bottom-4 right-4 inline-flex items-center gap-2 bg-obsidian/70 backdrop-blur border border-white/15 px-4 py-2 text-[11px] tracking-[0.35em] uppercase text-ivory hover:border-gold hover:text-gold transition"
+          className="absolute bottom-4 right-4 inline-flex items-center gap-2 bg-obsidian/70 backdrop-blur border border-white/15 px-4 py-2 text-[12px] tracking-[0.35em] uppercase text-ivory hover:border-gold hover:text-gold transition"
         >
           <ZoomIn className="h-3.5 w-3.5" strokeWidth={1.4} />
           {zoomed ? "Zoom out" : "Zoom in"}
         </button>
       </div>
 
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-[11px] tracking-[0.4em] uppercase text-ivory/60">
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-[12px] tracking-[0.4em] uppercase text-ivory/60">
         {String(index + 1).padStart(2, "0")} / {String(images.length).padStart(2, "0")}
       </div>
     </div>
