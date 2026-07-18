@@ -4,14 +4,12 @@ export function Reveal({
   children,
   delay = 0,
   className = "",
-  as: Tag = "div",
 }: {
   children: ReactNode;
   delay?: number;
   className?: string;
-  as?: keyof React.JSX.IntrinsicElements;
 }) {
-  const ref = useRef<HTMLElement | null>(null);
+  const ref = useRef<HTMLDivElement | null>(null);
   const [shown, setShown] = useState(false);
 
   useEffect(() => {
@@ -30,17 +28,15 @@ export function Reveal({
     return () => io.disconnect();
   }, []);
 
-  const Component = Tag as string;
   return (
-    // @ts-expect-error dynamic tag
-    <Component
-      ref={ref as React.RefObject<never>}
+    <div
+      ref={ref}
       className={`transition-all duration-1000 ease-out ${
         shown ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
       } ${className}`}
       style={{ transitionDelay: `${delay}ms` }}
     >
       {children}
-    </Component>
+    </div>
   );
 }
