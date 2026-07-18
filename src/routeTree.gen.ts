@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as RingSizeGuideRouteImport } from './routes/ring-size-guide'
 import { Route as OccasionsRouteImport } from './routes/occasions'
 import { Route as EducationRouteImport } from './routes/education'
 import { Route as ContactRouteImport } from './routes/contact'
@@ -23,6 +24,11 @@ import { Route as CollectionsCategoryRouteImport } from './routes/collections.$c
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RingSizeGuideRoute = RingSizeGuideRouteImport.update({
+  id: '/ring-size-guide',
+  path: '/ring-size-guide',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OccasionsRoute = OccasionsRouteImport.update({
@@ -78,6 +84,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/education': typeof EducationRoute
   '/occasions': typeof OccasionsRoute
+  '/ring-size-guide': typeof RingSizeGuideRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/collections/$category': typeof CollectionsCategoryRoute
   '/product/$slug': typeof ProductSlugRoute
@@ -90,6 +97,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/education': typeof EducationRoute
   '/occasions': typeof OccasionsRoute
+  '/ring-size-guide': typeof RingSizeGuideRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/collections/$category': typeof CollectionsCategoryRoute
   '/product/$slug': typeof ProductSlugRoute
@@ -103,6 +111,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/education': typeof EducationRoute
   '/occasions': typeof OccasionsRoute
+  '/ring-size-guide': typeof RingSizeGuideRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/collections/$category': typeof CollectionsCategoryRoute
   '/product/$slug': typeof ProductSlugRoute
@@ -117,6 +126,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/education'
     | '/occasions'
+    | '/ring-size-guide'
     | '/sitemap.xml'
     | '/collections/$category'
     | '/product/$slug'
@@ -129,6 +139,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/education'
     | '/occasions'
+    | '/ring-size-guide'
     | '/sitemap.xml'
     | '/collections/$category'
     | '/product/$slug'
@@ -141,6 +152,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/education'
     | '/occasions'
+    | '/ring-size-guide'
     | '/sitemap.xml'
     | '/collections/$category'
     | '/product/$slug'
@@ -154,6 +166,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   EducationRoute: typeof EducationRoute
   OccasionsRoute: typeof OccasionsRoute
+  RingSizeGuideRoute: typeof RingSizeGuideRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   CollectionsCategoryRoute: typeof CollectionsCategoryRoute
   ProductSlugRoute: typeof ProductSlugRoute
@@ -167,6 +180,13 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ring-size-guide': {
+      id: '/ring-size-guide'
+      path: '/ring-size-guide'
+      fullPath: '/ring-size-guide'
+      preLoaderRoute: typeof RingSizeGuideRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/occasions': {
@@ -242,6 +262,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   EducationRoute: EducationRoute,
   OccasionsRoute: OccasionsRoute,
+  RingSizeGuideRoute: RingSizeGuideRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   CollectionsCategoryRoute: CollectionsCategoryRoute,
   ProductSlugRoute: ProductSlugRoute,
