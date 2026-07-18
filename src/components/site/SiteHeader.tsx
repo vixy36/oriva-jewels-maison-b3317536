@@ -1,7 +1,16 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Menu, X, MessageCircle } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { buildWhatsAppLink } from "@/lib/products";
+
+function WhatsAppIcon({ className = "", strokeWidth = 1.5 }: { className?: string; strokeWidth?: number }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden>
+      <path d="M20.5 3.5A11 11 0 0 0 3.6 17.3L2.5 21.5l4.3-1.1A11 11 0 1 0 20.5 3.5Z" />
+      <path d="M8.5 8.5c.2-.5.5-.6.8-.6h.6c.2 0 .5 0 .7.5s.8 1.9.9 2 .1.3 0 .5-.2.3-.4.5-.3.3-.5.5-.3.3-.1.6a7 7 0 0 0 1.3 1.6 6 6 0 0 0 1.9 1.2c.2.1.4.1.5-.1l.7-.8c.2-.2.3-.2.5-.1l1.9.9c.2.1.4.2.4.3v.3a2.4 2.4 0 0 1-1.6 1.7 2.6 2.6 0 0 1-1.4.1 8.9 8.9 0 0 1-4-2.1 9 9 0 0 1-2.5-3.6 2.9 2.9 0 0 1 .3-2.4Z" />
+    </svg>
+  );
+}
 
 const nav = [
   { label: "Engagement", to: "/collections/engagement-rings" },
@@ -84,7 +93,7 @@ export function SiteHeader() {
               className="hidden lg:inline-flex items-center gap-2 text-[14px] tracking-[0.32em] uppercase text-gold hover:text-ivory transition"
               aria-label="WhatsApp"
             >
-              <MessageCircle className="h-3.5 w-3.5" strokeWidth={1.4} />
+              <WhatsAppIcon className="h-3.5 w-3.5" strokeWidth={1.4} />
               Enquire
             </a>
             <a
@@ -94,7 +103,7 @@ export function SiteHeader() {
               className="md:hidden text-ivory"
               aria-label="WhatsApp"
             >
-              <MessageCircle className="h-5 w-5" strokeWidth={1.2} />
+              <WhatsAppIcon className="h-5 w-5" strokeWidth={1.2} />
             </a>
           </div>
         </div>
