@@ -196,29 +196,30 @@ function HomePage() {
 
       {/* MANIFESTO */}
       <section className="relative py-32 md:py-48 bg-ink">
-        <div className="mx-auto max-w-[1400px] px-6 md:px-16">
+        <GsapReveal className="mx-auto max-w-[1400px] px-6 md:px-16">
           <div className="grid gap-16 md:grid-cols-12 md:gap-24 items-start">
-            <Reveal className="md:col-span-4 md:sticky md:top-40">
-              <p className="eyebrow">- Manifesto</p>
-              <p className="mt-8 text-[13px] tracking-[0.25em] uppercase text-ivory/50">
+            <div className="md:col-span-4 md:sticky md:top-40">
+              <p data-gsap className="eyebrow">- Manifesto</p>
+              <p data-gsap className="mt-8 text-[13px] tracking-[0.25em] uppercase text-ivory/50">
                 Chapter One
               </p>
-            </Reveal>
-            <Reveal delay={200} className="md:col-span-8">
-              <p className="font-serif font-light text-3xl md:text-5xl lg:text-6xl leading-[1.15] text-ivory">
+            </div>
+            <div className="md:col-span-8">
+              <p data-gsap className="font-serif font-light text-3xl md:text-5xl lg:text-6xl leading-[1.15] text-ivory">
                 We believe the finest jewellery is <em className="text-gold-gradient">never loud</em>.
                 It is worn every day, folded into small gestures - a hand raised, a
                 letter signed, a promise made. It becomes, in time, a
                 <em className="text-gold-gradient"> quiet second skin</em>.
               </p>
-              <div className="mt-12 flex items-center gap-6">
+              <div data-gsap className="mt-12 flex items-center gap-6">
                 <span className="h-px flex-1 bg-white/10" />
                 <span className="text-[14px] tracking-[0.42em] uppercase text-gold">Oriva · Hong Kong</span>
               </div>
-            </Reveal>
+            </div>
           </div>
-        </div>
+        </GsapReveal>
       </section>
+
 
       {/* COLLECTIONS INDEX - Chapter Wheel */}
       <section className="relative overflow-hidden pb-24 md:pb-36 bg-ink">
