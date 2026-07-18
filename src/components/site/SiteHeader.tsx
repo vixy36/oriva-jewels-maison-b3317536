@@ -25,17 +25,11 @@ export function SiteHeader() {
 
   return (
     <>
-      <div className="fixed inset-x-0 top-0 z-[60] bg-obsidian text-ivory/85 border-b border-white/5">
-        <div className="mx-auto max-w-[1600px] px-6 py-2 text-center text-[14px] tracking-[0.4em] uppercase">
-          Complimentary worldwide insured shipping · By appointment in Hong Kong
-        </div>
-      </div>
-
       <header
-        className={`fixed inset-x-0 top-[30px] z-50 transition-all duration-700 ${
+        className={`fixed inset-x-0 top-0 z-50 transition-all duration-700 ${
           scrolled
             ? "bg-ink/90 backdrop-blur-2xl border-b border-white/5"
-            : "bg-transparent"
+            : "bg-obsidian/60 backdrop-blur"
         }`}
       >
         <div className="mx-auto grid max-w-[1600px] grid-cols-[1fr_auto_1fr] items-center gap-6 px-6 py-5 md:px-10 md:py-6">
