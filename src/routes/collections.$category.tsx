@@ -50,7 +50,7 @@ export const Route = createFileRoute("/collections/$category")({
     const label = cat?.label ?? "Collection";
     return {
       meta: [
-        { title: `${label} — Oriva Jewels` },
+        { title: `${label} - Oriva Jewels` },
         { name: "description", content: cat?.blurb ?? "Fine diamond jewellery by Oriva." },
       ],
     };
@@ -160,7 +160,7 @@ function CollectionPage() {
                 <div className="absolute inset-0 bg-gradient-to-r from-obsidian/85 via-obsidian/40 to-transparent" />
                 <div className="relative flex h-full items-center p-8 md:p-16 text-ivory">
                   <div className="max-w-md">
-                    <p className="eyebrow">— The Oriva Way</p>
+                    <p className="eyebrow">- The Oriva Way</p>
                     <p className="mt-6 font-serif text-3xl md:text-5xl leading-[1] italic">
                       Every diamond, <span className="text-gold-gradient">personally sourced.</span>
                     </p>

@@ -7,10 +7,10 @@ import { buildWhatsAppLink } from "@/lib/products";
 export const Route = createFileRoute("/assurance")({
   head: () => ({
     meta: [
-      { title: "Maison Assurance — Oriva Jewels" },
+      { title: "Maison Assurance - Oriva Jewels" },
       { name: "description", content: "GIA and IGI certification, lifetime warranty, insured worldwide shipping and traceable provenance. The Oriva promise." },
-      { property: "og:title", content: "Maison Assurance — Oriva Jewels" },
-      { property: "og:description", content: "Certification, warranty, insurance and provenance — the Oriva promise." },
+      { property: "og:title", content: "Maison Assurance - Oriva Jewels" },
+      { property: "og:description", content: "Certification, warranty, insurance and provenance - the Oriva promise." },
       { property: "og:image", content: atelier },
     ],
   }),
@@ -23,7 +23,7 @@ const pillars = [
   { Icon: Globe2, t: "Insured Worldwide", b: "Complimentary insured shipping to over 90 countries. Signature required. Discreetly packaged, entirely traceable." },
   { Icon: Gem, t: "Traceable Provenance", b: "Conflict-free sourcing, verified supply chain. Kimberley Process and RJC standards, without exception." },
   { Icon: HeartHandshake, t: "30-Day Exchange", b: "A rare piece deserves rare confidence. Exchange or resize within 30 days of receipt, unworn." },
-  { Icon: Sparkles, t: "Complimentary Care", b: "Annual cleaning and inspection at our Hong Kong atelier — or by post, with insured return." },
+  { Icon: Sparkles, t: "Complimentary Care", b: "Annual cleaning and inspection at our Hong Kong atelier - or by post, with insured return." },
 ];
 
 function AssurancePage() {
@@ -33,7 +33,7 @@ function AssurancePage() {
         <img src={atelier} alt="Oriva atelier" className="absolute inset-0 h-full w-full object-cover opacity-40" />
         <div className="absolute inset-0 bg-gradient-to-b from-obsidian/50 via-obsidian/60 to-obsidian" />
         <div className="relative z-10 mx-auto max-w-[1400px] px-6 md:px-16 pt-40 pb-24 md:pt-56 md:pb-32">
-          <p className="eyebrow">— Maison Assurance</p>
+          <p className="eyebrow">- Maison Assurance</p>
           <h1 className="mt-8 font-serif font-light text-6xl md:text-8xl lg:text-9xl leading-[0.92] tracking-[-0.02em]">
             The Oriva <em className="text-gold-gradient">promise.</em>
           </h1>
@@ -65,7 +65,7 @@ function AssurancePage() {
 
       <section className="py-20 md:py-28 bg-obsidian border-t border-white/5">
         <div className="mx-auto max-w-[1000px] px-6 md:px-16 text-center">
-          <p className="eyebrow">— Questions</p>
+          <p className="eyebrow">- Questions</p>
           <h2 className="mt-6 font-serif text-4xl md:text-6xl">
             Something we haven't <em className="text-gold-gradient">answered?</em>
           </h2>

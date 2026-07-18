@@ -46,9 +46,9 @@ export function SiteFooter() {
         <div className="grid gap-14 md:grid-cols-12">
           <div className="md:col-span-4">
             <p className="font-serif text-3xl tracking-[0.5em] text-ivory">ORIVA</p>
-            <p className="mt-1 font-sans text-[14px] tracking-[0.55em] text-gold">— JEWELS —</p>
+            <p className="mt-1 font-sans text-[14px] tracking-[0.55em] text-gold">- JEWELS -</p>
             <p className="mt-8 max-w-sm text-sm leading-relaxed text-ivory/60">
-              A Hong Kong maison of natural and lab grown diamond jewellery — designed with quiet
+              A Hong Kong maison of natural and lab grown diamond jewellery - designed with quiet
               intention, finished by hand.
             </p>
             <div className="mt-10 flex gap-2">

@@ -73,7 +73,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Oriva Jewels — Natural & Lab Grown Diamond Jewellery, Hong Kong" },
+      { title: "Oriva Jewels - Natural & Lab Grown Diamond Jewellery, Hong Kong" },
       {
         name: "description",
         content:
@@ -81,7 +81,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { name: "author", content: "Oriva Jewels" },
       { name: "theme-color", content: "#050505" },
-      { property: "og:title", content: "Oriva Jewels — Fine Diamond Jewellery" },
+      { property: "og:title", content: "Oriva Jewels - Fine Diamond Jewellery" },
       {
         property: "og:description",
         content: "Timeless brilliance, crafted for modern elegance. Natural and lab grown diamonds from Hong Kong.",

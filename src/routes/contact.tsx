@@ -6,7 +6,7 @@ import { Reveal } from "@/components/site/Reveal";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact — Oriva Jewels, Hong Kong" },
+      { title: "Contact - Oriva Jewels, Hong Kong" },
       { name: "description", content: "Book a private consultation with the Oriva Jewels atelier. WhatsApp, email or in-person appointments in Hong Kong." },
     ],
   }),
@@ -27,7 +27,7 @@ function ContactPage() {
             at your convenience.
           </h1>
           <p className="mt-8 max-w-xl text-[15px] leading-[1.8] text-ivory/80">
-            Our client advisors are available in Hong Kong, or virtually — worldwide.
+            Our client advisors are available in Hong Kong, or virtually - worldwide.
             Every enquiry receives a personal reply within one business day.
           </p>
         </Reveal>
@@ -58,7 +58,7 @@ function ContactPage() {
             onSubmit={(e) => e.preventDefault()}
           >
             <div>
-              <p className="eyebrow">— Request an Appointment</p>
+              <p className="eyebrow">- Request an Appointment</p>
               <h2 className="mt-4 font-serif text-4xl md:text-5xl text-ivory">Tell us about your piece.</h2>
             </div>
 

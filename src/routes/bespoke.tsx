@@ -8,9 +8,9 @@ import { buildWhatsAppLink } from "@/lib/products";
 export const Route = createFileRoute("/bespoke")({
   head: () => ({
     meta: [
-      { title: "Commission an Heirloom — Oriva Jewels" },
+      { title: "Commission an Heirloom - Oriva Jewels" },
       { name: "description", content: "Design a one-of-one diamond piece with the Oriva Hong Kong atelier. A private, three-step commissioning journey." },
-      { property: "og:title", content: "Commission an Heirloom — Oriva Jewels" },
+      { property: "og:title", content: "Commission an Heirloom - Oriva Jewels" },
       { property: "og:description", content: "A private, three-step diamond commissioning journey with our Hong Kong atelier." },
       { property: "og:image", content: atelier },
     ],
@@ -19,8 +19,8 @@ export const Route = createFileRoute("/bespoke")({
 });
 
 const steps = [
-  { n: "I.", title: "The Conversation", body: "A private consultation — in person in Hong Kong, or by WhatsApp. We listen: the person, the moment, the intent." },
-  { n: "II.", title: "The Design", body: "Hand sketches, CAD renderings and a curated selection of natural or lab grown diamonds — presented for your approval." },
+  { n: "I.", title: "The Conversation", body: "A private consultation - in person in Hong Kong, or by WhatsApp. We listen: the person, the moment, the intent." },
+  { n: "II.", title: "The Design", body: "Hand sketches, CAD renderings and a curated selection of natural or lab grown diamonds - presented for your approval." },
   { n: "III.", title: "The Making", body: "Wax, casting, setting and polish, entirely within our Hong Kong atelier. Six to ten weeks, delivered with certification and insurance." },
 ];
 
@@ -32,7 +32,7 @@ function BespokePage() {
         <img src={atelier} alt="Oriva atelier" className="absolute inset-0 h-full w-full object-cover opacity-45" />
         <div className="absolute inset-0 bg-gradient-to-b from-obsidian/50 via-obsidian/60 to-obsidian" />
         <div className="relative z-10 mx-auto max-w-[1400px] px-6 md:px-16 pt-40 pb-24 md:pt-56 md:pb-32">
-          <p className="eyebrow">— Bespoke Commission</p>
+          <p className="eyebrow">- Bespoke Commission</p>
           <h1 className="mt-8 font-serif font-light text-6xl md:text-8xl lg:text-9xl leading-[0.92] tracking-[-0.02em]">
             Commission<br />an <em className="text-gold-gradient">heirloom.</em>
           </h1>
@@ -54,7 +54,7 @@ function BespokePage() {
       <section className="py-24 md:py-36 bg-ink">
         <div className="mx-auto max-w-[1400px] px-6 md:px-16">
           <Reveal>
-            <p className="eyebrow">— The Journey</p>
+            <p className="eyebrow">- The Journey</p>
             <h2 className="mt-6 font-serif text-5xl md:text-7xl">Three <em className="text-gold-gradient">chapters.</em></h2>
           </Reveal>
           <div className="mt-16 grid gap-10 md:grid-cols-3">
@@ -80,7 +80,7 @@ function BespokePage() {
           </div>
           <div className="flex items-center px-6 py-24 md:px-20 md:py-32">
             <Reveal>
-              <p className="eyebrow">— Ready when you are</p>
+              <p className="eyebrow">- Ready when you are</p>
               <h2 className="mt-8 font-serif text-4xl md:text-6xl">
                 Every heirloom begins with a <em className="text-gold-gradient">letter.</em>
               </h2>

@@ -8,13 +8,13 @@ import { buildWhatsAppLink } from "@/lib/products";
 export const Route = createFileRoute("/education")({
   head: () => ({
     meta: [
-      { title: "The Diamond Guide — Oriva Jewels" },
+      { title: "The Diamond Guide - Oriva Jewels" },
       {
         name: "description",
         content:
-          "Cut, Colour, Clarity, Carat — and the difference between natural and lab grown diamonds. The Oriva Jewels education guide.",
+          "Cut, Colour, Clarity, Carat - and the difference between natural and lab grown diamonds. The Oriva Jewels education guide.",
       },
-      { property: "og:title", content: "The Diamond Guide — Oriva Jewels" },
+      { property: "og:title", content: "The Diamond Guide - Oriva Jewels" },
       { property: "og:description", content: "The 4Cs, natural vs lab grown, and how to choose a diamond that lasts a lifetime." },
       { property: "og:image", content: editorialImg },
     ],
@@ -26,25 +26,25 @@ const fourCs = [
   {
     letter: "C·1",
     title: "Cut",
-    body: "The most decisive of the four. Cut governs how light travels through a diamond — its fire, brilliance and scintillation. A well-cut stone of modest weight will always outshine a poorly cut, heavier one.",
+    body: "The most decisive of the four. Cut governs how light travels through a diamond - its fire, brilliance and scintillation. A well-cut stone of modest weight will always outshine a poorly cut, heavier one.",
     grades: ["Excellent", "Very Good", "Good"],
   },
   {
     letter: "C·2",
     title: "Colour",
-    body: "Graded from D (colourless) to Z. At Oriva we work almost exclusively in D–G — near-imperceptible warmth, priced to be worn every day.",
+    body: "Graded from D (colourless) to Z. At Oriva we work almost exclusively in D–G - near-imperceptible warmth, priced to be worn every day.",
     grades: ["D", "E", "F", "G"],
   },
   {
     letter: "C·3",
     title: "Clarity",
-    body: "The presence, or absence, of internal characteristics. From Flawless (FL) to Included (I). Most of our pieces sit in the VS1–VVS2 range — eye-clean under any light.",
+    body: "The presence, or absence, of internal characteristics. From Flawless (FL) to Included (I). Most of our pieces sit in the VS1–VVS2 range - eye-clean under any light.",
     grades: ["VVS1", "VVS2", "VS1", "VS2"],
   },
   {
     letter: "C·4",
     title: "Carat",
-    body: "A measure of weight, not size. Two diamonds of equal carat can look strikingly different — proportions and cut govern presence on the finger.",
+    body: "A measure of weight, not size. Two diamonds of equal carat can look strikingly different - proportions and cut govern presence on the finger.",
     grades: ["0.5", "1.0", "2.0", "3.0+"],
   },
 ];
@@ -57,12 +57,12 @@ function EducationPage() {
         <img src={editorialImg} alt="Diamond study" className="absolute inset-0 h-full w-full object-cover opacity-40" />
         <div className="absolute inset-0 bg-gradient-to-b from-obsidian/40 via-obsidian/60 to-obsidian" />
         <div className="relative z-10 mx-auto max-w-[1400px] px-6 md:px-16 pt-40 pb-24 md:pt-56 md:pb-32">
-          <p className="eyebrow">— The Diamond Guide</p>
+          <p className="eyebrow">- The Diamond Guide</p>
           <h1 className="mt-8 font-serif font-light text-6xl md:text-8xl lg:text-9xl leading-[0.92] tracking-[-0.02em]">
             The <em className="text-gold-gradient">Four Cs.</em><br />And what lies beyond.
           </h1>
           <p className="mt-10 max-w-xl text-[15px] leading-[1.8] text-ivory/80">
-            A quiet primer on how we choose the stones that leave our atelier — and how you might choose one for yourself.
+            A quiet primer on how we choose the stones that leave our atelier - and how you might choose one for yourself.
           </p>
         </div>
       </section>
@@ -100,12 +100,12 @@ function EducationPage() {
       <section className="relative py-24 md:py-36 bg-obsidian">
         <div className="mx-auto max-w-[1400px] px-6 md:px-16">
           <Reveal>
-            <p className="eyebrow">— Origin</p>
+            <p className="eyebrow">- Origin</p>
             <h2 className="mt-6 font-serif text-5xl md:text-7xl">
               Natural, or <em className="text-gold-gradient">lab grown.</em>
             </h2>
             <p className="mt-8 max-w-2xl text-[15px] leading-[1.9] text-ivory/80">
-              Chemically, optically and structurally identical. The difference lies in origin — and in the story you wish the piece to carry.
+              Chemically, optically and structurally identical. The difference lies in origin - and in the story you wish the piece to carry.
             </p>
           </Reveal>
 

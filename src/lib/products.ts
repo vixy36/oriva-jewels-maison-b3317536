@@ -55,7 +55,7 @@ export const products: Product[] = [
     collection: "Bridal",
     short: "An oval centre stone lifted by a hidden halo of pavé diamonds.",
     description:
-      "A modern classic. The hidden halo appears only when viewed from the profile — a private detail revealed to the wearer alone.",
+      "A modern classic. The hidden halo appears only when viewed from the profile - a private detail revealed to the wearer alone.",
     image: ovalImg,
     shape: "Oval",
     metal: "18K Yellow Gold",
@@ -145,7 +145,7 @@ export const categories: Record<ProductCategory, { label: string; blurb: string 
   },
   earrings: {
     label: "Earrings",
-    blurb: "Studs, drops and ear stacks — from everyday to occasion.",
+    blurb: "Studs, drops and ear stacks - from everyday to occasion.",
   },
   bracelets: {
     label: "Bracelets",
@@ -161,7 +161,7 @@ export const categories: Record<ProductCategory, { label: string; blurb: string 
   },
   "lab-grown": {
     label: "Lab Grown Diamonds",
-    blurb: "Chemically identical to natural diamonds — with a modern conscience.",
+    blurb: "Chemically identical to natural diamonds - with a modern conscience.",
   },
 };
 

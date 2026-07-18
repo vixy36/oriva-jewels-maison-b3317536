@@ -5,7 +5,7 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * ORIVA JEWELS — Noir & Gold
+ * ORIVA JEWELS - Noir & Gold
  * A dark editorial fine jewellery house.
  * Cormorant Garamond (display) × Karla (body).
  */
@@ -72,7 +72,7 @@
   --gold-deep: oklch(0.62 0.11 72);    /* deep antique gold */
   --diamond: oklch(1 0 0);
 
-  /* Shadcn mapping — dark by default */
+  /* Shadcn mapping - dark by default */
   --background: var(--ink);
   --foreground: var(--ivory);
   --card: var(--charcoal);

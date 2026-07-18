@@ -15,7 +15,7 @@ export const Route = createFileRoute("/product/$slug")({
   },
   head: ({ loaderData }) => ({
     meta: [
-      { title: loaderData ? `${loaderData.product.name} — Oriva Jewels` : "Oriva Jewels" },
+      { title: loaderData ? `${loaderData.product.name} - Oriva Jewels` : "Oriva Jewels" },
       { name: "description", content: loaderData?.product.short ?? "Fine diamond jewellery." },
       { property: "og:image", content: loaderData?.product.image ?? "" },
     ],
@@ -204,7 +204,7 @@ function ProductPage() {
         <div className="mt-32 pb-32">
           <div className="flex items-end justify-between border-b border-white/10 pb-6">
             <div>
-              <p className="eyebrow">— The Adjacent</p>
+              <p className="eyebrow">- The Adjacent</p>
               <h2 className="mt-4 font-serif text-4xl md:text-5xl text-ivory">You may also love</h2>
             </div>
             <Link

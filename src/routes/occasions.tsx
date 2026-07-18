@@ -12,9 +12,9 @@ import { buildWhatsAppLink } from "@/lib/products";
 export const Route = createFileRoute("/occasions")({
   head: () => ({
     meta: [
-      { title: "The Occasion Guide — Oriva Jewels" },
+      { title: "The Occasion Guide - Oriva Jewels" },
       { name: "description", content: "Proposals, anniversaries, milestones. Fine diamond jewellery for the moments worth marking." },
-      { property: "og:title", content: "Occasions — Oriva Jewels" },
+      { property: "og:title", content: "Occasions - Oriva Jewels" },
       { property: "og:description", content: "Curated pieces for proposals, anniversaries, weddings and quiet milestones." },
       { property: "og:image", content: engagementImg },
     ],
@@ -23,12 +23,12 @@ export const Route = createFileRoute("/occasions")({
 });
 
 const occasions = [
-  { n: "01", label: "The Proposal", img: engagementImg, blurb: "Solitaires and hidden halos — a promise made in a single stone.", cta: "engagement-rings", msg: "engagement ring" },
+  { n: "01", label: "The Proposal", img: engagementImg, blurb: "Solitaires and hidden halos - a promise made in a single stone.", cta: "engagement-rings", msg: "engagement ring" },
   { n: "02", label: "The Wedding", img: bridalImg, blurb: "Matched bands and eternity rings, worn for a lifetime.", cta: "bridal", msg: "wedding band" },
-  { n: "03", label: "The Anniversary", img: insta6, blurb: "Marking the years quietly — tennis lines, eternity bands, drop earrings.", cta: "bracelets", msg: "anniversary gift" },
+  { n: "03", label: "The Anniversary", img: insta6, blurb: "Marking the years quietly - tennis lines, eternity bands, drop earrings.", cta: "bracelets", msg: "anniversary gift" },
   { n: "04", label: "Milestones", img: pendantsImg, blurb: "Births, promotions, private victories. A pendant to remember them by.", cta: "pendants", msg: "milestone piece" },
   { n: "05", label: "The Gift", img: insta1, blurb: "For someone deserving of something rare. We wrap by hand in Hong Kong.", cta: "earrings", msg: "gift" },
-  { n: "06", label: "Everyday", img: earringsImg, blurb: "Pieces that live with you — worn to work, to sleep, and everywhere between.", cta: "earrings", msg: "everyday piece" },
+  { n: "06", label: "Everyday", img: earringsImg, blurb: "Pieces that live with you - worn to work, to sleep, and everywhere between.", cta: "earrings", msg: "everyday piece" },
 ];
 
 function OccasionsPage() {
@@ -36,7 +36,7 @@ function OccasionsPage() {
     <div className="bg-obsidian text-ivory">
       <section className="pt-40 pb-16 md:pt-52 md:pb-24 border-b border-white/5">
         <div className="mx-auto max-w-[1400px] px-6 md:px-16 text-center">
-          <p className="eyebrow">— Shop by Occasion</p>
+          <p className="eyebrow">- Shop by Occasion</p>
           <h1 className="mt-8 font-serif font-light text-6xl md:text-8xl lg:text-9xl leading-[0.92]">
             The <em className="text-gold-gradient">moments</em><br />worth marking.
           </h1>
