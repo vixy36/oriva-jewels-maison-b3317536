@@ -1,5 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight, MessageCircle, ShieldCheck, Gem, Globe2, Sparkles } from "lucide-react";
+import { GsapReveal } from "@/components/site/GsapReveal";
+import { Sparkles as GsapSparkles } from "@/components/site/Sparkles";
 
 import heroImg from "@/assets/hero-marquise.jpg";
 import engagementImg from "@/assets/collection-engagement.jpg";
@@ -194,29 +196,30 @@ function HomePage() {
 
       {/* MANIFESTO */}
       <section className="relative py-32 md:py-48 bg-ink">
-        <div className="mx-auto max-w-[1400px] px-6 md:px-16">
+        <GsapReveal className="mx-auto max-w-[1400px] px-6 md:px-16">
           <div className="grid gap-16 md:grid-cols-12 md:gap-24 items-start">
-            <Reveal className="md:col-span-4 md:sticky md:top-40">
-              <p className="eyebrow">- Manifesto</p>
-              <p className="mt-8 text-[13px] tracking-[0.25em] uppercase text-ivory/50">
+            <div className="md:col-span-4 md:sticky md:top-40">
+              <p data-gsap className="eyebrow">- Manifesto</p>
+              <p data-gsap className="mt-8 text-[13px] tracking-[0.25em] uppercase text-ivory/50">
                 Chapter One
               </p>
-            </Reveal>
-            <Reveal delay={200} className="md:col-span-8">
-              <p className="font-serif font-light text-3xl md:text-5xl lg:text-6xl leading-[1.15] text-ivory">
+            </div>
+            <div className="md:col-span-8">
+              <p data-gsap className="font-serif font-light text-3xl md:text-5xl lg:text-6xl leading-[1.15] text-ivory">
                 We believe the finest jewellery is <em className="text-gold-gradient">never loud</em>.
                 It is worn every day, folded into small gestures - a hand raised, a
                 letter signed, a promise made. It becomes, in time, a
                 <em className="text-gold-gradient"> quiet second skin</em>.
               </p>
-              <div className="mt-12 flex items-center gap-6">
+              <div data-gsap className="mt-12 flex items-center gap-6">
                 <span className="h-px flex-1 bg-white/10" />
                 <span className="text-[14px] tracking-[0.42em] uppercase text-gold">Oriva · Hong Kong</span>
               </div>
-            </Reveal>
+            </div>
           </div>
-        </div>
+        </GsapReveal>
       </section>
+
 
       {/* COLLECTIONS INDEX - Chapter Wheel */}
       <section className="relative overflow-hidden pb-24 md:pb-36 bg-ink">
@@ -351,6 +354,7 @@ function HomePage() {
               loading="lazy"
               className="absolute inset-0 h-full w-full object-contain object-center"
             />
+            <GsapSparkles count={6} />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-obsidian/40 via-transparent to-transparent" />
             <div className="absolute bottom-8 left-8 right-8 flex items-end justify-between text-ivory/85">
               <span className="text-[14px] tracking-[0.42em] uppercase">Ref. OR-MRQ-001</span>
@@ -359,18 +363,18 @@ function HomePage() {
           </div>
 
           <div className="relative order-1 md:order-2 flex items-center px-6 py-24 md:px-20 md:py-32">
-            <Reveal className="max-w-lg">
-              <p className="eyebrow">- The Signature</p>
-              <h2 className="mt-8 font-serif text-5xl md:text-7xl leading-[0.98] text-ivory">
+            <GsapReveal className="max-w-lg">
+              <p data-gsap className="eyebrow">- The Signature</p>
+              <h2 data-gsap className="mt-8 font-serif text-5xl md:text-7xl leading-[0.98] text-ivory">
                 The Oriva <em className="text-gold-gradient block">Marquise.</em>
               </h2>
-              <div className="mt-10 hairline-gold w-24" />
-              <p className="mt-10 text-[15px] leading-[1.8] text-ivory/80 max-w-md">
+              <div data-gsap className="mt-10 hairline-gold w-24" />
+              <p data-gsap className="mt-10 text-[15px] leading-[1.8] text-ivory/80 max-w-md">
                 A single elongated diamond, held by four platinum prongs on a whisper of a band.
                 A study in restraint - and the piece that opened our maison.
               </p>
 
-              <dl className="mt-12 grid grid-cols-2 gap-y-4 gap-x-8 max-w-md text-sm">
+              <dl data-gsap className="mt-12 grid grid-cols-2 gap-y-4 gap-x-8 max-w-md text-sm">
                 {[
                   ["Cut", "Marquise Brilliant"],
                   ["Setting", "Four Prong"],
@@ -385,6 +389,7 @@ function HomePage() {
               </dl>
 
               <Link
+                data-gsap
                 to="/product/$slug"
                 params={{ slug: "marquise-solitaire-ring" }}
                 className="mt-14 group inline-flex items-center gap-3 text-[10.5px] tracking-[0.4em] uppercase text-gold border-b border-gold/50 pb-2 hover:text-ivory hover:border-ivory transition"
@@ -392,7 +397,7 @@ function HomePage() {
                 Discover the piece
                 <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" strokeWidth={1.4} />
               </Link>
-            </Reveal>
+            </GsapReveal>
           </div>
         </div>
       </section>
@@ -400,23 +405,24 @@ function HomePage() {
       {/* BEST SELLERS */}
       <section className="relative py-24 md:py-36 bg-ink">
         <div className="mx-auto max-w-[1500px] px-6 md:px-16">
-          <Reveal className="flex items-end justify-between gap-6 flex-wrap">
+          <GsapReveal className="flex items-end justify-between gap-6 flex-wrap">
             <div>
-              <p className="eyebrow">- Selected</p>
-              <h2 className="mt-6 font-serif text-5xl md:text-6xl text-ivory">
+              <p data-gsap className="eyebrow">- Selected</p>
+              <h2 data-gsap className="mt-6 font-serif text-5xl md:text-6xl text-ivory">
                 Most <em className="text-gold-gradient">requested.</em>
               </h2>
-              <p className="mt-4 max-w-md text-sm text-ivory/55">
+              <p data-gsap className="mt-4 max-w-md text-sm text-ivory/55">
                 A rotating edit of the pieces our clients return to, season after season.
               </p>
             </div>
             <Link
+              data-gsap
               to="/collections/engagement-rings"
               className="text-[14px] tracking-[0.4em] uppercase text-gold border-b border-gold/50 pb-1 hover:text-ivory hover:border-ivory transition"
             >
               View entire archive
             </Link>
-          </Reveal>
+          </GsapReveal>
 
           <div className="mt-16 grid grid-cols-2 gap-x-6 gap-y-14 md:grid-cols-3 md:gap-x-10 md:gap-y-20">
             {products.slice(0, 6).map((p, i) => (

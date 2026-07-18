@@ -1,7 +1,8 @@
 import { Link } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { buildWhatsAppLink } from "@/lib/products";
+import { ensureGsap } from "@/lib/gsap";
 
 function WhatsAppIcon({ className = "" }: { className?: string }) {
   return (
@@ -21,11 +22,78 @@ const nav = [
 ];
 
 export function SiteHeader() {
-  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const headerRef = useRef<HTMLElement | null>(null);
+  const logoRef = useRef<HTMLAnchorElement | null>(null);
+  const navItemsRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 30);
+    const { gsap } = ensureGsap();
+    const header = headerRef.current;
+    const logo = logoRef.current;
+    const container = navItemsRef.current;
+    if (!header || !logo || !container) return;
+
+    const menuItems = container.querySelectorAll<HTMLElement>("[data-nav-item]");
+    gsap.set(logo, { scale: 1.05, transformOrigin: "center center" });
+    gsap.set(menuItems, { y: 0 });
+
+    let lastY = window.scrollY;
+    let hidden = false;
+    let scrolled = false;
+    let ticking = false;
+
+    const applyScrolled = (next: boolean) => {
+      if (next === scrolled) return;
+      scrolled = next;
+      gsap.to(header, {
+        backgroundColor: next ? "rgba(10,10,10,0.72)" : "rgba(3,3,3,0.4)",
+        backdropFilter: next ? "blur(20px)" : "blur(6px)",
+        borderBottomColor: next ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0)",
+        duration: 0.5,
+        ease: "power2.out",
+        overwrite: "auto",
+      });
+      gsap.to(logo, {
+        scale: next ? 1 : 1.05,
+        duration: 0.5,
+        ease: "power2.out",
+        overwrite: "auto",
+      });
+      gsap.to(menuItems, {
+        y: next ? 15 : 0,
+        duration: 0.5,
+        ease: "power2.out",
+        stagger: 0.03,
+        overwrite: "auto",
+      });
+    };
+
+    const applyHidden = (next: boolean) => {
+      if (next === hidden) return;
+      hidden = next;
+      gsap.to(header, {
+        yPercent: next ? -100 : 0,
+        duration: 0.5,
+        ease: "power3.out",
+        overwrite: "auto",
+      });
+    };
+
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const y = window.scrollY;
+        applyScrolled(y > 30);
+        // hide on scroll down past threshold, show on scroll up
+        if (y > 120 && y > lastY + 4) applyHidden(true);
+        else if (y < lastY - 4) applyHidden(false);
+        lastY = y;
+        ticking = false;
+      });
+    };
+
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -34,13 +102,11 @@ export function SiteHeader() {
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-50 transition-all duration-700 ${
-          scrolled
-            ? "bg-ink/90 backdrop-blur-2xl border-b border-white/5"
-            : "bg-obsidian/60 backdrop-blur"
-        }`}
+        ref={headerRef}
+        className="fixed inset-x-0 top-0 z-50 border-b border-transparent will-change-transform"
+        style={{ backgroundColor: "rgba(3,3,3,0.4)", backdropFilter: "blur(6px)" }}
       >
-        <div className="mx-auto grid max-w-[1600px] grid-cols-[1fr_auto_1fr] items-center gap-6 px-6 py-5 md:px-10 md:py-6">
+        <div ref={navItemsRef} className="mx-auto grid max-w-[1600px] grid-cols-[1fr_auto_1fr] items-center gap-6 px-6 py-5 md:px-10 md:py-6">
           <div className="flex items-center gap-6">
             <button
               className="md:hidden text-ivory"
@@ -54,6 +120,7 @@ export function SiteHeader() {
                 <Link
                   key={n.to}
                   to={n.to}
+                  data-nav-item
                   className="text-[10.5px] tracking-[0.32em] uppercase text-ivory/80 hover:text-gold transition-colors"
                   activeProps={{ className: "text-gold" }}
                 >
@@ -63,7 +130,7 @@ export function SiteHeader() {
             </nav>
           </div>
 
-          <Link to="/" className="group flex flex-col items-center">
+          <Link ref={logoRef} to="/" className="group flex flex-col items-center">
             <span className="font-serif text-2xl md:text-[26px] tracking-[0.5em] text-ivory leading-none">
               ORIVA
             </span>
@@ -78,6 +145,7 @@ export function SiteHeader() {
                 <Link
                   key={n.to}
                   to={n.to}
+                  data-nav-item
                   className="text-[10.5px] tracking-[0.32em] uppercase text-ivory/80 hover:text-gold transition-colors"
                   activeProps={{ className: "text-gold" }}
                 >
