@@ -14,7 +14,7 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SiteHeader } from "../components/site/SiteHeader";
 import { SiteFooter } from "../components/site/SiteFooter";
 import { MobileBottomNav } from "../components/site/MobileBottomNav";
-import { DiamondScene } from "../components/three/DiamondScene";
+
 
 function NotFoundComponent() {
   return (
@@ -125,8 +125,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="relative min-h-screen bg-ink text-foreground">
-        <DiamondScene />
+      <div className="relative min-h-screen bg-background text-foreground">
         <div className="relative z-10 flex min-h-screen flex-col">
           <SiteHeader />
           <main className="flex-1 pb-24 md:pb-0">

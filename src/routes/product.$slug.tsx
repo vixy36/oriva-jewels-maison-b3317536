@@ -5,6 +5,7 @@ import { Heart, MessageCircle, ArrowLeft, ShieldCheck, Truck, Sparkles } from "l
 import { findProduct, buildWhatsAppLink, products } from "@/lib/products";
 import { ProductCard } from "@/components/site/ProductCard";
 import { Reveal } from "@/components/site/Reveal";
+import { Tilt3D } from "@/components/site/Tilt3D";
 
 export const Route = createFileRoute("/product/$slug")({
   loader: ({ params }) => {
