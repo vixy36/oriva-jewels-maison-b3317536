@@ -354,6 +354,7 @@ function HomePage() {
               loading="lazy"
               className="absolute inset-0 h-full w-full object-contain object-center"
             />
+            <GsapSparkles count={6} />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-obsidian/40 via-transparent to-transparent" />
             <div className="absolute bottom-8 left-8 right-8 flex items-end justify-between text-ivory/85">
               <span className="text-[14px] tracking-[0.42em] uppercase">Ref. OR-MRQ-001</span>
@@ -362,18 +363,18 @@ function HomePage() {
           </div>
 
           <div className="relative order-1 md:order-2 flex items-center px-6 py-24 md:px-20 md:py-32">
-            <Reveal className="max-w-lg">
-              <p className="eyebrow">- The Signature</p>
-              <h2 className="mt-8 font-serif text-5xl md:text-7xl leading-[0.98] text-ivory">
+            <GsapReveal className="max-w-lg">
+              <p data-gsap className="eyebrow">- The Signature</p>
+              <h2 data-gsap className="mt-8 font-serif text-5xl md:text-7xl leading-[0.98] text-ivory">
                 The Oriva <em className="text-gold-gradient block">Marquise.</em>
               </h2>
-              <div className="mt-10 hairline-gold w-24" />
-              <p className="mt-10 text-[15px] leading-[1.8] text-ivory/80 max-w-md">
+              <div data-gsap className="mt-10 hairline-gold w-24" />
+              <p data-gsap className="mt-10 text-[15px] leading-[1.8] text-ivory/80 max-w-md">
                 A single elongated diamond, held by four platinum prongs on a whisper of a band.
                 A study in restraint - and the piece that opened our maison.
               </p>
 
-              <dl className="mt-12 grid grid-cols-2 gap-y-4 gap-x-8 max-w-md text-sm">
+              <dl data-gsap className="mt-12 grid grid-cols-2 gap-y-4 gap-x-8 max-w-md text-sm">
                 {[
                   ["Cut", "Marquise Brilliant"],
                   ["Setting", "Four Prong"],
@@ -388,6 +389,7 @@ function HomePage() {
               </dl>
 
               <Link
+                data-gsap
                 to="/product/$slug"
                 params={{ slug: "marquise-solitaire-ring" }}
                 className="mt-14 group inline-flex items-center gap-3 text-[10.5px] tracking-[0.4em] uppercase text-gold border-b border-gold/50 pb-2 hover:text-ivory hover:border-ivory transition"
@@ -395,7 +397,7 @@ function HomePage() {
                 Discover the piece
                 <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" strokeWidth={1.4} />
               </Link>
-            </Reveal>
+            </GsapReveal>
           </div>
         </div>
       </section>
