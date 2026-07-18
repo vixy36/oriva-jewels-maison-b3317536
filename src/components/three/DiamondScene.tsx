@@ -215,11 +215,6 @@ export function DiamondScene() {
         <Suspense fallback={null}>
           <Diamond />
         </Suspense>
-        {/* DEBUG marker — remove once diamond confirmed visible */}
-        <mesh position={[0, 0, 0]}>
-          <torusKnotGeometry args={[0.4, 0.12, 128, 16]} />
-          <meshBasicMaterial color="#ff3355" />
-        </mesh>
         <Sparkles count={70} scale={8} size={2.6} speed={0.25} color="#f4e4c4" opacity={0.9} />
         <ContactShadows
           position={[0, -1.35, 0]}
