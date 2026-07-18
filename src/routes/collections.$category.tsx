@@ -58,7 +58,8 @@ export const Route = createFileRoute("/collections/$category")({
 });
 
 function CollectionPage() {
-  const { category } = Route.useLoaderData();
+  const data = Route.useLoaderData();
+  const category = data.category as ProductCategory;
   const info = categories[category];
   const items = productsByCategory(category);
   const banner = banners[category];
