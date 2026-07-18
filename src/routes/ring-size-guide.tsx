@@ -7,9 +7,9 @@ import { buildWhatsAppLink } from "@/lib/products";
 export const Route = createFileRoute("/ring-size-guide")({
   head: () => ({
     meta: [
-      { title: "Ring Size Guide — Oriva Jewels" },
+      { title: "Ring Size Guide - Oriva Jewels" },
       { name: "description", content: "Find your ring size accurately from home. String method, printable sizer and international conversions from the Oriva atelier." },
-      { property: "og:title", content: "Ring Size Guide — Oriva Jewels" },
+      { property: "og:title", content: "Ring Size Guide - Oriva Jewels" },
       { property: "og:description", content: "Find your ring size accurately from home." },
     ],
   }),
@@ -49,12 +49,12 @@ function RingSizePage() {
     <div className="bg-obsidian text-ivory">
       <section className="pt-40 pb-16 md:pt-52 md:pb-24 border-b border-white/5">
         <div className="mx-auto max-w-[1400px] px-6 md:px-16">
-          <p className="eyebrow">— Client Services</p>
+          <p className="eyebrow">- Client Services</p>
           <h1 className="mt-8 font-serif font-light text-6xl md:text-8xl lg:text-9xl leading-[0.92]">
             Ring size, <em className="text-gold-gradient">privately.</em>
           </h1>
           <p className="mt-10 max-w-xl text-[15px] leading-[1.9] text-ivory/85">
-            Three quiet methods to find your size at home — or send us an existing ring and we'll size it for you.
+            Three quiet methods to find your size at home - or send us an existing ring and we'll size it for you.
           </p>
         </div>
       </section>
@@ -63,7 +63,7 @@ function RingSizePage() {
       <section className="py-20 md:py-28 bg-ink border-b border-white/5">
         <div className="mx-auto max-w-[1200px] px-6 md:px-16 grid gap-14 md:grid-cols-2 items-start">
           <Reveal>
-            <p className="eyebrow">— Instant Converter</p>
+            <p className="eyebrow">- Instant Converter</p>
             <h2 className="mt-6 font-serif text-4xl md:text-5xl">
               Enter the inner <em className="text-gold-gradient">circumference.</em>
             </h2>
@@ -122,14 +122,14 @@ function RingSizePage() {
       <section className="py-20 md:py-28 bg-obsidian">
         <div className="mx-auto max-w-[1400px] px-6 md:px-16">
           <Reveal>
-            <p className="eyebrow">— Methods</p>
+            <p className="eyebrow">- Methods</p>
             <h2 className="mt-6 font-serif text-4xl md:text-6xl">Three quiet ways.</h2>
           </Reveal>
           <div className="mt-16 grid gap-10 md:grid-cols-3">
             {[
-              { n: "I.", t: "The String Method", b: "Wrap a soft string around the base of the finger. Mark where it meets. Measure in millimetres against a ruler — this is your circumference." },
-              { n: "II.", t: "An Existing Ring", b: "Measure the inner diameter of a ring that fits well. Multiply by 3.14 for your circumference. Warm hands measure larger — measure at day's end." },
-              { n: "III.", t: "The Atelier Sizer", b: "Request our complimentary ring sizer — a discreet paper gauge, posted anywhere in the world within days." },
+              { n: "I.", t: "The String Method", b: "Wrap a soft string around the base of the finger. Mark where it meets. Measure in millimetres against a ruler - this is your circumference." },
+              { n: "II.", t: "An Existing Ring", b: "Measure the inner diameter of a ring that fits well. Multiply by 3.14 for your circumference. Warm hands measure larger - measure at day's end." },
+              { n: "III.", t: "The Atelier Sizer", b: "Request our complimentary ring sizer - a discreet paper gauge, posted anywhere in the world within days." },
             ].map((m, i) => (
               <Reveal key={m.t} delay={i * 80}>
                 <div className="border-t border-white/15 pt-8 h-full">

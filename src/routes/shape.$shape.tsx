@@ -7,7 +7,7 @@ import { products, buildWhatsAppLink, type Product } from "@/lib/products";
 const SHAPES: Record<string, { label: string; blurb: string; character: string }> = {
   marquise: {
     label: "Marquise",
-    blurb: "Elongated and regal — a shape that lengthens the finger and catches light along two apexes.",
+    blurb: "Elongated and regal - a shape that lengthens the finger and catches light along two apexes.",
     character: "Confident · Elongating",
   },
   oval: {
@@ -22,7 +22,7 @@ const SHAPES: Record<string, { label: string; blurb: string; character: string }
   },
   pear: {
     label: "Pear",
-    blurb: "Rounded at one end, pointed at the other — a shape of quiet movement, worn point-up.",
+    blurb: "Rounded at one end, pointed at the other - a shape of quiet movement, worn point-up.",
     character: "Romantic · Distinctive",
   },
   heart: {
@@ -46,13 +46,13 @@ export const Route = createFileRoute("/shape/$shape")({
     return { key, meta, list };
   },
   head: ({ loaderData }) => {
-    if (!loaderData) return { meta: [{ title: "Shape — Oriva Jewels" }, { name: "robots", content: "noindex" }] };
+    if (!loaderData) return { meta: [{ title: "Shape - Oriva Jewels" }, { name: "robots", content: "noindex" }] };
     const { meta } = loaderData;
     return {
       meta: [
-        { title: `${meta.label} Diamond Jewellery — Oriva Jewels` },
+        { title: `${meta.label} Diamond Jewellery - Oriva Jewels` },
         { name: "description", content: meta.blurb },
-        { property: "og:title", content: `${meta.label} — Oriva Jewels` },
+        { property: "og:title", content: `${meta.label} - Oriva Jewels` },
         { property: "og:description", content: meta.blurb },
       ],
     };
@@ -67,7 +67,7 @@ function ShapePage() {
     <div className="bg-obsidian text-ivory">
       <section className="pt-40 pb-16 md:pt-52 md:pb-24 border-b border-white/5">
         <div className="mx-auto max-w-[1500px] px-6 md:px-16">
-          <p className="eyebrow">— Shop by Shape</p>
+          <p className="eyebrow">- Shop by Shape</p>
           <h1 className="mt-8 font-serif font-light text-6xl md:text-8xl lg:text-9xl leading-[0.92]">
             {meta.label}<span className="text-gold">.</span>
           </h1>
@@ -81,7 +81,7 @@ function ShapePage() {
           {list.length === 0 ? (
             <div className="text-center py-24">
               <p className="font-serif text-3xl md:text-4xl text-ivory">
-                No archive pieces in <em className="text-gold-gradient">{meta.label}</em> — yet.
+                No archive pieces in <em className="text-gold-gradient">{meta.label}</em> - yet.
               </p>
               <p className="mt-6 text-[15px] text-ivory/70">
                 Every Oriva piece can be re-cut to your chosen shape. Speak with our atelier.

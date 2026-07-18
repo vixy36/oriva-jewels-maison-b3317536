@@ -68,7 +68,7 @@ export function SiteHeader() {
               ORIVA
             </span>
             <span className="mt-1 font-sans text-[8.5px] tracking-[0.55em] text-gold">
-              — JEWELS —
+              - JEWELS -
             </span>
           </Link>
 

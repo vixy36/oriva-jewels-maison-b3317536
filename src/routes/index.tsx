@@ -24,7 +24,7 @@ import { products, buildWhatsAppLink } from "@/lib/products";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Oriva Jewels — Fine Diamond Jewellery, Hong Kong" },
+      { title: "Oriva Jewels - Fine Diamond Jewellery, Hong Kong" },
       {
         name: "description",
         content:
@@ -75,7 +75,7 @@ function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-r from-obsidian/80 via-obsidian/15 to-transparent" />
         <div className="absolute inset-0 vignette" />
 
-        {/* Aurora gold glow — infinite rotating radial */}
+        {/* Aurora gold glow - infinite rotating radial */}
         <div
           aria-hidden
           className="pointer-events-none absolute -inset-[20%] animate-aurora opacity-70 mix-blend-screen"
@@ -96,7 +96,7 @@ function HomePage() {
           }}
         />
 
-        {/* Sparkles — bigger, more visible, infinite */}
+        {/* Sparkles - bigger, more visible, infinite */}
         <Sparkle style={{ top: "18%", left: "12%" }} delay={0}   size={3} />
         <Sparkle style={{ top: "26%", left: "82%" }} delay={0.7} size={4} />
         <Sparkle style={{ top: "38%", left: "68%" }} delay={1.6} size={3} />
@@ -197,7 +197,7 @@ function HomePage() {
         <div className="mx-auto max-w-[1400px] px-6 md:px-16">
           <div className="grid gap-16 md:grid-cols-12 md:gap-24 items-start">
             <Reveal className="md:col-span-4 md:sticky md:top-40">
-              <p className="eyebrow">— Manifesto</p>
+              <p className="eyebrow">- Manifesto</p>
               <p className="mt-8 text-[13px] tracking-[0.25em] uppercase text-ivory/50">
                 Chapter One
               </p>
@@ -205,7 +205,7 @@ function HomePage() {
             <Reveal delay={200} className="md:col-span-8">
               <p className="font-serif font-light text-3xl md:text-5xl lg:text-6xl leading-[1.15] text-ivory">
                 We believe the finest jewellery is <em className="text-gold-gradient">never loud</em>.
-                It is worn every day, folded into small gestures — a hand raised, a
+                It is worn every day, folded into small gestures - a hand raised, a
                 letter signed, a promise made. It becomes, in time, a
                 <em className="text-gold-gradient"> quiet second skin</em>.
               </p>
@@ -223,13 +223,13 @@ function HomePage() {
         <div className="mx-auto max-w-[1500px] px-6 md:px-16">
           <Reveal className="flex items-end justify-between gap-6 flex-wrap border-t border-white/10 pt-16 md:pt-20">
             <div className="max-w-xl">
-              <p className="eyebrow">— The Index</p>
+              <p className="eyebrow">- The Index</p>
               <h2 className="mt-6 font-serif text-5xl md:text-7xl leading-[1] text-ivory">
                 Six chapters.<br />
                 <em className="text-gold-gradient">One maison.</em>
               </h2>
               <p className="mt-8 max-w-md text-[15px] leading-[1.85] text-ivory/70">
-                A curated volume of six edits — each with its own hand, its own hour of the day.
+                A curated volume of six edits - each with its own hand, its own hour of the day.
               </p>
             </div>
             <Link
@@ -321,14 +321,14 @@ function HomePage() {
 
           <div className="relative order-1 md:order-2 flex items-center px-6 py-24 md:px-20 md:py-32">
             <Reveal className="max-w-lg">
-              <p className="eyebrow">— The Signature</p>
+              <p className="eyebrow">- The Signature</p>
               <h2 className="mt-8 font-serif text-5xl md:text-7xl leading-[0.98] text-ivory">
                 The Oriva <em className="text-gold-gradient block">Marquise.</em>
               </h2>
               <div className="mt-10 hairline-gold w-24" />
               <p className="mt-10 text-[15px] leading-[1.8] text-ivory/80 max-w-md">
                 A single elongated diamond, held by four platinum prongs on a whisper of a band.
-                A study in restraint — and the piece that opened our maison.
+                A study in restraint - and the piece that opened our maison.
               </p>
 
               <dl className="mt-12 grid grid-cols-2 gap-y-4 gap-x-8 max-w-md text-sm">
@@ -363,7 +363,7 @@ function HomePage() {
         <div className="mx-auto max-w-[1500px] px-6 md:px-16">
           <Reveal className="flex items-end justify-between gap-6 flex-wrap">
             <div>
-              <p className="eyebrow">— Selected</p>
+              <p className="eyebrow">- Selected</p>
               <h2 className="mt-6 font-serif text-5xl md:text-6xl text-ivory">
                 Most <em className="text-gold-gradient">requested.</em>
               </h2>
@@ -394,7 +394,7 @@ function HomePage() {
         <div className="mx-auto max-w-[1500px] px-6 md:px-16">
           <Reveal className="flex items-end justify-between gap-6 flex-wrap">
             <div className="max-w-xl">
-              <p className="eyebrow">— Shop by Shape</p>
+              <p className="eyebrow">- Shop by Shape</p>
               <h2 className="mt-6 font-serif text-5xl md:text-7xl leading-[1] text-ivory">
                 Find your <em className="text-gold-gradient">silhouette.</em>
               </h2>
@@ -446,18 +446,18 @@ function HomePage() {
           </Reveal>
 
           <Reveal delay={150} className="md:col-span-7 md:pl-8">
-            <p className="eyebrow">— The Atelier</p>
+            <p className="eyebrow">- The Atelier</p>
             <h2 className="mt-6 font-serif text-5xl md:text-7xl leading-[1] text-ivory">
               Every stone <em className="text-gold-gradient">chosen</em>.
               <br />Every piece <em className="text-gold-gradient">finished</em> by hand.
             </h2>
             <div className="mt-10 space-y-6 text-[15px] leading-[1.8] text-ivory/80 max-w-lg">
               <p>
-                Our atelier sits in Central, Hong Kong. It is small — deliberately so. Every piece
+                Our atelier sits in Central, Hong Kong. It is small - deliberately so. Every piece
                 that leaves it has been sourced, set and signed by the same hands.
               </p>
               <p>
-                We work in both natural and lab grown diamonds, certified by GIA and IGI — with the
+                We work in both natural and lab grown diamonds, certified by GIA and IGI - with the
                 same craftsmanship applied to both. The choice is yours; the standard is ours.
               </p>
             </div>
@@ -489,7 +489,7 @@ function HomePage() {
       <section className="py-24 md:py-36 bg-ink">
         <div className="mx-auto max-w-[1500px] px-6 md:px-16">
           <Reveal className="text-center max-w-xl mx-auto">
-            <p className="eyebrow">— The Occasions</p>
+            <p className="eyebrow">- The Occasions</p>
             <h2 className="mt-6 font-serif text-5xl md:text-6xl text-ivory">
               For every <em className="text-gold-gradient">moment worth marking.</em>
             </h2>
@@ -532,7 +532,7 @@ function HomePage() {
         />
         <div className="relative mx-auto max-w-[1500px] px-6 md:px-16">
           <Reveal className="max-w-2xl">
-            <p className="eyebrow">— The Standard</p>
+            <p className="eyebrow">- The Standard</p>
             <h2 className="mt-6 font-serif text-5xl md:text-7xl leading-[1] text-ivory">
               Four <em className="text-gold-gradient">promises</em>,
               made once, held forever.
@@ -542,7 +542,7 @@ function HomePage() {
           <div className="mt-20 grid gap-px bg-white/10 border border-white/10 sm:grid-cols-2 lg:grid-cols-4">
             {[
               { icon: ShieldCheck, n: "I", title: "Certified Origin", body: "Every stone accompanied by GIA or IGI certification, individually inspected in our atelier." },
-              { icon: Gem, n: "II", title: "Natural or Lab", body: "The same craftsmanship applied to both — the choice is entirely yours, without compromise." },
+              { icon: Gem, n: "II", title: "Natural or Lab", body: "The same craftsmanship applied to both - the choice is entirely yours, without compromise." },
               { icon: Sparkles, n: "III", title: "Bespoke Atelier", body: "One-to-one design consultations for engagement rings and reimagined heirloom pieces." },
               { icon: Globe2, n: "IV", title: "Insured Worldwide", body: "Delivered by hand or by air, fully insured to Hong Kong, Dubai, Singapore, EU and US." },
             ].map((f, i) => (
@@ -566,7 +566,7 @@ function HomePage() {
         <div className="mx-auto max-w-[1600px] px-6 md:px-16">
           <Reveal className="flex items-end justify-between gap-6 flex-wrap">
             <div>
-              <p className="eyebrow">— @orivajewels</p>
+              <p className="eyebrow">- @orivajewels</p>
               <h2 className="mt-6 font-serif text-4xl md:text-6xl text-ivory">
                 Follow the <em className="text-gold-gradient">maison.</em>
               </h2>

@@ -9,7 +9,7 @@ import { ArrowRight } from "lucide-react";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "The Maison — Oriva Jewels, Hong Kong" },
+      { title: "The Maison - Oriva Jewels, Hong Kong" },
       { name: "description", content: "A Hong Kong maison of natural and lab grown diamond jewellery. Our story, our craftsmanship, our beliefs." },
     ],
   }),
@@ -34,7 +34,7 @@ function AboutPage() {
             <span className="block">of light.</span>
           </h1>
           <p className="mt-10 max-w-xl text-[15px] leading-[1.8] text-ivory/85">
-            Oriva Jewels is a modern maison of natural and lab grown diamond jewellery — designed
+            Oriva Jewels is a modern maison of natural and lab grown diamond jewellery - designed
             in Hong Kong, finished by hand, worn for a lifetime.
           </p>
         </div>
@@ -46,31 +46,31 @@ function AboutPage() {
           <p className="mt-10 font-serif text-3xl md:text-6xl leading-[1.12] italic text-ivory">
             "The most beautiful jewellery <span className="text-gold-gradient not-italic">is the piece</span> you never take off."
           </p>
-          <p className="mt-10 text-[14px] tracking-[0.42em] uppercase text-ivory/80">— Founder's Note</p>
+          <p className="mt-10 text-[14px] tracking-[0.42em] uppercase text-ivory/80">- Founder's Note</p>
         </Reveal>
       </section>
 
       {[
         {
           n: "I",
-          eyebrow: "— Modern Luxury",
+          eyebrow: "- Modern Luxury",
           title: "Refined,",
           titleAccent: "never showy.",
-          body: "We believe luxury is a whisper. Our pieces are designed to feel personal — quiet from a distance, extraordinary up close. Nothing is added for effect; nothing is spared for craft.",
+          body: "We believe luxury is a whisper. Our pieces are designed to feel personal - quiet from a distance, extraordinary up close. Nothing is added for effect; nothing is spared for craft.",
           img: editorial,
         },
         {
           n: "II",
-          eyebrow: "— Certified Craftsmanship",
+          eyebrow: "- Certified Craftsmanship",
           title: "Every stone,",
           titleAccent: "personally sourced.",
-          body: "We work only with GIA and IGI certified diamonds — Natural and Lab Grown — and finish each piece by hand in our Hong Kong atelier. Every setting is checked, every prong is tuned.",
+          body: "We work only with GIA and IGI certified diamonds - Natural and Lab Grown - and finish each piece by hand in our Hong Kong atelier. Every setting is checked, every prong is tuned.",
           img: insta5,
           flip: true,
         },
         {
           n: "III",
-          eyebrow: "— Timeless Design",
+          eyebrow: "- Timeless Design",
           title: "Made to be",
           titleAccent: "worn forever.",
           body: "Silhouettes drawn from decades of jewellery history, made lighter and more wearable for how we live now. Not fashion. Not trend. Something to be handed on.",
@@ -111,7 +111,7 @@ function AboutPage() {
           }}
         />
         <div className="relative mx-auto max-w-[1200px] px-6 py-32 md:px-16 md:py-40 text-center">
-          <p className="eyebrow">— Private Consultation</p>
+          <p className="eyebrow">- Private Consultation</p>
           <h2 className="mt-8 font-serif text-5xl md:text-8xl leading-[0.95]">
             Design something <em className="text-gold-gradient">singular.</em>
           </h2>
