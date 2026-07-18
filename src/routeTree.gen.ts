@@ -14,6 +14,7 @@ import { Route as EducationRouteImport } from './routes/education'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ShapeShapeRouteImport } from './routes/shape.$shape'
 import { Route as ProductSlugRouteImport } from './routes/product.$slug'
 import { Route as CollectionsCategoryRouteImport } from './routes/collections.$category'
 
@@ -42,6 +43,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ShapeShapeRoute = ShapeShapeRouteImport.update({
+  id: '/shape/$shape',
+  path: '/shape/$shape',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProductSlugRoute = ProductSlugRouteImport.update({
   id: '/product/$slug',
   path: '/product/$slug',
@@ -61,6 +67,7 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/collections/$category': typeof CollectionsCategoryRoute
   '/product/$slug': typeof ProductSlugRoute
+  '/shape/$shape': typeof ShapeShapeRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -70,6 +77,7 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/collections/$category': typeof CollectionsCategoryRoute
   '/product/$slug': typeof ProductSlugRoute
+  '/shape/$shape': typeof ShapeShapeRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -80,6 +88,7 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/collections/$category': typeof CollectionsCategoryRoute
   '/product/$slug': typeof ProductSlugRoute
+  '/shape/$shape': typeof ShapeShapeRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -91,6 +100,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/collections/$category'
     | '/product/$slug'
+    | '/shape/$shape'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -100,6 +110,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/collections/$category'
     | '/product/$slug'
+    | '/shape/$shape'
   id:
     | '__root__'
     | '/'
@@ -109,6 +120,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/collections/$category'
     | '/product/$slug'
+    | '/shape/$shape'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -119,6 +131,7 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   CollectionsCategoryRoute: typeof CollectionsCategoryRoute
   ProductSlugRoute: typeof ProductSlugRoute
+  ShapeShapeRoute: typeof ShapeShapeRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -158,6 +171,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/shape/$shape': {
+      id: '/shape/$shape'
+      path: '/shape/$shape'
+      fullPath: '/shape/$shape'
+      preLoaderRoute: typeof ShapeShapeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/product/$slug': {
       id: '/product/$slug'
       path: '/product/$slug'
@@ -183,6 +203,7 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   CollectionsCategoryRoute: CollectionsCategoryRoute,
   ProductSlugRoute: ProductSlugRoute,
+  ShapeShapeRoute: ShapeShapeRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
