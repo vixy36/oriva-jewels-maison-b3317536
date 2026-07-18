@@ -47,7 +47,7 @@ export function SiteHeader() {
               aria-label="Open menu"
               onClick={() => setOpen(true)}
             >
-              <Menu className="h-5 w-5" strokeWidth={1.2} />
+              <Menu className="h-5 w-5" />
             </button>
             <nav className="hidden md:flex items-center gap-7">
               {nav.slice(0, 3).map((n) => (
@@ -92,7 +92,7 @@ export function SiteHeader() {
               className="hidden lg:inline-flex items-center gap-2 text-[14px] tracking-[0.32em] uppercase text-gold hover:text-ivory transition"
               aria-label="WhatsApp"
             >
-              <WhatsAppIcon className="h-3.5 w-3.5" strokeWidth={1.4} />
+              <WhatsAppIcon className="h-3.5 w-3.5" />
               Enquire
             </a>
             <a
@@ -102,7 +102,7 @@ export function SiteHeader() {
               className="md:hidden text-ivory"
               aria-label="WhatsApp"
             >
-              <WhatsAppIcon className="h-5 w-5" strokeWidth={1.2} />
+              <WhatsAppIcon className="h-5 w-5" />
             </a>
           </div>
         </div>
@@ -114,7 +114,7 @@ export function SiteHeader() {
           <div className="flex items-center justify-between px-6 py-5 border-b border-white/5">
             <span className="font-serif text-xl tracking-[0.5em] text-ivory">ORIVA</span>
             <button aria-label="Close" onClick={() => setOpen(false)} className="text-ivory">
-              <X className="h-5 w-5" strokeWidth={1.2} />
+              <X className="h-5 w-5" />
             </button>
           </div>
           <nav className="flex flex-col px-8 pt-16">
