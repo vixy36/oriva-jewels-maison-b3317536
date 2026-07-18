@@ -218,85 +218,133 @@ function HomePage() {
         </div>
       </section>
 
-      {/* COLLECTIONS INDEX */}
-      <section className="relative pb-24 md:pb-36 bg-ink">
-        <div className="mx-auto max-w-[1500px] px-6 md:px-16">
-          <Reveal className="flex items-end justify-between gap-6 flex-wrap border-t border-white/10 pt-16 md:pt-20">
-            <div className="max-w-xl">
-              <p className="eyebrow">- The Index</p>
-              <h2 className="mt-6 font-serif text-5xl md:text-7xl leading-[1] text-ivory">
-                Six chapters.<br />
-                <em className="text-gold-gradient">One maison.</em>
-              </h2>
-              <p className="mt-8 max-w-md text-[15px] leading-[1.85] text-ivory/70">
-                A curated volume of six edits - each with its own hand, its own hour of the day.
-              </p>
-            </div>
-            <Link
-              to="/about"
-              className="hidden md:inline-flex items-center gap-2 text-[14px] tracking-[0.4em] uppercase text-gold border-b border-gold/60 pb-1 hover:text-ivory hover:border-ivory transition"
-            >
-              Our craftsmanship <ArrowUpRight className="h-3.5 w-3.5" />
-            </Link>
+      {/* COLLECTIONS INDEX - Chapter Wheel */}
+      <section className="relative overflow-hidden pb-24 md:pb-36 bg-ink">
+        {/* Ambient gold aurora */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-40"
+          style={{
+            background:
+              "radial-gradient(closest-side at 50% 55%, oklch(0.72 0.11 82 / 0.18), transparent 60%)",
+          }}
+        />
+
+        <div className="relative mx-auto max-w-[1500px] px-6 md:px-16">
+          <Reveal className="border-t border-white/10 pt-16 md:pt-20 text-center">
+            <p className="eyebrow">- The Index</p>
+            <h2 className="mt-6 font-serif text-5xl md:text-7xl leading-[1] text-ivory">
+              Six chapters.{" "}
+              <em className="text-gold-gradient">One maison.</em>
+            </h2>
+            <p className="mx-auto mt-6 max-w-lg text-[15px] leading-[1.85] text-ivory/70">
+              A curated volume of six edits - each with its own hand, its own hour of the day.
+            </p>
           </Reveal>
 
-          <div className="mt-14 md:mt-20 grid gap-6 md:gap-8 grid-cols-2 md:grid-cols-6 md:grid-rows-2 md:auto-rows-fr">
+          {/* Desktop: circular wheel */}
+          <div className="relative mx-auto mt-20 hidden md:block aspect-square max-w-[820px]">
+            {/* Rotating dashed ring */}
+            <div
+              aria-hidden
+              className="absolute inset-[8%] rounded-full border border-dashed border-gold/25 animate-spin-slow"
+            />
+            <div
+              aria-hidden
+              className="absolute inset-[18%] rounded-full border border-white/5"
+            />
+
+            {/* Center hub */}
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
+              <Sparkles className="h-6 w-6 text-gold" strokeWidth={1.2} />
+              <p className="mt-5 text-[12px] tracking-[0.5em] uppercase text-gold">Maison N° 01</p>
+              <p className="mt-4 font-serif italic text-2xl md:text-3xl text-ivory/90 max-w-xs leading-snug">
+                Turn the wheel.<br />Enter a chapter.
+              </p>
+              <Link
+                to="/about"
+                className="mt-6 inline-flex items-center gap-2 text-[12px] tracking-[0.4em] uppercase text-ivory/70 border-b border-white/20 pb-1 hover:text-gold hover:border-gold transition"
+              >
+                Our craftsmanship <ArrowUpRight className="h-3 w-3" />
+              </Link>
+            </div>
+
+            {/* Medallions on ellipse */}
             {collections.map((c, i) => {
-              const spans = [
-                "md:col-span-3 md:row-span-2 aspect-[4/5]",
-                "md:col-span-3 aspect-[16/10]",
-                "md:col-span-2 aspect-[4/5]",
-                "md:col-span-2 aspect-[4/5]",
-                "md:col-span-2 aspect-[4/5]",
-                "md:col-span-3 aspect-[16/10]",
-              ];
+              const angle = (-90 + i * 60) * (Math.PI / 180);
+              const r = 46; // percent
+              const x = 50 + r * Math.cos(angle);
+              const y = 50 + r * Math.sin(angle);
               return (
-                <Reveal key={c.title} delay={i * 70} className={spans[i]}>
-                  <Link
-                    to={c.to}
-                    className="group relative block h-full w-full overflow-hidden bg-obsidian"
+                <Reveal
+                  key={c.title}
+                  delay={i * 90}
+                  className="absolute"
+                  // position by center
+                  // eslint-disable-next-line react/forbid-dom-props
+                >
+                  <div
+                    className="absolute"
+                    style={{
+                      left: `${x}%`,
+                      top: `${y}%`,
+                      transform: "translate(-50%, -50%)",
+                    }}
                   >
-                    <img
-                      src={c.img}
-                      alt={c.title}
-                      loading="lazy"
-                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1600ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.06]"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/40 to-transparent" />
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-obsidian/25" />
-
-                    {/* Corner ticks */}
-                    <span className="pointer-events-none absolute top-4 left-4 h-3 w-3 border-t border-l border-gold/70 opacity-0 group-hover:opacity-100 transition duration-500" />
-                    <span className="pointer-events-none absolute top-4 right-4 h-3 w-3 border-t border-r border-gold/70 opacity-0 group-hover:opacity-100 transition duration-500 delay-75" />
-                    <span className="pointer-events-none absolute bottom-4 left-4 h-3 w-3 border-b border-l border-gold/70 opacity-0 group-hover:opacity-100 transition duration-500 delay-100" />
-                    <span className="pointer-events-none absolute bottom-4 right-4 h-3 w-3 border-b border-r border-gold/70 opacity-0 group-hover:opacity-100 transition duration-500 delay-150" />
-
-                    <div className="absolute top-5 left-5 md:top-6 md:left-6 flex items-center gap-3 text-[13px] tracking-[0.42em] uppercase text-gold">
-                      <span className="h-px w-8 bg-gold" />
-                      Chapter {c.n}
-                    </div>
-
-                    <div className="absolute inset-x-5 bottom-5 md:inset-x-8 md:bottom-8 flex items-end justify-between gap-4">
-                      <h3 className="font-serif text-3xl md:text-5xl leading-[0.95] text-ivory group-hover:italic group-hover:text-gold-gradient transition-all duration-500">
+                    <Link to={c.to} className="group block">
+                      <div className="relative h-40 w-40 lg:h-48 lg:w-48 rounded-full overflow-hidden border border-white/15 group-hover:border-gold/70 transition duration-500 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.7)]">
+                        <img
+                          src={c.img}
+                          alt={c.title}
+                          loading="lazy"
+                          className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-obsidian/45 group-hover:bg-obsidian/25 transition duration-500" />
+                        {/* Chapter number */}
+                        <span className="absolute inset-0 flex items-center justify-center font-serif italic text-4xl lg:text-5xl text-ivory group-hover:text-gold group-hover:opacity-0 transition duration-500">
+                          {c.n}
+                        </span>
+                        {/* Hover title */}
+                        <span className="absolute inset-0 flex items-center justify-center font-serif text-xl lg:text-2xl text-gold opacity-0 group-hover:opacity-100 transition duration-500 px-3 text-center">
+                          {c.title}
+                        </span>
+                        {/* Gold ring on hover */}
+                        <span className="pointer-events-none absolute inset-1 rounded-full border border-gold/0 group-hover:border-gold/60 transition duration-500" />
+                      </div>
+                      <p className="mt-4 text-center text-[11px] tracking-[0.42em] uppercase text-ivory/70 group-hover:text-gold transition">
                         {c.title}
-                      </h3>
-                      <span className="hidden md:inline-flex items-center gap-2 text-[12px] tracking-[0.4em] uppercase text-ivory/75 group-hover:text-gold transition">
-                        View
-                        <ArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-1" strokeWidth={1.4} />
-                      </span>
-                    </div>
-                  </Link>
+                      </p>
+                    </Link>
+                  </div>
                 </Reveal>
               );
             })}
           </div>
 
-          <div className="mt-10 md:hidden">
+          {/* Mobile: medallion grid */}
+          <div className="mt-14 grid grid-cols-2 gap-x-6 gap-y-10 md:hidden">
+            {collections.map((c, i) => (
+              <Reveal key={c.title} delay={i * 70}>
+                <Link to={c.to} className="group flex flex-col items-center">
+                  <div className="relative aspect-square w-full max-w-[180px] rounded-full overflow-hidden border border-white/15 group-hover:border-gold/70 transition">
+                    <img src={c.img} alt={c.title} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+                    <div className="absolute inset-0 bg-obsidian/45" />
+                    <span className="absolute inset-0 flex items-center justify-center font-serif italic text-3xl text-ivory">
+                      {c.n}
+                    </span>
+                  </div>
+                  <p className="mt-4 text-[11px] tracking-[0.4em] uppercase text-ivory/75">{c.title}</p>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+
+          <div className="mt-12 text-center md:hidden">
             <Link
               to="/about"
-              className="inline-flex items-center gap-2 text-[13px] tracking-[0.4em] uppercase text-gold border-b border-gold/60 pb-1"
+              className="inline-flex items-center gap-2 text-[12px] tracking-[0.4em] uppercase text-gold border-b border-gold/60 pb-1"
             >
-              Our craftsmanship <ArrowUpRight className="h-3.5 w-3.5" />
+              Our craftsmanship <ArrowUpRight className="h-3 w-3" />
             </Link>
           </div>
         </div>
