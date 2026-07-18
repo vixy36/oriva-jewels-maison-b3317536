@@ -25,8 +25,8 @@ export function SiteHeader() {
 
   return (
     <>
-      <div className="fixed inset-x-0 top-0 z-[60] bg-obsidian text-ivory/70 border-b border-white/5">
-        <div className="mx-auto max-w-[1600px] px-6 py-2 text-center text-[12px] tracking-[0.4em] uppercase">
+      <div className="fixed inset-x-0 top-0 z-[60] bg-obsidian text-ivory/85 border-b border-white/5">
+        <div className="mx-auto max-w-[1600px] px-6 py-2 text-center text-[14px] tracking-[0.4em] uppercase">
           Complimentary worldwide insured shipping · By appointment in Hong Kong
         </div>
       </div>
@@ -87,7 +87,7 @@ export function SiteHeader() {
               href={buildWhatsAppLink("Hello Oriva Jewels, I'd like a private consultation.")}
               target="_blank"
               rel="noreferrer"
-              className="hidden lg:inline-flex items-center gap-2 text-[12px] tracking-[0.32em] uppercase text-gold hover:text-ivory transition"
+              className="hidden lg:inline-flex items-center gap-2 text-[14px] tracking-[0.32em] uppercase text-gold hover:text-ivory transition"
               aria-label="WhatsApp"
             >
               <MessageCircle className="h-3.5 w-3.5" strokeWidth={1.4} />
@@ -123,7 +123,7 @@ export function SiteHeader() {
                 onClick={() => setOpen(false)}
                 className="group border-b border-white/5 py-6 flex items-baseline gap-4"
               >
-                <span className="text-[12px] tracking-[0.3em] text-gold font-sans">
+                <span className="text-[14px] tracking-[0.3em] text-gold font-sans">
                   0{i + 1}
                 </span>
                 <span className="font-serif text-3xl text-ivory group-hover:text-gold transition">

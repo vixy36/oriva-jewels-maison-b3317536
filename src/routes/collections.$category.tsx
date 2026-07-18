@@ -95,7 +95,7 @@ function CollectionPage() {
               </span>
             ))}
           </h1>
-          <p className="mt-8 max-w-lg text-[15px] leading-[1.8] text-ivory/65">{info.blurb}</p>
+          <p className="mt-8 max-w-lg text-[15px] leading-[1.8] text-ivory/80">{info.blurb}</p>
         </div>
       </section>
 
@@ -112,10 +112,10 @@ function CollectionPage() {
 
           <div className="md:col-span-9">
             <div className="mb-10 flex items-center justify-between border-b border-white/8 pb-5">
-              <p className="text-[12px] tracking-[0.4em] uppercase text-ivory/50">
+              <p className="text-[14px] tracking-[0.4em] uppercase text-ivory/50">
                 {items.length} piece{items.length !== 1 ? "s" : ""}
               </p>
-              <p className="text-[12px] tracking-[0.4em] uppercase text-ivory/50">
+              <p className="text-[14px] tracking-[0.4em] uppercase text-ivory/50">
                 Sorted · Featured
               </p>
             </div>
@@ -148,7 +148,7 @@ function CollectionPage() {
                     </p>
                     <Link
                       to="/about"
-                      className="mt-8 inline-flex items-center gap-2 text-[12px] tracking-[0.4em] uppercase border-b border-gold text-gold pb-1 hover:text-ivory hover:border-ivory transition"
+                      className="mt-8 inline-flex items-center gap-2 text-[14px] tracking-[0.4em] uppercase border-b border-gold text-gold pb-1 hover:text-ivory hover:border-ivory transition"
                     >
                       Read our story <ArrowRight className="h-3 w-3" />
                     </Link>
@@ -166,7 +166,7 @@ function CollectionPage() {
 function FilterGroup({ title, options }: { title: string; options: string[] }) {
   return (
     <div>
-      <p className="text-[12px] tracking-[0.42em] uppercase text-gold pb-3 border-b border-white/10">
+      <p className="text-[14px] tracking-[0.42em] uppercase text-gold pb-3 border-b border-white/10">
         {title}
       </p>
       <ul className="mt-5 space-y-3">

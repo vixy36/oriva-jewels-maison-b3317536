@@ -4,7 +4,7 @@ import { WHATSAPP_DISPLAY, buildWhatsAppLink } from "@/lib/products";
 
 export function SiteFooter() {
   return (
-    <footer className="relative isolate overflow-hidden bg-obsidian text-ivory/70">
+    <footer className="relative isolate overflow-hidden bg-obsidian text-ivory/85">
       <div
         aria-hidden
         className="absolute inset-0 opacity-40 pointer-events-none"
@@ -34,7 +34,7 @@ export function SiteFooter() {
             />
             <button
               type="submit"
-              className="text-[12px] tracking-[0.32em] uppercase text-gold hover:text-ivory transition inline-flex items-center gap-1"
+              className="text-[14px] tracking-[0.32em] uppercase text-gold hover:text-ivory transition inline-flex items-center gap-1"
             >
               Subscribe <ArrowUpRight className="h-3 w-3" />
             </button>
@@ -46,7 +46,7 @@ export function SiteFooter() {
         <div className="grid gap-14 md:grid-cols-12">
           <div className="md:col-span-4">
             <p className="font-serif text-3xl tracking-[0.5em] text-ivory">ORIVA</p>
-            <p className="mt-1 font-sans text-[12px] tracking-[0.55em] text-gold">— JEWELS —</p>
+            <p className="mt-1 font-sans text-[14px] tracking-[0.55em] text-gold">— JEWELS —</p>
             <p className="mt-8 max-w-sm text-sm leading-relaxed text-ivory/60">
               A Hong Kong maison of natural and lab grown diamond jewellery — designed with quiet
               intention, finished by hand.
@@ -93,10 +93,10 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-20 flex flex-col gap-3 border-t border-white/5 pt-8 md:flex-row md:items-center md:justify-between">
-          <p className="text-[12px] tracking-[0.35em] uppercase text-ivory/65">
+          <p className="text-[14px] tracking-[0.35em] uppercase text-ivory/80">
             © {new Date().getFullYear()} Oriva Jewels · Hong Kong SAR
           </p>
-          <p className="text-[12px] tracking-[0.35em] uppercase text-ivory/65">
+          <p className="text-[14px] tracking-[0.35em] uppercase text-ivory/80">
             GIA · IGI Certified · Insured Worldwide
           </p>
         </div>
@@ -112,7 +112,7 @@ function SocialLink({ href, label, children }: { href: string; label: string; ch
       target="_blank"
       rel="noreferrer"
       aria-label={label}
-      className="grid h-11 w-11 place-items-center border border-white/10 text-ivory/70 hover:border-gold hover:text-gold hover:bg-gold/[0.03] transition"
+      className="grid h-11 w-11 place-items-center border border-white/10 text-ivory/85 hover:border-gold hover:text-gold hover:bg-gold/[0.03] transition"
     >
       {children}
     </a>
@@ -122,7 +122,7 @@ function SocialLink({ href, label, children }: { href: string; label: string; ch
 function FooterCol({ title, links }: { title: string; links: { label: string; to: string }[] }) {
   return (
     <div>
-      <p className="text-[12px] tracking-[0.42em] uppercase text-gold">{title}</p>
+      <p className="text-[14px] tracking-[0.42em] uppercase text-gold">{title}</p>
       <ul className="mt-7 space-y-3.5">
         {links.map((l) => (
           <li key={l.label}>
