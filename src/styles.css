@@ -301,6 +301,13 @@
 @utility animate-pulse-gold {
   animation: pulse-gold 2.4s ease-out infinite;
 }
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@utility animate-spin-slow {
+  animation: spin-slow 60s linear infinite;
+}
 @utility shimmer-gold-text {
   background: linear-gradient(90deg, var(--gold-deep) 0%, var(--gold-soft) 45%, var(--gold-deep) 90%);
   background-size: 200% 100%;
