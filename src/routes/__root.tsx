@@ -132,6 +132,7 @@ function RootComponent() {
         </main>
         <SiteFooter />
         <MobileBottomNav />
+        <FloatingActions />
       </div>
     </QueryClientProvider>
   );
