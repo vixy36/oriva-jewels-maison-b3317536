@@ -182,7 +182,7 @@ function HomePage() {
                 "Insured Worldwide",
                 "By Appointment",
               ].map((t) => (
-                <span key={t} className="flex items-center gap-24 font-serif italic text-2xl md:text-3xl text-ivory/40">
+                <span key={t} className="flex items-center gap-24 font-serif italic text-2xl md:text-3xl text-ivory/65">
                   <span className="text-gold text-3xl md:text-4xl">✦</span>
                   {t}
                 </span>
@@ -362,7 +362,7 @@ function HomePage() {
               <img src={atelier} alt="Oriva atelier, Hong Kong" loading="lazy" className="h-full w-full object-cover" />
               <div className="absolute inset-0 border border-gold/20" />
             </div>
-            <p className="mt-4 text-[12px] tracking-[0.42em] uppercase text-ivory/40">
+            <p className="mt-4 text-[12px] tracking-[0.42em] uppercase text-ivory/65">
               Plate II · The Atelier
             </p>
           </Reveal>

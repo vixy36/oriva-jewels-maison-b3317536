@@ -46,7 +46,7 @@ function AboutPage() {
           <p className="mt-10 font-serif text-3xl md:text-6xl leading-[1.12] italic text-ivory">
             "The most beautiful jewellery <span className="text-gold-gradient not-italic">is the piece</span> you never take off."
           </p>
-          <p className="mt-10 text-[12px] tracking-[0.42em] uppercase text-ivory/40">— Founder's Note</p>
+          <p className="mt-10 text-[12px] tracking-[0.42em] uppercase text-ivory/65">— Founder's Note</p>
         </Reveal>
       </section>
 

@@ -162,13 +162,13 @@ function ProductPage() {
               <div className="mt-10 border border-white/10 bg-charcoal/50 p-6">
                 <p className="text-[12px] tracking-[0.42em] uppercase text-gold">Your Configuration</p>
                 <dl className="mt-5 grid grid-cols-2 gap-x-6 gap-y-2.5 text-sm">
-                  <dt className="text-ivory/40">Diamond</dt><dd className="text-ivory">{diamondType}</dd>
-                  <dt className="text-ivory/40">Metal</dt><dd className="text-ivory">{metal}</dd>
-                  {product.carats && (<><dt className="text-ivory/40">Carat</dt><dd className="text-ivory">{carat}</dd></>)}
-                  {product.sizes && (<><dt className="text-ivory/40">Size</dt><dd className="text-ivory">{size}</dd></>)}
-                  {product.backings && (<><dt className="text-ivory/40">Backing</dt><dd className="text-ivory">{backing}</dd></>)}
-                  {product.lengths && (<><dt className="text-ivory/40">Length</dt><dd className="text-ivory">{length}</dd></>)}
-                  {engraving && (<><dt className="text-ivory/40">Engraving</dt><dd className="text-ivory">"{engraving}"</dd></>)}
+                  <dt className="text-ivory/65">Diamond</dt><dd className="text-ivory">{diamondType}</dd>
+                  <dt className="text-ivory/65">Metal</dt><dd className="text-ivory">{metal}</dd>
+                  {product.carats && (<><dt className="text-ivory/65">Carat</dt><dd className="text-ivory">{carat}</dd></>)}
+                  {product.sizes && (<><dt className="text-ivory/65">Size</dt><dd className="text-ivory">{size}</dd></>)}
+                  {product.backings && (<><dt className="text-ivory/65">Backing</dt><dd className="text-ivory">{backing}</dd></>)}
+                  {product.lengths && (<><dt className="text-ivory/65">Length</dt><dd className="text-ivory">{length}</dd></>)}
+                  {engraving && (<><dt className="text-ivory/65">Engraving</dt><dd className="text-ivory">"{engraving}"</dd></>)}
                 </dl>
               </div>
 
@@ -181,7 +181,7 @@ function ProductPage() {
                 <MessageCircle className="h-4 w-4" strokeWidth={1.5} />
                 Enquire on WhatsApp
               </a>
-              <p className="mt-4 text-center text-[12px] tracking-[0.35em] uppercase text-ivory/40">
+              <p className="mt-4 text-center text-[12px] tracking-[0.35em] uppercase text-ivory/65">
                 Pricing shared privately · Response within 24h
               </p>
 

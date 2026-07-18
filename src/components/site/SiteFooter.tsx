@@ -93,10 +93,10 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-20 flex flex-col gap-3 border-t border-white/5 pt-8 md:flex-row md:items-center md:justify-between">
-          <p className="text-[12px] tracking-[0.35em] uppercase text-ivory/40">
+          <p className="text-[12px] tracking-[0.35em] uppercase text-ivory/65">
             © {new Date().getFullYear()} Oriva Jewels · Hong Kong SAR
           </p>
-          <p className="text-[12px] tracking-[0.35em] uppercase text-ivory/40">
+          <p className="text-[12px] tracking-[0.35em] uppercase text-ivory/65">
             GIA · IGI Certified · Insured Worldwide
           </p>
         </div>
