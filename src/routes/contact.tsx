@@ -69,7 +69,7 @@ function ContactPage() {
             <Input label="Email" type="email" />
             <Input label="Phone / WhatsApp" />
             <div>
-              <label className="text-[9.5px] tracking-[0.42em] uppercase text-gold">
+              <label className="text-[11px] tracking-[0.42em] uppercase text-gold">
                 Interest
               </label>
               <select className="mt-3 w-full border-b border-white/15 bg-transparent py-2.5 text-sm text-ivory outline-none focus:border-gold transition [&>option]:bg-obsidian">
@@ -82,7 +82,7 @@ function ContactPage() {
               </select>
             </div>
             <div>
-              <label className="text-[9.5px] tracking-[0.42em] uppercase text-gold">
+              <label className="text-[11px] tracking-[0.42em] uppercase text-gold">
                 Message
               </label>
               <textarea
@@ -155,7 +155,7 @@ function InfoRow({
 function Input({ label, type = "text" }: { label: string; type?: string }) {
   return (
     <div>
-      <label className="text-[9.5px] tracking-[0.42em] uppercase text-gold">{label}</label>
+      <label className="text-[11px] tracking-[0.42em] uppercase text-gold">{label}</label>
       <input
         type={type}
         className="mt-3 w-full border-b border-white/15 bg-transparent py-2.5 text-sm text-ivory placeholder:text-ivory/25 outline-none focus:border-gold transition"

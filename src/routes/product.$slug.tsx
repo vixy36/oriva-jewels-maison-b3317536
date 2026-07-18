@@ -1,10 +1,11 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { Heart, MessageCircle, ArrowLeft, ShieldCheck, Truck, Sparkles, ArrowRight } from "lucide-react";
+import { Heart, MessageCircle, ArrowLeft, ShieldCheck, Truck, Sparkles, ArrowRight, ZoomIn } from "lucide-react";
 
 import { findProduct, buildWhatsAppLink, products } from "@/lib/products";
 import { ProductCard } from "@/components/site/ProductCard";
 import { Reveal } from "@/components/site/Reveal";
+import { Lightbox } from "@/components/site/Lightbox";
 
 export const Route = createFileRoute("/product/$slug")({
   loader: ({ params }) => {
@@ -32,6 +33,9 @@ function ProductPage() {
   const [backing, setBacking] = useState(product.backings?.[0] ?? "");
   const [length, setLength] = useState(product.lengths?.[1] ?? "");
   const [engraving, setEngraving] = useState("");
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
+  const gallery = [product.image, product.image, product.image, product.image];
 
   const metalOptions = ["18K White Gold", "18K Yellow Gold", "18K Rose Gold", "Platinum 950"];
 
@@ -68,26 +72,43 @@ function ProductPage() {
 
         <div className="mt-10 grid gap-14 md:grid-cols-12 md:gap-20">
           <div className="md:col-span-7">
-            <div className="relative overflow-hidden bg-charcoal aspect-[4/5] group border border-white/5">
+
+            <button
+              type="button"
+              onClick={() => setLightboxIndex(0)}
+              className="relative overflow-hidden bg-charcoal aspect-[4/5] group border border-white/5 w-full text-left cursor-zoom-in"
+              aria-label="Open image gallery"
+            >
               <img
                 src={product.image}
                 alt={product.name}
+                fetchPriority="high"
+                decoding="async"
                 className="h-full w-full object-cover transition-transform duration-[1800ms] ease-out group-hover:scale-[1.06]"
               />
-              <button
+              <span
                 aria-label="Wishlist"
+                onClick={(e) => e.stopPropagation()}
                 className="absolute top-5 right-5 grid h-11 w-11 place-items-center bg-obsidian/70 backdrop-blur border border-white/15 text-ivory hover:border-gold hover:text-gold transition"
               >
                 <Heart className="h-4 w-4" strokeWidth={1.3} />
-              </button>
-              <span className="absolute top-5 left-5 text-[9px] tracking-[0.42em] uppercase text-ivory/70 bg-obsidian/60 backdrop-blur-sm px-3 py-1.5 border border-white/10">
+              </span>
+              <span className="absolute top-5 left-5 text-[11px] tracking-[0.42em] uppercase text-ivory/70 bg-obsidian/60 backdrop-blur-sm px-3 py-1.5 border border-white/10">
                 Ref. OR-{product.slug.slice(0, 4).toUpperCase()}
               </span>
-            </div>
+              <span className="absolute bottom-5 right-5 inline-flex items-center gap-2 bg-obsidian/70 backdrop-blur border border-white/15 px-4 py-2 text-[11px] tracking-[0.35em] uppercase text-ivory opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition duration-500">
+                <ZoomIn className="h-3.5 w-3.5" strokeWidth={1.4} /> Zoom
+              </span>
+            </button>
             <div className="mt-4 grid grid-cols-4 gap-3">
-              {[product.image, product.image, product.image, product.image].map((src, i) => (
-                <button key={i} className="aspect-square overflow-hidden bg-charcoal border border-white/5 hover:border-gold transition">
-                  <img src={src} alt="" className="h-full w-full object-cover" />
+              {gallery.map((src, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  onClick={() => setLightboxIndex(i)}
+                  className="aspect-square overflow-hidden bg-charcoal border border-white/5 hover:border-gold transition"
+                >
+                  <img src={src} alt="" loading="lazy" className="h-full w-full object-cover" />
                 </button>
               ))}
             </div>
@@ -125,7 +146,7 @@ function ProductPage() {
                 )}
                 {product.sizes && (
                   <div>
-                    <label className="text-[9.5px] tracking-[0.42em] uppercase text-gold">
+                    <label className="text-[11px] tracking-[0.42em] uppercase text-gold">
                       Engraving (optional)
                     </label>
                     <input
@@ -139,7 +160,7 @@ function ProductPage() {
               </div>
 
               <div className="mt-10 border border-white/10 bg-charcoal/50 p-6">
-                <p className="text-[9.5px] tracking-[0.42em] uppercase text-gold">Your Configuration</p>
+                <p className="text-[11px] tracking-[0.42em] uppercase text-gold">Your Configuration</p>
                 <dl className="mt-5 grid grid-cols-2 gap-x-6 gap-y-2.5 text-sm">
                   <dt className="text-ivory/40">Diamond</dt><dd className="text-ivory">{diamondType}</dd>
                   <dt className="text-ivory/40">Metal</dt><dd className="text-ivory">{metal}</dd>
@@ -172,7 +193,7 @@ function ProductPage() {
                 ].map((i) => (
                   <div key={i.t} className="border-t border-white/10 pt-4">
                     <i.icon className="mx-auto h-5 w-5 text-gold" strokeWidth={1.2} />
-                    <p className="mt-2.5 text-[9.5px] tracking-[0.32em] uppercase text-ivory/50">{i.t}</p>
+                    <p className="mt-2.5 text-[11px] tracking-[0.32em] uppercase text-ivory/50">{i.t}</p>
                   </div>
                 ))}
               </div>
@@ -203,6 +224,14 @@ function ProductPage() {
           </div>
         </div>
       </div>
+      {lightboxIndex !== null && (
+        <Lightbox
+          images={gallery}
+          index={lightboxIndex}
+          onClose={() => setLightboxIndex(null)}
+          onIndexChange={setLightboxIndex}
+        />
+      )}
     </div>
   );
 }
@@ -220,7 +249,7 @@ function PillGroup({
 }) {
   return (
     <div>
-      <p className="text-[9.5px] tracking-[0.42em] uppercase text-gold">{label}</p>
+      <p className="text-[11px] tracking-[0.42em] uppercase text-gold">{label}</p>
       <div className="mt-3.5 flex flex-wrap gap-2">
         {options.map((o) => {
           const active = o === value;
