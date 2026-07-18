@@ -373,25 +373,3 @@ function HomePage() {
   );
 }
 
-function Sparkle({
-  style,
-  delay = 0,
-  size = 2,
-}: {
-  style: React.CSSProperties;
-  delay?: number;
-  size?: number;
-}) {
-  return (
-    <span
-      className="absolute pointer-events-none rounded-full bg-champagne blur-[0.5px] animate-sparkle"
-      style={{
-        ...style,
-        width: `${size * 2}px`,
-        height: `${size * 2}px`,
-        boxShadow: "0 0 12px 2px var(--champagne)",
-        animationDelay: `${delay}s`,
-      }}
-    />
-  );
-}
