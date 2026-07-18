@@ -15,6 +15,7 @@ import { Route as OccasionsRouteImport } from './routes/occasions'
 import { Route as EducationRouteImport } from './routes/education'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as BespokeRouteImport } from './routes/bespoke'
+import { Route as AssuranceRouteImport } from './routes/assurance'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ShapeShapeRouteImport } from './routes/shape.$shape'
@@ -51,6 +52,11 @@ const BespokeRoute = BespokeRouteImport.update({
   path: '/bespoke',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AssuranceRoute = AssuranceRouteImport.update({
+  id: '/assurance',
+  path: '/assurance',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -80,6 +86,7 @@ const CollectionsCategoryRoute = CollectionsCategoryRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/assurance': typeof AssuranceRoute
   '/bespoke': typeof BespokeRoute
   '/contact': typeof ContactRoute
   '/education': typeof EducationRoute
@@ -93,6 +100,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/assurance': typeof AssuranceRoute
   '/bespoke': typeof BespokeRoute
   '/contact': typeof ContactRoute
   '/education': typeof EducationRoute
@@ -107,6 +115,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/assurance': typeof AssuranceRoute
   '/bespoke': typeof BespokeRoute
   '/contact': typeof ContactRoute
   '/education': typeof EducationRoute
@@ -122,6 +131,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/assurance'
     | '/bespoke'
     | '/contact'
     | '/education'
@@ -135,6 +145,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/assurance'
     | '/bespoke'
     | '/contact'
     | '/education'
@@ -148,6 +159,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/assurance'
     | '/bespoke'
     | '/contact'
     | '/education'
@@ -162,6 +174,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AssuranceRoute: typeof AssuranceRoute
   BespokeRoute: typeof BespokeRoute
   ContactRoute: typeof ContactRoute
   EducationRoute: typeof EducationRoute
@@ -217,6 +230,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BespokeRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/assurance': {
+      id: '/assurance'
+      path: '/assurance'
+      fullPath: '/assurance'
+      preLoaderRoute: typeof AssuranceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -258,6 +278,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AssuranceRoute: AssuranceRoute,
   BespokeRoute: BespokeRoute,
   ContactRoute: ContactRoute,
   EducationRoute: EducationRoute,
