@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, SlidersHorizontal, ChevronDown } from "lucide-react";
 import { ProductCard } from "@/components/site/ProductCard";
 import { Reveal } from "@/components/site/Reveal";
 import { categories, productsByCategory, type ProductCategory } from "@/lib/products";
@@ -102,7 +102,25 @@ function CollectionPage() {
       <section className="mx-auto max-w-[1500px] px-6 py-20 md:px-16 md:py-28">
         <div className="grid gap-12 md:grid-cols-12">
           <aside className="md:col-span-3">
-            <div className="md:sticky md:top-40 space-y-10">
+            {/* Mobile: collapsible dropdown */}
+            <details className="md:hidden group border border-white/10 bg-obsidian/40 backdrop-blur">
+              <summary className="flex cursor-pointer list-none items-center justify-between px-5 py-4 text-[13px] tracking-[0.4em] uppercase text-ivory">
+                <span className="flex items-center gap-3">
+                  <SlidersHorizontal className="h-4 w-4 text-gold" strokeWidth={1.4} />
+                  Refine
+                </span>
+                <ChevronDown className="h-4 w-4 text-gold transition-transform duration-300 group-open:rotate-180" strokeWidth={1.4} />
+              </summary>
+              <div className="px-5 pb-6 pt-2 space-y-8 border-t border-white/10">
+                <FilterGroup title="Diamond" options={["Natural", "Lab Grown"]} />
+                <FilterGroup title="Shape" options={["Round", "Marquise", "Oval", "Pear", "Emerald", "Heart"]} />
+                <FilterGroup title="Metal" options={["White Gold", "Yellow Gold", "Rose Gold", "Platinum"]} />
+                <FilterGroup title="Style" options={["Solitaire", "Halo", "Three Stone", "Pavé"]} />
+              </div>
+            </details>
+
+            {/* Desktop: sticky sidebar */}
+            <div className="hidden md:block md:sticky md:top-40 space-y-10">
               <FilterGroup title="Diamond" options={["Natural", "Lab Grown"]} />
               <FilterGroup title="Shape" options={["Round", "Marquise", "Oval", "Pear", "Emerald", "Heart"]} />
               <FilterGroup title="Metal" options={["White Gold", "Yellow Gold", "Rose Gold", "Platinum"]} />
