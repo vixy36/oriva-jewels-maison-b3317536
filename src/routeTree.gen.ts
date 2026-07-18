@@ -13,6 +13,7 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as OccasionsRouteImport } from './routes/occasions'
 import { Route as EducationRouteImport } from './routes/education'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as BespokeRouteImport } from './routes/bespoke'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ShapeShapeRouteImport } from './routes/shape.$shape'
@@ -37,6 +38,11 @@ const EducationRoute = EducationRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BespokeRoute = BespokeRouteImport.update({
+  id: '/bespoke',
+  path: '/bespoke',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -68,6 +74,7 @@ const CollectionsCategoryRoute = CollectionsCategoryRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/bespoke': typeof BespokeRoute
   '/contact': typeof ContactRoute
   '/education': typeof EducationRoute
   '/occasions': typeof OccasionsRoute
@@ -79,6 +86,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/bespoke': typeof BespokeRoute
   '/contact': typeof ContactRoute
   '/education': typeof EducationRoute
   '/occasions': typeof OccasionsRoute
@@ -91,6 +99,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/bespoke': typeof BespokeRoute
   '/contact': typeof ContactRoute
   '/education': typeof EducationRoute
   '/occasions': typeof OccasionsRoute
@@ -104,6 +113,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/bespoke'
     | '/contact'
     | '/education'
     | '/occasions'
@@ -115,6 +125,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/bespoke'
     | '/contact'
     | '/education'
     | '/occasions'
@@ -126,6 +137,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/bespoke'
     | '/contact'
     | '/education'
     | '/occasions'
@@ -138,6 +150,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  BespokeRoute: typeof BespokeRoute
   ContactRoute: typeof ContactRoute
   EducationRoute: typeof EducationRoute
   OccasionsRoute: typeof OccasionsRoute
@@ -175,6 +188,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bespoke': {
+      id: '/bespoke'
+      path: '/bespoke'
+      fullPath: '/bespoke'
+      preLoaderRoute: typeof BespokeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -218,6 +238,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  BespokeRoute: BespokeRoute,
   ContactRoute: ContactRoute,
   EducationRoute: EducationRoute,
   OccasionsRoute: OccasionsRoute,
