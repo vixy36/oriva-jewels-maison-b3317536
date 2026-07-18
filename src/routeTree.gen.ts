@@ -10,9 +10,15 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as RingSizeGuideRouteImport } from './routes/ring-size-guide'
+import { Route as OccasionsRouteImport } from './routes/occasions'
+import { Route as EducationRouteImport } from './routes/education'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as BespokeRouteImport } from './routes/bespoke'
+import { Route as AssuranceRouteImport } from './routes/assurance'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ShapeShapeRouteImport } from './routes/shape.$shape'
 import { Route as ProductSlugRouteImport } from './routes/product.$slug'
 import { Route as CollectionsCategoryRouteImport } from './routes/collections.$category'
 
@@ -21,9 +27,34 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RingSizeGuideRoute = RingSizeGuideRouteImport.update({
+  id: '/ring-size-guide',
+  path: '/ring-size-guide',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OccasionsRoute = OccasionsRouteImport.update({
+  id: '/occasions',
+  path: '/occasions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EducationRoute = EducationRouteImport.update({
+  id: '/education',
+  path: '/education',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BespokeRoute = BespokeRouteImport.update({
+  id: '/bespoke',
+  path: '/bespoke',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AssuranceRoute = AssuranceRouteImport.update({
+  id: '/assurance',
+  path: '/assurance',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -34,6 +65,11 @@ const AboutRoute = AboutRouteImport.update({
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShapeShapeRoute = ShapeShapeRouteImport.update({
+  id: '/shape/$shape',
+  path: '/shape/$shape',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProductSlugRoute = ProductSlugRouteImport.update({
@@ -50,62 +86,104 @@ const CollectionsCategoryRoute = CollectionsCategoryRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/assurance': typeof AssuranceRoute
+  '/bespoke': typeof BespokeRoute
   '/contact': typeof ContactRoute
+  '/education': typeof EducationRoute
+  '/occasions': typeof OccasionsRoute
+  '/ring-size-guide': typeof RingSizeGuideRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/collections/$category': typeof CollectionsCategoryRoute
   '/product/$slug': typeof ProductSlugRoute
+  '/shape/$shape': typeof ShapeShapeRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/assurance': typeof AssuranceRoute
+  '/bespoke': typeof BespokeRoute
   '/contact': typeof ContactRoute
+  '/education': typeof EducationRoute
+  '/occasions': typeof OccasionsRoute
+  '/ring-size-guide': typeof RingSizeGuideRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/collections/$category': typeof CollectionsCategoryRoute
   '/product/$slug': typeof ProductSlugRoute
+  '/shape/$shape': typeof ShapeShapeRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/assurance': typeof AssuranceRoute
+  '/bespoke': typeof BespokeRoute
   '/contact': typeof ContactRoute
+  '/education': typeof EducationRoute
+  '/occasions': typeof OccasionsRoute
+  '/ring-size-guide': typeof RingSizeGuideRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/collections/$category': typeof CollectionsCategoryRoute
   '/product/$slug': typeof ProductSlugRoute
+  '/shape/$shape': typeof ShapeShapeRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/about'
+    | '/assurance'
+    | '/bespoke'
     | '/contact'
+    | '/education'
+    | '/occasions'
+    | '/ring-size-guide'
     | '/sitemap.xml'
     | '/collections/$category'
     | '/product/$slug'
+    | '/shape/$shape'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
+    | '/assurance'
+    | '/bespoke'
     | '/contact'
+    | '/education'
+    | '/occasions'
+    | '/ring-size-guide'
     | '/sitemap.xml'
     | '/collections/$category'
     | '/product/$slug'
+    | '/shape/$shape'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/assurance'
+    | '/bespoke'
     | '/contact'
+    | '/education'
+    | '/occasions'
+    | '/ring-size-guide'
     | '/sitemap.xml'
     | '/collections/$category'
     | '/product/$slug'
+    | '/shape/$shape'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AssuranceRoute: typeof AssuranceRoute
+  BespokeRoute: typeof BespokeRoute
   ContactRoute: typeof ContactRoute
+  EducationRoute: typeof EducationRoute
+  OccasionsRoute: typeof OccasionsRoute
+  RingSizeGuideRoute: typeof RingSizeGuideRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   CollectionsCategoryRoute: typeof CollectionsCategoryRoute
   ProductSlugRoute: typeof ProductSlugRoute
+  ShapeShapeRoute: typeof ShapeShapeRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -117,11 +195,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ring-size-guide': {
+      id: '/ring-size-guide'
+      path: '/ring-size-guide'
+      fullPath: '/ring-size-guide'
+      preLoaderRoute: typeof RingSizeGuideRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/occasions': {
+      id: '/occasions'
+      path: '/occasions'
+      fullPath: '/occasions'
+      preLoaderRoute: typeof OccasionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/education': {
+      id: '/education'
+      path: '/education'
+      fullPath: '/education'
+      preLoaderRoute: typeof EducationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bespoke': {
+      id: '/bespoke'
+      path: '/bespoke'
+      fullPath: '/bespoke'
+      preLoaderRoute: typeof BespokeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/assurance': {
+      id: '/assurance'
+      path: '/assurance'
+      fullPath: '/assurance'
+      preLoaderRoute: typeof AssuranceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -136,6 +249,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/shape/$shape': {
+      id: '/shape/$shape'
+      path: '/shape/$shape'
+      fullPath: '/shape/$shape'
+      preLoaderRoute: typeof ShapeShapeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/product/$slug': {
@@ -158,10 +278,16 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AssuranceRoute: AssuranceRoute,
+  BespokeRoute: BespokeRoute,
   ContactRoute: ContactRoute,
+  EducationRoute: EducationRoute,
+  OccasionsRoute: OccasionsRoute,
+  RingSizeGuideRoute: RingSizeGuideRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   CollectionsCategoryRoute: CollectionsCategoryRoute,
   ProductSlugRoute: ProductSlugRoute,
+  ShapeShapeRoute: ShapeShapeRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
