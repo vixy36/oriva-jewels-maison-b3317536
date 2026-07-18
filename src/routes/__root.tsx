@@ -15,7 +15,6 @@ import { SiteHeader } from "../components/site/SiteHeader";
 import { SiteFooter } from "../components/site/SiteFooter";
 import { MobileBottomNav } from "../components/site/MobileBottomNav";
 
-
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -73,25 +72,21 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Oriva Jewels — Timeless Brilliance in Natural & Lab Grown Diamonds" },
+      { title: "Oriva Jewels — Natural & Lab Grown Diamond Jewellery, Hong Kong" },
       {
         name: "description",
         content:
-          "A Hong Kong fine jewellery house. Discover exceptional engagement rings, earrings, bracelets and bridal jewellery in Natural and Lab Grown diamonds.",
+          "Oriva Jewels is a Hong Kong-based fine jewellery house crafting exceptional natural and lab grown diamond engagement rings, earrings, bracelets and bridal pieces.",
       },
       { name: "author", content: "Oriva Jewels" },
       { name: "theme-color", content: "#050505" },
-      { property: "og:title", content: "Oriva Jewels — Timeless Brilliance in Natural & Lab Grown Diamonds" },
+      { property: "og:title", content: "Oriva Jewels — Fine Diamond Jewellery" },
       {
         property: "og:description",
-        content: "A Hong Kong fine jewellery house. Discover exceptional engagement rings, earrings, bracelets and bridal jewellery in Natural and Lab Grown diamonds.",
+        content: "Timeless brilliance, crafted for modern elegance. Natural and lab grown diamonds from Hong Kong.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Oriva Jewels — Timeless Brilliance in Natural & Lab Grown Diamonds" },
-      { name: "twitter:description", content: "A Hong Kong fine jewellery house. Discover exceptional engagement rings, earrings, bracelets and bridal jewellery in Natural and Lab Grown diamonds." },
-      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/13213527-747a-40d4-a9f0-8a08b12c219e" },
-      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/13213527-747a-40d4-a9f0-8a08b12c219e" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
@@ -129,15 +124,13 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="relative min-h-screen bg-background text-foreground">
-        <div className="relative z-10 flex min-h-screen flex-col">
-          <SiteHeader />
-          <main className="flex-1 pb-24 md:pb-0">
-            <Outlet />
-          </main>
-          <SiteFooter />
-          <MobileBottomNav />
-        </div>
+      <div className="flex min-h-screen flex-col bg-background text-foreground">
+        <SiteHeader />
+        <main className="flex-1 pb-24 md:pb-0">
+          <Outlet />
+        </main>
+        <SiteFooter />
+        <MobileBottomNav />
       </div>
     </QueryClientProvider>
   );

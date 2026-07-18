@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, MessageCircle, ShieldCheck, Sparkles, Globe2, Gem } from "lucide-react";
 
-
 import heroImg from "@/assets/hero-marquise.jpg";
 import engagementImg from "@/assets/collection-engagement.jpg";
 import earringsImg from "@/assets/collection-earrings.jpg";
@@ -10,7 +9,6 @@ import pendantsImg from "@/assets/collection-pendants.jpg";
 import bridalImg from "@/assets/collection-bridal.jpg";
 import labgrownImg from "@/assets/collection-labgrown.jpg";
 import editorialImg from "@/assets/editorial-emerald.jpg";
-import pearImg from "@/assets/product-pear.jpg";
 
 import insta1 from "@/assets/insta-1.jpg";
 import insta2 from "@/assets/insta-2.jpg";
@@ -66,16 +64,22 @@ const insta = [
 function HomePage() {
   return (
     <div className="bg-background">
-      {/* HERO — cinematic image + 3D overlay */}
-      <section className="relative isolate overflow-hidden text-ivory min-h-[100svh] flex items-end md:items-center">
+      {/* HERO */}
+      <section className="relative isolate overflow-hidden bg-ink text-ivory min-h-[100svh] flex items-end md:items-center">
         <img
           src={heroImg}
-          alt="Oriva Jewels marquise diamond hero"
-          className="absolute inset-0 h-full w-full object-cover animate-slow-zoom"
+          alt="Marquise-cut diamond solitaire ring"
+          className="absolute inset-0 h-full w-full object-cover object-center opacity-90 animate-slow-zoom"
         />
-        {/* subtle vignette so text stays legible over image + 3D */}
-        <div className="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/30 to-ink pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink/80 via-transparent to-ink/40 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/30 to-ink" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink/70 via-transparent to-ink/40" />
+
+        {/* Sparkle particles */}
+        <Sparkle style={{ top: "18%", left: "12%" }} delay={0} />
+        <Sparkle style={{ top: "32%", left: "78%" }} delay={1.4} size={3} />
+        <Sparkle style={{ top: "62%", left: "22%" }} delay={2.1} />
+        <Sparkle style={{ top: "78%", left: "68%" }} delay={0.7} size={2} />
+        <Sparkle style={{ top: "12%", left: "60%" }} delay={3.2} />
 
         <div className="relative z-10 mx-auto max-w-[1400px] w-full px-6 pb-24 pt-40 md:px-10 md:py-32">
           <div className="max-w-2xl animate-rise">
@@ -101,7 +105,7 @@ function HomePage() {
                 href={buildWhatsAppLink("Hello Oriva Jewels, I'd like to book a consultation.")}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-3 border border-ivory/40 px-8 py-4 text-[11px] tracking-[0.32em] uppercase text-ivory hover:border-champagne hover:text-champagne transition backdrop-blur-sm"
+                className="inline-flex items-center gap-3 border border-ivory/40 px-8 py-4 text-[11px] tracking-[0.32em] uppercase text-ivory hover:border-champagne hover:text-champagne transition"
               >
                 <MessageCircle className="h-4 w-4" strokeWidth={1.5} />
                 WhatsApp Consultation
@@ -115,24 +119,6 @@ function HomePage() {
           <span className="h-10 w-px bg-gradient-to-b from-champagne to-transparent" />
         </div>
       </section>
-
-      {/* Cinematic reveal band — editorial image + 3D overlay */}
-      <section className="relative overflow-hidden h-[80vh] md:h-[110vh] flex items-center justify-center text-ivory">
-        <img
-          src={pearImg}
-          alt="Oriva Jewels pear diamond editorial"
-          className="absolute inset-0 h-full w-full object-cover opacity-70"
-          loading="lazy"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-ink via-ink/40 to-ink pointer-events-none" />
-        <div className="relative z-10 text-center px-6">
-          <p className="eyebrow text-champagne">A single stone</p>
-          <h2 className="mt-6 font-serif italic text-4xl md:text-7xl max-w-3xl mx-auto leading-[1.05]">
-            Light, held in place by <span className="text-champagne-gradient">gold</span>.
-          </h2>
-        </div>
-      </section>
-
 
       {/* MARQUEE */}
       <div className="border-y border-border/60 bg-ivory overflow-hidden">
@@ -386,3 +372,25 @@ function HomePage() {
   );
 }
 
+function Sparkle({
+  style,
+  delay = 0,
+  size = 2,
+}: {
+  style: React.CSSProperties;
+  delay?: number;
+  size?: number;
+}) {
+  return (
+    <span
+      className="absolute pointer-events-none rounded-full bg-champagne blur-[0.5px] animate-sparkle"
+      style={{
+        ...style,
+        width: `${size * 2}px`,
+        height: `${size * 2}px`,
+        boxShadow: "0 0 12px 2px var(--champagne)",
+        animationDelay: `${delay}s`,
+      }}
+    />
+  );
+}
