@@ -276,47 +276,38 @@ function HomePage() {
               const x = 50 + r * Math.cos(angle);
               const y = 50 + r * Math.sin(angle);
               return (
-                <Reveal
+                <div
                   key={c.title}
-                  delay={i * 90}
-                  className="absolute"
-                  // position by center
-                  // eslint-disable-next-line react/forbid-dom-props
+                  className="absolute animate-fade-in"
+                  style={{
+                    left: `${x}%`,
+                    top: `${y}%`,
+                    transform: "translate(-50%, -50%)",
+                    animationDelay: `${i * 120}ms`,
+                  }}
                 >
-                  <div
-                    className="absolute"
-                    style={{
-                      left: `${x}%`,
-                      top: `${y}%`,
-                      transform: "translate(-50%, -50%)",
-                    }}
-                  >
-                    <Link to={c.to} className="group block">
-                      <div className="relative h-40 w-40 lg:h-48 lg:w-48 rounded-full overflow-hidden border border-white/15 group-hover:border-gold/70 transition duration-500 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.7)]">
-                        <img
-                          src={c.img}
-                          alt={c.title}
-                          loading="lazy"
-                          className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110"
-                        />
-                        <div className="absolute inset-0 bg-obsidian/45 group-hover:bg-obsidian/25 transition duration-500" />
-                        {/* Chapter number */}
-                        <span className="absolute inset-0 flex items-center justify-center font-serif italic text-4xl lg:text-5xl text-ivory group-hover:text-gold group-hover:opacity-0 transition duration-500">
-                          {c.n}
-                        </span>
-                        {/* Hover title */}
-                        <span className="absolute inset-0 flex items-center justify-center font-serif text-xl lg:text-2xl text-gold opacity-0 group-hover:opacity-100 transition duration-500 px-3 text-center">
-                          {c.title}
-                        </span>
-                        {/* Gold ring on hover */}
-                        <span className="pointer-events-none absolute inset-1 rounded-full border border-gold/0 group-hover:border-gold/60 transition duration-500" />
-                      </div>
-                      <p className="mt-4 text-center text-[11px] tracking-[0.42em] uppercase text-ivory/70 group-hover:text-gold transition">
+                  <Link to={c.to} className="group block">
+                    <div className="relative h-40 w-40 lg:h-48 lg:w-48 rounded-full overflow-hidden border border-white/15 group-hover:border-gold/70 transition duration-500 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.7)]">
+                      <img
+                        src={c.img}
+                        alt={c.title}
+                        loading="lazy"
+                        className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-obsidian/45 group-hover:bg-obsidian/25 transition duration-500" />
+                      <span className="absolute inset-0 flex items-center justify-center font-serif italic text-4xl lg:text-5xl text-ivory group-hover:text-gold group-hover:opacity-0 transition duration-500">
+                        {c.n}
+                      </span>
+                      <span className="absolute inset-0 flex items-center justify-center font-serif text-xl lg:text-2xl text-gold opacity-0 group-hover:opacity-100 transition duration-500 px-3 text-center">
                         {c.title}
-                      </p>
-                    </Link>
-                  </div>
-                </Reveal>
+                      </span>
+                      <span className="pointer-events-none absolute inset-1 rounded-full border border-gold/0 group-hover:border-gold/60 transition duration-500" />
+                    </div>
+                    <p className="mt-4 text-center text-[11px] tracking-[0.42em] uppercase text-ivory/70 group-hover:text-gold transition whitespace-nowrap">
+                      {c.title}
+                    </p>
+                  </Link>
+                </div>
               );
             })}
           </div>
