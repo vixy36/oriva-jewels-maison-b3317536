@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, SlidersHorizontal, ChevronDown } from "lucide-react";
 import { ProductCard } from "@/components/site/ProductCard";
 import { Reveal } from "@/components/site/Reveal";
 import { categories, productsByCategory, type ProductCategory } from "@/lib/products";
