@@ -8,7 +8,7 @@ const nav = [
   { label: "Earrings", to: "/collections/earrings" },
   { label: "Bracelets", to: "/collections/bracelets" },
   { label: "Bridal", to: "/collections/bridal" },
-  { label: "About", to: "/about" },
+  { label: "The Maison", to: "/about" },
   { label: "Contact", to: "/contact" },
 ];
 
@@ -17,95 +17,127 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => setScrolled(window.scrollY > 30);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "bg-ink/85 backdrop-blur-xl border-b border-white/5"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="mx-auto flex max-w-[1600px] items-center justify-between px-5 py-4 md:px-10 md:py-5">
-        <button
-          className="md:hidden text-ivory"
-          aria-label="Open menu"
-          onClick={() => setOpen(true)}
-        >
-          <Menu className="h-5 w-5" />
-        </button>
-
-        <Link to="/" className="group flex-1 md:flex-none text-center md:text-left">
-          <span className="font-serif text-xl md:text-2xl tracking-[0.35em] text-ivory">
-            ORIVA
-          </span>
-          <span className="ml-2 hidden md:inline-block font-serif text-xs tracking-[0.5em] text-champagne">
-            JEWELS
-          </span>
-        </Link>
-
-        <nav className="hidden md:flex items-center gap-8">
-          {nav.map((n) => (
-            <Link
-              key={n.to}
-              to={n.to}
-              className="text-[11px] tracking-[0.28em] uppercase text-ivory/80 hover:text-champagne transition-colors"
-              activeProps={{ className: "text-champagne" }}
-            >
-              {n.label}
-            </Link>
-          ))}
-        </nav>
-
-        <a
-          href={buildWhatsAppLink("Hello Oriva Jewels, I'd like a consultation.")}
-          target="_blank"
-          rel="noreferrer"
-          className="hidden md:inline-flex items-center gap-2 border border-champagne/60 px-4 py-2 text-[10px] tracking-[0.3em] uppercase text-ivory hover:bg-champagne hover:text-ink transition"
-        >
-          <MessageCircle className="h-3.5 w-3.5" />
-          WhatsApp
-        </a>
-
-        <a
-          href={buildWhatsAppLink("Hello Oriva Jewels, I'd like a consultation.")}
-          target="_blank"
-          rel="noreferrer"
-          className="md:hidden text-ivory"
-          aria-label="WhatsApp"
-        >
-          <MessageCircle className="h-5 w-5" />
-        </a>
+    <>
+      <div className="fixed inset-x-0 top-0 z-[60] bg-obsidian text-ivory/70 border-b border-white/5">
+        <div className="mx-auto max-w-[1600px] px-6 py-2 text-center text-[10px] tracking-[0.4em] uppercase">
+          Complimentary worldwide insured shipping · By appointment in Hong Kong
+        </div>
       </div>
 
-      {/* Mobile drawer */}
+      <header
+        className={`fixed inset-x-0 top-[30px] z-50 transition-all duration-700 ${
+          scrolled
+            ? "bg-ink/90 backdrop-blur-2xl border-b border-white/5"
+            : "bg-transparent"
+        }`}
+      >
+        <div className="mx-auto grid max-w-[1600px] grid-cols-[1fr_auto_1fr] items-center gap-6 px-6 py-5 md:px-10 md:py-6">
+          <div className="flex items-center gap-6">
+            <button
+              className="md:hidden text-ivory"
+              aria-label="Open menu"
+              onClick={() => setOpen(true)}
+            >
+              <Menu className="h-5 w-5" strokeWidth={1.2} />
+            </button>
+            <nav className="hidden md:flex items-center gap-7">
+              {nav.slice(0, 3).map((n) => (
+                <Link
+                  key={n.to}
+                  to={n.to}
+                  className="text-[10.5px] tracking-[0.32em] uppercase text-ivory/80 hover:text-gold transition-colors"
+                  activeProps={{ className: "text-gold" }}
+                >
+                  {n.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
+
+          <Link to="/" className="group flex flex-col items-center">
+            <span className="font-serif text-2xl md:text-[26px] tracking-[0.5em] text-ivory leading-none">
+              ORIVA
+            </span>
+            <span className="mt-1 font-sans text-[8.5px] tracking-[0.55em] text-gold">
+              — JEWELS —
+            </span>
+          </Link>
+
+          <div className="flex items-center justify-end gap-6">
+            <nav className="hidden md:flex items-center gap-7">
+              {nav.slice(3).map((n) => (
+                <Link
+                  key={n.to}
+                  to={n.to}
+                  className="text-[10.5px] tracking-[0.32em] uppercase text-ivory/80 hover:text-gold transition-colors"
+                  activeProps={{ className: "text-gold" }}
+                >
+                  {n.label}
+                </Link>
+              ))}
+            </nav>
+            <a
+              href={buildWhatsAppLink("Hello Oriva Jewels, I'd like a private consultation.")}
+              target="_blank"
+              rel="noreferrer"
+              className="hidden lg:inline-flex items-center gap-2 text-[10px] tracking-[0.32em] uppercase text-gold hover:text-ivory transition"
+              aria-label="WhatsApp"
+            >
+              <MessageCircle className="h-3.5 w-3.5" strokeWidth={1.4} />
+              Enquire
+            </a>
+            <a
+              href={buildWhatsAppLink("Hello Oriva Jewels")}
+              target="_blank"
+              rel="noreferrer"
+              className="md:hidden text-ivory"
+              aria-label="WhatsApp"
+            >
+              <MessageCircle className="h-5 w-5" strokeWidth={1.2} />
+            </a>
+          </div>
+        </div>
+        <div className="h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
+      </header>
+
       {open && (
-        <div className="fixed inset-0 z-[60] bg-ink md:hidden animate-rise">
-          <div className="flex items-center justify-between px-5 py-4">
-            <span className="font-serif text-xl tracking-[0.35em] text-ivory">ORIVA</span>
+        <div className="fixed inset-0 z-[70] bg-obsidian md:hidden animate-fade-in">
+          <div className="flex items-center justify-between px-6 py-5 border-b border-white/5">
+            <span className="font-serif text-xl tracking-[0.5em] text-ivory">ORIVA</span>
             <button aria-label="Close" onClick={() => setOpen(false)} className="text-ivory">
-              <X className="h-5 w-5" />
+              <X className="h-5 w-5" strokeWidth={1.2} />
             </button>
           </div>
-          <nav className="flex flex-col px-5 pt-10">
-            {nav.map((n) => (
+          <nav className="flex flex-col px-8 pt-16">
+            {nav.map((n, i) => (
               <Link
                 key={n.to}
                 to={n.to}
                 onClick={() => setOpen(false)}
-                className="border-b border-white/5 py-5 font-serif text-3xl text-ivory"
+                className="group border-b border-white/5 py-6 flex items-baseline gap-4"
               >
-                {n.label}
+                <span className="text-[10px] tracking-[0.3em] text-gold font-sans">
+                  0{i + 1}
+                </span>
+                <span className="font-serif text-3xl text-ivory group-hover:text-gold transition">
+                  {n.label}
+                </span>
               </Link>
             ))}
           </nav>
+          <div className="absolute bottom-10 left-8 right-8">
+            <p className="eyebrow">Hong Kong · By Appointment</p>
+            <p className="mt-3 font-serif text-lg text-ivory">hello@orivajewels.com</p>
+          </div>
         </div>
       )}
-    </header>
+    </>
   );
 }

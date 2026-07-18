@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, MessageCircle, ShieldCheck, Sparkles, Globe2, Gem } from "lucide-react";
+import { ArrowRight, ArrowUpRight, MessageCircle, ShieldCheck, Gem, Globe2, Sparkles } from "lucide-react";
 
 import heroImg from "@/assets/hero-marquise.jpg";
 import engagementImg from "@/assets/collection-engagement.jpg";
@@ -24,11 +24,11 @@ import { products, buildWhatsAppLink } from "@/lib/products";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Oriva Jewels — Timeless Brilliance in Natural & Lab Grown Diamonds" },
+      { title: "Oriva Jewels — Fine Diamond Jewellery, Hong Kong" },
       {
         name: "description",
         content:
-          "A Hong Kong fine jewellery house. Discover exceptional engagement rings, earrings, bracelets and bridal jewellery in Natural and Lab Grown diamonds.",
+          "A Hong Kong maison of natural and lab grown diamond jewellery. Engagement rings, earrings, bracelets and bridal pieces, made by hand.",
       },
     ],
   }),
@@ -36,105 +36,117 @@ export const Route = createFileRoute("/")({
 });
 
 const collections = [
-  { title: "Engagement Rings", to: "/collections/engagement-rings", img: engagementImg, tall: true },
-  { title: "Earrings", to: "/collections/earrings", img: earringsImg },
-  { title: "Bracelets", to: "/collections/bracelets", img: braceletsImg },
-  { title: "Pendants", to: "/collections/pendants", img: pendantsImg, tall: true },
-  { title: "Bridal Collection", to: "/collections/bridal", img: bridalImg },
-  { title: "Lab Grown Diamonds", to: "/collections/lab-grown", img: labgrownImg },
+  { n: "01", title: "Engagement", to: "/collections/engagement-rings", img: engagementImg },
+  { n: "02", title: "Earrings", to: "/collections/earrings", img: earringsImg },
+  { n: "03", title: "Bracelets", to: "/collections/bracelets", img: braceletsImg },
+  { n: "04", title: "Pendants", to: "/collections/pendants", img: pendantsImg },
+  { n: "05", title: "Bridal", to: "/collections/bridal", img: bridalImg },
+  { n: "06", title: "Lab Grown", to: "/collections/lab-grown", img: labgrownImg },
 ];
 
 const occasions = [
-  { label: "Engagement", img: engagementImg },
-  { label: "Wedding", img: bridalImg },
-  { label: "Anniversary", img: insta6 },
-  { label: "Gift", img: insta1 },
-  { label: "Everyday", img: earringsImg },
+  { label: "Engagement", img: engagementImg, tag: "Bridal" },
+  { label: "Anniversary", img: insta6, tag: "Milestone" },
+  { label: "Wedding", img: bridalImg, tag: "Bridal" },
+  { label: "Gift", img: insta1, tag: "Occasion" },
+  { label: "Everyday", img: earringsImg, tag: "Daily" },
 ];
 
-const insta = [
-  { img: insta1, span: "row-span-2" },
-  { img: insta2, span: "" },
-  { img: insta5, span: "row-span-2" },
-  { img: insta4, span: "" },
-  { img: insta6, span: "" },
-  { img: editorialImg, span: "" },
-];
+const insta = [insta1, insta2, insta5, insta4, insta6, editorialImg];
 
 function HomePage() {
   return (
     <div className="bg-background">
       {/* HERO */}
-      <section className="relative isolate overflow-hidden bg-ink text-ivory min-h-[100svh] flex items-end md:items-center">
+      <section className="relative isolate overflow-hidden bg-obsidian text-ivory min-h-[100svh]">
         <img
           src={heroImg}
-          alt="Marquise-cut diamond solitaire ring"
-          className="absolute inset-0 h-full w-full object-cover object-center opacity-90 animate-slow-zoom"
+          alt="Marquise diamond solitaire"
+          className="absolute inset-0 h-full w-full object-cover object-center animate-slow-zoom"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/30 to-ink" />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink/70 via-transparent to-ink/40" />
+        <div className="absolute inset-0 bg-gradient-to-b from-obsidian/70 via-obsidian/30 to-obsidian" />
+        <div className="absolute inset-0 bg-gradient-to-r from-obsidian/80 via-obsidian/20 to-transparent" />
+        <div className="absolute inset-0 vignette" />
 
-        {/* Sparkle particles */}
-        <Sparkle style={{ top: "18%", left: "12%" }} delay={0} />
-        <Sparkle style={{ top: "32%", left: "78%" }} delay={1.4} size={3} />
-        <Sparkle style={{ top: "62%", left: "22%" }} delay={2.1} />
-        <Sparkle style={{ top: "78%", left: "68%" }} delay={0.7} size={2} />
-        <Sparkle style={{ top: "12%", left: "60%" }} delay={3.2} />
+        <Sparkle style={{ top: "22%", left: "14%" }} delay={0} />
+        <Sparkle style={{ top: "38%", left: "72%" }} delay={1.6} size={3} />
+        <Sparkle style={{ top: "68%", left: "20%" }} delay={2.4} />
+        <Sparkle style={{ top: "82%", left: "62%" }} delay={0.9} size={2} />
+        <Sparkle style={{ top: "16%", left: "56%" }} delay={3.4} />
 
-        <div className="relative z-10 mx-auto max-w-[1400px] w-full px-6 pb-24 pt-40 md:px-10 md:py-32">
-          <div className="max-w-2xl animate-rise">
-            <p className="eyebrow text-champagne">Hong Kong · Est. Fine Jewellery</p>
-            <h1 className="mt-6 font-serif text-[13vw] leading-[0.95] tracking-[-0.02em] md:text-[5.5rem]">
-              Timeless <span className="italic text-champagne-gradient">Brilliance</span>,
-              <br />
-              Crafted for Modern Elegance.
+        <div className="pointer-events-none absolute inset-y-0 left-6 hidden md:flex flex-col justify-between py-32 z-10">
+          <span className="text-[10px] tracking-[0.5em] uppercase text-ivory/50 [writing-mode:vertical-rl] rotate-180">
+            Hong Kong · MMXXV
+          </span>
+          <span className="text-[10px] tracking-[0.5em] uppercase text-gold [writing-mode:vertical-rl] rotate-180">
+            Maison N° 01
+          </span>
+        </div>
+        <div className="pointer-events-none absolute inset-y-0 right-6 hidden md:flex flex-col justify-between py-32 z-10">
+          <span className="text-[10px] tracking-[0.5em] uppercase text-ivory/50 [writing-mode:vertical-rl]">
+            Natural · Lab Grown
+          </span>
+          <span className="text-[10px] tracking-[0.5em] uppercase text-ivory/50 [writing-mode:vertical-rl]">
+            GIA · IGI Certified
+          </span>
+        </div>
+
+        <div className="relative z-10 mx-auto max-w-[1500px] w-full px-6 pt-40 pb-24 md:px-16 md:pt-48 md:pb-32 min-h-[100svh] flex flex-col justify-end">
+          <div className="max-w-4xl animate-rise-slow">
+            <div className="flex items-center gap-4">
+              <span className="h-px w-14 bg-gold" />
+              <p className="eyebrow">The Winter Edit · MMXXV</p>
+            </div>
+            <h1 className="mt-8 font-serif font-light text-[16vw] md:text-[9rem] lg:text-[11rem] leading-[0.88] tracking-[-0.035em]">
+              <span className="block">Objects</span>
+              <span className="block italic text-gold-gradient -mt-2 md:-mt-4">of quiet</span>
+              <span className="block">brilliance.</span>
             </h1>
-            <p className="mt-8 max-w-lg text-[15px] leading-relaxed text-ivory/75">
-              Discover exceptional Natural and Lab Grown Diamond jewellery designed to celebrate
-              life's most meaningful moments.
+          </div>
+
+          <div className="mt-14 flex flex-col md:flex-row md:items-end md:justify-between gap-10 animate-rise-slow" style={{ animationDelay: "0.4s" }}>
+            <p className="max-w-md text-[15px] leading-[1.7] text-ivory/70">
+              A Hong Kong maison of natural and lab grown diamond jewellery. Made slowly, by hand, for
+              the lives worth marking.
             </p>
-            <div className="mt-10 flex flex-wrap items-center gap-4">
+            <div className="flex flex-wrap items-center gap-3">
               <Link
                 to="/collections/engagement-rings"
-                className="group inline-flex items-center gap-3 bg-ivory px-8 py-4 text-[11px] tracking-[0.32em] uppercase text-ink hover:bg-champagne transition"
+                className="group relative inline-flex items-center gap-3 bg-ivory px-9 py-4 text-[10.5px] tracking-[0.4em] uppercase text-obsidian overflow-hidden"
               >
-                Explore Collections
-                <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" strokeWidth={1.5} />
+                <span className="relative">Explore Collections</span>
+                <ArrowRight className="relative h-4 w-4 transition group-hover:translate-x-1" strokeWidth={1.4} />
               </Link>
               <a
-                href={buildWhatsAppLink("Hello Oriva Jewels, I'd like to book a consultation.")}
+                href={buildWhatsAppLink("Hello Oriva Jewels, I'd like a private consultation.")}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-3 border border-ivory/40 px-8 py-4 text-[11px] tracking-[0.32em] uppercase text-ivory hover:border-champagne hover:text-champagne transition"
+                className="group inline-flex items-center gap-3 border border-ivory/25 px-9 py-4 text-[10.5px] tracking-[0.4em] uppercase text-ivory hover:border-gold hover:text-gold transition"
               >
-                <MessageCircle className="h-4 w-4" strokeWidth={1.5} />
-                WhatsApp Consultation
+                <MessageCircle className="h-4 w-4" strokeWidth={1.4} />
+                Private Consultation
               </a>
             </div>
           </div>
         </div>
-
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 hidden md:flex flex-col items-center gap-2 text-ivory/50">
-          <span className="text-[9px] tracking-[0.5em] uppercase">Scroll</span>
-          <span className="h-10 w-px bg-gradient-to-b from-champagne to-transparent" />
-        </div>
       </section>
 
       {/* MARQUEE */}
-      <div className="border-y border-border/60 bg-ivory overflow-hidden">
-        <div className="animate-marquee flex gap-16 whitespace-nowrap py-5">
-          {Array.from({ length: 2 }).map((_, i) => (
-            <div key={i} className="flex items-center gap-16">
+      <div className="relative overflow-hidden border-y border-white/5 bg-obsidian py-6">
+        <div className="animate-marquee flex gap-24 whitespace-nowrap">
+          {Array.from({ length: 3 }).map((_, i) => (
+            <div key={i} className="flex items-center gap-24">
               {[
+                "Natural Diamonds",
+                "Lab Grown Diamonds",
                 "GIA & IGI Certified",
-                "Natural & Lab Grown",
-                "Bespoke Atelier",
-                "Worldwide Shipping",
-                "Hong Kong · Dubai · Singapore",
-                "Handcrafted",
+                "Hong Kong Atelier",
+                "Bespoke Design",
+                "Insured Worldwide",
+                "By Appointment",
               ].map((t) => (
-                <span key={t} className="flex items-center gap-16 text-[11px] tracking-[0.4em] uppercase text-ink/70">
-                  <span className="h-1 w-1 rounded-full bg-champagne" />
+                <span key={t} className="flex items-center gap-24 font-serif italic text-2xl md:text-3xl text-ivory/40">
+                  <span className="text-gold text-3xl md:text-4xl">✦</span>
                   {t}
                 </span>
               ))}
@@ -143,63 +155,159 @@ function HomePage() {
         </div>
       </div>
 
-      {/* FEATURED COLLECTIONS */}
-      <section className="py-24 md:py-32">
-        <div className="mx-auto max-w-[1400px] px-6 md:px-10">
-          <Reveal className="max-w-2xl">
-            <p className="eyebrow">The Collections</p>
-            <h2 className="mt-5 font-serif text-4xl md:text-6xl leading-[1.02]">
-              An edit of quiet, considered pieces.
-            </h2>
+      {/* MANIFESTO */}
+      <section className="relative py-32 md:py-48 bg-ink">
+        <div className="mx-auto max-w-[1400px] px-6 md:px-16">
+          <div className="grid gap-16 md:grid-cols-12 md:gap-24 items-start">
+            <Reveal className="md:col-span-4 md:sticky md:top-40">
+              <p className="eyebrow">— Manifesto</p>
+              <p className="mt-8 text-[13px] tracking-[0.25em] uppercase text-ivory/50">
+                Chapter One
+              </p>
+            </Reveal>
+            <Reveal delay={200} className="md:col-span-8">
+              <p className="font-serif font-light text-3xl md:text-5xl lg:text-6xl leading-[1.15] text-ivory">
+                We believe the finest jewellery is <em className="text-gold-gradient">never loud</em>.
+                It is worn every day, folded into small gestures — a hand raised, a
+                letter signed, a promise made. It becomes, in time, a
+                <em className="text-gold-gradient"> quiet second skin</em>.
+              </p>
+              <div className="mt-12 flex items-center gap-6">
+                <span className="h-px flex-1 bg-white/10" />
+                <span className="text-[10px] tracking-[0.42em] uppercase text-gold">Oriva · Hong Kong</span>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* COLLECTIONS INDEX */}
+      <section className="relative py-24 md:py-36 bg-ink">
+        <div className="mx-auto max-w-[1500px] px-6 md:px-16">
+          <Reveal className="flex items-end justify-between gap-6 flex-wrap">
+            <div className="max-w-xl">
+              <p className="eyebrow">The Index</p>
+              <h2 className="mt-6 font-serif text-5xl md:text-7xl leading-[1] text-ivory">
+                Six chapters.<br />
+                <em className="text-gold-gradient">One maison.</em>
+              </h2>
+            </div>
+            <Link
+              to="/about"
+              className="hidden md:inline-flex items-center gap-2 text-[10px] tracking-[0.4em] uppercase text-gold border-b border-gold/60 pb-1 hover:text-ivory hover:border-ivory transition"
+            >
+              Our craftsmanship <ArrowUpRight className="h-3.5 w-3.5" />
+            </Link>
           </Reveal>
 
-          <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
+          <div className="mt-20">
             {collections.map((c, i) => (
-              <Reveal key={c.title} delay={i * 80} className={c.tall ? "md:row-span-2" : ""}>
+              <Reveal key={c.title} delay={i * 60}>
                 <Link
                   to={c.to}
-                  className="group relative block overflow-hidden bg-secondary"
+                  className="group grid grid-cols-12 items-center gap-6 border-t border-white/10 py-6 md:py-8 hover:bg-white/[0.02] transition"
                 >
-                  <div className={`relative ${c.tall ? "aspect-[3/4] md:aspect-[3/5]" : "aspect-[4/5]"}`}>
-                    <img
-                      src={c.img}
-                      alt={c.title}
-                      loading="lazy"
-                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1600ms] ease-out group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-ink/60 via-ink/10 to-transparent" />
-                    <div className="absolute inset-x-0 bottom-0 p-6 md:p-8 text-ivory">
-                      <h3 className="font-serif text-2xl md:text-3xl">{c.title}</h3>
-                      <span className="mt-3 inline-flex items-center gap-2 text-[10px] tracking-[0.32em] uppercase text-ivory/80">
-                        Explore Collection
-                        <ArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-1" strokeWidth={1.5} />
-                      </span>
+                  <span className="col-span-2 md:col-span-1 text-[10px] tracking-[0.4em] uppercase text-gold">
+                    {c.n}
+                  </span>
+                  <h3 className="col-span-10 md:col-span-5 font-serif text-3xl md:text-5xl text-ivory group-hover:text-gold group-hover:italic transition-all duration-500">
+                    {c.title}
+                  </h3>
+                  <div className="col-span-8 md:col-span-4 hidden md:block">
+                    <div className="relative aspect-[16/9] overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-700 -translate-y-2 group-hover:translate-y-0">
+                      <img src={c.img} alt={c.title} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
                     </div>
                   </div>
+                  <span className="col-span-4 md:col-span-2 justify-self-end flex items-center gap-2 text-[10px] tracking-[0.4em] uppercase text-ivory/50 group-hover:text-gold transition">
+                    View
+                    <ArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-1" strokeWidth={1.4} />
+                  </span>
                 </Link>
               </Reveal>
             ))}
+            <div className="border-t border-white/10" />
+          </div>
+        </div>
+      </section>
+
+      {/* SIGNATURE */}
+      <section className="relative isolate overflow-hidden bg-obsidian text-ivory">
+        <div className="mx-auto max-w-[1600px] grid md:grid-cols-2 items-stretch">
+          <div className="relative aspect-[4/5] md:aspect-auto md:min-h-[720px] overflow-hidden order-2 md:order-1">
+            <img
+              src={editorialImg}
+              alt="Signature marquise on velvet"
+              loading="lazy"
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-obsidian/60 to-transparent" />
+            <div className="absolute bottom-8 left-8 right-8 flex items-end justify-between text-ivory/70">
+              <span className="text-[10px] tracking-[0.42em] uppercase">Ref. OR-MRQ-001</span>
+              <span className="text-[10px] tracking-[0.42em] uppercase">Plate I</span>
+            </div>
+          </div>
+
+          <div className="relative order-1 md:order-2 flex items-center px-6 py-24 md:px-20 md:py-32">
+            <Reveal className="max-w-lg">
+              <p className="eyebrow">— The Signature</p>
+              <h2 className="mt-8 font-serif text-5xl md:text-7xl leading-[0.98] text-ivory">
+                The Oriva <em className="text-gold-gradient block">Marquise.</em>
+              </h2>
+              <div className="mt-10 hairline-gold w-24" />
+              <p className="mt-10 text-[15px] leading-[1.8] text-ivory/65 max-w-md">
+                A single elongated diamond, held by four platinum prongs on a whisper of a band.
+                A study in restraint — and the piece that opened our maison.
+              </p>
+
+              <dl className="mt-12 grid grid-cols-2 gap-y-4 gap-x-8 max-w-md text-sm">
+                {[
+                  ["Cut", "Marquise Brilliant"],
+                  ["Setting", "Four Prong"],
+                  ["Metal", "Platinum 950"],
+                  ["Origin", "Hand-set, Hong Kong"],
+                ].map(([k, v]) => (
+                  <div key={k} className="border-t border-white/10 pt-3">
+                    <dt className="text-[9.5px] tracking-[0.42em] uppercase text-gold">{k}</dt>
+                    <dd className="mt-1.5 font-serif text-lg text-ivory">{v}</dd>
+                  </div>
+                ))}
+              </dl>
+
+              <Link
+                to="/product/$slug"
+                params={{ slug: "marquise-solitaire-ring" }}
+                className="mt-14 group inline-flex items-center gap-3 text-[10.5px] tracking-[0.4em] uppercase text-gold border-b border-gold/50 pb-2 hover:text-ivory hover:border-ivory transition"
+              >
+                Discover the piece
+                <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" strokeWidth={1.4} />
+              </Link>
+            </Reveal>
           </div>
         </div>
       </section>
 
       {/* BEST SELLERS */}
-      <section className="bg-secondary/40 py-24 md:py-32">
-        <div className="mx-auto max-w-[1400px] px-6 md:px-10">
+      <section className="relative py-24 md:py-36 bg-ink">
+        <div className="mx-auto max-w-[1500px] px-6 md:px-16">
           <Reveal className="flex items-end justify-between gap-6 flex-wrap">
             <div>
-              <p className="eyebrow">Best Sellers</p>
-              <h2 className="mt-5 font-serif text-4xl md:text-5xl">Loved by our clients.</h2>
+              <p className="eyebrow">— Selected</p>
+              <h2 className="mt-6 font-serif text-5xl md:text-6xl text-ivory">
+                Most <em className="text-gold-gradient">requested.</em>
+              </h2>
+              <p className="mt-4 max-w-md text-sm text-ivory/55">
+                A rotating edit of the pieces our clients return to, season after season.
+              </p>
             </div>
             <Link
               to="/collections/engagement-rings"
-              className="text-[11px] tracking-[0.32em] uppercase border-b border-foreground pb-1 hover:text-champagne hover:border-champagne transition"
+              className="text-[10px] tracking-[0.4em] uppercase text-gold border-b border-gold/50 pb-1 hover:text-ivory hover:border-ivory transition"
             >
-              View all
+              View entire archive
             </Link>
           </Reveal>
 
-          <div className="mt-14 grid grid-cols-2 gap-6 md:grid-cols-3 md:gap-10 lg:grid-cols-3">
+          <div className="mt-16 grid grid-cols-2 gap-x-6 gap-y-14 md:grid-cols-3 md:gap-x-10 md:gap-y-20">
             {products.slice(0, 6).map((p, i) => (
               <Reveal key={p.slug} delay={i * 60}>
                 <ProductCard product={p} />
@@ -209,63 +317,87 @@ function HomePage() {
         </div>
       </section>
 
-      {/* EDITORIAL — EMERALD VELVET */}
-      <section className="relative isolate overflow-hidden bg-emerald-deep text-ivory">
-        <img
-          src={editorialImg}
-          alt="Marquise diamond ring on emerald velvet"
-          loading="lazy"
-          className="absolute inset-0 h-full w-full object-cover object-right opacity-80"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-emerald-deep via-emerald-deep/70 to-transparent" />
-
-        <div className="relative mx-auto max-w-[1400px] px-6 py-28 md:px-10 md:py-40">
-          <Reveal className="max-w-xl">
-            <p className="eyebrow">Editorial</p>
-            <h2 className="mt-5 font-serif text-5xl md:text-7xl italic leading-[0.95]">
-              Designed to be remembered.
-            </h2>
-            <p className="mt-8 max-w-md text-[15px] leading-relaxed text-ivory/75">
-              The Oriva Marquise — a study in poise. A single elongated diamond, four platinum
-              prongs, and nothing else.
+      {/* ATELIER */}
+      <section className="relative bg-obsidian py-24 md:py-36 overflow-hidden">
+        <div className="mx-auto max-w-[1500px] px-6 md:px-16 grid gap-12 md:grid-cols-12 md:gap-16 items-center">
+          <Reveal className="md:col-span-5">
+            <div className="relative aspect-[4/5] overflow-hidden">
+              <img src={atelier} alt="Oriva atelier, Hong Kong" loading="lazy" className="h-full w-full object-cover" />
+              <div className="absolute inset-0 border border-gold/20" />
+            </div>
+            <p className="mt-4 text-[10px] tracking-[0.42em] uppercase text-ivory/40">
+              Plate II · The Atelier
             </p>
+          </Reveal>
+
+          <Reveal delay={150} className="md:col-span-7 md:pl-8">
+            <p className="eyebrow">— The Atelier</p>
+            <h2 className="mt-6 font-serif text-5xl md:text-7xl leading-[1] text-ivory">
+              Every stone <em className="text-gold-gradient">chosen</em>.
+              <br />Every piece <em className="text-gold-gradient">finished</em> by hand.
+            </h2>
+            <div className="mt-10 space-y-6 text-[15px] leading-[1.8] text-ivory/65 max-w-lg">
+              <p>
+                Our atelier sits in Central, Hong Kong. It is small — deliberately so. Every piece
+                that leaves it has been sourced, set and signed by the same hands.
+              </p>
+              <p>
+                We work in both natural and lab grown diamonds, certified by GIA and IGI — with the
+                same craftsmanship applied to both. The choice is yours; the standard is ours.
+              </p>
+            </div>
+
+            <div className="mt-12 grid grid-cols-3 gap-8 max-w-lg">
+              {[
+                ["05", "Diamond specialists"],
+                ["100%", "Certified stones"],
+                ["30d", "Bespoke lead time"],
+              ].map(([k, v]) => (
+                <div key={k}>
+                  <p className="font-serif text-3xl md:text-4xl text-gold-gradient">{k}</p>
+                  <p className="mt-2 text-[10px] tracking-[0.32em] uppercase text-ivory/50">{v}</p>
+                </div>
+              ))}
+            </div>
+
             <Link
-              to="/product/$slug"
-              params={{ slug: "marquise-solitaire-ring" }}
-              className="mt-10 inline-flex items-center gap-3 border border-champagne px-8 py-4 text-[11px] tracking-[0.32em] uppercase text-champagne hover:bg-champagne hover:text-emerald-deep transition"
+              to="/about"
+              className="mt-12 inline-flex items-center gap-3 text-[10.5px] tracking-[0.4em] uppercase text-gold border-b border-gold/50 pb-2 hover:text-ivory hover:border-ivory transition"
             >
-              Discover the piece
-              <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
+              Enter the maison <ArrowRight className="h-4 w-4" strokeWidth={1.4} />
             </Link>
           </Reveal>
         </div>
       </section>
 
-      {/* SHOP BY OCCASION */}
-      <section className="py-24 md:py-32">
-        <div className="mx-auto max-w-[1400px] px-6 md:px-10">
-          <Reveal className="text-center">
-            <p className="eyebrow">Shop by Occasion</p>
-            <h2 className="mt-5 font-serif text-4xl md:text-5xl">For every meaningful moment.</h2>
+      {/* OCCASIONS */}
+      <section className="py-24 md:py-36 bg-ink">
+        <div className="mx-auto max-w-[1500px] px-6 md:px-16">
+          <Reveal className="text-center max-w-xl mx-auto">
+            <p className="eyebrow">— The Occasions</p>
+            <h2 className="mt-6 font-serif text-5xl md:text-6xl text-ivory">
+              For every <em className="text-gold-gradient">moment worth marking.</em>
+            </h2>
           </Reveal>
 
-          <div className="mt-16 grid grid-cols-2 gap-6 md:grid-cols-5 md:gap-10">
+          <div className="mt-20 grid grid-cols-2 gap-6 md:grid-cols-5 md:gap-8">
             {occasions.map((o, i) => (
-              <Reveal key={o.label} delay={i * 60} className="group text-center">
-                <Link
-                  to="/collections/engagement-rings"
-                  className="block"
-                >
-                  <div className="relative mx-auto aspect-square w-full max-w-[220px] overflow-hidden rounded-full">
+              <Reveal key={o.label} delay={i * 60} className="group">
+                <Link to="/collections/engagement-rings" className="block">
+                  <div className="relative aspect-[3/4] overflow-hidden">
                     <img
                       src={o.img}
                       alt={o.label}
                       loading="lazy"
-                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-110"
+                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1600ms] ease-out group-hover:scale-110"
                     />
-                    <span className="absolute inset-0 rounded-full ring-1 ring-inset ring-champagne/30" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-obsidian/80 via-obsidian/10 to-transparent" />
+                    <div className="absolute inset-x-0 bottom-0 p-4 md:p-6">
+                      <p className="text-[9px] tracking-[0.42em] uppercase text-gold">{o.tag}</p>
+                      <p className="mt-1 font-serif text-2xl md:text-3xl text-ivory">{o.label}</p>
+                    </div>
+                    <span className="absolute inset-0 border border-transparent group-hover:border-gold/40 transition duration-500" />
                   </div>
-                  <p className="mt-5 font-serif text-xl">{o.label}</p>
                 </Link>
               </Reveal>
             ))}
@@ -273,34 +405,40 @@ function HomePage() {
         </div>
       </section>
 
-      {/* WHY ORIVA */}
-      <section className="relative isolate overflow-hidden bg-ink text-ivory py-24 md:py-32">
-        <div className="absolute inset-0 opacity-30 pointer-events-none"
+      {/* PROMISES */}
+      <section className="relative isolate overflow-hidden bg-obsidian py-24 md:py-36">
+        <div
+          aria-hidden
+          className="absolute inset-0 opacity-40 pointer-events-none"
           style={{
             backgroundImage:
-              "radial-gradient(circle at 20% 30%, oklch(0.79 0.055 78 / 0.25), transparent 40%), radial-gradient(circle at 80% 70%, oklch(0.32 0.06 160 / 0.35), transparent 45%)",
+              "radial-gradient(circle at 15% 20%, oklch(0.79 0.11 82 / 0.15), transparent 45%), radial-gradient(circle at 85% 80%, oklch(0.62 0.11 72 / 0.18), transparent 45%)",
           }}
         />
-        <div className="relative mx-auto max-w-[1400px] px-6 md:px-10">
+        <div className="relative mx-auto max-w-[1500px] px-6 md:px-16">
           <Reveal className="max-w-2xl">
-            <p className="eyebrow">Why Oriva</p>
-            <h2 className="mt-5 font-serif text-4xl md:text-5xl">
-              The maison way — refined, personal, uncompromising.
+            <p className="eyebrow">— The Standard</p>
+            <h2 className="mt-6 font-serif text-5xl md:text-7xl leading-[1] text-ivory">
+              Four <em className="text-gold-gradient">promises</em>,
+              made once, held forever.
             </h2>
           </Reveal>
 
-          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-20 grid gap-px bg-white/10 border border-white/10 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              { icon: ShieldCheck, title: "Certified Diamonds", body: "GIA and IGI certified stones, individually inspected." },
-              { icon: Gem, title: "Natural & Lab Grown", body: "Freedom of choice with equal craftsmanship." },
-              { icon: Globe2, title: "Worldwide Shipping", body: "Insured delivery to Hong Kong, Dubai, Singapore and beyond." },
-              { icon: Sparkles, title: "Personal Consultation", body: "Guided design and sourcing, one client at a time." },
+              { icon: ShieldCheck, n: "I", title: "Certified Origin", body: "Every stone accompanied by GIA or IGI certification, individually inspected in our atelier." },
+              { icon: Gem, n: "II", title: "Natural or Lab", body: "The same craftsmanship applied to both — the choice is entirely yours, without compromise." },
+              { icon: Sparkles, n: "III", title: "Bespoke Atelier", body: "One-to-one design consultations for engagement rings and reimagined heirloom pieces." },
+              { icon: Globe2, n: "IV", title: "Insured Worldwide", body: "Delivered by hand or by air, fully insured to Hong Kong, Dubai, Singapore, EU and US." },
             ].map((f, i) => (
-              <Reveal key={f.title} delay={i * 80}>
-                <div className="h-full border border-white/10 bg-white/[0.02] backdrop-blur-sm p-8 hover:border-champagne/40 hover:bg-white/[0.04] transition">
-                  <f.icon className="h-6 w-6 text-champagne" strokeWidth={1.2} />
-                  <h3 className="mt-6 font-serif text-2xl">{f.title}</h3>
-                  <p className="mt-3 text-sm text-ivory/60 leading-relaxed">{f.body}</p>
+              <Reveal key={f.title} delay={i * 70}>
+                <div className="h-full bg-obsidian p-8 md:p-10 group">
+                  <div className="flex items-center justify-between">
+                    <f.icon className="h-6 w-6 text-gold" strokeWidth={1.1} />
+                    <span className="font-serif italic text-3xl text-white/10 group-hover:text-gold/40 transition">{f.n}</span>
+                  </div>
+                  <h3 className="mt-10 font-serif text-2xl md:text-3xl text-ivory">{f.title}</h3>
+                  <p className="mt-4 text-sm text-ivory/55 leading-[1.7]">{f.body}</p>
                 </div>
               </Reveal>
             ))}
@@ -308,60 +446,43 @@ function HomePage() {
         </div>
       </section>
 
-      {/* ATELIER STRIP */}
-      <section className="py-24 md:py-32">
-        <div className="mx-auto max-w-[1400px] px-6 md:px-10 grid gap-12 md:grid-cols-2 md:items-center">
-          <Reveal>
-            <p className="eyebrow">The Atelier</p>
-            <h2 className="mt-5 font-serif text-4xl md:text-5xl">
-              A Hong Kong-based <em className="italic text-champagne">fine jewellery house</em>.
-            </h2>
-            <p className="mt-6 text-[15px] leading-relaxed text-muted-foreground max-w-lg">
-              Oriva was born from a simple conviction — that fine jewellery should feel personal.
-              Every piece is designed in Hong Kong and finished by hand, one stone at a time.
-            </p>
-            <Link
-              to="/about"
-              className="mt-10 inline-flex items-center gap-3 border-b border-foreground pb-1 text-[11px] tracking-[0.32em] uppercase hover:text-champagne hover:border-champagne transition"
-            >
-              Our Story <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.5} />
-            </Link>
-          </Reveal>
-          <Reveal delay={120}>
-            <div className="relative aspect-[4/3] overflow-hidden">
-              <img src={atelier} alt="Oriva atelier" loading="lazy" className="h-full w-full object-cover" />
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
       {/* INSTAGRAM */}
-      <section className="pb-24 md:pb-32">
-        <div className="mx-auto max-w-[1400px] px-6 md:px-10">
-          <Reveal className="text-center">
-            <p className="eyebrow">@orivajewels</p>
-            <h2 className="mt-5 font-serif text-4xl md:text-5xl">Follow the maison.</h2>
+      <section className="py-24 md:py-36 bg-ink">
+        <div className="mx-auto max-w-[1600px] px-6 md:px-16">
+          <Reveal className="flex items-end justify-between gap-6 flex-wrap">
+            <div>
+              <p className="eyebrow">— @orivajewels</p>
+              <h2 className="mt-6 font-serif text-4xl md:text-6xl text-ivory">
+                Follow the <em className="text-gold-gradient">maison.</em>
+              </h2>
+            </div>
+            <a
+              href="https://instagram.com/orivajewels"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 text-[10px] tracking-[0.4em] uppercase text-gold border-b border-gold/50 pb-1 hover:text-ivory hover:border-ivory transition"
+            >
+              Follow on Instagram <ArrowUpRight className="h-3.5 w-3.5" />
+            </a>
           </Reveal>
 
-          <div className="mt-14 grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4 auto-rows-[180px] md:auto-rows-[240px]">
-            {insta.map((it, i) => (
+          <div className="mt-14 grid grid-cols-3 md:grid-cols-6 gap-2 md:gap-3">
+            {insta.map((img, i) => (
               <a
                 key={i}
                 href="https://instagram.com/orivajewels"
                 target="_blank"
                 rel="noreferrer"
-                className={`group relative overflow-hidden ${it.span}`}
+                className="group relative aspect-square overflow-hidden"
               >
                 <img
-                  src={it.img}
+                  src={img}
                   alt="Oriva Jewels on Instagram"
                   loading="lazy"
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] group-hover:scale-110"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1600ms] group-hover:scale-110"
                 />
-                <span className="absolute inset-0 bg-ink/40 opacity-0 group-hover:opacity-100 transition duration-500 grid place-items-center">
-                  <span className="text-[10px] tracking-[0.3em] uppercase text-ivory">
-                    View on Instagram
-                  </span>
+                <span className="absolute inset-0 bg-obsidian/60 opacity-0 group-hover:opacity-100 transition duration-500 grid place-items-center">
+                  <span className="text-gold text-2xl">✦</span>
                 </span>
               </a>
             ))}
@@ -383,12 +504,13 @@ function Sparkle({
 }) {
   return (
     <span
-      className="absolute pointer-events-none rounded-full bg-champagne blur-[0.5px] animate-sparkle"
+      aria-hidden
+      className="absolute pointer-events-none rounded-full bg-gold animate-sparkle z-10"
       style={{
         ...style,
         width: `${size * 2}px`,
         height: `${size * 2}px`,
-        boxShadow: "0 0 12px 2px var(--champagne)",
+        boxShadow: "0 0 18px 3px var(--gold), 0 0 40px 6px oklch(0.79 0.11 82 / 0.3)",
         animationDelay: `${delay}s`,
       }}
     />
