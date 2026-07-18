@@ -1,7 +1,8 @@
 import { Link } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { buildWhatsAppLink } from "@/lib/products";
+import { ensureGsap } from "@/lib/gsap";
 
 function WhatsAppIcon({ className = "" }: { className?: string }) {
   return (
