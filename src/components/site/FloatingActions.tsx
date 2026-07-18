@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { ArrowUp, MessageCircle } from "lucide-react";
-import { buildWhatsAppLink } from "@/lib/products";
+import { ArrowUp } from "lucide-react";
 
 export function FloatingActions() {
   const [visible, setVisible] = useState(false);
@@ -14,17 +13,6 @@ export function FloatingActions() {
 
   return (
     <div className="fixed right-4 md:right-6 bottom-24 md:bottom-8 z-[55] flex flex-col items-end gap-3">
-      <a
-        href={buildWhatsAppLink("Hello Oriva Jewels, I'd like to enquire.")}
-        target="_blank"
-        rel="noreferrer"
-        aria-label="Chat on WhatsApp"
-        className="group relative grid h-14 w-14 place-items-center rounded-full bg-[#25D366] text-white shadow-[0_10px_30px_-8px_rgba(37,211,102,0.6)] hover:scale-105 transition"
-      >
-        <span className="absolute inset-0 rounded-full bg-[#25D366] opacity-70 animate-ping [animation-duration:2.4s]" aria-hidden />
-        <MessageCircle className="relative h-6 w-6" strokeWidth={1.6} />
-      </a>
-
       <button
         type="button"
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
