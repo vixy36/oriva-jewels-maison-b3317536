@@ -43,7 +43,7 @@ export function MobileBottomNav() {
                       />
                     )}
                     <Icon className="h-[18px] w-[18px]" strokeWidth={1.4} />
-                    <span className="text-[8.5px] tracking-[0.28em] uppercase font-medium">
+                    <span className="text-[10px] tracking-[0.22em] uppercase font-medium leading-none whitespace-nowrap">
                       {item.label}
                     </span>
                   </Link>
