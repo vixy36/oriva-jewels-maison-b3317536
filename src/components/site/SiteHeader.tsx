@@ -86,7 +86,8 @@ export function SiteHeader() {
       <header
         ref={headerRef}
         className="fixed inset-x-0 top-0 z-50 border-b border-transparent will-change-transform"
-        style={{ backgroundColor: "rgba(3,3,3,0.4)", backdropFilter: "blur(6px)" }}
+        style={{ backgroundColor: "rgba(7,28,55,0.78)", backdropFilter: "blur(8px)" }}
+      data-surface="dark"
       >
         <div ref={navItemsRef} className="mx-auto grid max-w-[1600px] grid-cols-[1fr_auto_1fr] items-center gap-6 px-6 py-5 md:px-10 md:py-6">
           <div className="flex items-center gap-6">
