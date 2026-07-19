@@ -139,6 +139,15 @@ export function SiteHeader() {
                 </Link>
               ))}
             </nav>
+            <button
+              type="button"
+              onClick={() => setSearchOpen(true)}
+              className="hidden lg:inline-flex items-center gap-2 text-[14px] tracking-[0.32em] uppercase text-gold hover:text-ivory transition"
+              aria-label="Search"
+            >
+              <Search className="h-3.5 w-3.5" strokeWidth={1.6} />
+              Search
+            </button>
             <a
               href={buildWhatsAppLink("Hello Oriva Jewels, I'd like a private consultation.")}
               target="_blank"
@@ -147,17 +156,16 @@ export function SiteHeader() {
               aria-label="WhatsApp"
             >
               <WhatsAppIcon className="h-3.5 w-3.5" />
-              Enquire
+              WhatsApp
             </a>
-            <a
-              href={buildWhatsAppLink("Hello Oriva Jewels")}
-              target="_blank"
-              rel="noreferrer"
+            <button
+              type="button"
+              onClick={() => setSearchOpen(true)}
               className="md:hidden text-ivory"
-              aria-label="WhatsApp"
+              aria-label="Search"
             >
-              <WhatsAppIcon className="h-5 w-5" />
-            </a>
+              <Search className="h-5 w-5" strokeWidth={1.6} />
+            </button>
           </div>
         </div>
         <div className="h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
