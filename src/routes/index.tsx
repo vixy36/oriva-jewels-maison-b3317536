@@ -172,9 +172,9 @@ function HomePage() {
 
       {/* MARQUEE */}
       <div className="relative overflow-hidden border-y border-white/5 bg-obsidian py-6">
-        <div className="animate-marquee flex gap-24 whitespace-nowrap">
+        <div className="animate-marquee flex gap-10 whitespace-nowrap">
           {Array.from({ length: 3 }).map((_, i) => (
-            <div key={i} className="flex items-center gap-24">
+            <div key={i} className="flex items-center gap-10">
               {[
                 "Natural Diamonds",
                 "Lab Grown Diamonds",
@@ -184,7 +184,7 @@ function HomePage() {
                 "Insured Worldwide",
                 "By Appointment",
               ].map((t) => (
-                <span key={t} className="flex items-center gap-24 font-serif italic text-2xl md:text-3xl text-ivory/80">
+                <span key={t} className="flex items-center gap-3 font-serif italic text-2xl md:text-3xl text-ivory/80">
                   <span className="text-gold text-3xl md:text-4xl">✦</span>
                   {t}
                 </span>
