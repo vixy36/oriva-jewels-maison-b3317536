@@ -45,9 +45,9 @@ export function SiteHeader() {
       if (next === scrolled) return;
       scrolled = next;
       gsap.to(header, {
-        backgroundColor: next ? "rgba(10,10,10,0.72)" : "rgba(3,3,3,0.4)",
-        backdropFilter: next ? "blur(20px)" : "blur(6px)",
-        borderBottomColor: next ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0)",
+        backgroundColor: next ? "rgba(7,28,55,0.92)" : "rgba(7,28,55,0.78)",
+        backdropFilter: next ? "blur(20px)" : "blur(8px)",
+        borderBottomColor: next ? "rgba(255,255,255,0.08)" : "rgba(255,255,255,0)",
         duration: 0.5,
         ease: "power2.out",
         overwrite: "auto",
