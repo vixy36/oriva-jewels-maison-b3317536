@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { buildWhatsAppLink } from "@/lib/products";
 import { ensureGsap } from "@/lib/gsap";
+import orivaLogo from "@/assets/oriva-logo.png.asset.json";
 
 function WhatsAppIcon({ className = "" }: { className?: string }) {
   return (
