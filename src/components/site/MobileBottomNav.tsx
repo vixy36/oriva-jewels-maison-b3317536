@@ -1,6 +1,6 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { Home, Gem, BookOpen, MessageCircle } from "lucide-react";
-// bottom nav labels
+import { buildWhatsAppLink } from "@/lib/products";
 import { buildWhatsAppLink } from "@/lib/products";
 
 const items = [
