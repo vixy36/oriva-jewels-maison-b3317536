@@ -114,13 +114,13 @@ export function SiteHeader() {
             </nav>
           </div>
 
-          <Link ref={logoRef} to="/" className="group flex flex-col items-center">
-            <span className="font-serif text-2xl md:text-[26px] tracking-[0.5em] text-ivory leading-none">
-              ORIVA
-            </span>
-            <span className="mt-1 font-sans text-[8.5px] tracking-[0.55em] text-gold">
-              - JEWELS -
-            </span>
+          <Link ref={logoRef} to="/" className="group flex items-center justify-center" aria-label="Oriva Jewels">
+            <img
+              src={orivaLogo.url}
+              alt="Oriva Jewels"
+              className="h-12 md:h-14 w-auto brightness-0 invert"
+              draggable={false}
+            />
           </Link>
 
           <div className="flex items-center justify-end gap-6">
