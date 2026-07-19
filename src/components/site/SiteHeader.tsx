@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Search } from "lucide-react";
+import { SearchDialog } from "@/components/site/SearchDialog";
 import { buildWhatsAppLink } from "@/lib/products";
 import { ensureGsap } from "@/lib/gsap";
 import orivaLogo from "@/assets/oriva-logo.png.asset.json";
