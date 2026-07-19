@@ -202,6 +202,7 @@ export function SiteHeader() {
           </div>
         </div>
       )}
+      <SearchDialog open={searchOpen} onClose={() => setSearchOpen(false)} />
     </>
   );
 }
