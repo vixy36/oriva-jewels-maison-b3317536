@@ -10,7 +10,7 @@
  * Cormorant Garamond (display) × Karla (body).
  */
 
-@theme inline {
+@theme {
   --radius-sm: 0px;
   --radius-md: 0px;
   --radius-lg: 0px;
