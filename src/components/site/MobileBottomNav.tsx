@@ -32,9 +32,7 @@ export function MobileBottomNav() {
                 <li key={item.to} className="flex-1">
                   <Link
                     to={item.to}
-                    className={`relative flex flex-col items-center justify-center gap-1 px-3 py-2 transition ${
-                      active ? "text-gold" : "text-ivory"
-                    }`}
+                    className="relative flex flex-col items-center justify-center gap-1 px-3 py-2 text-gold transition"
                   >
                     {active && (
                       <span
