@@ -260,7 +260,7 @@ function PillGroup({
               onClick={() => onChange(o)}
               className={`px-4 py-2.5 text-[14px] tracking-[0.15em] transition ${
                 active
-                  ? "bg-ivory text-obsidian"
+                  ? "bg-gold text-obsidian"
                   : "border border-white/15 text-ivory/85 hover:border-gold hover:text-gold"
               }`}
             >
