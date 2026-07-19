@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { buildWhatsAppLink } from "@/lib/products";
 import { ensureGsap } from "@/lib/gsap";
+import orivaLogo from "@/assets/oriva-logo.png.asset.json";
 
 function WhatsAppIcon({ className = "" }: { className?: string }) {
   return (
@@ -45,8 +46,8 @@ export function SiteHeader() {
       if (next === scrolled) return;
       scrolled = next;
       gsap.to(header, {
-        backgroundColor: next ? "rgba(7,28,55,0.92)" : "rgba(7,28,55,0.78)",
-        backdropFilter: next ? "blur(20px)" : "blur(8px)",
+        backgroundColor: next ? "rgba(7,28,55,0.96)" : "rgba(7,28,55,0.92)",
+        backdropFilter: next ? "blur(20px)" : "blur(14px)",
         borderBottomColor: next ? "rgba(255,255,255,0.08)" : "rgba(255,255,255,0)",
         duration: 0.5,
         ease: "power2.out",
@@ -86,7 +87,7 @@ export function SiteHeader() {
       <header
         ref={headerRef}
         className="fixed inset-x-0 top-0 z-50 border-b border-transparent will-change-transform"
-        style={{ backgroundColor: "rgba(7,28,55,0.78)", backdropFilter: "blur(8px)" }}
+        style={{ backgroundColor: "rgba(7,28,55,0.92)", backdropFilter: "blur(14px)" }}
       data-surface="dark"
       >
         <div ref={navItemsRef} className="mx-auto grid max-w-[1600px] grid-cols-[1fr_auto_1fr] items-center gap-6 px-6 py-5 md:px-10 md:py-6">
@@ -113,13 +114,13 @@ export function SiteHeader() {
             </nav>
           </div>
 
-          <Link ref={logoRef} to="/" className="group flex flex-col items-center">
-            <span className="font-serif text-2xl md:text-[26px] tracking-[0.5em] text-ivory leading-none">
-              ORIVA
-            </span>
-            <span className="mt-1 font-sans text-[8.5px] tracking-[0.55em] text-gold">
-              - JEWELS -
-            </span>
+          <Link ref={logoRef} to="/" className="group flex items-center justify-center" aria-label="Oriva Jewels">
+            <img
+              src={orivaLogo.url}
+              alt="Oriva Jewels"
+              className="h-12 md:h-14 w-auto brightness-0 invert"
+              draggable={false}
+            />
           </Link>
 
           <div className="flex items-center justify-end gap-6">
