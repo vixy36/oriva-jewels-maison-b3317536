@@ -318,7 +318,7 @@
   animation: fade-in 1.4s ease-out both;
 }
 @utility animate-marquee {
-  animation: marquee 55s linear infinite;
+  animation: marquee 22s linear infinite;
 }
 @utility animate-pulse-gold {
   animation: pulse-gold 2.4s ease-out infinite;
