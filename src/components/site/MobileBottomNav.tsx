@@ -33,7 +33,7 @@ export function MobileBottomNav() {
                   <Link
                     to={item.to}
                     className={`relative flex flex-col items-center justify-center gap-1 px-3 py-2 transition ${
-                      active ? "text-gold" : "text-ivory/55"
+                      active ? "text-gold" : "text-ivory"
                     }`}
                   >
                     {active && (
