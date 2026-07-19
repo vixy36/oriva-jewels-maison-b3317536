@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Search } from "lucide-react";
+import { SearchDialog } from "@/components/site/SearchDialog";
 import { buildWhatsAppLink } from "@/lib/products";
 import { ensureGsap } from "@/lib/gsap";
 import orivaLogo from "@/assets/oriva-logo.png.asset.json";
@@ -24,6 +25,7 @@ const nav = [
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const headerRef = useRef<HTMLElement | null>(null);
   const logoRef = useRef<HTMLAnchorElement | null>(null);
   const navItemsRef = useRef<HTMLDivElement | null>(null);
@@ -137,6 +139,15 @@ export function SiteHeader() {
                 </Link>
               ))}
             </nav>
+            <button
+              type="button"
+              onClick={() => setSearchOpen(true)}
+              className="hidden lg:inline-flex items-center gap-2 text-[14px] tracking-[0.32em] uppercase text-gold hover:text-ivory transition"
+              aria-label="Search"
+            >
+              <Search className="h-3.5 w-3.5" strokeWidth={1.6} />
+              Search
+            </button>
             <a
               href={buildWhatsAppLink("Hello Oriva Jewels, I'd like a private consultation.")}
               target="_blank"
@@ -145,17 +156,16 @@ export function SiteHeader() {
               aria-label="WhatsApp"
             >
               <WhatsAppIcon className="h-3.5 w-3.5" />
-              Enquire
+              WhatsApp
             </a>
-            <a
-              href={buildWhatsAppLink("Hello Oriva Jewels")}
-              target="_blank"
-              rel="noreferrer"
+            <button
+              type="button"
+              onClick={() => setSearchOpen(true)}
               className="md:hidden text-ivory"
-              aria-label="WhatsApp"
+              aria-label="Search"
             >
-              <WhatsAppIcon className="h-5 w-5" />
-            </a>
+              <Search className="h-5 w-5" strokeWidth={1.6} />
+            </button>
           </div>
         </div>
         <div className="h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
@@ -192,6 +202,7 @@ export function SiteHeader() {
           </div>
         </div>
       )}
+      <SearchDialog open={searchOpen} onClose={() => setSearchOpen(false)} />
     </>
   );
 }
