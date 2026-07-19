@@ -108,6 +108,11 @@
   --foreground: oklch(0.97 0.008 82);
   --border: oklch(1 0 0 / 0.1);
   --muted-foreground: oklch(0.75 0.01 80);
+  --color-ivory: oklch(0.97 0.008 82);
+  --color-bone: oklch(0.88 0.012 82);
+  --color-foreground: oklch(0.97 0.008 82);
+  --color-border: oklch(1 0 0 / 0.1);
+  --color-muted-foreground: oklch(0.75 0.01 80);
 }
 
 
