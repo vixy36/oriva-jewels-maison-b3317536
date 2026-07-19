@@ -1,7 +1,6 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { Home, Gem, BookOpen, MessageCircle } from "lucide-react";
 import { buildWhatsAppLink } from "@/lib/products";
-import { buildWhatsAppLink } from "@/lib/products";
 
 const items = [
   { to: "/", label: "Home", icon: Home, match: (p: string) => p === "/" },
