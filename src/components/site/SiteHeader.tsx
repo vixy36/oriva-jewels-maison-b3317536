@@ -45,9 +45,9 @@ export function SiteHeader() {
       if (next === scrolled) return;
       scrolled = next;
       gsap.to(header, {
-        backgroundColor: next ? "rgba(10,10,10,0.72)" : "rgba(3,3,3,0.4)",
-        backdropFilter: next ? "blur(20px)" : "blur(6px)",
-        borderBottomColor: next ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0)",
+        backgroundColor: next ? "rgba(7,28,55,0.92)" : "rgba(7,28,55,0.78)",
+        backdropFilter: next ? "blur(20px)" : "blur(8px)",
+        borderBottomColor: next ? "rgba(255,255,255,0.08)" : "rgba(255,255,255,0)",
         duration: 0.5,
         ease: "power2.out",
         overwrite: "auto",
@@ -86,7 +86,8 @@ export function SiteHeader() {
       <header
         ref={headerRef}
         className="fixed inset-x-0 top-0 z-50 border-b border-transparent will-change-transform"
-        style={{ backgroundColor: "rgba(3,3,3,0.4)", backdropFilter: "blur(6px)" }}
+        style={{ backgroundColor: "rgba(7,28,55,0.78)", backdropFilter: "blur(8px)" }}
+      data-surface="dark"
       >
         <div ref={navItemsRef} className="mx-auto grid max-w-[1600px] grid-cols-[1fr_auto_1fr] items-center gap-6 px-6 py-5 md:px-10 md:py-6">
           <div className="flex items-center gap-6">

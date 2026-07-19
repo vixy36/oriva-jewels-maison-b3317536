@@ -10,7 +10,7 @@
  * Cormorant Garamond (display) × Karla (body).
  */
 
-@theme inline {
+@theme {
   --radius-sm: 0px;
   --radius-md: 0px;
   --radius-lg: 0px;
@@ -60,39 +60,61 @@
 :root {
   --radius: 0px;
 
-  /* Noir & Gold palette */
-  --obsidian: oklch(0.09 0 0);         /* #030303 deepest */
-  --ink: oklch(0.13 0 0);              /* #0a0a0a page bg */
-  --charcoal: oklch(0.17 0 0);         /* #141414 surfaces */
-  --smoke: oklch(0.24 0.005 60);       /* #262524 elevated */
-  --ivory: oklch(0.95 0.012 82);       /* #f2ece0 warm foreground */
-  --bone: oklch(0.86 0.015 82);        /* softer text */
-  --gold: oklch(0.79 0.11 82);         /* #d6a94a hero gold */
-  --gold-soft: oklch(0.88 0.08 84);    /* highlight */
-  --gold-deep: oklch(0.62 0.11 72);    /* deep antique gold */
+  /* Navy & Ivory palette
+   * Page background is warm off-white; foreground text and big titles are deep navy.
+   * Dark surfaces (hero, header, marquee, footer) use `bg-obsidian` and scope
+   * `--ivory` back to a light value so existing text-ivory markup stays readable. */
+  --obsidian: oklch(0.22 0.05 258);    /* #071c37 deep navy - dark surfaces */
+  --ink: oklch(0.965 0.003 80);        /* #f5f4f2 page bg */
+  --charcoal: oklch(0.995 0 0);        /* #fefefe cards/surfaces */
+  --smoke: oklch(0.94 0.004 80);       /* soft light gray */
+  --ivory: oklch(0.22 0.05 258);       /* #071c37 - text/titles on light bg */
+  --bone: oklch(0.38 0.04 258);        /* softer navy */
+  --gold: oklch(0.72 0.11 78);         /* refined gold accent */
+  --gold-soft: oklch(0.82 0.09 82);
+  --gold-deep: oklch(0.56 0.11 70);
   --diamond: oklch(1 0 0);
 
-  /* Shadcn mapping - dark by default */
+  /* Shadcn mapping */
   --background: var(--ink);
   --foreground: var(--ivory);
   --card: var(--charcoal);
   --card-foreground: var(--ivory);
   --popover: var(--charcoal);
   --popover-foreground: var(--ivory);
-  --primary: var(--gold);
-  --primary-foreground: var(--ink);
+  --primary: oklch(0.22 0.05 258);
+  --primary-foreground: oklch(0.995 0 0);
   --secondary: var(--charcoal);
   --secondary-foreground: var(--ivory);
   --muted: var(--smoke);
-  --muted-foreground: oklch(0.62 0.012 70);
+  --muted-foreground: oklch(0.45 0.03 258);
   --accent: var(--gold);
-  --accent-foreground: var(--ink);
+  --accent-foreground: var(--obsidian);
   --destructive: oklch(0.55 0.2 27);
   --destructive-foreground: var(--diamond);
-  --border: oklch(1 0 0 / 0.08);
-  --input: oklch(1 0 0 / 0.12);
+  --border: oklch(0.22 0.05 258 / 0.12);
+  --input: oklch(0.22 0.05 258 / 0.18);
   --ring: var(--gold);
 }
+
+/* Dark-surface scope: within navy sections, flip ivory/bone back to light
+ * so text-ivory, text-ivory/60 etc. keep working on dark backgrounds. */
+.bg-obsidian,
+.bg-obsidian *,
+[data-surface="dark"],
+[data-surface="dark"] * {
+  --ivory: oklch(0.97 0.008 82);
+  --bone: oklch(0.88 0.012 82);
+  --foreground: oklch(0.97 0.008 82);
+  --border: oklch(1 0 0 / 0.1);
+  --muted-foreground: oklch(0.75 0.01 80);
+  --color-ivory: oklch(0.97 0.008 82);
+  --color-bone: oklch(0.88 0.012 82);
+  --color-foreground: oklch(0.97 0.008 82);
+  --color-border: oklch(1 0 0 / 0.1);
+  --color-muted-foreground: oklch(0.75 0.01 80);
+}
+
 
 @layer base {
   * {
