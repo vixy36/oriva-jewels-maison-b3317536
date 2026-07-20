@@ -15,6 +15,7 @@ import { SiteHeader } from "../components/site/SiteHeader";
 import { SiteFooter } from "../components/site/SiteFooter";
 import { MobileBottomNav } from "../components/site/MobileBottomNav";
 import { FloatingActions } from "../components/site/FloatingActions";
+import { EnquireSideButton } from "../components/site/EnquireSideButton";
 
 function NotFoundComponent() {
   return (
@@ -142,6 +143,7 @@ function RootComponent() {
         <SiteFooter />
         <MobileBottomNav />
         <FloatingActions />
+        <EnquireSideButton />
       </div>
     </QueryClientProvider>
   );

@@ -148,16 +148,6 @@ export function SiteHeader() {
               <Search className="h-3.5 w-3.5" strokeWidth={1.6} />
               Search
             </button>
-            <a
-              href={buildWhatsAppLink("Hello Oriva Jewels, I'd like a private consultation.")}
-              target="_blank"
-              rel="noreferrer"
-              className="hidden lg:inline-flex items-center gap-2 text-[14px] tracking-[0.32em] uppercase text-gold hover:text-ivory transition"
-              aria-label="WhatsApp"
-            >
-              <WhatsAppIcon className="h-3.5 w-3.5" />
-              WhatsApp
-            </a>
             <button
               type="button"
               onClick={() => setSearchOpen(true)}
