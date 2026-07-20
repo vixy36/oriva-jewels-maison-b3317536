@@ -48,8 +48,8 @@ export function SiteFooter() {
             <p className="font-serif text-3xl tracking-[0.5em] text-ivory">ORIVA</p>
             <p className="mt-1 font-sans text-[14px] tracking-[0.55em] text-gold">- JEWELS -</p>
             <p className="mt-8 max-w-sm text-sm leading-relaxed text-ivory/60">
-              A Hong Kong maison of natural and lab grown diamond jewellery - designed with quiet
-              intention, finished by hand.
+              End-to-end manufacturers of natural and lab grown diamond jewellery. Designed with
+              quiet intention, finished by hand. Client advisors available 24×7, worldwide.
             </p>
             <div className="mt-10 flex gap-2">
               <SocialLink href={buildWhatsAppLink("Hello Oriva Jewels")} label="WhatsApp">
@@ -83,7 +83,7 @@ export function SiteFooter() {
             ]} />
 
             <FooterCol title="Client Services" links={[
-              { label: "Hong Kong Atelier", to: "/contact" },
+              { label: "Contact an Advisor", to: "/contact" },
               { label: "Ring Size Guide", to: "/ring-size-guide" },
               { label: WHATSAPP_DISPLAY, to: "/contact" },
               { label: "hello@orivajewels.com", to: "/contact" },
@@ -94,7 +94,7 @@ export function SiteFooter() {
 
         <div className="mt-20 flex flex-col gap-3 border-t border-white/5 pt-8 md:flex-row md:items-center md:justify-between">
           <p className="text-[11px] md:text-[13px] tracking-[0.25em] md:tracking-[0.35em] uppercase text-ivory/80">
-            © {new Date().getFullYear()} Oriva Jewels · Hong Kong SAR
+            © {new Date().getFullYear()} Oriva Jewels
           </p>
           <p className="text-[11px] md:text-[13px] tracking-[0.25em] md:tracking-[0.35em] uppercase text-ivory/80">
             GIA · IGI Certified · Insured Worldwide
