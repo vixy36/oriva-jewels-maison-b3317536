@@ -6,8 +6,8 @@ import { Reveal } from "@/components/site/Reveal";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact - Oriva Jewels, Hong Kong" },
-      { name: "description", content: "Book a private consultation with the Oriva Jewels atelier. WhatsApp, email or in-person appointments in Hong Kong." },
+      { title: "Contact - Oriva Jewels" },
+      { name: "description", content: "Speak with an Oriva Jewels advisor - virtually available 24×7, worldwide. WhatsApp, email or scheduled video consultations." },
     ],
   }),
   component: ContactPage,
@@ -27,30 +27,32 @@ function ContactPage() {
             at your convenience.
           </h1>
           <p className="mt-8 max-w-xl text-[15px] leading-[1.8] text-ivory/80">
-            Our client advisors are available in Hong Kong, or virtually - worldwide.
-            Every enquiry receives a personal reply within one business day.
+            Our client advisors are virtually available 24×7, worldwide. Every enquiry receives a
+            personal reply, typically within a few hours.
           </p>
         </Reveal>
       </section>
 
+
       <section className="mx-auto max-w-[1500px] px-6 md:px-16 grid gap-16 md:grid-cols-12 md:gap-20">
         <div className="md:col-span-5 space-y-8">
           <Reveal>
-            <InfoRow n="01" icon={MapPin} title="Hong Kong Atelier" body={"By appointment only\nCentral, Hong Kong SAR"} />
+            <InfoRow n="01" icon={MessageCircle} title="WhatsApp" body={WHATSAPP_DISPLAY} href={buildWhatsAppLink("Hello Oriva Jewels")} />
           </Reveal>
           <Reveal delay={80}>
-            <InfoRow n="02" icon={MessageCircle} title="WhatsApp" body={WHATSAPP_DISPLAY} href={buildWhatsAppLink("Hello Oriva Jewels")} />
+            <InfoRow n="02" icon={Mail} title="Email" body="hello@orivajewels.com" href="mailto:hello@orivajewels.com" />
           </Reveal>
           <Reveal delay={140}>
-            <InfoRow n="03" icon={Mail} title="Email" body="hello@orivajewels.com" href="mailto:hello@orivajewels.com" />
+            <InfoRow n="03" icon={Calendar} title="Advisor Availability" body={"Virtually available 24×7\nWorldwide, every day"} />
           </Reveal>
           <Reveal delay={200}>
-            <InfoRow n="04" icon={Calendar} title="Consultation Hours" body={"Monday – Saturday\n10:00 – 19:00 HKT"} />
+            <InfoRow n="04" icon={Globe2} title="Worldwide Shipping" body="Fully insured, hand-delivered where possible - to 40+ countries." />
           </Reveal>
           <Reveal delay={260}>
-            <InfoRow n="05" icon={Globe2} title="Worldwide Shipping" body="Insured to Hong Kong, Dubai, Singapore, US, EU and beyond." />
+            <InfoRow n="05" icon={MapPin} title="The Maison" body="End-to-end manufacturers of diamonds & fine jewellery." />
           </Reveal>
         </div>
+
 
         <Reveal delay={100} className="md:col-span-7">
           <form
@@ -101,17 +103,6 @@ function ContactPage() {
         </Reveal>
       </section>
 
-      <section className="mt-28 md:mt-36">
-        <div className="relative aspect-[16/9] md:aspect-[16/6] overflow-hidden bg-charcoal border-t border-white/10">
-          <iframe
-            title="Oriva Jewels Hong Kong"
-            src="https://www.openstreetmap.org/export/embed.html?bbox=114.15%2C22.27%2C114.18%2C22.29&amp;layer=mapnik&amp;marker=22.281%2C114.158"
-            className="h-full w-full grayscale contrast-125 invert opacity-70"
-            loading="lazy"
-          />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-obsidian/40 via-transparent to-obsidian/60" />
-        </div>
-      </section>
     </div>
   );
 }

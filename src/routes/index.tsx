@@ -382,7 +382,7 @@ function HomePage() {
                   ["Cut", "Marquise Brilliant"],
                   ["Setting", "Four Prong"],
                   ["Metal", "Platinum 950"],
-                  ["Origin", "Hand-set, Hong Kong"],
+                  ["Origin", "Hand-set, our atelier"],
                 ].map(([k, v]) => (
                   <div key={k} className="border-t border-white/10 pt-3">
                     <dt className="text-[14px] tracking-[0.42em] uppercase text-gold">{k}</dt>
