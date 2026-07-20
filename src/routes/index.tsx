@@ -115,10 +115,10 @@ function HomePage() {
 
         <div className="pointer-events-none absolute inset-y-0 left-6 hidden md:flex flex-col justify-between py-32 z-10">
           <span className="text-[14px] tracking-[0.5em] uppercase text-ivory/60 [writing-mode:vertical-rl] rotate-180">
-            Hong Kong · MMXXV
+            End-to-end Manufacturers
           </span>
           <span className="text-[14px] tracking-[0.5em] uppercase text-gold [writing-mode:vertical-rl] rotate-180">
-            Maison N° 01
+            Since MMXXV
           </span>
         </div>
         <div className="pointer-events-none absolute inset-y-0 right-6 hidden md:flex flex-col justify-between py-32 z-10">
@@ -129,6 +129,7 @@ function HomePage() {
             GIA · IGI Certified
           </span>
         </div>
+
 
         <div className="relative z-10 mx-auto max-w-[1500px] w-full px-6 pt-40 pb-24 md:px-16 md:pt-48 md:pb-32 min-h-[100svh] flex flex-col justify-end">
           <div className="max-w-4xl animate-rise-slow">
@@ -145,8 +146,9 @@ function HomePage() {
 
           <div className="mt-14 flex flex-col md:flex-row md:items-end md:justify-between gap-10 animate-rise-slow" style={{ animationDelay: "0.4s" }}>
             <p className="max-w-md text-[15px] leading-[1.7] text-ivory/85">
-              A Hong Kong maison of natural and lab grown diamond jewellery. Made slowly, by hand, for
-              the lives worth marking.
+              End-to-end manufacturers of diamonds and diamond jewellery. Direct factory pricing,
+              100% customization, engagement ring specialists. Our client advisors are virtually
+              available 24×7, worldwide.
             </p>
             <div className="flex flex-wrap items-center gap-3">
               <Link
@@ -179,10 +181,11 @@ function HomePage() {
                 "Natural Diamonds",
                 "Lab Grown Diamonds",
                 "GIA & IGI Certified",
-                "Hong Kong Atelier",
-                "Bespoke Design",
-                "Insured Worldwide",
-                "By Appointment",
+                "Own Manufacturing",
+                "Direct Factory Pricing",
+                "100% Customization",
+                "Worldwide Shipping",
+                "Engagement Ring Specialists",
               ].map((t) => (
                 <span key={t} className="flex items-center gap-3 font-serif italic text-2xl md:text-3xl text-ivory/80">
                   <span className="text-gold text-3xl md:text-4xl">✦</span>
@@ -213,7 +216,7 @@ function HomePage() {
               </p>
               <div data-gsap className="mt-12 flex items-center gap-6">
                 <span className="h-px flex-1 bg-white/10" />
-                <span className="text-[14px] tracking-[0.42em] uppercase text-gold">Oriva · Hong Kong</span>
+                <span className="text-[14px] tracking-[0.42em] uppercase text-gold">Oriva Jewels</span>
               </div>
             </div>
           </div>
