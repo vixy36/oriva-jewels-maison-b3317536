@@ -27,17 +27,18 @@ function ProductPage() {
   const { product } = Route.useLoaderData();
 
   const [diamondType, setDiamondType] = useState(product.diamondTypes[0]);
-  const [metal, setMetal] = useState(product.metal);
+  const [karat, setKarat] = useState<"18K" | "14K" | "9K">("18K");
+  const [goldColor, setGoldColor] = useState<"White" | "Yellow" | "Rose">(
+    product.metal.includes("Yellow") ? "Yellow" : product.metal.includes("Rose") ? "Rose" : "White",
+  );
   const [size, setSize] = useState(product.sizes?.[2] ?? "");
-  const [carat, setCarat] = useState(product.carats?.[1] ?? "");
+  const [carat, setCarat] = useState<number>(1.5);
   const [backing, setBacking] = useState(product.backings?.[0] ?? "");
   const [length, setLength] = useState(product.lengths?.[1] ?? "");
   const [engraving, setEngraving] = useState("");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   const gallery = [product.image, product.image, product.image, product.image];
-
-  const metalOptions = ["18K White Gold", "18K Yellow Gold", "18K Rose Gold", "Platinum 950"];
 
   const message = useMemo(() => {
     const lines = [
@@ -46,18 +47,23 @@ function ProductPage() {
       "I'm interested in:",
       `Product: ${product.name}`,
       `Diamond Type: ${diamondType}`,
-      `Metal: ${metal}`,
+      `Metal: ${karat} ${goldColor} Gold`,
+      `Centre Stone: ${carat.toFixed(2)} ct`,
     ];
     if (product.sizes) lines.push(`Ring Size: ${size}`);
-    if (product.carats) lines.push(`Carat: ${carat}`);
     if (product.backings) lines.push(`Backing: ${backing}`);
     if (product.lengths) lines.push(`Length: ${length}`);
     if (engraving) lines.push(`Engraving: ${engraving}`);
-    lines.push("", "Please share pricing and availability.");
+    lines.push(
+      "",
+      "I would like to attach a reference photo and share more details.",
+      "Please share pricing and availability.",
+    );
     return lines.join("\n");
-  }, [product, diamondType, metal, size, carat, backing, length, engraving]);
+  }, [product, diamondType, karat, goldColor, carat, size, backing, length, engraving]);
 
   const related = products.filter((p) => p.slug !== product.slug).slice(0, 3);
+
 
   return (
     <div className="bg-ink pt-32 md:pt-36">
@@ -131,10 +137,38 @@ function ProductPage() {
                   options={product.diamondTypes}
                   onChange={(v) => setDiamondType(v as typeof diamondType)}
                 />
-                <PillGroup label="Metal" value={metal} options={metalOptions} onChange={setMetal} />
-                {product.carats && (
-                  <PillGroup label="Carat" value={carat} options={product.carats} onChange={setCarat} />
-                )}
+                <PillGroup
+                  label="Gold Karat"
+                  value={karat}
+                  options={["18K", "14K", "9K"]}
+                  onChange={(v) => setKarat(v as typeof karat)}
+                />
+                <PillGroup
+                  label="Gold Color"
+                  value={goldColor}
+                  options={["White", "Yellow", "Rose"]}
+                  onChange={(v) => setGoldColor(v as typeof goldColor)}
+                />
+
+                <div>
+                  <div className="flex items-baseline justify-between">
+                    <p className="text-[14px] tracking-[0.42em] uppercase text-gold">Centre Stone</p>
+                    <p className="font-serif text-2xl text-ivory">{carat.toFixed(2)} <span className="text-[12px] tracking-[0.3em] uppercase text-ivory/60">ct</span></p>
+                  </div>
+                  <input
+                    type="range"
+                    min={0.3}
+                    max={10}
+                    step={0.1}
+                    value={carat}
+                    onChange={(e) => setCarat(parseFloat(e.target.value))}
+                    className="mt-4 w-full accent-[color:var(--gold)]"
+                  />
+                  <div className="mt-1 flex justify-between text-[11px] tracking-[0.3em] uppercase text-ivory/55">
+                    <span>0.30 ct</span><span>10.00 ct</span>
+                  </div>
+                </div>
+
                 {product.sizes && (
                   <PillGroup label="Ring Size" value={size} options={product.sizes} onChange={setSize} />
                 )}
@@ -144,33 +178,35 @@ function ProductPage() {
                 {product.lengths && (
                   <PillGroup label="Length" value={length} options={product.lengths} onChange={setLength} />
                 )}
-                {product.sizes && (
-                  <div>
-                    <label className="text-[14px] tracking-[0.42em] uppercase text-gold">
-                      Engraving (optional)
-                    </label>
-                    <input
-                      value={engraving}
-                      onChange={(e) => setEngraving(e.target.value.slice(0, 20))}
-                      placeholder="Up to 20 characters"
-                      className="mt-3 w-full border-b border-white/15 bg-transparent py-2.5 text-sm text-ivory placeholder:text-ivory/25 outline-none focus:border-gold transition"
-                    />
-                  </div>
-                )}
+                <div>
+                  <label className="text-[14px] tracking-[0.42em] uppercase text-gold">
+                    Engraving (optional)
+                  </label>
+                  <input
+                    value={engraving}
+                    onChange={(e) => setEngraving(e.target.value.slice(0, 20))}
+                    placeholder="Up to 20 characters"
+                    className="mt-3 w-full border-b border-white/15 bg-transparent py-2.5 text-sm text-ivory placeholder:text-ivory/40 outline-none focus:border-gold transition"
+                  />
+                </div>
+                <p className="text-[12px] leading-[1.7] tracking-[0.06em] text-ivory/60">
+                  You may attach a reference photo directly on WhatsApp after tapping enquire.
+                </p>
               </div>
 
               <div className="mt-10 border border-white/10 bg-charcoal/50 p-6">
                 <p className="text-[14px] tracking-[0.42em] uppercase text-gold">Your Configuration</p>
                 <dl className="mt-5 grid grid-cols-2 gap-x-6 gap-y-2.5 text-sm">
                   <dt className="text-ivory/80">Diamond</dt><dd className="text-ivory">{diamondType}</dd>
-                  <dt className="text-ivory/80">Metal</dt><dd className="text-ivory">{metal}</dd>
-                  {product.carats && (<><dt className="text-ivory/80">Carat</dt><dd className="text-ivory">{carat}</dd></>)}
+                  <dt className="text-ivory/80">Metal</dt><dd className="text-ivory">{karat} {goldColor} Gold</dd>
+                  <dt className="text-ivory/80">Centre Stone</dt><dd className="text-ivory">{carat.toFixed(2)} ct</dd>
                   {product.sizes && (<><dt className="text-ivory/80">Size</dt><dd className="text-ivory">{size}</dd></>)}
                   {product.backings && (<><dt className="text-ivory/80">Backing</dt><dd className="text-ivory">{backing}</dd></>)}
                   {product.lengths && (<><dt className="text-ivory/80">Length</dt><dd className="text-ivory">{length}</dd></>)}
                   {engraving && (<><dt className="text-ivory/80">Engraving</dt><dd className="text-ivory">"{engraving}"</dd></>)}
                 </dl>
               </div>
+
 
               <a
                 href={buildWhatsAppLink(message)}

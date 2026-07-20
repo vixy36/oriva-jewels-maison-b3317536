@@ -115,10 +115,10 @@ function HomePage() {
 
         <div className="pointer-events-none absolute inset-y-0 left-6 hidden md:flex flex-col justify-between py-32 z-10">
           <span className="text-[14px] tracking-[0.5em] uppercase text-ivory/60 [writing-mode:vertical-rl] rotate-180">
-            Hong Kong · MMXXV
+            End-to-end Manufacturers
           </span>
           <span className="text-[14px] tracking-[0.5em] uppercase text-gold [writing-mode:vertical-rl] rotate-180">
-            Maison N° 01
+            Since MMXXV
           </span>
         </div>
         <div className="pointer-events-none absolute inset-y-0 right-6 hidden md:flex flex-col justify-between py-32 z-10">
@@ -129,6 +129,7 @@ function HomePage() {
             GIA · IGI Certified
           </span>
         </div>
+
 
         <div className="relative z-10 mx-auto max-w-[1500px] w-full px-6 pt-40 pb-24 md:px-16 md:pt-48 md:pb-32 min-h-[100svh] flex flex-col justify-end">
           <div className="max-w-4xl animate-rise-slow">
@@ -145,8 +146,9 @@ function HomePage() {
 
           <div className="mt-14 flex flex-col md:flex-row md:items-end md:justify-between gap-10 animate-rise-slow" style={{ animationDelay: "0.4s" }}>
             <p className="max-w-md text-[15px] leading-[1.7] text-ivory/85">
-              A Hong Kong maison of natural and lab grown diamond jewellery. Made slowly, by hand, for
-              the lives worth marking.
+              End-to-end manufacturers of diamonds and diamond jewellery. Direct factory pricing,
+              100% customization, engagement ring specialists. Our client advisors are virtually
+              available 24×7, worldwide.
             </p>
             <div className="flex flex-wrap items-center gap-3">
               <Link
@@ -179,10 +181,11 @@ function HomePage() {
                 "Natural Diamonds",
                 "Lab Grown Diamonds",
                 "GIA & IGI Certified",
-                "Hong Kong Atelier",
-                "Bespoke Design",
-                "Insured Worldwide",
-                "By Appointment",
+                "Own Manufacturing",
+                "Direct Factory Pricing",
+                "100% Customization",
+                "Worldwide Shipping",
+                "Engagement Ring Specialists",
               ].map((t) => (
                 <span key={t} className="flex items-center gap-3 font-serif italic text-2xl md:text-3xl text-ivory/80">
                   <span className="text-gold text-3xl md:text-4xl">✦</span>
@@ -213,7 +216,7 @@ function HomePage() {
               </p>
               <div data-gsap className="mt-12 flex items-center gap-6">
                 <span className="h-px flex-1 bg-white/10" />
-                <span className="text-[14px] tracking-[0.42em] uppercase text-gold">Oriva · Hong Kong</span>
+                <span className="text-[14px] tracking-[0.42em] uppercase text-gold">Oriva Jewels</span>
               </div>
             </div>
           </div>
@@ -482,7 +485,7 @@ function HomePage() {
         <div className="mx-auto max-w-[1500px] px-6 md:px-16 grid gap-12 md:grid-cols-12 md:gap-16 items-center">
           <Reveal className="md:col-span-5">
             <div className="relative aspect-[4/5] overflow-hidden">
-              <img src={atelier} alt="Oriva atelier, Hong Kong" loading="lazy" className="h-full w-full object-cover" />
+              <img src={atelier} alt="Oriva atelier" loading="lazy" className="h-full w-full object-cover" />
               <div className="absolute inset-0 border border-gold/20" />
             </div>
             <p className="mt-4 text-[14px] tracking-[0.42em] uppercase text-ivory/80">
@@ -498,14 +501,15 @@ function HomePage() {
             </h2>
             <div className="mt-10 space-y-6 text-[15px] leading-[1.8] text-ivory/80 max-w-lg">
               <p>
-                Our atelier sits in Central, Hong Kong. It is small - deliberately so. Every piece
-                that leaves it has been sourced, set and signed by the same hands.
+                We are end-to-end manufacturers of diamonds and diamond jewellery. Every piece is
+                sourced, set and signed by the same hands - never outsourced, never rushed.
               </p>
               <p>
-                We work in both natural and lab grown diamonds, certified by GIA and IGI - with the
+                We work in both natural and lab grown diamonds, certified by GIA and IGI, with the
                 same craftsmanship applied to both. The choice is yours; the standard is ours.
               </p>
             </div>
+
 
             <div className="mt-12 grid grid-cols-3 gap-8 max-w-lg">
               {[
@@ -606,8 +610,189 @@ function HomePage() {
         </div>
       </section>
 
+      {/* PROCESS - From Inspiration to Reality */}
+      <section className="relative py-24 md:py-36 bg-ink overflow-hidden">
+        <div className="mx-auto max-w-[1500px] px-6 md:px-16">
+          <Reveal className="max-w-2xl">
+            <p className="eyebrow">- The Process</p>
+            <h2 className="mt-6 font-serif text-5xl md:text-7xl leading-[1] text-ivory">
+              From a sketch <em className="text-gold-gradient">to her finger.</em>
+            </h2>
+            <p className="mt-6 max-w-md text-[15px] leading-[1.85] text-ivory/70">
+              Three unhurried steps. A private conversation, a CAD reveal, and the moment the piece
+              finally leaves our hands - hers.
+            </p>
+          </Reveal>
+
+          <div className="mt-20 grid gap-8 md:grid-cols-3 md:gap-6">
+            {[
+              {
+                n: "I",
+                title: "Consultation",
+                body: "Share your vision on WhatsApp - a reference photo, a shape, a stone size. Our advisors respond within hours, 24×7 worldwide.",
+              },
+              {
+                n: "II",
+                title: "CAD & Approval",
+                body: "We render your piece in photorealistic CAD from three angles. Refine freely - the design isn't final until you say so.",
+              },
+              {
+                n: "III",
+                title: "Crafted & Delivered",
+                body: "Hand-set in our own atelier, GIA/IGI certified, then delivered fully insured to your door - worldwide.",
+              },
+            ].map((s, i) => (
+              <Reveal key={s.n} delay={i * 90}>
+                <div className="group h-full border border-white/10 bg-obsidian/40 p-8 md:p-10 hover:border-gold/40 transition">
+                  <p className="font-serif italic text-6xl text-gold-gradient">{s.n}</p>
+                  <h3 className="mt-8 font-serif text-2xl md:text-3xl text-ivory">{s.title}</h3>
+                  <div className="mt-4 h-px w-10 bg-gold/60" />
+                  <p className="mt-5 text-sm leading-[1.8] text-ivory/70">{s.body}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          <div className="mt-14 flex justify-center">
+            <a
+              href={buildWhatsAppLink("Hello Oriva Jewels, I'd like to begin a bespoke design consultation.")}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-3 bg-gold px-10 py-4 text-[12px] tracking-[0.4em] uppercase text-obsidian hover:bg-ivory transition"
+            >
+              <MessageCircle className="h-4 w-4" strokeWidth={1.4} />
+              Begin your piece
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* FOUNDER'S NOTE */}
+      <section className="relative bg-obsidian py-24 md:py-36 overflow-hidden">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-30"
+          style={{ background: "radial-gradient(closest-side at 80% 30%, oklch(0.72 0.11 82 / 0.2), transparent 60%)" }}
+        />
+        <div className="relative mx-auto max-w-[1100px] px-6 md:px-16 text-center">
+          <Reveal>
+            <p className="eyebrow">- The Founder</p>
+            <p className="mt-12 font-serif italic text-3xl md:text-5xl leading-[1.25] text-ivory">
+              "We built Oriva so that a woman anywhere in the world could hold a diamond made just
+              for her - and know exactly where it came from, and whose hands finished it."
+            </p>
+            <div className="mt-14 flex items-center justify-center gap-6">
+              <span className="h-px w-16 bg-gold/60" />
+              <span className="text-[13px] tracking-[0.42em] uppercase text-gold">The Founders, Oriva Jewels</span>
+              <span className="h-px w-16 bg-gold/60" />
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* REVIEWS */}
+      <section className="relative py-24 md:py-36 bg-ink">
+        <div className="mx-auto max-w-[1500px] px-6 md:px-16">
+          <Reveal className="text-center max-w-xl mx-auto">
+            <p className="eyebrow">- The Clientele</p>
+            <h2 className="mt-6 font-serif text-5xl md:text-6xl text-ivory">
+              In their <em className="text-gold-gradient">own words.</em>
+            </h2>
+          </Reveal>
+
+          <div className="mt-20 grid gap-6 md:grid-cols-3 md:gap-8">
+            {[
+              {
+                q: "The most personal buying experience I've ever had. The CAD reveal made me tear up - and the ring somehow exceeded it.",
+                a: "Sarah W.",
+                place: "London",
+              },
+              {
+                q: "I sent a photo on WhatsApp at midnight. By morning I had sketches. Six weeks later the ring was on my fiancée's finger.",
+                a: "Rohit M.",
+                place: "Dubai",
+              },
+              {
+                q: "Lab grown, three carats, hidden halo. Photographed it, showed my jeweller friend - she asked who did it. That says everything.",
+                a: "Amelia K.",
+                place: "New York",
+              },
+            ].map((r, i) => (
+              <Reveal key={r.a} delay={i * 80}>
+                <figure className="group h-full border border-white/10 bg-obsidian/30 p-8 md:p-10 hover:border-gold/40 transition">
+                  <div className="flex gap-1 text-gold">
+                    {Array.from({ length: 5 }).map((_, k) => <span key={k}>★</span>)}
+                  </div>
+                  <blockquote className="mt-6 font-serif italic text-xl leading-[1.55] text-ivory/90">
+                    "{r.q}"
+                  </blockquote>
+                  <figcaption className="mt-8 flex items-center gap-3 text-[13px] tracking-[0.35em] uppercase">
+                    <span className="h-px w-8 bg-gold/60" />
+                    <span className="text-gold">{r.a}</span>
+                    <span className="text-ivory/60">· {r.place}</span>
+                  </figcaption>
+                </figure>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="relative py-24 md:py-36 bg-obsidian">
+        <div className="mx-auto max-w-[1200px] px-6 md:px-16 grid gap-16 md:grid-cols-12">
+          <Reveal className="md:col-span-4">
+            <p className="eyebrow">- Frequently Asked</p>
+            <h2 className="mt-6 font-serif text-4xl md:text-5xl leading-[1.05] text-ivory">
+              A few <em className="text-gold-gradient">answers.</em>
+            </h2>
+            <p className="mt-6 text-sm leading-[1.85] text-ivory/70">
+              Can't find yours? Message an advisor - available 24×7, worldwide.
+            </p>
+          </Reveal>
+
+          <Reveal delay={120} className="md:col-span-8">
+            <div className="divide-y divide-white/10 border-y border-white/10">
+              {[
+                {
+                  q: "Do you offer lab grown and natural diamonds?",
+                  a: "Yes - both, at every price point. Every stone is GIA or IGI certified, and the same setters finish both. The choice is yours; the standard is ours.",
+                },
+                {
+                  q: "What metals and karats are available?",
+                  a: "18K, 14K and 9K gold in White, Yellow and Rose - along with Platinum 950 for select pieces. Any Oriva design can be crafted in any of them.",
+                },
+                {
+                  q: "How does the enquiry process work?",
+                  a: "Every piece is made to order. Tap Enquire, share your details on WhatsApp, and we respond with pricing, CAD renders and a lead time - usually within 24 hours.",
+                },
+                {
+                  q: "Do you ship worldwide?",
+                  a: "Yes. We ship fully insured to over 40 countries, hand-delivered where possible. All duties and paperwork handled by our maison.",
+                },
+                {
+                  q: "Can I customise an existing design?",
+                  a: "Entirely. Change the stone, the shape, the metal, the setting - or begin from a reference photo. 100% customisation is at the heart of what we do.",
+                },
+              ].map((f) => (
+                <details key={f.q} className="group py-6">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-6">
+                    <span className="font-serif text-xl md:text-2xl text-ivory group-hover:text-gold transition">{f.q}</span>
+                    <span className="shrink-0 text-2xl text-gold transition group-open:rotate-45">+</span>
+                  </summary>
+                  <p className="mt-4 text-sm leading-[1.85] text-ivory/70 max-w-2xl">
+                    {f.a}
+                  </p>
+                </details>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* INSTAGRAM */}
       <section className="py-24 md:py-36 bg-ink">
+
         <div className="mx-auto max-w-[1600px] px-6 md:px-16">
           <Reveal className="flex items-end justify-between gap-6 flex-wrap">
             <div>
