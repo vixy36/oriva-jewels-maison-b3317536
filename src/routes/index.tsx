@@ -485,7 +485,7 @@ function HomePage() {
         <div className="mx-auto max-w-[1500px] px-6 md:px-16 grid gap-12 md:grid-cols-12 md:gap-16 items-center">
           <Reveal className="md:col-span-5">
             <div className="relative aspect-[4/5] overflow-hidden">
-              <img src={atelier} alt="Oriva atelier, Hong Kong" loading="lazy" className="h-full w-full object-cover" />
+              <img src={atelier} alt="Oriva atelier" loading="lazy" className="h-full w-full object-cover" />
               <div className="absolute inset-0 border border-gold/20" />
             </div>
             <p className="mt-4 text-[14px] tracking-[0.42em] uppercase text-ivory/80">
@@ -501,14 +501,15 @@ function HomePage() {
             </h2>
             <div className="mt-10 space-y-6 text-[15px] leading-[1.8] text-ivory/80 max-w-lg">
               <p>
-                Our atelier sits in Central, Hong Kong. It is small - deliberately so. Every piece
-                that leaves it has been sourced, set and signed by the same hands.
+                We are end-to-end manufacturers of diamonds and diamond jewellery. Every piece is
+                sourced, set and signed by the same hands - never outsourced, never rushed.
               </p>
               <p>
-                We work in both natural and lab grown diamonds, certified by GIA and IGI - with the
+                We work in both natural and lab grown diamonds, certified by GIA and IGI, with the
                 same craftsmanship applied to both. The choice is yours; the standard is ours.
               </p>
             </div>
+
 
             <div className="mt-12 grid grid-cols-3 gap-8 max-w-lg">
               {[
