@@ -197,31 +197,8 @@ function HomePage() {
         </div>
       </div>
 
-      {/* MANIFESTO */}
-      <section className="relative py-32 md:py-48 bg-ink">
-        <GsapReveal className="mx-auto max-w-[1400px] px-6 md:px-16">
-          <div className="grid gap-16 md:grid-cols-12 md:gap-24 items-start">
-            <div className="md:col-span-4 md:sticky md:top-40">
-              <p data-gsap className="eyebrow">- Manifesto</p>
-              <p data-gsap className="mt-8 text-[13px] tracking-[0.25em] uppercase text-ivory/50">
-                Chapter One
-              </p>
-            </div>
-            <div className="md:col-span-8">
-              <p data-gsap className="font-serif font-light text-3xl md:text-5xl lg:text-6xl leading-[1.15] text-ivory">
-                We believe the finest jewellery is <em className="text-gold-gradient">never loud</em>.
-                It is worn every day, folded into small gestures - a hand raised, a
-                letter signed, a promise made. It becomes, in time, a
-                <em className="text-gold-gradient"> quiet second skin</em>.
-              </p>
-              <div data-gsap className="mt-12 flex items-center gap-6">
-                <span className="h-px flex-1 bg-white/10" />
-                <span className="text-[14px] tracking-[0.42em] uppercase text-gold">Oriva Jewels</span>
-              </div>
-            </div>
-          </div>
-        </GsapReveal>
-      </section>
+
+
 
 
       {/* COLLECTIONS INDEX - Chapter Wheel */}
@@ -347,63 +324,8 @@ function HomePage() {
         </div>
       </section>
 
-      {/* SIGNATURE */}
-      <section className="relative isolate overflow-hidden bg-obsidian text-ivory">
-        <div className="mx-auto max-w-[1600px] grid md:grid-cols-2 items-stretch">
-          <div className="relative aspect-[4/5] md:aspect-[4/5] md:min-h-[720px] overflow-hidden order-2 md:order-1 bg-ink">
-            <img
-              src={editorialImg}
-              alt="Signature marquise on velvet"
-              loading="lazy"
-              className="absolute inset-0 h-full w-full object-contain object-center"
-            />
-            <GsapSparkles count={6} />
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-obsidian/40 via-transparent to-transparent" />
-            <div className="absolute bottom-8 left-8 right-8 flex items-end justify-between text-ivory/85">
-              <span className="text-[14px] tracking-[0.42em] uppercase">Ref. OR-MRQ-001</span>
-              <span className="text-[14px] tracking-[0.42em] uppercase">Plate I</span>
-            </div>
-          </div>
 
-          <div className="relative order-1 md:order-2 flex items-center px-6 py-24 md:px-20 md:py-32">
-            <GsapReveal className="max-w-lg">
-              <p data-gsap className="eyebrow">- The Signature</p>
-              <h2 data-gsap className="mt-8 font-serif text-5xl md:text-7xl leading-[0.98] text-ivory">
-                The Oriva <em className="text-gold-gradient block">Marquise.</em>
-              </h2>
-              <div data-gsap className="mt-10 hairline-gold w-24" />
-              <p data-gsap className="mt-10 text-[15px] leading-[1.8] text-ivory/80 max-w-md">
-                A single elongated diamond, held by four platinum prongs on a whisper of a band.
-                A study in restraint - and the piece that opened our maison.
-              </p>
 
-              <dl data-gsap className="mt-12 grid grid-cols-2 gap-y-4 gap-x-8 max-w-md text-sm">
-                {[
-                  ["Cut", "Marquise Brilliant"],
-                  ["Setting", "Four Prong"],
-                  ["Metal", "Platinum 950"],
-                  ["Origin", "Hand-set, our atelier"],
-                ].map(([k, v]) => (
-                  <div key={k} className="border-t border-white/10 pt-3">
-                    <dt className="text-[14px] tracking-[0.42em] uppercase text-gold">{k}</dt>
-                    <dd className="mt-1.5 font-serif text-lg text-ivory">{v}</dd>
-                  </div>
-                ))}
-              </dl>
-
-              <Link
-                data-gsap
-                to="/product/$slug"
-                params={{ slug: "marquise-solitaire-ring" }}
-                className="mt-14 group inline-flex items-center gap-3 text-[10.5px] tracking-[0.4em] uppercase text-gold border-b border-gold/50 pb-2 hover:text-ivory hover:border-ivory transition"
-              >
-                Discover the piece
-                <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" strokeWidth={1.4} />
-              </Link>
-            </GsapReveal>
-          </div>
-        </div>
-      </section>
 
       {/* BEST SELLERS */}
       <section className="relative py-24 md:py-36 bg-ink">
