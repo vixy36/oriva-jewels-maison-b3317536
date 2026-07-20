@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Instagram, Mail, MessageCircle, ArrowUpRight } from "lucide-react";
+import { Instagram, Mail, MessageCircle } from "lucide-react";
 import { WHATSAPP_DISPLAY, buildWhatsAppLink } from "@/lib/products";
 
 export function SiteFooter() {
@@ -14,33 +14,8 @@ export function SiteFooter() {
         }}
       />
 
-      <div className="relative border-b border-white/5">
-        <div className="mx-auto max-w-[1600px] px-6 py-24 md:px-10 md:py-32 text-center">
-          <p className="eyebrow">Correspondence</p>
-          <h2 className="mt-6 font-serif text-4xl md:text-6xl lg:text-7xl leading-[1.02] text-ivory">
-            Receive our <em className="text-gold-gradient">private</em> dispatches.
-          </h2>
-          <p className="mx-auto mt-6 max-w-lg text-sm text-ivory/60">
-            New pieces, atelier stories and appointment invitations, delivered occasionally.
-          </p>
-          <form
-            onSubmit={(e) => e.preventDefault()}
-            className="mx-auto mt-10 flex max-w-md items-end gap-4 border-b border-white/15 pb-2 focus-within:border-gold transition"
-          >
-            <input
-              type="email"
-              placeholder="Your email address"
-              className="flex-1 bg-transparent py-2 text-sm text-ivory placeholder:text-ivory/30 outline-none"
-            />
-            <button
-              type="submit"
-              className="text-[14px] tracking-[0.32em] uppercase text-gold hover:text-ivory transition inline-flex items-center gap-1"
-            >
-              Subscribe <ArrowUpRight className="h-3 w-3" />
-            </button>
-          </form>
-        </div>
-      </div>
+
+
 
       <div className="relative mx-auto max-w-[1600px] px-6 py-20 md:px-10 md:py-24">
         <div className="grid gap-14 md:grid-cols-12">
