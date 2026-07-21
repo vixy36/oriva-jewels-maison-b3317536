@@ -874,114 +874,121 @@ function EngagementRingsSection() {
             ))}
           </ol>
 
-          {/* Enquiry Form */}
-          <div className="mt-12 border border-white/10 bg-black/30 p-6 md:p-8">
-            <p className="eyebrow">- Enquiry Form</p>
-            <h3 className="mt-3 font-serif text-2xl md:text-3xl text-ivory">
-              Begin your <em className="text-gold-gradient">commission.</em>
-            </h3>
-
-            <div className="mt-6 grid gap-5 md:grid-cols-2">
-              <div className="md:col-span-2">
-                <label className={labelCls}>Your Name</label>
-                <input
-                  type="text"
-                  value={form.name}
-                  onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  placeholder="Full name"
-                  className={fieldCls}
-                />
-              </div>
-
-              <div>
-                <label className={labelCls}>Gold Quality</label>
-                <select
-                  value={form.goldQuality}
-                  onChange={(e) => setForm({ ...form, goldQuality: e.target.value })}
-                  className={fieldCls}
-                >
-                  {goldQualities.map((g) => (
-                    <option key={g} value={g} className="bg-obsidian">{g}</option>
-                  ))}
-                </select>
-              </div>
-
-              <div>
-                <label className={labelCls}>Gold Color</label>
-                <select
-                  value={form.goldColor}
-                  onChange={(e) => setForm({ ...form, goldColor: e.target.value })}
-                  className={fieldCls}
-                >
-                  {goldColors.map((g) => (
-                    <option key={g} value={g} className="bg-obsidian">{g}</option>
-                  ))}
-                </select>
-              </div>
-
-              <div>
-                <label className={labelCls}>Ring Size</label>
-                <input
-                  type="text"
-                  value={form.ringSize}
-                  onChange={(e) => setForm({ ...form, ringSize: e.target.value })}
-                  placeholder="e.g. US 6 / EU 52"
-                  className={fieldCls}
-                />
-              </div>
-
-              <div>
-                <label className={labelCls}>Diamond Cut</label>
-                <select
-                  value={form.diamondCut}
-                  onChange={(e) => setForm({ ...form, diamondCut: e.target.value })}
-                  className={fieldCls}
-                >
-                  {diamondCuts.map((c) => (
-                    <option key={c} value={c} className="bg-obsidian">{c}</option>
-                  ))}
-                </select>
-              </div>
-
-              <div className="md:col-span-2">
-                <label className={labelCls}>Stone Size</label>
-                <input
-                  type="text"
-                  value={form.stoneSize}
-                  onChange={(e) => setForm({ ...form, stoneSize: e.target.value })}
-                  placeholder="e.g. 1.00 ct, 1.50 ct"
-                  className={fieldCls}
-                />
-              </div>
-
-              <div className="md:col-span-2">
-                <label className={labelCls}>Notes / Reference</label>
-                <textarea
-                  rows={3}
-                  value={form.notes}
-                  onChange={(e) => setForm({ ...form, notes: e.target.value })}
-                  placeholder="Anything else we should know"
-                  className={fieldCls}
-                />
-              </div>
-            </div>
-
-            <div className="mt-4 flex items-center gap-2 text-[12px] text-ivory/60">
-              <Paperclip className="h-3.5 w-3.5 text-gold" strokeWidth={1.4} />
-              You can attach reference photos directly in the WhatsApp chat.
-            </div>
-
-            <button
-              type="button"
-              onClick={submitToWhatsApp}
-              className="mt-6 inline-flex items-center gap-3 bg-gold px-8 py-4 text-[12px] tracking-[0.4em] uppercase text-obsidian hover:bg-ivory transition"
-            >
-              <MessageCircle className="h-4 w-4" strokeWidth={1.4} />
-              Send Enquiry on WhatsApp
-            </button>
-          </div>
         </Reveal>
       </div>
+
+      {/* Enquiry Form - Full Width */}
+      <Reveal delay={80} className="relative mx-auto max-w-[1500px] px-6 md:px-16 mt-16 md:mt-20">
+        <div className="border border-white/10 bg-black/30 p-6 md:p-10">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+            <div>
+              <p className="eyebrow">- Enquiry Form</p>
+              <h3 className="mt-3 font-serif text-2xl md:text-3xl text-ivory">
+                Begin your <em className="text-gold-gradient">commission.</em>
+              </h3>
+            </div>
+            <div className="flex items-center gap-2 text-[12px] text-ivory/60">
+              <Paperclip className="h-3.5 w-3.5 text-gold" strokeWidth={1.4} />
+              Attach reference photos directly in the WhatsApp chat.
+            </div>
+          </div>
+
+          <div className="mt-8 grid gap-5 md:grid-cols-3">
+            <div>
+              <label className={labelCls}>Your Name</label>
+              <input
+                type="text"
+                value={form.name}
+                onChange={(e) => setForm({ ...form, name: e.target.value })}
+                placeholder="Full name"
+                className={fieldCls}
+              />
+            </div>
+
+            <div>
+              <label className={labelCls}>Gold Quality</label>
+              <select
+                value={form.goldQuality}
+                onChange={(e) => setForm({ ...form, goldQuality: e.target.value })}
+                className={fieldCls}
+              >
+                {goldQualities.map((g) => (
+                  <option key={g} value={g} className="bg-obsidian">{g}</option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label className={labelCls}>Gold Color</label>
+              <select
+                value={form.goldColor}
+                onChange={(e) => setForm({ ...form, goldColor: e.target.value })}
+                className={fieldCls}
+              >
+                {goldColors.map((g) => (
+                  <option key={g} value={g} className="bg-obsidian">{g}</option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label className={labelCls}>Ring Size</label>
+              <input
+                type="text"
+                value={form.ringSize}
+                onChange={(e) => setForm({ ...form, ringSize: e.target.value })}
+                placeholder="e.g. US 6 / EU 52"
+                className={fieldCls}
+              />
+            </div>
+
+            <div>
+              <label className={labelCls}>Diamond Cut</label>
+              <select
+                value={form.diamondCut}
+                onChange={(e) => setForm({ ...form, diamondCut: e.target.value })}
+                className={fieldCls}
+              >
+                {diamondCuts.map((c) => (
+                  <option key={c} value={c} className="bg-obsidian">{c}</option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label className={labelCls}>Stone Size</label>
+              <input
+                type="text"
+                value={form.stoneSize}
+                onChange={(e) => setForm({ ...form, stoneSize: e.target.value })}
+                placeholder="e.g. 1.00 ct, 1.50 ct"
+                className={fieldCls}
+              />
+            </div>
+
+            <div className="md:col-span-3">
+              <label className={labelCls}>Notes / Reference</label>
+              <textarea
+                rows={3}
+                value={form.notes}
+                onChange={(e) => setForm({ ...form, notes: e.target.value })}
+                placeholder="Anything else we should know"
+                className={fieldCls}
+              />
+            </div>
+          </div>
+
+          <button
+            type="button"
+            onClick={submitToWhatsApp}
+            className="mt-8 inline-flex items-center gap-3 bg-gold px-8 py-4 text-[12px] tracking-[0.4em] uppercase text-obsidian hover:bg-ivory transition"
+          >
+            <MessageCircle className="h-4 w-4" strokeWidth={1.4} />
+            Send Enquiry on WhatsApp
+          </button>
+        </div>
+      </Reveal>
+
     </section>
   );
 }
