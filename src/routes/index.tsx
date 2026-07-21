@@ -733,11 +733,14 @@ function HomePage() {
 
         <div className="mx-auto max-w-[1600px] px-6 md:px-16">
           <Reveal className="flex items-end justify-between gap-6 flex-wrap">
-            <div>
+            <div className="max-w-xl">
               <p className="eyebrow">- @orivajewels</p>
-              <h2 className="mt-6 font-serif text-4xl md:text-6xl text-ivory">
-                Follow the <em className="text-gold-gradient">maison.</em>
+              <h2 className="mt-4 font-serif text-4xl md:text-6xl text-ivory">
+                <em className="text-gold-gradient">Instagram.</em>
               </h2>
+              <p className="mt-4 text-[15px] leading-[1.75] text-ivory/70">
+                Learn, engage and grow. Connect with ORIVA.
+              </p>
             </div>
             <a
               href="https://www.instagram.com/oriva__jewels/reels/"
@@ -748,6 +751,7 @@ function HomePage() {
               Watch all reels <ArrowUpRight className="h-3.5 w-3.5" />
             </a>
           </Reveal>
+
 
           <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
             {insta.slice(0, 4).map((img, i) => (
