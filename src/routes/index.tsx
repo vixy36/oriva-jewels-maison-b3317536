@@ -117,7 +117,7 @@ function HomePage() {
             </p>
 
 
-            <div className="flex flex-wrap items-center gap-3">
+            <div className="flex flex-nowrap items-center gap-3 whitespace-nowrap">
               <Link
                 to="/collections/engagement-rings"
                 className="group relative inline-flex items-center gap-3 bg-ivory px-9 py-4 text-[10.5px] tracking-[0.4em] uppercase text-obsidian overflow-hidden"
