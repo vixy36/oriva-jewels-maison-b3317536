@@ -148,9 +148,7 @@ function HomePage() {
 
           <div className="mt-14 flex flex-col md:flex-row md:items-end md:justify-between gap-10 animate-rise-slow" style={{ animationDelay: "0.4s" }}>
             <p className="max-w-md text-[15px] leading-[1.7] text-ivory/85">
-              We are end-to-end manufacturers of diamonds &amp; jewellery. Direct factory pricing,
-              100% customization, engagement ring specialists. Our client advisors are virtually
-              available 24×7, worldwide.
+              We are end-to-end manufacturers of diamonds &amp; jewellery.
             </p>
             <div className="flex flex-wrap items-center gap-3">
               <Link
