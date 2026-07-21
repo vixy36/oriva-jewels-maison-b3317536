@@ -551,7 +551,7 @@ function HomePage() {
               { icon: ShieldCheck, n: "I", title: "Certified Origin", body: "Every stone accompanied by GIA or IGI certification, individually inspected in our atelier." },
               { icon: Gem, n: "II", title: "Natural or Lab", body: "The same craftsmanship applied to both - the choice is entirely yours, without compromise." },
               { icon: Sparkles, n: "III", title: "Bespoke Atelier", body: "One-to-one design consultations for engagement rings and reimagined heirloom pieces." },
-              { icon: Globe2, n: "IV", title: "Insured Worldwide", body: "Delivered by hand or by air, fully insured to Hong Kong, Dubai, Singapore, EU and US." },
+              { icon: Globe2, n: "IV", title: "Insured Worldwide", body: "Delivered by hand or by air, fully insured to Dubai, Singapore, EU, US and beyond." },
             ].map((f, i) => (
               <Reveal key={f.title} delay={i * 70}>
                 <div className="h-full bg-obsidian p-8 md:p-10 group">
