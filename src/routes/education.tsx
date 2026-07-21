@@ -75,7 +75,7 @@ function EducationPage() {
               <div className="grid gap-10 md:grid-cols-12 items-start border-t border-white/10 pt-16">
                 <div className="md:col-span-3">
                   <span className="text-[14px] tracking-[0.4em] uppercase text-gold">{c.letter}</span>
-                  <h2 className="mt-6 font-serif text-5xl md:text-6xl italic text-ivory">{c.title}</h2>
+                  <h2 className="mt-6 font-serif text-3xl md:text-4xl italic text-ivory">{c.title}</h2>
                 </div>
                 <div className="md:col-span-6">
                   <p className="text-[15px] leading-[1.9] text-ivory/85">{c.body}</p>
@@ -101,7 +101,7 @@ function EducationPage() {
         <div className="mx-auto max-w-[1400px] px-6 md:px-16">
           <Reveal>
             <p className="eyebrow">- Origin</p>
-            <h2 className="mt-6 font-serif text-5xl md:text-7xl">
+            <h2 className="mt-6 font-serif text-3xl md:text-5xl">
               Natural, or <em className="text-gold-gradient">lab grown.</em>
             </h2>
             <p className="mt-8 max-w-2xl text-[15px] leading-[1.9] text-ivory/80">
@@ -124,7 +124,7 @@ function EducationPage() {
             ].map((x) => (
               <Reveal key={x.k} className="border border-white/10 p-10 md:p-14 hover:border-gold/40 transition">
                 <p className="text-[13px] tracking-[0.4em] uppercase text-gold">{x.tag}</p>
-                <h3 className="mt-6 font-serif text-4xl md:text-5xl italic">{x.k}</h3>
+                <h3 className="mt-6 font-serif text-2xl md:text-4xl italic">{x.k}</h3>
                 <p className="mt-8 text-[15px] leading-[1.9] text-ivory/80">{x.body}</p>
               </Reveal>
             ))}
@@ -136,7 +136,7 @@ function EducationPage() {
       <section className="relative py-8 md:py-14 bg-ink border-t border-white/5">
         <div className="mx-auto max-w-[1200px] px-6 md:px-16 text-center">
           <Sparkles className="mx-auto h-6 w-6 text-gold" strokeWidth={1.2} />
-          <h2 className="mt-8 font-serif text-4xl md:text-6xl">
+          <h2 className="mt-8 font-serif text-3xl md:text-4xl">
             A private consultation, <em className="text-gold-gradient">at your pace.</em>
           </h2>
           <p className="mx-auto mt-6 max-w-lg text-[15px] leading-[1.8] text-ivory/80">

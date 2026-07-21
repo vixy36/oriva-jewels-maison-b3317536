@@ -58,7 +58,7 @@ function OccasionsPage() {
                 </div>
                 <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
                   <span className="text-[13px] tracking-[0.4em] uppercase text-gold">{o.n}</span>
-                  <h2 className="mt-4 font-serif text-4xl md:text-5xl italic text-ivory">{o.label}</h2>
+                  <h2 className="mt-4 font-serif text-2xl md:text-4xl italic text-ivory">{o.label}</h2>
                   <p className="mt-4 max-w-md text-[14px] leading-[1.8] text-ivory/85">{o.blurb}</p>
                   <div className="mt-8 flex flex-wrap gap-3">
                     <Link

@@ -88,7 +88,7 @@ function RingSizePage() {
         <div className="mx-auto max-w-[1400px] px-6 md:px-16 grid gap-16 md:grid-cols-2 items-start">
           <Reveal>
             <p className="eyebrow">- The 30-Second Ruler Tape</p>
-            <h2 className="mt-6 font-serif text-4xl md:text-5xl leading-[1.1]">
+            <h2 className="mt-6 font-serif text-2xl md:text-4xl leading-[1.1]">
               Easiest for <em className="text-gold-gradient">fingertips.</em>
             </h2>
             <p className="mt-6 text-[15px] leading-[1.9] text-ivory/80">
@@ -195,7 +195,7 @@ function RingSizePage() {
         <div className="mx-auto max-w-[1200px] px-6 md:px-16">
           <Reveal>
             <p className="eyebrow">- Quick Reference</p>
-            <h2 className="mt-6 font-serif text-4xl md:text-5xl">
+            <h2 className="mt-6 font-serif text-2xl md:text-4xl">
               Once you have your <em className="text-gold-gradient">millimetres.</em>
             </h2>
             <p className="mt-6 max-w-xl text-[15px] leading-[1.9] text-ivory/75">
@@ -234,7 +234,7 @@ function RingSizePage() {
         <div className="mx-auto max-w-[1400px] px-6 md:px-16">
           <Reveal>
             <p className="eyebrow">- International Chart</p>
-            <h2 className="mt-6 font-serif text-4xl md:text-5xl">
+            <h2 className="mt-6 font-serif text-2xl md:text-4xl">
               Every standard, <em className="text-gold-gradient">side by side.</em>
             </h2>
           </Reveal>

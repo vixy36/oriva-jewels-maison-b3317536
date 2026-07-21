@@ -123,7 +123,7 @@ function ProductPage() {
           <div className="md:col-span-5">
             <div className="md:sticky md:top-40">
               <p className="eyebrow">{product.collection}</p>
-              <h1 className="mt-5 font-serif text-4xl md:text-6xl leading-[1] text-ivory">{product.name}</h1>
+              <h1 className="mt-5 font-serif text-3xl md:text-4xl leading-[1] text-ivory">{product.name}</h1>
               <p className="mt-6 text-[15px] leading-[1.8] text-ivory/80 max-w-lg">
                 {product.description}
               </p>
@@ -241,7 +241,7 @@ function ProductPage() {
           <div className="flex items-end justify-between border-b border-white/10 pb-6">
             <div>
               <p className="eyebrow">- The Adjacent</p>
-              <h2 className="mt-4 font-serif text-4xl md:text-5xl text-ivory">You may also love</h2>
+              <h2 className="mt-4 font-serif text-2xl md:text-4xl text-ivory">You may also love</h2>
             </div>
             <Link
               to="/collections/$category"
