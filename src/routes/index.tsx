@@ -216,21 +216,20 @@ function HomePage() {
           }}
         />
 
-        <div className="relative mx-auto max-w-[1500px] px-6 md:px-16">
-          <Reveal className="border-t border-white/10 pt-10 md:pt-14 text-center">
+        <div className="relative mx-auto max-w-[1200px] px-6 md:px-12">
+          <Reveal className="border-t border-white/10 pt-6 md:pt-8 text-center">
             <p className="eyebrow">- The Index</p>
-            <h2 className="mt-6 font-serif text-3xl md:text-5xl leading-[1] text-ivory">
+            <h2 className="mt-3 font-serif text-xl md:text-2xl leading-[1.1] text-ivory">
               Six chapters.{" "}
               <em className="text-gold-gradient">One maison.</em>
             </h2>
-            <p className="mx-auto mt-6 max-w-lg text-[15px] leading-[1.85] text-ivory/70">
+            <p className="mx-auto mt-3 max-w-md text-[13px] leading-[1.7] text-ivory/70">
               A curated volume of six edits - each with its own hand, its own hour of the day.
             </p>
           </Reveal>
 
           {/* Desktop: circular wheel */}
-          <div className="relative mx-auto mt-20 hidden md:block aspect-square max-w-[820px]">
-            {/* Rotating dashed ring */}
+          <div className="relative mx-auto mt-10 hidden md:block aspect-square max-w-[520px]">
             <div
               aria-hidden
               className="absolute inset-[8%] rounded-full border border-dashed border-gold/25 animate-spin-slow"
@@ -240,25 +239,23 @@ function HomePage() {
               className="absolute inset-[18%] rounded-full border border-white/5"
             />
 
-            {/* Center hub */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
-              <Sparkles className="h-6 w-6 text-gold" strokeWidth={1.2} />
-              <p className="mt-5 text-[12px] tracking-[0.5em] uppercase text-gold">Maison N° 01</p>
-              <p className="mt-4 font-serif italic text-2xl md:text-3xl text-ivory/90 max-w-xs leading-snug">
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+              <Sparkles className="h-4 w-4 text-gold" strokeWidth={1.2} />
+              <p className="mt-2 text-[10px] tracking-[0.5em] uppercase text-gold">Maison N° 01</p>
+              <p className="mt-2 font-serif italic text-base md:text-lg text-ivory/90 max-w-[180px] leading-snug">
                 Turn the wheel.<br />Enter a chapter.
               </p>
               <Link
                 to="/about"
-                className="mt-6 inline-flex items-center gap-2 text-[12px] tracking-[0.4em] uppercase text-ivory/70 border-b border-white/20 pb-1 hover:text-gold hover:border-gold transition"
+                className="mt-3 inline-flex items-center gap-2 text-[10px] tracking-[0.4em] uppercase text-ivory/70 border-b border-white/20 pb-1 hover:text-gold hover:border-gold transition"
               >
-                Our craftsmanship <ArrowUpRight className="h-3 w-3" />
+                Craftsmanship <ArrowUpRight className="h-3 w-3" />
               </Link>
             </div>
 
-            {/* Medallions on ellipse */}
             {collections.map((c, i) => {
               const angle = (-90 + i * 60) * (Math.PI / 180);
-              const r = 46; // percent
+              const r = 46;
               const x = 50 + r * Math.cos(angle);
               const y = 50 + r * Math.sin(angle);
               return (
@@ -273,7 +270,7 @@ function HomePage() {
                   }}
                 >
                   <Link to={c.to} className="group block">
-                    <div className="relative h-40 w-40 lg:h-48 lg:w-48 rounded-full overflow-hidden border border-white/15 group-hover:border-gold/70 transition duration-500 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.7)]">
+                    <div className="relative h-24 w-24 lg:h-28 lg:w-28 rounded-full overflow-hidden border border-white/15 group-hover:border-gold/70 transition duration-500 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.7)]">
                       <img
                         src={c.img}
                         alt={c.title}
@@ -281,15 +278,15 @@ function HomePage() {
                         className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110"
                       />
                       <div className="absolute inset-0 bg-obsidian/45 group-hover:bg-obsidian/25 transition duration-500" />
-                      <span className="absolute inset-0 flex items-center justify-center font-serif italic text-4xl lg:text-5xl text-ivory group-hover:text-gold group-hover:opacity-0 transition duration-500">
+                      <span className="absolute inset-0 flex items-center justify-center font-serif italic text-2xl lg:text-3xl text-ivory group-hover:text-gold group-hover:opacity-0 transition duration-500">
                         {c.n}
                       </span>
-                      <span className="absolute inset-0 flex items-center justify-center font-serif text-xl lg:text-2xl text-gold opacity-0 group-hover:opacity-100 transition duration-500 px-3 text-center">
+                      <span className="absolute inset-0 flex items-center justify-center font-serif text-[13px] lg:text-sm text-gold opacity-0 group-hover:opacity-100 transition duration-500 px-2 text-center">
                         {c.title}
                       </span>
                       <span className="pointer-events-none absolute inset-1 rounded-full border border-gold/0 group-hover:border-gold/60 transition duration-500" />
                     </div>
-                    <p className="mt-4 text-center text-[11px] tracking-[0.42em] uppercase text-ivory/70 group-hover:text-gold transition whitespace-nowrap">
+                    <p className="mt-2 text-center text-[10px] tracking-[0.36em] uppercase text-ivory/70 group-hover:text-gold transition whitespace-nowrap">
                       {c.title}
                     </p>
                   </Link>
@@ -297,6 +294,7 @@ function HomePage() {
               );
             })}
           </div>
+
 
           {/* Mobile: medallion grid */}
           <div className="mt-14 grid grid-cols-2 gap-x-6 gap-y-10 md:hidden">
