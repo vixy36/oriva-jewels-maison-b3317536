@@ -117,9 +117,7 @@ function HomePage() {
           <span className="text-[14px] tracking-[0.5em] uppercase text-ivory/60 [writing-mode:vertical-rl] rotate-180">
             End-to-end Manufacturers
           </span>
-          <span className="text-[14px] tracking-[0.5em] uppercase text-gold [writing-mode:vertical-rl] rotate-180">
-            Worldwide Shipping
-          </span>
+          <span />
         </div>
         <div className="pointer-events-none absolute inset-y-0 right-6 hidden md:flex flex-col justify-between py-32 z-10">
           <span className="text-[14px] tracking-[0.5em] uppercase text-ivory/60 [writing-mode:vertical-rl]">
@@ -135,7 +133,7 @@ function HomePage() {
           <div className="max-w-4xl animate-rise-slow">
             <div className="flex items-center gap-4">
               <span className="h-px w-14 bg-gold" />
-              <p className="eyebrow">Engagement Ring Specialists</p>
+              <p className="eyebrow">A Fine Jewellery Maison</p>
             </div>
             <h1 className="mt-8 font-serif font-light text-[16vw] md:text-[9rem] lg:text-[11rem] leading-[0.88] tracking-[-0.035em]">
               <span className="block">Oriva</span>
