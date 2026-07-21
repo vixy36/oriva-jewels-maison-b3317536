@@ -625,28 +625,8 @@ function HomePage() {
         </div>
       </section>
 
-      {/* FOUNDER'S NOTE */}
-      <section className="relative bg-obsidian py-12 md:py-20 overflow-hidden">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-30"
-          style={{ background: "radial-gradient(closest-side at 80% 30%, oklch(0.72 0.11 82 / 0.2), transparent 60%)" }}
-        />
-        <div className="relative mx-auto max-w-[1100px] px-6 md:px-16 text-center">
-          <Reveal>
-            <p className="eyebrow">- The Founder</p>
-            <p className="mt-12 font-serif italic text-3xl md:text-5xl leading-[1.25] text-ivory">
-              "We built Oriva so that a woman anywhere in the world could hold a diamond made just
-              for her - and know exactly where it came from, and whose hands finished it."
-            </p>
-            <div className="mt-14 flex items-center justify-center gap-6">
-              <span className="h-px w-16 bg-gold/60" />
-              <span className="text-[13px] tracking-[0.42em] uppercase text-gold">The Founders, Oriva Jewels</span>
-              <span className="h-px w-16 bg-gold/60" />
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      {/* FOUNDER'S NOTE removed */}
+
 
       {/* REVIEWS */}
       <section className="relative py-12 md:py-20 bg-ink">
