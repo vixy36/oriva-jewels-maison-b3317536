@@ -131,7 +131,7 @@ function HomePage() {
         </div>
 
 
-        <div className="relative z-10 mx-auto max-w-[1500px] w-full px-6 pt-40 pb-24 md:px-16 md:pt-48 md:pb-32 min-h-[100svh] flex flex-col justify-end">
+        <div className="relative z-10 mx-auto max-w-[1240px] w-full px-6 pt-40 pb-24 md:px-16 md:pt-48 md:pb-32 min-h-[100svh] flex flex-col justify-end">
           <div className="max-w-4xl animate-rise-slow">
             <div className="flex items-center gap-4">
               <span className="h-px w-14 bg-gold" />
@@ -329,29 +329,28 @@ function HomePage() {
 
 
       {/* MOST REQUESTED - editorial plates */}
-      <section className="relative py-8 md:py-14 bg-ivory text-obsidian">
-        <div className="mx-auto max-w-[1500px] px-6 md:px-16">
-          <GsapReveal className="flex items-end justify-between gap-6 flex-wrap border-b border-obsidian/15 pb-6">
+      <section className="relative py-8 md:py-12 bg-ivory text-obsidian">
+        <div className="mx-auto max-w-[1200px] px-5 md:px-10">
+          <div className="flex items-end justify-between gap-6 flex-wrap border-b border-obsidian/15 pb-4">
             <div className="max-w-xl">
-              <p data-gsap className="text-[12px] tracking-[0.5em] uppercase text-gold">- The Selected Six</p>
-              <h2 data-gsap className="mt-3 font-serif text-3xl md:text-5xl leading-[1] text-obsidian">
+              <p className="text-[11px] tracking-[0.5em] uppercase text-gold">- The Selected Six</p>
+              <h2 className="mt-2 font-serif text-2xl md:text-3xl leading-[1.1] text-obsidian">
                 <span className="text-gold-gradient">Most</span> <span className="italic text-gold">requested.</span>
               </h2>
-              <p className="mt-3 max-w-md text-[14px] leading-[1.7] text-obsidian">
+              <p className="mt-2 max-w-md text-[13px] leading-[1.6] text-obsidian">
                 A rotating archive of the pieces our clients return to - hand-set at our atelier and shipped worldwide, insured.
               </p>
             </div>
             <Link
-              data-gsap
               to="/collections/engagement-rings"
-              className="inline-flex items-center gap-2 text-[12px] tracking-[0.4em] uppercase text-obsidian border-b border-obsidian/40 pb-1 hover:text-gold hover:border-gold transition"
+              className="inline-flex items-center gap-2 text-[11px] tracking-[0.4em] uppercase text-obsidian border-b border-obsidian/40 pb-1 hover:text-gold hover:border-gold transition"
             >
               View entire archive <ArrowUpRight className="h-3.5 w-3.5" />
             </Link>
-          </GsapReveal>
+          </div>
 
-          <div className="mt-8 grid grid-cols-2 gap-x-3 gap-y-6 sm:grid-cols-3 sm:gap-x-5 sm:gap-y-8 lg:grid-cols-4 lg:gap-x-6">
-            {products.slice(0, 6).map((p, i) => (
+          <div className="mt-6 grid grid-cols-2 gap-x-3 gap-y-5 sm:grid-cols-3 sm:gap-x-4 sm:gap-y-6 lg:grid-cols-4 lg:gap-x-5">
+            {products.slice(0, 6).map((p) => (
               <Link
                 key={p.slug}
                 to="/product/$slug"
@@ -366,7 +365,7 @@ function HomePage() {
                     className="h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.05]"
                   />
                   <span aria-hidden className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-obsidian/5" />
-                  <span className="absolute top-1.5 right-1.5 text-[9px] tracking-[0.28em] uppercase text-obsidian/70 bg-ivory/85 backdrop-blur-sm px-1.5 py-0.5">
+                  <span className="absolute top-1.5 right-1.5 text-[10px] tracking-[0.24em] uppercase text-obsidian bg-ivory/90 backdrop-blur-sm px-1.5 py-0.5">
                     {p.diamondTypes.includes("Lab Grown") && p.diamondTypes.includes("Natural")
                       ? "Nat · Lab"
                       : p.diamondTypes[0]}
@@ -374,7 +373,7 @@ function HomePage() {
                 </div>
 
                 <p className="mt-2 text-[11px] tracking-[0.28em] uppercase text-gold truncate">{p.collection}</p>
-                <h3 className="mt-1 font-serif text-[15px] md:text-[16px] leading-[1.25] text-obsidian line-clamp-2">
+                <h3 className="mt-1 font-serif text-[14px] md:text-[15px] leading-[1.25] text-obsidian line-clamp-2">
                   {p.name}
                 </h3>
                 <p className="mt-1 text-[11px] tracking-[0.24em] uppercase text-obsidian">
@@ -383,17 +382,17 @@ function HomePage() {
               </Link>
             ))}
           </div>
-
         </div>
       </section>
 
+
       {/* SHOP BY SHAPE */}
-      <section className="relative py-8 md:py-14 bg-obsidian overflow-hidden">
-        <div className="mx-auto max-w-[1500px] px-6 md:px-16">
+      <section className="relative py-8 md:py-10 bg-obsidian overflow-hidden">
+        <div className="mx-auto max-w-[1240px] px-6 md:px-16">
           <Reveal className="flex items-end justify-between gap-6 flex-wrap">
             <div className="max-w-xl">
               <p className="eyebrow">- Shop by Shape</p>
-              <h2 className="mt-6 font-serif text-3xl md:text-5xl leading-[1] text-ivory">
+              <h2 className="mt-6 font-serif text-3xl md:text-3xl leading-[1] text-ivory">
                 Find your <em className="text-gold-gradient">silhouette.</em>
               </h2>
               <p className="mt-6 max-w-md text-[15px] text-ivory/70 leading-[1.8]">
@@ -431,8 +430,8 @@ function HomePage() {
       </section>
 
       {/* ATELIER */}
-      <section className="relative bg-obsidian py-8 md:py-14 overflow-hidden">
-        <div className="mx-auto max-w-[1500px] px-6 md:px-16 grid gap-12 md:grid-cols-12 md:gap-16 items-center">
+      <section className="relative bg-obsidian py-8 md:py-10 overflow-hidden">
+        <div className="mx-auto max-w-[1240px] px-6 md:px-16 grid gap-12 md:grid-cols-12 md:gap-16 items-center">
           <Reveal className="md:col-span-5">
             <div className="relative aspect-[4/5] overflow-hidden">
               <img src={atelier} alt="Oriva atelier" loading="lazy" className="h-full w-full object-cover" />
@@ -485,8 +484,8 @@ function HomePage() {
       </section>
 
       {/* OCCASIONS */}
-      <section className="py-8 md:py-14 bg-ink">
-        <div className="mx-auto max-w-[1500px] px-6 md:px-16">
+      <section className="py-8 md:py-10 bg-ink">
+        <div className="mx-auto max-w-[1240px] px-6 md:px-16">
           <Reveal className="text-center max-w-xl mx-auto">
             <p className="eyebrow">- The Occasions</p>
             <h2 className="mt-6 font-serif text-3xl md:text-4xl text-ivory">
@@ -521,11 +520,11 @@ function HomePage() {
 
 
       {/* PROCESS - From Inspiration to Reality */}
-      <section className="relative py-8 md:py-14 bg-ink overflow-hidden">
-        <div className="mx-auto max-w-[1500px] px-6 md:px-16">
+      <section className="relative py-8 md:py-10 bg-ink overflow-hidden">
+        <div className="mx-auto max-w-[1240px] px-6 md:px-16">
           <Reveal className="max-w-2xl">
             <p className="eyebrow">- The Process</p>
-            <h2 className="mt-6 font-serif text-3xl md:text-5xl leading-[1] text-ivory">
+            <h2 className="mt-6 font-serif text-3xl md:text-3xl leading-[1] text-ivory">
               From a sketch <em className="text-gold-gradient">to her finger.</em>
             </h2>
             <p className="mt-6 max-w-md text-[15px] leading-[1.85] text-ivory/70">
@@ -584,8 +583,8 @@ function HomePage() {
 
 
       {/* REVIEWS */}
-      <section className="relative py-8 md:py-14 bg-ink">
-        <div className="mx-auto max-w-[1500px] px-6 md:px-16">
+      <section className="relative py-8 md:py-10 bg-ink">
+        <div className="mx-auto max-w-[1240px] px-6 md:px-16">
           <Reveal className="text-center max-w-xl mx-auto">
             <p className="eyebrow">- The Clientele</p>
             <h2 className="mt-6 font-serif text-3xl md:text-4xl text-ivory">
@@ -632,7 +631,7 @@ function HomePage() {
       </section>
 
       {/* FAQ */}
-      <section className="relative py-8 md:py-14 bg-obsidian">
+      <section className="relative py-8 md:py-10 bg-obsidian">
         <div className="mx-auto max-w-[1200px] px-6 md:px-16 grid gap-16 md:grid-cols-12">
           <Reveal className="md:col-span-4">
             <p className="eyebrow">- Frequently Asked</p>
@@ -684,7 +683,7 @@ function HomePage() {
       </section>
 
       {/* INSTAGRAM */}
-      <section className="py-8 md:py-14 bg-ink">
+      <section className="py-8 md:py-10 bg-ink">
 
         <div className="mx-auto max-w-[1600px] px-6 md:px-16">
           <Reveal className="flex items-end justify-between gap-6 flex-wrap">
@@ -801,7 +800,7 @@ function EngagementRingsSection() {
   const labelCls = "block text-[11px] tracking-[0.32em] uppercase text-gold mb-2";
 
   return (
-    <section className="relative py-12 md:py-20 bg-obsidian overflow-hidden">
+    <section className="relative py-12 md:py-14 bg-obsidian overflow-hidden">
       <div
         aria-hidden
         className="absolute inset-0 opacity-40 pointer-events-none"
@@ -810,7 +809,7 @@ function EngagementRingsSection() {
             "radial-gradient(circle at 12% 18%, oklch(0.79 0.11 82 / 0.14), transparent 45%), radial-gradient(circle at 88% 82%, oklch(0.62 0.11 72 / 0.16), transparent 45%)",
         }}
       />
-      <div className="relative mx-auto max-w-[1500px] px-6 md:px-16 grid gap-12 md:grid-cols-12 md:gap-16 items-start">
+      <div className="relative mx-auto max-w-[1240px] px-6 md:px-16 grid gap-12 md:grid-cols-12 md:gap-16 items-start">
         <Reveal className="md:col-span-5">
           <div className="relative aspect-[4/5] overflow-hidden">
             <img
@@ -867,7 +866,7 @@ function EngagementRingsSection() {
       </div>
 
       {/* Enquiry Form - Full Width */}
-      <Reveal delay={80} className="relative mx-auto max-w-[1500px] px-6 md:px-16 mt-16 md:mt-20">
+      <Reveal delay={80} className="relative mx-auto max-w-[1240px] px-6 md:px-16 mt-16 md:mt-20">
         <div className="border border-white/10 bg-black/30 p-6 md:p-10">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
             <div>
