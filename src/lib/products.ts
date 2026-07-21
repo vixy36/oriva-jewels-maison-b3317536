@@ -167,6 +167,22 @@ export const categories: Record<ProductCategory, { label: string; blurb: string 
     label: "Lab Grown Diamonds",
     blurb: "Chemically identical to natural diamonds - with a modern conscience.",
   },
+  natural: {
+    label: "Natural Diamonds",
+    blurb: "Earth-mined diamonds, ethically sourced and certified.",
+  },
+  rings: {
+    label: "Rings",
+    blurb: "Fashion, cocktail and stackable rings in fine gold.",
+  },
+  necklaces: {
+    label: "Necklaces",
+    blurb: "Chains, tennis necklaces and diamond rivieres.",
+  },
+  "mens-jewelry": {
+    label: "Men's Jewelry",
+    blurb: "Signets, bands and chains crafted for the modern gentleman.",
+  },
 };
 
 export const WHATSAPP_NUMBER = "85253176253";
