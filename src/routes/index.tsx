@@ -625,7 +625,41 @@ function HomePage() {
         </div>
       </section>
 
-      {/* FOUNDER'S NOTE removed */}
+      {/* FOUNDER'S NOTE */}
+      <section className="relative py-10 md:py-16 bg-obsidian overflow-hidden">
+        <div className="mx-auto max-w-[1500px] px-6 md:px-16 grid gap-12 md:grid-cols-12 md:gap-16 items-center">
+          <Reveal className="md:col-span-5">
+            <div className="relative aspect-[4/5] overflow-hidden">
+              <img src={atelier} alt="Founder's workshop" loading="lazy" className="h-full w-full object-cover" />
+              <div className="absolute inset-0 border border-gold/20" />
+            </div>
+            <p className="mt-4 text-[14px] tracking-[0.42em] uppercase text-ivory/80">
+              Plate III · The Founder
+            </p>
+          </Reveal>
+          <Reveal delay={120} className="md:col-span-7 md:pl-8">
+            <p className="eyebrow">- A Note from the Founder</p>
+            <h2 className="mt-6 font-serif text-4xl md:text-6xl leading-[1.05] text-ivory">
+              We build what we would <em className="text-gold-gradient">wear ourselves.</em>
+            </h2>
+            <div className="mt-8 space-y-5 text-[15px] leading-[1.85] text-ivory/80 max-w-xl">
+              <p>
+                Oriva began with a simple frustration - beautiful diamonds sold at retail markups that had
+                little to do with the stone in the setting. As end-to-end manufacturers, we design, cast,
+                set and finish each piece under one roof.
+              </p>
+              <p>
+                That means direct factory pricing, full customization on every design, and a personal
+                relationship with the person who will hand-set your stone. There is no middle.
+              </p>
+              <p className="font-serif italic text-ivory/90">
+                - The Oriva Team
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
 
 
       {/* REVIEWS */}
