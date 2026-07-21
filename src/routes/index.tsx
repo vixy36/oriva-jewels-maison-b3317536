@@ -530,46 +530,6 @@ function HomePage() {
         </div>
       </section>
 
-      {/* PROMISES */}
-      <section className="relative isolate overflow-hidden bg-obsidian py-8 md:py-14">
-        <div
-          aria-hidden
-          className="absolute inset-0 opacity-40 pointer-events-none"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at 15% 20%, oklch(0.79 0.11 82 / 0.15), transparent 45%), radial-gradient(circle at 85% 80%, oklch(0.62 0.11 72 / 0.18), transparent 45%)",
-          }}
-        />
-        <div className="relative mx-auto max-w-[1500px] px-6 md:px-16">
-          <Reveal className="max-w-2xl">
-            <p className="eyebrow">- The Standard</p>
-            <h2 className="mt-6 font-serif text-5xl md:text-7xl leading-[1] text-ivory">
-              Four <em className="text-gold-gradient">promises</em>,
-              made once, held forever.
-            </h2>
-          </Reveal>
-
-          <div className="mt-12 grid gap-px bg-white/10 border border-white/10 sm:grid-cols-2 lg:grid-cols-4">
-            {[
-              { icon: ShieldCheck, n: "I", title: "Certified Origin", body: "Every stone accompanied by GIA or IGI certification, individually inspected in our atelier." },
-              { icon: Gem, n: "II", title: "Natural or Lab", body: "The same craftsmanship applied to both - the choice is entirely yours, without compromise." },
-              { icon: Sparkles, n: "III", title: "Bespoke Atelier", body: "One-to-one design consultations for engagement rings and reimagined heirloom pieces." },
-              { icon: Globe2, n: "IV", title: "Insured Worldwide", body: "Delivered by hand or by air, fully insured to Dubai, Singapore, EU, US and beyond." },
-            ].map((f, i) => (
-              <Reveal key={f.title} delay={i * 70}>
-                <div className="h-full bg-obsidian p-8 md:p-10 group">
-                  <div className="flex items-center justify-between">
-                    <f.icon className="h-6 w-6 text-gold" strokeWidth={1.1} />
-                    <span className="font-serif italic text-3xl text-white/10 group-hover:text-gold/40 transition">{f.n}</span>
-                  </div>
-                  <h3 className="mt-10 font-serif text-2xl md:text-3xl text-ivory">{f.title}</h3>
-                  <p className="mt-4 text-sm text-ivory/55 leading-[1.7]">{f.body}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* PROCESS - From Inspiration to Reality */}
       <section className="relative py-8 md:py-14 bg-ink overflow-hidden">
