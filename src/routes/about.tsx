@@ -10,7 +10,7 @@ export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
       { title: "The Maison - Oriva Jewels" },
-      { name: "description", content: "A Hong Kong maison of natural and lab grown diamond jewellery. Our story, our craftsmanship, our beliefs." },
+      { name: "description", content: "A modern maison of natural and lab grown diamond jewellery. Our story, our craftsmanship, our beliefs." },
     ],
   }),
   component: AboutPage,
