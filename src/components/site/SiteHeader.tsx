@@ -131,10 +131,16 @@ export function SiteHeader() {
                 </Link>
               ))}
             </nav>
+            <Link
+              to="/custom-order"
+              className="hidden lg:inline-flex items-center gap-2 border border-gold text-gold px-4 py-2 text-[11px] tracking-[0.32em] uppercase hover:bg-gold hover:text-obsidian transition-colors"
+            >
+              Custom Order
+            </Link>
             <button
               type="button"
               onClick={() => setSearchOpen(true)}
-              className="hidden lg:inline-flex items-center gap-2 text-[14px] tracking-[0.32em] uppercase text-gold hover:text-ivory transition"
+              className="hidden lg:inline-flex items-center gap-2 text-[14px] tracking-[0.32em] uppercase text-ivory/80 hover:text-gold transition"
               aria-label="Search"
             >
               <Search className="h-3.5 w-3.5" strokeWidth={1.6} />
@@ -148,6 +154,7 @@ export function SiteHeader() {
             >
               <Search className="h-5 w-5" strokeWidth={1.6} />
             </button>
+
           </div>
         </div>
         <div className="h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
