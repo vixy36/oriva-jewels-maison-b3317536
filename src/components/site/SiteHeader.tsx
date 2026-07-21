@@ -100,7 +100,7 @@ export function SiteHeader() {
         style={{ backgroundColor: "rgba(7,28,55,0.92)", backdropFilter: "blur(14px)" }}
         data-surface="dark"
       >
-        <div ref={navItemsRef} className="mx-auto flex max-w-[1600px] items-center justify-between gap-6 px-6 py-5 md:px-10 md:py-5">
+        <div ref={navItemsRef} className="relative mx-auto flex max-w-[1600px] items-center justify-between gap-6 px-6 py-5 md:px-10 md:py-5">
           <button
             className="lg:hidden text-ivory"
             aria-label="Open menu"
@@ -109,7 +109,48 @@ export function SiteHeader() {
             <Menu className="h-5 w-5" />
           </button>
 
-          <Link ref={logoRef} to="/" className="group flex items-center lg:mr-4" aria-label="Oriva Jewels">
+          <nav className="hidden lg:flex items-center gap-7">
+            {nav.slice(0, 3).map((n) => (
+              <div
+                key={n.label}
+                className="relative"
+                onMouseEnter={() => n.children && setOpenSub(n.label)}
+                onMouseLeave={() => n.children && setOpenSub(null)}
+              >
+                <Link
+                  to={n.to!}
+                  data-nav-item
+                  className="flex items-center gap-1 text-[10.5px] tracking-[0.32em] uppercase text-ivory/85 hover:text-gold transition-colors py-2"
+                  activeProps={{ className: "text-gold" }}
+                >
+                  {n.label}
+                  {n.children && <ChevronDown className="h-3 w-3 opacity-70" strokeWidth={1.6} />}
+                </Link>
+                {n.children && openSub === n.label && (
+                  <div className="absolute left-1/2 top-full -translate-x-1/2 pt-2">
+                    <div className="min-w-[220px] border border-white/10 bg-obsidian/98 backdrop-blur-xl py-3 shadow-2xl">
+                      {n.children.map((c) => (
+                        <Link
+                          key={c.to}
+                          to={c.to}
+                          className="block px-5 py-2.5 text-[11px] tracking-[0.28em] uppercase text-ivory/80 hover:text-gold hover:bg-white/[0.03] transition"
+                        >
+                          {c.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
+          </nav>
+
+          <Link
+            ref={logoRef}
+            to="/"
+            className="group flex items-center lg:absolute lg:left-1/2 lg:top-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2"
+            aria-label="Oriva Jewels"
+          >
             <img
               src={orivaLogo.url}
               alt="Oriva Jewels"
@@ -118,8 +159,8 @@ export function SiteHeader() {
             />
           </Link>
 
-          <nav className="hidden lg:flex flex-1 items-center justify-center gap-7">
-            {nav.map((n) => (
+          <nav className="hidden lg:flex items-center gap-7">
+            {nav.slice(3).map((n) => (
               <div
                 key={n.label}
                 className="relative"
