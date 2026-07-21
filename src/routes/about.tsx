@@ -9,8 +9,8 @@ import { ArrowRight } from "lucide-react";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "The Maison - Oriva Jewels, Hong Kong" },
-      { name: "description", content: "A Hong Kong maison of natural and lab grown diamond jewellery. Our story, our craftsmanship, our beliefs." },
+      { title: "The Maison - Oriva Jewels" },
+      { name: "description", content: "A modern maison of natural and lab grown diamond jewellery. Our story, our craftsmanship, our beliefs." },
     ],
   }),
   component: AboutPage,

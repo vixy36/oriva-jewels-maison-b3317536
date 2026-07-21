@@ -140,7 +140,7 @@ function EducationPage() {
             A private consultation, <em className="text-gold-gradient">at your pace.</em>
           </h2>
           <p className="mx-auto mt-6 max-w-lg text-[15px] leading-[1.8] text-ivory/80">
-            Speak with a diamond specialist. We source, curate and hand-set every stone in Hong Kong.
+            Speak with a diamond specialist. We source, curate and hand-set every stone by hand.
           </p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
             <a
