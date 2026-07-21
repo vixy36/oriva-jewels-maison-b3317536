@@ -193,6 +193,14 @@ export function SiteHeader() {
                 )}
               </div>
             ))}
+            <button
+              type="button"
+              onClick={() => setSearchOpen(true)}
+              className="text-ivory hover:text-gold transition ml-2"
+              aria-label="Search"
+            >
+              <Search className="h-5 w-5" strokeWidth={1.6} />
+            </button>
           </nav>
 
           <div className="flex items-center gap-5 justify-self-end lg:hidden">
@@ -206,14 +214,6 @@ export function SiteHeader() {
             </button>
           </div>
 
-          <button
-            type="button"
-            onClick={() => setSearchOpen(true)}
-            className="hidden lg:inline-flex text-ivory hover:text-gold transition absolute right-6 md:right-10 top-1/2 -translate-y-1/2"
-            aria-label="Search"
-          >
-            <Search className="h-5 w-5" strokeWidth={1.6} />
-          </button>
         </div>
         <div className="h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
       </header>
