@@ -266,13 +266,6 @@ export function SiteHeader() {
                 </div>
               );
             })}
-            <Link
-              to="/custom-order"
-              onClick={() => setOpen(false)}
-              className="mt-8 flex items-center justify-center gap-2 border border-gold text-gold px-5 py-4 text-[12px] tracking-[0.4em] uppercase"
-            >
-              Custom Order
-            </Link>
           </nav>
         </div>
       )}
