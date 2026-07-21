@@ -35,7 +35,7 @@ function AboutPage() {
           </h1>
           <p className="mt-10 max-w-xl text-[15px] leading-[1.8] text-ivory/85">
             Oriva Jewels is a modern maison of natural and lab grown diamond jewellery - designed
-            in Hong Kong, finished by hand, worn for a lifetime.
+            with care, finished by hand, worn for a lifetime.
           </p>
         </div>
       </section>
