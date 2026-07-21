@@ -456,7 +456,7 @@ function HomePage() {
 
           <Reveal delay={150} className="md:col-span-7 md:pl-8">
             <p className="eyebrow">- The Atelier</p>
-            <h2 className="mt-6 font-serif text-3xl md:text-5xl leading-[1] text-ivory">
+            <h2 className="mt-6 font-serif text-xl md:text-2xl leading-[1.2] text-ivory">
               Every stone <em className="text-gold-gradient">chosen</em>.
               <br />Every piece <em className="text-gold-gradient">finished</em> by hand.
             </h2>
