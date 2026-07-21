@@ -195,7 +195,7 @@ export function SiteHeader() {
             </Link>
           </div>
           <div className="absolute bottom-10 left-8 right-8">
-            <p className="eyebrow">Hong Kong · By Appointment</p>
+            <p className="eyebrow">By Appointment · Worldwide</p>
             <p className="mt-3 font-serif text-lg text-ivory">hello@orivajewels.com</p>
           </div>
         </div>

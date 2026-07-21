@@ -35,7 +35,7 @@ function AboutPage() {
           </h1>
           <p className="mt-10 max-w-xl text-[15px] leading-[1.8] text-ivory/85">
             Oriva Jewels is a modern maison of natural and lab grown diamond jewellery - designed
-            in Hong Kong, finished by hand, worn for a lifetime.
+            with care, finished by hand, worn for a lifetime.
           </p>
         </div>
       </section>
@@ -64,7 +64,7 @@ function AboutPage() {
           eyebrow: "- Certified Craftsmanship",
           title: "Every stone,",
           titleAccent: "personally sourced.",
-          body: "We work only with GIA and IGI certified diamonds - Natural and Lab Grown - and finish each piece by hand in our Hong Kong atelier. Every setting is checked, every prong is tuned.",
+          body: "We work only with GIA and IGI certified diamonds - Natural and Lab Grown - and finish each piece by hand in our own atelier. Every setting is checked, every prong is tuned.",
           img: insta5,
           flip: true,
         },
