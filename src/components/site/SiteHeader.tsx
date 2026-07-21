@@ -100,16 +100,16 @@ export function SiteHeader() {
         style={{ backgroundColor: "rgba(7,28,55,0.92)", backdropFilter: "blur(14px)" }}
         data-surface="dark"
       >
-        <div ref={navItemsRef} className="relative mx-auto flex max-w-[1600px] items-center justify-between gap-6 px-6 py-5 md:px-10 md:py-5">
+        <div ref={navItemsRef} className="relative mx-auto grid grid-cols-[auto_1fr_auto] lg:grid-cols-3 items-center gap-4 px-6 py-5 md:px-10 md:py-5 max-w-[1600px]">
           <button
-            className="lg:hidden text-ivory"
+            className="lg:hidden text-ivory justify-self-start"
             aria-label="Open menu"
             onClick={() => setOpen(true)}
           >
             <Menu className="h-5 w-5" />
           </button>
 
-          <nav className="hidden lg:flex items-center gap-7">
+          <nav className="hidden lg:flex items-center gap-6 justify-self-start">
             {nav.slice(0, 3).map((n) => (
               <div
                 key={n.label}
@@ -120,20 +120,20 @@ export function SiteHeader() {
                 <Link
                   to={n.to!}
                   data-nav-item
-                  className="flex items-center gap-1 text-[13px] tracking-[0.28em] uppercase text-ivory/90 hover:text-gold transition-colors py-2"
+                  className="flex items-center gap-1 font-serif text-[15px] tracking-[0.14em] uppercase text-ivory hover:text-gold transition-colors py-2"
                   activeProps={{ className: "text-gold" }}
                 >
                   {n.label}
-                  {n.children && <ChevronDown className="h-3 w-3 opacity-70" strokeWidth={1.6} />}
+                  {n.children && <ChevronDown className="h-3.5 w-3.5 opacity-80" strokeWidth={1.6} />}
                 </Link>
                 {n.children && openSub === n.label && (
                   <div className="absolute left-1/2 top-full -translate-x-1/2 pt-2">
-                    <div className="min-w-[220px] border border-white/10 bg-obsidian/98 backdrop-blur-xl py-3 shadow-2xl">
+                    <div className="min-w-[240px] border border-white/10 bg-obsidian/98 backdrop-blur-xl py-3 shadow-2xl">
                       {n.children.map((c) => (
                         <Link
                           key={c.to}
                           to={c.to}
-                          className="block px-5 py-2.5 text-[11px] tracking-[0.28em] uppercase text-ivory/80 hover:text-gold hover:bg-white/[0.03] transition"
+                          className="block px-5 py-2.5 font-serif text-[14px] tracking-[0.14em] uppercase text-ivory hover:text-gold hover:bg-white/[0.04] transition"
                         >
                           {c.label}
                         </Link>
@@ -148,7 +148,7 @@ export function SiteHeader() {
           <Link
             ref={logoRef}
             to="/"
-            className="group flex items-center lg:absolute lg:left-1/2 lg:top-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2"
+            className="group flex items-center justify-self-center"
             aria-label="Oriva Jewels"
           >
             <img
@@ -159,7 +159,7 @@ export function SiteHeader() {
             />
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-7">
+          <nav className="hidden lg:flex items-center gap-6 justify-self-end">
             {nav.slice(3).map((n) => (
               <div
                 key={n.label}
@@ -170,20 +170,20 @@ export function SiteHeader() {
                 <Link
                   to={n.to!}
                   data-nav-item
-                  className="flex items-center gap-1 text-[13px] tracking-[0.28em] uppercase text-ivory/90 hover:text-gold transition-colors py-2"
+                  className="flex items-center gap-1 font-serif text-[15px] tracking-[0.14em] uppercase text-ivory hover:text-gold transition-colors py-2"
                   activeProps={{ className: "text-gold" }}
                 >
                   {n.label}
-                  {n.children && <ChevronDown className="h-3 w-3 opacity-70" strokeWidth={1.6} />}
+                  {n.children && <ChevronDown className="h-3.5 w-3.5 opacity-80" strokeWidth={1.6} />}
                 </Link>
                 {n.children && openSub === n.label && (
-                  <div className="absolute left-1/2 top-full -translate-x-1/2 pt-2">
-                    <div className="min-w-[220px] border border-white/10 bg-obsidian/98 backdrop-blur-xl py-3 shadow-2xl">
+                  <div className="absolute right-0 top-full pt-2">
+                    <div className="min-w-[240px] border border-white/10 bg-obsidian/98 backdrop-blur-xl py-3 shadow-2xl">
                       {n.children.map((c) => (
                         <Link
                           key={c.to}
                           to={c.to}
-                          className="block px-5 py-2.5 text-[11px] tracking-[0.28em] uppercase text-ivory/80 hover:text-gold hover:bg-white/[0.03] transition"
+                          className="block px-5 py-2.5 font-serif text-[14px] tracking-[0.14em] uppercase text-ivory hover:text-gold hover:bg-white/[0.04] transition"
                         >
                           {c.label}
                         </Link>
@@ -193,24 +193,27 @@ export function SiteHeader() {
                 )}
               </div>
             ))}
-          </nav>
-
-          <div className="flex items-center gap-5">
-            <Link
-              to="/custom-order"
-              className="hidden xl:inline-flex items-center gap-2 border border-gold text-gold px-4 py-2 text-[12px] tracking-[0.28em] uppercase hover:bg-gold hover:text-obsidian transition-colors"
-            >
-              Custom Order
-            </Link>
             <button
               type="button"
               onClick={() => setSearchOpen(true)}
-              className="text-ivory/85 hover:text-gold transition"
+              className="text-ivory hover:text-gold transition ml-2"
+              aria-label="Search"
+            >
+              <Search className="h-5 w-5" strokeWidth={1.6} />
+            </button>
+          </nav>
+
+          <div className="flex items-center gap-5 justify-self-end lg:hidden">
+            <button
+              type="button"
+              onClick={() => setSearchOpen(true)}
+              className="text-ivory hover:text-gold transition"
               aria-label="Search"
             >
               <Search className="h-5 w-5" strokeWidth={1.6} />
             </button>
           </div>
+
         </div>
         <div className="h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
       </header>
@@ -263,13 +266,6 @@ export function SiteHeader() {
                 </div>
               );
             })}
-            <Link
-              to="/custom-order"
-              onClick={() => setOpen(false)}
-              className="mt-8 flex items-center justify-center gap-2 border border-gold text-gold px-5 py-4 text-[12px] tracking-[0.4em] uppercase"
-            >
-              Custom Order
-            </Link>
           </nav>
         </div>
       )}
