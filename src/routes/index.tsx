@@ -329,29 +329,28 @@ function HomePage() {
 
 
       {/* MOST REQUESTED - editorial plates */}
-      <section className="relative py-8 md:py-14 bg-ivory text-obsidian">
-        <div className="mx-auto max-w-[1500px] px-6 md:px-16">
-          <GsapReveal className="flex items-end justify-between gap-6 flex-wrap border-b border-obsidian/15 pb-6">
+      <section className="relative py-8 md:py-12 bg-ivory text-obsidian">
+        <div className="mx-auto max-w-[1200px] px-5 md:px-10">
+          <div className="flex items-end justify-between gap-6 flex-wrap border-b border-obsidian/15 pb-4">
             <div className="max-w-xl">
-              <p data-gsap className="text-[12px] tracking-[0.5em] uppercase text-gold">- The Selected Six</p>
-              <h2 data-gsap className="mt-3 font-serif text-3xl md:text-5xl leading-[1] text-obsidian">
+              <p className="text-[11px] tracking-[0.5em] uppercase text-gold">- The Selected Six</p>
+              <h2 className="mt-2 font-serif text-2xl md:text-3xl leading-[1.1] text-obsidian">
                 <span className="text-gold-gradient">Most</span> <span className="italic text-gold">requested.</span>
               </h2>
-              <p className="mt-3 max-w-md text-[14px] leading-[1.7] text-obsidian">
+              <p className="mt-2 max-w-md text-[13px] leading-[1.6] text-obsidian">
                 A rotating archive of the pieces our clients return to - hand-set at our atelier and shipped worldwide, insured.
               </p>
             </div>
             <Link
-              data-gsap
               to="/collections/engagement-rings"
-              className="inline-flex items-center gap-2 text-[12px] tracking-[0.4em] uppercase text-obsidian border-b border-obsidian/40 pb-1 hover:text-gold hover:border-gold transition"
+              className="inline-flex items-center gap-2 text-[11px] tracking-[0.4em] uppercase text-obsidian border-b border-obsidian/40 pb-1 hover:text-gold hover:border-gold transition"
             >
               View entire archive <ArrowUpRight className="h-3.5 w-3.5" />
             </Link>
-          </GsapReveal>
+          </div>
 
-          <div className="mt-8 grid grid-cols-2 gap-x-3 gap-y-6 sm:grid-cols-3 sm:gap-x-5 sm:gap-y-8 lg:grid-cols-4 lg:gap-x-6">
-            {products.slice(0, 6).map((p, i) => (
+          <div className="mt-6 grid grid-cols-2 gap-x-3 gap-y-5 sm:grid-cols-3 sm:gap-x-4 sm:gap-y-6 lg:grid-cols-4 lg:gap-x-5">
+            {products.slice(0, 6).map((p) => (
               <Link
                 key={p.slug}
                 to="/product/$slug"
@@ -366,7 +365,7 @@ function HomePage() {
                     className="h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.05]"
                   />
                   <span aria-hidden className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-obsidian/5" />
-                  <span className="absolute top-1.5 right-1.5 text-[9px] tracking-[0.28em] uppercase text-obsidian/70 bg-ivory/85 backdrop-blur-sm px-1.5 py-0.5">
+                  <span className="absolute top-1.5 right-1.5 text-[10px] tracking-[0.24em] uppercase text-obsidian bg-ivory/90 backdrop-blur-sm px-1.5 py-0.5">
                     {p.diamondTypes.includes("Lab Grown") && p.diamondTypes.includes("Natural")
                       ? "Nat · Lab"
                       : p.diamondTypes[0]}
@@ -374,7 +373,7 @@ function HomePage() {
                 </div>
 
                 <p className="mt-2 text-[11px] tracking-[0.28em] uppercase text-gold truncate">{p.collection}</p>
-                <h3 className="mt-1 font-serif text-[15px] md:text-[16px] leading-[1.25] text-obsidian line-clamp-2">
+                <h3 className="mt-1 font-serif text-[14px] md:text-[15px] leading-[1.25] text-obsidian line-clamp-2">
                   {p.name}
                 </h3>
                 <p className="mt-1 text-[11px] tracking-[0.24em] uppercase text-obsidian">
@@ -383,9 +382,9 @@ function HomePage() {
               </Link>
             ))}
           </div>
-
         </div>
       </section>
+
 
       {/* SHOP BY SHAPE */}
       <section className="relative py-8 md:py-14 bg-obsidian overflow-hidden">
