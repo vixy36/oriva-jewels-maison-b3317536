@@ -134,7 +134,7 @@ function CustomOrderPage() {
       <section className="mx-auto max-w-[1400px] px-6 md:px-16">
         <GsapReveal className="text-center">
           <p data-gsap className="text-[12px] tracking-[0.5em] uppercase text-gold">- Atelier Commission -</p>
-          <h1 data-gsap className="mt-6 font-serif text-4xl md:text-6xl lg:text-7xl leading-[1] text-obsidian">
+          <h1 data-gsap className="mt-6 font-serif text-3xl md:text-4xl lg:text-7xl leading-[1] text-obsidian">
             Custom <em className="italic text-gold-gradient">order request.</em>
           </h1>
           <p data-gsap className="mt-6 mx-auto max-w-2xl text-[15px] md:text-[16px] leading-[1.8] text-obsidian/70">

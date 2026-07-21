@@ -129,7 +129,7 @@ function ShapeNotFound() {
     <div className="min-h-[70svh] grid place-items-center bg-obsidian text-ivory px-6">
       <div className="text-center">
         <p className="eyebrow">Shape unavailable</p>
-        <h1 className="mt-6 font-serif text-5xl md:text-6xl">This shape hasn't found its chapter.</h1>
+        <h1 className="mt-6 font-serif text-3xl md:text-4xl">This shape hasn't found its chapter.</h1>
         <Link to="/" className="mt-10 inline-flex items-center gap-3 text-[11px] tracking-[0.4em] uppercase text-gold border-b border-gold/50 pb-1">
           Return home <ArrowRight className="h-4 w-4" />
         </Link>

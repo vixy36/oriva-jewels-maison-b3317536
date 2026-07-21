@@ -55,7 +55,7 @@ function BespokePage() {
         <div className="mx-auto max-w-[1400px] px-6 md:px-16">
           <Reveal>
             <p className="eyebrow">- The Journey</p>
-            <h2 className="mt-6 font-serif text-5xl md:text-7xl">Three <em className="text-gold-gradient">chapters.</em></h2>
+            <h2 className="mt-6 font-serif text-3xl md:text-5xl">Three <em className="text-gold-gradient">chapters.</em></h2>
           </Reveal>
           <div className="mt-10 grid gap-10 md:grid-cols-3">
             {steps.map((s, i) => (
@@ -81,7 +81,7 @@ function BespokePage() {
           <div className="flex items-center px-6 py-24 md:px-20 md:py-32">
             <Reveal>
               <p className="eyebrow">- Ready when you are</p>
-              <h2 className="mt-8 font-serif text-4xl md:text-6xl">
+              <h2 className="mt-8 font-serif text-3xl md:text-4xl">
                 Every heirloom begins with a <em className="text-gold-gradient">letter.</em>
               </h2>
               <p className="mt-8 max-w-md text-[15px] leading-[1.9] text-ivory/80">

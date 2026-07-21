@@ -219,7 +219,7 @@ function HomePage() {
         <div className="relative mx-auto max-w-[1500px] px-6 md:px-16">
           <Reveal className="border-t border-white/10 pt-10 md:pt-14 text-center">
             <p className="eyebrow">- The Index</p>
-            <h2 className="mt-6 font-serif text-5xl md:text-7xl leading-[1] text-ivory">
+            <h2 className="mt-6 font-serif text-3xl md:text-5xl leading-[1] text-ivory">
               Six chapters.{" "}
               <em className="text-gold-gradient">One maison.</em>
             </h2>
@@ -404,7 +404,7 @@ function HomePage() {
           <Reveal className="flex items-end justify-between gap-6 flex-wrap">
             <div className="max-w-xl">
               <p className="eyebrow">- Shop by Shape</p>
-              <h2 className="mt-6 font-serif text-5xl md:text-7xl leading-[1] text-ivory">
+              <h2 className="mt-6 font-serif text-3xl md:text-5xl leading-[1] text-ivory">
                 Find your <em className="text-gold-gradient">silhouette.</em>
               </h2>
               <p className="mt-6 max-w-md text-[15px] text-ivory/70 leading-[1.8]">
@@ -456,7 +456,7 @@ function HomePage() {
 
           <Reveal delay={150} className="md:col-span-7 md:pl-8">
             <p className="eyebrow">- The Atelier</p>
-            <h2 className="mt-6 font-serif text-5xl md:text-7xl leading-[1] text-ivory">
+            <h2 className="mt-6 font-serif text-xl md:text-2xl leading-[1.2] text-ivory">
               Every stone <em className="text-gold-gradient">chosen</em>.
               <br />Every piece <em className="text-gold-gradient">finished</em> by hand.
             </h2>
@@ -500,7 +500,7 @@ function HomePage() {
         <div className="mx-auto max-w-[1500px] px-6 md:px-16">
           <Reveal className="text-center max-w-xl mx-auto">
             <p className="eyebrow">- The Occasions</p>
-            <h2 className="mt-6 font-serif text-5xl md:text-6xl text-ivory">
+            <h2 className="mt-6 font-serif text-3xl md:text-4xl text-ivory">
               For every <em className="text-gold-gradient">moment worth marking.</em>
             </h2>
           </Reveal>
@@ -536,7 +536,7 @@ function HomePage() {
         <div className="mx-auto max-w-[1500px] px-6 md:px-16">
           <Reveal className="max-w-2xl">
             <p className="eyebrow">- The Process</p>
-            <h2 className="mt-6 font-serif text-5xl md:text-7xl leading-[1] text-ivory">
+            <h2 className="mt-6 font-serif text-3xl md:text-5xl leading-[1] text-ivory">
               From a sketch <em className="text-gold-gradient">to her finger.</em>
             </h2>
             <p className="mt-6 max-w-md text-[15px] leading-[1.85] text-ivory/70">
@@ -599,7 +599,7 @@ function HomePage() {
         <div className="mx-auto max-w-[1500px] px-6 md:px-16">
           <Reveal className="text-center max-w-xl mx-auto">
             <p className="eyebrow">- The Clientele</p>
-            <h2 className="mt-6 font-serif text-5xl md:text-6xl text-ivory">
+            <h2 className="mt-6 font-serif text-3xl md:text-4xl text-ivory">
               In their <em className="text-gold-gradient">own words.</em>
             </h2>
           </Reveal>
@@ -647,7 +647,7 @@ function HomePage() {
         <div className="mx-auto max-w-[1200px] px-6 md:px-16 grid gap-16 md:grid-cols-12">
           <Reveal className="md:col-span-4">
             <p className="eyebrow">- Frequently Asked</p>
-            <h2 className="mt-6 font-serif text-4xl md:text-5xl leading-[1.05] text-ivory">
+            <h2 className="mt-6 font-serif text-2xl md:text-4xl leading-[1.05] text-ivory">
               A few <em className="text-gold-gradient">answers.</em>
             </h2>
             <p className="mt-6 text-sm leading-[1.85] text-ivory/70">
@@ -701,7 +701,7 @@ function HomePage() {
           <Reveal className="flex items-end justify-between gap-6 flex-wrap">
             <div className="max-w-xl">
               <p className="eyebrow">- @orivajewels</p>
-              <h2 className="mt-4 font-serif text-4xl md:text-6xl text-ivory">
+              <h2 className="mt-4 font-serif text-3xl md:text-4xl text-ivory">
                 <em className="text-gold-gradient">Instagram.</em>
               </h2>
               <p className="mt-4 text-[15px] leading-[1.75] text-ivory/70">
@@ -841,7 +841,7 @@ function EngagementRingsSection() {
 
         <Reveal delay={120} className="md:col-span-7 md:pl-8">
           <p className="eyebrow">- Engagement Rings</p>
-          <h2 className="mt-6 font-serif text-4xl md:text-6xl leading-[1.05] text-ivory">
+          <h2 className="mt-6 font-serif text-3xl md:text-4xl leading-[1.05] text-ivory">
             From a sketch to <em className="text-gold-gradient">her finger.</em>
           </h2>
           <p className="mt-6 max-w-xl text-[15px] leading-[1.85] text-ivory/80">

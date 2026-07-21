@@ -61,7 +61,7 @@ function ContactPage() {
           >
             <div>
               <p className="eyebrow">- Request an Appointment</p>
-              <h2 className="mt-4 font-serif text-4xl md:text-5xl text-ivory">Tell us about your piece.</h2>
+              <h2 className="mt-4 font-serif text-2xl md:text-4xl text-ivory">Tell us about your piece.</h2>
             </div>
 
             <div className="grid grid-cols-2 gap-6 pt-4">

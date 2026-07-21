@@ -90,7 +90,7 @@ function AboutPage() {
             </Reveal>
             <Reveal delay={150} className="md:col-span-6 md:pl-6">
               <p className="eyebrow">{s.eyebrow}</p>
-              <h2 className="mt-6 font-serif text-5xl md:text-7xl leading-[1] text-ivory">
+              <h2 className="mt-6 font-serif text-3xl md:text-5xl leading-[1] text-ivory">
                 {s.title}<br />
                 <em className="text-gold-gradient">{s.titleAccent}</em>
               </h2>
