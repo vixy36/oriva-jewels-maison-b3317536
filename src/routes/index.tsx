@@ -184,9 +184,9 @@ function HomePage() {
                 "GIA & IGI Certified",
                 "Own Manufacturing",
                 "Direct Factory Pricing",
-                "100% Customization",
+                "100% Customization Available",
                 "Worldwide Shipping",
-                "Engagement Ring Specialists",
+                "Engagement Ring Specialist",
               ].map((t) => (
                 <span key={t} className="flex items-center gap-3 font-serif italic text-2xl md:text-3xl text-ivory/80">
                   <span className="text-gold text-3xl md:text-4xl">✦</span>
