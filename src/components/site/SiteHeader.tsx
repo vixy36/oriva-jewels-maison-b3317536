@@ -120,7 +120,7 @@ export function SiteHeader() {
                 <Link
                   to={n.to!}
                   data-nav-item
-                  className="flex items-center gap-1 font-serif text-[17px] tracking-[0.12em] uppercase whitespace-nowrap text-ivory hover:text-gold transition-colors py-2"
+                  className="flex items-center gap-1 font-serif font-bold text-[17px] tracking-[0.12em] uppercase whitespace-nowrap text-white hover:text-gold transition-colors py-2"
                   activeProps={{ className: "text-gold" }}
                 >
                   {n.label}
@@ -170,7 +170,7 @@ export function SiteHeader() {
                 <Link
                   to={n.to!}
                   data-nav-item
-                  className="flex items-center gap-1 font-serif text-[17px] tracking-[0.12em] uppercase whitespace-nowrap text-ivory hover:text-gold transition-colors py-2"
+                  className="flex items-center gap-1 font-serif font-bold text-[17px] tracking-[0.12em] uppercase whitespace-nowrap text-white hover:text-gold transition-colors py-2"
                   activeProps={{ className: "text-gold" }}
                 >
                   {n.label}
