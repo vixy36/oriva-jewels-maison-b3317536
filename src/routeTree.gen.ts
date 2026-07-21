@@ -13,6 +13,7 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as RingSizeGuideRouteImport } from './routes/ring-size-guide'
 import { Route as OccasionsRouteImport } from './routes/occasions'
 import { Route as EducationRouteImport } from './routes/education'
+import { Route as CustomOrderRouteImport } from './routes/custom-order'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as BespokeRouteImport } from './routes/bespoke'
 import { Route as AssuranceRouteImport } from './routes/assurance'
@@ -40,6 +41,11 @@ const OccasionsRoute = OccasionsRouteImport.update({
 const EducationRoute = EducationRouteImport.update({
   id: '/education',
   path: '/education',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CustomOrderRoute = CustomOrderRouteImport.update({
+  id: '/custom-order',
+  path: '/custom-order',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -89,6 +95,7 @@ export interface FileRoutesByFullPath {
   '/assurance': typeof AssuranceRoute
   '/bespoke': typeof BespokeRoute
   '/contact': typeof ContactRoute
+  '/custom-order': typeof CustomOrderRoute
   '/education': typeof EducationRoute
   '/occasions': typeof OccasionsRoute
   '/ring-size-guide': typeof RingSizeGuideRoute
@@ -103,6 +110,7 @@ export interface FileRoutesByTo {
   '/assurance': typeof AssuranceRoute
   '/bespoke': typeof BespokeRoute
   '/contact': typeof ContactRoute
+  '/custom-order': typeof CustomOrderRoute
   '/education': typeof EducationRoute
   '/occasions': typeof OccasionsRoute
   '/ring-size-guide': typeof RingSizeGuideRoute
@@ -118,6 +126,7 @@ export interface FileRoutesById {
   '/assurance': typeof AssuranceRoute
   '/bespoke': typeof BespokeRoute
   '/contact': typeof ContactRoute
+  '/custom-order': typeof CustomOrderRoute
   '/education': typeof EducationRoute
   '/occasions': typeof OccasionsRoute
   '/ring-size-guide': typeof RingSizeGuideRoute
@@ -134,6 +143,7 @@ export interface FileRouteTypes {
     | '/assurance'
     | '/bespoke'
     | '/contact'
+    | '/custom-order'
     | '/education'
     | '/occasions'
     | '/ring-size-guide'
@@ -148,6 +158,7 @@ export interface FileRouteTypes {
     | '/assurance'
     | '/bespoke'
     | '/contact'
+    | '/custom-order'
     | '/education'
     | '/occasions'
     | '/ring-size-guide'
@@ -162,6 +173,7 @@ export interface FileRouteTypes {
     | '/assurance'
     | '/bespoke'
     | '/contact'
+    | '/custom-order'
     | '/education'
     | '/occasions'
     | '/ring-size-guide'
@@ -177,6 +189,7 @@ export interface RootRouteChildren {
   AssuranceRoute: typeof AssuranceRoute
   BespokeRoute: typeof BespokeRoute
   ContactRoute: typeof ContactRoute
+  CustomOrderRoute: typeof CustomOrderRoute
   EducationRoute: typeof EducationRoute
   OccasionsRoute: typeof OccasionsRoute
   RingSizeGuideRoute: typeof RingSizeGuideRoute
@@ -214,6 +227,13 @@ declare module '@tanstack/react-router' {
       path: '/education'
       fullPath: '/education'
       preLoaderRoute: typeof EducationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/custom-order': {
+      id: '/custom-order'
+      path: '/custom-order'
+      fullPath: '/custom-order'
+      preLoaderRoute: typeof CustomOrderRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -281,6 +301,7 @@ const rootRouteChildren: RootRouteChildren = {
   AssuranceRoute: AssuranceRoute,
   BespokeRoute: BespokeRoute,
   ContactRoute: ContactRoute,
+  CustomOrderRoute: CustomOrderRoute,
   EducationRoute: EducationRoute,
   OccasionsRoute: OccasionsRoute,
   RingSizeGuideRoute: RingSizeGuideRoute,

@@ -58,6 +58,7 @@ export function SiteFooter() {
             ]} />
 
             <FooterCol title="Client Services" links={[
+              { label: "Custom Order", to: "/custom-order" },
               { label: "Contact an Advisor", to: "/contact" },
               { label: "Ring Size Guide", to: "/ring-size-guide" },
               { label: WHATSAPP_DISPLAY, to: "/contact" },
