@@ -73,47 +73,11 @@ function HomePage() {
           alt="Marquise diamond solitaire"
           fetchPriority="high"
           decoding="async"
-          className="absolute inset-0 h-full w-full object-cover object-center animate-slow-zoom will-change-transform"
+          className="absolute inset-0 h-full w-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-obsidian/70 via-obsidian/25 to-obsidian" />
-        <div className="absolute inset-0 bg-gradient-to-r from-obsidian/80 via-obsidian/15 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-obsidian/75 via-obsidian/40 to-obsidian" />
+        <div className="absolute inset-0 bg-gradient-to-r from-obsidian/80 via-obsidian/20 to-transparent" />
         <div className="absolute inset-0 vignette" />
-
-        {/* Aurora gold glow - infinite rotating radial */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -inset-[20%] animate-aurora opacity-70 mix-blend-screen"
-          style={{
-            background:
-              "radial-gradient(closest-side at 30% 30%, oklch(0.79 0.11 82 / 0.35), transparent 60%), radial-gradient(closest-side at 70% 65%, oklch(0.62 0.11 72 / 0.28), transparent 55%)",
-          }}
-        />
-
-        {/* Diagonal light sweep */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-y-0 -left-1/3 w-1/3 animate-light-sweep"
-          style={{
-            background:
-              "linear-gradient(90deg, transparent, oklch(0.95 0.05 84 / 0.18) 40%, oklch(0.95 0.05 84 / 0.3) 50%, oklch(0.95 0.05 84 / 0.18) 60%, transparent)",
-            filter: "blur(6px)",
-          }}
-        />
-
-        {/* Sparkles - bigger, more visible, infinite */}
-        <Sparkle style={{ top: "18%", left: "12%" }} delay={0}   size={3} />
-        <Sparkle style={{ top: "26%", left: "82%" }} delay={0.7} size={4} />
-        <Sparkle style={{ top: "38%", left: "68%" }} delay={1.6} size={3} />
-        <Sparkle style={{ top: "48%", left: "22%" }} delay={2.2} size={2} />
-        <Sparkle style={{ top: "58%", left: "78%" }} delay={0.4} size={3} />
-        <Sparkle style={{ top: "68%", left: "16%" }} delay={2.4} size={4} />
-        <Sparkle style={{ top: "78%", left: "58%" }} delay={0.9} size={3} />
-        <Sparkle style={{ top: "86%", left: "38%" }} delay={1.9} size={2} />
-        <Sparkle style={{ top: "14%", left: "46%" }} delay={3.2} size={3} />
-        <Sparkle style={{ top: "34%", left: "36%" }} delay={1.2} size={2} />
-        <Sparkle style={{ top: "72%", left: "88%" }} delay={2.7} size={3} />
-        <Sparkle style={{ top: "22%", left: "94%" }} delay={0.2} size={2} drift />
-        <Sparkle style={{ top: "82%", left: "6%"  }} delay={1.4} size={2} drift />
 
         <div className="pointer-events-none absolute inset-y-0 left-6 hidden md:flex flex-col justify-between py-32 z-10">
           <span className="text-[14px] tracking-[0.5em] uppercase text-ivory/60 [writing-mode:vertical-rl] rotate-180">
@@ -131,17 +95,17 @@ function HomePage() {
         </div>
 
 
-        <div className="relative z-10 mx-auto max-w-[1240px] w-full px-6 pt-40 pb-24 md:px-16 md:pt-48 md:pb-32 min-h-[100svh] flex flex-col justify-end">
+        <div className="relative z-10 mx-auto max-w-[1240px] w-full px-6 pt-24 pb-14 md:px-16 md:pt-48 md:pb-32 min-h-[70svh] md:min-h-[78svh] flex flex-col justify-end">
           <div className="max-w-4xl animate-rise-slow">
             <div className="flex items-center gap-4">
               <span className="h-px w-14 bg-gold" />
               <p className="eyebrow">A Fine Jewellery Maison</p>
             </div>
-            <h1 className="mt-8 font-serif font-light text-[16vw] md:text-[9rem] lg:text-[11rem] leading-[0.88] tracking-[-0.035em]">
+            <h1 className="mt-6 md:mt-8 font-serif font-light text-[12vw] md:text-[9rem] lg:text-[11rem] leading-[0.88] tracking-[-0.035em]">
               <span className="block">Oriva</span>
               <span className="block italic text-gold-gradient -mt-2 md:-mt-4">Jewels</span>
             </h1>
-            <p className="mt-6 font-serif italic text-2xl md:text-4xl text-ivory/90 max-w-3xl">
+            <p className="mt-4 md:mt-6 font-serif italic text-lg md:text-4xl text-ivory/90 max-w-3xl">
               We design your dreams <span className="text-gold-gradient not-italic">with diamonds.</span>
             </p>
           </div>
