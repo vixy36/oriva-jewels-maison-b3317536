@@ -93,7 +93,7 @@ export const products: Product[] = [
     metal: "18K White Gold",
     diamondTypes: ["Natural", "Lab Grown"],
     carats: ["3 ct total", "5 ct total", "7 ct total", "10 ct total"],
-    lengths: ["6.5 in", "7.0 in", "7.5 in"],
+    lengths: ["6.5 in / 16.5 cm", "7.0 in / 17.8 cm", "7.5 in / 19.0 cm"],
     customizable: true,
   },
   {
