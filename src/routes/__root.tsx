@@ -74,18 +74,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Oriva Jewels - Natural & Lab Grown Diamond Jewellery, Hong Kong" },
+      { title: "Oriva Jewels - Natural & Lab Grown Diamond Jewellery" },
       {
         name: "description",
         content:
-          "Oriva Jewels is a Hong Kong-based fine jewellery house crafting exceptional natural and lab grown diamond engagement rings, earrings, bracelets and bridal pieces.",
+          "Oriva Jewels is a fine jewellery maison crafting exceptional natural and lab grown diamond engagement rings, earrings, bracelets and bridal pieces.",
       },
       { name: "author", content: "Oriva Jewels" },
       { name: "theme-color", content: "#050505" },
       { property: "og:title", content: "Oriva Jewels - Fine Diamond Jewellery" },
       {
         property: "og:description",
-        content: "Timeless brilliance, crafted for modern elegance. Natural and lab grown diamonds from Hong Kong.",
+        content: "Timeless brilliance, crafted for modern elegance. Natural and lab grown diamonds.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
