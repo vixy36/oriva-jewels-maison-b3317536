@@ -105,22 +105,22 @@ function HomePage() {
               <span className="block">Oriva</span>
               <span className="block italic text-gold-gradient -mt-2 md:-mt-4">Jewels</span>
             </h1>
-            <p className="mt-4 md:mt-6 font-serif italic text-lg md:text-4xl text-ivory/90 max-w-3xl">
+            <p className="mt-2 md:mt-6 font-serif italic text-lg md:text-4xl text-ivory/90 max-w-3xl">
               We design your dreams <span className="text-gold-gradient not-italic">with diamonds.</span>
             </p>
           </div>
 
-          <div className="mt-14 flex flex-col md:flex-row md:items-end md:justify-between gap-10 animate-rise-slow" style={{ animationDelay: "0.4s" }}>
+          <div className="mt-10 md:mt-14 flex flex-col md:flex-row md:items-end md:justify-between gap-8 md:gap-10 animate-rise-slow" style={{ animationDelay: "0.4s" }}>
             <p className="max-w-xl font-serif italic text-xl md:text-2xl leading-[1.5] text-gold-gradient">
               We are end to end manufacturers of
               <span className="not-italic font-sans tracking-[0.08em] text-ivory"> DIAMONDS &amp; JEWELLERY.</span>
             </p>
 
 
-            <div className="flex flex-nowrap items-center gap-3 whitespace-nowrap">
+            <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3">
               <Link
                 to="/collections/engagement-rings"
-                className="group relative inline-flex items-center gap-3 bg-ivory px-9 py-4 text-[10.5px] tracking-[0.4em] uppercase text-obsidian overflow-hidden"
+                className="group relative inline-flex items-center justify-center gap-3 bg-ivory px-9 py-4 text-[10.5px] tracking-[0.4em] uppercase text-obsidian overflow-hidden whitespace-nowrap"
               >
                 <span className="relative">Explore Collections</span>
                 <ArrowRight className="relative h-4 w-4 transition group-hover:translate-x-1" strokeWidth={1.4} />
@@ -129,7 +129,7 @@ function HomePage() {
                 href={buildWhatsAppLink("Hello Oriva Jewels, I'd like a private consultation.")}
                 target="_blank"
                 rel="noreferrer"
-                className="group inline-flex items-center gap-3 border border-ivory/25 px-9 py-4 text-[10.5px] tracking-[0.4em] uppercase text-ivory hover:border-gold hover:text-gold transition"
+                className="group inline-flex items-center justify-center gap-3 border border-ivory/25 px-9 py-4 text-[10.5px] tracking-[0.4em] uppercase text-ivory hover:border-gold hover:text-gold transition whitespace-nowrap"
               >
                 <MessageCircle className="h-4 w-4" strokeWidth={1.4} />
                 Private Consultation
