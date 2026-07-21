@@ -777,3 +777,212 @@ function Sparkle({
     />
   );
 }
+
+function EngagementRingsSection() {
+  const [form, setForm] = useState({
+    name: "",
+    goldQuality: "18K",
+    goldColor: "White Gold",
+    ringSize: "",
+    diamondCut: "Round",
+    stoneSize: "1.00 ct",
+    notes: "",
+  });
+
+  const goldQualities = ["18K", "14K", "9K"];
+  const goldColors = ["White Gold", "Yellow Gold", "Rose Gold", "Platinum"];
+  const diamondCuts = ["Round", "Oval", "Emerald", "Cushion", "Marquise", "Pear", "Heart", "Princess", "Radiant"];
+
+  const submitToWhatsApp = () => {
+    const msg =
+      `Hello Oriva Jewels, I'd like to enquire about a custom engagement ring.\n\n` +
+      `Name: ${form.name || "-"}\n` +
+      `Gold Quality: ${form.goldQuality}\n` +
+      `Gold Color: ${form.goldColor}\n` +
+      `Ring Size: ${form.ringSize || "-"}\n` +
+      `Diamond Cut: ${form.diamondCut}\n` +
+      `Stone Size: ${form.stoneSize}\n` +
+      `Notes: ${form.notes || "-"}\n\n` +
+      `(I will attach reference photos in this chat.)`;
+    window.open(buildWhatsAppLink(msg), "_blank");
+  };
+
+  const fieldCls =
+    "w-full bg-transparent border border-white/15 px-4 py-3 text-[14px] text-ivory placeholder:text-ivory/40 focus:outline-none focus:border-gold transition";
+  const labelCls = "block text-[11px] tracking-[0.32em] uppercase text-gold mb-2";
+
+  return (
+    <section className="relative py-12 md:py-20 bg-obsidian overflow-hidden">
+      <div
+        aria-hidden
+        className="absolute inset-0 opacity-40 pointer-events-none"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at 12% 18%, oklch(0.79 0.11 82 / 0.14), transparent 45%), radial-gradient(circle at 88% 82%, oklch(0.62 0.11 72 / 0.16), transparent 45%)",
+        }}
+      />
+      <div className="relative mx-auto max-w-[1500px] px-6 md:px-16 grid gap-12 md:grid-cols-12 md:gap-16 items-start">
+        <Reveal className="md:col-span-5">
+          <div className="relative aspect-[4/5] overflow-hidden">
+            <img
+              src={engagementModel}
+              alt="Diamond engagement ring on hand"
+              loading="lazy"
+              width={1024}
+              height={1024}
+              className="h-full w-full object-cover"
+            />
+            <div className="absolute inset-0 border border-gold/20" />
+          </div>
+          <p className="mt-4 text-[14px] tracking-[0.42em] uppercase text-ivory/80">
+            Plate III · Engagement
+          </p>
+        </Reveal>
+
+        <Reveal delay={120} className="md:col-span-7 md:pl-8">
+          <p className="eyebrow">- Engagement Rings</p>
+          <h2 className="mt-6 font-serif text-4xl md:text-6xl leading-[1.05] text-ivory">
+            From a sketch to <em className="text-gold-gradient">her finger.</em>
+          </h2>
+          <p className="mt-6 max-w-xl text-[15px] leading-[1.85] text-ivory/80">
+            Turn your vision into reality. From Inspiration to Reality - how we work.
+          </p>
+
+          <ol className="mt-10 space-y-6 max-w-xl">
+            {[
+              {
+                n: "Step 1",
+                title: "The Design Consultation",
+                body: "Share your ideas, sketches, or reference photos with our designers. We will guide you through choosing the perfect stone shape, metal, and setting style to match your budget and vision.",
+              },
+              {
+                n: "Step 2",
+                title: "The 3D Digital Model (CAD)",
+                body: "We create a highly detailed, 3D digital rendering of your ring. This allows you to view the design from every angle and make adjustments before we begin production.",
+              },
+              {
+                n: "Step 3",
+                title: "Master Craftsmanship",
+                body: "Once you approve the design, our expert jewellers hand-forge your setting, meticulously place every accent stone, and polish your ring to a breathtaking sparkle.",
+              },
+            ].map((s) => (
+              <li key={s.n} className="border-l border-gold/40 pl-5">
+                <p className="text-[11px] tracking-[0.4em] uppercase text-gold">{s.n}</p>
+                <h3 className="mt-2 font-serif text-2xl text-ivory">{s.title}</h3>
+                <p className="mt-2 text-[14px] leading-[1.75] text-ivory/70">{s.body}</p>
+              </li>
+            ))}
+          </ol>
+
+          {/* Enquiry Form */}
+          <div className="mt-12 border border-white/10 bg-black/30 p-6 md:p-8">
+            <p className="eyebrow">- Enquiry Form</p>
+            <h3 className="mt-3 font-serif text-2xl md:text-3xl text-ivory">
+              Begin your <em className="text-gold-gradient">commission.</em>
+            </h3>
+
+            <div className="mt-6 grid gap-5 md:grid-cols-2">
+              <div className="md:col-span-2">
+                <label className={labelCls}>Your Name</label>
+                <input
+                  type="text"
+                  value={form.name}
+                  onChange={(e) => setForm({ ...form, name: e.target.value })}
+                  placeholder="Full name"
+                  className={fieldCls}
+                />
+              </div>
+
+              <div>
+                <label className={labelCls}>Gold Quality</label>
+                <select
+                  value={form.goldQuality}
+                  onChange={(e) => setForm({ ...form, goldQuality: e.target.value })}
+                  className={fieldCls}
+                >
+                  {goldQualities.map((g) => (
+                    <option key={g} value={g} className="bg-obsidian">{g}</option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label className={labelCls}>Gold Color</label>
+                <select
+                  value={form.goldColor}
+                  onChange={(e) => setForm({ ...form, goldColor: e.target.value })}
+                  className={fieldCls}
+                >
+                  {goldColors.map((g) => (
+                    <option key={g} value={g} className="bg-obsidian">{g}</option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label className={labelCls}>Ring Size</label>
+                <input
+                  type="text"
+                  value={form.ringSize}
+                  onChange={(e) => setForm({ ...form, ringSize: e.target.value })}
+                  placeholder="e.g. US 6 / EU 52"
+                  className={fieldCls}
+                />
+              </div>
+
+              <div>
+                <label className={labelCls}>Diamond Cut</label>
+                <select
+                  value={form.diamondCut}
+                  onChange={(e) => setForm({ ...form, diamondCut: e.target.value })}
+                  className={fieldCls}
+                >
+                  {diamondCuts.map((c) => (
+                    <option key={c} value={c} className="bg-obsidian">{c}</option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="md:col-span-2">
+                <label className={labelCls}>Stone Size</label>
+                <input
+                  type="text"
+                  value={form.stoneSize}
+                  onChange={(e) => setForm({ ...form, stoneSize: e.target.value })}
+                  placeholder="e.g. 1.00 ct, 1.50 ct"
+                  className={fieldCls}
+                />
+              </div>
+
+              <div className="md:col-span-2">
+                <label className={labelCls}>Notes / Reference</label>
+                <textarea
+                  rows={3}
+                  value={form.notes}
+                  onChange={(e) => setForm({ ...form, notes: e.target.value })}
+                  placeholder="Anything else we should know"
+                  className={fieldCls}
+                />
+              </div>
+            </div>
+
+            <div className="mt-4 flex items-center gap-2 text-[12px] text-ivory/60">
+              <Paperclip className="h-3.5 w-3.5 text-gold" strokeWidth={1.4} />
+              You can attach reference photos directly in the WhatsApp chat.
+            </div>
+
+            <button
+              type="button"
+              onClick={submitToWhatsApp}
+              className="mt-6 inline-flex items-center gap-3 bg-gold px-8 py-4 text-[12px] tracking-[0.4em] uppercase text-obsidian hover:bg-ivory transition"
+            >
+              <MessageCircle className="h-4 w-4" strokeWidth={1.4} />
+              Send Enquiry on WhatsApp
+            </button>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
