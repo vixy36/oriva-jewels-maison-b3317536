@@ -19,6 +19,7 @@ import insta4 from "@/assets/insta-4.jpg";
 import insta5 from "@/assets/insta-5.jpg";
 import insta6 from "@/assets/insta-6.jpg";
 import atelier from "@/assets/about-atelier.jpg";
+import engagementModel from "@/assets/engagement-model.jpg";
 
 import { ProductCard } from "@/components/site/ProductCard";
 import { Reveal } from "@/components/site/Reveal";
