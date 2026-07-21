@@ -176,7 +176,7 @@ function ProductPage() {
                   <PillGroup label="Backing" value={backing} options={product.backings} onChange={setBacking} />
                 )}
                 {product.lengths && (
-                  <PillGroup label="Length" value={length} options={product.lengths} onChange={setLength} />
+                  <PillGroup label={product.category === "bracelets" ? "Bracelet Length (in / cm)" : "Length"} value={length} options={product.lengths} onChange={setLength} />
                 )}
                 <div>
                   <label className="text-[14px] tracking-[0.42em] uppercase text-gold">
