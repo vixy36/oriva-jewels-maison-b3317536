@@ -373,11 +373,11 @@ function HomePage() {
                   </span>
                 </div>
 
-                <p className="mt-2 text-[10px] tracking-[0.28em] uppercase text-gold truncate">{p.collection}</p>
-                <h3 className="mt-1 font-serif text-[15px] md:text-[16px] leading-[1.25] text-obsidian group-hover:text-gold transition line-clamp-2">
+                <p className="mt-2 text-[11px] tracking-[0.28em] uppercase text-gold truncate">{p.collection}</p>
+                <h3 className="mt-1 font-serif text-[15px] md:text-[16px] leading-[1.25] text-obsidian line-clamp-2">
                   {p.name}
                 </h3>
-                <p className="mt-1 text-[10.5px] tracking-[0.24em] uppercase text-obsidian/60">
+                <p className="mt-1 text-[11px] tracking-[0.24em] uppercase text-obsidian">
                   {p.shape} · {p.metal}
                 </p>
               </Link>
