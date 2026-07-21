@@ -1,23 +1,48 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { Menu, X, Search } from "lucide-react";
+import { Menu, X, Search, ChevronDown, Plus, Minus } from "lucide-react";
 import { SearchDialog } from "@/components/site/SearchDialog";
 import { ensureGsap } from "@/lib/gsap";
 import orivaLogo from "@/assets/oriva-logo.png.asset.json";
 
+type NavItem = {
+  label: string;
+  to?: string;
+  children?: { label: string; to: string }[];
+};
 
-const nav = [
-  { label: "Engagement", to: "/collections/engagement-rings" },
-  { label: "Earrings", to: "/collections/earrings" },
-  { label: "Bracelets", to: "/collections/bracelets" },
-  { label: "Bridal", to: "/collections/bridal" },
-  { label: "The Maison", to: "/about" },
+const nav: NavItem[] = [
+  {
+    label: "Fine Jewelry",
+    to: "/collections/rings",
+    children: [
+      { label: "Rings", to: "/collections/rings" },
+      { label: "Earrings", to: "/collections/earrings" },
+      { label: "Bracelets", to: "/collections/bracelets" },
+      { label: "Necklaces", to: "/collections/necklaces" },
+      { label: "Pendants", to: "/collections/pendants" },
+      { label: "Men's Jewelry", to: "/collections/mens-jewelry" },
+    ],
+  },
+  { label: "Engagement Rings", to: "/collections/engagement-rings" },
+  { label: "Bespoke", to: "/bespoke" },
+  {
+    label: "Diamonds",
+    to: "/collections/lab-grown",
+    children: [
+      { label: "Lab Grown Diamonds", to: "/collections/lab-grown" },
+      { label: "Natural Diamonds", to: "/collections/natural" },
+    ],
+  },
+  { label: "About Us", to: "/about" },
   { label: "Contact", to: "/contact" },
 ];
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [openSub, setOpenSub] = useState<string | null>(null);
+  const [mobileSub, setMobileSub] = useState<string | null>(null);
   const headerRef = useRef<HTMLElement | null>(null);
   const logoRef = useRef<HTMLAnchorElement | null>(null);
   const navItemsRef = useRef<HTMLDivElement | null>(null);
@@ -29,9 +54,7 @@ export function SiteHeader() {
     const container = navItemsRef.current;
     if (!header || !logo || !container) return;
 
-    const menuItems = container.querySelectorAll<HTMLElement>("[data-nav-item]");
     gsap.set(logo, { scale: 1.05, transformOrigin: "center center" });
-    gsap.set(menuItems, { y: 0 });
 
     let scrolled = false;
     let ticking = false;
@@ -51,13 +74,6 @@ export function SiteHeader() {
         scale: next ? 1 : 1.05,
         duration: 0.5,
         ease: "power2.out",
-        overwrite: "auto",
-      });
-      gsap.to(menuItems, {
-        y: next ? 15 : 0,
-        duration: 0.5,
-        ease: "power2.out",
-        stagger: 0.03,
         overwrite: "auto",
       });
     };
@@ -82,122 +98,138 @@ export function SiteHeader() {
         ref={headerRef}
         className="fixed inset-x-0 top-0 z-50 border-b border-transparent will-change-transform"
         style={{ backgroundColor: "rgba(7,28,55,0.92)", backdropFilter: "blur(14px)" }}
-      data-surface="dark"
+        data-surface="dark"
       >
-        <div ref={navItemsRef} className="mx-auto grid max-w-[1600px] grid-cols-[1fr_auto_1fr] items-center gap-6 px-6 py-5 md:px-10 md:py-6">
-          <div className="flex items-center gap-6">
-            <button
-              className="md:hidden text-ivory"
-              aria-label="Open menu"
-              onClick={() => setOpen(true)}
-            >
-              <Menu className="h-5 w-5" />
-            </button>
-            <nav className="hidden md:flex items-center gap-7">
-              {nav.slice(0, 3).map((n) => (
-                <Link
-                  key={n.to}
-                  to={n.to}
-                  data-nav-item
-                  className="text-[10.5px] tracking-[0.32em] uppercase text-ivory/80 hover:text-gold transition-colors"
-                  activeProps={{ className: "text-gold" }}
-                >
-                  {n.label}
-                </Link>
-              ))}
-            </nav>
-          </div>
+        <div ref={navItemsRef} className="mx-auto flex max-w-[1600px] items-center justify-between gap-6 px-6 py-5 md:px-10 md:py-5">
+          <button
+            className="lg:hidden text-ivory"
+            aria-label="Open menu"
+            onClick={() => setOpen(true)}
+          >
+            <Menu className="h-5 w-5" />
+          </button>
 
-          <Link ref={logoRef} to="/" className="group flex items-center justify-center" aria-label="Oriva Jewels">
+          <Link ref={logoRef} to="/" className="group flex items-center lg:mr-4" aria-label="Oriva Jewels">
             <img
               src={orivaLogo.url}
               alt="Oriva Jewels"
-              className="h-12 md:h-14 w-auto brightness-0 invert"
+              className="h-11 md:h-12 w-auto brightness-0 invert"
               draggable={false}
             />
           </Link>
 
-          <div className="flex items-center justify-end gap-6">
-            <nav className="hidden md:flex items-center gap-7">
-              {nav.slice(3).map((n) => (
+          <nav className="hidden lg:flex flex-1 items-center justify-center gap-7">
+            {nav.map((n) => (
+              <div
+                key={n.label}
+                className="relative"
+                onMouseEnter={() => n.children && setOpenSub(n.label)}
+                onMouseLeave={() => n.children && setOpenSub(null)}
+              >
                 <Link
-                  key={n.to}
-                  to={n.to}
+                  to={n.to!}
                   data-nav-item
-                  className="text-[10.5px] tracking-[0.32em] uppercase text-ivory/80 hover:text-gold transition-colors"
+                  className="flex items-center gap-1 text-[10.5px] tracking-[0.32em] uppercase text-ivory/85 hover:text-gold transition-colors py-2"
                   activeProps={{ className: "text-gold" }}
                 >
                   {n.label}
+                  {n.children && <ChevronDown className="h-3 w-3 opacity-70" strokeWidth={1.6} />}
                 </Link>
-              ))}
-            </nav>
+                {n.children && openSub === n.label && (
+                  <div className="absolute left-1/2 top-full -translate-x-1/2 pt-2">
+                    <div className="min-w-[220px] border border-white/10 bg-obsidian/98 backdrop-blur-xl py-3 shadow-2xl">
+                      {n.children.map((c) => (
+                        <Link
+                          key={c.to}
+                          to={c.to}
+                          className="block px-5 py-2.5 text-[11px] tracking-[0.28em] uppercase text-ivory/80 hover:text-gold hover:bg-white/[0.03] transition"
+                        >
+                          {c.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
+          </nav>
+
+          <div className="flex items-center gap-5">
             <Link
               to="/custom-order"
-              className="hidden lg:inline-flex items-center gap-2 border border-gold text-gold px-4 py-2 text-[11px] tracking-[0.32em] uppercase hover:bg-gold hover:text-obsidian transition-colors"
+              className="hidden xl:inline-flex items-center gap-2 border border-gold text-gold px-4 py-2 text-[10.5px] tracking-[0.32em] uppercase hover:bg-gold hover:text-obsidian transition-colors"
             >
               Custom Order
             </Link>
             <button
               type="button"
               onClick={() => setSearchOpen(true)}
-              className="hidden lg:inline-flex items-center text-ivory/80 hover:text-gold transition"
-              aria-label="Search"
-            >
-              <Search className="h-4 w-4" strokeWidth={1.6} />
-            </button>
-
-            <button
-              type="button"
-              onClick={() => setSearchOpen(true)}
-              className="md:hidden text-ivory"
+              className="text-ivory/85 hover:text-gold transition"
               aria-label="Search"
             >
               <Search className="h-5 w-5" strokeWidth={1.6} />
             </button>
-
           </div>
         </div>
         <div className="h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
       </header>
 
       {open && (
-        <div className="fixed inset-0 z-[70] bg-obsidian md:hidden animate-fade-in">
-          <div className="flex items-center justify-between px-6 py-5 border-b border-white/5">
+        <div className="fixed inset-0 z-[70] bg-obsidian lg:hidden animate-fade-in overflow-y-auto">
+          <div className="flex items-center justify-between px-6 py-5 border-b border-white/5 sticky top-0 bg-obsidian z-10">
             <span className="font-serif text-xl tracking-[0.5em] text-ivory">ORIVA</span>
             <button aria-label="Close" onClick={() => setOpen(false)} className="text-ivory">
               <X className="h-5 w-5" />
             </button>
           </div>
-          <nav className="flex flex-col px-8 pt-16">
-            {nav.map((n, i) => (
-              <Link
-                key={n.to}
-                to={n.to}
-                onClick={() => setOpen(false)}
-                className="group border-b border-white/5 py-6 flex items-baseline gap-4"
-              >
-                <span className="text-[14px] tracking-[0.3em] text-gold font-sans">
-                  0{i + 1}
-                </span>
-                <span className="font-serif text-3xl text-ivory group-hover:text-gold transition">
-                  {n.label}
-                </span>
-              </Link>
-            ))}
-          </nav>
-          <div className="px-8 mt-8">
+          <nav className="flex flex-col px-6 pt-6 pb-24">
+            {nav.map((n) => {
+              const expanded = mobileSub === n.label;
+              return (
+                <div key={n.label} className="border-b border-white/5">
+                  <div className="flex items-center justify-between py-4">
+                    <Link
+                      to={n.to!}
+                      onClick={() => setOpen(false)}
+                      className="font-serif text-2xl text-ivory hover:text-gold transition flex-1"
+                    >
+                      {n.label}
+                    </Link>
+                    {n.children && (
+                      <button
+                        aria-label={expanded ? "Collapse" : "Expand"}
+                        onClick={() => setMobileSub(expanded ? null : n.label)}
+                        className="text-gold p-2"
+                      >
+                        {expanded ? <Minus className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
+                      </button>
+                    )}
+                  </div>
+                  {n.children && expanded && (
+                    <div className="pb-4 pl-2 flex flex-col gap-3">
+                      {n.children.map((c) => (
+                        <Link
+                          key={c.to}
+                          to={c.to}
+                          onClick={() => setOpen(false)}
+                          className="text-[13px] tracking-[0.28em] uppercase text-ivory/75 hover:text-gold transition"
+                        >
+                          {c.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
             <Link
               to="/custom-order"
               onClick={() => setOpen(false)}
-              className="flex items-center justify-center gap-2 border border-gold text-gold px-5 py-4 text-[12px] tracking-[0.4em] uppercase"
+              className="mt-8 flex items-center justify-center gap-2 border border-gold text-gold px-5 py-4 text-[12px] tracking-[0.4em] uppercase"
             >
               Custom Order
             </Link>
-          </div>
-          <div className="absolute bottom-10 left-8 right-8">
-            <p className="eyebrow">By Appointment · Worldwide</p>
-            <p className="mt-3 font-serif text-lg text-ivory">hello@orivajewels.com</p>
-          </div>
+          </nav>
         </div>
       )}
       <SearchDialog open={searchOpen} onClose={() => setSearchOpen(false)} />
