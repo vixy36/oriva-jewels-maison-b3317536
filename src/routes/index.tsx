@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { ArrowRight, ArrowUpRight, MessageCircle, Paperclip } from "lucide-react";
+import { ArrowRight, ArrowUpRight, MessageCircle, Paperclip, Sparkles } from "lucide-react";
 import { GsapReveal } from "@/components/site/GsapReveal";
 import { Sparkles as GsapSparkles } from "@/components/site/Sparkles";
 
