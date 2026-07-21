@@ -64,7 +64,7 @@ function AboutPage() {
           eyebrow: "- Certified Craftsmanship",
           title: "Every stone,",
           titleAccent: "personally sourced.",
-          body: "We work only with GIA and IGI certified diamonds - Natural and Lab Grown - and finish each piece by hand in our Hong Kong atelier. Every setting is checked, every prong is tuned.",
+          body: "We work only with GIA and IGI certified diamonds - Natural and Lab Grown - and finish each piece by hand in our own atelier. Every setting is checked, every prong is tuned.",
           img: insta5,
           flip: true,
         },
