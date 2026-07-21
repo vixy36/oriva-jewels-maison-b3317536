@@ -39,7 +39,7 @@ export const products: Product[] = [
     collection: "The Solitaire Edit",
     short: "A commanding marquise-cut diamond, set on a whisper-thin band.",
     description:
-      "Elongated, elegant and singular. Our signature marquise solitaire captures light along its two pointed apexes, extending the finger with quiet confidence. Hand-set by our Hong Kong atelier.",
+      "Elongated, elegant and singular. Our signature marquise solitaire captures light along its two pointed apexes, extending the finger with quiet confidence. Hand-set by our atelier.",
     image: marquiseImg,
     shape: "Marquise",
     metal: "18K White Gold",

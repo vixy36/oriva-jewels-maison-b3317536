@@ -27,7 +27,7 @@ const occasions = [
   { n: "02", label: "The Wedding", img: bridalImg, blurb: "Matched bands and eternity rings, worn for a lifetime.", cta: "bridal", msg: "wedding band" },
   { n: "03", label: "The Anniversary", img: insta6, blurb: "Marking the years quietly - tennis lines, eternity bands, drop earrings.", cta: "bracelets", msg: "anniversary gift" },
   { n: "04", label: "Milestones", img: pendantsImg, blurb: "Births, promotions, private victories. A pendant to remember them by.", cta: "pendants", msg: "milestone piece" },
-  { n: "05", label: "The Gift", img: insta1, blurb: "For someone deserving of something rare. We wrap by hand in Hong Kong.", cta: "earrings", msg: "gift" },
+  { n: "05", label: "The Gift", img: insta1, blurb: "For someone deserving of something rare. We wrap by hand by hand.", cta: "earrings", msg: "gift" },
   { n: "06", label: "Everyday", img: earringsImg, blurb: "Pieces that live with you - worn to work, to sleep, and everywhere between.", cta: "earrings", msg: "everyday piece" },
 ];
 

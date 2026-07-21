@@ -23,7 +23,7 @@ const pillars = [
   { Icon: Globe2, t: "Insured Worldwide", b: "Complimentary insured shipping to over 90 countries. Signature required. Discreetly packaged, entirely traceable." },
   { Icon: Gem, t: "Traceable Provenance", b: "Conflict-free sourcing, verified supply chain. Kimberley Process and RJC standards, without exception." },
   { Icon: HeartHandshake, t: "30-Day Exchange", b: "A rare piece deserves rare confidence. Exchange or resize within 30 days of receipt, unworn." },
-  { Icon: Sparkles, t: "Complimentary Care", b: "Annual cleaning and inspection at our Hong Kong atelier - or by post, with insured return." },
+  { Icon: Sparkles, t: "Complimentary Care", b: "Annual cleaning and inspection at our atelier - or by post, with insured return." },
 ];
 
 function AssurancePage() {

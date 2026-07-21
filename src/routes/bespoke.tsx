@@ -9,9 +9,9 @@ export const Route = createFileRoute("/bespoke")({
   head: () => ({
     meta: [
       { title: "Commission an Heirloom - Oriva Jewels" },
-      { name: "description", content: "Design a one-of-one diamond piece with the Oriva Hong Kong atelier. A private, three-step commissioning journey." },
+      { name: "description", content: "Design a one-of-one diamond piece with the Oriva atelier. A private, three-step commissioning journey." },
       { property: "og:title", content: "Commission an Heirloom - Oriva Jewels" },
-      { property: "og:description", content: "A private, three-step diamond commissioning journey with our Hong Kong atelier." },
+      { property: "og:description", content: "A private, three-step diamond commissioning journey with our atelier." },
       { property: "og:image", content: atelier },
     ],
   }),
@@ -19,9 +19,9 @@ export const Route = createFileRoute("/bespoke")({
 });
 
 const steps = [
-  { n: "I.", title: "The Conversation", body: "A private consultation - in person in Hong Kong, or by WhatsApp. We listen: the person, the moment, the intent." },
+  { n: "I.", title: "The Conversation", body: "A private consultation - in person by hand, or by WhatsApp. We listen: the person, the moment, the intent." },
   { n: "II.", title: "The Design", body: "Hand sketches, CAD renderings and a curated selection of natural or lab grown diamonds - presented for your approval." },
-  { n: "III.", title: "The Making", body: "Wax, casting, setting and polish, entirely within our Hong Kong atelier. Six to ten weeks, delivered with certification and insurance." },
+  { n: "III.", title: "The Making", body: "Wax, casting, setting and polish, entirely within our atelier. Six to ten weeks, delivered with certification and insurance." },
 ];
 
 function BespokePage() {
@@ -37,7 +37,7 @@ function BespokePage() {
             Commission<br />an <em className="text-gold-gradient">heirloom.</em>
           </h1>
           <p className="mt-10 max-w-xl text-[15px] leading-[1.9] text-ivory/85">
-            One piece. One person. One moment. A private diamond commission, made entirely by hand in our Hong Kong atelier.
+            One piece. One person. One moment. A private diamond commission, made entirely by hand in our atelier.
           </p>
           <a
             href={buildWhatsAppLink("Hello Oriva, I'd like to commission a bespoke piece.")}
