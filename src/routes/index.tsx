@@ -337,7 +337,7 @@ function HomePage() {
               <h2 data-gsap className="mt-3 font-serif text-3xl md:text-5xl leading-[1] text-obsidian">
                 <span className="text-gold-gradient">Most</span> <span className="italic text-gold">requested.</span>
               </h2>
-              <p data-gsap className="mt-3 max-w-md text-[13px] leading-[1.7] text-obsidian/70">
+              <p className="mt-3 max-w-md text-[14px] leading-[1.7] text-obsidian">
                 A rotating archive of the pieces our clients return to - hand-set at our atelier and shipped worldwide, insured.
               </p>
             </div>
