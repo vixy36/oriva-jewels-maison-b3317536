@@ -30,7 +30,7 @@ export function SiteFooter() {
               <SocialLink href={buildWhatsAppLink("Hello Oriva Jewels")} label="WhatsApp">
                 <MessageCircle className="h-4 w-4" strokeWidth={1.3} />
               </SocialLink>
-              <SocialLink href="https://instagram.com/orivajewels" label="Instagram">
+              <SocialLink href="https://www.instagram.com/oriva__jewels" label="Instagram">
                 <Instagram className="h-4 w-4" strokeWidth={1.3} />
               </SocialLink>
               <SocialLink href="mailto:hello@orivajewels.com" label="Email">
