@@ -95,7 +95,7 @@ function HomePage() {
         </div>
 
 
-        <div className="relative z-10 mx-auto max-w-[1240px] w-full px-6 pt-10 pb-6 md:px-16 md:pt-16 md:pb-10 flex flex-col justify-end">
+        <div className="relative z-10 mx-auto max-w-[1240px] w-full px-6 pt-6 pb-6 md:px-16 md:pt-10 md:pb-10 flex flex-col justify-center">
           <div className="max-w-4xl animate-rise-slow">
             <div className="flex items-center gap-4">
               <span className="h-px w-14 bg-gold" />
