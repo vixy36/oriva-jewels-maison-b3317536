@@ -145,7 +145,7 @@ function CollectionPage() {
                 <p className="mt-3 text-sm text-ivory/50">Message the atelier for pre-launch access.</p>
               </div>
             ) : (
-              <div className="grid grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 md:gap-y-20">
+              <div className="grid grid-cols-2 gap-x-4 gap-y-8 md:grid-cols-3 md:gap-x-6 md:gap-y-12 lg:grid-cols-4">
                 {items.map((p, i) => (
                   <Reveal key={p.slug} delay={i * 60}>
                     <ProductCard product={p} />
