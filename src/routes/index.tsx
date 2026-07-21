@@ -133,7 +133,7 @@ function HomePage() {
           <div className="max-w-4xl animate-rise-slow">
             <div className="flex items-center gap-4">
               <span className="h-px w-14 bg-gold" />
-              <p className="eyebrow">Engagement Ring Specialists</p>
+              <p className="eyebrow">A Fine Jewellery Maison</p>
             </div>
             <h1 className="mt-8 font-serif font-light text-[16vw] md:text-[9rem] lg:text-[11rem] leading-[0.88] tracking-[-0.035em]">
               <span className="block">Oriva</span>
