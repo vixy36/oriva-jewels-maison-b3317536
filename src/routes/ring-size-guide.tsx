@@ -84,7 +84,7 @@ function RingSizePage() {
       </section>
 
       {/* METHOD */}
-      <section className="py-10 md:py-16 bg-ink border-b border-white/5">
+      <section className="py-10 md:py-16 bg-obsidian border-b border-white/5">
         <div className="mx-auto max-w-[1400px] px-6 md:px-16 grid gap-16 md:grid-cols-2 items-start">
           <Reveal>
             <p className="eyebrow">- The 30-Second Ruler Tape</p>
@@ -230,7 +230,7 @@ function RingSizePage() {
       </section>
 
       {/* FULL INTERNATIONAL CHART */}
-      <section className="py-10 md:py-16 bg-ink">
+      <section className="py-10 md:py-16 bg-obsidian">
         <div className="mx-auto max-w-[1400px] px-6 md:px-16">
           <Reveal>
             <p className="eyebrow">- International Chart</p>
