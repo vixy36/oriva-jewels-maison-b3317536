@@ -146,10 +146,10 @@ function HomePage() {
 
           <div className="mt-14 flex flex-col md:flex-row md:items-end md:justify-between gap-10 animate-rise-slow" style={{ animationDelay: "0.4s" }}>
             <p className="max-w-xl font-serif italic text-xl md:text-2xl leading-[1.5] text-gold-gradient">
-              From the rough stone to the final polish - each Oriva piece is
-              <span className="not-italic font-sans tracking-[0.02em] text-ivory"> conceived, cut and crafted </span>
-              under one roof, by the hands that have known diamonds for generations.
+              We are end to end manufacturers of
+              <span className="not-italic font-sans tracking-[0.08em] text-ivory"> DIAMONDS &amp; JEWELLERY.</span>
             </p>
+
 
             <div className="flex flex-wrap items-center gap-3">
               <Link
