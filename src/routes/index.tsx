@@ -405,7 +405,7 @@ function HomePage() {
             </Link>
           </Reveal>
 
-          <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-8">
+          <div className="mt-8 grid grid-cols-3 gap-3 md:grid-cols-6 md:gap-4 max-w-[1100px] mx-auto">
             {[
               { key: "marquise", label: "Marquise", img: heroImg },
               { key: "oval", label: "Oval", img: engagementImg },
