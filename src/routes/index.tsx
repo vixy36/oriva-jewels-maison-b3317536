@@ -328,30 +328,30 @@ function HomePage() {
 
 
       {/* MOST REQUESTED - editorial plates */}
-      <section className="relative py-24 md:py-36 bg-ivory text-obsidian">
+      <section className="relative py-14 md:py-20 bg-ivory text-obsidian">
         <div className="mx-auto max-w-[1500px] px-6 md:px-16">
-          <GsapReveal className="flex items-end justify-between gap-6 flex-wrap border-b border-obsidian/15 pb-10">
+          <GsapReveal className="flex items-end justify-between gap-6 flex-wrap border-b border-obsidian/15 pb-6">
             <div className="max-w-xl">
               <p data-gsap className="text-[12px] tracking-[0.5em] uppercase text-gold">- The Selected Six</p>
-              <h2 data-gsap className="mt-6 font-serif text-5xl md:text-7xl leading-[1] text-obsidian">
-                Most <em className="italic text-gold-gradient">requested.</em>
+              <h2 data-gsap className="mt-3 font-serif text-3xl md:text-5xl leading-[1] text-obsidian">
+                <span className="text-gold-gradient">Most</span> <em className="italic text-obsidian">requested.</em>
               </h2>
-              <p data-gsap className="mt-6 max-w-md text-[15px] leading-[1.9] text-obsidian/70">
+              <p data-gsap className="mt-3 max-w-md text-[13px] leading-[1.7] text-obsidian/70">
                 A rotating archive of the pieces our clients return to - hand-set at our atelier and shipped worldwide, insured.
               </p>
             </div>
             <Link
               data-gsap
               to="/collections/engagement-rings"
-              className="inline-flex items-center gap-2 text-[13px] tracking-[0.4em] uppercase text-obsidian border-b border-obsidian/40 pb-1 hover:text-gold hover:border-gold transition"
+              className="inline-flex items-center gap-2 text-[12px] tracking-[0.4em] uppercase text-obsidian border-b border-obsidian/40 pb-1 hover:text-gold hover:border-gold transition"
             >
               View entire archive <ArrowUpRight className="h-3.5 w-3.5" />
             </Link>
           </GsapReveal>
 
-          <div className="mt-16 grid grid-cols-1 gap-x-10 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-8 grid grid-cols-2 gap-x-4 gap-y-8 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-3">
             {products.slice(0, 6).map((p, i) => (
-              <Reveal key={p.slug} delay={i * 70}>
+              <Reveal key={p.slug} delay={i * 60}>
                 <Link
                   to="/product/$slug"
                   params={{ slug: p.slug }}
@@ -365,32 +365,29 @@ function HomePage() {
                       className="h-full w-full object-cover transition-transform duration-[1800ms] ease-out group-hover:scale-[1.05]"
                     />
                     <span aria-hidden className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-obsidian/5" />
-                    <span className="absolute top-4 left-4 font-serif italic text-[15px] text-obsidian/70">
+                    <span className="absolute top-2 left-2 font-serif italic text-[11px] md:text-[13px] text-obsidian/70">
                       Plate {String(i + 1).padStart(2, "0")}
                     </span>
-                    <span className="absolute top-4 right-4 text-[11px] tracking-[0.4em] uppercase text-obsidian/70 bg-ivory/85 backdrop-blur-sm px-2 py-1">
+                    <span className="absolute top-2 right-2 text-[9px] md:text-[10px] tracking-[0.3em] uppercase text-obsidian/70 bg-ivory/85 backdrop-blur-sm px-1.5 py-0.5">
                       {p.diamondTypes.includes("Lab Grown") && p.diamondTypes.includes("Natural")
-                        ? "Natural · Lab"
+                        ? "Nat · Lab"
                         : p.diamondTypes[0]}
                     </span>
                   </div>
 
-                  <div className="mt-6 flex items-baseline justify-between gap-4 border-b border-obsidian/15 pb-3">
-                    <p className="text-[12px] tracking-[0.4em] uppercase text-gold">{p.collection}</p>
-                    <p className="text-[12px] tracking-[0.3em] uppercase text-obsidian/55">Ref. OR-{String(i + 1).padStart(3, "0")}</p>
+                  <div className="mt-3 flex items-baseline justify-between gap-2 border-b border-obsidian/15 pb-2">
+                    <p className="text-[10px] md:text-[11px] tracking-[0.3em] uppercase text-gold truncate">{p.collection}</p>
+                    <p className="text-[10px] md:text-[11px] tracking-[0.2em] uppercase text-obsidian/55 shrink-0">OR-{String(i + 1).padStart(3, "0")}</p>
                   </div>
-                  <h3 className="mt-4 font-serif text-[26px] md:text-[28px] leading-[1.15] text-obsidian group-hover:text-gold transition">
+                  <h3 className="mt-2 font-serif text-[16px] md:text-[20px] leading-[1.2] text-obsidian group-hover:text-gold transition">
                     {p.name}
                   </h3>
-                  <p className="mt-3 text-[14px] leading-[1.75] text-obsidian/75">
+                  <p className="mt-1.5 text-[12px] md:text-[13px] leading-[1.55] text-obsidian/75 line-clamp-2">
                     {p.short}
                   </p>
-                  <p className="mt-5 text-[12px] tracking-[0.35em] uppercase text-obsidian/60">
+                  <p className="mt-2 text-[10px] md:text-[11px] tracking-[0.3em] uppercase text-obsidian/60">
                     {p.shape} · {p.metal}
                   </p>
-                  <span className="mt-5 inline-flex items-center gap-2 text-[12px] tracking-[0.4em] uppercase text-obsidian border-b border-obsidian pb-1 group-hover:text-gold group-hover:border-gold transition">
-                    View piece <ArrowRight className="h-3 w-3" />
-                  </span>
                 </Link>
               </Reveal>
             ))}
