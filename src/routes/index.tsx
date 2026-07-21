@@ -118,7 +118,7 @@ function HomePage() {
             End-to-end Manufacturers
           </span>
           <span className="text-[14px] tracking-[0.5em] uppercase text-gold [writing-mode:vertical-rl] rotate-180">
-            Since MMXXV
+            Worldwide Shipping
           </span>
         </div>
         <div className="pointer-events-none absolute inset-y-0 right-6 hidden md:flex flex-col justify-between py-32 z-10">
@@ -135,7 +135,7 @@ function HomePage() {
           <div className="max-w-4xl animate-rise-slow">
             <div className="flex items-center gap-4">
               <span className="h-px w-14 bg-gold" />
-              <p className="eyebrow">The Winter Edit · MMXXV</p>
+              <p className="eyebrow">Engagement Ring Specialists</p>
             </div>
             <h1 className="mt-8 font-serif font-light text-[16vw] md:text-[9rem] lg:text-[11rem] leading-[0.88] tracking-[-0.035em]">
               <span className="block">Objects</span>
@@ -551,7 +551,7 @@ function HomePage() {
               { icon: ShieldCheck, n: "I", title: "Certified Origin", body: "Every stone accompanied by GIA or IGI certification, individually inspected in our atelier." },
               { icon: Gem, n: "II", title: "Natural or Lab", body: "The same craftsmanship applied to both - the choice is entirely yours, without compromise." },
               { icon: Sparkles, n: "III", title: "Bespoke Atelier", body: "One-to-one design consultations for engagement rings and reimagined heirloom pieces." },
-              { icon: Globe2, n: "IV", title: "Insured Worldwide", body: "Delivered by hand or by air, fully insured to Hong Kong, Dubai, Singapore, EU and US." },
+              { icon: Globe2, n: "IV", title: "Insured Worldwide", body: "Delivered by hand or by air, fully insured to Dubai, Singapore, EU, US and beyond." },
             ].map((f, i) => (
               <Reveal key={f.title} delay={i * 70}>
                 <div className="h-full bg-obsidian p-8 md:p-10 group">
@@ -625,7 +625,41 @@ function HomePage() {
         </div>
       </section>
 
-      {/* FOUNDER'S NOTE removed */}
+      {/* FOUNDER'S NOTE */}
+      <section className="relative py-10 md:py-16 bg-obsidian overflow-hidden">
+        <div className="mx-auto max-w-[1500px] px-6 md:px-16 grid gap-12 md:grid-cols-12 md:gap-16 items-center">
+          <Reveal className="md:col-span-5">
+            <div className="relative aspect-[4/5] overflow-hidden">
+              <img src={atelier} alt="Founder's workshop" loading="lazy" className="h-full w-full object-cover" />
+              <div className="absolute inset-0 border border-gold/20" />
+            </div>
+            <p className="mt-4 text-[14px] tracking-[0.42em] uppercase text-ivory/80">
+              Plate III · The Founder
+            </p>
+          </Reveal>
+          <Reveal delay={120} className="md:col-span-7 md:pl-8">
+            <p className="eyebrow">- A Note from the Founder</p>
+            <h2 className="mt-6 font-serif text-4xl md:text-6xl leading-[1.05] text-ivory">
+              We build what we would <em className="text-gold-gradient">wear ourselves.</em>
+            </h2>
+            <div className="mt-8 space-y-5 text-[15px] leading-[1.85] text-ivory/80 max-w-xl">
+              <p>
+                Oriva began with a simple frustration - beautiful diamonds sold at retail markups that had
+                little to do with the stone in the setting. As end-to-end manufacturers, we design, cast,
+                set and finish each piece under one roof.
+              </p>
+              <p>
+                That means direct factory pricing, full customization on every design, and a personal
+                relationship with the person who will hand-set your stone. There is no middle.
+              </p>
+              <p className="font-serif italic text-ivory/90">
+                - The Oriva Team
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
 
 
       {/* REVIEWS */}
