@@ -77,7 +77,7 @@ function AboutPage() {
           img: bridal,
         },
       ].map((s) => (
-        <section key={s.n} className="py-20 md:py-32">
+        <section key={s.n} className="py-12 md:py-18">
           <div className={`mx-auto max-w-[1500px] px-6 md:px-16 grid gap-12 md:grid-cols-12 md:gap-16 md:items-center ${s.flip ? "md:[&>div:first-child]:order-2" : ""}`}>
             <Reveal className="md:col-span-6">
               <div className="relative aspect-[4/5] overflow-hidden">

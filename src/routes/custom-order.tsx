@@ -129,7 +129,7 @@ function CustomOrderPage() {
   };
 
   return (
-    <main className="pt-32 md:pt-40 pb-24 md:pb-32 bg-ivory text-obsidian">
+    <main className="pt-24 md:pt-28 pb-14 md:pb-20 bg-ivory text-obsidian">
       {/* HERO */}
       <section className="mx-auto max-w-[1400px] px-6 md:px-16">
         <GsapReveal className="text-center">

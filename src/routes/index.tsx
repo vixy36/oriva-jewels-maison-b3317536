@@ -396,7 +396,7 @@ function HomePage() {
       </section>
 
       {/* SHOP BY SHAPE */}
-      <section className="relative py-24 md:py-36 bg-obsidian overflow-hidden">
+      <section className="relative py-12 md:py-20 bg-obsidian overflow-hidden">
         <div className="mx-auto max-w-[1500px] px-6 md:px-16">
           <Reveal className="flex items-end justify-between gap-6 flex-wrap">
             <div className="max-w-xl">
@@ -439,7 +439,7 @@ function HomePage() {
       </section>
 
       {/* ATELIER */}
-      <section className="relative bg-obsidian py-24 md:py-36 overflow-hidden">
+      <section className="relative bg-obsidian py-12 md:py-20 overflow-hidden">
         <div className="mx-auto max-w-[1500px] px-6 md:px-16 grid gap-12 md:grid-cols-12 md:gap-16 items-center">
           <Reveal className="md:col-span-5">
             <div className="relative aspect-[4/5] overflow-hidden">
@@ -493,7 +493,7 @@ function HomePage() {
       </section>
 
       {/* OCCASIONS */}
-      <section className="py-24 md:py-36 bg-ink">
+      <section className="py-12 md:py-20 bg-ink">
         <div className="mx-auto max-w-[1500px] px-6 md:px-16">
           <Reveal className="text-center max-w-xl mx-auto">
             <p className="eyebrow">- The Occasions</p>
@@ -528,7 +528,7 @@ function HomePage() {
       </section>
 
       {/* PROMISES */}
-      <section className="relative isolate overflow-hidden bg-obsidian py-24 md:py-36">
+      <section className="relative isolate overflow-hidden bg-obsidian py-12 md:py-20">
         <div
           aria-hidden
           className="absolute inset-0 opacity-40 pointer-events-none"
@@ -569,7 +569,7 @@ function HomePage() {
       </section>
 
       {/* PROCESS - From Inspiration to Reality */}
-      <section className="relative py-24 md:py-36 bg-ink overflow-hidden">
+      <section className="relative py-12 md:py-20 bg-ink overflow-hidden">
         <div className="mx-auto max-w-[1500px] px-6 md:px-16">
           <Reveal className="max-w-2xl">
             <p className="eyebrow">- The Process</p>
@@ -626,7 +626,7 @@ function HomePage() {
       </section>
 
       {/* FOUNDER'S NOTE */}
-      <section className="relative bg-obsidian py-24 md:py-36 overflow-hidden">
+      <section className="relative bg-obsidian py-12 md:py-20 overflow-hidden">
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 opacity-30"
@@ -649,7 +649,7 @@ function HomePage() {
       </section>
 
       {/* REVIEWS */}
-      <section className="relative py-24 md:py-36 bg-ink">
+      <section className="relative py-12 md:py-20 bg-ink">
         <div className="mx-auto max-w-[1500px] px-6 md:px-16">
           <Reveal className="text-center max-w-xl mx-auto">
             <p className="eyebrow">- The Clientele</p>
@@ -697,7 +697,7 @@ function HomePage() {
       </section>
 
       {/* FAQ */}
-      <section className="relative py-24 md:py-36 bg-obsidian">
+      <section className="relative py-12 md:py-20 bg-obsidian">
         <div className="mx-auto max-w-[1200px] px-6 md:px-16 grid gap-16 md:grid-cols-12">
           <Reveal className="md:col-span-4">
             <p className="eyebrow">- Frequently Asked</p>
@@ -749,7 +749,7 @@ function HomePage() {
       </section>
 
       {/* INSTAGRAM */}
-      <section className="py-24 md:py-36 bg-ink">
+      <section className="py-12 md:py-20 bg-ink">
 
         <div className="mx-auto max-w-[1600px] px-6 md:px-16">
           <Reveal className="flex items-end justify-between gap-6 flex-wrap">

@@ -66,7 +66,7 @@ function ProductPage() {
 
 
   return (
-    <div className="bg-ink pt-32 md:pt-36">
+    <div className="bg-ink pt-24 md:pt-28">
       <div className="mx-auto max-w-[1600px] px-6 md:px-16">
         <Link
           to="/collections/$category"
