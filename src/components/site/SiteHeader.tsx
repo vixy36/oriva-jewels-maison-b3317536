@@ -185,6 +185,15 @@ export function SiteHeader() {
               </Link>
             ))}
           </nav>
+          <div className="px-8 mt-8">
+            <Link
+              to="/custom-order"
+              onClick={() => setOpen(false)}
+              className="flex items-center justify-center gap-2 border border-gold text-gold px-5 py-4 text-[12px] tracking-[0.4em] uppercase"
+            >
+              Custom Order
+            </Link>
+          </div>
           <div className="absolute bottom-10 left-8 right-8">
             <p className="eyebrow">Hong Kong · By Appointment</p>
             <p className="mt-3 font-serif text-lg text-ivory">hello@orivajewels.com</p>
