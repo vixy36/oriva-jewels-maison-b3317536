@@ -120,7 +120,7 @@ export function SiteHeader() {
                 <Link
                   to={n.to!}
                   data-nav-item
-                  className="flex items-center gap-1 text-[10.5px] tracking-[0.32em] uppercase text-ivory/85 hover:text-gold transition-colors py-2"
+                  className="flex items-center gap-1 text-[13px] tracking-[0.28em] uppercase text-ivory/90 hover:text-gold transition-colors py-2"
                   activeProps={{ className: "text-gold" }}
                 >
                   {n.label}
