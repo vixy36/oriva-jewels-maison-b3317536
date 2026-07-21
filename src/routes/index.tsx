@@ -3,7 +3,7 @@ import { ArrowRight, ArrowUpRight, MessageCircle, ShieldCheck, Gem, Globe2, Spar
 import { GsapReveal } from "@/components/site/GsapReveal";
 import { Sparkles as GsapSparkles } from "@/components/site/Sparkles";
 
-import heroImg from "@/assets/hero-marquise.jpg";
+import heroImg from "@/assets/hero-diamond-hand.jpg";
 import engagementImg from "@/assets/collection-engagement.jpg";
 import earringsImg from "@/assets/collection-earrings.jpg";
 import braceletsImg from "@/assets/product-tennis.jpg";
