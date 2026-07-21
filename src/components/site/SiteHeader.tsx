@@ -120,7 +120,7 @@ export function SiteHeader() {
                 <Link
                   to={n.to!}
                   data-nav-item
-                  className="flex items-center gap-1 text-[10.5px] tracking-[0.32em] uppercase text-ivory/85 hover:text-gold transition-colors py-2"
+                  className="flex items-center gap-1 text-[13px] tracking-[0.28em] uppercase text-ivory/90 hover:text-gold transition-colors py-2"
                   activeProps={{ className: "text-gold" }}
                 >
                   {n.label}
@@ -170,7 +170,7 @@ export function SiteHeader() {
                 <Link
                   to={n.to!}
                   data-nav-item
-                  className="flex items-center gap-1 text-[10.5px] tracking-[0.32em] uppercase text-ivory/85 hover:text-gold transition-colors py-2"
+                  className="flex items-center gap-1 text-[13px] tracking-[0.28em] uppercase text-ivory/90 hover:text-gold transition-colors py-2"
                   activeProps={{ className: "text-gold" }}
                 >
                   {n.label}
@@ -198,7 +198,7 @@ export function SiteHeader() {
           <div className="flex items-center gap-5">
             <Link
               to="/custom-order"
-              className="hidden xl:inline-flex items-center gap-2 border border-gold text-gold px-4 py-2 text-[10.5px] tracking-[0.32em] uppercase hover:bg-gold hover:text-obsidian transition-colors"
+              className="hidden xl:inline-flex items-center gap-2 border border-gold text-gold px-4 py-2 text-[12px] tracking-[0.28em] uppercase hover:bg-gold hover:text-obsidian transition-colors"
             >
               Custom Order
             </Link>
