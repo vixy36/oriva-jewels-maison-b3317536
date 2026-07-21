@@ -373,11 +373,11 @@ function HomePage() {
                   </span>
                 </div>
 
-                <p className="mt-2 text-[10px] tracking-[0.28em] uppercase text-gold truncate">{p.collection}</p>
-                <h3 className="mt-1 font-serif text-[15px] md:text-[16px] leading-[1.25] text-obsidian group-hover:text-gold transition line-clamp-2">
+                <p className="mt-2 text-[11px] tracking-[0.28em] uppercase text-gold truncate">{p.collection}</p>
+                <h3 className="mt-1 font-serif text-[15px] md:text-[16px] leading-[1.25] text-obsidian line-clamp-2">
                   {p.name}
                 </h3>
-                <p className="mt-1 text-[10.5px] tracking-[0.24em] uppercase text-obsidian/60">
+                <p className="mt-1 text-[11px] tracking-[0.24em] uppercase text-obsidian">
                   {p.shape} · {p.metal}
                 </p>
               </Link>
@@ -405,7 +405,7 @@ function HomePage() {
             </Link>
           </Reveal>
 
-          <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-8">
+          <div className="mt-8 grid grid-cols-3 gap-3 md:grid-cols-6 md:gap-4 max-w-[1100px] mx-auto">
             {[
               { key: "marquise", label: "Marquise", img: heroImg },
               { key: "oval", label: "Oval", img: engagementImg },
@@ -415,13 +415,13 @@ function HomePage() {
               { key: "round", label: "Round", img: braceletsImg },
             ].map((s, i) => (
               <Reveal key={s.key} delay={i * 60}>
-                <Link to="/shape/$shape" params={{ shape: s.key }} className="group relative block aspect-[4/5] overflow-hidden">
+                <Link to="/shape/$shape" params={{ shape: s.key }} className="group relative block aspect-square overflow-hidden">
                   <img src={s.img} alt={s.label} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1600ms] group-hover:scale-110" />
                   <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/25 to-transparent" />
                   <div className="absolute inset-0 border border-transparent group-hover:border-gold/40 transition" />
-                  <div className="absolute inset-x-0 bottom-0 p-5 md:p-7">
-                    <p className="text-[12px] tracking-[0.4em] uppercase text-gold">0{i + 1}</p>
-                    <h3 className="mt-2 font-serif text-2xl md:text-3xl text-ivory italic">{s.label}</h3>
+                  <div className="absolute inset-x-0 bottom-0 p-2.5 md:p-3">
+                    <p className="text-[9px] tracking-[0.3em] uppercase text-gold">0{i + 1}</p>
+                    <h3 className="mt-0.5 font-serif text-sm md:text-base text-ivory italic">{s.label}</h3>
                   </div>
                 </Link>
               </Reveal>
