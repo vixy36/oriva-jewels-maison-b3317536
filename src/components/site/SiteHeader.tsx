@@ -154,7 +154,7 @@ export function SiteHeader() {
             <img
               src={orivaLogo.url}
               alt="Oriva Jewels"
-              className="h-11 md:h-12 w-auto brightness-0 invert"
+              className="h-8 md:h-12 w-auto brightness-0 invert"
               draggable={false}
             />
           </Link>
