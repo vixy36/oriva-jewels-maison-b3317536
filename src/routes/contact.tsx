@@ -15,7 +15,7 @@ export const Route = createFileRoute("/contact")({
 
 function ContactPage() {
   return (
-    <div className="bg-ink pt-40 md:pt-48">
+    <div className="bg-ink pt-28 md:pt-32">
       <section className="mx-auto max-w-[1500px] px-6 pb-16 md:px-16 md:pb-24">
         <Reveal>
           <div className="flex items-center gap-4">

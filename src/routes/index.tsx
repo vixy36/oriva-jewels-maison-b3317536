@@ -396,7 +396,7 @@ function HomePage() {
       </section>
 
       {/* SHOP BY SHAPE */}
-      <section className="relative py-24 md:py-36 bg-obsidian overflow-hidden">
+      <section className="relative py-12 md:py-20 bg-obsidian overflow-hidden">
         <div className="mx-auto max-w-[1500px] px-6 md:px-16">
           <Reveal className="flex items-end justify-between gap-6 flex-wrap">
             <div className="max-w-xl">
@@ -439,7 +439,7 @@ function HomePage() {
       </section>
 
       {/* ATELIER */}
-      <section className="relative bg-obsidian py-24 md:py-36 overflow-hidden">
+      <section className="relative bg-obsidian py-12 md:py-20 overflow-hidden">
         <div className="mx-auto max-w-[1500px] px-6 md:px-16 grid gap-12 md:grid-cols-12 md:gap-16 items-center">
           <Reveal className="md:col-span-5">
             <div className="relative aspect-[4/5] overflow-hidden">
@@ -493,7 +493,7 @@ function HomePage() {
       </section>
 
       {/* OCCASIONS */}
-      <section className="py-24 md:py-36 bg-ink">
+      <section className="py-12 md:py-20 bg-ink">
         <div className="mx-auto max-w-[1500px] px-6 md:px-16">
           <Reveal className="text-center max-w-xl mx-auto">
             <p className="eyebrow">- The Occasions</p>
@@ -528,7 +528,7 @@ function HomePage() {
       </section>
 
       {/* PROMISES */}
-      <section className="relative isolate overflow-hidden bg-obsidian py-24 md:py-36">
+      <section className="relative isolate overflow-hidden bg-obsidian py-12 md:py-20">
         <div
           aria-hidden
           className="absolute inset-0 opacity-40 pointer-events-none"
@@ -569,7 +569,7 @@ function HomePage() {
       </section>
 
       {/* PROCESS - From Inspiration to Reality */}
-      <section className="relative py-24 md:py-36 bg-ink overflow-hidden">
+      <section className="relative py-12 md:py-20 bg-ink overflow-hidden">
         <div className="mx-auto max-w-[1500px] px-6 md:px-16">
           <Reveal className="max-w-2xl">
             <p className="eyebrow">- The Process</p>
@@ -625,31 +625,11 @@ function HomePage() {
         </div>
       </section>
 
-      {/* FOUNDER'S NOTE */}
-      <section className="relative bg-obsidian py-24 md:py-36 overflow-hidden">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-30"
-          style={{ background: "radial-gradient(closest-side at 80% 30%, oklch(0.72 0.11 82 / 0.2), transparent 60%)" }}
-        />
-        <div className="relative mx-auto max-w-[1100px] px-6 md:px-16 text-center">
-          <Reveal>
-            <p className="eyebrow">- The Founder</p>
-            <p className="mt-12 font-serif italic text-3xl md:text-5xl leading-[1.25] text-ivory">
-              "We built Oriva so that a woman anywhere in the world could hold a diamond made just
-              for her - and know exactly where it came from, and whose hands finished it."
-            </p>
-            <div className="mt-14 flex items-center justify-center gap-6">
-              <span className="h-px w-16 bg-gold/60" />
-              <span className="text-[13px] tracking-[0.42em] uppercase text-gold">The Founders, Oriva Jewels</span>
-              <span className="h-px w-16 bg-gold/60" />
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      {/* FOUNDER'S NOTE removed */}
+
 
       {/* REVIEWS */}
-      <section className="relative py-24 md:py-36 bg-ink">
+      <section className="relative py-12 md:py-20 bg-ink">
         <div className="mx-auto max-w-[1500px] px-6 md:px-16">
           <Reveal className="text-center max-w-xl mx-auto">
             <p className="eyebrow">- The Clientele</p>
@@ -697,7 +677,7 @@ function HomePage() {
       </section>
 
       {/* FAQ */}
-      <section className="relative py-24 md:py-36 bg-obsidian">
+      <section className="relative py-12 md:py-20 bg-obsidian">
         <div className="mx-auto max-w-[1200px] px-6 md:px-16 grid gap-16 md:grid-cols-12">
           <Reveal className="md:col-span-4">
             <p className="eyebrow">- Frequently Asked</p>
@@ -749,7 +729,7 @@ function HomePage() {
       </section>
 
       {/* INSTAGRAM */}
-      <section className="py-24 md:py-36 bg-ink">
+      <section className="py-12 md:py-20 bg-ink">
 
         <div className="mx-auto max-w-[1600px] px-6 md:px-16">
           <Reveal className="flex items-end justify-between gap-6 flex-wrap">
@@ -760,33 +740,38 @@ function HomePage() {
               </h2>
             </div>
             <a
-              href="https://instagram.com/orivajewels"
+              href="https://www.instagram.com/oriva__jewels/reels/"
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 text-[14px] tracking-[0.4em] uppercase text-gold border-b border-gold/50 pb-1 hover:text-ivory hover:border-ivory transition"
             >
-              Follow on Instagram <ArrowUpRight className="h-3.5 w-3.5" />
+              Watch all reels <ArrowUpRight className="h-3.5 w-3.5" />
             </a>
           </Reveal>
 
-          <div className="mt-14 grid grid-cols-3 md:grid-cols-6 gap-2 md:gap-3">
-            {insta.map((img, i) => (
+          <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+            {insta.slice(0, 4).map((img, i) => (
               <a
                 key={i}
-                href="https://instagram.com/orivajewels"
+                href="https://www.instagram.com/oriva__jewels/reels/"
                 target="_blank"
                 rel="noreferrer"
-                className="group relative aspect-square overflow-hidden"
+                aria-label="Watch Oriva Jewels reel on Instagram"
+                className="group relative aspect-[9/16] overflow-hidden bg-obsidian"
               >
                 <img
                   src={img}
-                  alt="Oriva Jewels on Instagram"
+                  alt="Oriva Jewels reel"
                   loading="lazy"
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1600ms] group-hover:scale-110"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1600ms] group-hover:scale-105"
                 />
-                <span className="absolute inset-0 bg-obsidian/60 opacity-0 group-hover:opacity-100 transition duration-500 grid place-items-center">
-                  <span className="text-gold text-2xl">✦</span>
+                <span aria-hidden className="absolute inset-0 bg-gradient-to-t from-obsidian/70 via-transparent to-transparent" />
+                <span className="absolute inset-0 grid place-items-center">
+                  <span className="grid h-12 w-12 place-items-center rounded-full border border-ivory/70 bg-obsidian/40 backdrop-blur-sm text-ivory transition group-hover:border-gold group-hover:text-gold">
+                    <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5 translate-x-[1px]"><path d="M8 5v14l11-7z"/></svg>
+                  </span>
                 </span>
+                <span className="absolute top-2 left-2 text-[10px] tracking-[0.3em] uppercase text-ivory/85">Reel 0{i + 1}</span>
               </a>
             ))}
           </div>

@@ -65,7 +65,7 @@ function ShapePage() {
   const { meta, list } = Route.useLoaderData();
   return (
     <div className="bg-obsidian text-ivory">
-      <section className="pt-40 pb-16 md:pt-52 md:pb-24 border-b border-white/5">
+      <section className="pt-28 pb-10 md:pt-32 md:pb-12 border-b border-white/5">
         <div className="mx-auto max-w-[1500px] px-6 md:px-16">
           <p className="eyebrow">- Shop by Shape</p>
           <h1 className="mt-8 font-serif font-light text-6xl md:text-8xl lg:text-9xl leading-[0.92]">

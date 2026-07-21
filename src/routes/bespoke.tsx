@@ -31,7 +31,7 @@ function BespokePage() {
       <section className="relative isolate overflow-hidden min-h-[80svh]">
         <img src={atelier} alt="Oriva atelier" className="absolute inset-0 h-full w-full object-cover opacity-45" />
         <div className="absolute inset-0 bg-gradient-to-b from-obsidian/50 via-obsidian/60 to-obsidian" />
-        <div className="relative z-10 mx-auto max-w-[1400px] px-6 md:px-16 pt-40 pb-24 md:pt-56 md:pb-32">
+        <div className="relative z-10 mx-auto max-w-[1400px] px-6 md:px-16 pt-28 pb-12 md:pt-32 md:pb-16">
           <p className="eyebrow">- Bespoke Commission</p>
           <h1 className="mt-8 font-serif font-light text-6xl md:text-8xl lg:text-9xl leading-[0.92] tracking-[-0.02em]">
             Commission<br />an <em className="text-gold-gradient">heirloom.</em>
@@ -51,7 +51,7 @@ function BespokePage() {
       </section>
 
       {/* STEPS */}
-      <section className="py-24 md:py-36 bg-ink">
+      <section className="py-12 md:py-20 bg-ink">
         <div className="mx-auto max-w-[1400px] px-6 md:px-16">
           <Reveal>
             <p className="eyebrow">- The Journey</p>
