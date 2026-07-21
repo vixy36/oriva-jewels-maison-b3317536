@@ -202,7 +202,7 @@ function HomePage() {
 
 
       {/* COLLECTIONS INDEX - Chapter Wheel */}
-      <section className="relative overflow-hidden pb-24 md:pb-36 bg-ink">
+      <section className="relative overflow-hidden pb-12 md:pb-20 bg-ink">
         {/* Ambient gold aurora */}
         <div
           aria-hidden
@@ -214,7 +214,7 @@ function HomePage() {
         />
 
         <div className="relative mx-auto max-w-[1500px] px-6 md:px-16">
-          <Reveal className="border-t border-white/10 pt-16 md:pt-20 text-center">
+          <Reveal className="border-t border-white/10 pt-10 md:pt-14 text-center">
             <p className="eyebrow">- The Index</p>
             <h2 className="mt-6 font-serif text-5xl md:text-7xl leading-[1] text-ivory">
               Six chapters.{" "}
@@ -328,7 +328,7 @@ function HomePage() {
 
 
       {/* MOST REQUESTED - editorial plates */}
-      <section className="relative py-14 md:py-20 bg-ivory text-obsidian">
+      <section className="relative py-8 md:py-14 bg-ivory text-obsidian">
         <div className="mx-auto max-w-[1500px] px-6 md:px-16">
           <GsapReveal className="flex items-end justify-between gap-6 flex-wrap border-b border-obsidian/15 pb-6">
             <div className="max-w-xl">
@@ -396,7 +396,7 @@ function HomePage() {
       </section>
 
       {/* SHOP BY SHAPE */}
-      <section className="relative py-12 md:py-20 bg-obsidian overflow-hidden">
+      <section className="relative py-8 md:py-14 bg-obsidian overflow-hidden">
         <div className="mx-auto max-w-[1500px] px-6 md:px-16">
           <Reveal className="flex items-end justify-between gap-6 flex-wrap">
             <div className="max-w-xl">
@@ -413,7 +413,7 @@ function HomePage() {
             </Link>
           </Reveal>
 
-          <div className="mt-16 grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-8">
+          <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-8">
             {[
               { key: "marquise", label: "Marquise", img: heroImg },
               { key: "oval", label: "Oval", img: engagementImg },
@@ -439,7 +439,7 @@ function HomePage() {
       </section>
 
       {/* ATELIER */}
-      <section className="relative bg-obsidian py-12 md:py-20 overflow-hidden">
+      <section className="relative bg-obsidian py-8 md:py-14 overflow-hidden">
         <div className="mx-auto max-w-[1500px] px-6 md:px-16 grid gap-12 md:grid-cols-12 md:gap-16 items-center">
           <Reveal className="md:col-span-5">
             <div className="relative aspect-[4/5] overflow-hidden">
@@ -493,7 +493,7 @@ function HomePage() {
       </section>
 
       {/* OCCASIONS */}
-      <section className="py-12 md:py-20 bg-ink">
+      <section className="py-8 md:py-14 bg-ink">
         <div className="mx-auto max-w-[1500px] px-6 md:px-16">
           <Reveal className="text-center max-w-xl mx-auto">
             <p className="eyebrow">- The Occasions</p>
@@ -502,7 +502,7 @@ function HomePage() {
             </h2>
           </Reveal>
 
-          <div className="mt-20 grid grid-cols-2 gap-6 md:grid-cols-5 md:gap-8">
+          <div className="mt-12 grid grid-cols-2 gap-6 md:grid-cols-5 md:gap-8">
             {occasions.map((o, i) => (
               <Reveal key={o.label} delay={i * 60} className="group">
                 <Link to="/occasions" className="block">
@@ -528,7 +528,7 @@ function HomePage() {
       </section>
 
       {/* PROMISES */}
-      <section className="relative isolate overflow-hidden bg-obsidian py-12 md:py-20">
+      <section className="relative isolate overflow-hidden bg-obsidian py-8 md:py-14">
         <div
           aria-hidden
           className="absolute inset-0 opacity-40 pointer-events-none"
@@ -546,7 +546,7 @@ function HomePage() {
             </h2>
           </Reveal>
 
-          <div className="mt-20 grid gap-px bg-white/10 border border-white/10 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-12 grid gap-px bg-white/10 border border-white/10 sm:grid-cols-2 lg:grid-cols-4">
             {[
               { icon: ShieldCheck, n: "I", title: "Certified Origin", body: "Every stone accompanied by GIA or IGI certification, individually inspected in our atelier." },
               { icon: Gem, n: "II", title: "Natural or Lab", body: "The same craftsmanship applied to both - the choice is entirely yours, without compromise." },
@@ -569,7 +569,7 @@ function HomePage() {
       </section>
 
       {/* PROCESS - From Inspiration to Reality */}
-      <section className="relative py-12 md:py-20 bg-ink overflow-hidden">
+      <section className="relative py-8 md:py-14 bg-ink overflow-hidden">
         <div className="mx-auto max-w-[1500px] px-6 md:px-16">
           <Reveal className="max-w-2xl">
             <p className="eyebrow">- The Process</p>
@@ -582,7 +582,7 @@ function HomePage() {
             </p>
           </Reveal>
 
-          <div className="mt-20 grid gap-8 md:grid-cols-3 md:gap-6">
+          <div className="mt-12 grid gap-8 md:grid-cols-3 md:gap-6">
             {[
               {
                 n: "I",
@@ -629,7 +629,7 @@ function HomePage() {
 
 
       {/* REVIEWS */}
-      <section className="relative py-12 md:py-20 bg-ink">
+      <section className="relative py-8 md:py-14 bg-ink">
         <div className="mx-auto max-w-[1500px] px-6 md:px-16">
           <Reveal className="text-center max-w-xl mx-auto">
             <p className="eyebrow">- The Clientele</p>
@@ -638,7 +638,7 @@ function HomePage() {
             </h2>
           </Reveal>
 
-          <div className="mt-20 grid gap-6 md:grid-cols-3 md:gap-8">
+          <div className="mt-12 grid gap-6 md:grid-cols-3 md:gap-8">
             {[
               {
                 q: "The most personal buying experience I've ever had. The CAD reveal made me tear up - and the ring somehow exceeded it.",
@@ -677,7 +677,7 @@ function HomePage() {
       </section>
 
       {/* FAQ */}
-      <section className="relative py-12 md:py-20 bg-obsidian">
+      <section className="relative py-8 md:py-14 bg-obsidian">
         <div className="mx-auto max-w-[1200px] px-6 md:px-16 grid gap-16 md:grid-cols-12">
           <Reveal className="md:col-span-4">
             <p className="eyebrow">- Frequently Asked</p>
@@ -729,15 +729,18 @@ function HomePage() {
       </section>
 
       {/* INSTAGRAM */}
-      <section className="py-12 md:py-20 bg-ink">
+      <section className="py-8 md:py-14 bg-ink">
 
         <div className="mx-auto max-w-[1600px] px-6 md:px-16">
           <Reveal className="flex items-end justify-between gap-6 flex-wrap">
-            <div>
+            <div className="max-w-xl">
               <p className="eyebrow">- @orivajewels</p>
-              <h2 className="mt-6 font-serif text-4xl md:text-6xl text-ivory">
-                Follow the <em className="text-gold-gradient">maison.</em>
+              <h2 className="mt-4 font-serif text-4xl md:text-6xl text-ivory">
+                <em className="text-gold-gradient">Instagram.</em>
               </h2>
+              <p className="mt-4 text-[15px] leading-[1.75] text-ivory/70">
+                Learn, engage and grow. Connect with ORIVA.
+              </p>
             </div>
             <a
               href="https://www.instagram.com/oriva__jewels/reels/"
@@ -748,6 +751,7 @@ function HomePage() {
               Watch all reels <ArrowUpRight className="h-3.5 w-3.5" />
             </a>
           </Reveal>
+
 
           <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
             {insta.slice(0, 4).map((img, i) => (

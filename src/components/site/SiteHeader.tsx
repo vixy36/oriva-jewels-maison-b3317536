@@ -140,12 +140,12 @@ export function SiteHeader() {
             <button
               type="button"
               onClick={() => setSearchOpen(true)}
-              className="hidden lg:inline-flex items-center gap-2 text-[14px] tracking-[0.32em] uppercase text-ivory/80 hover:text-gold transition"
+              className="hidden lg:inline-flex items-center text-ivory/80 hover:text-gold transition"
               aria-label="Search"
             >
-              <Search className="h-3.5 w-3.5" strokeWidth={1.6} />
-              Search
+              <Search className="h-4 w-4" strokeWidth={1.6} />
             </button>
+
             <button
               type="button"
               onClick={() => setSearchOpen(true)}

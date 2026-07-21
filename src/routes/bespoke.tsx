@@ -31,7 +31,7 @@ function BespokePage() {
       <section className="relative isolate overflow-hidden min-h-[80svh]">
         <img src={atelier} alt="Oriva atelier" className="absolute inset-0 h-full w-full object-cover opacity-45" />
         <div className="absolute inset-0 bg-gradient-to-b from-obsidian/50 via-obsidian/60 to-obsidian" />
-        <div className="relative z-10 mx-auto max-w-[1400px] px-6 md:px-16 pt-28 pb-12 md:pt-32 md:pb-16">
+        <div className="relative z-10 mx-auto max-w-[1400px] px-6 md:px-16 pt-24 pb-8 md:pt-28 md:pb-12">
           <p className="eyebrow">- Bespoke Commission</p>
           <h1 className="mt-8 font-serif font-light text-6xl md:text-8xl lg:text-9xl leading-[0.92] tracking-[-0.02em]">
             Commission<br />an <em className="text-gold-gradient">heirloom.</em>
@@ -51,13 +51,13 @@ function BespokePage() {
       </section>
 
       {/* STEPS */}
-      <section className="py-12 md:py-20 bg-ink">
+      <section className="py-8 md:py-14 bg-ink">
         <div className="mx-auto max-w-[1400px] px-6 md:px-16">
           <Reveal>
             <p className="eyebrow">- The Journey</p>
             <h2 className="mt-6 font-serif text-5xl md:text-7xl">Three <em className="text-gold-gradient">chapters.</em></h2>
           </Reveal>
-          <div className="mt-16 grid gap-10 md:grid-cols-3">
+          <div className="mt-10 grid gap-10 md:grid-cols-3">
             {steps.map((s, i) => (
               <Reveal key={s.title} delay={i * 100}>
                 <div className="border-t border-gold/40 pt-8 h-full">

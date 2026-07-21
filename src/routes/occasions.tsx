@@ -46,7 +46,7 @@ function OccasionsPage() {
         </div>
       </section>
 
-      <section className="py-20 md:py-28 bg-ink">
+      <section className="py-10 md:py-16 bg-ink">
         <div className="mx-auto max-w-[1500px] px-6 md:px-16 grid gap-10 md:grid-cols-2 md:gap-14">
           {occasions.map((o, i) => (
             <Reveal key={o.label} delay={i * 60}>
