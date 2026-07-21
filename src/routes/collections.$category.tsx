@@ -14,29 +14,41 @@ import editorialImg from "@/assets/editorial-emerald.jpg";
 
 const banners: Record<ProductCategory, string> = {
   "engagement-rings": engagementImg,
+  rings: engagementImg,
   earrings: earringsImg,
   bracelets: braceletsImg,
+  necklaces: pendantsImg,
   pendants: pendantsImg,
+  "mens-jewelry": braceletsImg,
   bridal: bridalImg,
   "lab-grown": labgrownImg,
+  natural: engagementImg,
 };
 
 const chapterN: Record<ProductCategory, string> = {
   "engagement-rings": "01",
-  earrings: "02",
-  bracelets: "03",
-  pendants: "04",
-  bridal: "05",
-  "lab-grown": "06",
+  rings: "02",
+  earrings: "03",
+  bracelets: "04",
+  necklaces: "05",
+  pendants: "06",
+  "mens-jewelry": "07",
+  bridal: "08",
+  "lab-grown": "09",
+  natural: "10",
 };
 
 const validCats: ProductCategory[] = [
   "engagement-rings",
+  "rings",
   "earrings",
   "bracelets",
+  "necklaces",
   "pendants",
+  "mens-jewelry",
   "bridal",
   "lab-grown",
+  "natural",
 ];
 
 export const Route = createFileRoute("/collections/$category")({
