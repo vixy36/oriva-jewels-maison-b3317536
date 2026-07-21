@@ -100,7 +100,7 @@ export function SiteHeader() {
         style={{ backgroundColor: "rgba(7,28,55,0.92)", backdropFilter: "blur(14px)" }}
         data-surface="dark"
       >
-        <div ref={navItemsRef} className="relative mx-auto grid grid-cols-[auto_1fr_auto] lg:grid-cols-3 items-center gap-4 px-6 py-5 md:px-10 md:py-5 max-w-[1600px]">
+        <div ref={navItemsRef} className="relative mx-auto grid grid-cols-[auto_1fr_auto] lg:grid-cols-[1fr_auto_1fr] items-center gap-6 px-6 py-5 md:px-10 md:py-5 max-w-[1600px]">
           <button
             className="lg:hidden text-ivory justify-self-start"
             aria-label="Open menu"
@@ -120,7 +120,7 @@ export function SiteHeader() {
                 <Link
                   to={n.to!}
                   data-nav-item
-                  className="flex items-center gap-1 font-serif text-[15px] tracking-[0.14em] uppercase text-ivory hover:text-gold transition-colors py-2"
+                  className="flex items-center gap-1 font-serif text-[17px] tracking-[0.12em] uppercase whitespace-nowrap text-ivory hover:text-gold transition-colors py-2"
                   activeProps={{ className: "text-gold" }}
                 >
                   {n.label}
@@ -170,7 +170,7 @@ export function SiteHeader() {
                 <Link
                   to={n.to!}
                   data-nav-item
-                  className="flex items-center gap-1 font-serif text-[15px] tracking-[0.14em] uppercase text-ivory hover:text-gold transition-colors py-2"
+                  className="flex items-center gap-1 font-serif text-[17px] tracking-[0.12em] uppercase whitespace-nowrap text-ivory hover:text-gold transition-colors py-2"
                   activeProps={{ className: "text-gold" }}
                 >
                   {n.label}
