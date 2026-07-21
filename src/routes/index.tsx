@@ -138,15 +138,17 @@ function HomePage() {
               <p className="eyebrow">Engagement Ring Specialists</p>
             </div>
             <h1 className="mt-8 font-serif font-light text-[16vw] md:text-[9rem] lg:text-[11rem] leading-[0.88] tracking-[-0.035em]">
-              <span className="block">Objects</span>
-              <span className="block italic text-gold-gradient -mt-2 md:-mt-4">of quiet</span>
-              <span className="block">brilliance.</span>
+              <span className="block">Oriva</span>
+              <span className="block italic text-gold-gradient -mt-2 md:-mt-4">Jewels</span>
             </h1>
+            <p className="mt-6 font-serif italic text-2xl md:text-4xl text-ivory/90 max-w-3xl">
+              We design your dreams <span className="text-gold-gradient not-italic">with diamonds.</span>
+            </p>
           </div>
 
           <div className="mt-14 flex flex-col md:flex-row md:items-end md:justify-between gap-10 animate-rise-slow" style={{ animationDelay: "0.4s" }}>
             <p className="max-w-md text-[15px] leading-[1.7] text-ivory/85">
-              End-to-end manufacturers of diamonds and diamond jewellery. Direct factory pricing,
+              We are end-to-end manufacturers of diamonds &amp; jewellery. Direct factory pricing,
               100% customization, engagement ring specialists. Our client advisors are virtually
               available 24×7, worldwide.
             </p>
