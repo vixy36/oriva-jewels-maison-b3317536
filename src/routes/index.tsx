@@ -27,11 +27,11 @@ import { products, buildWhatsAppLink } from "@/lib/products";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Oriva Jewels - Fine Diamond Jewellery, Hong Kong" },
+      { title: "Oriva Jewels - Fine Natural & Lab Grown Diamond Jewellery" },
       {
         name: "description",
         content:
-          "A Hong Kong maison of natural and lab grown diamond jewellery. Engagement rings, earrings, bracelets and bridal pieces, made by hand.",
+          "A modern maison of natural and lab grown diamond jewellery. Engagement rings, earrings, bracelets and bridal pieces, made by hand.",
       },
       { property: "og:image", content: heroImg },
       { name: "twitter:image", content: heroImg },
