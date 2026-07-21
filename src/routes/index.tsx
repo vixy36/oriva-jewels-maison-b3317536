@@ -740,33 +740,38 @@ function HomePage() {
               </h2>
             </div>
             <a
-              href="https://instagram.com/orivajewels"
+              href="https://www.instagram.com/oriva__jewels/reels/"
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 text-[14px] tracking-[0.4em] uppercase text-gold border-b border-gold/50 pb-1 hover:text-ivory hover:border-ivory transition"
             >
-              Follow on Instagram <ArrowUpRight className="h-3.5 w-3.5" />
+              Watch all reels <ArrowUpRight className="h-3.5 w-3.5" />
             </a>
           </Reveal>
 
-          <div className="mt-14 grid grid-cols-3 md:grid-cols-6 gap-2 md:gap-3">
-            {insta.map((img, i) => (
+          <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+            {insta.slice(0, 4).map((img, i) => (
               <a
                 key={i}
-                href="https://instagram.com/orivajewels"
+                href="https://www.instagram.com/oriva__jewels/reels/"
                 target="_blank"
                 rel="noreferrer"
-                className="group relative aspect-square overflow-hidden"
+                aria-label="Watch Oriva Jewels reel on Instagram"
+                className="group relative aspect-[9/16] overflow-hidden bg-obsidian"
               >
                 <img
                   src={img}
-                  alt="Oriva Jewels on Instagram"
+                  alt="Oriva Jewels reel"
                   loading="lazy"
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1600ms] group-hover:scale-110"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1600ms] group-hover:scale-105"
                 />
-                <span className="absolute inset-0 bg-obsidian/60 opacity-0 group-hover:opacity-100 transition duration-500 grid place-items-center">
-                  <span className="text-gold text-2xl">✦</span>
+                <span aria-hidden className="absolute inset-0 bg-gradient-to-t from-obsidian/70 via-transparent to-transparent" />
+                <span className="absolute inset-0 grid place-items-center">
+                  <span className="grid h-12 w-12 place-items-center rounded-full border border-ivory/70 bg-obsidian/40 backdrop-blur-sm text-ivory transition group-hover:border-gold group-hover:text-gold">
+                    <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5 translate-x-[1px]"><path d="M8 5v14l11-7z"/></svg>
+                  </span>
                 </span>
+                <span className="absolute top-2 left-2 text-[10px] tracking-[0.3em] uppercase text-ivory/85">Reel 0{i + 1}</span>
               </a>
             ))}
           </div>
