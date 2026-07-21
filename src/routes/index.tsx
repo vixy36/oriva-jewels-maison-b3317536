@@ -118,7 +118,7 @@ function HomePage() {
             End-to-end Manufacturers
           </span>
           <span className="text-[14px] tracking-[0.5em] uppercase text-gold [writing-mode:vertical-rl] rotate-180">
-            Since MMXXV
+            Worldwide Shipping
           </span>
         </div>
         <div className="pointer-events-none absolute inset-y-0 right-6 hidden md:flex flex-col justify-between py-32 z-10">
