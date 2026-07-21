@@ -7,11 +7,15 @@ import heartImg from "@/assets/product-heart.jpg";
 
 export type ProductCategory =
   | "engagement-rings"
+  | "rings"
   | "earrings"
   | "bracelets"
+  | "necklaces"
   | "pendants"
+  | "mens-jewelry"
   | "bridal"
-  | "lab-grown";
+  | "lab-grown"
+  | "natural";
 
 export interface Product {
   slug: string;
