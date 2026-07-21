@@ -335,7 +335,7 @@ function HomePage() {
             <div className="max-w-xl">
               <p data-gsap className="text-[12px] tracking-[0.5em] uppercase text-gold">- The Selected Six</p>
               <h2 data-gsap className="mt-3 font-serif text-3xl md:text-5xl leading-[1] text-obsidian">
-                <span className="text-gold-gradient">Most</span> <em className="italic text-obsidian">requested.</em>
+                <span className="text-gold-gradient">Most</span> <span className="italic text-gold">requested.</span>
               </h2>
               <p data-gsap className="mt-3 max-w-md text-[13px] leading-[1.7] text-obsidian/70">
                 A rotating archive of the pieces our clients return to - hand-set at our atelier and shipped worldwide, insured.
@@ -350,49 +350,40 @@ function HomePage() {
             </Link>
           </GsapReveal>
 
-          <div className="mt-8 grid grid-cols-2 gap-x-4 gap-y-8 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-3">
+          <div className="mt-8 grid grid-cols-2 gap-x-3 gap-y-6 sm:grid-cols-3 sm:gap-x-5 sm:gap-y-8 lg:grid-cols-4 lg:gap-x-6">
             {products.slice(0, 6).map((p, i) => (
-              <Reveal key={p.slug} delay={i * 60}>
-                <Link
-                  to="/product/$slug"
-                  params={{ slug: p.slug }}
-                  className="group block"
-                >
-                  <div className="relative overflow-hidden bg-[#eeece6] aspect-[4/5]">
-                    <img
-                      src={p.image}
-                      alt={p.name}
-                      loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-[1800ms] ease-out group-hover:scale-[1.05]"
-                    />
-                    <span aria-hidden className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-obsidian/5" />
-                    <span className="absolute top-2 left-2 font-serif italic text-[11px] md:text-[13px] text-obsidian/70">
-                      Plate {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <span className="absolute top-2 right-2 text-[9px] md:text-[10px] tracking-[0.3em] uppercase text-obsidian/70 bg-ivory/85 backdrop-blur-sm px-1.5 py-0.5">
-                      {p.diamondTypes.includes("Lab Grown") && p.diamondTypes.includes("Natural")
-                        ? "Nat · Lab"
-                        : p.diamondTypes[0]}
-                    </span>
-                  </div>
+              <Link
+                key={p.slug}
+                to="/product/$slug"
+                params={{ slug: p.slug }}
+                className="group block"
+              >
+                <div className="relative overflow-hidden bg-[#eeece6] aspect-square">
+                  <img
+                    src={p.image}
+                    alt={p.name}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.05]"
+                  />
+                  <span aria-hidden className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-obsidian/5" />
+                  <span className="absolute top-1.5 right-1.5 text-[9px] tracking-[0.28em] uppercase text-obsidian/70 bg-ivory/85 backdrop-blur-sm px-1.5 py-0.5">
+                    {p.diamondTypes.includes("Lab Grown") && p.diamondTypes.includes("Natural")
+                      ? "Nat · Lab"
+                      : p.diamondTypes[0]}
+                  </span>
+                </div>
 
-                  <div className="mt-3 flex items-baseline justify-between gap-2 border-b border-obsidian/15 pb-2">
-                    <p className="text-[10px] md:text-[11px] tracking-[0.3em] uppercase text-gold truncate">{p.collection}</p>
-                    <p className="text-[10px] md:text-[11px] tracking-[0.2em] uppercase text-obsidian/55 shrink-0">OR-{String(i + 1).padStart(3, "0")}</p>
-                  </div>
-                  <h3 className="mt-2 font-serif text-[16px] md:text-[20px] leading-[1.2] text-obsidian group-hover:text-gold transition">
-                    {p.name}
-                  </h3>
-                  <p className="mt-1.5 text-[12px] md:text-[13px] leading-[1.55] text-obsidian/75 line-clamp-2">
-                    {p.short}
-                  </p>
-                  <p className="mt-2 text-[10px] md:text-[11px] tracking-[0.3em] uppercase text-obsidian/60">
-                    {p.shape} · {p.metal}
-                  </p>
-                </Link>
-              </Reveal>
+                <p className="mt-2 text-[10px] tracking-[0.28em] uppercase text-gold truncate">{p.collection}</p>
+                <h3 className="mt-1 font-serif text-[15px] md:text-[16px] leading-[1.25] text-obsidian group-hover:text-gold transition line-clamp-2">
+                  {p.name}
+                </h3>
+                <p className="mt-1 text-[10.5px] tracking-[0.24em] uppercase text-obsidian/60">
+                  {p.shape} · {p.metal}
+                </p>
+              </Link>
             ))}
           </div>
+
         </div>
       </section>
 
