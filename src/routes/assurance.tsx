@@ -32,7 +32,7 @@ function AssurancePage() {
       <section className="relative isolate overflow-hidden min-h-[70svh]">
         <img src={atelier} alt="Oriva atelier" className="absolute inset-0 h-full w-full object-cover opacity-40" />
         <div className="absolute inset-0 bg-gradient-to-b from-obsidian/50 via-obsidian/60 to-obsidian" />
-        <div className="relative z-10 mx-auto max-w-[1400px] px-6 md:px-16 pt-28 pb-12 md:pt-32 md:pb-16">
+        <div className="relative z-10 mx-auto max-w-[1400px] px-6 md:px-16 pt-24 pb-8 md:pt-28 md:pb-12">
           <p className="eyebrow">- Maison Assurance</p>
           <h1 className="mt-8 font-serif font-light text-6xl md:text-8xl lg:text-9xl leading-[0.92] tracking-[-0.02em]">
             The Oriva <em className="text-gold-gradient">promise.</em>
@@ -43,7 +43,7 @@ function AssurancePage() {
         </div>
       </section>
 
-      <section className="py-12 md:py-20 bg-ink">
+      <section className="py-8 md:py-14 bg-ink">
         <div className="mx-auto max-w-[1400px] px-6 md:px-16 grid gap-x-14 gap-y-16 md:grid-cols-2">
           {pillars.map((p, i) => (
             <Reveal key={p.t} delay={i * 60}>
@@ -63,7 +63,7 @@ function AssurancePage() {
         </div>
       </section>
 
-      <section className="py-20 md:py-28 bg-obsidian border-t border-white/5">
+      <section className="py-10 md:py-16 bg-obsidian border-t border-white/5">
         <div className="mx-auto max-w-[1000px] px-6 md:px-16 text-center">
           <p className="eyebrow">- Questions</p>
           <h2 className="mt-6 font-serif text-4xl md:text-6xl">

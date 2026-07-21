@@ -76,7 +76,7 @@ function ShapePage() {
         </div>
       </section>
 
-      <section className="py-20 md:py-28 bg-ink">
+      <section className="py-10 md:py-16 bg-ink">
         <div className="mx-auto max-w-[1500px] px-6 md:px-16">
           {list.length === 0 ? (
             <div className="text-center py-24">
