@@ -222,6 +222,9 @@ function ProductEditor({ initial, onClose, onSaved }: { initial: Partial<Product
       category: form.category,
       subcategory: form.subcategory || null,
       price_from: form.price_from || null,
+      mrp: form.mrp || null,
+      show_price: form.show_price ?? true,
+      offer_id: form.offer_id || null,
       currency: form.currency || "USD",
       short_description: form.short_description || null,
       description: form.description || null,
@@ -231,6 +234,7 @@ function ProductEditor({ initial, onClose, onSaved }: { initial: Partial<Product
       is_featured: form.is_featured ?? false,
       sort_order: form.sort_order ?? 0,
     };
+
     setSaving(true);
     const { error } = isNew
       ? await supabase.from("products").insert(payload)
