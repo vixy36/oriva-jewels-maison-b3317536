@@ -7,6 +7,7 @@ type DbProduct = {
   slug: string;
   name: string;
   category: string;
+  categories: string[] | null;
   subcategory: string | null;
   short_description: string | null;
   description: string | null;
@@ -14,6 +15,7 @@ type DbProduct = {
   diamond_type: string | null;
   is_active: boolean;
 };
+
 
 function toProduct(p: DbProduct): Product {
   const dt = (p.diamond_type || "Both").toLowerCase();
