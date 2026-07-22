@@ -39,8 +39,8 @@ type Product = {
 type OfferOpt = { id: string; title: string };
 
 const CATEGORIES = [
-  "engagement-rings", "rings", "earrings", "bracelets",
-  "necklaces", "pendants", "mens-jewelry", "bridal",
+  "rings", "earrings", "bracelets", "necklaces", "pendants", "mens-jewelry",
+  "engagement-rings", "bespoke", "lab-grown", "natural", "offers",
 ];
 const DIAMOND_TYPES = ["Natural", "Lab Grown", "Both"];
 
