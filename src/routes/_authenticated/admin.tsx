@@ -47,10 +47,20 @@ const nav: { to: string; label: string; icon: typeof LayoutDashboard; exact?: bo
 ];
 
 function AdminLayout() {
-  const { user, isAdmin } = Route.useRouteContext();
+  const { user } = Route.useRouteContext();
   const navigate = useNavigate();
   const path = useRouterState({ select: (s) => s.location.pathname });
   const [open, setOpen] = useState(false);
+
+  const { data: isAdmin, isLoading: roleLoading } = useQuery({
+    queryKey: ["admin-role", user.id],
+    queryFn: async () => {
+      const { data } = await supabase.from("user_roles").select("role").eq("user_id", user.id);
+      return Boolean(data?.some((r) => r.role === "admin"));
+    },
+    staleTime: 5 * 60_000,
+    gcTime: 30 * 60_000,
+  });
 
   useEffect(() => setOpen(false), [path]);
 
@@ -59,7 +69,7 @@ function AdminLayout() {
     navigate({ to: "/auth" });
   }
 
-  if (!isAdmin) {
+  if (!roleLoading && !isAdmin) {
     return (
       <div className="min-h-screen flex items-center justify-center px-4 bg-background">
         <div className="max-w-md text-center border border-border/60 p-10 bg-card">
