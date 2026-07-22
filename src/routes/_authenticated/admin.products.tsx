@@ -9,7 +9,7 @@ import { Switch } from "@/components/ui/switch";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { toast } from "sonner";
-import { Pencil, Trash2, Plus, Upload, X } from "lucide-react";
+import { Pencil, Trash2, Plus, X, ImagePlus } from "lucide-react";
 
 export const Route = createFileRoute("/_authenticated/admin/products")({
   component: ProductsPage,
@@ -19,6 +19,7 @@ type Product = {
   id: string;
   slug: string;
   name: string;
+  product_code: string | null;
   category: string;
   subcategory: string | null;
   price_from: number | null;
@@ -39,10 +40,14 @@ const CATEGORIES = [
 const DIAMOND_TYPES = ["Natural", "Lab Grown", "Both"];
 
 const empty: Partial<Product> = {
-  slug: "", name: "", category: "rings", price_from: null, currency: "USD",
+  slug: "", name: "", product_code: "", category: "rings", price_from: null, currency: "USD",
   short_description: "", description: "", images: [], diamond_type: "Both",
   is_active: true, is_featured: false, sort_order: 0,
 };
+
+function generateCode() {
+  return `ORV-${Date.now().toString(36).toUpperCase()}${Math.random().toString(36).slice(2, 5).toUpperCase()}`;
+}
 
 function slugify(s: string) {
   return s.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
@@ -78,7 +83,7 @@ function ProductsPage() {
           <p className="eyebrow">Catalogue</p>
           <h1 className="mt-2 font-serif text-3xl">Products</h1>
         </div>
-        <Button onClick={() => setEditing({ ...empty })}><Plus className="h-4 w-4 mr-2" /> New Product</Button>
+        <Button onClick={() => setEditing({ ...empty, product_code: generateCode() })}><Plus className="h-4 w-4 mr-2" /> New Product</Button>
       </div>
 
       <div className="mt-8 border border-border/60 bg-card overflow-hidden">
