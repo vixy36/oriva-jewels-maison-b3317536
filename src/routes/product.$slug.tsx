@@ -95,17 +95,18 @@ function ProductPage() {
 
 
   return (
-    <div className="bg-ink pt-24 md:pt-28">
+    <div className="bg-ink pt-16 md:pt-20">
       <div className="mx-auto max-w-[1600px] px-6 md:px-16">
         <Link
           to="/collections/$category"
           params={{ category: product.category }}
-          className="inline-flex items-center gap-2 text-[14px] tracking-[0.4em] uppercase text-ivory/50 hover:text-gold transition"
+          className="inline-flex items-center gap-2 text-[12px] tracking-[0.4em] uppercase text-ivory/50 hover:text-gold transition"
         >
           <ArrowLeft className="h-3 w-3" /> Back to {product.category.replace("-", " ")}
         </Link>
 
-        <div className="mt-10 grid gap-14 md:grid-cols-12 md:gap-20">
+        <div className="mt-4 md:mt-6 grid gap-14 md:grid-cols-12 md:gap-20">
+
           <div className="md:col-span-7">
 
             <button
