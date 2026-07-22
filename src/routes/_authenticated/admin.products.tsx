@@ -171,11 +171,18 @@ function ProductEditor({ initial, onClose, onSaved }: { initial: Partial<Product
   const [form, setForm] = useState<Partial<Product>>(initial);
   const [saving, setSaving] = useState(false);
   const [uploading, setUploading] = useState(false);
+  const [offers, setOffers] = useState<OfferOpt[]>([]);
   const isNew = !initial.id;
+
+  useEffect(() => {
+    supabase.from("offers").select("id,title").eq("is_active", true).order("priority", { ascending: false })
+      .then(({ data }) => setOffers((data as OfferOpt[]) ?? []));
+  }, []);
 
   function upd<K extends keyof Product>(k: K, v: Product[K]) {
     setForm((f) => ({ ...f, [k]: v }));
   }
+
 
   async function uploadImages(files: FileList) {
     setUploading(true);
