@@ -193,50 +193,42 @@ function HomePage() {
             </p>
           </Reveal>
 
-          <div className="mt-10 md:mt-14 grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-5">
-            {collections.map((c, i) => {
-              // Editorial rhythm: alternating tall / short tiles on desktop
-              const tall = i % 3 === 1;
-              return (
-                <Reveal key={c.title} delay={i * 70}>
-                  <Link
-                    to={c.to}
-                    className={`group relative block overflow-hidden bg-obsidian ${
-                      tall ? "md:row-span-2 aspect-[3/4] md:aspect-[3/5]" : "aspect-[3/4] md:aspect-[4/5]"
-                    }`}
-                  >
-                    <img
-                      src={c.img}
-                      alt={c.title}
-                      loading="lazy"
-                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1600ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.06]"
-                    />
-                    {/* Editorial gradient scrim */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-obsidian/85 via-obsidian/25 to-obsidian/10" />
-                    <div className="absolute inset-0 ring-1 ring-inset ring-white/10 group-hover:ring-gold/60 transition duration-500" />
+          <div className="mt-10 md:mt-14 grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+            {collections.map((c, i) => (
+              <Reveal key={c.title} delay={i * 60}>
+                <Link
+                  to={c.to}
+                  className="group relative block overflow-hidden bg-obsidian aspect-[4/5]"
+                >
+                  <img
+                    src={c.img}
+                    alt={c.title}
+                    loading="lazy"
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-obsidian/85 via-obsidian/25 to-transparent" />
+                  <div className="absolute inset-0 ring-1 ring-inset ring-white/10 group-hover:ring-gold/60 transition duration-500" />
 
-                    {/* Chapter numeral - top corner */}
-                    <div className="absolute top-4 left-4 md:top-5 md:left-5 flex items-center gap-2">
-                      <span className="h-px w-6 md:w-8 bg-gold/70" />
-                      <span className="font-serif italic text-sm md:text-base text-gold">
-                        Chapter {c.n}
-                      </span>
-                    </div>
+                  <div className="absolute top-3 left-3 md:top-4 md:left-4 flex items-center gap-2">
+                    <span className="h-px w-5 md:w-6 bg-gold/70" />
+                    <span className="font-serif italic text-[11px] md:text-xs text-gold">
+                      Chapter {c.n}
+                    </span>
+                  </div>
 
-                    {/* Title - bottom */}
-                    <div className="absolute inset-x-0 bottom-0 p-4 md:p-6">
-                      <h3 className="font-serif text-xl md:text-3xl leading-tight text-ivory">
-                        {c.title}
-                      </h3>
-                      <span className="mt-2 inline-flex items-center gap-2 text-[10px] md:text-[11px] tracking-[0.36em] uppercase text-ivory/80 group-hover:text-gold transition">
-                        Explore <ArrowUpRight className="h-3 w-3" strokeWidth={1.5} />
-                      </span>
-                    </div>
-                  </Link>
-                </Reveal>
-              );
-            })}
+                  <div className="absolute inset-x-0 bottom-0 p-3 md:p-4">
+                    <h3 className="font-serif text-base md:text-lg leading-tight text-ivory">
+                      {c.title}
+                    </h3>
+                    <span className="mt-1.5 inline-flex items-center gap-1.5 text-[9px] md:text-[10px] tracking-[0.32em] uppercase text-ivory/75 group-hover:text-gold transition">
+                      Explore <ArrowUpRight className="h-2.5 w-2.5" strokeWidth={1.5} />
+                    </span>
+                  </div>
+                </Link>
+              </Reveal>
+            ))}
           </div>
+
 
           <div className="mt-10 md:mt-14 text-center">
             <Link
