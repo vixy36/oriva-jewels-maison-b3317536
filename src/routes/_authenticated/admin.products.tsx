@@ -45,9 +45,6 @@ const empty: Partial<Product> = {
   is_active: true, is_featured: false, sort_order: 0,
 };
 
-function generateCode() {
-  return `ORV-${Date.now().toString(36).toUpperCase()}${Math.random().toString(36).slice(2, 5).toUpperCase()}`;
-}
 
 function slugify(s: string) {
   return s.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
