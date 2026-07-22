@@ -193,7 +193,7 @@ function HomePage() {
           </Reveal>
 
           {/* Desktop: circular wheel */}
-          <div className="relative mx-auto mt-10 hidden md:block aspect-square max-w-[520px]">
+          <div className="relative mx-auto mt-8 hidden md:block aspect-square max-w-[380px]">
             <div
               aria-hidden
               className="absolute inset-[8%] rounded-full border border-dashed border-gold/25 animate-spin-slow"
@@ -205,13 +205,9 @@ function HomePage() {
 
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
               <Sparkles className="h-4 w-4 text-gold" strokeWidth={1.2} />
-              <p className="mt-2 text-[10px] tracking-[0.5em] uppercase text-gold">Maison N° 01</p>
-              <p className="mt-2 font-serif italic text-base md:text-lg text-ivory/90 max-w-[180px] leading-snug">
-                Turn the wheel.<br />Enter a chapter.
-              </p>
               <Link
                 to="/about"
-                className="mt-3 inline-flex items-center gap-2 text-[10px] tracking-[0.4em] uppercase text-ivory/70 border-b border-white/20 pb-1 hover:text-gold hover:border-gold transition"
+                className="mt-3 inline-flex items-center gap-2 text-[11px] tracking-[0.4em] uppercase text-ivory/85 border-b border-white/20 pb-1 hover:text-gold hover:border-gold transition"
               >
                 Craftsmanship <ArrowUpRight className="h-3 w-3" />
               </Link>
@@ -234,7 +230,7 @@ function HomePage() {
                   }}
                 >
                   <Link to={c.to} className="group block">
-                    <div className="relative h-24 w-24 lg:h-28 lg:w-28 rounded-full overflow-hidden border border-white/15 group-hover:border-gold/70 transition duration-500 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.7)]">
+                    <div className="relative h-16 w-16 lg:h-20 lg:w-20 rounded-full overflow-hidden border border-white/15 group-hover:border-gold/70 transition duration-500 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.7)]">
                       <img
                         src={c.img}
                         alt={c.title}
