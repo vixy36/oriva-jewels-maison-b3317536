@@ -23,6 +23,9 @@ type Product = {
   category: string;
   subcategory: string | null;
   price_from: number | null;
+  mrp: number | null;
+  show_price: boolean;
+  offer_id: string | null;
   currency: string;
   short_description: string | null;
   description: string | null;
@@ -33,6 +36,8 @@ type Product = {
   sort_order: number;
 };
 
+type OfferOpt = { id: string; title: string };
+
 const CATEGORIES = [
   "engagement-rings", "rings", "earrings", "bracelets",
   "necklaces", "pendants", "mens-jewelry", "bridal",
@@ -40,10 +45,12 @@ const CATEGORIES = [
 const DIAMOND_TYPES = ["Natural", "Lab Grown", "Both"];
 
 const empty: Partial<Product> = {
-  slug: "", name: "", product_code: "", category: "rings", price_from: null, currency: "USD",
+  slug: "", name: "", product_code: "", category: "rings",
+  price_from: null, mrp: null, show_price: true, offer_id: null, currency: "USD",
   short_description: "", description: "", images: [], diamond_type: "Both",
   is_active: true, is_featured: false, sort_order: 0,
 };
+
 
 
 function slugify(s: string) {
