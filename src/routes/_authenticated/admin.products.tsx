@@ -23,6 +23,9 @@ type Product = {
   category: string;
   subcategory: string | null;
   price_from: number | null;
+  mrp: number | null;
+  show_price: boolean;
+  offer_id: string | null;
   currency: string;
   short_description: string | null;
   description: string | null;
@@ -33,6 +36,8 @@ type Product = {
   sort_order: number;
 };
 
+type OfferOpt = { id: string; title: string };
+
 const CATEGORIES = [
   "engagement-rings", "rings", "earrings", "bracelets",
   "necklaces", "pendants", "mens-jewelry", "bridal",
@@ -40,10 +45,12 @@ const CATEGORIES = [
 const DIAMOND_TYPES = ["Natural", "Lab Grown", "Both"];
 
 const empty: Partial<Product> = {
-  slug: "", name: "", product_code: "", category: "rings", price_from: null, currency: "USD",
+  slug: "", name: "", product_code: "", category: "rings",
+  price_from: null, mrp: null, show_price: true, offer_id: null, currency: "USD",
   short_description: "", description: "", images: [], diamond_type: "Both",
   is_active: true, is_featured: false, sort_order: 0,
 };
+
 
 
 function slugify(s: string) {
@@ -118,7 +125,19 @@ function ProductsPage() {
                       <div className="text-xs text-muted-foreground">/{p.slug}</div>
                     </td>
                     <td className="p-3 capitalize">{p.category.replace(/-/g, " ")}</td>
-                    <td className="p-3">{p.price_from ? `${p.currency} ${p.price_from}` : "—"}</td>
+                    <td className="p-3">
+                      {p.show_price === false ? (
+                        <span className="text-xs text-muted-foreground italic">hidden</span>
+                      ) : p.price_from ? (
+                        <div className="leading-tight">
+                          <div>{p.currency} {p.price_from}</div>
+                          {p.mrp && p.mrp > (p.price_from ?? 0) && (
+                            <div className="text-[11px] text-muted-foreground line-through">{p.currency} {p.mrp}</div>
+                          )}
+                        </div>
+                      ) : "—"}
+                    </td>
+
                     <td className="p-3">
                       <span className={`text-xs px-2 py-1 rounded ${p.is_active ? "bg-green-500/10 text-green-700 dark:text-green-400" : "bg-muted text-muted-foreground"}`}>
                         {p.is_active ? "Active" : "Hidden"}
@@ -152,11 +171,18 @@ function ProductEditor({ initial, onClose, onSaved }: { initial: Partial<Product
   const [form, setForm] = useState<Partial<Product>>(initial);
   const [saving, setSaving] = useState(false);
   const [uploading, setUploading] = useState(false);
+  const [offers, setOffers] = useState<OfferOpt[]>([]);
   const isNew = !initial.id;
+
+  useEffect(() => {
+    supabase.from("offers").select("id,title").eq("is_active", true).order("priority", { ascending: false })
+      .then(({ data }) => setOffers((data as OfferOpt[]) ?? []));
+  }, []);
 
   function upd<K extends keyof Product>(k: K, v: Product[K]) {
     setForm((f) => ({ ...f, [k]: v }));
   }
+
 
   async function uploadImages(files: FileList) {
     setUploading(true);
@@ -196,6 +222,9 @@ function ProductEditor({ initial, onClose, onSaved }: { initial: Partial<Product
       category: form.category,
       subcategory: form.subcategory || null,
       price_from: form.price_from || null,
+      mrp: form.mrp || null,
+      show_price: form.show_price ?? true,
+      offer_id: form.offer_id || null,
       currency: form.currency || "USD",
       short_description: form.short_description || null,
       description: form.description || null,
@@ -205,6 +234,7 @@ function ProductEditor({ initial, onClose, onSaved }: { initial: Partial<Product
       is_featured: form.is_featured ?? false,
       sort_order: form.sort_order ?? 0,
     };
+
     setSaving(true);
     const { error } = isNew
       ? await supabase.from("products").insert(payload)
@@ -262,20 +292,64 @@ function ProductEditor({ initial, onClose, onSaved }: { initial: Partial<Product
             </div>
           </div>
 
-          <div className="grid grid-cols-3 gap-4">
-            <div>
-              <Label>Price From</Label>
-              <Input type="number" step="0.01" value={form.price_from ?? ""} onChange={(e) => upd("price_from", e.target.value ? parseFloat(e.target.value) : null)} />
+          <div className="rounded border border-border/60 p-4 space-y-4">
+            <div className="flex items-center justify-between">
+              <Label className="text-sm font-semibold">Pricing</Label>
+              <label className="flex items-center gap-2 text-xs">
+                <Switch checked={form.show_price ?? true} onCheckedChange={(v) => upd("show_price", v)} />
+                Show price on website
+              </label>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+              <div>
+                <Label className="text-xs">MRP</Label>
+                <Input type="number" step="0.01" value={form.mrp ?? ""} placeholder="Original"
+                  onChange={(e) => upd("mrp", e.target.value ? parseFloat(e.target.value) : null)} />
+              </div>
+              <div>
+                <Label className="text-xs">Selling Price</Label>
+                <Input type="number" step="0.01" value={form.price_from ?? ""} placeholder="Discounted"
+                  onChange={(e) => upd("price_from", e.target.value ? parseFloat(e.target.value) : null)} />
+              </div>
+              <div>
+                <Label className="text-xs">Currency</Label>
+                <Select value={form.currency || "USD"} onValueChange={(v) => upd("currency", v)}>
+                  <SelectTrigger><SelectValue /></SelectTrigger>
+                  <SelectContent>
+                    {["USD", "HKD", "EUR", "GBP", "AED", "INR", "SGD"].map((c) => (
+                      <SelectItem key={c} value={c}>{c}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              <div>
+                <Label className="text-xs">Sort Order</Label>
+                <Input type="number" value={form.sort_order ?? 0}
+                  onChange={(e) => upd("sort_order", parseInt(e.target.value) || 0)} />
+              </div>
             </div>
             <div>
-              <Label>Currency</Label>
-              <Input value={form.currency || "USD"} onChange={(e) => upd("currency", e.target.value)} />
-            </div>
-            <div>
-              <Label>Sort Order</Label>
-              <Input type="number" value={form.sort_order ?? 0} onChange={(e) => upd("sort_order", parseInt(e.target.value) || 0)} />
+              <Label className="text-xs">Link an Offer (optional)</Label>
+              <Select
+                value={form.offer_id || "__none"}
+                onValueChange={(v) => upd("offer_id", v === "__none" ? null : v)}
+              >
+                <SelectTrigger><SelectValue placeholder="No offer" /></SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="__none">— No offer —</SelectItem>
+                  {offers.map((o) => (
+                    <SelectItem key={o.id} value={o.id}>{o.title}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              {offers.length === 0 && (
+                <p className="text-[11px] text-muted-foreground mt-1">
+                  No active offers yet. Create one in Admin → Offers.
+                </p>
+              )}
             </div>
           </div>
+
 
           <div>
             <Label>Short Description</Label>
