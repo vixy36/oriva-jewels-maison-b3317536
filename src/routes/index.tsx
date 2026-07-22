@@ -288,59 +288,81 @@ function HomePage() {
 
 
 
-      {/* MOST REQUESTED - editorial plates */}
-      <section className="relative py-8 md:py-12 bg-ivory text-obsidian">
+      {/* MOST REQUESTED - tonal editorial */}
+      <section className="relative py-12 md:py-20 bg-obsidian text-ivory" data-surface="dark">
         <div className="mx-auto max-w-[1200px] px-5 md:px-10">
-          <div className="flex items-end justify-between gap-6 flex-wrap border-b border-obsidian/15 pb-4">
-            <div className="max-w-xl">
-              <p className="text-[11px] tracking-[0.5em] uppercase text-gold">- The Selected Six</p>
-              <h2 className="mt-2 font-serif text-2xl md:text-3xl leading-[1.1] text-obsidian">
-                <span className="text-gold-gradient">Most</span> <span className="italic text-gold">requested.</span>
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10 md:mb-14">
+            <div>
+              <span className="block text-[10px] tracking-[0.4em] uppercase text-gold mb-3">Most Requested</span>
+              <h2 className="font-serif italic font-light leading-[1.05] text-ivory text-4xl md:text-5xl">
+                The Selected Six
               </h2>
-              <p className="mt-2 max-w-md text-[13px] leading-[1.6] text-obsidian">
-                A rotating archive of the pieces our clients return to - hand-set at our atelier and shipped worldwide, insured.
-              </p>
             </div>
             <Link
               to="/collections/engagement-rings"
-              className="inline-flex items-center gap-2 text-[11px] tracking-[0.4em] uppercase text-obsidian border-b border-obsidian/40 pb-1 hover:text-gold hover:border-gold transition"
+              className="hidden md:inline-flex items-center gap-2 text-[11px] tracking-[0.3em] uppercase text-ivory/80 border-b border-gold/40 pb-1 hover:text-gold hover:border-gold transition-colors duration-300"
             >
-              View entire archive <ArrowUpRight className="h-3.5 w-3.5" />
+              View entire collection <ArrowUpRight className="h-3.5 w-3.5" />
             </Link>
           </div>
 
-          <div className="mt-6 grid grid-cols-2 gap-x-3 gap-y-5 sm:grid-cols-3 sm:gap-x-4 sm:gap-y-6 lg:grid-cols-4 lg:gap-x-5">
-            {products.slice(0, 6).map((p) => (
-              <Link
-                key={p.slug}
-                to="/product/$slug"
-                params={{ slug: p.slug }}
-                className="group block"
-              >
-                <div className="relative overflow-hidden bg-[#eeece6] aspect-square">
-                  <img
-                    src={p.image}
-                    alt={p.name}
-                    loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.05]"
-                  />
-                  <span aria-hidden className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-obsidian/5" />
-                  <span className="absolute top-1.5 right-1.5 text-[10px] tracking-[0.24em] uppercase text-obsidian bg-ivory/90 backdrop-blur-sm px-1.5 py-0.5">
-                    {p.diamondTypes.includes("Lab Grown") && p.diamondTypes.includes("Natural")
-                      ? "Nat · Lab"
-                      : p.diamondTypes[0]}
-                  </span>
-                </div>
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-5 md:gap-x-8 gap-y-10 md:gap-y-14">
+            {products.slice(0, 6).map((p) => {
+              const tag =
+                p.diamondTypes.includes("Lab Grown") && p.diamondTypes.includes("Natural")
+                  ? "Nat · Lab"
+                  : p.diamondTypes[0];
+              return (
+                <Link
+                  key={p.slug}
+                  to="/product/$slug"
+                  params={{ slug: p.slug }}
+                  className="group block"
+                >
+                  <div className="relative aspect-[3/4] overflow-hidden bg-ivory/5 border border-gold/15 mb-5 transition-colors duration-500 group-hover:border-gold/50">
+                    <img
+                      src={p.image}
+                      alt={p.name}
+                      loading="lazy"
+                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.05]"
+                    />
+                    {/* tonal unifier: warm navy tint that neutralises white / yellow / pink product backgrounds */}
+                    <span
+                      aria-hidden
+                      className="pointer-events-none absolute inset-0 bg-obsidian/25 mix-blend-multiply transition-opacity duration-500 group-hover:opacity-70"
+                    />
+                    {/* subtle inner vignette to seat piece against the frame */}
+                    <span
+                      aria-hidden
+                      className="pointer-events-none absolute inset-0"
+                      style={{ boxShadow: "inset 0 0 60px 20px rgba(7,28,55,0.35)" }}
+                    />
+                    <span className="absolute top-3 right-3 text-[9px] tracking-[0.28em] uppercase text-obsidian bg-ivory px-2 py-1">
+                      {tag}
+                    </span>
+                  </div>
 
-                <p className="mt-2 text-[11px] tracking-[0.28em] uppercase text-gold truncate">{p.collection}</p>
-                <h3 className="mt-1 font-serif text-[14px] md:text-[15px] leading-[1.25] text-obsidian line-clamp-2">
-                  {p.name}
-                </h3>
-                <p className="mt-1 text-[11px] tracking-[0.24em] uppercase text-obsidian">
-                  {p.shape} · {p.metal}
-                </p>
-              </Link>
-            ))}
+                  <span className="block text-[9px] tracking-[0.32em] uppercase text-ivory/45">
+                    {p.collection}
+                  </span>
+                  <h3 className="mt-1.5 font-serif text-lg md:text-xl leading-[1.2] text-ivory transition-colors duration-300 group-hover:text-gold">
+                    {p.name}
+                  </h3>
+                  <p className="mt-1 text-[11px] tracking-[0.22em] uppercase text-gold/80">
+                    {p.shape} · {p.metal}
+                  </p>
+                </Link>
+              );
+            })}
+          </div>
+
+          <div className="mt-12 md:hidden flex justify-center">
+            <Link
+              to="/collections/engagement-rings"
+              className="inline-flex items-center gap-2 text-[11px] tracking-[0.3em] uppercase text-ivory/80 border-b border-gold/40 pb-1"
+            >
+              View entire collection <ArrowUpRight className="h-3.5 w-3.5" />
+            </Link>
           </div>
         </div>
       </section>
