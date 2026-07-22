@@ -80,7 +80,7 @@ function ProductsPage() {
           <p className="eyebrow">Catalogue</p>
           <h1 className="mt-2 font-serif text-3xl">Products</h1>
         </div>
-        <Button onClick={() => setEditing({ ...empty, product_code: generateCode() })}><Plus className="h-4 w-4 mr-2" /> New Product</Button>
+        <Button onClick={() => setEditing({ ...empty })}><Plus className="h-4 w-4 mr-2" /> New Product</Button>
       </div>
 
       <div className="mt-8 border border-border/60 bg-card overflow-hidden">
