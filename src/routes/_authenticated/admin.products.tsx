@@ -231,9 +231,17 @@ function ProductEditor({ initial, onClose, onSaved }: { initial: Partial<Product
               <Input value={form.name || ""} onChange={(e) => upd("name", e.target.value)} />
             </div>
             <div>
-              <Label>Slug</Label>
-              <Input value={form.slug || ""} onChange={(e) => upd("slug", e.target.value)} placeholder="auto from name" />
+              <Label>Product Code</Label>
+              <div className="flex gap-2">
+                <Input value={form.product_code || ""} onChange={(e) => upd("product_code", e.target.value)} placeholder="auto-generated" className="font-mono" />
+                <Button type="button" variant="outline" size="sm" onClick={() => upd("product_code", generateCode())}>Regenerate</Button>
+              </div>
             </div>
+          </div>
+
+          <div>
+            <Label>Slug</Label>
+            <Input value={form.slug || ""} onChange={(e) => upd("slug", e.target.value)} placeholder="auto from name" />
           </div>
 
           <div className="grid grid-cols-2 gap-4">
