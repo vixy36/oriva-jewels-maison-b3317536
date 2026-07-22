@@ -91,7 +91,7 @@ function CollectionPage() {
 
   return (
     <div className="bg-ink">
-      <section className="relative isolate overflow-hidden bg-obsidian text-ivory min-h-[75svh] flex items-end">
+      <section className="relative isolate overflow-hidden bg-obsidian text-ivory min-h-[38svh] md:min-h-[42svh] flex items-end">
         <img
           src={banner}
           alt={info.label}
@@ -100,7 +100,7 @@ function CollectionPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-obsidian/40 via-obsidian/30 to-obsidian" />
         <div className="absolute inset-0 vignette" />
 
-        <div className="relative mx-auto max-w-[1500px] w-full px-6 pt-48 pb-20 md:px-16 md:pt-56 md:pb-28">
+        <div className="relative mx-auto max-w-[1500px] w-full px-6 pt-28 pb-8 md:px-16 md:pt-32 md:pb-10">
           <div className="flex items-center gap-4">
             <span className="h-px w-12 bg-gold" />
             <p className="eyebrow">Chapter {chapterN[category]}</p>
