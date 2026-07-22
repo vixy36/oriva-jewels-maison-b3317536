@@ -273,26 +273,43 @@ function ProductEditor({ initial, onClose, onSaved }: { initial: Partial<Product
             <Input value={form.slug || ""} onChange={(e) => upd("slug", e.target.value)} placeholder="auto from name" />
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <Label>Category *</Label>
-              <Select value={form.category} onValueChange={(v) => upd("category", v)}>
-                <SelectTrigger><SelectValue /></SelectTrigger>
-                <SelectContent>
-                  {CATEGORIES.map((c) => <SelectItem key={c} value={c}>{c.replace(/-/g, " ")}</SelectItem>)}
-                </SelectContent>
-              </Select>
-            </div>
-            <div>
-              <Label>Diamond Type</Label>
-              <Select value={form.diamond_type || "Both"} onValueChange={(v) => upd("diamond_type", v)}>
-                <SelectTrigger><SelectValue /></SelectTrigger>
-                <SelectContent>
-                  {DIAMOND_TYPES.map((c) => <SelectItem key={c} value={c}>{c}</SelectItem>)}
-                </SelectContent>
-              </Select>
+          <div>
+            <Label>Categories * <span className="text-xs text-muted-foreground font-normal">(pick one or more)</span></Label>
+            <div className="mt-2 grid grid-cols-2 md:grid-cols-3 gap-2 rounded border border-border/60 p-3">
+              {CATEGORIES.map((c) => {
+                const selected = (form.categories || []).includes(c);
+                return (
+                  <label key={c} className="flex items-center gap-2 text-sm cursor-pointer hover:text-foreground">
+                    <input
+                      type="checkbox"
+                      checked={selected}
+                      onChange={(e) => {
+                        const next = e.target.checked
+                          ? [...(form.categories || []), c]
+                          : (form.categories || []).filter((x) => x !== c);
+                        upd("categories", next);
+                        // keep primary category in sync (first selected)
+                        if (next.length) upd("category", next[0]);
+                      }}
+                      className="h-4 w-4 accent-foreground"
+                    />
+                    <span className="capitalize">{c.replace(/-/g, " ")}</span>
+                  </label>
+                );
+              })}
             </div>
           </div>
+
+          <div>
+            <Label>Diamond Type</Label>
+            <Select value={form.diamond_type || "Both"} onValueChange={(v) => upd("diamond_type", v)}>
+              <SelectTrigger><SelectValue /></SelectTrigger>
+              <SelectContent>
+                {DIAMOND_TYPES.map((c) => <SelectItem key={c} value={c}>{c}</SelectItem>)}
+              </SelectContent>
+            </Select>
+          </div>
+
 
           <div className="rounded border border-border/60 p-4 space-y-4">
             <div className="flex items-center justify-between">
