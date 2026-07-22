@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as RingSizeGuideRouteImport } from './routes/ring-size-guide'
+import { Route as OffersRouteImport } from './routes/offers'
 import { Route as OccasionsRouteImport } from './routes/occasions'
 import { Route as EducationRouteImport } from './routes/education'
 import { Route as CustomOrderRouteImport } from './routes/custom-order'
@@ -28,6 +29,7 @@ import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/
 import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
 import { Route as AuthenticatedAdminSeoRouteImport } from './routes/_authenticated/admin.seo'
 import { Route as AuthenticatedAdminProductsRouteImport } from './routes/_authenticated/admin.products'
+import { Route as AuthenticatedAdminOffersRouteImport } from './routes/_authenticated/admin.offers'
 import { Route as AuthenticatedAdminEnquiriesRouteImport } from './routes/_authenticated/admin.enquiries'
 import { Route as AuthenticatedAdminContentRouteImport } from './routes/_authenticated/admin.content'
 
@@ -39,6 +41,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const RingSizeGuideRoute = RingSizeGuideRouteImport.update({
   id: '/ring-size-guide',
   path: '/ring-size-guide',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OffersRoute = OffersRouteImport.update({
+  id: '/offers',
+  path: '/offers',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OccasionsRoute = OccasionsRouteImport.update({
@@ -126,6 +133,12 @@ const AuthenticatedAdminProductsRoute =
     path: '/products',
     getParentRoute: () => AuthenticatedAdminRoute,
   } as any)
+const AuthenticatedAdminOffersRoute =
+  AuthenticatedAdminOffersRouteImport.update({
+    id: '/offers',
+    path: '/offers',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
 const AuthenticatedAdminEnquiriesRoute =
   AuthenticatedAdminEnquiriesRouteImport.update({
     id: '/enquiries',
@@ -149,6 +162,7 @@ export interface FileRoutesByFullPath {
   '/custom-order': typeof CustomOrderRoute
   '/education': typeof EducationRoute
   '/occasions': typeof OccasionsRoute
+  '/offers': typeof OffersRoute
   '/ring-size-guide': typeof RingSizeGuideRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/admin': typeof AuthenticatedAdminRouteWithChildren
@@ -157,6 +171,7 @@ export interface FileRoutesByFullPath {
   '/shape/$shape': typeof ShapeShapeRoute
   '/admin/content': typeof AuthenticatedAdminContentRoute
   '/admin/enquiries': typeof AuthenticatedAdminEnquiriesRoute
+  '/admin/offers': typeof AuthenticatedAdminOffersRoute
   '/admin/products': typeof AuthenticatedAdminProductsRoute
   '/admin/seo': typeof AuthenticatedAdminSeoRoute
   '/admin/': typeof AuthenticatedAdminIndexRoute
@@ -171,6 +186,7 @@ export interface FileRoutesByTo {
   '/custom-order': typeof CustomOrderRoute
   '/education': typeof EducationRoute
   '/occasions': typeof OccasionsRoute
+  '/offers': typeof OffersRoute
   '/ring-size-guide': typeof RingSizeGuideRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/collections/$category': typeof CollectionsCategoryRoute
@@ -178,6 +194,7 @@ export interface FileRoutesByTo {
   '/shape/$shape': typeof ShapeShapeRoute
   '/admin/content': typeof AuthenticatedAdminContentRoute
   '/admin/enquiries': typeof AuthenticatedAdminEnquiriesRoute
+  '/admin/offers': typeof AuthenticatedAdminOffersRoute
   '/admin/products': typeof AuthenticatedAdminProductsRoute
   '/admin/seo': typeof AuthenticatedAdminSeoRoute
   '/admin': typeof AuthenticatedAdminIndexRoute
@@ -194,6 +211,7 @@ export interface FileRoutesById {
   '/custom-order': typeof CustomOrderRoute
   '/education': typeof EducationRoute
   '/occasions': typeof OccasionsRoute
+  '/offers': typeof OffersRoute
   '/ring-size-guide': typeof RingSizeGuideRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRouteWithChildren
@@ -202,6 +220,7 @@ export interface FileRoutesById {
   '/shape/$shape': typeof ShapeShapeRoute
   '/_authenticated/admin/content': typeof AuthenticatedAdminContentRoute
   '/_authenticated/admin/enquiries': typeof AuthenticatedAdminEnquiriesRoute
+  '/_authenticated/admin/offers': typeof AuthenticatedAdminOffersRoute
   '/_authenticated/admin/products': typeof AuthenticatedAdminProductsRoute
   '/_authenticated/admin/seo': typeof AuthenticatedAdminSeoRoute
   '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
@@ -218,6 +237,7 @@ export interface FileRouteTypes {
     | '/custom-order'
     | '/education'
     | '/occasions'
+    | '/offers'
     | '/ring-size-guide'
     | '/sitemap.xml'
     | '/admin'
@@ -226,6 +246,7 @@ export interface FileRouteTypes {
     | '/shape/$shape'
     | '/admin/content'
     | '/admin/enquiries'
+    | '/admin/offers'
     | '/admin/products'
     | '/admin/seo'
     | '/admin/'
@@ -240,6 +261,7 @@ export interface FileRouteTypes {
     | '/custom-order'
     | '/education'
     | '/occasions'
+    | '/offers'
     | '/ring-size-guide'
     | '/sitemap.xml'
     | '/collections/$category'
@@ -247,6 +269,7 @@ export interface FileRouteTypes {
     | '/shape/$shape'
     | '/admin/content'
     | '/admin/enquiries'
+    | '/admin/offers'
     | '/admin/products'
     | '/admin/seo'
     | '/admin'
@@ -262,6 +285,7 @@ export interface FileRouteTypes {
     | '/custom-order'
     | '/education'
     | '/occasions'
+    | '/offers'
     | '/ring-size-guide'
     | '/sitemap.xml'
     | '/_authenticated/admin'
@@ -270,6 +294,7 @@ export interface FileRouteTypes {
     | '/shape/$shape'
     | '/_authenticated/admin/content'
     | '/_authenticated/admin/enquiries'
+    | '/_authenticated/admin/offers'
     | '/_authenticated/admin/products'
     | '/_authenticated/admin/seo'
     | '/_authenticated/admin/'
@@ -286,6 +311,7 @@ export interface RootRouteChildren {
   CustomOrderRoute: typeof CustomOrderRoute
   EducationRoute: typeof EducationRoute
   OccasionsRoute: typeof OccasionsRoute
+  OffersRoute: typeof OffersRoute
   RingSizeGuideRoute: typeof RingSizeGuideRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   CollectionsCategoryRoute: typeof CollectionsCategoryRoute
@@ -307,6 +333,13 @@ declare module '@tanstack/react-router' {
       path: '/ring-size-guide'
       fullPath: '/ring-size-guide'
       preLoaderRoute: typeof RingSizeGuideRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/offers': {
+      id: '/offers'
+      path: '/offers'
+      fullPath: '/offers'
+      preLoaderRoute: typeof OffersRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/occasions': {
@@ -428,6 +461,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminProductsRouteImport
       parentRoute: typeof AuthenticatedAdminRoute
     }
+    '/_authenticated/admin/offers': {
+      id: '/_authenticated/admin/offers'
+      path: '/offers'
+      fullPath: '/admin/offers'
+      preLoaderRoute: typeof AuthenticatedAdminOffersRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
     '/_authenticated/admin/enquiries': {
       id: '/_authenticated/admin/enquiries'
       path: '/enquiries'
@@ -448,6 +488,7 @@ declare module '@tanstack/react-router' {
 interface AuthenticatedAdminRouteChildren {
   AuthenticatedAdminContentRoute: typeof AuthenticatedAdminContentRoute
   AuthenticatedAdminEnquiriesRoute: typeof AuthenticatedAdminEnquiriesRoute
+  AuthenticatedAdminOffersRoute: typeof AuthenticatedAdminOffersRoute
   AuthenticatedAdminProductsRoute: typeof AuthenticatedAdminProductsRoute
   AuthenticatedAdminSeoRoute: typeof AuthenticatedAdminSeoRoute
   AuthenticatedAdminIndexRoute: typeof AuthenticatedAdminIndexRoute
@@ -456,6 +497,7 @@ interface AuthenticatedAdminRouteChildren {
 const AuthenticatedAdminRouteChildren: AuthenticatedAdminRouteChildren = {
   AuthenticatedAdminContentRoute: AuthenticatedAdminContentRoute,
   AuthenticatedAdminEnquiriesRoute: AuthenticatedAdminEnquiriesRoute,
+  AuthenticatedAdminOffersRoute: AuthenticatedAdminOffersRoute,
   AuthenticatedAdminProductsRoute: AuthenticatedAdminProductsRoute,
   AuthenticatedAdminSeoRoute: AuthenticatedAdminSeoRoute,
   AuthenticatedAdminIndexRoute: AuthenticatedAdminIndexRoute,
@@ -486,6 +528,7 @@ const rootRouteChildren: RootRouteChildren = {
   CustomOrderRoute: CustomOrderRoute,
   EducationRoute: EducationRoute,
   OccasionsRoute: OccasionsRoute,
+  OffersRoute: OffersRoute,
   RingSizeGuideRoute: RingSizeGuideRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   CollectionsCategoryRoute: CollectionsCategoryRoute,
