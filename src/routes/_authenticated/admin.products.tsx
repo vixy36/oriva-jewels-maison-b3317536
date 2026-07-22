@@ -216,12 +216,14 @@ function ProductEditor({ initial, onClose, onSaved }: { initial: Partial<Product
   }
 
   async function save() {
-    if (!form.name || !form.category) return toast.error("Name and category are required");
+    const cats = (form.categories && form.categories.length ? form.categories : (form.category ? [form.category] : [])) as string[];
+    if (!form.name || cats.length === 0) return toast.error("Name and at least one category are required");
     const payload = {
       slug: form.slug || slugify(form.name),
       name: form.name,
       product_code: form.product_code || undefined,
-      category: form.category,
+      category: cats[0],
+      categories: cats,
       subcategory: form.subcategory || null,
       price_from: form.price_from || null,
       mrp: form.mrp || null,
@@ -236,6 +238,7 @@ function ProductEditor({ initial, onClose, onSaved }: { initial: Partial<Product
       is_featured: form.is_featured ?? false,
       sort_order: form.sort_order ?? 0,
     };
+
 
     setSaving(true);
     const { error } = isNew
