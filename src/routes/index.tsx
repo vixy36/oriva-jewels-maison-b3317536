@@ -306,8 +306,8 @@ function HomePage() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-5 md:gap-x-8 gap-y-10 md:gap-y-14">
-            {products.slice(0, 6).map((p) => {
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 md:gap-x-6 gap-y-8 md:gap-y-10">
+            {products.slice(0, 8).map((p) => {
               const tag =
                 p.diamondTypes.includes("Lab Grown") && p.diamondTypes.includes("Natural")
                   ? "Nat · Lab"
@@ -319,42 +319,37 @@ function HomePage() {
                   params={{ slug: p.slug }}
                   className="group block"
                 >
-                  <div className="relative aspect-[3/4] overflow-hidden bg-ivory/5 border border-gold/15 mb-5 transition-colors duration-500 group-hover:border-gold/50">
+                  <div className="relative aspect-square overflow-hidden bg-ivory/[0.04] mb-3 md:mb-4">
                     <img
                       src={p.image}
                       alt={p.name}
                       loading="lazy"
-                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.05]"
+                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.06]"
                     />
-                    {/* tonal unifier: warm navy tint that neutralises white / yellow / pink product backgrounds */}
                     <span
                       aria-hidden
-                      className="pointer-events-none absolute inset-0 bg-obsidian/25 mix-blend-multiply transition-opacity duration-500 group-hover:opacity-70"
+                      className="pointer-events-none absolute inset-0 bg-obsidian/20 mix-blend-multiply"
                     />
-                    {/* subtle inner vignette to seat piece against the frame */}
                     <span
                       aria-hidden
-                      className="pointer-events-none absolute inset-0"
-                      style={{ boxShadow: "inset 0 0 60px 20px rgba(7,28,55,0.35)" }}
+                      className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-obsidian/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                     />
-                    <span className="absolute top-3 right-3 text-[9px] tracking-[0.28em] uppercase text-obsidian bg-ivory px-2 py-1">
+                    <span className="absolute top-2.5 left-2.5 text-[9px] tracking-[0.28em] uppercase text-ivory/90 bg-obsidian/50 backdrop-blur-sm px-2 py-0.5 border border-white/10">
                       {tag}
                     </span>
                   </div>
 
-                  <span className="block text-[9px] tracking-[0.32em] uppercase text-ivory/45">
-                    {p.collection}
-                  </span>
-                  <h3 className="mt-1.5 font-serif text-lg md:text-xl leading-[1.2] text-ivory transition-colors duration-300 group-hover:text-gold">
+                  <h3 className="font-serif text-[15px] md:text-base leading-tight text-ivory transition-colors duration-300 group-hover:text-gold line-clamp-1">
                     {p.name}
                   </h3>
-                  <p className="mt-1 text-[11px] tracking-[0.22em] uppercase text-gold/80">
+                  <p className="mt-1 text-[10px] tracking-[0.24em] uppercase text-ivory/55 line-clamp-1">
                     {p.shape} · {p.metal}
                   </p>
                 </Link>
               );
             })}
           </div>
+
 
           <div className="mt-12 md:hidden flex justify-center">
             <Link
