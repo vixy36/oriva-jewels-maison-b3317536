@@ -68,4 +68,4 @@ export function useDbProductsByCategory(category: ProductCategory) {
   return { ...q, data: filtered.map(toProduct) };
 }
 
-}
+
