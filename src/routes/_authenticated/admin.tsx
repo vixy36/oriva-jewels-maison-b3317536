@@ -13,8 +13,37 @@ export const Route = createFileRoute("/_authenticated/admin")({
     const isAdmin = roles?.some((r) => r.role === "admin");
     return { user: userData.user, isAdmin: Boolean(isAdmin) };
   },
+  pendingMs: 0,
+  pendingMinMs: 0,
+  pendingComponent: AdminSkeleton,
   component: AdminLayout,
 });
+
+function AdminSkeleton() {
+  return (
+    <div className="min-h-screen bg-background text-foreground flex pt-20 lg:pt-24">
+      <aside className="hidden lg:block sticky top-24 w-64 h-[calc(100vh-6rem)] border-r border-border/60 bg-card">
+        <div className="p-5 border-b border-border/60">
+          <div className="h-4 w-32 bg-muted animate-pulse rounded" />
+        </div>
+        <div className="p-3 space-y-2">
+          {Array.from({ length: 6 }).map((_, i) => (
+            <div key={i} className="h-9 bg-muted/60 animate-pulse rounded" />
+          ))}
+        </div>
+      </aside>
+      <main className="flex-1 p-4 md:p-8 space-y-4">
+        <div className="h-8 w-64 bg-muted animate-pulse rounded" />
+        <div className="h-4 w-96 max-w-full bg-muted/60 animate-pulse rounded" />
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 mt-6">
+          {Array.from({ length: 6 }).map((_, i) => (
+            <div key={i} className="h-32 bg-muted/50 animate-pulse rounded" />
+          ))}
+        </div>
+      </main>
+    </div>
+  );
+}
 
 const nav: { to: string; label: string; icon: typeof LayoutDashboard; exact?: boolean }[] = [
   { to: "/admin", label: "Dashboard", icon: LayoutDashboard, exact: true },
