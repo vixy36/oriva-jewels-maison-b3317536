@@ -169,7 +169,7 @@ function HomePage() {
 
 
       {/* COLLECTIONS INDEX - Editorial image grid */}
-      <section className="relative overflow-hidden py-14 md:py-24 bg-ink" data-surface="dark">
+      <section className="relative overflow-hidden py-14 md:py-24 bg-obsidian" data-surface="dark">
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 opacity-40"
