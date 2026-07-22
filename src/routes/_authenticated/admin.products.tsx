@@ -192,7 +192,7 @@ function ProductEditor({ initial, onClose, onSaved }: { initial: Partial<Product
     const payload = {
       slug: form.slug || slugify(form.name),
       name: form.name,
-      product_code: form.product_code || generateCode(),
+      product_code: form.product_code || undefined,
       category: form.category,
       subcategory: form.subcategory || null,
       price_from: form.price_from || null,
