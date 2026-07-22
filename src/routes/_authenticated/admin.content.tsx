@@ -47,7 +47,7 @@ function ContentPage() {
   }
 
   async function seed(item: (typeof SUGGESTED)[number]) {
-    const { error } = await supabase.from("site_content").insert(item);
+    const { error } = await supabase.from("site_content").insert({ ...item, value: item.value as unknown as Json });
     if (error) return toast.error(error.message);
     toast.success(`Added ${item.key}`);
     load();
@@ -133,7 +133,7 @@ function ContentEditor({ initial, onClose, onSaved }: { initial: Partial<Row>; o
     try { parsed = JSON.parse(form.valueStr); } catch { return toast.error("Value must be valid JSON"); }
     if (!form.key) return toast.error("Key required");
     setSaving(true);
-    const payload = { key: form.key, label: form.label || null, value: parsed };
+    const payload = { key: form.key, label: form.label || null, value: parsed as Json };
     const { error } = isNew
       ? await supabase.from("site_content").insert(payload)
       : await supabase.from("site_content").update(payload).eq("id", initial.id!);
