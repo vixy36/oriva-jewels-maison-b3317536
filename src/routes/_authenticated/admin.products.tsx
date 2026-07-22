@@ -125,7 +125,19 @@ function ProductsPage() {
                       <div className="text-xs text-muted-foreground">/{p.slug}</div>
                     </td>
                     <td className="p-3 capitalize">{p.category.replace(/-/g, " ")}</td>
-                    <td className="p-3">{p.price_from ? `${p.currency} ${p.price_from}` : "—"}</td>
+                    <td className="p-3">
+                      {p.show_price === false ? (
+                        <span className="text-xs text-muted-foreground italic">hidden</span>
+                      ) : p.price_from ? (
+                        <div className="leading-tight">
+                          <div>{p.currency} {p.price_from}</div>
+                          {p.mrp && p.mrp > (p.price_from ?? 0) && (
+                            <div className="text-[11px] text-muted-foreground line-through">{p.currency} {p.mrp}</div>
+                          )}
+                        </div>
+                      ) : "—"}
+                    </td>
+
                     <td className="p-3">
                       <span className={`text-xs px-2 py-1 rounded ${p.is_active ? "bg-green-500/10 text-green-700 dark:text-green-400" : "bg-muted text-muted-foreground"}`}>
                         {p.is_active ? "Active" : "Hidden"}
