@@ -305,14 +305,16 @@ function ProductEditor({ initial, onClose, onSaved }: { initial: Partial<Product
                   </button>
                 </div>
               ))}
-              <label className="aspect-square border border-dashed border-border/60 flex flex-col items-center justify-center cursor-pointer hover:border-foreground/40 text-xs text-muted-foreground">
-                <Upload className="h-5 w-5 mb-1" />
-                {uploading ? "Uploading…" : "Upload"}
+              <label className="aspect-square border border-dashed border-border/60 flex flex-col items-center justify-center cursor-pointer hover:border-foreground/40 hover:bg-muted/40 text-xs text-muted-foreground transition">
+                <ImagePlus className="h-6 w-6 mb-1" />
+                {uploading ? "Uploading…" : "Add Photos"}
+                <span className="text-[10px] opacity-60 mt-0.5">Multiple OK</span>
                 <input
                   type="file"
                   accept="image/*"
+                  multiple
                   className="hidden"
-                  onChange={(e) => e.target.files?.[0] && uploadImage(e.target.files[0])}
+                  onChange={(e) => e.target.files?.length && uploadImages(e.target.files)}
                 />
               </label>
             </div>
