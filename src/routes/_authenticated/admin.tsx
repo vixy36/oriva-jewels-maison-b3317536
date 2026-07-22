@@ -2,7 +2,7 @@ import { createFileRoute, Outlet, Link, useNavigate, useRouterState, redirect } 
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
-import { LayoutDashboard, Package, Search, Inbox, FileEdit, LogOut, Menu, X } from "lucide-react";
+import { LayoutDashboard, Package, Search, Inbox, FileEdit, LogOut, Menu, X, Tag } from "lucide-react";
 
 export const Route = createFileRoute("/_authenticated/admin")({
   ssr: false,
@@ -19,6 +19,7 @@ export const Route = createFileRoute("/_authenticated/admin")({
 const nav: { to: string; label: string; icon: typeof LayoutDashboard; exact?: boolean }[] = [
   { to: "/admin", label: "Dashboard", icon: LayoutDashboard, exact: true },
   { to: "/admin/products", label: "Products", icon: Package },
+  { to: "/admin/offers", label: "Offers", icon: Tag },
   { to: "/admin/seo", label: "SEO", icon: Search },
   { to: "/admin/enquiries", label: "Enquiries", icon: Inbox },
   { to: "/admin/content", label: "Content", icon: FileEdit },
