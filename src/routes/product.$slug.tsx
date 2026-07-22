@@ -49,7 +49,7 @@ function ProductPage() {
       `Product: ${product.name}`,
       `Diamond Type: ${diamondType}`,
       `Metal: ${karat} ${goldColor} Gold`,
-      `Centre Stone: ${carat.toFixed(2)} ct`,
+      `Centre Stone: ${caratFrom} ct - ${caratTo} ct`,
     ];
     if (product.sizes) lines.push(`Ring Size: ${size}`);
     if (product.backings) lines.push(`Backing: ${backing}`);
@@ -61,7 +61,7 @@ function ProductPage() {
       "Please share pricing and availability.",
     );
     return lines.join("\n");
-  }, [product, diamondType, karat, goldColor, carat, size, backing, length, engraving]);
+  }, [product, diamondType, karat, goldColor, caratFrom, caratTo, size, backing, length, engraving]);
 
   const related = products.filter((p) => p.slug !== product.slug).slice(0, 3);
 
@@ -153,21 +153,38 @@ function ProductPage() {
 
                 <div>
                   <div className="flex items-baseline justify-between">
-                    <p className="text-[14px] tracking-[0.42em] uppercase text-gold">Centre Stone</p>
-                    <p className="font-serif text-2xl text-ivory">{carat.toFixed(2)} <span className="text-[12px] tracking-[0.3em] uppercase text-ivory/60">ct</span></p>
+                    <p className="text-[14px] tracking-[0.42em] uppercase text-gold">Centre Stone Size</p>
+                    <p className="text-[11px] tracking-[0.3em] uppercase text-ivory/60">Carats</p>
                   </div>
-                  <input
-                    type="range"
-                    min={0.3}
-                    max={10}
-                    step={0.1}
-                    value={carat}
-                    onChange={(e) => setCarat(parseFloat(e.target.value))}
-                    className="mt-4 w-full accent-[color:var(--gold)]"
-                  />
-                  <div className="mt-1 flex justify-between text-[11px] tracking-[0.3em] uppercase text-ivory/55">
-                    <span>0.30 ct</span><span>10.00 ct</span>
+                  <div className="mt-4 grid grid-cols-2 gap-3">
+                    <label className="block">
+                      <span className="text-[11px] tracking-[0.3em] uppercase text-ivory/60">From</span>
+                      <input
+                        type="number"
+                        min={0.1}
+                        max={20}
+                        step={0.05}
+                        value={caratFrom}
+                        onChange={(e) => setCaratFrom(e.target.value)}
+                        placeholder="e.g. 1.00"
+                        className="mt-2 w-full border-b border-white/15 bg-transparent py-2.5 text-sm text-ivory placeholder:text-ivory/40 outline-none focus:border-gold transition"
+                      />
+                    </label>
+                    <label className="block">
+                      <span className="text-[11px] tracking-[0.3em] uppercase text-ivory/60">To</span>
+                      <input
+                        type="number"
+                        min={0.1}
+                        max={20}
+                        step={0.05}
+                        value={caratTo}
+                        onChange={(e) => setCaratTo(e.target.value)}
+                        placeholder="e.g. 2.00"
+                        className="mt-2 w-full border-b border-white/15 bg-transparent py-2.5 text-sm text-ivory placeholder:text-ivory/40 outline-none focus:border-gold transition"
+                      />
+                    </label>
                   </div>
+                  <p className="mt-2 text-[11px] tracking-[0.06em] text-ivory/55">Enter your preferred carat range manually.</p>
                 </div>
 
                 {product.sizes && (
@@ -200,7 +217,7 @@ function ProductPage() {
                 <dl className="mt-5 grid grid-cols-2 gap-x-6 gap-y-2.5 text-sm">
                   <dt className="text-ivory/80">Diamond</dt><dd className="text-ivory">{diamondType}</dd>
                   <dt className="text-ivory/80">Metal</dt><dd className="text-ivory">{karat} {goldColor} Gold</dd>
-                  <dt className="text-ivory/80">Centre Stone</dt><dd className="text-ivory">{carat.toFixed(2)} ct</dd>
+                  <dt className="text-ivory/80">Centre Stone</dt><dd className="text-ivory">{caratFrom} - {caratTo} ct</dd>
                   {product.sizes && (<><dt className="text-ivory/80">Size</dt><dd className="text-ivory">{size}</dd></>)}
                   {product.backings && (<><dt className="text-ivory/80">Backing</dt><dd className="text-ivory">{backing}</dd></>)}
                   {product.lengths && (<><dt className="text-ivory/80">Length</dt><dd className="text-ivory">{length}</dd></>)}
