@@ -62,6 +62,72 @@ export type Database = {
         }
         Relationships: []
       }
+      offers: {
+        Row: {
+          badge: string | null
+          category: string | null
+          created_at: string
+          cta_label: string | null
+          cta_url: string | null
+          description: string | null
+          discount_type: string
+          discount_value: number | null
+          ends_at: string | null
+          id: string
+          image_url: string | null
+          is_active: boolean
+          priority: number
+          promo_code: string | null
+          starts_at: string | null
+          subtitle: string | null
+          terms: string | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          badge?: string | null
+          category?: string | null
+          created_at?: string
+          cta_label?: string | null
+          cta_url?: string | null
+          description?: string | null
+          discount_type?: string
+          discount_value?: number | null
+          ends_at?: string | null
+          id?: string
+          image_url?: string | null
+          is_active?: boolean
+          priority?: number
+          promo_code?: string | null
+          starts_at?: string | null
+          subtitle?: string | null
+          terms?: string | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          badge?: string | null
+          category?: string | null
+          created_at?: string
+          cta_label?: string | null
+          cta_url?: string | null
+          description?: string | null
+          discount_type?: string
+          discount_value?: number | null
+          ends_at?: string | null
+          id?: string
+          image_url?: string | null
+          is_active?: boolean
+          priority?: number
+          promo_code?: string | null
+          starts_at?: string | null
+          subtitle?: string | null
+          terms?: string | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       products: {
         Row: {
           category: string
