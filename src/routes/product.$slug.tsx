@@ -32,7 +32,8 @@ function ProductPage() {
     product.metal.includes("Yellow") ? "Yellow" : product.metal.includes("Rose") ? "Rose" : "White",
   );
   const [size, setSize] = useState(product.sizes?.[2] ?? "");
-  const [carat, setCarat] = useState<number>(1.5);
+  const [caratFrom, setCaratFrom] = useState<string>("1.00");
+  const [caratTo, setCaratTo] = useState<string>("2.00");
   const [backing, setBacking] = useState(product.backings?.[0] ?? "");
   const [length, setLength] = useState(product.lengths?.[1] ?? "");
   const [engraving, setEngraving] = useState("");
