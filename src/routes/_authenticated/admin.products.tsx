@@ -45,9 +45,6 @@ const empty: Partial<Product> = {
   is_active: true, is_featured: false, sort_order: 0,
 };
 
-function generateCode() {
-  return `ORV-${Date.now().toString(36).toUpperCase()}${Math.random().toString(36).slice(2, 5).toUpperCase()}`;
-}
 
 function slugify(s: string) {
   return s.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
@@ -83,7 +80,7 @@ function ProductsPage() {
           <p className="eyebrow">Catalogue</p>
           <h1 className="mt-2 font-serif text-3xl">Products</h1>
         </div>
-        <Button onClick={() => setEditing({ ...empty, product_code: generateCode() })}><Plus className="h-4 w-4 mr-2" /> New Product</Button>
+        <Button onClick={() => setEditing({ ...empty })}><Plus className="h-4 w-4 mr-2" /> New Product</Button>
       </div>
 
       <div className="mt-8 border border-border/60 bg-card overflow-hidden">
@@ -195,7 +192,7 @@ function ProductEditor({ initial, onClose, onSaved }: { initial: Partial<Product
     const payload = {
       slug: form.slug || slugify(form.name),
       name: form.name,
-      product_code: form.product_code || generateCode(),
+      product_code: form.product_code || undefined,
       category: form.category,
       subcategory: form.subcategory || null,
       price_from: form.price_from || null,
@@ -233,8 +230,8 @@ function ProductEditor({ initial, onClose, onSaved }: { initial: Partial<Product
             <div>
               <Label>Product Code</Label>
               <div className="flex gap-2">
-                <Input value={form.product_code || ""} onChange={(e) => upd("product_code", e.target.value)} placeholder="auto-generated" className="font-mono" />
-                <Button type="button" variant="outline" size="sm" onClick={() => upd("product_code", generateCode())}>Regenerate</Button>
+                <Input value={form.product_code || ""} onChange={(e) => upd("product_code", e.target.value)} placeholder="auto (ORV-1, ORV-2…)" className="font-mono" />
+
               </div>
             </div>
           </div>
