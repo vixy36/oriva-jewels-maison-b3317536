@@ -36,26 +36,36 @@ function toProduct(p: DbProduct): Product {
   };
 }
 
-async function fetchDbProducts(): Promise<Product[]> {
+async function fetchDbProductsRaw(): Promise<DbProduct[]> {
   const { data, error } = await supabase
     .from("products")
-    .select("id,slug,name,category,subcategory,short_description,description,images,diamond_type,is_active")
+    .select("id,slug,name,category,categories,subcategory,short_description,description,images,diamond_type,is_active")
     .eq("is_active", true)
     .order("sort_order")
     .order("created_at", { ascending: false });
   if (error) return [];
-  return ((data as DbProduct[]) ?? []).filter((p) => p.images && p.images.length > 0).map(toProduct);
+  return ((data as DbProduct[]) ?? []).filter((p) => p.images && p.images.length > 0);
 }
 
 export function useDbProducts() {
   return useQuery({
     queryKey: ["db-products"],
-    queryFn: fetchDbProducts,
+    queryFn: async () => (await fetchDbProductsRaw()).map(toProduct),
     staleTime: 60_000,
   });
 }
 
 export function useDbProductsByCategory(category: ProductCategory) {
-  const q = useDbProducts();
-  return { ...q, data: (q.data ?? []).filter((p) => p.category === category) };
+  const q = useQuery({
+    queryKey: ["db-products-raw"],
+    queryFn: fetchDbProductsRaw,
+    staleTime: 60_000,
+  });
+  const filtered = (q.data ?? []).filter((p) => {
+    const cats = p.categories && p.categories.length ? p.categories : [p.category];
+    return cats.includes(category);
+  });
+  return { ...q, data: filtered.map(toProduct) };
+}
+
 }
