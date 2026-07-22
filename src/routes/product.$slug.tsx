@@ -2,14 +2,41 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { Heart, MessageCircle, ArrowLeft, ShieldCheck, Truck, Sparkles, ArrowRight, ZoomIn } from "lucide-react";
 
-import { findProduct, buildWhatsAppLink, products } from "@/lib/products";
+import { findProduct, buildWhatsAppLink, products, type Product, type ProductCategory } from "@/lib/products";
 import { ProductCard } from "@/components/site/ProductCard";
 import { Reveal } from "@/components/site/Reveal";
 import { Lightbox } from "@/components/site/Lightbox";
+import { supabase } from "@/integrations/supabase/client";
+
+async function fetchDbBySlug(slug: string): Promise<Product | null> {
+  const { data } = await supabase
+    .from("products")
+    .select("slug,name,category,subcategory,short_description,description,images,diamond_type,is_active")
+    .eq("slug", slug)
+    .eq("is_active", true)
+    .maybeSingle();
+  if (!data) return null;
+  const dt = (data.diamond_type || "Both").toLowerCase();
+  const diamondTypes: ("Natural" | "Lab Grown")[] =
+    dt === "natural" ? ["Natural"] : dt === "lab grown" ? ["Lab Grown"] : ["Natural", "Lab Grown"];
+  return {
+    slug: data.slug,
+    name: data.name,
+    category: data.category as ProductCategory,
+    collection: data.subcategory || "Oriva",
+    short: data.short_description || "",
+    description: data.description || "",
+    image: (data.images as string[] | null)?.[0] || "",
+    shape: "—",
+    metal: "18K White Gold",
+    diamondTypes,
+    customizable: true,
+  };
+}
 
 export const Route = createFileRoute("/product/$slug")({
-  loader: ({ params }) => {
-    const product = findProduct(params.slug);
+  loader: async ({ params }) => {
+    const product = findProduct(params.slug) ?? (await fetchDbBySlug(params.slug));
     if (!product) throw notFound();
     return { product };
   },
@@ -22,6 +49,7 @@ export const Route = createFileRoute("/product/$slug")({
   }),
   component: ProductPage,
 });
+
 
 function ProductPage() {
   const { product } = Route.useLoaderData();

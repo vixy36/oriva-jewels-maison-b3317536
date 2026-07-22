@@ -3,6 +3,8 @@ import { ArrowRight, SlidersHorizontal, ChevronDown } from "lucide-react";
 import { ProductCard } from "@/components/site/ProductCard";
 import { Reveal } from "@/components/site/Reveal";
 import { categories, productsByCategory, type ProductCategory } from "@/lib/products";
+import { useDbProductsByCategory } from "@/lib/dbProducts";
+
 
 import engagementImg from "@/assets/collection-engagement.jpg";
 import earringsImg from "@/assets/collection-earrings.jpg";
@@ -80,9 +82,12 @@ function CollectionPage() {
   const data = Route.useLoaderData();
   const category = data.category as ProductCategory;
   const info = categories[category];
-  const items = productsByCategory(category);
+  const staticItems = productsByCategory(category);
+  const { data: dbItems = [] } = useDbProductsByCategory(category);
+  const items = [...dbItems, ...staticItems];
   const banner = banners[category];
   const labelWords = info.label.split(" ");
+
 
   return (
     <div className="bg-ink">
@@ -166,26 +171,8 @@ function CollectionPage() {
               </div>
             )}
 
-            <Reveal className="mt-24">
-              <div className="relative overflow-hidden aspect-[16/7] md:aspect-[16/6] border border-white/10">
-                <img src={editorialImg} alt="Oriva Jewels editorial" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-r from-obsidian/85 via-obsidian/40 to-transparent" />
-                <div className="relative flex h-full items-center p-8 md:p-16 text-ivory">
-                  <div className="max-w-md">
-                    <p className="eyebrow">- The Oriva Way</p>
-                    <p className="mt-6 font-serif text-3xl md:text-5xl leading-[1] italic">
-                      Every diamond, <span className="text-gold-gradient">personally sourced.</span>
-                    </p>
-                    <Link
-                      to="/about"
-                      className="mt-8 inline-flex items-center gap-2 text-[14px] tracking-[0.4em] uppercase border-b border-gold text-gold pb-1 hover:text-ivory hover:border-ivory transition"
-                    >
-                      Read our story <ArrowRight className="h-3 w-3" />
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </Reveal>
+
+
           </div>
         </div>
       </section>
