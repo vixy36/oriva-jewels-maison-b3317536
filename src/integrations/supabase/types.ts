@@ -140,10 +140,13 @@ export type Database = {
           is_active: boolean
           is_featured: boolean
           metal_options: Json
+          mrp: number | null
           name: string
+          offer_id: string | null
           price_from: number | null
           product_code: string | null
           short_description: string | null
+          show_price: boolean
           slug: string
           sort_order: number
           specs: Json
@@ -161,10 +164,13 @@ export type Database = {
           is_active?: boolean
           is_featured?: boolean
           metal_options?: Json
+          mrp?: number | null
           name: string
+          offer_id?: string | null
           price_from?: number | null
           product_code?: string | null
           short_description?: string | null
+          show_price?: boolean
           slug: string
           sort_order?: number
           specs?: Json
@@ -182,17 +188,28 @@ export type Database = {
           is_active?: boolean
           is_featured?: boolean
           metal_options?: Json
+          mrp?: number | null
           name?: string
+          offer_id?: string | null
           price_from?: number | null
           product_code?: string | null
           short_description?: string | null
+          show_price?: boolean
           slug?: string
           sort_order?: number
           specs?: Json
           subcategory?: string | null
           updated_at?: string
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "products_offer_id_fkey"
+            columns: ["offer_id"]
+            isOneToOne: false
+            referencedRelation: "offers"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       seo_meta: {
         Row: {
