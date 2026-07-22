@@ -59,10 +59,10 @@ function AdminLayout() {
   }
 
   return (
-    <div className="min-h-screen bg-background text-foreground flex">
+    <div className="min-h-screen bg-background text-foreground flex pt-20 lg:pt-24">
       {/* Sidebar */}
       <aside
-        className={`fixed lg:static inset-y-0 left-0 z-40 w-64 border-r border-border/60 bg-card transform transition-transform ${
+        className={`fixed lg:sticky lg:top-24 inset-y-0 lg:inset-y-auto left-0 z-40 w-64 lg:h-[calc(100vh-6rem)] border-r border-border/60 bg-card transform transition-transform ${
           open ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
         }`}
       >
@@ -111,5 +111,6 @@ function AdminLayout() {
         </main>
       </div>
     </div>
+
   );
 }
