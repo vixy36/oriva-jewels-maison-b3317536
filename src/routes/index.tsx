@@ -169,7 +169,7 @@ function HomePage() {
 
 
       {/* COLLECTIONS INDEX - Editorial image grid */}
-      <section className="relative overflow-hidden py-14 md:py-24 bg-obsidian" data-surface="dark">
+      <section className="relative overflow-hidden py-14 md:py-24 bg-ink">
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 opacity-40"
@@ -180,18 +180,19 @@ function HomePage() {
         />
 
         <div className="relative mx-auto max-w-[1280px] px-5 md:px-10">
-          <Reveal className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 border-t border-white/10 pt-8 md:pt-10">
+          <Reveal className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 border-t border-ivory/15 pt-8 md:pt-10">
             <div>
               <p className="eyebrow">- The Index</p>
               <h2 className="mt-3 font-serif text-2xl md:text-3xl leading-[1.1] text-ivory">
                 Six chapters.{" "}
-                <em className="text-gold-gradient">One maison.</em>
+                <em className="italic text-gold">One maison.</em>
               </h2>
             </div>
             <p className="max-w-sm text-[13px] leading-[1.7] text-ivory/70">
               A curated volume of six edits — each with its own hand, its own hour of the day.
             </p>
           </Reveal>
+
 
           <div className="mt-10 md:mt-14 grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
             {collections.map((c, i) => (
