@@ -17,7 +17,8 @@ type Row = { id: string; key: string; label: string | null; value: Record<string
 
 const empty: Partial<Row> = { key: "", label: "", value: {} };
 
-const SUGGESTED = [
+type Seed = { key: string; label: string; value: Record<string, unknown> };
+const SUGGESTED: Seed[] = [
   { key: "home.hero", label: "Homepage Hero", value: { eyebrow: "A Fine Jewellery Maison", tagline: "We design your dreams with diamonds", subtitle: "We are end to end manufacturers of DIAMONDS & JEWELLERY" } },
   { key: "home.marquee", label: "Homepage Marquee", value: { items: ["Direct Factory Pricing", "GIA & IGI Certified", "Engagement Ring Specialist", "Worldwide Insured Shipping"] } },
   { key: "site.contact", label: "Contact Info", value: { whatsapp: "85253176253", email: "care@orivajewels.com", hours: "24/7 by appointment" } },
