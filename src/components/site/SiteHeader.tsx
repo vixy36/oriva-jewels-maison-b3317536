@@ -34,6 +34,7 @@ const nav: NavItem[] = [
       { label: "Natural Diamonds", to: "/collections/natural" },
     ],
   },
+  { label: "Offers", to: "/offers" },
   { label: "About Us", to: "/about" },
   { label: "Contact", to: "/contact" },
 ];
