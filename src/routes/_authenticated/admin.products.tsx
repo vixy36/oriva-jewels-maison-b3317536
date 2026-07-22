@@ -97,6 +97,7 @@ function ProductsPage() {
               <thead className="bg-muted/40 text-xs uppercase tracking-widest">
                 <tr>
                   <th className="text-left p-3">Image</th>
+                  <th className="text-left p-3">Code</th>
                   <th className="text-left p-3">Name</th>
                   <th className="text-left p-3">Category</th>
                   <th className="text-left p-3">Price</th>
@@ -114,6 +115,7 @@ function ProductsPage() {
                         <div className="w-12 h-12 bg-muted rounded" />
                       )}
                     </td>
+                    <td className="p-3 font-mono text-xs">{p.product_code || "—"}</td>
                     <td className="p-3">
                       <div className="font-medium">{p.name}</div>
                       <div className="text-xs text-muted-foreground">/{p.slug}</div>
@@ -159,16 +161,28 @@ function ProductEditor({ initial, onClose, onSaved }: { initial: Partial<Product
     setForm((f) => ({ ...f, [k]: v }));
   }
 
-  async function uploadImage(file: File) {
+  async function uploadImages(files: FileList) {
     setUploading(true);
+    const newUrls: string[] = [];
     try {
-      const ext = file.name.split(".").pop() || "jpg";
-      const path = `${crypto.randomUUID()}.${ext}`;
-      const { error } = await supabase.storage.from("product-images").upload(path, file);
-      if (error) throw error;
-      const { data } = supabase.storage.from("product-images").getPublicUrl(path);
-      upd("images", [...(form.images || []), data.publicUrl]);
-      toast.success("Image uploaded");
+      for (const file of Array.from(files)) {
+        const ext = file.name.split(".").pop() || "jpg";
+        const path = `${crypto.randomUUID()}.${ext}`;
+        const { error: upErr } = await supabase.storage.from("product-images").upload(path, file, {
+          cacheControl: "3600",
+          upsert: false,
+          contentType: file.type || undefined,
+        });
+        if (upErr) throw upErr;
+        // Bucket is private → use a long-lived signed URL (10 years)
+        const { data: signed, error: sErr } = await supabase.storage
+          .from("product-images")
+          .createSignedUrl(path, 60 * 60 * 24 * 365 * 10);
+        if (sErr) throw sErr;
+        newUrls.push(signed.signedUrl);
+      }
+      upd("images", [...(form.images || []), ...newUrls]);
+      toast.success(`${newUrls.length} image${newUrls.length > 1 ? "s" : ""} uploaded`);
     } catch (e) {
       toast.error(e instanceof Error ? e.message : "Upload failed");
     } finally {
@@ -181,6 +195,7 @@ function ProductEditor({ initial, onClose, onSaved }: { initial: Partial<Product
     const payload = {
       slug: form.slug || slugify(form.name),
       name: form.name,
+      product_code: form.product_code || generateCode(),
       category: form.category,
       subcategory: form.subcategory || null,
       price_from: form.price_from || null,
