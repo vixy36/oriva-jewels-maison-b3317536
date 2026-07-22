@@ -82,9 +82,12 @@ function CollectionPage() {
   const data = Route.useLoaderData();
   const category = data.category as ProductCategory;
   const info = categories[category];
-  const items = productsByCategory(category);
+  const staticItems = productsByCategory(category);
+  const { data: dbItems = [] } = useDbProductsByCategory(category);
+  const items = [...dbItems, ...staticItems];
   const banner = banners[category];
   const labelWords = info.label.split(" ");
+
 
   return (
     <div className="bg-ink">
