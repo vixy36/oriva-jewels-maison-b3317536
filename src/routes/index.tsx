@@ -230,7 +230,7 @@ function HomePage() {
                   }}
                 >
                   <Link to={c.to} className="group block">
-                    <div className="relative h-24 w-24 lg:h-28 lg:w-28 rounded-full overflow-hidden border border-white/15 group-hover:border-gold/70 transition duration-500 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.7)]">
+                    <div className="relative h-16 w-16 lg:h-20 lg:w-20 rounded-full overflow-hidden border border-white/15 group-hover:border-gold/70 transition duration-500 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.7)]">
                       <img
                         src={c.img}
                         alt={c.title}
