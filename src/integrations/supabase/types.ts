@@ -142,6 +142,7 @@ export type Database = {
           metal_options: Json
           name: string
           price_from: number | null
+          product_code: string | null
           short_description: string | null
           slug: string
           sort_order: number
@@ -162,6 +163,7 @@ export type Database = {
           metal_options?: Json
           name: string
           price_from?: number | null
+          product_code?: string | null
           short_description?: string | null
           slug: string
           sort_order?: number
@@ -182,6 +184,7 @@ export type Database = {
           metal_options?: Json
           name?: string
           price_from?: number | null
+          product_code?: string | null
           short_description?: string | null
           slug?: string
           sort_order?: number
