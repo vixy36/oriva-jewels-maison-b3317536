@@ -230,8 +230,8 @@ function ProductEditor({ initial, onClose, onSaved }: { initial: Partial<Product
             <div>
               <Label>Product Code</Label>
               <div className="flex gap-2">
-                <Input value={form.product_code || ""} onChange={(e) => upd("product_code", e.target.value)} placeholder="auto-generated" className="font-mono" />
-                <Button type="button" variant="outline" size="sm" onClick={() => upd("product_code", generateCode())}>Regenerate</Button>
+                <Input value={form.product_code || ""} onChange={(e) => upd("product_code", e.target.value)} placeholder="auto (ORV-1, ORV-2…)" className="font-mono" />
+
               </div>
             </div>
           </div>
