@@ -1,23 +1,15 @@
-import { createFileRoute, Outlet, Link, useNavigate, useRouterState, redirect } from "@tanstack/react-router";
+import { createFileRoute, Outlet, Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { LayoutDashboard, Package, Search, Inbox, FileEdit, LogOut, Menu, X, Tag } from "lucide-react";
 
 export const Route = createFileRoute("/_authenticated/admin")({
   ssr: false,
-  beforeLoad: async () => {
-    const { data: userData } = await supabase.auth.getUser();
-    if (!userData.user) throw redirect({ to: "/auth" });
-    const { data: roles } = await supabase.from("user_roles").select("role").eq("user_id", userData.user.id);
-    const isAdmin = roles?.some((r) => r.role === "admin");
-    return { user: userData.user, isAdmin: Boolean(isAdmin) };
-  },
-  pendingMs: 0,
-  pendingMinMs: 0,
-  pendingComponent: AdminSkeleton,
   component: AdminLayout,
 });
+
 
 function AdminSkeleton() {
   return (
@@ -55,10 +47,20 @@ const nav: { to: string; label: string; icon: typeof LayoutDashboard; exact?: bo
 ];
 
 function AdminLayout() {
-  const { user, isAdmin } = Route.useRouteContext();
+  const { user } = Route.useRouteContext();
   const navigate = useNavigate();
   const path = useRouterState({ select: (s) => s.location.pathname });
   const [open, setOpen] = useState(false);
+
+  const { data: isAdmin, isLoading: roleLoading } = useQuery({
+    queryKey: ["admin-role", user.id],
+    queryFn: async () => {
+      const { data } = await supabase.from("user_roles").select("role").eq("user_id", user.id);
+      return Boolean(data?.some((r) => r.role === "admin"));
+    },
+    staleTime: 5 * 60_000,
+    gcTime: 30 * 60_000,
+  });
 
   useEffect(() => setOpen(false), [path]);
 
@@ -67,7 +69,7 @@ function AdminLayout() {
     navigate({ to: "/auth" });
   }
 
-  if (!isAdmin) {
+  if (!roleLoading && !isAdmin) {
     return (
       <div className="min-h-screen flex items-center justify-center px-4 bg-background">
         <div className="max-w-md text-center border border-border/60 p-10 bg-card">
