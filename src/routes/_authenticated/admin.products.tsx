@@ -292,20 +292,64 @@ function ProductEditor({ initial, onClose, onSaved }: { initial: Partial<Product
             </div>
           </div>
 
-          <div className="grid grid-cols-3 gap-4">
-            <div>
-              <Label>Price From</Label>
-              <Input type="number" step="0.01" value={form.price_from ?? ""} onChange={(e) => upd("price_from", e.target.value ? parseFloat(e.target.value) : null)} />
+          <div className="rounded border border-border/60 p-4 space-y-4">
+            <div className="flex items-center justify-between">
+              <Label className="text-sm font-semibold">Pricing</Label>
+              <label className="flex items-center gap-2 text-xs">
+                <Switch checked={form.show_price ?? true} onCheckedChange={(v) => upd("show_price", v)} />
+                Show price on website
+              </label>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+              <div>
+                <Label className="text-xs">MRP</Label>
+                <Input type="number" step="0.01" value={form.mrp ?? ""} placeholder="Original"
+                  onChange={(e) => upd("mrp", e.target.value ? parseFloat(e.target.value) : null)} />
+              </div>
+              <div>
+                <Label className="text-xs">Selling Price</Label>
+                <Input type="number" step="0.01" value={form.price_from ?? ""} placeholder="Discounted"
+                  onChange={(e) => upd("price_from", e.target.value ? parseFloat(e.target.value) : null)} />
+              </div>
+              <div>
+                <Label className="text-xs">Currency</Label>
+                <Select value={form.currency || "USD"} onValueChange={(v) => upd("currency", v)}>
+                  <SelectTrigger><SelectValue /></SelectTrigger>
+                  <SelectContent>
+                    {["USD", "HKD", "EUR", "GBP", "AED", "INR", "SGD"].map((c) => (
+                      <SelectItem key={c} value={c}>{c}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              <div>
+                <Label className="text-xs">Sort Order</Label>
+                <Input type="number" value={form.sort_order ?? 0}
+                  onChange={(e) => upd("sort_order", parseInt(e.target.value) || 0)} />
+              </div>
             </div>
             <div>
-              <Label>Currency</Label>
-              <Input value={form.currency || "USD"} onChange={(e) => upd("currency", e.target.value)} />
-            </div>
-            <div>
-              <Label>Sort Order</Label>
-              <Input type="number" value={form.sort_order ?? 0} onChange={(e) => upd("sort_order", parseInt(e.target.value) || 0)} />
+              <Label className="text-xs">Link an Offer (optional)</Label>
+              <Select
+                value={form.offer_id || "__none"}
+                onValueChange={(v) => upd("offer_id", v === "__none" ? null : v)}
+              >
+                <SelectTrigger><SelectValue placeholder="No offer" /></SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="__none">— No offer —</SelectItem>
+                  {offers.map((o) => (
+                    <SelectItem key={o.id} value={o.id}>{o.title}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              {offers.length === 0 && (
+                <p className="text-[11px] text-muted-foreground mt-1">
+                  No active offers yet. Create one in Admin → Offers.
+                </p>
+              )}
             </div>
           </div>
+
 
           <div>
             <Label>Short Description</Label>
