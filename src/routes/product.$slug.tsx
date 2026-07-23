@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { Heart, MessageCircle, ArrowLeft, ShieldCheck, Truck, Sparkles, ArrowRight, ZoomIn } from "lucide-react";
+import { Heart, MessageCircle, ArrowLeft, ShieldCheck, Truck, Sparkles, ArrowRight, ZoomIn, ChevronLeft, ChevronRight, Play } from "lucide-react";
 
 import { findProduct, buildWhatsAppLink, products, type Product, type ProductCategory } from "@/lib/products";
 import { ProductCard } from "@/components/site/ProductCard";
@@ -11,7 +11,7 @@ import { supabase } from "@/integrations/supabase/client";
 async function fetchDbBySlug(slug: string): Promise<Product | null> {
   const { data } = await supabase
     .from("products")
-    .select("slug,name,category,subcategory,short_description,description,images,diamond_type,is_active")
+    .select("slug,name,category,subcategory,short_description,description,images,video_url,diamond_type,is_active")
     .eq("slug", slug)
     .eq("is_active", true)
     .maybeSingle();
@@ -19,6 +19,7 @@ async function fetchDbBySlug(slug: string): Promise<Product | null> {
   const dt = (data.diamond_type || "Both").toLowerCase();
   const diamondTypes: ("Natural" | "Lab Grown")[] =
     dt === "natural" ? ["Natural"] : dt === "lab grown" ? ["Lab Grown"] : ["Natural", "Lab Grown"];
+  const imgs = (data.images as string[] | null) ?? [];
   return {
     slug: data.slug,
     name: data.name,
@@ -26,7 +27,9 @@ async function fetchDbBySlug(slug: string): Promise<Product | null> {
     collection: data.subcategory || "Oriva",
     short: data.short_description || "",
     description: data.description || "",
-    image: (data.images as string[] | null)?.[0] || "",
+    image: imgs[0] || "",
+    images: imgs,
+    videoUrl: (data as { video_url?: string | null }).video_url ?? undefined,
     shape: "—",
     metal: "18K White Gold",
     diamondTypes,
@@ -51,6 +54,8 @@ export const Route = createFileRoute("/product/$slug")({
 });
 
 
+type MediaItem = { type: "image" | "video"; src: string };
+
 function ProductPage() {
   const { product } = Route.useLoaderData();
 
@@ -66,8 +71,17 @@ function ProductPage() {
   const [length, setLength] = useState(product.lengths?.[1] ?? "");
   const [engraving, setEngraving] = useState("");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const [activeIdx, setActiveIdx] = useState(0);
 
-  const gallery = [product.image, product.image, product.image, product.image];
+  const imageList = (product.images && product.images.length ? product.images : [product.image]).filter(Boolean);
+  const media: MediaItem[] = [
+    ...imageList.map((src) => ({ type: "image" as const, src })),
+    ...(product.videoUrl ? [{ type: "video" as const, src: product.videoUrl }] : []),
+  ];
+  const safeIdx = Math.min(activeIdx, media.length - 1);
+  const current = media[safeIdx];
+  const gallery = imageList;
+
 
   const message = useMemo(() => {
     const lines = [
