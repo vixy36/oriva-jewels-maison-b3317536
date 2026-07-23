@@ -31,6 +31,7 @@ type Product = {
   short_description: string | null;
   description: string | null;
   images: string[];
+  video_url: string | null;
   diamond_type: string | null;
   is_active: boolean;
   is_featured: boolean;
@@ -48,9 +49,10 @@ const DIAMOND_TYPES = ["Natural", "Lab Grown", "Both"];
 const empty: Partial<Product> = {
   slug: "", name: "", product_code: "", category: "rings", categories: ["rings"],
   price_from: null, mrp: null, show_price: true, offer_id: null, currency: "USD",
-  short_description: "", description: "", images: [], diamond_type: "Both",
+  short_description: "", description: "", images: [], video_url: null, diamond_type: "Both",
   is_active: true, is_featured: false, sort_order: 0,
 };
+
 
 
 
