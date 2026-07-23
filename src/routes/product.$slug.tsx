@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { Heart, MessageCircle, ArrowLeft, ShieldCheck, Truck, Sparkles, ArrowRight, ZoomIn } from "lucide-react";
+import { Heart, MessageCircle, ArrowLeft, ShieldCheck, Truck, Sparkles, ArrowRight, ZoomIn, ChevronLeft, ChevronRight, Play } from "lucide-react";
 
 import { findProduct, buildWhatsAppLink, products, type Product, type ProductCategory } from "@/lib/products";
 import { ProductCard } from "@/components/site/ProductCard";
@@ -11,7 +11,7 @@ import { supabase } from "@/integrations/supabase/client";
 async function fetchDbBySlug(slug: string): Promise<Product | null> {
   const { data } = await supabase
     .from("products")
-    .select("slug,name,category,subcategory,short_description,description,images,diamond_type,is_active")
+    .select("slug,name,category,subcategory,short_description,description,images,video_url,diamond_type,is_active")
     .eq("slug", slug)
     .eq("is_active", true)
     .maybeSingle();
@@ -19,6 +19,7 @@ async function fetchDbBySlug(slug: string): Promise<Product | null> {
   const dt = (data.diamond_type || "Both").toLowerCase();
   const diamondTypes: ("Natural" | "Lab Grown")[] =
     dt === "natural" ? ["Natural"] : dt === "lab grown" ? ["Lab Grown"] : ["Natural", "Lab Grown"];
+  const imgs = (data.images as string[] | null) ?? [];
   return {
     slug: data.slug,
     name: data.name,
@@ -26,7 +27,9 @@ async function fetchDbBySlug(slug: string): Promise<Product | null> {
     collection: data.subcategory || "Oriva",
     short: data.short_description || "",
     description: data.description || "",
-    image: (data.images as string[] | null)?.[0] || "",
+    image: imgs[0] || "",
+    images: imgs,
+    videoUrl: (data as { video_url?: string | null }).video_url ?? undefined,
     shape: "—",
     metal: "18K White Gold",
     diamondTypes,
@@ -51,6 +54,8 @@ export const Route = createFileRoute("/product/$slug")({
 });
 
 
+type MediaItem = { type: "image" | "video"; src: string };
+
 function ProductPage() {
   const { product } = Route.useLoaderData();
 
@@ -66,8 +71,17 @@ function ProductPage() {
   const [length, setLength] = useState(product.lengths?.[1] ?? "");
   const [engraving, setEngraving] = useState("");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const [activeIdx, setActiveIdx] = useState(0);
 
-  const gallery = [product.image, product.image, product.image, product.image];
+  const imageList: string[] = ((product.images && product.images.length ? product.images : [product.image]) as string[]).filter(Boolean);
+  const media: MediaItem[] = [
+    ...imageList.map((src) => ({ type: "image" as const, src })),
+    ...(product.videoUrl ? [{ type: "video" as const, src: product.videoUrl }] : []),
+  ];
+  const safeIdx = Math.min(activeIdx, media.length - 1);
+  const current = media[safeIdx];
+  const gallery = imageList;
+
 
   const message = useMemo(() => {
     const lines = [
@@ -105,52 +119,104 @@ function ProductPage() {
           <ArrowLeft className="h-3 w-3" /> Back to {product.category.replace("-", " ")}
         </Link>
 
-        <div className="mt-4 md:mt-6 grid gap-14 md:grid-cols-12 md:gap-20">
+        <div className="mt-4 md:mt-6 grid gap-10 md:grid-cols-12 md:gap-14">
 
-          <div className="md:col-span-7">
+          <div className="md:col-span-8">
+            <div className="relative overflow-hidden bg-charcoal aspect-[4/5] md:aspect-[5/6] group border border-white/5 w-full">
+              {current?.type === "video" ? (
+                <video
+                  src={current.src}
+                  controls
+                  playsInline
+                  className="h-full w-full object-cover bg-obsidian"
+                />
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => setLightboxIndex(imageList.indexOf(current?.src ?? ""))}
+                  className="block h-full w-full text-left cursor-zoom-in"
+                  aria-label="Open image gallery"
+                >
+                  <img
+                    src={current?.src}
+                    alt={product.name}
+                    fetchPriority="high"
+                    decoding="async"
+                    className="h-full w-full object-cover transition-transform duration-[1800ms] ease-out group-hover:scale-[1.05]"
+                  />
+                  <span className="absolute bottom-5 right-5 inline-flex items-center gap-2 bg-obsidian/70 backdrop-blur border border-white/15 px-4 py-2 text-[12px] tracking-[0.35em] uppercase text-ivory opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition duration-500">
+                    <ZoomIn className="h-3.5 w-3.5" strokeWidth={1.4} /> Zoom
+                  </span>
+                </button>
+              )}
 
-            <button
-              type="button"
-              onClick={() => setLightboxIndex(0)}
-              className="relative overflow-hidden bg-charcoal aspect-[4/5] group border border-white/5 w-full text-left cursor-zoom-in"
-              aria-label="Open image gallery"
-            >
-              <img
-                src={product.image}
-                alt={product.name}
-                fetchPriority="high"
-                decoding="async"
-                className="h-full w-full object-cover transition-transform duration-[1800ms] ease-out group-hover:scale-[1.06]"
-              />
               <span
+                role="button"
+                tabIndex={0}
                 aria-label="Wishlist"
-                onClick={(e) => e.stopPropagation()}
                 className="absolute top-5 right-5 grid h-11 w-11 place-items-center bg-obsidian/70 backdrop-blur border border-white/15 text-ivory hover:border-gold hover:text-gold transition"
               >
                 <Heart className="h-4 w-4" strokeWidth={1.3} />
               </span>
-              <span className="absolute top-5 left-5 text-[14px] tracking-[0.42em] uppercase text-ivory/85 bg-obsidian/60 backdrop-blur-sm px-3 py-1.5 border border-white/10">
+              <span className="absolute top-5 left-5 text-[12px] tracking-[0.42em] uppercase text-ivory/85 bg-obsidian/60 backdrop-blur-sm px-3 py-1.5 border border-white/10">
                 Ref. OR-{product.slug.slice(0, 4).toUpperCase()}
               </span>
-              <span className="absolute bottom-5 right-5 inline-flex items-center gap-2 bg-obsidian/70 backdrop-blur border border-white/15 px-4 py-2 text-[14px] tracking-[0.35em] uppercase text-ivory opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition duration-500">
-                <ZoomIn className="h-3.5 w-3.5" strokeWidth={1.4} /> Zoom
-              </span>
-            </button>
-            <div className="mt-4 grid grid-cols-4 gap-3">
-              {gallery.map((src, i) => (
-                <button
-                  key={i}
-                  type="button"
-                  onClick={() => setLightboxIndex(i)}
-                  className="aspect-square overflow-hidden bg-charcoal border border-white/5 hover:border-gold transition"
-                >
-                  <img src={src} alt="" loading="lazy" className="h-full w-full object-cover" />
-                </button>
-              ))}
+
+              {media.length > 1 && (
+                <>
+                  <button
+                    type="button"
+                    onClick={() => setActiveIdx((safeIdx - 1 + media.length) % media.length)}
+                    aria-label="Previous"
+                    className="absolute left-4 top-1/2 -translate-y-1/2 grid h-11 w-11 place-items-center bg-obsidian/70 backdrop-blur border border-white/15 text-ivory hover:border-gold hover:text-gold transition"
+                  >
+                    <ChevronLeft className="h-5 w-5" strokeWidth={1.4} />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setActiveIdx((safeIdx + 1) % media.length)}
+                    aria-label="Next"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 grid h-11 w-11 place-items-center bg-obsidian/70 backdrop-blur border border-white/15 text-ivory hover:border-gold hover:text-gold transition"
+                  >
+                    <ChevronRight className="h-5 w-5" strokeWidth={1.4} />
+                  </button>
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-[11px] tracking-[0.4em] uppercase text-ivory/70 bg-obsidian/60 backdrop-blur px-3 py-1 border border-white/10">
+                    {String(safeIdx + 1).padStart(2, "0")} / {String(media.length).padStart(2, "0")}
+                  </div>
+                </>
+              )}
             </div>
+
+            {media.length > 1 && (
+              <div className="mt-4 grid grid-cols-5 md:grid-cols-6 gap-2.5">
+                {media.map((m, i) => (
+                  <button
+                    key={i}
+                    type="button"
+                    onClick={() => setActiveIdx(i)}
+                    className={`relative aspect-square overflow-hidden bg-charcoal border transition ${
+                      i === safeIdx ? "border-gold" : "border-white/10 hover:border-white/40"
+                    }`}
+                    aria-label={m.type === "video" ? "Video" : `Image ${i + 1}`}
+                  >
+                    {m.type === "video" ? (
+                      <>
+                        <video src={m.src} muted playsInline className="h-full w-full object-cover" />
+                        <span className="absolute inset-0 grid place-items-center bg-obsidian/40">
+                          <Play className="h-5 w-5 text-ivory" strokeWidth={1.6} />
+                        </span>
+                      </>
+                    ) : (
+                      <img src={m.src} alt="" loading="lazy" className="h-full w-full object-cover" />
+                    )}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
-          <div className="md:col-span-5">
+          <div className="md:col-span-4">
+
             <div className="md:sticky md:top-40">
               <p className="eyebrow">{product.collection}</p>
               <h1 className="mt-5 font-serif text-3xl md:text-4xl leading-[1] text-ivory">{product.name}</h1>

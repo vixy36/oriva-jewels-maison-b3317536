@@ -25,6 +25,8 @@ export interface Product {
   short: string;
   description: string;
   image: string;
+  images?: string[];
+  videoUrl?: string;
   shape: string;
   metal: string;
   diamondTypes: ("Natural" | "Lab Grown")[];

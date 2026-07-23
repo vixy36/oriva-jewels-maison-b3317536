@@ -31,6 +31,7 @@ type Product = {
   short_description: string | null;
   description: string | null;
   images: string[];
+  video_url: string | null;
   diamond_type: string | null;
   is_active: boolean;
   is_featured: boolean;
@@ -48,9 +49,10 @@ const DIAMOND_TYPES = ["Natural", "Lab Grown", "Both"];
 const empty: Partial<Product> = {
   slug: "", name: "", product_code: "", category: "rings", categories: ["rings"],
   price_from: null, mrp: null, show_price: true, offer_id: null, currency: "USD",
-  short_description: "", description: "", images: [], diamond_type: "Both",
+  short_description: "", description: "", images: [], video_url: null, diamond_type: "Both",
   is_active: true, is_featured: false, sort_order: 0,
 };
+
 
 
 
@@ -215,6 +217,34 @@ function ProductEditor({ initial, onClose, onSaved }: { initial: Partial<Product
     }
   }
 
+  async function uploadVideo(file: File) {
+    if (file.size > 3 * 1024 * 1024) {
+      return toast.error("Video must be under 3MB");
+    }
+    setUploading(true);
+    try {
+      const ext = file.name.split(".").pop() || "mp4";
+      const path = `videos/${crypto.randomUUID()}.${ext}`;
+      const { error: upErr } = await supabase.storage.from("product-images").upload(path, file, {
+        cacheControl: "3600",
+        upsert: false,
+        contentType: file.type || "video/mp4",
+      });
+      if (upErr) throw upErr;
+      const { data: signed, error: sErr } = await supabase.storage
+        .from("product-images")
+        .createSignedUrl(path, 60 * 60 * 24 * 365 * 10);
+      if (sErr) throw sErr;
+      upd("video_url", signed.signedUrl);
+      toast.success("Video uploaded");
+    } catch (e) {
+      toast.error(e instanceof Error ? e.message : "Upload failed");
+    } finally {
+      setUploading(false);
+    }
+  }
+
+
   async function save() {
     const cats = (form.categories && form.categories.length ? form.categories : (form.category ? [form.category] : [])) as string[];
     if (!form.name || cats.length === 0) return toast.error("Name and at least one category are required");
@@ -233,6 +263,7 @@ function ProductEditor({ initial, onClose, onSaved }: { initial: Partial<Product
       short_description: form.short_description || null,
       description: form.description || null,
       images: form.images || [],
+      video_url: form.video_url || null,
       diamond_type: form.diamond_type || null,
       is_active: form.is_active ?? true,
       is_featured: form.is_featured ?? false,
@@ -412,6 +443,36 @@ function ProductEditor({ initial, onClose, onSaved }: { initial: Partial<Product
               </label>
             </div>
           </div>
+
+          <div>
+            <Label>Video <span className="text-xs text-muted-foreground font-normal">(optional, max 3MB)</span></Label>
+            <div className="mt-2 flex items-center gap-3">
+              {form.video_url ? (
+                <div className="relative">
+                  <video src={form.video_url} className="h-24 w-24 object-cover rounded border border-border/60" muted playsInline />
+                  <button
+                    type="button"
+                    onClick={() => upd("video_url", null)}
+                    className="absolute top-1 right-1 bg-black/70 text-white p-1 rounded"
+                    aria-label="Remove video"
+                  >
+                    <X className="h-3 w-3" />
+                  </button>
+                </div>
+              ) : null}
+              <label className="inline-flex items-center gap-2 px-3 py-2 border border-dashed border-border/60 rounded cursor-pointer hover:border-foreground/40 hover:bg-muted/40 text-xs text-muted-foreground transition">
+                <ImagePlus className="h-4 w-4" />
+                {uploading ? "Uploading…" : form.video_url ? "Replace Video" : "Add Video"}
+                <input
+                  type="file"
+                  accept="video/*"
+                  className="hidden"
+                  onChange={(e) => e.target.files?.[0] && uploadVideo(e.target.files[0])}
+                />
+              </label>
+            </div>
+          </div>
+
 
           <div className="flex gap-6">
             <label className="flex items-center gap-2 text-sm">

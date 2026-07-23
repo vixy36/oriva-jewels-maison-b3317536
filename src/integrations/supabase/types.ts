@@ -153,6 +153,7 @@ export type Database = {
           specs: Json
           subcategory: string | null
           updated_at: string
+          video_url: string | null
         }
         Insert: {
           categories?: string[]
@@ -178,6 +179,7 @@ export type Database = {
           specs?: Json
           subcategory?: string | null
           updated_at?: string
+          video_url?: string | null
         }
         Update: {
           categories?: string[]
@@ -203,6 +205,7 @@ export type Database = {
           specs?: Json
           subcategory?: string | null
           updated_at?: string
+          video_url?: string | null
         }
         Relationships: [
           {

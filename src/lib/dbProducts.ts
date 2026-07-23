@@ -12,6 +12,7 @@ type DbProduct = {
   short_description: string | null;
   description: string | null;
   images: string[] | null;
+  video_url: string | null;
   diamond_type: string | null;
   is_active: boolean;
 };
@@ -29,6 +30,8 @@ function toProduct(p: DbProduct): Product {
     short: p.short_description || "",
     description: p.description || "",
     image: p.images?.[0] || "",
+    images: p.images ?? [],
+    videoUrl: p.video_url ?? undefined,
     shape: "—",
     metal: "18K",
     diamondTypes,
@@ -39,13 +42,14 @@ function toProduct(p: DbProduct): Product {
 async function fetchDbProductsRaw(): Promise<DbProduct[]> {
   const { data, error } = await supabase
     .from("products")
-    .select("id,slug,name,category,categories,subcategory,short_description,description,images,diamond_type,is_active")
+    .select("id,slug,name,category,categories,subcategory,short_description,description,images,video_url,diamond_type,is_active")
     .eq("is_active", true)
     .order("sort_order")
     .order("created_at", { ascending: false });
   if (error) return [];
   return ((data as DbProduct[]) ?? []).filter((p) => p.images && p.images.length > 0);
 }
+
 
 export function useDbProducts() {
   return useQuery({
