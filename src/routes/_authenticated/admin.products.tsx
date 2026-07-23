@@ -444,6 +444,36 @@ function ProductEditor({ initial, onClose, onSaved }: { initial: Partial<Product
             </div>
           </div>
 
+          <div>
+            <Label>Video <span className="text-xs text-muted-foreground font-normal">(optional, max 3MB)</span></Label>
+            <div className="mt-2 flex items-center gap-3">
+              {form.video_url ? (
+                <div className="relative">
+                  <video src={form.video_url} className="h-24 w-24 object-cover rounded border border-border/60" muted playsInline />
+                  <button
+                    type="button"
+                    onClick={() => upd("video_url", null)}
+                    className="absolute top-1 right-1 bg-black/70 text-white p-1 rounded"
+                    aria-label="Remove video"
+                  >
+                    <X className="h-3 w-3" />
+                  </button>
+                </div>
+              ) : null}
+              <label className="inline-flex items-center gap-2 px-3 py-2 border border-dashed border-border/60 rounded cursor-pointer hover:border-foreground/40 hover:bg-muted/40 text-xs text-muted-foreground transition">
+                <ImagePlus className="h-4 w-4" />
+                {uploading ? "Uploading…" : form.video_url ? "Replace Video" : "Add Video"}
+                <input
+                  type="file"
+                  accept="video/*"
+                  className="hidden"
+                  onChange={(e) => e.target.files?.[0] && uploadVideo(e.target.files[0])}
+                />
+              </label>
+            </div>
+          </div>
+
+
           <div className="flex gap-6">
             <label className="flex items-center gap-2 text-sm">
               <Switch checked={form.is_active ?? true} onCheckedChange={(v) => upd("is_active", v)} /> Active
