@@ -73,7 +73,7 @@ function ProductPage() {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const [activeIdx, setActiveIdx] = useState(0);
 
-  const imageList = (product.images && product.images.length ? product.images : [product.image]).filter(Boolean);
+  const imageList: string[] = ((product.images && product.images.length ? product.images : [product.image]) as string[]).filter(Boolean);
   const media: MediaItem[] = [
     ...imageList.map((src) => ({ type: "image" as const, src })),
     ...(product.videoUrl ? [{ type: "video" as const, src: product.videoUrl }] : []),
