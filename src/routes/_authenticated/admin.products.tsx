@@ -217,6 +217,34 @@ function ProductEditor({ initial, onClose, onSaved }: { initial: Partial<Product
     }
   }
 
+  async function uploadVideo(file: File) {
+    if (file.size > 3 * 1024 * 1024) {
+      return toast.error("Video must be under 3MB");
+    }
+    setUploading(true);
+    try {
+      const ext = file.name.split(".").pop() || "mp4";
+      const path = `videos/${crypto.randomUUID()}.${ext}`;
+      const { error: upErr } = await supabase.storage.from("product-images").upload(path, file, {
+        cacheControl: "3600",
+        upsert: false,
+        contentType: file.type || "video/mp4",
+      });
+      if (upErr) throw upErr;
+      const { data: signed, error: sErr } = await supabase.storage
+        .from("product-images")
+        .createSignedUrl(path, 60 * 60 * 24 * 365 * 10);
+      if (sErr) throw sErr;
+      upd("video_url", signed.signedUrl);
+      toast.success("Video uploaded");
+    } catch (e) {
+      toast.error(e instanceof Error ? e.message : "Upload failed");
+    } finally {
+      setUploading(false);
+    }
+  }
+
+
   async function save() {
     const cats = (form.categories && form.categories.length ? form.categories : (form.category ? [form.category] : [])) as string[];
     if (!form.name || cats.length === 0) return toast.error("Name and at least one category are required");
