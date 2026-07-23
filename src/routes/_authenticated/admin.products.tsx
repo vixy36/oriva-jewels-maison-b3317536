@@ -263,6 +263,7 @@ function ProductEditor({ initial, onClose, onSaved }: { initial: Partial<Product
       short_description: form.short_description || null,
       description: form.description || null,
       images: form.images || [],
+      video_url: form.video_url || null,
       diamond_type: form.diamond_type || null,
       is_active: form.is_active ?? true,
       is_featured: form.is_featured ?? false,
