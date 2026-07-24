@@ -65,6 +65,7 @@ export const Route = createFileRoute("/shape/$shape")({
 
 function ShapePage() {
   const { meta, list } = Route.useLoaderData();
+  const { sort, setSort, sorted } = useSortedProducts(list);
   return (
     <div className="bg-obsidian text-ivory">
       <section className="pt-28 pb-10 md:pt-32 md:pb-12 border-b border-white/5">
@@ -80,7 +81,7 @@ function ShapePage() {
 
       <section className="py-10 md:py-16 bg-ink">
         <div className="mx-auto max-w-[1500px] px-6 md:px-16">
-          {list.length === 0 ? (
+          {sorted.length === 0 ? (
             <div className="text-center py-24">
               <p className="font-serif text-3xl md:text-4xl text-ivory">
                 No archive pieces in <em className="text-gold-gradient">{meta.label}</em> - yet.
@@ -98,14 +99,23 @@ function ShapePage() {
               </a>
             </div>
           ) : (
-            <div className="grid grid-cols-2 gap-x-6 gap-y-14 md:grid-cols-3 md:gap-x-10 md:gap-y-20">
-              {list.map((p: Product, i: number) => (
-                <Reveal key={p.slug} delay={i * 60}>
-                  <ProductCard product={p} />
-                </Reveal>
-              ))}
-            </div>
+            <>
+              <div className="mb-10 flex flex-wrap items-center justify-between gap-4 border-b border-white/8 pb-5">
+                <p className="text-[12px] md:text-[14px] tracking-[0.4em] uppercase text-ivory/55">
+                  {sorted.length} piece{sorted.length !== 1 ? "s" : ""}
+                </p>
+                <SortSelect value={sort} onChange={setSort} />
+              </div>
+              <div className="grid grid-cols-2 gap-x-5 gap-y-12 md:grid-cols-3 md:gap-x-8 md:gap-y-16">
+                {sorted.map((p: Product, i: number) => (
+                  <Reveal key={p.slug} delay={i * 60}>
+                    <ProductCard product={p} />
+                  </Reveal>
+                ))}
+              </div>
+            </>
           )}
+
 
           <div className="mt-24 flex flex-wrap justify-center gap-3 border-t border-white/10 pt-16">
             <p className="w-full text-center eyebrow mb-6">Explore other shapes</p>
