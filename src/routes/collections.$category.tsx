@@ -2,8 +2,10 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowRight, SlidersHorizontal, ChevronDown } from "lucide-react";
 import { ProductCard } from "@/components/site/ProductCard";
 import { Reveal } from "@/components/site/Reveal";
+import { SortSelect, useSortedProducts } from "@/components/site/SortSelect";
 import { categories, productsByCategory, type ProductCategory } from "@/lib/products";
 import { useDbProductsByCategory } from "@/lib/dbProducts";
+
 
 
 import engagementImg from "@/assets/collection-engagement.jpg";
@@ -73,6 +75,7 @@ function CollectionPage() {
   const staticItems = productsByCategory(category);
   const { data: dbItems = [] } = useDbProductsByCategory(category);
   const items = [...dbItems, ...staticItems];
+  const { sort, setSort, sorted } = useSortedProducts(items);
   const banner = banners[category];
   const labelWords = info.label.split(" ");
 
@@ -130,24 +133,22 @@ function CollectionPage() {
           </aside>
 
           <div className="md:col-span-9">
-            <div className="mb-10 flex items-center justify-between border-b border-white/8 pb-5">
-              <p className="text-[14px] tracking-[0.4em] uppercase text-ivory/50">
-                {items.length} piece{items.length !== 1 ? "s" : ""}
+            <div className="mb-10 flex flex-wrap items-center justify-between gap-4 border-b border-white/8 pb-5">
+              <p className="text-[12px] md:text-[14px] tracking-[0.4em] uppercase text-ivory/55">
+                {sorted.length} piece{sorted.length !== 1 ? "s" : ""}
               </p>
-              <p className="text-[14px] tracking-[0.4em] uppercase text-ivory/50">
-                Sorted · Featured
-              </p>
+              <SortSelect value={sort} onChange={setSort} />
             </div>
 
-            {items.length === 0 ? (
+            {sorted.length === 0 ? (
               <div className="border border-white/10 py-32 text-center">
                 <p className="eyebrow">Coming Soon</p>
                 <p className="mt-6 font-serif text-3xl text-ivory">New pieces in preparation.</p>
                 <p className="mt-3 text-sm text-ivory/50">Message the atelier for pre-launch access.</p>
               </div>
             ) : (
-              <div className="grid grid-cols-2 gap-x-4 gap-y-8 md:grid-cols-3 md:gap-x-6 md:gap-y-12 lg:grid-cols-4">
-                {items.map((p, i) => (
+              <div className="grid grid-cols-2 gap-x-5 gap-y-12 md:gap-x-8 md:gap-y-16 lg:grid-cols-3">
+                {sorted.map((p, i) => (
                   <Reveal key={p.slug} delay={i * 60}>
                     <ProductCard product={p} />
                   </Reveal>
@@ -163,6 +164,7 @@ function CollectionPage() {
     </div>
   );
 }
+
 
 function FilterGroup({ title, options }: { title: string; options: string[] }) {
   return (
