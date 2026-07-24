@@ -164,12 +164,9 @@ function HomePage() {
         </div>
       </div>
 
-
-
-
-
       {/* COLLECTIONS INDEX - Editorial image grid */}
-      <section className="relative overflow-hidden py-14 md:py-24 bg-ink">
+      <section className="relative overflow-hidden py-8 md:py-14 bg-ink">
+
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 opacity-40"
