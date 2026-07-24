@@ -282,7 +282,7 @@ function ProductPicker({ value, onPick, onClear }: { value: string; onPick: (p: 
     if (selected?.slug === value) return;
     (async () => {
       const { data } = await supabase.from("products").select("slug, name, images, price_from").eq("slug", value).maybeSingle();
-      if (data) setSelected({ slug: data.slug, name: data.name, image_url: (data.images as string[] | null)?.[0] ?? null, price: data.price as number | null });
+      if (data) setSelected({ slug: data.slug, name: data.name, image_url: (data.images as string[] | null)?.[0] ?? null, price: data.price_from as number | null });
     })();
   }, [value, selected?.slug]);
 
