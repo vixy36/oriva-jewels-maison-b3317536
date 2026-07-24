@@ -125,6 +125,8 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const isAdmin = pathname.startsWith("/admin") || pathname.startsWith("/auth");
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -138,15 +140,15 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <div className="flex min-h-screen flex-col bg-background text-foreground">
-        <SiteHeader />
-        <main className="flex-1 pb-24 md:pb-0">
+        {!isAdmin && <SiteHeader />}
+        <main className={`flex-1 ${isAdmin ? "" : "pb-24 md:pb-0"}`}>
           <Outlet />
         </main>
-        <SiteFooter />
-        <MobileBottomNav />
-        <FloatingActions />
-        
+        {!isAdmin && <SiteFooter />}
+        {!isAdmin && <MobileBottomNav />}
+        {!isAdmin && <FloatingActions />}
       </div>
     </QueryClientProvider>
   );
 }
+
