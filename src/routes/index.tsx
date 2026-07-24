@@ -164,12 +164,9 @@ function HomePage() {
         </div>
       </div>
 
-
-
-
-
       {/* COLLECTIONS INDEX - Editorial image grid */}
-      <section className="relative overflow-hidden py-14 md:py-24 bg-ink">
+      <section className="relative overflow-hidden py-8 md:py-14 bg-ink">
+
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 opacity-40"
@@ -194,12 +191,12 @@ function HomePage() {
           </Reveal>
 
 
-          <div className="mt-10 md:mt-14 grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+          <div className="mt-8 md:mt-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 md:gap-x-6 gap-y-8 md:gap-y-10">
             {collections.map((c, i) => (
               <Reveal key={c.title} delay={i * 60}>
                 <Link
                   to={c.to}
-                  className="group relative block overflow-hidden bg-obsidian aspect-[4/5]"
+                  className="group relative block overflow-hidden bg-obsidian aspect-square"
                 >
                   <img
                     src={c.img}
