@@ -16,6 +16,7 @@ import { SiteHeader } from "../components/site/SiteHeader";
 import { SiteFooter } from "../components/site/SiteFooter";
 import { MobileBottomNav } from "../components/site/MobileBottomNav";
 import { FloatingActions } from "../components/site/FloatingActions";
+import { Toaster } from "../components/ui/sonner";
 
 
 
@@ -148,6 +149,7 @@ function RootComponent() {
         {!isAdmin && <MobileBottomNav />}
         {!isAdmin && <FloatingActions />}
       </div>
+      <Toaster position="top-center" richColors />
     </QueryClientProvider>
   );
 }
