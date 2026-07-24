@@ -627,29 +627,26 @@ function HomePage() {
 
 
           <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
-            {insta.slice(0, 4).map((img, i) => (
-              <a
-                key={i}
-                href="https://www.instagram.com/oriva__jewels/reels/"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Watch Oriva Jewels reel on Instagram"
-                className="group relative aspect-[9/16] overflow-hidden bg-obsidian"
+            {[
+              "DZHQxFnNSXD",
+              "DZaOergteY2",
+              "DaIgCG4tmDZ",
+              "DaLQ2G7Nrj-",
+            ].map((code) => (
+              <div
+                key={code}
+                className="relative aspect-[9/16] overflow-hidden bg-obsidian border border-white/5"
               >
-                <img
-                  src={img}
-                  alt="Oriva Jewels reel"
+                <iframe
+                  src={`https://www.instagram.com/reel/${code}/embed/?cr=1&rd=https%3A%2F%2Forivajewels.com`}
+                  title={`Oriva Jewels reel ${code}`}
                   loading="lazy"
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1600ms] group-hover:scale-105"
+                  allow="encrypted-media"
+                  scrolling="no"
+                  className="absolute inset-0 h-full w-full"
+                  style={{ border: 0 }}
                 />
-                <span aria-hidden className="absolute inset-0 bg-gradient-to-t from-obsidian/70 via-transparent to-transparent" />
-                <span className="absolute inset-0 grid place-items-center">
-                  <span className="grid h-12 w-12 place-items-center rounded-full border border-ivory/70 bg-obsidian/40 backdrop-blur-sm text-ivory transition group-hover:border-gold group-hover:text-gold">
-                    <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5 translate-x-[1px]"><path d="M8 5v14l11-7z"/></svg>
-                  </span>
-                </span>
-                <span className="absolute top-2 left-2 text-[10px] tracking-[0.3em] uppercase text-ivory/85">Reel 0{i + 1}</span>
-              </a>
+              </div>
             ))}
           </div>
         </div>
