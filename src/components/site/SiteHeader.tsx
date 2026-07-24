@@ -1,43 +1,61 @@
 import { Link } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { Menu, X, Search, ChevronDown, Plus, Minus } from "lucide-react";
 import { SearchDialog } from "@/components/site/SearchDialog";
 import { ensureGsap } from "@/lib/gsap";
+import { supabase } from "@/integrations/supabase/client";
 import orivaLogo from "@/assets/oriva-logo.png.asset.json";
 
 type NavItem = {
   label: string;
-  to?: string;
+  to: string;
   children?: { label: string; to: string }[];
 };
 
-const nav: NavItem[] = [
-  {
-    label: "Fine Jewelry",
-    to: "/collections/rings",
-    children: [
-      { label: "Rings", to: "/collections/rings" },
-      { label: "Earrings", to: "/collections/earrings" },
-      { label: "Bracelets", to: "/collections/bracelets" },
-      { label: "Necklaces", to: "/collections/necklaces" },
-      { label: "Pendants", to: "/collections/pendants" },
-      { label: "Men's Jewelry", to: "/collections/mens-jewelry" },
-    ],
-  },
-  { label: "Engagement Rings", to: "/collections/engagement-rings" },
-  { label: "Bespoke", to: "/bespoke" },
-  { label: "Hip Hop Jewelry", to: "/collections/hip-hop-jewelry" },
-  {
-    label: "Diamonds",
-    to: "/collections/lab-grown",
-    children: [
-      { label: "Lab Grown Diamonds", to: "/collections/lab-grown" },
-      { label: "Natural Diamonds", to: "/collections/natural" },
-    ],
-  },
-  { label: "Offers", to: "/offers" },
-  { label: "Gifts", to: "/gifts" },
+const DIAMOND_CHILDREN: { label: string; to: string }[] = [
+  { label: "Lab Grown Diamonds", to: "/collections/lab-grown" },
+  { label: "Natural Diamonds", to: "/collections/natural" },
 ];
+
+const FINE_CHILDREN: { label: string; to: string }[] = [
+  { label: "Rings", to: "/collections/rings" },
+  { label: "Earrings", to: "/collections/earrings" },
+  { label: "Bracelets", to: "/collections/bracelets" },
+  { label: "Necklaces", to: "/collections/necklaces" },
+  { label: "Pendants", to: "/collections/pendants" },
+];
+
+const FALLBACK_NAV: NavItem[] = [
+  { label: "Fine Jewelry", to: "/collections/rings", children: FINE_CHILDREN },
+  { label: "Engagement Rings", to: "/collections/engagement-rings" },
+  { label: "Bespoke", to: "/custom-order" },
+  { label: "Hip Hop Jewelry", to: "/collections/hip-hop-jewelry" },
+  { label: "Diamonds", to: "/collections/lab-grown", children: DIAMOND_CHILDREN },
+];
+
+const FALLBACK_SUB: { label: string; to: string }[] = [
+  { label: "Home", to: "/" },
+  { label: "About Us", to: "/about" },
+  { label: "Contact", to: "/contact" },
+];
+
+function useMenu() {
+  return useQuery({
+    queryKey: ["public-menu"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("menu_items")
+        .select("menu_key,label,href,sort_order,is_active")
+        .eq("is_active", true)
+        .order("sort_order", { ascending: true });
+      if (error) throw error;
+      return data ?? [];
+    },
+    staleTime: 5 * 60_000,
+  });
+}
+
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
