@@ -44,7 +44,7 @@ const nav: { to: string; label: string; icon: typeof LayoutDashboard; exact?: bo
   { to: "/admin/enquiries", label: "Enquiries", icon: Inbox },
   { to: "/admin/offers", label: "Offers", icon: Tag },
   { to: "/admin/gifts", label: "Gift Ideas", icon: Gift },
-  { to: "/admin/automations", label: "Automations", icon: Zap },
+  { to: "/admin/automations", label: "Email", icon: Mail },
   { to: "/admin/seo", label: "SEO", icon: Search },
   { to: "/admin/users", label: "Users & Roles", icon: Users },
 ];
