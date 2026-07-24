@@ -140,7 +140,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <div className="flex min-h-screen flex-col bg-background text-foreground">
-        {!isAdmin && <SiteHeader />}
+        <SiteHeader />
         <main className={`flex-1 ${isAdmin ? "" : "pb-24 md:pb-0"}`}>
           <Outlet />
         </main>
