@@ -44,6 +44,7 @@ function EnquiriesPage() {
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState<"all" | "unread" | "archived">("unread");
   const [open, setOpen] = useState<Enquiry | null>(null);
+  const triggerAutomations = useServerFn(runStatusAutomations);
 
   const load = useCallback(async () => {
     setLoading(true);
