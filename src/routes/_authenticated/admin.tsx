@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
-import { LayoutDashboard, Package, Search, Inbox, LogOut, Menu, X, Tag, Users, ShoppingBag, Gift, Zap } from "lucide-react";
+import { LayoutDashboard, Package, Search, Inbox, LogOut, Menu, X, Tag, Users, ShoppingBag, Gift, Mail } from "lucide-react";
 
 export const Route = createFileRoute("/_authenticated/admin")({
   ssr: false,
