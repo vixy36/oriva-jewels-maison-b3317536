@@ -1,43 +1,61 @@
 import { Link } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { Menu, X, Search, ChevronDown, Plus, Minus } from "lucide-react";
 import { SearchDialog } from "@/components/site/SearchDialog";
 import { ensureGsap } from "@/lib/gsap";
+import { supabase } from "@/integrations/supabase/client";
 import orivaLogo from "@/assets/oriva-logo.png.asset.json";
 
 type NavItem = {
   label: string;
-  to?: string;
+  to: string;
   children?: { label: string; to: string }[];
 };
 
-const nav: NavItem[] = [
-  {
-    label: "Fine Jewelry",
-    to: "/collections/rings",
-    children: [
-      { label: "Rings", to: "/collections/rings" },
-      { label: "Earrings", to: "/collections/earrings" },
-      { label: "Bracelets", to: "/collections/bracelets" },
-      { label: "Necklaces", to: "/collections/necklaces" },
-      { label: "Pendants", to: "/collections/pendants" },
-      { label: "Men's Jewelry", to: "/collections/mens-jewelry" },
-    ],
-  },
-  { label: "Engagement Rings", to: "/collections/engagement-rings" },
-  { label: "Bespoke", to: "/bespoke" },
-  { label: "Hip Hop Jewelry", to: "/collections/hip-hop-jewelry" },
-  {
-    label: "Diamonds",
-    to: "/collections/lab-grown",
-    children: [
-      { label: "Lab Grown Diamonds", to: "/collections/lab-grown" },
-      { label: "Natural Diamonds", to: "/collections/natural" },
-    ],
-  },
-  { label: "Offers", to: "/offers" },
-  { label: "Gifts", to: "/gifts" },
+const DIAMOND_CHILDREN: { label: string; to: string }[] = [
+  { label: "Lab Grown Diamonds", to: "/collections/lab-grown" },
+  { label: "Natural Diamonds", to: "/collections/natural" },
 ];
+
+const FINE_CHILDREN: { label: string; to: string }[] = [
+  { label: "Rings", to: "/collections/rings" },
+  { label: "Earrings", to: "/collections/earrings" },
+  { label: "Bracelets", to: "/collections/bracelets" },
+  { label: "Necklaces", to: "/collections/necklaces" },
+  { label: "Pendants", to: "/collections/pendants" },
+];
+
+const FALLBACK_NAV: NavItem[] = [
+  { label: "Fine Jewelry", to: "/collections/rings", children: FINE_CHILDREN },
+  { label: "Engagement Rings", to: "/collections/engagement-rings" },
+  { label: "Bespoke", to: "/custom-order" },
+  { label: "Hip Hop Jewelry", to: "/collections/hip-hop-jewelry" },
+  { label: "Diamonds", to: "/collections/lab-grown", children: DIAMOND_CHILDREN },
+];
+
+const FALLBACK_SUB: { label: string; to: string }[] = [
+  { label: "Home", to: "/" },
+  { label: "About Us", to: "/about" },
+  { label: "Contact", to: "/contact" },
+];
+
+function useMenu() {
+  return useQuery({
+    queryKey: ["public-menu"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("menu_items")
+        .select("menu_key,label,href,sort_order,is_active")
+        .eq("is_active", true)
+        .order("sort_order", { ascending: true });
+      if (error) throw error;
+      return data ?? [];
+    },
+    staleTime: 5 * 60_000,
+  });
+}
+
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
@@ -47,6 +65,26 @@ export function SiteHeader() {
   const headerRef = useRef<HTMLElement | null>(null);
   const logoRef = useRef<HTMLAnchorElement | null>(null);
   const navItemsRef = useRef<HTMLDivElement | null>(null);
+
+  const { data: menuRows } = useMenu();
+
+  const nav = useMemo<NavItem[]>(() => {
+    const mainRows = (menuRows ?? []).filter((r) => r.menu_key === "main");
+    if (mainRows.length === 0) return FALLBACK_NAV;
+    return mainRows.map((r) => {
+      const label = r.label;
+      const to = r.href;
+      // Attach known children menus by heuristic so dropdowns still work.
+      if (/fine|jewel/i.test(label)) return { label, to, children: FINE_CHILDREN };
+      if (/diamond/i.test(label)) return { label, to, children: DIAMOND_CHILDREN };
+      return { label, to };
+    });
+  }, [menuRows]);
+
+  const sub = useMemo(() => {
+    const rows = (menuRows ?? []).filter((r) => r.menu_key === "sub");
+    return rows.length > 0 ? rows.map((r) => ({ label: r.label, to: r.href })) : FALLBACK_SUB;
+  }, [menuRows]);
 
   useEffect(() => {
     const { gsap } = ensureGsap();
@@ -103,30 +141,19 @@ export function SiteHeader() {
       >
         <div className="border-b border-white/5 bg-obsidian/60">
           <div className="mx-auto flex items-center justify-center gap-6 md:gap-8 px-6 md:px-10 py-1.5 max-w-[1600px]">
-            <Link
-              to="/"
-              className="text-[10px] md:text-[11px] tracking-[0.28em] uppercase text-ivory/80 hover:text-gold transition"
-              activeProps={{ className: "text-gold" }}
-              activeOptions={{ exact: true }}
-            >
-              Home
-            </Link>
-            <span className="h-3 w-px bg-white/15" aria-hidden />
-            <Link
-              to="/about"
-              className="text-[10px] md:text-[11px] tracking-[0.28em] uppercase text-ivory/80 hover:text-gold transition"
-              activeProps={{ className: "text-gold" }}
-            >
-              About Us
-            </Link>
-            <span className="h-3 w-px bg-white/15" aria-hidden />
-            <Link
-              to="/contact"
-              className="text-[10px] md:text-[11px] tracking-[0.28em] uppercase text-ivory/80 hover:text-gold transition"
-              activeProps={{ className: "text-gold" }}
-            >
-              Contact
-            </Link>
+            {sub.map((s, idx) => (
+              <span key={s.to + s.label} className="flex items-center gap-6 md:gap-8">
+                {idx > 0 && <span className="h-3 w-px bg-white/15" aria-hidden />}
+                <Link
+                  to={s.to as string}
+                  className="text-[10px] md:text-[11px] tracking-[0.28em] uppercase text-ivory/80 hover:text-gold transition"
+                  activeProps={{ className: "text-gold" }}
+                  activeOptions={s.to === "/" ? { exact: true } : undefined}
+                >
+                  {s.label}
+                </Link>
+              </span>
+            ))}
           </div>
         </div>
         <div ref={navItemsRef} className="relative mx-auto grid grid-cols-[auto_1fr_auto] lg:grid-cols-[1fr_auto_1fr] items-center gap-6 px-6 py-2.5 md:px-10 md:py-5 max-w-[1600px]">

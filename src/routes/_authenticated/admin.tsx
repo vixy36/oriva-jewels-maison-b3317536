@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
-import { LayoutDashboard, Package, Search, Inbox, LogOut, Menu, X, Tag, Users, ShoppingBag, Gift, Mail } from "lucide-react";
+import { LayoutDashboard, Package, Search, Inbox, LogOut, Menu, X, Tag, Users, ShoppingBag, Gift, Mail, Layers, ListTree } from "lucide-react";
 
 export const Route = createFileRoute("/_authenticated/admin")({
   ssr: false,
@@ -40,6 +40,8 @@ function AdminSkeleton() {
 const nav: { to: string; label: string; icon: typeof LayoutDashboard; exact?: boolean }[] = [
   { to: "/admin", label: "Dashboard", icon: LayoutDashboard, exact: true },
   { to: "/admin/products", label: "Products", icon: Package },
+  { to: "/admin/categories", label: "Categories", icon: Layers },
+  { to: "/admin/menu", label: "Menu", icon: ListTree },
   { to: "/admin/orders", label: "Orders", icon: ShoppingBag },
   { to: "/admin/enquiries", label: "Enquiries", icon: Inbox },
   { to: "/admin/offers", label: "Offers", icon: Tag },
