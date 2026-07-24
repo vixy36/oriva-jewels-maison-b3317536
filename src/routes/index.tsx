@@ -61,7 +61,28 @@ const occasions = [
   { label: "Everyday", img: earringsImg, tag: "Daily" },
 ];
 
-const insta = [insta1, insta2, insta5, insta4, insta6, editorialImg];
+const instagramReels = [
+  {
+    href: "https://www.instagram.com/reel/DZHQxFnNSXD/?igsh=MXNreG1nYmtqejE5Mg==",
+    img: insta1,
+    title: "Diamond jewellery reel",
+  },
+  {
+    href: "https://www.instagram.com/reel/DZaOergteY2/?igsh=MXRzMWRkaW5mbW9lNg==",
+    img: insta2,
+    title: "Fine jewellery reel",
+  },
+  {
+    href: "https://www.instagram.com/reel/DaIgCG4tmDZ/?igsh=MWt5MmVrOXEyNXpq",
+    img: insta5,
+    title: "Oriva diamonds reel",
+  },
+  {
+    href: "https://www.instagram.com/reel/DaLQ2G7Nrj-/?igsh=eTBjenNqeHR2YWRl",
+    img: insta4,
+    title: "Oriva jewels reel",
+  },
+];
 
 function HomePage() {
   return (
@@ -627,26 +648,30 @@ function HomePage() {
 
 
           <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
-            {[
-              "DZHQxFnNSXD",
-              "DZaOergteY2",
-              "DaIgCG4tmDZ",
-              "DaLQ2G7Nrj-",
-            ].map((code) => (
-              <div
-                key={code}
-                className="relative aspect-[9/16] overflow-hidden bg-obsidian border border-white/5"
+            {instagramReels.map((reel) => (
+              <a
+                key={reel.href}
+                href={reel.href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={`Open ${reel.title} on Instagram`}
+                className="group relative aspect-[9/16] overflow-hidden bg-obsidian border border-white/5 block"
               >
-                <iframe
-                  src={`https://www.instagram.com/p/${code}/embed/`}
-                  title={`Oriva Jewels reel ${code}`}
+                <img
+                  src={reel.img}
+                  alt={reel.title}
                   loading="lazy"
-                  allow="encrypted-media"
-                  scrolling="no"
-                  className="absolute inset-0 h-full w-full"
-                  style={{ border: 0 }}
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.06]"
                 />
-              </div>
+                <span className="absolute inset-0 bg-gradient-to-t from-obsidian/75 via-obsidian/10 to-transparent" />
+                <span className="absolute inset-0 ring-1 ring-inset ring-white/10 group-hover:ring-gold/60 transition" />
+                <span className="absolute left-1/2 top-1/2 grid h-12 w-12 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-gold/70 bg-obsidian/75 text-gold backdrop-blur-sm transition group-hover:scale-105 group-hover:bg-gold group-hover:text-obsidian">
+                  ▶
+                </span>
+                <span className="absolute inset-x-0 bottom-0 p-4 text-[10px] tracking-[0.32em] uppercase text-ivory/90">
+                  Watch reel
+                </span>
+              </a>
             ))}
           </div>
         </div>
