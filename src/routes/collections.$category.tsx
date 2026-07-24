@@ -27,18 +27,6 @@ const banners: Record<ProductCategory, string> = {
   natural: engagementImg,
 };
 
-const chapterN: Record<ProductCategory, string> = {
-  "engagement-rings": "01",
-  rings: "02",
-  earrings: "03",
-  bracelets: "04",
-  necklaces: "05",
-  pendants: "06",
-  "mens-jewelry": "07",
-  bridal: "08",
-  "lab-grown": "09",
-  natural: "10",
-};
 
 const validCats: ProductCategory[] = [
   "engagement-rings",
