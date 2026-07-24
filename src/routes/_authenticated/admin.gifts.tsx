@@ -281,7 +281,7 @@ function ProductPicker({ value, onPick, onClear }: { value: string; onPick: (p: 
     if (!value) { setSelected(null); return; }
     if (selected?.slug === value) return;
     (async () => {
-      const { data } = await supabase.from("products").select("slug, name, images, price").eq("slug", value).maybeSingle();
+      const { data } = await supabase.from("products").select("slug, name, images, price_from").eq("slug", value).maybeSingle();
       if (data) setSelected({ slug: data.slug, name: data.name, image_url: (data.images as string[] | null)?.[0] ?? null, price: data.price as number | null });
     })();
   }, [value, selected?.slug]);
@@ -290,10 +290,10 @@ function ProductPicker({ value, onPick, onClear }: { value: string; onPick: (p: 
     if (!open) return;
     const t = setTimeout(async () => {
       setLoading(true);
-      let query = supabase.from("products").select("slug, name, images, price").order("created_at", { ascending: false }).limit(20);
+      let query = supabase.from("products").select("slug, name, images, price_from").order("created_at", { ascending: false }).limit(20);
       if (q.trim()) query = query.ilike("name", `%${q.trim()}%`);
       const { data } = await query;
-      setResults((data ?? []).map((d) => ({ slug: d.slug, name: d.name, image_url: (d.images as string[] | null)?.[0] ?? null, price: d.price as number | null })));
+      setResults((data ?? []).map((d) => ({ slug: d.slug, name: d.name, image_url: (d.images as string[] | null)?.[0] ?? null, price: d.price_from as number | null })));
       setLoading(false);
     }, 200);
     return () => clearTimeout(t);
