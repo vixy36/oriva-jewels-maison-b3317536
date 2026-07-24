@@ -79,6 +79,27 @@ function EnquiriesPage() {
     if (error) { toast.error(error.message); return; }
     setOpen({ ...r, ...patch } as Enquiry);
     setRows((prev) => prev.map((x) => (x.id === r.id ? { ...x, ...patch } as Enquiry : x)));
+    if (patch.status && patch.status !== r.status && r.email) {
+      try {
+        const res = await triggerAutomations({
+          data: {
+            triggerType: "enquiry_status",
+            status: patch.status,
+            recipient: { email: r.email, name: r.name },
+            data: {
+              subject: r.subject,
+              productSlug: r.product_slug,
+              configuration: r.configuration ?? {},
+              trackingNumber: patch.tracking_number ?? r.tracking_number,
+              carrier: patch.carrier ?? r.carrier,
+            },
+          },
+        });
+        if (res.triggered > 0) toast.success(`${res.triggered} automation${res.triggered > 1 ? "s" : ""} triggered · ${res.sent} email${res.sent === 1 ? "" : "s"} sent`);
+      } catch (e) {
+        console.warn("Automation trigger failed", e);
+      }
+    }
   }
 
   async function convertToOrder(r: Enquiry) {
