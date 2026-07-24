@@ -144,8 +144,8 @@ function ProductPage() {
                     decoding="async"
                     className="h-full w-full object-cover transition-transform duration-[1800ms] ease-out group-hover:scale-[1.05]"
                   />
-                  <span className="absolute bottom-5 right-5 inline-flex items-center gap-2 bg-obsidian/70 backdrop-blur border border-white/15 px-4 py-2 text-[12px] tracking-[0.35em] uppercase text-ivory opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition duration-500">
-                    <ZoomIn className="h-3.5 w-3.5" strokeWidth={1.4} /> Zoom
+                  <span className="absolute bottom-5 right-5 inline-flex items-center gap-2 bg-gold border border-gold px-4 py-2.5 text-[13px] font-semibold tracking-[0.3em] uppercase text-obsidian opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition duration-500">
+                    <ZoomIn className="h-4 w-4" strokeWidth={2} /> Zoom
                   </span>
                 </button>
               )}
@@ -154,11 +154,11 @@ function ProductPage() {
                 role="button"
                 tabIndex={0}
                 aria-label="Wishlist"
-                className="absolute top-5 right-5 grid h-11 w-11 place-items-center bg-obsidian/70 backdrop-blur border border-white/15 text-ivory hover:border-gold hover:text-gold transition"
+                className="absolute top-5 right-5 grid h-11 w-11 place-items-center bg-obsidian/90 border border-gold/50 text-gold hover:bg-gold hover:text-obsidian transition"
               >
-                <Heart className="h-4 w-4" strokeWidth={1.3} />
+                <Heart className="h-4 w-4" strokeWidth={1.6} />
               </span>
-              <span className="absolute top-5 left-5 text-[12px] tracking-[0.42em] uppercase text-ivory/85 bg-obsidian/60 backdrop-blur-sm px-3 py-1.5 border border-white/10">
+              <span className="absolute top-5 left-5 text-[12px] font-semibold tracking-[0.42em] uppercase text-gold bg-obsidian/85 px-3 py-1.5 border border-gold/40">
                 Ref. OR-{product.slug.slice(0, 4).toUpperCase()}
               </span>
 
@@ -168,19 +168,19 @@ function ProductPage() {
                     type="button"
                     onClick={() => setActiveIdx((safeIdx - 1 + media.length) % media.length)}
                     aria-label="Previous"
-                    className="absolute left-4 top-1/2 -translate-y-1/2 grid h-11 w-11 place-items-center bg-obsidian/70 backdrop-blur border border-white/15 text-ivory hover:border-gold hover:text-gold transition"
+                    className="absolute left-4 top-1/2 -translate-y-1/2 grid h-11 w-11 place-items-center bg-obsidian/90 border border-gold/50 text-gold hover:bg-gold hover:text-obsidian transition"
                   >
-                    <ChevronLeft className="h-5 w-5" strokeWidth={1.4} />
+                    <ChevronLeft className="h-5 w-5" strokeWidth={1.8} />
                   </button>
                   <button
                     type="button"
                     onClick={() => setActiveIdx((safeIdx + 1) % media.length)}
                     aria-label="Next"
-                    className="absolute right-4 top-1/2 -translate-y-1/2 grid h-11 w-11 place-items-center bg-obsidian/70 backdrop-blur border border-white/15 text-ivory hover:border-gold hover:text-gold transition"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 grid h-11 w-11 place-items-center bg-obsidian/90 border border-gold/50 text-gold hover:bg-gold hover:text-obsidian transition"
                   >
-                    <ChevronRight className="h-5 w-5" strokeWidth={1.4} />
+                    <ChevronRight className="h-5 w-5" strokeWidth={1.8} />
                   </button>
-                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-[11px] tracking-[0.4em] uppercase text-ivory/70 bg-obsidian/60 backdrop-blur px-3 py-1 border border-white/10">
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-[11px] font-semibold tracking-[0.4em] uppercase text-gold bg-obsidian/85 px-3 py-1.5 border border-gold/40">
                     {String(safeIdx + 1).padStart(2, "0")} / {String(media.length).padStart(2, "0")}
                   </div>
                 </>
