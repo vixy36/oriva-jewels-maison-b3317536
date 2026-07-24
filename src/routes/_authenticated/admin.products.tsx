@@ -192,6 +192,8 @@ function ProductEditor({ initial, onClose, onSaved }: { initial: Partial<Product
   const [saving, setSaving] = useState(false);
   const [uploading, setUploading] = useState(false);
   const [offers, setOffers] = useState<OfferOpt[]>([]);
+  const [lightboxIdx, setLightboxIdx] = useState<number | null>(null);
+  const [videoOpen, setVideoOpen] = useState(false);
   const isNew = !initial.id;
 
   useEffect(() => {
