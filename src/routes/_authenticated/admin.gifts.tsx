@@ -267,3 +267,81 @@ function GiftEditor({ gift, onClose, onSaved }: { gift: Gift | null; onClose: ()
     </Dialog>
   );
 }
+
+type ProductLite = { slug: string; name: string; image_url: string | null; price: number | null };
+
+function ProductPicker({ value, onPick, onClear }: { value: string; onPick: (p: ProductLite) => void; onClear: () => void }) {
+  const [q, setQ] = useState("");
+  const [results, setResults] = useState<ProductLite[]>([]);
+  const [open, setOpen] = useState(false);
+  const [selected, setSelected] = useState<ProductLite | null>(null);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (!value) { setSelected(null); return; }
+    if (selected?.slug === value) return;
+    (async () => {
+      const { data } = await supabase.from("products").select("slug, name, images, price").eq("slug", value).maybeSingle();
+      if (data) setSelected({ slug: data.slug, name: data.name, image_url: (data.images as string[] | null)?.[0] ?? null, price: data.price as number | null });
+    })();
+  }, [value, selected?.slug]);
+
+  useEffect(() => {
+    if (!open) return;
+    const t = setTimeout(async () => {
+      setLoading(true);
+      let query = supabase.from("products").select("slug, name, images, price").order("created_at", { ascending: false }).limit(20);
+      if (q.trim()) query = query.ilike("name", `%${q.trim()}%`);
+      const { data } = await query;
+      setResults((data ?? []).map((d) => ({ slug: d.slug, name: d.name, image_url: (d.images as string[] | null)?.[0] ?? null, price: d.price as number | null })));
+      setLoading(false);
+    }, 200);
+    return () => clearTimeout(t);
+  }, [q, open]);
+
+  return (
+    <div className="relative">
+      {selected ? (
+        <div className="flex items-center gap-3 border border-border p-2">
+          {selected.image_url ? <img src={selected.image_url} alt="" className="h-10 w-10 object-cover" /> : <div className="h-10 w-10 bg-muted" />}
+          <div className="min-w-0 flex-1">
+            <p className="text-sm truncate">{selected.name}</p>
+            <p className="text-[11px] text-muted-foreground truncate">{selected.slug}</p>
+          </div>
+          <Button size="sm" variant="ghost" onClick={() => { onClear(); setSelected(null); }}>Change</Button>
+        </div>
+      ) : (
+        <>
+          <Input
+            value={q}
+            onChange={(e) => { setQ(e.target.value); setOpen(true); }}
+            onFocus={() => setOpen(true)}
+            placeholder="Search products by name…"
+          />
+          {open && (
+            <div className="absolute z-20 mt-1 w-full max-h-64 overflow-y-auto border border-border bg-card shadow-lg">
+              {loading ? (
+                <div className="p-3 text-xs text-muted-foreground">Searching…</div>
+              ) : results.length === 0 ? (
+                <div className="p-3 text-xs text-muted-foreground">No products found.</div>
+              ) : results.map((p) => (
+                <button
+                  key={p.slug}
+                  type="button"
+                  onClick={() => { onPick(p); setSelected(p); setOpen(false); setQ(""); }}
+                  className="w-full flex items-center gap-3 p-2 text-left hover:bg-muted"
+                >
+                  {p.image_url ? <img src={p.image_url} alt="" className="h-8 w-8 object-cover" /> : <div className="h-8 w-8 bg-muted" />}
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm truncate">{p.name}</p>
+                    <p className="text-[11px] text-muted-foreground truncate">{p.slug}</p>
+                  </div>
+                </button>
+              ))}
+            </div>
+          )}
+        </>
+      )}
+    </div>
+  );
+}
