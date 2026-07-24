@@ -290,9 +290,24 @@ function ProductEditor({ initial, onClose, onSaved }: { initial: Partial<Product
 
 
     setSaving(true);
-    const { error } = isNew
-      ? await supabase.from("products").insert(payload)
-      : await supabase.from("products").update(payload).eq("id", initial.id!);
+    let error: any = null;
+    if (isNew) {
+      let attempt = 0;
+      let trySlug = payload.slug;
+      while (attempt < 5) {
+        const res = await supabase.from("products").insert({ ...payload, slug: trySlug });
+        if (!res.error) { error = null; break; }
+        if (res.error.code === "23505" && res.error.message.includes("products_slug_key")) {
+          attempt++;
+          trySlug = `${payload.slug}-${Math.random().toString(36).slice(2, 6)}`;
+          continue;
+        }
+        error = res.error; break;
+      }
+    } else {
+      const res = await supabase.from("products").update(payload).eq("id", initial.id!);
+      error = res.error;
+    }
     setSaving(false);
     if (error) return toast.error(error.message);
     toast.success(isNew ? "Product created" : "Product updated");
