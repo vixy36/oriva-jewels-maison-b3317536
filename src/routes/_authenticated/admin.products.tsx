@@ -272,6 +272,9 @@ function ProductEditor({ initial, onClose, onSaved }: { initial: Partial<Product
       is_active: form.is_active ?? true,
       is_featured: form.is_featured ?? false,
       sort_order: form.sort_order ?? 0,
+      stock_quantity: form.stock_quantity ?? 0,
+      low_stock_threshold: form.low_stock_threshold ?? 3,
+      track_inventory: form.track_inventory ?? false,
     };
 
 
