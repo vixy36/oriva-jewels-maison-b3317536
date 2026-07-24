@@ -66,6 +66,26 @@ export function SiteHeader() {
   const logoRef = useRef<HTMLAnchorElement | null>(null);
   const navItemsRef = useRef<HTMLDivElement | null>(null);
 
+  const { data: menuRows } = useMenu();
+
+  const nav = useMemo<NavItem[]>(() => {
+    const mainRows = (menuRows ?? []).filter((r) => r.menu_key === "main");
+    if (mainRows.length === 0) return FALLBACK_NAV;
+    return mainRows.map((r) => {
+      const label = r.label;
+      const to = r.href;
+      // Attach known children menus by heuristic so dropdowns still work.
+      if (/fine|jewel/i.test(label)) return { label, to, children: FINE_CHILDREN };
+      if (/diamond/i.test(label)) return { label, to, children: DIAMOND_CHILDREN };
+      return { label, to };
+    });
+  }, [menuRows]);
+
+  const sub = useMemo(() => {
+    const rows = (menuRows ?? []).filter((r) => r.menu_key === "sub");
+    return rows.length > 0 ? rows.map((r) => ({ label: r.label, to: r.href })) : FALLBACK_SUB;
+  }, [menuRows]);
+
   useEffect(() => {
     const { gsap } = ensureGsap();
     const header = headerRef.current;
