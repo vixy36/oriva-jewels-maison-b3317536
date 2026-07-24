@@ -149,6 +149,7 @@ function RootComponent() {
         {!isAdmin && <MobileBottomNav />}
         {!isAdmin && <FloatingActions />}
       </div>
+      <Toaster position="top-center" richColors />
     </QueryClientProvider>
   );
 }
