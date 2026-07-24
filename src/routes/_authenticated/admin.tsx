@@ -43,8 +43,9 @@ const nav: { to: string; label: string; icon: typeof LayoutDashboard; exact?: bo
   { to: "/admin/offers", label: "Offers", icon: Tag },
   { to: "/admin/seo", label: "SEO", icon: Search },
   { to: "/admin/enquiries", label: "Enquiries", icon: Inbox },
-  { to: "/admin/content", label: "Content", icon: FileEdit },
+  { to: "/admin/users", label: "Users & Roles", icon: Users },
 ];
+
 
 function AdminLayout() {
   const { user } = Route.useRouteContext();
