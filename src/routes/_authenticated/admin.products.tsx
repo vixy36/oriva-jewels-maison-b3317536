@@ -9,7 +9,8 @@ import { Switch } from "@/components/ui/switch";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { toast } from "sonner";
-import { Pencil, Trash2, Plus, X, ImagePlus } from "lucide-react";
+import { Pencil, Trash2, Plus, X, ImagePlus, Play } from "lucide-react";
+import { Lightbox } from "@/components/site/Lightbox";
 
 export const Route = createFileRoute("/_authenticated/admin/products")({
   component: ProductsPage,
