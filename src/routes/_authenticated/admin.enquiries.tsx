@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState, useCallback } from "react";
+import { useServerFn } from "@tanstack/react-start";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -8,6 +9,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
 import { Mail, MailOpen, Trash2, Archive, MessageSquare, PackagePlus } from "lucide-react";
+import { runStatusAutomations } from "@/lib/automations.functions";
 
 export const Route = createFileRoute("/_authenticated/admin/enquiries")({
   component: EnquiriesPage,
