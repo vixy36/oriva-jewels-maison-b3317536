@@ -353,7 +353,7 @@ function ProductPage() {
                 Pricing shared privately · Response within 24h
               </p>
 
-              <div className="mt-10 grid grid-cols-3 gap-4 text-center">
+              <div className="mt-10 grid grid-cols-3 gap-2 text-center">
                 {[
                   { icon: ShieldCheck, t: "Certified" },
                   { icon: Truck, t: "Insured" },
@@ -361,7 +361,7 @@ function ProductPage() {
                 ].map((i) => (
                   <div key={i.t} className="border-t border-white/10 pt-4">
                     <i.icon className="mx-auto h-5 w-5 text-gold" strokeWidth={1.2} />
-                    <p className="mt-2.5 text-[14px] tracking-[0.32em] uppercase text-ivory/50">{i.t}</p>
+                    <p className="mt-2.5 text-[11px] md:text-[12px] tracking-[0.2em] uppercase text-ivory/60 whitespace-nowrap">{i.t}</p>
                   </div>
                 ))}
               </div>
