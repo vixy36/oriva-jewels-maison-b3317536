@@ -100,19 +100,15 @@ function CollectionPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-obsidian/40 via-obsidian/30 to-obsidian" />
         <div className="absolute inset-0 vignette" />
 
-        <div className="relative mx-auto max-w-[1500px] w-full px-6 pt-28 pb-8 md:px-16 md:pt-32 md:pb-10">
-          <div className="flex items-center gap-4">
-            <span className="h-px w-12 bg-gold" />
-            <p className="eyebrow">Chapter {chapterN[category]}</p>
-          </div>
-          <h1 className="mt-8 font-serif text-6xl md:text-[9rem] leading-[0.9] tracking-[-0.02em]">
+        <div className="relative mx-auto max-w-[1500px] w-full px-6 pt-24 pb-6 md:px-16 md:pt-28 md:pb-8">
+          <h1 className="font-serif text-5xl md:text-7xl leading-[0.95] tracking-[-0.02em]">
             {labelWords.map((w, i) => (
-              <span key={i} className={`block ${i === labelWords.length - 1 ? "italic text-gold-gradient" : ""}`}>
-                {w}
+              <span key={i} className={i === labelWords.length - 1 ? "italic text-gold-gradient" : ""}>
+                {w}{i < labelWords.length - 1 ? " " : ""}
               </span>
             ))}
           </h1>
-          <p className="mt-8 max-w-lg text-[15px] leading-[1.8] text-ivory/80">{info.blurb}</p>
+          <p className="mt-4 max-w-lg text-[14px] leading-[1.7] text-ivory/75">{info.blurb}</p>
         </div>
       </section>
 
