@@ -2,8 +2,10 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowRight, SlidersHorizontal, ChevronDown } from "lucide-react";
 import { ProductCard } from "@/components/site/ProductCard";
 import { Reveal } from "@/components/site/Reveal";
+import { SortSelect, useSortedProducts } from "@/components/site/SortSelect";
 import { categories, productsByCategory, type ProductCategory } from "@/lib/products";
 import { useDbProductsByCategory } from "@/lib/dbProducts";
+
 
 
 import engagementImg from "@/assets/collection-engagement.jpg";
