@@ -2,7 +2,9 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { ProductCard } from "@/components/site/ProductCard";
 import { Reveal } from "@/components/site/Reveal";
+import { SortSelect, useSortedProducts } from "@/components/site/SortSelect";
 import { products, buildWhatsAppLink, type Product } from "@/lib/products";
+
 
 const SHAPES: Record<string, { label: string; blurb: string; character: string }> = {
   marquise: {
