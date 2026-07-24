@@ -91,7 +91,7 @@ function CollectionPage() {
 
   return (
     <div className="bg-ink">
-      <section className="relative isolate overflow-hidden bg-obsidian text-ivory min-h-[38svh] md:min-h-[42svh] flex items-end">
+      <section className="relative isolate overflow-hidden bg-obsidian text-ivory min-h-[28svh] md:min-h-[32svh] flex items-end">
         <img
           src={banner}
           alt={info.label}
