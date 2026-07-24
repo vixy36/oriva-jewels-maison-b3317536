@@ -17,7 +17,7 @@ export function SiteFooter() {
 
 
 
-      <div className="relative mx-auto max-w-[1600px] px-6 py-20 md:px-10 md:py-24">
+      <div className="relative mx-auto max-w-[1600px] px-6 pt-20 pb-6 md:px-10 md:pt-24 md:pb-8">
         <div className="grid gap-14 md:grid-cols-12">
           <div className="md:col-span-4">
             <p className="font-serif text-3xl tracking-[0.5em] text-ivory">ORIVA</p>
