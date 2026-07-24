@@ -232,6 +232,32 @@ function OrderEditor({ order, onClose, onSaved }: { order: Order | null; onClose
     setSaving(false);
     if (error) return toast.error(error.message);
     toast.success(isNew ? `Order ${code} created` : "Order updated");
+
+    const newStatus = payload.status;
+    const statusChanged = isNew || (previousStatus && newStatus !== previousStatus);
+    if (statusChanged && payload.customer_email) {
+      try {
+        const res = await triggerAutomations({
+          data: {
+            triggerType: "order_status",
+            status: newStatus,
+            recipient: { email: payload.customer_email, name: payload.customer_name },
+            data: {
+              orderCode: code,
+              trackingNumber: payload.tracking_number,
+              carrier: payload.carrier,
+              total: payload.total,
+              currency: payload.currency,
+              estimatedDelivery: payload.estimated_delivery,
+              orderStatusUrl: `${window.location.origin}/order/${code}`,
+            },
+          },
+        });
+        if (res.triggered > 0) toast.message(`${res.triggered} automation${res.triggered > 1 ? "s" : ""} triggered · ${res.sent} email${res.sent === 1 ? "" : "s"} sent`);
+      } catch (e) {
+        console.warn("Automation trigger failed", e);
+      }
+    }
     onSaved();
   }
 
