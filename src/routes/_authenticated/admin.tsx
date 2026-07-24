@@ -98,15 +98,15 @@ function AdminLayout() {
     <div className="min-h-screen bg-background text-foreground flex pt-20 lg:pt-24">
       {/* Sidebar */}
       <aside
-        className={`fixed lg:sticky lg:top-24 inset-y-0 lg:inset-y-auto left-0 z-40 w-64 lg:h-[calc(100vh-6rem)] border-r border-border/60 bg-card transform transition-transform ${
+        className={`fixed lg:sticky lg:top-24 inset-y-0 lg:inset-y-auto left-0 z-40 w-64 lg:h-[calc(100vh-6rem)] border-r border-border/60 bg-card transform transition-transform flex flex-col ${
           open ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
         }`}
       >
-        <div className="p-5 border-b border-border/60 flex items-center justify-between">
+        <div className="p-5 border-b border-border/60 flex items-center justify-between shrink-0">
           <Link to="/" className="text-sm tracking-[0.28em] uppercase font-serif">Oriva Admin</Link>
           <button className="lg:hidden" onClick={() => setOpen(false)}><X className="h-5 w-5" /></button>
         </div>
-        <nav className="p-3 space-y-1">
+        <nav className="p-3 space-y-1 flex-1 overflow-y-auto min-h-0">
           {nav.map((item) => {
             const active = item.exact ? path === item.to : path.startsWith(item.to);
             const Icon = item.icon;
@@ -123,7 +123,7 @@ function AdminLayout() {
             );
           })}
         </nav>
-        <div className="absolute bottom-0 inset-x-0 p-3 border-t border-border/60">
+        <div className="shrink-0 p-3 border-t border-border/60 bg-card">
           <div className="px-3 py-2 text-xs text-muted-foreground truncate">{user.email}</div>
           <button
             onClick={signOut}
@@ -133,6 +133,7 @@ function AdminLayout() {
           </button>
         </div>
       </aside>
+
 
       {open && <div className="fixed inset-0 bg-black/50 z-30 lg:hidden" onClick={() => setOpen(false)} />}
 
