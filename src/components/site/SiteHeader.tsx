@@ -26,6 +26,7 @@ const nav: NavItem[] = [
   },
   { label: "Engagement Rings", to: "/collections/engagement-rings" },
   { label: "Bespoke", to: "/bespoke" },
+  { label: "Hip Hop Jewelry", to: "/collections/hip-hop-jewelry" },
   {
     label: "Diamonds",
     to: "/collections/lab-grown",
