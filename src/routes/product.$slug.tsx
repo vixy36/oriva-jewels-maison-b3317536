@@ -417,7 +417,7 @@ function PillGroup({
 }) {
   return (
     <div>
-      <p className="text-[14px] tracking-[0.42em] uppercase text-gold">{label}</p>
+      <p className="text-[14px] font-bold tracking-[0.42em] uppercase text-gold">{label}</p>
       <div className="mt-3.5 flex flex-wrap gap-2">
         {options.map((o) => {
           const active = o === value;
@@ -426,7 +426,7 @@ function PillGroup({
               key={o}
               type="button"
               onClick={() => onChange(o)}
-              className={`px-4 py-2.5 text-[14px] tracking-[0.15em] transition ${
+              className={`px-4 py-2.5 text-[14px] font-bold tracking-[0.15em] transition ${
                 active
                   ? "bg-gold text-obsidian"
                   : "border border-white/15 text-ivory/85 hover:border-gold hover:text-gold"

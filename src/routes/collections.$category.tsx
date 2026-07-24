@@ -167,13 +167,13 @@ function CollectionPage() {
 function FilterGroup({ title, options }: { title: string; options: string[] }) {
   return (
     <div>
-      <p className="text-[14px] tracking-[0.42em] uppercase text-gold pb-3 border-b border-white/10">
+      <p className="text-[14px] font-bold tracking-[0.42em] uppercase text-gold pb-3 border-b border-white/10">
         {title}
       </p>
       <ul className="mt-5 space-y-3">
         {options.map((o) => (
           <li key={o}>
-            <label className="flex items-center gap-3 text-sm text-ivory/60 hover:text-ivory cursor-pointer transition">
+            <label className="flex items-center gap-3 text-sm font-bold text-ivory/60 hover:text-ivory cursor-pointer transition">
               <span className="grid h-3.5 w-3.5 place-items-center border border-white/20" />
               {o}
             </label>
