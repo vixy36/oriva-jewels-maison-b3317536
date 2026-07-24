@@ -121,74 +121,103 @@ function ProductPage() {
 
         <div className="mt-4 md:mt-6 grid gap-10 md:grid-cols-12 md:gap-14">
 
-          <div className="md:col-span-8">
-            <div className="relative overflow-hidden bg-charcoal aspect-square group border border-white/5 w-full max-w-[640px] mx-auto">
-              {current?.type === "video" ? (
-                <video
-                  src={current.src}
-                  controls
-                  playsInline
-                  className="h-full w-full object-cover bg-obsidian"
-                />
-              ) : (
-                <button
-                  type="button"
-                  onClick={() => setLightboxIndex(imageList.indexOf(current?.src ?? ""))}
-                  className="block h-full w-full text-left cursor-zoom-in"
-                  aria-label="Open image gallery"
-                >
-                  <img
-                    src={current?.src}
-                    alt={product.name}
-                    fetchPriority="high"
-                    decoding="async"
-                    className="h-full w-full object-cover transition-transform duration-[1800ms] ease-out group-hover:scale-[1.05]"
-                  />
-                  <span className="absolute bottom-5 right-5 inline-flex items-center gap-2 bg-gold border border-gold px-4 py-2.5 text-[13px] font-semibold tracking-[0.3em] uppercase text-obsidian opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition duration-500">
-                    <ZoomIn className="h-4 w-4" strokeWidth={2} /> Zoom
-                  </span>
-                </button>
-              )}
-
-              <span
-                role="button"
-                tabIndex={0}
-                aria-label="Wishlist"
-                className="absolute top-5 right-5 grid h-11 w-11 place-items-center bg-obsidian/90 border border-gold/50 text-gold hover:bg-gold hover:text-obsidian transition"
-              >
-                <Heart className="h-4 w-4" strokeWidth={1.6} />
-              </span>
-              <span className="absolute top-5 left-5 text-[12px] font-semibold tracking-[0.42em] uppercase text-gold bg-obsidian/85 px-3 py-1.5 border border-gold/40">
-                Ref. OR-{product.slug.slice(0, 4).toUpperCase()}
-              </span>
-
+          <div className="md:col-span-7">
+            <div className="flex gap-3 md:gap-4">
               {media.length > 1 && (
-                <>
-                  <button
-                    type="button"
-                    onClick={() => setActiveIdx((safeIdx - 1 + media.length) % media.length)}
-                    aria-label="Previous"
-                    className="absolute left-4 top-1/2 -translate-y-1/2 grid h-11 w-11 place-items-center bg-obsidian/90 border border-gold/50 text-gold hover:bg-gold hover:text-obsidian transition"
-                  >
-                    <ChevronLeft className="h-5 w-5" strokeWidth={1.8} />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setActiveIdx((safeIdx + 1) % media.length)}
-                    aria-label="Next"
-                    className="absolute right-4 top-1/2 -translate-y-1/2 grid h-11 w-11 place-items-center bg-obsidian/90 border border-gold/50 text-gold hover:bg-gold hover:text-obsidian transition"
-                  >
-                    <ChevronRight className="h-5 w-5" strokeWidth={1.8} />
-                  </button>
-                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-[11px] font-semibold tracking-[0.4em] uppercase text-gold bg-obsidian/85 px-3 py-1.5 border border-gold/40">
-                    {String(safeIdx + 1).padStart(2, "0")} / {String(media.length).padStart(2, "0")}
-                  </div>
-                </>
+                <div className="hidden md:flex flex-col gap-2.5 w-[84px] shrink-0 max-h-[520px] overflow-y-auto pr-1">
+                  {media.map((m, i) => (
+                    <button
+                      key={i}
+                      type="button"
+                      onClick={() => setActiveIdx(i)}
+                      className={`relative aspect-square w-full overflow-hidden bg-charcoal border transition shrink-0 ${
+                        i === safeIdx ? "border-gold" : "border-white/10 hover:border-white/40"
+                      }`}
+                      aria-label={m.type === "video" ? "Video" : `Image ${i + 1}`}
+                    >
+                      {m.type === "video" ? (
+                        <>
+                          <video src={m.src} muted playsInline className="h-full w-full object-cover" />
+                          <span className="absolute inset-0 grid place-items-center bg-obsidian/40">
+                            <Play className="h-4 w-4 text-ivory" strokeWidth={1.6} />
+                          </span>
+                        </>
+                      ) : (
+                        <img src={m.src} alt="" loading="lazy" className="h-full w-full object-cover" />
+                      )}
+                    </button>
+                  ))}
+                </div>
               )}
+
+              <div className="relative overflow-hidden bg-charcoal aspect-square group border border-white/5 flex-1 max-w-[520px]">
+                {current?.type === "video" ? (
+                  <video
+                    src={current.src}
+                    controls
+                    playsInline
+                    className="h-full w-full object-cover bg-obsidian"
+                  />
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => setLightboxIndex(imageList.indexOf(current?.src ?? ""))}
+                    className="block h-full w-full text-left cursor-zoom-in"
+                    aria-label="Open image gallery"
+                  >
+                    <img
+                      src={current?.src}
+                      alt={product.name}
+                      fetchPriority="high"
+                      decoding="async"
+                      className="h-full w-full object-cover transition-transform duration-[1800ms] ease-out group-hover:scale-[1.05]"
+                    />
+                    <span className="absolute bottom-5 right-5 inline-flex items-center gap-2 bg-gold border border-gold px-4 py-2.5 text-[13px] font-semibold tracking-[0.3em] uppercase text-obsidian opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition duration-500">
+                      <ZoomIn className="h-4 w-4" strokeWidth={2} /> Zoom
+                    </span>
+                  </button>
+                )}
+
+                <span
+                  role="button"
+                  tabIndex={0}
+                  aria-label="Wishlist"
+                  className="absolute top-4 right-4 grid h-10 w-10 place-items-center bg-obsidian/90 border border-gold/50 text-gold hover:bg-gold hover:text-obsidian transition"
+                >
+                  <Heart className="h-4 w-4" strokeWidth={1.6} />
+                </span>
+                <span className="absolute top-4 left-4 text-[11px] font-semibold tracking-[0.4em] uppercase text-gold bg-obsidian/85 px-2.5 py-1 border border-gold/40">
+                  Ref. OR-{product.slug.slice(0, 4).toUpperCase()}
+                </span>
+
+                {media.length > 1 && (
+                  <>
+                    <button
+                      type="button"
+                      onClick={() => setActiveIdx((safeIdx - 1 + media.length) % media.length)}
+                      aria-label="Previous"
+                      className="absolute left-3 top-1/2 -translate-y-1/2 grid h-10 w-10 place-items-center bg-obsidian/90 border border-gold/50 text-gold hover:bg-gold hover:text-obsidian transition"
+                    >
+                      <ChevronLeft className="h-5 w-5" strokeWidth={1.8} />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setActiveIdx((safeIdx + 1) % media.length)}
+                      aria-label="Next"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 grid h-10 w-10 place-items-center bg-obsidian/90 border border-gold/50 text-gold hover:bg-gold hover:text-obsidian transition"
+                    >
+                      <ChevronRight className="h-5 w-5" strokeWidth={1.8} />
+                    </button>
+                    <div className="absolute bottom-3 left-1/2 -translate-x-1/2 text-[10px] font-semibold tracking-[0.4em] uppercase text-gold bg-obsidian/85 px-2.5 py-1 border border-gold/40">
+                      {String(safeIdx + 1).padStart(2, "0")} / {String(media.length).padStart(2, "0")}
+                    </div>
+                  </>
+                )}
+              </div>
             </div>
 
             {media.length > 1 && (
-              <div className="mt-4 grid grid-cols-5 md:grid-cols-6 gap-2.5">
+              <div className="mt-3 grid grid-cols-5 gap-2 md:hidden">
                 {media.map((m, i) => (
                   <button
                     key={i}
@@ -215,7 +244,8 @@ function ProductPage() {
             )}
           </div>
 
-          <div className="md:col-span-4">
+
+          <div className="md:col-span-5">
 
             <div className="md:sticky md:top-40">
               <p className="eyebrow">{product.collection}</p>
