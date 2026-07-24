@@ -57,7 +57,7 @@ export function SiteFooter() {
               { label: "Occasions", to: "/occasions" },
             ]} />
 
-            <FooterCol title="Client Services" links={[
+            <FooterCol title="Services" links={[
               { label: "Custom Order", to: "/custom-order" },
               { label: "Contact an Advisor", to: "/contact" },
               { label: "Ring Size Guide", to: "/ring-size-guide" },
