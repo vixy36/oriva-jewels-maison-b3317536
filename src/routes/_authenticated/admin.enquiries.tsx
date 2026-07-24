@@ -72,7 +72,7 @@ function EnquiriesPage() {
     load();
   }
   async function updateField(r: Enquiry, patch: Partial<Enquiry>) {
-    const { error } = await supabase.from("enquiries").update(patch).eq("id", r.id);
+    const { error } = await supabase.from("enquiries").update(patch as never).eq("id", r.id);
     if (error) { toast.error(error.message); return; }
     setOpen({ ...r, ...patch } as Enquiry);
     setRows((prev) => prev.map((x) => (x.id === r.id ? { ...x, ...patch } as Enquiry : x)));
