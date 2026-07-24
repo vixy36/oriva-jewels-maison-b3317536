@@ -116,7 +116,8 @@ export const sendManualEmail = createServerFn({ method: "POST" })
       | ((name: string, to: string, opts?: { templateData?: Record<string, unknown>; subject?: string; idempotencyKey?: string }) => Promise<{ sent: boolean; reason?: string }>)
       | null = null;
     try {
-      const mod: any = await import(/* @vite-ignore */ "@/lib/email-templates/send-email").catch(() => null);
+      const modPath = "@/lib/email-templates/send-email";
+      const mod: any = await import(/* @vite-ignore */ modPath).catch(() => null);
       if (mod?.sendTemplateEmail) sendTemplateEmail = mod.sendTemplateEmail;
     } catch { /* not configured */ }
 
