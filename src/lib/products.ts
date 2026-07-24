@@ -13,6 +13,7 @@ export type ProductCategory =
   | "necklaces"
   | "pendants"
   | "mens-jewelry"
+  | "hip-hop-jewelry"
   | "bridal"
   | "lab-grown"
   | "natural";
@@ -184,6 +185,10 @@ export const categories: Record<ProductCategory, { label: string; blurb: string 
   "mens-jewelry": {
     label: "Men's Jewelry",
     blurb: "Signets, bands and chains crafted for the modern gentleman.",
+  },
+  "hip-hop-jewelry": {
+    label: "Hip Hop Jewelry",
+    blurb: "Iced-out chains, pendants and statement pieces with bold diamond presence.",
   },
 };
 
