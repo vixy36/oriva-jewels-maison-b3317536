@@ -481,6 +481,27 @@ function ProductEditor({ initial, onClose, onSaved }: { initial: Partial<Product
           </div>
 
 
+          <div className="border-t border-border/60 pt-4">
+            <label className="flex items-center gap-2 text-sm mb-3">
+              <Switch checked={form.track_inventory ?? false} onCheckedChange={(v) => upd("track_inventory", v)} />
+              Track inventory for this product
+            </label>
+            {form.track_inventory && (
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <Label className="text-xs">Stock Quantity</Label>
+                  <Input type="number" min={0} value={form.stock_quantity ?? 0}
+                    onChange={(e) => upd("stock_quantity", parseInt(e.target.value) || 0)} />
+                </div>
+                <div>
+                  <Label className="text-xs">Low-stock alert at</Label>
+                  <Input type="number" min={0} value={form.low_stock_threshold ?? 3}
+                    onChange={(e) => upd("low_stock_threshold", parseInt(e.target.value) || 0)} />
+                </div>
+              </div>
+            )}
+          </div>
+
           <div className="flex gap-6">
             <label className="flex items-center gap-2 text-sm">
               <Switch checked={form.is_active ?? true} onCheckedChange={(v) => upd("is_active", v)} /> Active
