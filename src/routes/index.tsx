@@ -196,7 +196,7 @@ function HomePage() {
               <Reveal key={c.title} delay={i * 60}>
                 <Link
                   to={c.to}
-                  className="group relative block overflow-hidden bg-obsidian aspect-[4/5]"
+                  className="group relative block overflow-hidden bg-obsidian aspect-square"
                 >
                   <img
                     src={c.img}
