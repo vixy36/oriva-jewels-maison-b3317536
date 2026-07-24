@@ -10,6 +10,7 @@ const entries = [
   { path: "/collections/engagement-rings", priority: "0.9", changefreq: "weekly" as const },
   { path: "/collections/earrings", priority: "0.9", changefreq: "weekly" as const },
   { path: "/collections/bracelets", priority: "0.9", changefreq: "weekly" as const },
+  { path: "/collections/hip-hop-jewelry", priority: "0.9", changefreq: "weekly" as const },
   { path: "/collections/pendants", priority: "0.9", changefreq: "weekly" as const },
   { path: "/collections/bridal", priority: "0.9", changefreq: "weekly" as const },
   { path: "/collections/lab-grown", priority: "0.9", changefreq: "weekly" as const },
