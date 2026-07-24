@@ -245,7 +245,7 @@ function ProductPage() {
           </div>
 
 
-          <div className="md:col-span-4">
+          <div className="md:col-span-5">
 
             <div className="md:sticky md:top-40">
               <p className="eyebrow">{product.collection}</p>
