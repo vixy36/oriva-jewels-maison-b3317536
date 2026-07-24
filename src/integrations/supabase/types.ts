@@ -14,6 +14,42 @@ export type Database = {
   }
   public: {
     Tables: {
+      categories: {
+        Row: {
+          banner_url: string | null
+          blurb: string | null
+          created_at: string
+          id: string
+          is_active: boolean
+          name: string
+          slug: string
+          sort_order: number
+          updated_at: string
+        }
+        Insert: {
+          banner_url?: string | null
+          blurb?: string | null
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          name: string
+          slug: string
+          sort_order?: number
+          updated_at?: string
+        }
+        Update: {
+          banner_url?: string | null
+          blurb?: string | null
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          name?: string
+          slug?: string
+          sort_order?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
       enquiries: {
         Row: {
           admin_notes: string | null
@@ -184,6 +220,50 @@ export type Database = {
           updated_at?: string
         }
         Relationships: []
+      }
+      menu_items: {
+        Row: {
+          created_at: string
+          href: string
+          id: string
+          is_active: boolean
+          label: string
+          menu_key: string
+          parent_id: string | null
+          sort_order: number
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          href: string
+          id?: string
+          is_active?: boolean
+          label: string
+          menu_key: string
+          parent_id?: string | null
+          sort_order?: number
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          href?: string
+          id?: string
+          is_active?: boolean
+          label?: string
+          menu_key?: string
+          parent_id?: string | null
+          sort_order?: number
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "menu_items_parent_id_fkey"
+            columns: ["parent_id"]
+            isOneToOne: false
+            referencedRelation: "menu_items"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       offers: {
         Row: {
