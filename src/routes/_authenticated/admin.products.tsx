@@ -151,6 +151,17 @@ function ProductsPage() {
                         {p.is_active ? "Active" : "Hidden"}
                       </span>
                       {p.is_featured && <span className="ml-2 text-xs px-2 py-1 rounded bg-amber-500/10 text-amber-700 dark:text-amber-400">Featured</span>}
+                      {p.track_inventory && (
+                        <div className="mt-1 text-[11px]">
+                          {p.stock_quantity === 0 ? (
+                            <span className="text-red-600">Out of stock</span>
+                          ) : p.stock_quantity <= p.low_stock_threshold ? (
+                            <span className="text-amber-600">Low: {p.stock_quantity} left</span>
+                          ) : (
+                            <span className="text-muted-foreground">Stock: {p.stock_quantity}</span>
+                          )}
+                        </div>
+                      )}
                     </td>
                     <td className="p-3 text-right">
                       <Button size="sm" variant="ghost" onClick={() => setEditing(p)}><Pencil className="h-4 w-4" /></Button>
