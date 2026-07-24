@@ -36,6 +36,9 @@ type Product = {
   is_active: boolean;
   is_featured: boolean;
   sort_order: number;
+  stock_quantity: number;
+  low_stock_threshold: number;
+  track_inventory: boolean;
 };
 
 type OfferOpt = { id: string; title: string };
