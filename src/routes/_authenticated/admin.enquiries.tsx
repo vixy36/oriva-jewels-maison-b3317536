@@ -91,11 +91,11 @@ function EnquiriesPage() {
       currency: r.currency ?? "USD",
     }];
     const { error } = await supabase.from("orders").insert({
-      order_code: code,
+      order_code: code as string,
       customer_name: r.name,
       customer_email: r.email,
       customer_phone: r.phone,
-      items,
+      items: items as never,
       subtotal: r.total_amount ?? 0,
       total: r.total_amount ?? 0,
       currency: r.currency ?? "USD",
