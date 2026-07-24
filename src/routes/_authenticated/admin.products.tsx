@@ -452,23 +452,30 @@ function ProductEditor({ initial, onClose, onSaved }: { initial: Partial<Product
 
           <div>
             <Label>Images</Label>
-            <div className="mt-2 grid grid-cols-4 gap-2">
+            <div className="mt-2 flex flex-wrap gap-2">
               {(form.images || []).map((url, i) => (
-                <div key={i} className="relative aspect-square border border-border/60 group">
-                  <img src={url} alt="" className="w-full h-full object-cover" />
+                <div key={i} className="relative h-20 w-20 border border-border/60 group overflow-hidden rounded">
+                  <button
+                    type="button"
+                    onClick={() => setLightboxIdx(i)}
+                    className="block h-full w-full"
+                    aria-label="Preview image"
+                  >
+                    <img src={url} alt="" className="w-full h-full object-cover" />
+                  </button>
                   <button
                     type="button"
                     onClick={() => upd("images", form.images!.filter((_, j) => j !== i))}
                     className="absolute top-1 right-1 bg-black/70 text-white p-1 rounded opacity-0 group-hover:opacity-100"
+                    aria-label="Remove image"
                   >
                     <X className="h-3 w-3" />
                   </button>
                 </div>
               ))}
-              <label className="aspect-square border border-dashed border-border/60 flex flex-col items-center justify-center cursor-pointer hover:border-foreground/40 hover:bg-muted/40 text-xs text-muted-foreground transition">
-                <ImagePlus className="h-6 w-6 mb-1" />
-                {uploading ? "Uploading…" : "Add Photos"}
-                <span className="text-[10px] opacity-60 mt-0.5">Multiple OK</span>
+              <label className="h-20 w-20 border border-dashed border-border/60 rounded flex flex-col items-center justify-center cursor-pointer hover:border-foreground/40 hover:bg-muted/40 text-[11px] text-muted-foreground transition">
+                <ImagePlus className="h-5 w-5 mb-1" />
+                {uploading ? "Uploading…" : "Add"}
                 <input
                   type="file"
                   accept="image/*"
@@ -484,8 +491,18 @@ function ProductEditor({ initial, onClose, onSaved }: { initial: Partial<Product
             <Label>Video <span className="text-xs text-muted-foreground font-normal">(optional, max 3MB)</span></Label>
             <div className="mt-2 flex items-center gap-3">
               {form.video_url ? (
-                <div className="relative">
-                  <video src={form.video_url} className="h-24 w-24 object-cover rounded border border-border/60" muted playsInline />
+                <div className="relative h-20 w-20">
+                  <button
+                    type="button"
+                    onClick={() => setVideoOpen(true)}
+                    className="block h-full w-full overflow-hidden rounded border border-border/60 relative group"
+                    aria-label="Preview video"
+                  >
+                    <video src={form.video_url} className="h-full w-full object-cover" muted playsInline />
+                    <span className="absolute inset-0 grid place-items-center bg-black/30 group-hover:bg-black/50 transition">
+                      <Play className="h-5 w-5 text-white" fill="white" />
+                    </span>
+                  </button>
                   <button
                     type="button"
                     onClick={() => upd("video_url", null)}
@@ -508,6 +525,40 @@ function ProductEditor({ initial, onClose, onSaved }: { initial: Partial<Product
               </label>
             </div>
           </div>
+
+          {lightboxIdx !== null && form.images && form.images.length > 0 && (
+            <Lightbox
+              images={form.images}
+              index={lightboxIdx}
+              onClose={() => setLightboxIdx(null)}
+              onIndexChange={setLightboxIdx}
+            />
+          )}
+
+          {videoOpen && form.video_url && (
+            <div
+              className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-6"
+              onClick={() => setVideoOpen(false)}
+              role="dialog"
+              aria-modal="true"
+            >
+              <button
+                type="button"
+                onClick={() => setVideoOpen(false)}
+                aria-label="Close"
+                className="absolute top-6 right-6 grid h-11 w-11 place-items-center bg-black/70 border border-white/40 text-white hover:bg-white hover:text-black transition"
+              >
+                <X className="h-5 w-5" />
+              </button>
+              <video
+                src={form.video_url}
+                controls
+                autoPlay
+                className="max-h-[85vh] max-w-[92vw]"
+                onClick={(e) => e.stopPropagation()}
+              />
+            </div>
+          )}
 
 
           <div className="border-t border-border/60 pt-4">
