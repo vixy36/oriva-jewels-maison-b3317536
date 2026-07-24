@@ -467,15 +467,18 @@ function HomePage() {
 
           <div className="mt-8 grid grid-cols-3 gap-2 md:gap-4">
             {[
-              { n: "I", title: "Consultation" },
-              { n: "II", title: "CAD & Approval" },
-              { n: "III", title: "Crafted & Delivered" },
+              { n: "I", title: "Consultation", desc: "A private conversation about her, the moment, the vision." },
+              { n: "II", title: "CAD & Approval", desc: "A photoreal 3D reveal, refined until every detail is hers." },
+              { n: "III", title: "Crafted & Delivered", desc: "Hand-set by our master jewellers, delivered worldwide." },
             ].map((s, i) => (
               <Reveal key={s.n} delay={i * 90}>
                 <div className="group flex items-center gap-2 md:gap-3 border border-white/10 bg-obsidian/40 px-3 py-2 md:px-5 md:py-3 hover:border-gold/40 transition whitespace-nowrap overflow-hidden">
                   <span className="font-serif italic text-lg md:text-2xl text-gold-gradient shrink-0">{s.n}</span>
                   <span className="h-px w-4 md:w-6 bg-gold/60 shrink-0" />
-                  <h3 className="font-serif text-sm md:text-lg text-ivory truncate">{s.title}</h3>
+                  <div className="min-w-0 flex-1">
+                    <h3 className="font-serif text-sm md:text-lg text-ivory truncate">{s.title}</h3>
+                    <p className="hidden md:block text-[11px] text-ivory/55 truncate">{s.desc}</p>
+                  </div>
                 </div>
               </Reveal>
             ))}
