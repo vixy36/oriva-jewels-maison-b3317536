@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
-import { LayoutDashboard, Package, Search, Inbox, FileEdit, LogOut, Menu, X, Tag } from "lucide-react";
+import { LayoutDashboard, Package, Search, Inbox, LogOut, Menu, X, Tag, Users } from "lucide-react";
 
 export const Route = createFileRoute("/_authenticated/admin")({
   ssr: false,
@@ -43,8 +43,9 @@ const nav: { to: string; label: string; icon: typeof LayoutDashboard; exact?: bo
   { to: "/admin/offers", label: "Offers", icon: Tag },
   { to: "/admin/seo", label: "SEO", icon: Search },
   { to: "/admin/enquiries", label: "Enquiries", icon: Inbox },
-  { to: "/admin/content", label: "Content", icon: FileEdit },
+  { to: "/admin/users", label: "Users & Roles", icon: Users },
 ];
+
 
 function AdminLayout() {
   const { user } = Route.useRouteContext();

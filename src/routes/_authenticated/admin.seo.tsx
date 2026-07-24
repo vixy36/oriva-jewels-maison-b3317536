@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState, useCallback } from "react";
 import { supabase } from "@/integrations/supabase/client";
+import { useServerFn } from "@tanstack/react-start";
+import { generateSeoMeta } from "@/lib/seo-ai.functions";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -8,7 +10,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { toast } from "sonner";
-import { Pencil, Trash2, Plus, AlertCircle, CheckCircle2 } from "lucide-react";
+import { Pencil, Trash2, Plus, AlertCircle, CheckCircle2, Sparkles, Wand2 } from "lucide-react";
+
 
 export const Route = createFileRoute("/_authenticated/admin/seo")({
   component: SeoPage,
@@ -48,10 +51,31 @@ function scoreRow(r: SeoRow) {
   return { pass, total: checks.length };
 }
 
+const COMMON_ROUTES: { path: string; label: string }[] = [
+  { path: "/", label: "Home" },
+  { path: "/about", label: "About" },
+  { path: "/contact", label: "Contact" },
+  { path: "/bespoke", label: "Bespoke" },
+  { path: "/custom-order", label: "Custom Order" },
+  { path: "/education", label: "Education" },
+  { path: "/offers", label: "Offers" },
+  { path: "/ring-size-guide", label: "Ring Size Guide" },
+  { path: "/assurance", label: "Assurance" },
+  { path: "/collections/rings", label: "Rings" },
+  { path: "/collections/earrings", label: "Earrings" },
+  { path: "/collections/bracelets", label: "Bracelets" },
+  { path: "/collections/necklaces", label: "Necklaces" },
+  { path: "/collections/pendants", label: "Pendants" },
+  { path: "/collections/engagement-rings", label: "Engagement Rings" },
+  { path: "/collections/mens-jewelry", label: "Men's Jewelry" },
+];
+
 function SeoPage() {
   const [rows, setRows] = useState<SeoRow[]>([]);
   const [loading, setLoading] = useState(true);
   const [editing, setEditing] = useState<Partial<SeoRow> | null>(null);
+  const [bulkBusy, setBulkBusy] = useState(false);
+  const generate = useServerFn(generateSeoMeta);
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -71,6 +95,40 @@ function SeoPage() {
     load();
   }
 
+  const missingRoutes = COMMON_ROUTES.filter((c) => !rows.some((r) => r.route_path === c.path));
+
+  async function autoFillAll() {
+    if (missingRoutes.length === 0) {
+      toast.info("Every common route already has SEO metadata.");
+      return;
+    }
+    if (!confirm(`Auto-generate SEO for ${missingRoutes.length} missing route(s) with AI?`)) return;
+    setBulkBusy(true);
+    let ok = 0;
+    for (const r of missingRoutes) {
+      try {
+        const meta = await generate({ data: { route_path: r.path, hint: r.label } });
+        const { error } = await supabase.from("seo_meta").insert({
+          route_path: r.path,
+          title: meta.title,
+          description: meta.description,
+          keywords: meta.keywords,
+          og_title: meta.og_title,
+          og_description: meta.og_description,
+          canonical: r.path,
+          robots: "index,follow",
+          is_published: true,
+        });
+        if (!error) ok++;
+      } catch (e: any) {
+        console.error("autoFill", r.path, e);
+      }
+    }
+    setBulkBusy(false);
+    toast.success(`Generated SEO for ${ok}/${missingRoutes.length} routes`);
+    load();
+  }
+
   const overall = rows.reduce((a, r) => {
     const s = scoreRow(r);
     return { pass: a.pass + s.pass, total: a.total + s.total };
@@ -83,9 +141,35 @@ function SeoPage() {
         <div>
           <p className="eyebrow">Search</p>
           <h1 className="mt-2 font-serif text-3xl">SEO Manager</h1>
+          <p className="mt-1 text-sm text-muted-foreground">Automate with AI, or edit every field by hand.</p>
         </div>
-        <Button onClick={() => setEditing({ ...empty })}><Plus className="h-4 w-4 mr-2" /> New Page</Button>
+        <div className="flex gap-2 flex-wrap">
+          <Button variant="outline" onClick={autoFillAll} disabled={bulkBusy || missingRoutes.length === 0}>
+            <Sparkles className="h-4 w-4 mr-2" />
+            {bulkBusy ? "Generating…" : `Auto-fill missing (${missingRoutes.length})`}
+          </Button>
+          <Button onClick={() => setEditing({ ...empty })}><Plus className="h-4 w-4 mr-2" /> New Page</Button>
+        </div>
       </div>
+
+      {missingRoutes.length > 0 && (
+        <div className="mt-4 border border-border/60 bg-muted/30 p-4">
+          <p className="text-xs uppercase tracking-widest text-muted-foreground">Quick add — routes without SEO</p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            {missingRoutes.map((r) => (
+              <button
+                key={r.path}
+                onClick={() => setEditing({ ...empty, route_path: r.path, canonical: r.path })}
+                className="text-xs px-3 py-1.5 border border-border/60 bg-card hover:border-foreground/40 transition"
+              >
+                + {r.label} <span className="text-muted-foreground font-mono">{r.path}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
+
 
       <div className="mt-6 border border-border/60 bg-card p-6">
         <div className="flex items-center justify-between">
@@ -162,6 +246,9 @@ function SeoPage() {
 function SeoEditor({ initial, onClose, onSaved }: { initial: Partial<SeoRow>; onClose: () => void; onSaved: () => void }) {
   const [form, setForm] = useState<Partial<SeoRow>>(initial);
   const [saving, setSaving] = useState(false);
+  const [aiBusy, setAiBusy] = useState(false);
+  const [hint, setHint] = useState("");
+  const generate = useServerFn(generateSeoMeta);
   const isNew = !initial.id;
 
   function upd<K extends keyof SeoRow>(k: K, v: SeoRow[K]) {
@@ -170,6 +257,28 @@ function SeoEditor({ initial, onClose, onSaved }: { initial: Partial<SeoRow>; on
 
   const titleLen = (form.title || "").length;
   const descLen = (form.description || "").length;
+
+  async function runAi() {
+    if (!form.route_path) return toast.error("Enter a route path first");
+    setAiBusy(true);
+    try {
+      const meta = await generate({ data: { route_path: form.route_path, hint: hint || undefined } });
+      setForm((f) => ({
+        ...f,
+        title: meta.title,
+        description: meta.description,
+        keywords: meta.keywords,
+        og_title: meta.og_title,
+        og_description: meta.og_description,
+        canonical: f.canonical || f.route_path || "",
+      }));
+      toast.success("AI generated metadata — review and save");
+    } catch (e: any) {
+      toast.error(e?.message ?? "AI generation failed");
+    } finally {
+      setAiBusy(false);
+    }
+  }
 
   async function save() {
     if (!form.route_path) return toast.error("Route path is required");
@@ -206,6 +315,25 @@ function SeoEditor({ initial, onClose, onSaved }: { initial: Partial<SeoRow>; on
             <Label>Route Path *</Label>
             <Input value={form.route_path || ""} onChange={(e) => upd("route_path", e.target.value)} placeholder="/about" />
           </div>
+
+          <div className="border border-border/60 bg-muted/30 p-4 space-y-3">
+            <div className="flex items-center gap-2">
+              <Wand2 className="h-4 w-4 text-amber-600" />
+              <p className="text-xs uppercase tracking-widest">AI Auto-Generate</p>
+            </div>
+            <Input
+              value={hint}
+              onChange={(e) => setHint(e.target.value)}
+              placeholder="Optional: describe this page (e.g. 'Lab-grown diamond engagement rings')"
+            />
+            <Button type="button" size="sm" variant="outline" onClick={runAi} disabled={aiBusy}>
+              <Sparkles className="h-3 w-3 mr-2" />
+              {aiBusy ? "Generating…" : "Generate with AI"}
+            </Button>
+            <p className="text-[11px] text-muted-foreground">Fills title, description, keywords, and OG fields. Edit freely below.</p>
+          </div>
+
+
           <div>
             <div className="flex justify-between"><Label>Title</Label><span className={`text-xs ${titleLen > 60 || (titleLen > 0 && titleLen < 20) ? "text-amber-600" : "text-muted-foreground"}`}>{titleLen}/60</span></div>
             <Input value={form.title || ""} onChange={(e) => upd("title", e.target.value)} />
