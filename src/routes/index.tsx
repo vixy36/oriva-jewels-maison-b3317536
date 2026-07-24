@@ -638,7 +638,7 @@ function HomePage() {
                 className="relative aspect-[9/16] overflow-hidden bg-obsidian border border-white/5"
               >
                 <iframe
-                  src={`https://www.instagram.com/reel/${code}/embed/?cr=1&rd=https%3A%2F%2Forivajewels.com`}
+                  src={`https://www.instagram.com/p/${code}/embed/`}
                   title={`Oriva Jewels reel ${code}`}
                   loading="lazy"
                   allow="encrypted-media"
