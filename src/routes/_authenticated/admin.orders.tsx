@@ -163,6 +163,7 @@ function StatusPill({ s }: { s: string }) {
 
 function OrderEditor({ order, onClose, onSaved }: { order: Order | null; onClose: () => void; onSaved: () => void }) {
   const isNew = !order;
+  const previousStatus = order?.status;
   const [form, setForm] = useState<Partial<Order>>(order ?? {
     customer_name: "", customer_email: "", customer_phone: "",
     items: [], subtotal: 0, shipping_cost: 0, discount: 0, total: 0,
@@ -171,6 +172,7 @@ function OrderEditor({ order, onClose, onSaved }: { order: Order | null; onClose
     tracking_number: "", carrier: "", estimated_delivery: null, admin_notes: "",
   });
   const [saving, setSaving] = useState(false);
+  const triggerAutomations = useServerFn(runStatusAutomations);
 
   function upd<K extends keyof Order>(k: K, v: Order[K]) {
     setForm((f) => ({ ...f, [k]: v }));
