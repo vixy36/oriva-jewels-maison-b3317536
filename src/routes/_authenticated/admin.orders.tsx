@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState, useCallback } from "react";
+import { useServerFn } from "@tanstack/react-start";
+import { runStatusAutomations } from "@/lib/automations.functions";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -161,6 +163,7 @@ function StatusPill({ s }: { s: string }) {
 
 function OrderEditor({ order, onClose, onSaved }: { order: Order | null; onClose: () => void; onSaved: () => void }) {
   const isNew = !order;
+  const previousStatus = order?.status;
   const [form, setForm] = useState<Partial<Order>>(order ?? {
     customer_name: "", customer_email: "", customer_phone: "",
     items: [], subtotal: 0, shipping_cost: 0, discount: 0, total: 0,
@@ -169,6 +172,7 @@ function OrderEditor({ order, onClose, onSaved }: { order: Order | null; onClose
     tracking_number: "", carrier: "", estimated_delivery: null, admin_notes: "",
   });
   const [saving, setSaving] = useState(false);
+  const triggerAutomations = useServerFn(runStatusAutomations);
 
   function upd<K extends keyof Order>(k: K, v: Order[K]) {
     setForm((f) => ({ ...f, [k]: v }));
@@ -228,6 +232,32 @@ function OrderEditor({ order, onClose, onSaved }: { order: Order | null; onClose
     setSaving(false);
     if (error) return toast.error(error.message);
     toast.success(isNew ? `Order ${code} created` : "Order updated");
+
+    const newStatus = payload.status;
+    const statusChanged = isNew || (previousStatus && newStatus !== previousStatus);
+    if (statusChanged && payload.customer_email) {
+      try {
+        const res = await triggerAutomations({
+          data: {
+            triggerType: "order_status",
+            status: newStatus,
+            recipient: { email: payload.customer_email, name: payload.customer_name },
+            data: {
+              orderCode: code,
+              trackingNumber: payload.tracking_number,
+              carrier: payload.carrier,
+              total: payload.total,
+              currency: payload.currency,
+              estimatedDelivery: payload.estimated_delivery,
+              orderStatusUrl: `${window.location.origin}/order/${code}`,
+            },
+          },
+        });
+        if (res.triggered > 0) toast.message(`${res.triggered} automation${res.triggered > 1 ? "s" : ""} triggered · ${res.sent} email${res.sent === 1 ? "" : "s"} sent`);
+      } catch (e) {
+        console.warn("Automation trigger failed", e);
+      }
+    }
     onSaved();
   }
 

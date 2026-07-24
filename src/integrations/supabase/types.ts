@@ -86,6 +86,105 @@ export type Database = {
         }
         Relationships: []
       }
+      gifts: {
+        Row: {
+          audience: string | null
+          created_at: string
+          cta_label: string | null
+          currency: string | null
+          description: string | null
+          id: string
+          image_url: string | null
+          is_active: boolean
+          occasion: string | null
+          price_from: number | null
+          product_slug: string | null
+          sort_order: number
+          subtitle: string | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          audience?: string | null
+          created_at?: string
+          cta_label?: string | null
+          currency?: string | null
+          description?: string | null
+          id?: string
+          image_url?: string | null
+          is_active?: boolean
+          occasion?: string | null
+          price_from?: number | null
+          product_slug?: string | null
+          sort_order?: number
+          subtitle?: string | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          audience?: string | null
+          created_at?: string
+          cta_label?: string | null
+          currency?: string | null
+          description?: string | null
+          id?: string
+          image_url?: string | null
+          is_active?: boolean
+          occasion?: string | null
+          price_from?: number | null
+          product_slug?: string | null
+          sort_order?: number
+          subtitle?: string | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      marketing_automations: {
+        Row: {
+          created_at: string
+          description: string | null
+          id: string
+          is_active: boolean
+          last_run_at: string | null
+          name: string
+          run_count: number
+          subject_override: string | null
+          template_name: string
+          trigger_status: string
+          trigger_type: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_active?: boolean
+          last_run_at?: string | null
+          name: string
+          run_count?: number
+          subject_override?: string | null
+          template_name: string
+          trigger_status: string
+          trigger_type: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_active?: boolean
+          last_run_at?: string | null
+          name?: string
+          run_count?: number
+          subject_override?: string | null
+          template_name?: string
+          trigger_status?: string
+          trigger_type?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       offers: {
         Row: {
           badge: string | null

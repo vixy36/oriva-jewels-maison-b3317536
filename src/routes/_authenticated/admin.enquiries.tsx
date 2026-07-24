@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState, useCallback } from "react";
+import { useServerFn } from "@tanstack/react-start";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -8,6 +9,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
 import { Mail, MailOpen, Trash2, Archive, MessageSquare, PackagePlus } from "lucide-react";
+import { runStatusAutomations } from "@/lib/automations.functions";
 
 export const Route = createFileRoute("/_authenticated/admin/enquiries")({
   component: EnquiriesPage,
@@ -42,6 +44,7 @@ function EnquiriesPage() {
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState<"all" | "unread" | "archived">("unread");
   const [open, setOpen] = useState<Enquiry | null>(null);
+  const triggerAutomations = useServerFn(runStatusAutomations);
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -76,6 +79,27 @@ function EnquiriesPage() {
     if (error) { toast.error(error.message); return; }
     setOpen({ ...r, ...patch } as Enquiry);
     setRows((prev) => prev.map((x) => (x.id === r.id ? { ...x, ...patch } as Enquiry : x)));
+    if (patch.status && patch.status !== r.status && r.email) {
+      try {
+        const res = await triggerAutomations({
+          data: {
+            triggerType: "enquiry_status",
+            status: patch.status,
+            recipient: { email: r.email, name: r.name },
+            data: {
+              subject: r.subject,
+              productSlug: r.product_slug,
+              configuration: r.configuration ?? {},
+              trackingNumber: patch.tracking_number ?? r.tracking_number,
+              carrier: patch.carrier ?? r.carrier,
+            },
+          },
+        });
+        if (res.triggered > 0) toast.success(`${res.triggered} automation${res.triggered > 1 ? "s" : ""} triggered · ${res.sent} email${res.sent === 1 ? "" : "s"} sent`);
+      } catch (e) {
+        console.warn("Automation trigger failed", e);
+      }
+    }
   }
 
   async function convertToOrder(r: Enquiry) {

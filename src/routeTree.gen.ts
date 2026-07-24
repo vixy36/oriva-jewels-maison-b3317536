@@ -13,6 +13,7 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as RingSizeGuideRouteImport } from './routes/ring-size-guide'
 import { Route as OffersRouteImport } from './routes/offers'
 import { Route as OccasionsRouteImport } from './routes/occasions'
+import { Route as GiftsRouteImport } from './routes/gifts'
 import { Route as EducationRouteImport } from './routes/education'
 import { Route as CustomOrderRouteImport } from './routes/custom-order'
 import { Route as ContactRouteImport } from './routes/contact'
@@ -33,7 +34,9 @@ import { Route as AuthenticatedAdminSeoRouteImport } from './routes/_authenticat
 import { Route as AuthenticatedAdminProductsRouteImport } from './routes/_authenticated/admin.products'
 import { Route as AuthenticatedAdminOrdersRouteImport } from './routes/_authenticated/admin.orders'
 import { Route as AuthenticatedAdminOffersRouteImport } from './routes/_authenticated/admin.offers'
+import { Route as AuthenticatedAdminGiftsRouteImport } from './routes/_authenticated/admin.gifts'
 import { Route as AuthenticatedAdminEnquiriesRouteImport } from './routes/_authenticated/admin.enquiries'
+import { Route as AuthenticatedAdminAutomationsRouteImport } from './routes/_authenticated/admin.automations'
 import { Route as AuthenticatedAdminOrdersIdLabelRouteImport } from './routes/_authenticated/admin.orders.$id.label'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -54,6 +57,11 @@ const OffersRoute = OffersRouteImport.update({
 const OccasionsRoute = OccasionsRouteImport.update({
   id: '/occasions',
   path: '/occasions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GiftsRoute = GiftsRouteImport.update({
+  id: '/gifts',
+  path: '/gifts',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EducationRoute = EducationRouteImport.update({
@@ -158,10 +166,21 @@ const AuthenticatedAdminOffersRoute =
     path: '/offers',
     getParentRoute: () => AuthenticatedAdminRoute,
   } as any)
+const AuthenticatedAdminGiftsRoute = AuthenticatedAdminGiftsRouteImport.update({
+  id: '/gifts',
+  path: '/gifts',
+  getParentRoute: () => AuthenticatedAdminRoute,
+} as any)
 const AuthenticatedAdminEnquiriesRoute =
   AuthenticatedAdminEnquiriesRouteImport.update({
     id: '/enquiries',
     path: '/enquiries',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminAutomationsRoute =
+  AuthenticatedAdminAutomationsRouteImport.update({
+    id: '/automations',
+    path: '/automations',
     getParentRoute: () => AuthenticatedAdminRoute,
   } as any)
 const AuthenticatedAdminOrdersIdLabelRoute =
@@ -180,6 +199,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/custom-order': typeof CustomOrderRoute
   '/education': typeof EducationRoute
+  '/gifts': typeof GiftsRoute
   '/occasions': typeof OccasionsRoute
   '/offers': typeof OffersRoute
   '/ring-size-guide': typeof RingSizeGuideRoute
@@ -189,7 +209,9 @@ export interface FileRoutesByFullPath {
   '/order/$code': typeof OrderCodeRoute
   '/product/$slug': typeof ProductSlugRoute
   '/shape/$shape': typeof ShapeShapeRoute
+  '/admin/automations': typeof AuthenticatedAdminAutomationsRoute
   '/admin/enquiries': typeof AuthenticatedAdminEnquiriesRoute
+  '/admin/gifts': typeof AuthenticatedAdminGiftsRoute
   '/admin/offers': typeof AuthenticatedAdminOffersRoute
   '/admin/orders': typeof AuthenticatedAdminOrdersRouteWithChildren
   '/admin/products': typeof AuthenticatedAdminProductsRoute
@@ -207,6 +229,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/custom-order': typeof CustomOrderRoute
   '/education': typeof EducationRoute
+  '/gifts': typeof GiftsRoute
   '/occasions': typeof OccasionsRoute
   '/offers': typeof OffersRoute
   '/ring-size-guide': typeof RingSizeGuideRoute
@@ -215,7 +238,9 @@ export interface FileRoutesByTo {
   '/order/$code': typeof OrderCodeRoute
   '/product/$slug': typeof ProductSlugRoute
   '/shape/$shape': typeof ShapeShapeRoute
+  '/admin/automations': typeof AuthenticatedAdminAutomationsRoute
   '/admin/enquiries': typeof AuthenticatedAdminEnquiriesRoute
+  '/admin/gifts': typeof AuthenticatedAdminGiftsRoute
   '/admin/offers': typeof AuthenticatedAdminOffersRoute
   '/admin/orders': typeof AuthenticatedAdminOrdersRouteWithChildren
   '/admin/products': typeof AuthenticatedAdminProductsRoute
@@ -235,6 +260,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/custom-order': typeof CustomOrderRoute
   '/education': typeof EducationRoute
+  '/gifts': typeof GiftsRoute
   '/occasions': typeof OccasionsRoute
   '/offers': typeof OffersRoute
   '/ring-size-guide': typeof RingSizeGuideRoute
@@ -244,7 +270,9 @@ export interface FileRoutesById {
   '/order/$code': typeof OrderCodeRoute
   '/product/$slug': typeof ProductSlugRoute
   '/shape/$shape': typeof ShapeShapeRoute
+  '/_authenticated/admin/automations': typeof AuthenticatedAdminAutomationsRoute
   '/_authenticated/admin/enquiries': typeof AuthenticatedAdminEnquiriesRoute
+  '/_authenticated/admin/gifts': typeof AuthenticatedAdminGiftsRoute
   '/_authenticated/admin/offers': typeof AuthenticatedAdminOffersRoute
   '/_authenticated/admin/orders': typeof AuthenticatedAdminOrdersRouteWithChildren
   '/_authenticated/admin/products': typeof AuthenticatedAdminProductsRoute
@@ -264,6 +292,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/custom-order'
     | '/education'
+    | '/gifts'
     | '/occasions'
     | '/offers'
     | '/ring-size-guide'
@@ -273,7 +302,9 @@ export interface FileRouteTypes {
     | '/order/$code'
     | '/product/$slug'
     | '/shape/$shape'
+    | '/admin/automations'
     | '/admin/enquiries'
+    | '/admin/gifts'
     | '/admin/offers'
     | '/admin/orders'
     | '/admin/products'
@@ -291,6 +322,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/custom-order'
     | '/education'
+    | '/gifts'
     | '/occasions'
     | '/offers'
     | '/ring-size-guide'
@@ -299,7 +331,9 @@ export interface FileRouteTypes {
     | '/order/$code'
     | '/product/$slug'
     | '/shape/$shape'
+    | '/admin/automations'
     | '/admin/enquiries'
+    | '/admin/gifts'
     | '/admin/offers'
     | '/admin/orders'
     | '/admin/products'
@@ -318,6 +352,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/custom-order'
     | '/education'
+    | '/gifts'
     | '/occasions'
     | '/offers'
     | '/ring-size-guide'
@@ -327,7 +362,9 @@ export interface FileRouteTypes {
     | '/order/$code'
     | '/product/$slug'
     | '/shape/$shape'
+    | '/_authenticated/admin/automations'
     | '/_authenticated/admin/enquiries'
+    | '/_authenticated/admin/gifts'
     | '/_authenticated/admin/offers'
     | '/_authenticated/admin/orders'
     | '/_authenticated/admin/products'
@@ -347,6 +384,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   CustomOrderRoute: typeof CustomOrderRoute
   EducationRoute: typeof EducationRoute
+  GiftsRoute: typeof GiftsRoute
   OccasionsRoute: typeof OccasionsRoute
   OffersRoute: typeof OffersRoute
   RingSizeGuideRoute: typeof RingSizeGuideRoute
@@ -385,6 +423,13 @@ declare module '@tanstack/react-router' {
       path: '/occasions'
       fullPath: '/occasions'
       preLoaderRoute: typeof OccasionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gifts': {
+      id: '/gifts'
+      path: '/gifts'
+      fullPath: '/gifts'
+      preLoaderRoute: typeof GiftsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/education': {
@@ -527,11 +572,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminOffersRouteImport
       parentRoute: typeof AuthenticatedAdminRoute
     }
+    '/_authenticated/admin/gifts': {
+      id: '/_authenticated/admin/gifts'
+      path: '/gifts'
+      fullPath: '/admin/gifts'
+      preLoaderRoute: typeof AuthenticatedAdminGiftsRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
     '/_authenticated/admin/enquiries': {
       id: '/_authenticated/admin/enquiries'
       path: '/enquiries'
       fullPath: '/admin/enquiries'
       preLoaderRoute: typeof AuthenticatedAdminEnquiriesRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/automations': {
+      id: '/_authenticated/admin/automations'
+      path: '/automations'
+      fullPath: '/admin/automations'
+      preLoaderRoute: typeof AuthenticatedAdminAutomationsRouteImport
       parentRoute: typeof AuthenticatedAdminRoute
     }
     '/_authenticated/admin/orders/$id/label': {
@@ -559,7 +618,9 @@ const AuthenticatedAdminOrdersRouteWithChildren =
   )
 
 interface AuthenticatedAdminRouteChildren {
+  AuthenticatedAdminAutomationsRoute: typeof AuthenticatedAdminAutomationsRoute
   AuthenticatedAdminEnquiriesRoute: typeof AuthenticatedAdminEnquiriesRoute
+  AuthenticatedAdminGiftsRoute: typeof AuthenticatedAdminGiftsRoute
   AuthenticatedAdminOffersRoute: typeof AuthenticatedAdminOffersRoute
   AuthenticatedAdminOrdersRoute: typeof AuthenticatedAdminOrdersRouteWithChildren
   AuthenticatedAdminProductsRoute: typeof AuthenticatedAdminProductsRoute
@@ -569,7 +630,9 @@ interface AuthenticatedAdminRouteChildren {
 }
 
 const AuthenticatedAdminRouteChildren: AuthenticatedAdminRouteChildren = {
+  AuthenticatedAdminAutomationsRoute: AuthenticatedAdminAutomationsRoute,
   AuthenticatedAdminEnquiriesRoute: AuthenticatedAdminEnquiriesRoute,
+  AuthenticatedAdminGiftsRoute: AuthenticatedAdminGiftsRoute,
   AuthenticatedAdminOffersRoute: AuthenticatedAdminOffersRoute,
   AuthenticatedAdminOrdersRoute: AuthenticatedAdminOrdersRouteWithChildren,
   AuthenticatedAdminProductsRoute: AuthenticatedAdminProductsRoute,
@@ -602,6 +665,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   CustomOrderRoute: CustomOrderRoute,
   EducationRoute: EducationRoute,
+  GiftsRoute: GiftsRoute,
   OccasionsRoute: OccasionsRoute,
   OffersRoute: OffersRoute,
   RingSizeGuideRoute: RingSizeGuideRoute,
