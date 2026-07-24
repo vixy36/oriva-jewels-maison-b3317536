@@ -246,6 +246,9 @@ function SeoPage() {
 function SeoEditor({ initial, onClose, onSaved }: { initial: Partial<SeoRow>; onClose: () => void; onSaved: () => void }) {
   const [form, setForm] = useState<Partial<SeoRow>>(initial);
   const [saving, setSaving] = useState(false);
+  const [aiBusy, setAiBusy] = useState(false);
+  const [hint, setHint] = useState("");
+  const generate = useServerFn(generateSeoMeta);
   const isNew = !initial.id;
 
   function upd<K extends keyof SeoRow>(k: K, v: SeoRow[K]) {
@@ -254,6 +257,28 @@ function SeoEditor({ initial, onClose, onSaved }: { initial: Partial<SeoRow>; on
 
   const titleLen = (form.title || "").length;
   const descLen = (form.description || "").length;
+
+  async function runAi() {
+    if (!form.route_path) return toast.error("Enter a route path first");
+    setAiBusy(true);
+    try {
+      const meta = await generate({ data: { route_path: form.route_path, hint: hint || undefined } });
+      setForm((f) => ({
+        ...f,
+        title: meta.title,
+        description: meta.description,
+        keywords: meta.keywords,
+        og_title: meta.og_title,
+        og_description: meta.og_description,
+        canonical: f.canonical || f.route_path || "",
+      }));
+      toast.success("AI generated metadata — review and save");
+    } catch (e: any) {
+      toast.error(e?.message ?? "AI generation failed");
+    } finally {
+      setAiBusy(false);
+    }
+  }
 
   async function save() {
     if (!form.route_path) return toast.error("Route path is required");
@@ -290,6 +315,25 @@ function SeoEditor({ initial, onClose, onSaved }: { initial: Partial<SeoRow>; on
             <Label>Route Path *</Label>
             <Input value={form.route_path || ""} onChange={(e) => upd("route_path", e.target.value)} placeholder="/about" />
           </div>
+
+          <div className="border border-border/60 bg-muted/30 p-4 space-y-3">
+            <div className="flex items-center gap-2">
+              <Wand2 className="h-4 w-4 text-amber-600" />
+              <p className="text-xs uppercase tracking-widest">AI Auto-Generate</p>
+            </div>
+            <Input
+              value={hint}
+              onChange={(e) => setHint(e.target.value)}
+              placeholder="Optional: describe this page (e.g. 'Lab-grown diamond engagement rings')"
+            />
+            <Button type="button" size="sm" variant="outline" onClick={runAi} disabled={aiBusy}>
+              <Sparkles className="h-3 w-3 mr-2" />
+              {aiBusy ? "Generating…" : "Generate with AI"}
+            </Button>
+            <p className="text-[11px] text-muted-foreground">Fills title, description, keywords, and OG fields. Edit freely below.</p>
+          </div>
+
+
           <div>
             <div className="flex justify-between"><Label>Title</Label><span className={`text-xs ${titleLen > 60 || (titleLen > 0 && titleLen < 20) ? "text-amber-600" : "text-muted-foreground"}`}>{titleLen}/60</span></div>
             <Input value={form.title || ""} onChange={(e) => upd("title", e.target.value)} />
