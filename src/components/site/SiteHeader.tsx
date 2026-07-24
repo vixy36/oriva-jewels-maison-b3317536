@@ -35,6 +35,7 @@ const nav: NavItem[] = [
     ],
   },
   { label: "Offers", to: "/offers" },
+  { label: "Gifts", to: "/gifts" },
   { label: "About Us", to: "/about" },
   { label: "Contact", to: "/contact" },
 ];
