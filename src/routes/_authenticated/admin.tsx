@@ -40,6 +40,8 @@ function AdminSkeleton() {
 const nav: { to: string; label: string; icon: typeof LayoutDashboard; exact?: boolean }[] = [
   { to: "/admin", label: "Dashboard", icon: LayoutDashboard, exact: true },
   { to: "/admin/products", label: "Products", icon: Package },
+  { to: "/admin/categories", label: "Categories", icon: Layers },
+  { to: "/admin/menu", label: "Menu", icon: ListTree },
   { to: "/admin/orders", label: "Orders", icon: ShoppingBag },
   { to: "/admin/enquiries", label: "Enquiries", icon: Inbox },
   { to: "/admin/offers", label: "Offers", icon: Tag },
