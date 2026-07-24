@@ -122,7 +122,7 @@ function ProductPage() {
         <div className="mt-4 md:mt-6 grid gap-10 md:grid-cols-12 md:gap-14">
 
           <div className="md:col-span-8">
-            <div className="relative overflow-hidden bg-charcoal aspect-[4/5] md:aspect-[5/6] group border border-white/5 w-full">
+            <div className="relative overflow-hidden bg-charcoal aspect-square group border border-white/5 w-full max-w-[640px] mx-auto">
               {current?.type === "video" ? (
                 <video
                   src={current.src}
