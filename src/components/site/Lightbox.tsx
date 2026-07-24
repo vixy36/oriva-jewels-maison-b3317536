@@ -49,9 +49,9 @@ export function Lightbox({
       <button
         onClick={onClose}
         aria-label="Close"
-        className="absolute top-6 right-6 grid h-12 w-12 place-items-center border border-white/15 text-ivory hover:border-gold hover:text-gold transition z-10"
+        className="absolute top-6 right-6 grid h-12 w-12 place-items-center bg-obsidian/90 border border-gold/50 text-gold hover:bg-gold hover:text-obsidian transition z-10"
       >
-        <X className="h-4 w-4" strokeWidth={1.4} />
+        <X className="h-5 w-5" strokeWidth={1.8} />
       </button>
 
       <button
@@ -60,9 +60,9 @@ export function Lightbox({
           onIndexChange((index - 1 + images.length) % images.length);
         }}
         aria-label="Previous"
-        className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 grid h-12 w-12 place-items-center border border-white/15 text-ivory hover:border-gold hover:text-gold transition z-10"
+        className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 grid h-12 w-12 place-items-center bg-obsidian/90 border border-gold/50 text-gold hover:bg-gold hover:text-obsidian transition z-10"
       >
-        <ChevronLeft className="h-5 w-5" strokeWidth={1.3} />
+        <ChevronLeft className="h-6 w-6" strokeWidth={1.8} />
       </button>
       <button
         onClick={(e) => {
@@ -70,9 +70,9 @@ export function Lightbox({
           onIndexChange((index + 1) % images.length);
         }}
         aria-label="Next"
-        className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 grid h-12 w-12 place-items-center border border-white/15 text-ivory hover:border-gold hover:text-gold transition z-10"
+        className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 grid h-12 w-12 place-items-center bg-obsidian/90 border border-gold/50 text-gold hover:bg-gold hover:text-obsidian transition z-10"
       >
-        <ChevronRight className="h-5 w-5" strokeWidth={1.3} />
+        <ChevronRight className="h-6 w-6" strokeWidth={1.8} />
       </button>
 
       <div
@@ -95,14 +95,14 @@ export function Lightbox({
         <button
           onClick={() => setZoomed((z) => !z)}
           aria-label="Toggle zoom"
-          className="absolute bottom-4 right-4 inline-flex items-center gap-2 bg-obsidian/70 backdrop-blur border border-white/15 px-4 py-2 text-[14px] tracking-[0.35em] uppercase text-ivory hover:border-gold hover:text-gold transition"
+          className="absolute bottom-4 right-4 inline-flex items-center gap-2 bg-gold border border-gold px-4 py-2.5 text-[13px] font-semibold tracking-[0.3em] uppercase text-obsidian hover:bg-ivory hover:border-ivory transition"
         >
-          <ZoomIn className="h-3.5 w-3.5" strokeWidth={1.4} />
+          <ZoomIn className="h-4 w-4" strokeWidth={2} />
           {zoomed ? "Zoom out" : "Zoom in"}
         </button>
       </div>
 
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-[14px] tracking-[0.4em] uppercase text-ivory/60">
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-[13px] font-semibold tracking-[0.4em] uppercase text-gold bg-obsidian/80 px-4 py-2 border border-gold/40">
         {String(index + 1).padStart(2, "0")} / {String(images.length).padStart(2, "0")}
       </div>
     </div>
