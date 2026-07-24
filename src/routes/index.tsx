@@ -465,30 +465,17 @@ function HomePage() {
             </p>
           </Reveal>
 
-          <div className="mt-12 grid gap-8 md:grid-cols-3 md:gap-6">
+          <div className="mt-8 grid grid-cols-3 gap-2 md:gap-4">
             {[
-              {
-                n: "I",
-                title: "Consultation",
-                body: "Share your vision on WhatsApp - a reference photo, a shape, a stone size. Our advisors respond within hours, 24×7 worldwide.",
-              },
-              {
-                n: "II",
-                title: "CAD & Approval",
-                body: "We render your piece in photorealistic CAD from three angles. Refine freely - the design isn't final until you say so.",
-              },
-              {
-                n: "III",
-                title: "Crafted & Delivered",
-                body: "Hand-set in our own atelier, GIA/IGI certified, then delivered fully insured to your door - worldwide.",
-              },
+              { n: "I", title: "Consultation" },
+              { n: "II", title: "CAD & Approval" },
+              { n: "III", title: "Crafted & Delivered" },
             ].map((s, i) => (
               <Reveal key={s.n} delay={i * 90}>
-                <div className="group h-full border border-white/10 bg-obsidian/40 p-8 md:p-10 hover:border-gold/40 transition">
-                  <p className="font-serif italic text-6xl text-gold-gradient">{s.n}</p>
-                  <h3 className="mt-8 font-serif text-2xl md:text-3xl text-ivory">{s.title}</h3>
-                  <div className="mt-4 h-px w-10 bg-gold/60" />
-                  <p className="mt-5 text-sm leading-[1.8] text-ivory/70">{s.body}</p>
+                <div className="group flex items-center gap-2 md:gap-3 border border-white/10 bg-obsidian/40 px-3 py-2 md:px-5 md:py-3 hover:border-gold/40 transition whitespace-nowrap overflow-hidden">
+                  <span className="font-serif italic text-lg md:text-2xl text-gold-gradient shrink-0">{s.n}</span>
+                  <span className="h-px w-4 md:w-6 bg-gold/60 shrink-0" />
+                  <h3 className="font-serif text-sm md:text-lg text-ivory truncate">{s.title}</h3>
                 </div>
               </Reveal>
             ))}
