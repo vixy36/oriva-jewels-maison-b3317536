@@ -102,6 +102,34 @@ export function SiteHeader() {
         style={{ backgroundColor: "rgba(7,28,55,0.92)", backdropFilter: "blur(14px)" }}
         data-surface="dark"
       >
+        <div className="border-b border-white/5 bg-obsidian/60">
+          <div className="mx-auto flex items-center justify-center gap-6 md:gap-8 px-6 md:px-10 py-1.5 max-w-[1600px]">
+            <Link
+              to="/"
+              className="text-[10px] md:text-[11px] tracking-[0.28em] uppercase text-ivory/80 hover:text-gold transition"
+              activeProps={{ className: "text-gold" }}
+              activeOptions={{ exact: true }}
+            >
+              Home
+            </Link>
+            <span className="h-3 w-px bg-white/15" aria-hidden />
+            <Link
+              to="/about"
+              className="text-[10px] md:text-[11px] tracking-[0.28em] uppercase text-ivory/80 hover:text-gold transition"
+              activeProps={{ className: "text-gold" }}
+            >
+              About Us
+            </Link>
+            <span className="h-3 w-px bg-white/15" aria-hidden />
+            <Link
+              to="/contact"
+              className="text-[10px] md:text-[11px] tracking-[0.28em] uppercase text-ivory/80 hover:text-gold transition"
+              activeProps={{ className: "text-gold" }}
+            >
+              Contact
+            </Link>
+          </div>
+        </div>
         <div ref={navItemsRef} className="relative mx-auto grid grid-cols-[auto_1fr_auto] lg:grid-cols-[1fr_auto_1fr] items-center gap-6 px-6 py-2.5 md:px-10 md:py-5 max-w-[1600px]">
           <button
             className="lg:hidden text-ivory justify-self-start"
