@@ -16,7 +16,11 @@ export type Database = {
     Tables: {
       enquiries: {
         Row: {
+          admin_notes: string | null
+          carrier: string | null
+          configuration: Json | null
           created_at: string
+          currency: string | null
           email: string | null
           id: string
           is_archived: boolean
@@ -26,12 +30,20 @@ export type Database = {
           name: string
           phone: string | null
           product_slug: string | null
+          shipping_address: Json | null
           source: string
+          status: string
           subject: string | null
+          total_amount: number | null
+          tracking_number: string | null
           updated_at: string
         }
         Insert: {
+          admin_notes?: string | null
+          carrier?: string | null
+          configuration?: Json | null
           created_at?: string
+          currency?: string | null
           email?: string | null
           id?: string
           is_archived?: boolean
@@ -41,12 +53,20 @@ export type Database = {
           name: string
           phone?: string | null
           product_slug?: string | null
+          shipping_address?: Json | null
           source?: string
+          status?: string
           subject?: string | null
+          total_amount?: number | null
+          tracking_number?: string | null
           updated_at?: string
         }
         Update: {
+          admin_notes?: string | null
+          carrier?: string | null
+          configuration?: Json | null
           created_at?: string
+          currency?: string | null
           email?: string | null
           id?: string
           is_archived?: boolean
@@ -56,8 +76,12 @@ export type Database = {
           name?: string
           phone?: string | null
           product_slug?: string | null
+          shipping_address?: Json | null
           source?: string
+          status?: string
           subject?: string | null
+          total_amount?: number | null
+          tracking_number?: string | null
           updated_at?: string
         }
         Relationships: []
@@ -128,6 +152,86 @@ export type Database = {
         }
         Relationships: []
       }
+      orders: {
+        Row: {
+          admin_notes: string | null
+          carrier: string | null
+          created_at: string
+          currency: string
+          customer_email: string
+          customer_name: string
+          customer_phone: string | null
+          discount: number
+          enquiry_id: string | null
+          estimated_delivery: string | null
+          id: string
+          items: Json
+          order_code: string
+          payment_status: string
+          shipping_address: Json | null
+          shipping_cost: number
+          status: string
+          subtotal: number
+          total: number
+          tracking_number: string | null
+          updated_at: string
+        }
+        Insert: {
+          admin_notes?: string | null
+          carrier?: string | null
+          created_at?: string
+          currency?: string
+          customer_email: string
+          customer_name: string
+          customer_phone?: string | null
+          discount?: number
+          enquiry_id?: string | null
+          estimated_delivery?: string | null
+          id?: string
+          items?: Json
+          order_code: string
+          payment_status?: string
+          shipping_address?: Json | null
+          shipping_cost?: number
+          status?: string
+          subtotal?: number
+          total?: number
+          tracking_number?: string | null
+          updated_at?: string
+        }
+        Update: {
+          admin_notes?: string | null
+          carrier?: string | null
+          created_at?: string
+          currency?: string
+          customer_email?: string
+          customer_name?: string
+          customer_phone?: string | null
+          discount?: number
+          enquiry_id?: string | null
+          estimated_delivery?: string | null
+          id?: string
+          items?: Json
+          order_code?: string
+          payment_status?: string
+          shipping_address?: Json | null
+          shipping_cost?: number
+          status?: string
+          subtotal?: number
+          total?: number
+          tracking_number?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "orders_enquiry_id_fkey"
+            columns: ["enquiry_id"]
+            isOneToOne: false
+            referencedRelation: "enquiries"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       products: {
         Row: {
           categories: string[]
@@ -140,6 +244,7 @@ export type Database = {
           images: Json
           is_active: boolean
           is_featured: boolean
+          low_stock_threshold: number
           metal_options: Json
           mrp: number | null
           name: string
@@ -151,7 +256,9 @@ export type Database = {
           slug: string
           sort_order: number
           specs: Json
+          stock_quantity: number
           subcategory: string | null
+          track_inventory: boolean
           updated_at: string
           video_url: string | null
         }
@@ -166,6 +273,7 @@ export type Database = {
           images?: Json
           is_active?: boolean
           is_featured?: boolean
+          low_stock_threshold?: number
           metal_options?: Json
           mrp?: number | null
           name: string
@@ -177,7 +285,9 @@ export type Database = {
           slug: string
           sort_order?: number
           specs?: Json
+          stock_quantity?: number
           subcategory?: string | null
+          track_inventory?: boolean
           updated_at?: string
           video_url?: string | null
         }
@@ -192,6 +302,7 @@ export type Database = {
           images?: Json
           is_active?: boolean
           is_featured?: boolean
+          low_stock_threshold?: number
           metal_options?: Json
           mrp?: number | null
           name?: string
@@ -203,7 +314,9 @@ export type Database = {
           slug?: string
           sort_order?: number
           specs?: Json
+          stock_quantity?: number
           subcategory?: string | null
+          track_inventory?: boolean
           updated_at?: string
           video_url?: string | null
         }
@@ -318,6 +431,28 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      gen_order_code: { Args: never; Returns: string }
+      get_order_status: {
+        Args: { _email: string; _order_code: string }
+        Returns: {
+          carrier: string
+          created_at: string
+          currency: string
+          customer_name: string
+          discount: number
+          estimated_delivery: string
+          items: Json
+          order_code: string
+          payment_status: string
+          shipping_address: Json
+          shipping_cost: number
+          status: string
+          subtotal: number
+          total: number
+          tracking_number: string
+          updated_at: string
+        }[]
+      }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]

@@ -36,6 +36,9 @@ type Product = {
   is_active: boolean;
   is_featured: boolean;
   sort_order: number;
+  stock_quantity: number;
+  low_stock_threshold: number;
+  track_inventory: boolean;
 };
 
 type OfferOpt = { id: string; title: string };
@@ -51,6 +54,7 @@ const empty: Partial<Product> = {
   price_from: null, mrp: null, show_price: true, offer_id: null, currency: "USD",
   short_description: "", description: "", images: [], video_url: null, diamond_type: "Both",
   is_active: true, is_featured: false, sort_order: 0,
+  stock_quantity: 0, low_stock_threshold: 3, track_inventory: false,
 };
 
 
@@ -147,6 +151,17 @@ function ProductsPage() {
                         {p.is_active ? "Active" : "Hidden"}
                       </span>
                       {p.is_featured && <span className="ml-2 text-xs px-2 py-1 rounded bg-amber-500/10 text-amber-700 dark:text-amber-400">Featured</span>}
+                      {p.track_inventory && (
+                        <div className="mt-1 text-[11px]">
+                          {p.stock_quantity === 0 ? (
+                            <span className="text-red-600">Out of stock</span>
+                          ) : p.stock_quantity <= p.low_stock_threshold ? (
+                            <span className="text-amber-600">Low: {p.stock_quantity} left</span>
+                          ) : (
+                            <span className="text-muted-foreground">Stock: {p.stock_quantity}</span>
+                          )}
+                        </div>
+                      )}
                     </td>
                     <td className="p-3 text-right">
                       <Button size="sm" variant="ghost" onClick={() => setEditing(p)}><Pencil className="h-4 w-4" /></Button>
@@ -268,6 +283,9 @@ function ProductEditor({ initial, onClose, onSaved }: { initial: Partial<Product
       is_active: form.is_active ?? true,
       is_featured: form.is_featured ?? false,
       sort_order: form.sort_order ?? 0,
+      stock_quantity: form.stock_quantity ?? 0,
+      low_stock_threshold: form.low_stock_threshold ?? 3,
+      track_inventory: form.track_inventory ?? false,
     };
 
 
@@ -473,6 +491,27 @@ function ProductEditor({ initial, onClose, onSaved }: { initial: Partial<Product
             </div>
           </div>
 
+
+          <div className="border-t border-border/60 pt-4">
+            <label className="flex items-center gap-2 text-sm mb-3">
+              <Switch checked={form.track_inventory ?? false} onCheckedChange={(v) => upd("track_inventory", v)} />
+              Track inventory for this product
+            </label>
+            {form.track_inventory && (
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <Label className="text-xs">Stock Quantity</Label>
+                  <Input type="number" min={0} value={form.stock_quantity ?? 0}
+                    onChange={(e) => upd("stock_quantity", parseInt(e.target.value) || 0)} />
+                </div>
+                <div>
+                  <Label className="text-xs">Low-stock alert at</Label>
+                  <Input type="number" min={0} value={form.low_stock_threshold ?? 3}
+                    onChange={(e) => upd("low_stock_threshold", parseInt(e.target.value) || 0)} />
+                </div>
+              </div>
+            )}
+          </div>
 
           <div className="flex gap-6">
             <label className="flex items-center gap-2 text-sm">

@@ -321,15 +321,34 @@ function ProductPage() {
               </div>
 
 
-              <a
-                href={buildWhatsAppLink(message)}
-                target="_blank"
-                rel="noreferrer"
-                className="mt-5 flex items-center justify-center gap-3 bg-gold text-obsidian py-5 text-[14px] tracking-[0.4em] uppercase hover:bg-ivory transition group"
+              <button
+                type="button"
+                onClick={async () => {
+                  const configuration = {
+                    diamondType, karat, goldColor, caratFrom, caratTo,
+                    size: product.sizes ? size : undefined,
+                    backing: product.backings ? backing : undefined,
+                    length: product.lengths ? length : undefined,
+                    engraving: engraving || undefined,
+                  };
+                  try {
+                    await supabase.from("enquiries").insert({
+                      name: "WhatsApp Product Enquiry",
+                      message: message,
+                      source: "whatsapp_product",
+                      product_slug: product.slug,
+                      subject: product.name,
+                      configuration,
+                      metadata: { productName: product.name, category: product.category },
+                    });
+                  } catch {}
+                  window.open(buildWhatsAppLink(message), "_blank", "noopener");
+                }}
+                className="mt-5 flex w-full items-center justify-center gap-3 bg-gold text-obsidian py-5 text-[14px] tracking-[0.4em] uppercase hover:bg-ivory transition group cursor-pointer"
               >
                 <MessageCircle className="h-4 w-4" strokeWidth={1.5} />
                 Enquire on WhatsApp
-              </a>
+              </button>
               <p className="mt-4 text-center text-[14px] tracking-[0.35em] uppercase text-ivory/80">
                 Pricing shared privately · Response within 24h
               </p>

@@ -1,9 +1,13 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState, useCallback } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
-import { Mail, MailOpen, Trash2, Archive, MessageSquare } from "lucide-react";
+import { Mail, MailOpen, Trash2, Archive, MessageSquare, PackagePlus } from "lucide-react";
 
 export const Route = createFileRoute("/_authenticated/admin/enquiries")({
   component: EnquiriesPage,
@@ -19,10 +23,19 @@ type Enquiry = {
   source: string;
   product_slug: string | null;
   metadata: Record<string, unknown>;
+  configuration: Record<string, unknown> | null;
   is_read: boolean;
   is_archived: boolean;
+  status: string;
+  tracking_number: string | null;
+  carrier: string | null;
+  total_amount: number | null;
+  currency: string | null;
+  admin_notes: string | null;
   created_at: string;
 };
+
+const STATUS_OPTS = ["new", "confirmed", "in_production", "shipped", "delivered", "cancelled"] as const;
 
 function EnquiriesPage() {
   const [rows, setRows] = useState<Enquiry[]>([]);
@@ -32,7 +45,7 @@ function EnquiriesPage() {
 
   const load = useCallback(async () => {
     setLoading(true);
-    let q = supabase.from("enquiries").select("*").order("created_at", { ascending: false }).limit(200);
+    let q = supabase.from("enquiries").select("*").order("created_at", { ascending: false }).limit(300);
     if (filter === "unread") q = q.eq("is_read", false).eq("is_archived", false);
     else if (filter === "archived") q = q.eq("is_archived", true);
     else q = q.eq("is_archived", false);
@@ -58,13 +71,50 @@ function EnquiriesPage() {
     if (open?.id === r.id) setOpen(null);
     load();
   }
+  async function updateField(r: Enquiry, patch: Partial<Enquiry>) {
+    const { error } = await supabase.from("enquiries").update(patch as never).eq("id", r.id);
+    if (error) { toast.error(error.message); return; }
+    setOpen({ ...r, ...patch } as Enquiry);
+    setRows((prev) => prev.map((x) => (x.id === r.id ? { ...x, ...patch } as Enquiry : x)));
+  }
+
+  async function convertToOrder(r: Enquiry) {
+    if (!r.email) return toast.error("Enquiry has no email — add one first.");
+    const { data: code, error: codeErr } = await supabase.rpc("gen_order_code");
+    if (codeErr) return toast.error(codeErr.message);
+    const items = [{
+      product_slug: r.product_slug,
+      name: r.subject || r.metadata?.productName || "Custom piece",
+      configuration: r.configuration ?? r.metadata ?? {},
+      qty: 1,
+      unit_price: r.total_amount ?? 0,
+      currency: r.currency ?? "USD",
+    }];
+    const { error } = await supabase.from("orders").insert({
+      order_code: code as string,
+      customer_name: r.name,
+      customer_email: r.email,
+      customer_phone: r.phone,
+      items: items as never,
+      subtotal: r.total_amount ?? 0,
+      total: r.total_amount ?? 0,
+      currency: r.currency ?? "USD",
+      status: r.status === "new" ? "pending" : r.status,
+      tracking_number: r.tracking_number,
+      carrier: r.carrier,
+      enquiry_id: r.id,
+    });
+    if (error) return toast.error(error.message);
+    toast.success(`Order ${code} created`);
+    await archive(r);
+  }
 
   return (
     <div>
       <div className="flex items-center justify-between flex-wrap gap-4">
         <div>
           <p className="eyebrow">Inbox</p>
-          <h1 className="mt-2 font-serif text-3xl">Enquiries</h1>
+          <h1 className="mt-2 font-serif text-3xl">Enquiries & Product Requests</h1>
         </div>
         <div className="flex gap-1 border border-border/60 rounded p-1">
           {(["unread", "all", "archived"] as const).map((f) => (
@@ -77,8 +127,8 @@ function EnquiriesPage() {
         </div>
       </div>
 
-      <div className="mt-6 grid lg:grid-cols-[1fr_1.2fr] gap-4">
-        <div className="border border-border/60 bg-card overflow-hidden max-h-[70vh] overflow-y-auto">
+      <div className="mt-6 grid lg:grid-cols-[1fr_1.4fr] gap-4">
+        <div className="border border-border/60 bg-card overflow-hidden max-h-[75vh] overflow-y-auto">
           {loading ? (
             <div className="p-8 text-center text-sm text-muted-foreground">Loading…</div>
           ) : rows.length === 0 ? (
@@ -96,6 +146,7 @@ function EnquiriesPage() {
                         <div className="flex items-center gap-2">
                           {!r.is_read && <span className="w-2 h-2 rounded-full bg-foreground" />}
                           <span className={`font-medium truncate ${!r.is_read ? "text-foreground" : "text-muted-foreground"}`}>{r.name}</span>
+                          <StatusPill status={r.status} />
                         </div>
                         <div className="text-xs text-muted-foreground truncate mt-1">{r.subject || r.message.slice(0, 80)}</div>
                         <div className="text-xs text-muted-foreground mt-1">{r.source} · {new Date(r.created_at).toLocaleString()}</div>
@@ -108,9 +159,9 @@ function EnquiriesPage() {
           )}
         </div>
 
-        <div className="border border-border/60 bg-card p-6">
+        <div className="border border-border/60 bg-card p-6 overflow-y-auto max-h-[75vh]">
           {!open ? (
-            <div className="text-sm text-muted-foreground text-center py-20">Select an enquiry to view details.</div>
+            <div className="text-sm text-muted-foreground text-center py-20">Select an enquiry to view and manage.</div>
           ) : (
             <div>
               <div className="flex items-start justify-between gap-4 flex-wrap">
@@ -123,7 +174,11 @@ function EnquiriesPage() {
                   </div>
                   <div className="mt-2 flex gap-2 flex-wrap text-xs">
                     <span className="px-2 py-1 rounded bg-muted uppercase tracking-widest">{open.source}</span>
-                    {open.product_slug && <span className="px-2 py-1 rounded bg-muted">Product: {open.product_slug}</span>}
+                    {open.product_slug && (
+                      <Link to="/product/$slug" params={{ slug: open.product_slug }} className="px-2 py-1 rounded bg-muted underline">
+                        {open.product_slug}
+                      </Link>
+                    )}
                   </div>
                 </div>
                 <div className="flex gap-1">
@@ -137,24 +192,59 @@ function EnquiriesPage() {
                       </a>
                     </Button>
                   )}
+                  <Button size="sm" variant="ghost" onClick={() => convertToOrder(open)} title="Convert to Order">
+                    <PackagePlus className="h-4 w-4" />
+                  </Button>
                   <Button size="sm" variant="ghost" onClick={() => archive(open)} title="Archive"><Archive className="h-4 w-4" /></Button>
                   <Button size="sm" variant="ghost" onClick={() => remove(open)} title="Delete"><Trash2 className="h-4 w-4" /></Button>
                 </div>
               </div>
 
               {open.subject && <div className="mt-6 text-sm font-medium">{open.subject}</div>}
-              <div className="mt-4 whitespace-pre-wrap text-sm leading-relaxed text-foreground/90">{open.message}</div>
+              <div className="mt-3 whitespace-pre-wrap text-sm leading-relaxed text-foreground/90">{open.message}</div>
 
-              {open.metadata && Object.keys(open.metadata).length > 0 && (
-                <div className="mt-6 border-t border-border/60 pt-4">
-                  <p className="text-xs uppercase tracking-widest text-muted-foreground mb-2">Additional details</p>
-                  <pre className="text-xs bg-muted/40 p-3 rounded overflow-x-auto">{JSON.stringify(open.metadata, null, 2)}</pre>
+              {open.configuration && Object.keys(open.configuration).length > 0 && (
+                <div className="mt-5 border-t border-border/60 pt-4">
+                  <p className="text-xs uppercase tracking-widest text-muted-foreground mb-2">Product Configuration</p>
+                  <pre className="text-xs bg-muted/40 p-3 rounded overflow-x-auto">{JSON.stringify(open.configuration, null, 2)}</pre>
                 </div>
               )}
 
+              <div className="mt-6 border-t border-border/60 pt-5 grid gap-4 md:grid-cols-2">
+                <div>
+                  <Label className="text-xs">Status</Label>
+                  <Select value={open.status} onValueChange={(v) => updateField(open, { status: v })}>
+                    <SelectTrigger><SelectValue /></SelectTrigger>
+                    <SelectContent>
+                      {STATUS_OPTS.map((s) => <SelectItem key={s} value={s}>{s}</SelectItem>)}
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div>
+                  <Label className="text-xs">Amount ({open.currency ?? "USD"})</Label>
+                  <Input
+                    type="number"
+                    defaultValue={open.total_amount ?? ""}
+                    onBlur={(e) => updateField(open, { total_amount: e.target.value ? Number(e.target.value) : null })}
+                  />
+                </div>
+                <div>
+                  <Label className="text-xs">Carrier</Label>
+                  <Input defaultValue={open.carrier ?? ""} onBlur={(e) => updateField(open, { carrier: e.target.value || null })} />
+                </div>
+                <div>
+                  <Label className="text-xs">Tracking Number</Label>
+                  <Input defaultValue={open.tracking_number ?? ""} onBlur={(e) => updateField(open, { tracking_number: e.target.value || null })} />
+                </div>
+                <div className="md:col-span-2">
+                  <Label className="text-xs">Internal Notes</Label>
+                  <Textarea rows={3} defaultValue={open.admin_notes ?? ""} onBlur={(e) => updateField(open, { admin_notes: e.target.value || null })} />
+                </div>
+              </div>
+
               {open.email && (
                 <div className="mt-6">
-                  <Button asChild>
+                  <Button asChild variant="outline">
                     <a href={`mailto:${open.email}?subject=Re: ${encodeURIComponent(open.subject || "Your enquiry")}`}>Reply by Email</a>
                   </Button>
                 </div>
@@ -164,5 +254,21 @@ function EnquiriesPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+function StatusPill({ status }: { status: string }) {
+  const map: Record<string, string> = {
+    new: "bg-blue-500/10 text-blue-700 dark:text-blue-400",
+    confirmed: "bg-emerald-500/10 text-emerald-700 dark:text-emerald-400",
+    in_production: "bg-amber-500/10 text-amber-700 dark:text-amber-400",
+    shipped: "bg-purple-500/10 text-purple-700 dark:text-purple-400",
+    delivered: "bg-green-600/10 text-green-700 dark:text-green-400",
+    cancelled: "bg-red-500/10 text-red-700 dark:text-red-400",
+  };
+  return (
+    <span className={`text-[10px] uppercase tracking-widest px-2 py-0.5 rounded ${map[status] ?? "bg-muted"}`}>
+      {status.replace("_", " ")}
+    </span>
   );
 }

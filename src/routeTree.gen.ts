@@ -24,14 +24,17 @@ import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ShapeShapeRouteImport } from './routes/shape.$shape'
 import { Route as ProductSlugRouteImport } from './routes/product.$slug'
+import { Route as OrderCodeRouteImport } from './routes/order.$code'
 import { Route as CollectionsCategoryRouteImport } from './routes/collections.$category'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
 import { Route as AuthenticatedAdminUsersRouteImport } from './routes/_authenticated/admin.users'
 import { Route as AuthenticatedAdminSeoRouteImport } from './routes/_authenticated/admin.seo'
 import { Route as AuthenticatedAdminProductsRouteImport } from './routes/_authenticated/admin.products'
+import { Route as AuthenticatedAdminOrdersRouteImport } from './routes/_authenticated/admin.orders'
 import { Route as AuthenticatedAdminOffersRouteImport } from './routes/_authenticated/admin.offers'
 import { Route as AuthenticatedAdminEnquiriesRouteImport } from './routes/_authenticated/admin.enquiries'
+import { Route as AuthenticatedAdminOrdersIdLabelRouteImport } from './routes/_authenticated/admin.orders.$id.label'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
@@ -107,6 +110,11 @@ const ProductSlugRoute = ProductSlugRouteImport.update({
   path: '/product/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OrderCodeRoute = OrderCodeRouteImport.update({
+  id: '/order/$code',
+  path: '/order/$code',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CollectionsCategoryRoute = CollectionsCategoryRouteImport.update({
   id: '/collections/$category',
   path: '/collections/$category',
@@ -138,6 +146,12 @@ const AuthenticatedAdminProductsRoute =
     path: '/products',
     getParentRoute: () => AuthenticatedAdminRoute,
   } as any)
+const AuthenticatedAdminOrdersRoute =
+  AuthenticatedAdminOrdersRouteImport.update({
+    id: '/orders',
+    path: '/orders',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
 const AuthenticatedAdminOffersRoute =
   AuthenticatedAdminOffersRouteImport.update({
     id: '/offers',
@@ -149,6 +163,12 @@ const AuthenticatedAdminEnquiriesRoute =
     id: '/enquiries',
     path: '/enquiries',
     getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminOrdersIdLabelRoute =
+  AuthenticatedAdminOrdersIdLabelRouteImport.update({
+    id: '/$id/label',
+    path: '/$id/label',
+    getParentRoute: () => AuthenticatedAdminOrdersRoute,
   } as any)
 
 export interface FileRoutesByFullPath {
@@ -166,14 +186,17 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/admin': typeof AuthenticatedAdminRouteWithChildren
   '/collections/$category': typeof CollectionsCategoryRoute
+  '/order/$code': typeof OrderCodeRoute
   '/product/$slug': typeof ProductSlugRoute
   '/shape/$shape': typeof ShapeShapeRoute
   '/admin/enquiries': typeof AuthenticatedAdminEnquiriesRoute
   '/admin/offers': typeof AuthenticatedAdminOffersRoute
+  '/admin/orders': typeof AuthenticatedAdminOrdersRouteWithChildren
   '/admin/products': typeof AuthenticatedAdminProductsRoute
   '/admin/seo': typeof AuthenticatedAdminSeoRoute
   '/admin/users': typeof AuthenticatedAdminUsersRoute
   '/admin/': typeof AuthenticatedAdminIndexRoute
+  '/admin/orders/$id/label': typeof AuthenticatedAdminOrdersIdLabelRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -189,14 +212,17 @@ export interface FileRoutesByTo {
   '/ring-size-guide': typeof RingSizeGuideRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/collections/$category': typeof CollectionsCategoryRoute
+  '/order/$code': typeof OrderCodeRoute
   '/product/$slug': typeof ProductSlugRoute
   '/shape/$shape': typeof ShapeShapeRoute
   '/admin/enquiries': typeof AuthenticatedAdminEnquiriesRoute
   '/admin/offers': typeof AuthenticatedAdminOffersRoute
+  '/admin/orders': typeof AuthenticatedAdminOrdersRouteWithChildren
   '/admin/products': typeof AuthenticatedAdminProductsRoute
   '/admin/seo': typeof AuthenticatedAdminSeoRoute
   '/admin/users': typeof AuthenticatedAdminUsersRoute
   '/admin': typeof AuthenticatedAdminIndexRoute
+  '/admin/orders/$id/label': typeof AuthenticatedAdminOrdersIdLabelRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -215,14 +241,17 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRouteWithChildren
   '/collections/$category': typeof CollectionsCategoryRoute
+  '/order/$code': typeof OrderCodeRoute
   '/product/$slug': typeof ProductSlugRoute
   '/shape/$shape': typeof ShapeShapeRoute
   '/_authenticated/admin/enquiries': typeof AuthenticatedAdminEnquiriesRoute
   '/_authenticated/admin/offers': typeof AuthenticatedAdminOffersRoute
+  '/_authenticated/admin/orders': typeof AuthenticatedAdminOrdersRouteWithChildren
   '/_authenticated/admin/products': typeof AuthenticatedAdminProductsRoute
   '/_authenticated/admin/seo': typeof AuthenticatedAdminSeoRoute
   '/_authenticated/admin/users': typeof AuthenticatedAdminUsersRoute
   '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
+  '/_authenticated/admin/orders/$id/label': typeof AuthenticatedAdminOrdersIdLabelRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -241,14 +270,17 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/admin'
     | '/collections/$category'
+    | '/order/$code'
     | '/product/$slug'
     | '/shape/$shape'
     | '/admin/enquiries'
     | '/admin/offers'
+    | '/admin/orders'
     | '/admin/products'
     | '/admin/seo'
     | '/admin/users'
     | '/admin/'
+    | '/admin/orders/$id/label'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -264,14 +296,17 @@ export interface FileRouteTypes {
     | '/ring-size-guide'
     | '/sitemap.xml'
     | '/collections/$category'
+    | '/order/$code'
     | '/product/$slug'
     | '/shape/$shape'
     | '/admin/enquiries'
     | '/admin/offers'
+    | '/admin/orders'
     | '/admin/products'
     | '/admin/seo'
     | '/admin/users'
     | '/admin'
+    | '/admin/orders/$id/label'
   id:
     | '__root__'
     | '/'
@@ -289,14 +324,17 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/_authenticated/admin'
     | '/collections/$category'
+    | '/order/$code'
     | '/product/$slug'
     | '/shape/$shape'
     | '/_authenticated/admin/enquiries'
     | '/_authenticated/admin/offers'
+    | '/_authenticated/admin/orders'
     | '/_authenticated/admin/products'
     | '/_authenticated/admin/seo'
     | '/_authenticated/admin/users'
     | '/_authenticated/admin/'
+    | '/_authenticated/admin/orders/$id/label'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -314,6 +352,7 @@ export interface RootRouteChildren {
   RingSizeGuideRoute: typeof RingSizeGuideRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   CollectionsCategoryRoute: typeof CollectionsCategoryRoute
+  OrderCodeRoute: typeof OrderCodeRoute
   ProductSlugRoute: typeof ProductSlugRoute
   ShapeShapeRoute: typeof ShapeShapeRoute
 }
@@ -425,6 +464,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProductSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/order/$code': {
+      id: '/order/$code'
+      path: '/order/$code'
+      fullPath: '/order/$code'
+      preLoaderRoute: typeof OrderCodeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/collections/$category': {
       id: '/collections/$category'
       path: '/collections/$category'
@@ -467,6 +513,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminProductsRouteImport
       parentRoute: typeof AuthenticatedAdminRoute
     }
+    '/_authenticated/admin/orders': {
+      id: '/_authenticated/admin/orders'
+      path: '/orders'
+      fullPath: '/admin/orders'
+      preLoaderRoute: typeof AuthenticatedAdminOrdersRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
     '/_authenticated/admin/offers': {
       id: '/_authenticated/admin/offers'
       path: '/offers'
@@ -481,12 +534,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminEnquiriesRouteImport
       parentRoute: typeof AuthenticatedAdminRoute
     }
+    '/_authenticated/admin/orders/$id/label': {
+      id: '/_authenticated/admin/orders/$id/label'
+      path: '/$id/label'
+      fullPath: '/admin/orders/$id/label'
+      preLoaderRoute: typeof AuthenticatedAdminOrdersIdLabelRouteImport
+      parentRoute: typeof AuthenticatedAdminOrdersRoute
+    }
   }
 }
+
+interface AuthenticatedAdminOrdersRouteChildren {
+  AuthenticatedAdminOrdersIdLabelRoute: typeof AuthenticatedAdminOrdersIdLabelRoute
+}
+
+const AuthenticatedAdminOrdersRouteChildren: AuthenticatedAdminOrdersRouteChildren =
+  {
+    AuthenticatedAdminOrdersIdLabelRoute: AuthenticatedAdminOrdersIdLabelRoute,
+  }
+
+const AuthenticatedAdminOrdersRouteWithChildren =
+  AuthenticatedAdminOrdersRoute._addFileChildren(
+    AuthenticatedAdminOrdersRouteChildren,
+  )
 
 interface AuthenticatedAdminRouteChildren {
   AuthenticatedAdminEnquiriesRoute: typeof AuthenticatedAdminEnquiriesRoute
   AuthenticatedAdminOffersRoute: typeof AuthenticatedAdminOffersRoute
+  AuthenticatedAdminOrdersRoute: typeof AuthenticatedAdminOrdersRouteWithChildren
   AuthenticatedAdminProductsRoute: typeof AuthenticatedAdminProductsRoute
   AuthenticatedAdminSeoRoute: typeof AuthenticatedAdminSeoRoute
   AuthenticatedAdminUsersRoute: typeof AuthenticatedAdminUsersRoute
@@ -496,6 +571,7 @@ interface AuthenticatedAdminRouteChildren {
 const AuthenticatedAdminRouteChildren: AuthenticatedAdminRouteChildren = {
   AuthenticatedAdminEnquiriesRoute: AuthenticatedAdminEnquiriesRoute,
   AuthenticatedAdminOffersRoute: AuthenticatedAdminOffersRoute,
+  AuthenticatedAdminOrdersRoute: AuthenticatedAdminOrdersRouteWithChildren,
   AuthenticatedAdminProductsRoute: AuthenticatedAdminProductsRoute,
   AuthenticatedAdminSeoRoute: AuthenticatedAdminSeoRoute,
   AuthenticatedAdminUsersRoute: AuthenticatedAdminUsersRoute,
@@ -531,6 +607,7 @@ const rootRouteChildren: RootRouteChildren = {
   RingSizeGuideRoute: RingSizeGuideRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   CollectionsCategoryRoute: CollectionsCategoryRoute,
+  OrderCodeRoute: OrderCodeRoute,
   ProductSlugRoute: ProductSlugRoute,
   ShapeShapeRoute: ShapeShapeRoute,
 }
