@@ -54,6 +54,7 @@ const empty: Partial<Product> = {
   price_from: null, mrp: null, show_price: true, offer_id: null, currency: "USD",
   short_description: "", description: "", images: [], video_url: null, diamond_type: "Both",
   is_active: true, is_featured: false, sort_order: 0,
+  stock_quantity: 0, low_stock_threshold: 3, track_inventory: false,
 };
 
 
