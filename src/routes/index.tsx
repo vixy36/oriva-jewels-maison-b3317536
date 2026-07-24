@@ -14,10 +14,11 @@ import labgrownImg from "@/assets/collection-labgrown.jpg";
 import editorialImg from "@/assets/editorial-emerald.jpg";
 
 import insta1 from "@/assets/insta-1.jpg";
-import insta2 from "@/assets/insta-2.jpg";
-import insta4 from "@/assets/insta-4.jpg";
-import insta5 from "@/assets/insta-5.jpg";
 import insta6 from "@/assets/insta-6.jpg";
+import reelPreview1 from "@/assets/reel-preview-1.jpg";
+import reelPreview2 from "@/assets/reel-preview-2.jpg";
+import reelPreview3 from "@/assets/reel-preview-3.jpg";
+import reelPreview4 from "@/assets/reel-preview-4.jpg";
 import atelier from "@/assets/about-atelier.jpg";
 import engagementModel from "@/assets/engagement-model.jpg";
 
@@ -64,22 +65,22 @@ const occasions = [
 const instagramReels = [
   {
     href: "https://www.instagram.com/reel/DZHQxFnNSXD/?igsh=MXNreG1nYmtqejE5Mg==",
-    img: insta1,
+    img: reelPreview1,
     title: "Diamond jewellery reel",
   },
   {
     href: "https://www.instagram.com/reel/DZaOergteY2/?igsh=MXRzMWRkaW5mbW9lNg==",
-    img: insta2,
+    img: reelPreview2,
     title: "Fine jewellery reel",
   },
   {
     href: "https://www.instagram.com/reel/DaIgCG4tmDZ/?igsh=MWt5MmVrOXEyNXpq",
-    img: insta5,
+    img: reelPreview3,
     title: "Oriva diamonds reel",
   },
   {
     href: "https://www.instagram.com/reel/DaLQ2G7Nrj-/?igsh=eTBjenNqeHR2YWRl",
-    img: insta4,
+    img: reelPreview4,
     title: "Oriva jewels reel",
   },
 ];
