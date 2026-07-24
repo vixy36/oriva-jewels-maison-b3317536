@@ -230,9 +230,18 @@ function GiftEditor({ gift, onClose, onSaved }: { gift: Gift | null; onClose: ()
               <Label className="text-xs">Currency</Label>
               <Input value={form.currency ?? "USD"} onChange={(e) => upd("currency", e.target.value.toUpperCase())} />
             </div>
-            <div>
-              <Label className="text-xs">Links to product slug</Label>
-              <Input value={form.product_slug ?? ""} onChange={(e) => upd("product_slug", e.target.value)} placeholder="solitaire-oval" />
+            <div className="md:col-span-3">
+              <Label className="text-xs">Link to existing product</Label>
+              <ProductPicker
+                value={form.product_slug ?? ""}
+                onPick={(p) => {
+                  upd("product_slug", p.slug);
+                  if (!form.title) upd("title", p.name);
+                  if (!form.image_url && p.image_url) upd("image_url", p.image_url);
+                  if (form.price_from == null && p.price != null) upd("price_from", p.price);
+                }}
+                onClear={() => upd("product_slug", "")}
+              />
             </div>
             <div>
               <Label className="text-xs">CTA Label</Label>
