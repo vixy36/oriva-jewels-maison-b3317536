@@ -191,7 +191,7 @@ function HomePage() {
           </Reveal>
 
 
-          <div className="mt-10 md:mt-14 grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+          <div className="mt-8 md:mt-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 md:gap-x-6 gap-y-8 md:gap-y-10">
             {collections.map((c, i) => (
               <Reveal key={c.title} delay={i * 60}>
                 <Link
