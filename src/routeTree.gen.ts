@@ -24,6 +24,7 @@ import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ShapeShapeRouteImport } from './routes/shape.$shape'
 import { Route as ProductSlugRouteImport } from './routes/product.$slug'
+import { Route as OrderCodeRouteImport } from './routes/order.$code'
 import { Route as CollectionsCategoryRouteImport } from './routes/collections.$category'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
@@ -108,6 +109,11 @@ const ProductSlugRoute = ProductSlugRouteImport.update({
   path: '/product/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OrderCodeRoute = OrderCodeRouteImport.update({
+  id: '/order/$code',
+  path: '/order/$code',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CollectionsCategoryRoute = CollectionsCategoryRouteImport.update({
   id: '/collections/$category',
   path: '/collections/$category',
@@ -173,6 +179,7 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/admin': typeof AuthenticatedAdminRouteWithChildren
   '/collections/$category': typeof CollectionsCategoryRoute
+  '/order/$code': typeof OrderCodeRoute
   '/product/$slug': typeof ProductSlugRoute
   '/shape/$shape': typeof ShapeShapeRoute
   '/admin/enquiries': typeof AuthenticatedAdminEnquiriesRoute
@@ -197,6 +204,7 @@ export interface FileRoutesByTo {
   '/ring-size-guide': typeof RingSizeGuideRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/collections/$category': typeof CollectionsCategoryRoute
+  '/order/$code': typeof OrderCodeRoute
   '/product/$slug': typeof ProductSlugRoute
   '/shape/$shape': typeof ShapeShapeRoute
   '/admin/enquiries': typeof AuthenticatedAdminEnquiriesRoute
@@ -224,6 +232,7 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRouteWithChildren
   '/collections/$category': typeof CollectionsCategoryRoute
+  '/order/$code': typeof OrderCodeRoute
   '/product/$slug': typeof ProductSlugRoute
   '/shape/$shape': typeof ShapeShapeRoute
   '/_authenticated/admin/enquiries': typeof AuthenticatedAdminEnquiriesRoute
@@ -251,6 +260,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/admin'
     | '/collections/$category'
+    | '/order/$code'
     | '/product/$slug'
     | '/shape/$shape'
     | '/admin/enquiries'
@@ -275,6 +285,7 @@ export interface FileRouteTypes {
     | '/ring-size-guide'
     | '/sitemap.xml'
     | '/collections/$category'
+    | '/order/$code'
     | '/product/$slug'
     | '/shape/$shape'
     | '/admin/enquiries'
@@ -301,6 +312,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/_authenticated/admin'
     | '/collections/$category'
+    | '/order/$code'
     | '/product/$slug'
     | '/shape/$shape'
     | '/_authenticated/admin/enquiries'
@@ -327,6 +339,7 @@ export interface RootRouteChildren {
   RingSizeGuideRoute: typeof RingSizeGuideRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   CollectionsCategoryRoute: typeof CollectionsCategoryRoute
+  OrderCodeRoute: typeof OrderCodeRoute
   ProductSlugRoute: typeof ProductSlugRoute
   ShapeShapeRoute: typeof ShapeShapeRoute
 }
@@ -436,6 +449,13 @@ declare module '@tanstack/react-router' {
       path: '/product/$slug'
       fullPath: '/product/$slug'
       preLoaderRoute: typeof ProductSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/order/$code': {
+      id: '/order/$code'
+      path: '/order/$code'
+      fullPath: '/order/$code'
+      preLoaderRoute: typeof OrderCodeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/collections/$category': {
@@ -553,6 +573,7 @@ const rootRouteChildren: RootRouteChildren = {
   RingSizeGuideRoute: RingSizeGuideRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   CollectionsCategoryRoute: CollectionsCategoryRoute,
+  OrderCodeRoute: OrderCodeRoute,
   ProductSlugRoute: ProductSlugRoute,
   ShapeShapeRoute: ShapeShapeRoute,
 }
