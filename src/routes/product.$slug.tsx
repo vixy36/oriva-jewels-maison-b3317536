@@ -374,10 +374,10 @@ function ProductPage() {
                 onClick={async () => {
                   const configuration = {
                     diamondType, karat, goldColor, caratFrom, caratTo,
-                    size: product.sizes ? size : undefined,
+                    size: (isRing || product.sizes) ? (size || undefined) : undefined,
                     backing: product.backings ? backing : undefined,
                     length: product.lengths ? length : undefined,
-                    engraving: engraving || undefined,
+                    specialRequirements: specialReq || undefined,
                   };
                   try {
                     await supabase.from("enquiries").insert({
