@@ -149,6 +149,7 @@ function RootComponent() {
         {!isAdmin && <SiteFooter />}
         {!isAdmin && <MobileBottomNav />}
         {!isAdmin && <FloatingActions />}
+        {!isAdmin && <PopupManager pathname={pathname} />}
       </div>
       <Toaster position="top-center" richColors />
     </QueryClientProvider>
