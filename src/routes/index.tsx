@@ -629,7 +629,7 @@ function HomePage() {
         <div className="mx-auto max-w-[1600px] px-6 md:px-16">
           <Reveal className="flex items-end justify-between gap-6 flex-wrap">
             <div className="max-w-xl">
-              <p className="eyebrow">- @orivajewels</p>
+              <p className="eyebrow">- @oriva__jewels</p>
               <h2 className="mt-4 font-serif text-3xl md:text-4xl text-ivory">
                 <em className="text-gold-gradient">Instagram.</em>
               </h2>

@@ -71,6 +71,20 @@ export function PopupManager({ pathname }: { pathname: string }) {
 
       if (eligible.length === 0) return;
       const chosen = eligible[0];
+
+      // Preload image so the popup never shows a blank/late-loading frame
+      if (chosen.image_url) {
+        await new Promise<void>((resolve) => {
+          const img = new Image();
+          img.onload = () => resolve();
+          img.onerror = () => resolve();
+          img.src = chosen.image_url!;
+          // Safety timeout so a slow image never blocks the popup indefinitely
+          setTimeout(resolve, 4000);
+        });
+        if (cancelled) return;
+      }
+
       const delay = Math.max(0, (chosen.delay_seconds ?? 3) * 1000);
       setTimeout(() => {
         if (cancelled) return;
@@ -107,7 +121,7 @@ export function PopupManager({ pathname }: { pathname: string }) {
         <X className="h-5 w-5" strokeWidth={2.5} />
       </button>
       {popup.image_url && (
-        <img src={popup.image_url} alt={popup.title} className="w-full h-auto max-h-[55vh] object-cover" />
+        <img src={popup.image_url} alt={popup.title} loading="eager" decoding="sync" fetchPriority="high" className="w-full h-auto max-h-[55vh] object-cover" />
       )}
       <div className="p-6 md:p-8 text-center">
         {popup.title && (
