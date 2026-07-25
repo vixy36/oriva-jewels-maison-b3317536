@@ -12,6 +12,7 @@ import engagementImg from "@/assets/collection-engagement.jpg";
 import earringsImg from "@/assets/collection-earrings.jpg";
 import braceletsImg from "@/assets/product-tennis.jpg";
 import pendantsImg from "@/assets/collection-pendants.jpg";
+import pendantHero from "@/assets/pendant-hero.jpg.asset.json";
 import bridalImg from "@/assets/collection-bridal.jpg";
 import labgrownImg from "@/assets/collection-labgrown.jpg";
 import editorialImg from "@/assets/editorial-emerald.jpg";
@@ -21,14 +22,17 @@ const banners: Record<ProductCategory, string> = {
   rings: engagementImg,
   earrings: earringsImg,
   bracelets: braceletsImg,
-  necklaces: pendantsImg,
-  pendants: pendantsImg,
+  necklaces: pendantHero.url,
+  pendants: pendantHero.url,
   "mens-jewelry": braceletsImg,
   "hip-hop-jewelry": braceletsImg,
   bridal: bridalImg,
   "lab-grown": labgrownImg,
   natural: engagementImg,
 };
+
+// Categories whose hero image should be shown fully (no crop)
+const containCats = new Set<ProductCategory>(["pendants", "necklaces"]);
 
 
 const validCats: ProductCategory[] = [
