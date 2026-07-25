@@ -69,7 +69,7 @@ function ProductPage() {
   const [caratTo, setCaratTo] = useState<string>("2.00");
   const [backing, setBacking] = useState(product.backings?.[0] ?? "");
   const [length, setLength] = useState(product.lengths?.[1] ?? "");
-  const [engraving, setEngraving] = useState("");
+  const [specialReq, setSpecialReq] = useState("");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const [activeIdx, setActiveIdx] = useState(0);
 
