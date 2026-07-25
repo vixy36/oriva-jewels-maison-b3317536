@@ -10,7 +10,7 @@ import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { SortableList } from "@/components/admin/SortableList";
-import { Pencil, Trash2, Plus } from "lucide-react";
+import { Pencil, Trash2, Plus, Upload, X, Image as ImageIcon } from "lucide-react";
 
 export const Route = createFileRoute("/_authenticated/admin/categories")({
   component: AdminCategoriesPage,
