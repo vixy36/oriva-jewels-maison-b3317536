@@ -3,7 +3,6 @@ import { ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/site/Reveal";
 import labgrownImg from "@/assets/collection-labgrown.jpg";
 import naturalImg from "@/assets/collection-engagement.jpg";
-import editorialImg from "@/assets/editorial-emerald.jpg";
 
 export const Route = createFileRoute("/diamonds")({
   head: () => ({
