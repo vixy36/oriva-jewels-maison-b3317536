@@ -16,6 +16,7 @@ import { Route as OffersRouteImport } from './routes/offers'
 import { Route as OccasionsRouteImport } from './routes/occasions'
 import { Route as GiftsRouteImport } from './routes/gifts'
 import { Route as EducationRouteImport } from './routes/education'
+import { Route as DiamondsRouteImport } from './routes/diamonds'
 import { Route as CustomOrderRouteImport } from './routes/custom-order'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as BespokeRouteImport } from './routes/bespoke'
@@ -75,6 +76,11 @@ const GiftsRoute = GiftsRouteImport.update({
 const EducationRoute = EducationRouteImport.update({
   id: '/education',
   path: '/education',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DiamondsRoute = DiamondsRouteImport.update({
+  id: '/diamonds',
+  path: '/diamonds',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CustomOrderRoute = CustomOrderRouteImport.update({
@@ -217,6 +223,7 @@ export interface FileRoutesByFullPath {
   '/bespoke': typeof BespokeRoute
   '/contact': typeof ContactRoute
   '/custom-order': typeof CustomOrderRoute
+  '/diamonds': typeof DiamondsRoute
   '/education': typeof EducationRoute
   '/gifts': typeof GiftsRoute
   '/occasions': typeof OccasionsRoute
@@ -250,6 +257,7 @@ export interface FileRoutesByTo {
   '/bespoke': typeof BespokeRoute
   '/contact': typeof ContactRoute
   '/custom-order': typeof CustomOrderRoute
+  '/diamonds': typeof DiamondsRoute
   '/education': typeof EducationRoute
   '/gifts': typeof GiftsRoute
   '/occasions': typeof OccasionsRoute
@@ -284,6 +292,7 @@ export interface FileRoutesById {
   '/bespoke': typeof BespokeRoute
   '/contact': typeof ContactRoute
   '/custom-order': typeof CustomOrderRoute
+  '/diamonds': typeof DiamondsRoute
   '/education': typeof EducationRoute
   '/gifts': typeof GiftsRoute
   '/occasions': typeof OccasionsRoute
@@ -319,6 +328,7 @@ export interface FileRouteTypes {
     | '/bespoke'
     | '/contact'
     | '/custom-order'
+    | '/diamonds'
     | '/education'
     | '/gifts'
     | '/occasions'
@@ -352,6 +362,7 @@ export interface FileRouteTypes {
     | '/bespoke'
     | '/contact'
     | '/custom-order'
+    | '/diamonds'
     | '/education'
     | '/gifts'
     | '/occasions'
@@ -385,6 +396,7 @@ export interface FileRouteTypes {
     | '/bespoke'
     | '/contact'
     | '/custom-order'
+    | '/diamonds'
     | '/education'
     | '/gifts'
     | '/occasions'
@@ -420,6 +432,7 @@ export interface RootRouteChildren {
   BespokeRoute: typeof BespokeRoute
   ContactRoute: typeof ContactRoute
   CustomOrderRoute: typeof CustomOrderRoute
+  DiamondsRoute: typeof DiamondsRoute
   EducationRoute: typeof EducationRoute
   GiftsRoute: typeof GiftsRoute
   OccasionsRoute: typeof OccasionsRoute
@@ -482,6 +495,13 @@ declare module '@tanstack/react-router' {
       path: '/education'
       fullPath: '/education'
       preLoaderRoute: typeof EducationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/diamonds': {
+      id: '/diamonds'
+      path: '/diamonds'
+      fullPath: '/diamonds'
+      preLoaderRoute: typeof DiamondsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/custom-order': {
@@ -727,6 +747,7 @@ const rootRouteChildren: RootRouteChildren = {
   BespokeRoute: BespokeRoute,
   ContactRoute: ContactRoute,
   CustomOrderRoute: CustomOrderRoute,
+  DiamondsRoute: DiamondsRoute,
   EducationRoute: EducationRoute,
   GiftsRoute: GiftsRoute,
   OccasionsRoute: OccasionsRoute,

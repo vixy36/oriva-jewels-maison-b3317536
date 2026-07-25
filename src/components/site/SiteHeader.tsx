@@ -32,11 +32,13 @@ const FALLBACK_NAV: NavItem[] = [
   { label: "Engagement Rings", to: "/collections/engagement-rings" },
   { label: "Bespoke", to: "/custom-order" },
   { label: "Hip Hop Jewelry", to: "/collections/hip-hop-jewelry" },
-  { label: "Diamonds", to: "/collections/lab-grown", children: DIAMOND_CHILDREN },
+  { label: "Diamonds", to: "/diamonds", children: DIAMOND_CHILDREN },
 ];
 
 const FALLBACK_SUB: { label: string; to: string }[] = [
   { label: "Home", to: "/" },
+  { label: "Offers", to: "/offers" },
+  { label: "Gifts", to: "/gifts" },
   { label: "About Us", to: "/about" },
   { label: "Wishlist", to: "/wishlist" },
   { label: "Contact", to: "/contact" },
