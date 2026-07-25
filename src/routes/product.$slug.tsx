@@ -94,7 +94,7 @@ function ProductPage() {
   const [specialReq, setSpecialReq] = useState("");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const [activeIdx, setActiveIdx] = useState(0);
-  const variants = product.variants ?? [];
+  const variants: NonNullable<Product["variants"]> = product.variants ?? [];
   const [activeVariant, setActiveVariant] = useState(0);
   const currentVariant = variants[activeVariant];
 
