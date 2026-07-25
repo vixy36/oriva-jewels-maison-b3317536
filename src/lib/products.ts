@@ -18,6 +18,14 @@ export type ProductCategory =
   | "lab-grown"
   | "natural";
 
+export interface ProductVariant {
+  label: string;
+  swatch?: string;
+  image?: string;
+  price_from?: number | null;
+  mrp?: number | null;
+}
+
 export interface Product {
   slug: string;
   name: string;
@@ -41,6 +49,7 @@ export interface Product {
   mrp?: number | null;
   currency?: string;
   showPrice?: boolean;
+  variants?: ProductVariant[];
 }
 
 export const products: Product[] = [

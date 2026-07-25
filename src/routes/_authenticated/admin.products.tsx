@@ -16,6 +16,14 @@ export const Route = createFileRoute("/_authenticated/admin/products")({
   component: ProductsPage,
 });
 
+type Variant = {
+  label: string;
+  swatch?: string;
+  image?: string;
+  price_from?: number | null;
+  mrp?: number | null;
+};
+
 type Product = {
   id: string;
   slug: string;
@@ -40,6 +48,7 @@ type Product = {
   stock_quantity: number;
   low_stock_threshold: number;
   track_inventory: boolean;
+  metal_options: Variant[];
 };
 
 type OfferOpt = { id: string; title: string };
@@ -56,6 +65,7 @@ const empty: Partial<Product> = {
   short_description: "", description: "", images: [], video_url: null, diamond_type: "Both",
   is_active: true, is_featured: false, sort_order: 0,
   stock_quantity: 0, low_stock_threshold: 3, track_inventory: false,
+  metal_options: [],
 };
 
 
@@ -289,6 +299,7 @@ function ProductEditor({ initial, onClose, onSaved }: { initial: Partial<Product
       stock_quantity: form.stock_quantity ?? 0,
       low_stock_threshold: form.low_stock_threshold ?? 3,
       track_inventory: form.track_inventory ?? false,
+      metal_options: (form.metal_options ?? []) as unknown as Product["metal_options"],
     };
 
 
@@ -437,6 +448,92 @@ function ProductEditor({ initial, onClose, onSaved }: { initial: Partial<Product
                 </p>
               )}
             </div>
+          </div>
+
+
+          <div className="rounded border border-border/60 p-4 space-y-3">
+            <div className="flex items-center justify-between">
+              <div>
+                <Label className="text-sm font-semibold">Variants / Color Options</Label>
+                <p className="text-[11px] text-muted-foreground mt-0.5">Metal, gemstone or finish variants shown as swatches on the product page.</p>
+              </div>
+              <Button type="button" size="sm" variant="outline" onClick={() => upd("metal_options", [...(form.metal_options ?? []), { label: "", swatch: "#e5e4e2" }] as Variant[])}>
+                <Plus className="h-4 w-4 mr-1" /> Add variant
+              </Button>
+            </div>
+            {(form.metal_options ?? []).map((v, idx) => (
+              <div key={idx} className="grid grid-cols-12 gap-2 items-center">
+                <Input
+                  className="col-span-4"
+                  placeholder="Label e.g. 18k White Gold"
+                  value={v.label ?? ""}
+                  onChange={(e) => {
+                    const next = [...(form.metal_options ?? [])];
+                    next[idx] = { ...next[idx], label: e.target.value };
+                    upd("metal_options", next as Variant[]);
+                  }}
+                />
+                <div className="col-span-2 flex items-center gap-1">
+                  <input
+                    type="color"
+                    className="h-9 w-9 rounded border cursor-pointer"
+                    value={v.swatch ?? "#e5e4e2"}
+                    onChange={(e) => {
+                      const next = [...(form.metal_options ?? [])];
+                      next[idx] = { ...next[idx], swatch: e.target.value };
+                      upd("metal_options", next as Variant[]);
+                    }}
+                  />
+                  <Input
+                    className="text-xs font-mono"
+                    placeholder="#hex"
+                    value={v.swatch ?? ""}
+                    onChange={(e) => {
+                      const next = [...(form.metal_options ?? [])];
+                      next[idx] = { ...next[idx], swatch: e.target.value };
+                      upd("metal_options", next as Variant[]);
+                    }}
+                  />
+                </div>
+                <Input
+                  className="col-span-3"
+                  placeholder="Image URL (optional)"
+                  value={v.image ?? ""}
+                  onChange={(e) => {
+                    const next = [...(form.metal_options ?? [])];
+                    next[idx] = { ...next[idx], image: e.target.value };
+                    upd("metal_options", next as Variant[]);
+                  }}
+                />
+                <Input
+                  className="col-span-2"
+                  type="number"
+                  step="0.01"
+                  placeholder="Price"
+                  value={v.price_from ?? ""}
+                  onChange={(e) => {
+                    const next = [...(form.metal_options ?? [])];
+                    next[idx] = { ...next[idx], price_from: e.target.value ? parseFloat(e.target.value) : null };
+                    upd("metal_options", next as Variant[]);
+                  }}
+                />
+                <Button
+                  type="button"
+                  size="icon"
+                  variant="ghost"
+                  className="col-span-1"
+                  onClick={() => {
+                    const next = (form.metal_options ?? []).filter((_, i) => i !== idx);
+                    upd("metal_options", next as Variant[]);
+                  }}
+                >
+                  <X className="h-4 w-4" />
+                </Button>
+              </div>
+            ))}
+            {(form.metal_options ?? []).length === 0 && (
+              <p className="text-xs text-muted-foreground">No variants. Click "Add variant" to offer color/metal choices.</p>
+            )}
           </div>
 
 

@@ -13,7 +13,7 @@ import { detectVideo } from "@/lib/video-embed";
 async function fetchDbBySlug(slug: string): Promise<Product | null> {
   const { data } = await supabase
     .from("products")
-    .select("slug,name,category,subcategory,short_description,description,images,video_url,diamond_type,is_active,product_code,price_from,mrp,currency,show_price")
+    .select("slug,name,category,subcategory,short_description,description,images,video_url,diamond_type,is_active,product_code,price_from,mrp,currency,show_price,metal_options")
     .eq("slug", slug)
     .eq("is_active", true)
     .maybeSingle();
@@ -22,6 +22,18 @@ async function fetchDbBySlug(slug: string): Promise<Product | null> {
   const diamondTypes: ("Natural" | "Lab Grown")[] =
     dt === "natural" ? ["Natural"] : dt === "lab grown" ? ["Lab Grown"] : ["Natural", "Lab Grown"];
   const imgs = (data.images as string[] | null) ?? [];
+  const rawVariants = (data as { metal_options?: unknown }).metal_options;
+  const variants = Array.isArray(rawVariants)
+    ? (rawVariants as any[])
+        .filter((v) => v && typeof v === "object" && v.label)
+        .map((v) => ({
+          label: String(v.label),
+          swatch: v.swatch ? String(v.swatch) : undefined,
+          image: v.image ? String(v.image) : undefined,
+          price_from: typeof v.price_from === "number" ? v.price_from : null,
+          mrp: typeof v.mrp === "number" ? v.mrp : null,
+        }))
+    : [];
   return {
     slug: data.slug,
     name: data.name,
@@ -41,6 +53,7 @@ async function fetchDbBySlug(slug: string): Promise<Product | null> {
     mrp: (data as { mrp?: number | null }).mrp ?? null,
     currency: (data as { currency?: string | null }).currency ?? "USD",
     showPrice: (data as { show_price?: boolean | null }).show_price ?? true,
+    variants,
   };
 }
 
@@ -81,8 +94,14 @@ function ProductPage() {
   const [specialReq, setSpecialReq] = useState("");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const [activeIdx, setActiveIdx] = useState(0);
+  const variants: NonNullable<Product["variants"]> = product.variants ?? [];
+  const [activeVariant, setActiveVariant] = useState(0);
+  const currentVariant = variants[activeVariant];
 
-  const imageList: string[] = ((product.images && product.images.length ? product.images : [product.image]) as string[]).filter(Boolean);
+  const baseImages: string[] = ((product.images && product.images.length ? product.images : [product.image]) as string[]).filter(Boolean);
+  const imageList: string[] = currentVariant?.image
+    ? [currentVariant.image, ...baseImages.filter((s) => s !== currentVariant.image)]
+    : baseImages;
   const media: MediaItem[] = [
     ...imageList.map((src) => ({ type: "image" as const, src })),
     ...(product.videoUrl ? [{ type: "video" as const, src: product.videoUrl }] : []),
@@ -94,12 +113,14 @@ function ProductPage() {
 
   const isRing = product.category === "engagement-rings" || product.category === "rings" || product.category === "bridal";
 
-  const showPrice = product.showPrice !== false && !!product.priceFrom;
+  const effectivePriceFrom = currentVariant?.price_from ?? product.priceFrom;
+  const effectiveMrp = currentVariant?.mrp ?? product.mrp;
+  const showPrice = product.showPrice !== false && !!effectivePriceFrom;
   const priceLabel = showPrice
-    ? `${product.currency || "USD"} ${product.priceFrom!.toLocaleString()}`
+    ? `${product.currency || "USD"} ${effectivePriceFrom!.toLocaleString()}`
     : null;
-  const mrpLabel = showPrice && product.mrp && product.mrp > (product.priceFrom ?? 0)
-    ? `${product.currency || "USD"} ${product.mrp.toLocaleString()}`
+  const mrpLabel = showPrice && effectiveMrp && effectiveMrp > (effectivePriceFrom ?? 0)
+    ? `${product.currency || "USD"} ${effectiveMrp.toLocaleString()}`
     : null;
 
   const message = useMemo(() => {
@@ -110,6 +131,7 @@ function ProductPage() {
       `Product: ${product.name}`,
     ];
     if (product.productCode) lines.push(`Product Code: ${product.productCode}`);
+    if (currentVariant) lines.push(`Option: ${currentVariant.label}`);
     if (priceLabel) lines.push(`Price: ${priceLabel}${mrpLabel ? ` (MRP ${mrpLabel})` : ""}`);
     lines.push(
       `Diamond Type: ${diamondType}`,
@@ -317,6 +339,33 @@ function ProductPage() {
               <div className="mt-8 hairline-gold w-16" />
 
               <div className="mt-8 space-y-7">
+                {variants.length > 0 && (
+                  <div>
+                    <p className="text-[14px] tracking-[0.42em] uppercase text-gold">Options</p>
+                    <div className="mt-4 flex flex-wrap items-center gap-3">
+                      {variants.map((v, i) => {
+                        const active = i === activeVariant;
+                        return (
+                          <button
+                            key={i}
+                            type="button"
+                            onClick={() => { setActiveVariant(i); setActiveIdx(0); }}
+                            title={v.label}
+                            className={`h-10 w-10 rounded-full border-2 transition ${active ? "border-gold ring-2 ring-gold/30" : "border-white/25 hover:border-white/60"}`}
+                            style={{
+                              background: v.image
+                                ? `url(${v.image}) center/cover`
+                                : (v.swatch || "#e5e4e2"),
+                            }}
+                          />
+                        );
+                      })}
+                    </div>
+                    {currentVariant && (
+                      <p className="mt-3 text-[13px] tracking-[0.2em] uppercase text-ivory font-semibold">{currentVariant.label}</p>
+                    )}
+                  </div>
+                )}
                 <PillGroup
                   label="Diamond"
                   value={diamondType}
