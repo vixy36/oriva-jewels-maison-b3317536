@@ -1,10 +1,11 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { Menu, X, Search, ChevronDown, Plus, Minus } from "lucide-react";
+import { Menu, X, Search, ChevronDown, Plus, Minus, Heart } from "lucide-react";
 import { SearchDialog } from "@/components/site/SearchDialog";
 import { ensureGsap } from "@/lib/gsap";
 import { supabase } from "@/integrations/supabase/client";
+import { useWishlist } from "@/lib/wishlist";
 import orivaLogo from "@/assets/oriva-logo.png.asset.json";
 
 type NavItem = {
@@ -37,6 +38,7 @@ const FALLBACK_NAV: NavItem[] = [
 const FALLBACK_SUB: { label: string; to: string }[] = [
   { label: "Home", to: "/" },
   { label: "About Us", to: "/about" },
+  { label: "Wishlist", to: "/wishlist" },
   { label: "Contact", to: "/contact" },
 ];
 
@@ -65,6 +67,7 @@ export function SiteHeader() {
   const headerRef = useRef<HTMLElement | null>(null);
   const logoRef = useRef<HTMLAnchorElement | null>(null);
   const navItemsRef = useRef<HTMLDivElement | null>(null);
+  const { count: wishlistCount } = useWishlist();
 
   const { data: menuRows } = useMenu();
 
@@ -249,17 +252,41 @@ export function SiteHeader() {
                 )}
               </div>
             ))}
+            <Link
+              to="/wishlist"
+              aria-label="Wishlist"
+              className="relative text-ivory hover:text-gold transition ml-2"
+            >
+              <Heart className="h-5 w-5" strokeWidth={1.6} />
+              {wishlistCount > 0 && (
+                <span className="absolute -top-1.5 -right-2 min-w-[16px] h-[16px] px-1 grid place-items-center bg-gold text-obsidian text-[9px] font-semibold rounded-full">
+                  {wishlistCount}
+                </span>
+              )}
+            </Link>
             <button
               type="button"
               onClick={() => setSearchOpen(true)}
-              className="text-ivory hover:text-gold transition ml-2"
+              className="text-ivory hover:text-gold transition ml-1"
               aria-label="Search"
             >
               <Search className="h-5 w-5" strokeWidth={1.6} />
             </button>
           </nav>
 
-          <div className="flex items-center gap-5 justify-self-end lg:hidden">
+          <div className="flex items-center gap-4 justify-self-end lg:hidden">
+            <Link
+              to="/wishlist"
+              aria-label="Wishlist"
+              className="relative text-ivory hover:text-gold transition"
+            >
+              <Heart className="h-5 w-5" strokeWidth={1.6} />
+              {wishlistCount > 0 && (
+                <span className="absolute -top-1.5 -right-2 min-w-[16px] h-[16px] px-1 grid place-items-center bg-gold text-obsidian text-[9px] font-semibold rounded-full">
+                  {wishlistCount}
+                </span>
+              )}
+            </Link>
             <button
               type="button"
               onClick={() => setSearchOpen(true)}
@@ -269,6 +296,7 @@ export function SiteHeader() {
               <Search className="h-5 w-5" strokeWidth={1.6} />
             </button>
           </div>
+
 
         </div>
         <div className="h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
