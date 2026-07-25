@@ -8,6 +8,7 @@ import { Reveal } from "@/components/site/Reveal";
 import { Lightbox } from "@/components/site/Lightbox";
 import { supabase } from "@/integrations/supabase/client";
 import { useWishlist } from "@/lib/wishlist";
+import { detectVideo } from "@/lib/video-embed";
 
 async function fetchDbBySlug(slug: string): Promise<Product | null> {
   const { data } = await supabase
@@ -157,12 +158,26 @@ function ProductPage() {
 
               <div className="relative overflow-hidden bg-charcoal aspect-square group border border-white/5 flex-1 max-w-[520px]">
                 {current?.type === "video" ? (
-                  <video
-                    src={current.src}
-                    controls
-                    playsInline
-                    className="h-full w-full object-cover bg-obsidian"
-                  />
+                  (() => {
+                    const v = detectVideo(current.src);
+                    if (!v) return null;
+                    return v.kind === "file" ? (
+                      <video
+                        src={v.embed}
+                        controls
+                        playsInline
+                        className="h-full w-full object-cover bg-obsidian"
+                      />
+                    ) : (
+                      <iframe
+                        src={v.embed}
+                        title="Product video"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen
+                        className="h-full w-full bg-obsidian"
+                      />
+                    );
+                  })()
                 ) : (
                   <button
                     type="button"
