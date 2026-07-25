@@ -154,6 +154,13 @@ function AdminCategoriesPage() {
           onReorder={(next) => { setItems(next); reorderMut.mutate(next); }}
           renderItem={(c) => (
             <div className="flex items-center gap-3 w-full">
+              <div className="h-12 w-16 shrink-0 rounded overflow-hidden border bg-muted flex items-center justify-center">
+                {c.banner_url ? (
+                  <img src={c.banner_url} alt="" className="h-full w-full object-cover" />
+                ) : (
+                  <ImageIcon className="h-4 w-4 text-muted-foreground" />
+                )}
+              </div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2">
                   <span className="font-medium truncate">{c.name}</span>
