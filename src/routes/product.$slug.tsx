@@ -122,7 +122,6 @@ function ProductPage() {
     if (specialReq) lines.push(`Special Requirements: ${specialReq}`);
     lines.push(
       "",
-      "I would like to attach a reference photo and share more details.",
       "Please share pricing and availability.",
     );
     return lines.join("\n");
@@ -408,9 +407,6 @@ function ProductPage() {
                     className="mt-3 w-full border-b border-white/15 bg-transparent py-2.5 text-sm text-ivory placeholder:text-ivory/40 outline-none focus:border-gold transition resize-none"
                   />
                 </div>
-                <p className="text-[12px] leading-[1.7] tracking-[0.06em] text-ivory/60">
-                  You may attach a reference photo directly on WhatsApp after tapping enquire.
-                </p>
               </div>
 
               <div className="mt-10 border border-white/10 bg-charcoal/50 p-6">
