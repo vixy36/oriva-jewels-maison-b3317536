@@ -7,6 +7,7 @@ import { ProductCard } from "@/components/site/ProductCard";
 import { Reveal } from "@/components/site/Reveal";
 import { Lightbox } from "@/components/site/Lightbox";
 import { supabase } from "@/integrations/supabase/client";
+import { useWishlist } from "@/lib/wishlist";
 
 async function fetchDbBySlug(slug: string): Promise<Product | null> {
   const { data } = await supabase
