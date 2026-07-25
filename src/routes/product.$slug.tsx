@@ -13,7 +13,7 @@ import { detectVideo } from "@/lib/video-embed";
 async function fetchDbBySlug(slug: string): Promise<Product | null> {
   const { data } = await supabase
     .from("products")
-    .select("slug,name,category,subcategory,short_description,description,images,video_url,diamond_type,is_active,product_code,price_from,mrp,currency,show_price")
+    .select("slug,name,category,subcategory,short_description,description,images,video_url,diamond_type,is_active,product_code,price_from,mrp,currency,show_price,metal_options")
     .eq("slug", slug)
     .eq("is_active", true)
     .maybeSingle();
@@ -22,6 +22,18 @@ async function fetchDbBySlug(slug: string): Promise<Product | null> {
   const diamondTypes: ("Natural" | "Lab Grown")[] =
     dt === "natural" ? ["Natural"] : dt === "lab grown" ? ["Lab Grown"] : ["Natural", "Lab Grown"];
   const imgs = (data.images as string[] | null) ?? [];
+  const rawVariants = (data as { metal_options?: unknown }).metal_options;
+  const variants = Array.isArray(rawVariants)
+    ? (rawVariants as any[])
+        .filter((v) => v && typeof v === "object" && v.label)
+        .map((v) => ({
+          label: String(v.label),
+          swatch: v.swatch ? String(v.swatch) : undefined,
+          image: v.image ? String(v.image) : undefined,
+          price_from: typeof v.price_from === "number" ? v.price_from : null,
+          mrp: typeof v.mrp === "number" ? v.mrp : null,
+        }))
+    : [];
   return {
     slug: data.slug,
     name: data.name,
@@ -41,6 +53,7 @@ async function fetchDbBySlug(slug: string): Promise<Product | null> {
     mrp: (data as { mrp?: number | null }).mrp ?? null,
     currency: (data as { currency?: string | null }).currency ?? "USD",
     showPrice: (data as { show_price?: boolean | null }).show_price ?? true,
+    variants,
   };
 }
 
