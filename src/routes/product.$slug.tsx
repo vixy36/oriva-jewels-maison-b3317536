@@ -297,9 +297,23 @@ function ProductPage() {
             <div className="md:sticky md:top-40">
               <p className="eyebrow">{product.collection}</p>
               <h1 className="mt-5 font-serif text-3xl md:text-4xl leading-[1] text-ivory">{product.name}</h1>
+              {product.productCode && (
+                <p className="mt-3 text-[11px] font-mono tracking-[0.3em] uppercase text-ivory/60">
+                  Ref. {product.productCode}
+                </p>
+              )}
+              {priceLabel && (
+                <div className="mt-4 flex items-baseline gap-3">
+                  <span className="font-serif text-2xl md:text-3xl text-gold">{priceLabel}</span>
+                  {mrpLabel && (
+                    <span className="text-sm text-ivory/50 line-through">{mrpLabel}</span>
+                  )}
+                </div>
+              )}
               <p className="mt-6 text-[15px] leading-[1.8] text-ivory/80 max-w-lg">
                 {product.description}
               </p>
+
 
               <div className="mt-8 hairline-gold w-16" />
 
