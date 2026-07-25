@@ -451,7 +451,7 @@ function ProductPage() {
                   } catch {}
                   window.open(buildWhatsAppLink(message), "_blank", "noopener");
                 }}
-                className="mt-5 flex w-full items-center justify-center gap-3 bg-gold text-obsidian py-5 text-[14px] tracking-[0.4em] uppercase hover:bg-ivory transition group cursor-pointer"
+                className="mt-5 flex w-full items-center justify-center gap-3 bg-gold text-obsidian py-5 text-[14px] font-semibold tracking-[0.4em] uppercase hover:bg-gold-deep hover:text-ivory transition group cursor-pointer"
               >
                 <MessageCircle className="h-4 w-4" strokeWidth={1.5} />
                 Enquire on WhatsApp

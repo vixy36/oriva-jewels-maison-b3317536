@@ -131,7 +131,14 @@ function MenuEditor({ menuKey }: { menuKey: "main" | "sub" }) {
 
   return (
     <div>
-      <div className="flex justify-end mb-4">
+      <div className="flex justify-end gap-2 mb-4">
+        <Button
+          variant="outline"
+          disabled={reorderMut.isPending || items.length === 0}
+          onClick={() => reorderMut.mutate(items)}
+        >
+          {reorderMut.isPending ? "Saving…" : "Save changes"}
+        </Button>
         <Button onClick={() => { setEditing({ id: "", menu_key: menuKey, label: "", href: "/", sort_order: 0, is_active: true }); setOpen(true); }}>
           <Plus className="h-4 w-4 mr-1" /> Add item
         </Button>
