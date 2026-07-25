@@ -13,7 +13,7 @@ import { detectVideo } from "@/lib/video-embed";
 async function fetchDbBySlug(slug: string): Promise<Product | null> {
   const { data } = await supabase
     .from("products")
-    .select("slug,name,category,subcategory,short_description,description,images,video_url,diamond_type,is_active")
+    .select("slug,name,category,subcategory,short_description,description,images,video_url,diamond_type,is_active,product_code,price_from,mrp,currency,show_price")
     .eq("slug", slug)
     .eq("is_active", true)
     .maybeSingle();
@@ -36,6 +36,11 @@ async function fetchDbBySlug(slug: string): Promise<Product | null> {
     metal: "18K White Gold",
     diamondTypes,
     customizable: true,
+    productCode: (data as { product_code?: string | null }).product_code ?? undefined,
+    priceFrom: (data as { price_from?: number | null }).price_from ?? null,
+    mrp: (data as { mrp?: number | null }).mrp ?? null,
+    currency: (data as { currency?: string | null }).currency ?? "USD",
+    showPrice: (data as { show_price?: boolean | null }).show_price ?? true,
   };
 }
 
