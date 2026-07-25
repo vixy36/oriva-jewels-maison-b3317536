@@ -205,22 +205,27 @@ function EnquiriesPage() {
                     )}
                   </div>
                 </div>
-                <div className="flex gap-1">
-                  <Button size="sm" variant="ghost" onClick={() => toggleRead(open, !open.is_read)} title={open.is_read ? "Mark unread" : "Mark read"}>
-                    {open.is_read ? <Mail className="h-4 w-4" /> : <MailOpen className="h-4 w-4" />}
+                <div className="flex gap-2 flex-wrap">
+                  <Button size="sm" variant="outline" onClick={() => toggleRead(open, !open.is_read)}>
+                    {open.is_read ? <Mail className="h-4 w-4 mr-1.5" /> : <MailOpen className="h-4 w-4 mr-1.5" />}
+                    {open.is_read ? "Mark Unread" : "Mark Read"}
                   </Button>
                   {open.phone && (
-                    <Button size="sm" variant="ghost" asChild title="WhatsApp">
+                    <Button size="sm" variant="outline" asChild>
                       <a href={`https://wa.me/${open.phone.replace(/\D/g, "")}`} target="_blank" rel="noreferrer">
-                        <MessageSquare className="h-4 w-4" />
+                        <MessageSquare className="h-4 w-4 mr-1.5" /> WhatsApp
                       </a>
                     </Button>
                   )}
-                  <Button size="sm" variant="ghost" onClick={() => convertToOrder(open)} title="Convert to Order">
-                    <PackagePlus className="h-4 w-4" />
+                  <Button size="sm" variant="default" onClick={() => convertToOrder(open)}>
+                    <PackagePlus className="h-4 w-4 mr-1.5" /> Convert to Order
                   </Button>
-                  <Button size="sm" variant="ghost" onClick={() => archive(open)} title="Archive"><Archive className="h-4 w-4" /></Button>
-                  <Button size="sm" variant="ghost" onClick={() => remove(open)} title="Delete"><Trash2 className="h-4 w-4" /></Button>
+                  <Button size="sm" variant="outline" onClick={() => archive(open)}>
+                    <Archive className="h-4 w-4 mr-1.5" /> Archive
+                  </Button>
+                  <Button size="sm" variant="outline" onClick={() => remove(open)} className="text-red-600 hover:text-red-700 hover:bg-red-50 dark:hover:bg-red-950">
+                    <Trash2 className="h-4 w-4 mr-1.5" /> Delete
+                  </Button>
                 </div>
               </div>
 
