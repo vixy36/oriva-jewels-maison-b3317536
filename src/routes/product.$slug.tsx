@@ -94,8 +94,14 @@ function ProductPage() {
   const [specialReq, setSpecialReq] = useState("");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const [activeIdx, setActiveIdx] = useState(0);
+  const variants = product.variants ?? [];
+  const [activeVariant, setActiveVariant] = useState(0);
+  const currentVariant = variants[activeVariant];
 
-  const imageList: string[] = ((product.images && product.images.length ? product.images : [product.image]) as string[]).filter(Boolean);
+  const baseImages: string[] = ((product.images && product.images.length ? product.images : [product.image]) as string[]).filter(Boolean);
+  const imageList: string[] = currentVariant?.image
+    ? [currentVariant.image, ...baseImages.filter((s) => s !== currentVariant.image)]
+    : baseImages;
   const media: MediaItem[] = [
     ...imageList.map((src) => ({ type: "image" as const, src })),
     ...(product.videoUrl ? [{ type: "video" as const, src: product.videoUrl }] : []),
@@ -107,12 +113,14 @@ function ProductPage() {
 
   const isRing = product.category === "engagement-rings" || product.category === "rings" || product.category === "bridal";
 
-  const showPrice = product.showPrice !== false && !!product.priceFrom;
+  const effectivePriceFrom = currentVariant?.price_from ?? product.priceFrom;
+  const effectiveMrp = currentVariant?.mrp ?? product.mrp;
+  const showPrice = product.showPrice !== false && !!effectivePriceFrom;
   const priceLabel = showPrice
-    ? `${product.currency || "USD"} ${product.priceFrom!.toLocaleString()}`
+    ? `${product.currency || "USD"} ${effectivePriceFrom!.toLocaleString()}`
     : null;
-  const mrpLabel = showPrice && product.mrp && product.mrp > (product.priceFrom ?? 0)
-    ? `${product.currency || "USD"} ${product.mrp.toLocaleString()}`
+  const mrpLabel = showPrice && effectiveMrp && effectiveMrp > (effectivePriceFrom ?? 0)
+    ? `${product.currency || "USD"} ${effectiveMrp.toLocaleString()}`
     : null;
 
   const message = useMemo(() => {
