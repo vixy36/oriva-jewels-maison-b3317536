@@ -182,12 +182,12 @@ function AdminCategoriesPage() {
       )}
 
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="max-w-lg max-h-[90vh] overflow-y-auto">
-          <DialogHeader>
+        <DialogContent className="max-w-lg w-[calc(100vw-1.5rem)] p-0 max-h-[92dvh] flex flex-col gap-0 overflow-hidden">
+          <DialogHeader className="px-6 pt-6 pb-3 border-b bg-background sticky top-0 z-10">
             <DialogTitle>{editing?.id ? "Edit category" : "New category"}</DialogTitle>
           </DialogHeader>
           {editing && (
-            <div className="space-y-4">
+            <div className="space-y-4 px-6 py-4 overflow-y-auto flex-1">
               <div>
                 <Label>Name</Label>
                 <Input
@@ -198,7 +198,7 @@ function AdminCategoriesPage() {
               <div>
                 <Label>Slug</Label>
                 <Input value={editing.slug} onChange={(e) => setEditing({ ...editing, slug: slugify(e.target.value) })} />
-                <p className="text-xs text-muted-foreground mt-1">URL: /collections/{editing.slug || "…"}</p>
+                <p className="text-xs text-muted-foreground mt-1 break-all">URL: /collections/{editing.slug || "…"}</p>
               </div>
               <div>
                 <Label>Blurb</Label>
@@ -243,7 +243,7 @@ function AdminCategoriesPage() {
               </div>
             </div>
           )}
-          <DialogFooter>
+          <DialogFooter className="px-6 py-3 border-t bg-background sticky bottom-0 z-10 flex-row justify-end gap-2 [padding-bottom:calc(env(safe-area-inset-bottom)+0.75rem)]">
             <Button variant="outline" onClick={() => setOpen(false)}>Cancel</Button>
             <Button
               disabled={!editing?.name || !editing?.slug || saveMut.isPending}
