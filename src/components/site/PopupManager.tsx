@@ -96,12 +96,13 @@ export function PopupManager({ pathname }: { pathname: string }) {
   }
 
   const inner = (
-    <div className={`relative w-full ${sizeCls} bg-ivory text-obsidian shadow-2xl border border-obsidian/10`}>
+    <div className={`relative w-full ${sizeCls} shadow-2xl border border-black/10`} style={{ backgroundColor: "#ffffff", color: "#071c37" }}>
       <button
         type="button"
         onClick={close}
         aria-label="Close"
-        className="absolute -top-3 -right-3 z-20 grid h-10 w-10 place-items-center rounded-full bg-obsidian text-ivory shadow-lg ring-2 ring-ivory hover:bg-obsidian/85 transition"
+        className="absolute -top-3 -right-3 z-20 grid h-10 w-10 place-items-center rounded-full shadow-lg ring-2 transition"
+        style={{ backgroundColor: "#071c37", color: "#ffffff", boxShadow: "0 6px 20px rgba(0,0,0,0.35)", ["--tw-ring-color" as any]: "#ffffff" }}
       >
         <X className="h-5 w-5" strokeWidth={2.5} />
       </button>
@@ -109,13 +110,22 @@ export function PopupManager({ pathname }: { pathname: string }) {
         <img src={popup.image_url} alt={popup.title} className="w-full h-auto max-h-[55vh] object-cover" />
       )}
       <div className="p-6 md:p-8 text-center">
-        {popup.title && <h3 className="font-serif text-2xl md:text-3xl">{popup.title}</h3>}
-        {popup.description && <p className="mt-3 text-sm leading-relaxed text-obsidian/75">{popup.description}</p>}
+        {popup.title && (
+          <h3 className="font-serif text-2xl md:text-3xl" style={{ color: "#071c37" }}>
+            {popup.title}
+          </h3>
+        )}
+        {popup.description && (
+          <p className="mt-3 text-sm leading-relaxed" style={{ color: "rgba(7,28,55,0.78)" }}>
+            {popup.description}
+          </p>
+        )}
         {popup.link_url && (
           <a
             href={popup.link_url}
             onClick={close}
-            className="mt-5 inline-block px-6 py-2.5 text-xs tracking-[0.32em] uppercase bg-obsidian text-ivory hover:bg-obsidian/85"
+            className="mt-5 inline-block px-6 py-2.5 text-xs tracking-[0.32em] uppercase font-medium transition hover:opacity-90"
+            style={{ backgroundColor: "#071c37", color: "#ffffff" }}
           >
             {popup.cta_label || "Explore"}
           </a>
