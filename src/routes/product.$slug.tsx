@@ -143,7 +143,11 @@ function ProductPage() {
                     >
                       {m.type === "video" ? (
                         <>
-                          <video src={m.src} muted playsInline className="h-full w-full object-cover" />
+                          {detectVideo(m.src)?.kind === "file" ? (
+                            <video src={m.src} muted playsInline className="h-full w-full object-cover" />
+                          ) : (
+                            <div className="h-full w-full bg-obsidian" />
+                          )}
                           <span className="absolute inset-0 grid place-items-center bg-obsidian/40">
                             <Play className="h-4 w-4 text-ivory" strokeWidth={1.6} />
                           </span>
@@ -252,7 +256,11 @@ function ProductPage() {
                   >
                     {m.type === "video" ? (
                       <>
-                        <video src={m.src} muted playsInline className="h-full w-full object-cover" />
+                        {detectVideo(m.src)?.kind === "file" ? (
+                          <video src={m.src} muted playsInline className="h-full w-full object-cover" />
+                        ) : (
+                          <div className="h-full w-full bg-obsidian" />
+                        )}
                         <span className="absolute inset-0 grid place-items-center bg-obsidian/40">
                           <Play className="h-5 w-5 text-ivory" strokeWidth={1.6} />
                         </span>
