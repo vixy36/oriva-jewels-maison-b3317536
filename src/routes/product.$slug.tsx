@@ -69,7 +69,7 @@ function ProductPage() {
   const [caratTo, setCaratTo] = useState<string>("2.00");
   const [backing, setBacking] = useState(product.backings?.[0] ?? "");
   const [length, setLength] = useState(product.lengths?.[1] ?? "");
-  const [engraving, setEngraving] = useState("");
+  const [specialReq, setSpecialReq] = useState("");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const [activeIdx, setActiveIdx] = useState(0);
 
@@ -83,6 +83,8 @@ function ProductPage() {
   const gallery = imageList;
 
 
+  const isRing = product.category === "engagement-rings" || product.category === "rings" || product.category === "bridal";
+
   const message = useMemo(() => {
     const lines = [
       "Hello Oriva Jewels,",
@@ -93,17 +95,17 @@ function ProductPage() {
       `Metal: ${karat} ${goldColor} Gold`,
       `Centre Stone: ${caratFrom} ct - ${caratTo} ct`,
     ];
-    if (product.sizes) lines.push(`Ring Size: ${size}`);
+    if (isRing || product.sizes) lines.push(`Ring Size: ${size || "—"}`);
     if (product.backings) lines.push(`Backing: ${backing}`);
     if (product.lengths) lines.push(`Length: ${length}`);
-    if (engraving) lines.push(`Engraving: ${engraving}`);
+    if (specialReq) lines.push(`Special Requirements: ${specialReq}`);
     lines.push(
       "",
       "I would like to attach a reference photo and share more details.",
       "Please share pricing and availability.",
     );
     return lines.join("\n");
-  }, [product, diamondType, karat, goldColor, caratFrom, caratTo, size, backing, length, engraving]);
+  }, [product, diamondType, karat, goldColor, caratFrom, caratTo, size, backing, length, specialReq, isRing]);
 
   const related = products.filter((p) => p.slug !== product.slug).slice(0, 3);
 
@@ -312,7 +314,21 @@ function ProductPage() {
                   <p className="mt-2 text-[11px] tracking-[0.06em] text-ivory/55">Enter your preferred carat range manually.</p>
                 </div>
 
-                {product.sizes && (
+                {isRing && (
+                  <div>
+                    <label className="text-[14px] tracking-[0.42em] uppercase text-gold">Ring Size</label>
+                    <input
+                      value={size}
+                      onChange={(e) => setSize(e.target.value.slice(0, 20))}
+                      placeholder="e.g. US 6, EU 52, HK 13"
+                      className="mt-3 w-full border-b border-white/15 bg-transparent py-2.5 text-sm text-ivory placeholder:text-ivory/40 outline-none focus:border-gold transition"
+                    />
+                    <p className="mt-2 text-[11px] tracking-[0.06em] text-ivory/55">
+                      Not sure? See our <Link to="/ring-size-guide" className="text-gold underline underline-offset-2">ring size guide</Link>.
+                    </p>
+                  </div>
+                )}
+                {!isRing && product.sizes && (
                   <PillGroup label="Ring Size" value={size} options={product.sizes} onChange={setSize} />
                 )}
                 {product.backings && (
@@ -323,13 +339,14 @@ function ProductPage() {
                 )}
                 <div>
                   <label className="text-[14px] tracking-[0.42em] uppercase text-gold">
-                    Engraving (optional)
+                    Special Requirements
                   </label>
-                  <input
-                    value={engraving}
-                    onChange={(e) => setEngraving(e.target.value.slice(0, 20))}
-                    placeholder="Up to 20 characters"
-                    className="mt-3 w-full border-b border-white/15 bg-transparent py-2.5 text-sm text-ivory placeholder:text-ivory/40 outline-none focus:border-gold transition"
+                  <textarea
+                    value={specialReq}
+                    onChange={(e) => setSpecialReq(e.target.value.slice(0, 500))}
+                    placeholder="Share any custom details, engraving, gifting notes, delivery timeline…"
+                    rows={3}
+                    className="mt-3 w-full border-b border-white/15 bg-transparent py-2.5 text-sm text-ivory placeholder:text-ivory/40 outline-none focus:border-gold transition resize-none"
                   />
                 </div>
                 <p className="text-[12px] leading-[1.7] tracking-[0.06em] text-ivory/60">
@@ -344,9 +361,10 @@ function ProductPage() {
                   <dt className="text-ivory/80">Metal</dt><dd className="text-ivory">{karat} {goldColor} Gold</dd>
                   <dt className="text-ivory/80">Centre Stone</dt><dd className="text-ivory">{caratFrom} - {caratTo} ct</dd>
                   {product.sizes && (<><dt className="text-ivory/80">Size</dt><dd className="text-ivory">{size}</dd></>)}
+                  {isRing && !product.sizes && size && (<><dt className="text-ivory/80">Ring Size</dt><dd className="text-ivory">{size}</dd></>)}
                   {product.backings && (<><dt className="text-ivory/80">Backing</dt><dd className="text-ivory">{backing}</dd></>)}
                   {product.lengths && (<><dt className="text-ivory/80">Length</dt><dd className="text-ivory">{length}</dd></>)}
-                  {engraving && (<><dt className="text-ivory/80">Engraving</dt><dd className="text-ivory">"{engraving}"</dd></>)}
+                  {specialReq && (<><dt className="text-ivory/80">Special Requirements</dt><dd className="text-ivory">{specialReq}</dd></>)}
                 </dl>
               </div>
 
@@ -356,10 +374,10 @@ function ProductPage() {
                 onClick={async () => {
                   const configuration = {
                     diamondType, karat, goldColor, caratFrom, caratTo,
-                    size: product.sizes ? size : undefined,
+                    size: (isRing || product.sizes) ? (size || undefined) : undefined,
                     backing: product.backings ? backing : undefined,
                     length: product.lengths ? length : undefined,
-                    engraving: engraving || undefined,
+                    specialRequirements: specialReq || undefined,
                   };
                   try {
                     await supabase.from("enquiries").insert({
