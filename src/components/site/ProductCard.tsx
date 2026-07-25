@@ -84,7 +84,7 @@ export function ProductCard({ product }: { product: Product }) {
           {product.name}
         </h3>
         <p className="mt-1.5 text-[12px] md:text-[13px] text-ivory/70 line-clamp-1">
-          {product.shape} · {product.metal}
+          {product.shape}
         </p>
       </div>
     </Link>
