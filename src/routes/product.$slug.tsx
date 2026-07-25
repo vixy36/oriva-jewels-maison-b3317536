@@ -131,6 +131,7 @@ function ProductPage() {
       `Product: ${product.name}`,
     ];
     if (product.productCode) lines.push(`Product Code: ${product.productCode}`);
+    if (currentVariant) lines.push(`Option: ${currentVariant.label}`);
     if (priceLabel) lines.push(`Price: ${priceLabel}${mrpLabel ? ` (MRP ${mrpLabel})` : ""}`);
     lines.push(
       `Diamond Type: ${diamondType}`,
