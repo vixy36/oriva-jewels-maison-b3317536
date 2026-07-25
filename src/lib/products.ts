@@ -36,6 +36,11 @@ export interface Product {
   lengths?: string[];
   backings?: string[];
   customizable: boolean;
+  productCode?: string;
+  priceFrom?: number | null;
+  mrp?: number | null;
+  currency?: string;
+  showPrice?: boolean;
 }
 
 export const products: Product[] = [
