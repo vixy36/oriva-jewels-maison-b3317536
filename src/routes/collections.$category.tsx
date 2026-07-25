@@ -11,7 +11,8 @@ import { useDbProductsByCategory } from "@/lib/dbProducts";
 import engagementImg from "@/assets/collection-engagement.jpg";
 import earringsImg from "@/assets/collection-earrings.jpg";
 import braceletsImg from "@/assets/product-tennis.jpg";
-import pendantsImg from "@/assets/collection-pendants.jpg";
+
+import pendantHero from "@/assets/pendant-hero.jpg.asset.json";
 import bridalImg from "@/assets/collection-bridal.jpg";
 import labgrownImg from "@/assets/collection-labgrown.jpg";
 import editorialImg from "@/assets/editorial-emerald.jpg";
@@ -21,14 +22,17 @@ const banners: Record<ProductCategory, string> = {
   rings: engagementImg,
   earrings: earringsImg,
   bracelets: braceletsImg,
-  necklaces: pendantsImg,
-  pendants: pendantsImg,
+  necklaces: pendantHero.url,
+  pendants: pendantHero.url,
   "mens-jewelry": braceletsImg,
   "hip-hop-jewelry": braceletsImg,
   bridal: bridalImg,
   "lab-grown": labgrownImg,
   natural: engagementImg,
 };
+
+// Categories whose hero image should be shown fully (no crop)
+const containCats = new Set<ProductCategory>(["pendants", "necklaces"]);
 
 
 const validCats: ProductCategory[] = [
@@ -84,14 +88,14 @@ function CollectionPage() {
 
   return (
     <div className="bg-ink">
-      <section className="relative isolate overflow-hidden bg-obsidian text-ivory min-h-[28svh] md:min-h-[32svh] flex items-end">
+      <section className={`relative isolate overflow-hidden text-ivory min-h-[38svh] md:min-h-[48svh] flex items-end ${containCats.has(category) ? "bg-[#071c37]" : "bg-obsidian"}`}>
         <img
           src={banner}
           alt={info.label}
-          className="absolute inset-0 h-full w-full object-cover opacity-70 animate-slow-zoom"
+          className={`absolute inset-0 h-full w-full ${containCats.has(category) ? "object-contain object-center" : "object-cover opacity-70 animate-slow-zoom"}`}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-obsidian/40 via-obsidian/30 to-obsidian" />
-        <div className="absolute inset-0 vignette" />
+        {!containCats.has(category) && <div className="absolute inset-0 bg-gradient-to-b from-obsidian/40 via-obsidian/30 to-obsidian" />}
+        {!containCats.has(category) && <div className="absolute inset-0 vignette" />}
 
         <div className="relative mx-auto max-w-[1500px] w-full px-6 pt-24 pb-6 md:px-16 md:pt-28 md:pb-8">
           <h1 className="font-serif text-5xl md:text-7xl leading-[0.95] tracking-[-0.02em]">

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
-import { LayoutDashboard, Package, Search, Inbox, LogOut, Menu, X, Tag, Users, ShoppingBag, Gift, Mail, Layers, ListTree } from "lucide-react";
+import { LayoutDashboard, Package, Search, Inbox, LogOut, Menu, X, Tag, Users, ShoppingBag, Gift, Mail, Layers, ListTree, MessageSquare } from "lucide-react";
 
 export const Route = createFileRoute("/_authenticated/admin")({
   ssr: false,
@@ -37,7 +37,7 @@ function AdminSkeleton() {
   );
 }
 
-const nav: { to: string; label: string; icon: typeof LayoutDashboard; exact?: boolean }[] = [
+const nav: { to: string; label: string; icon: typeof LayoutDashboard; exact?: boolean; child?: boolean }[] = [
   { to: "/admin", label: "Dashboard", icon: LayoutDashboard, exact: true },
   { to: "/admin/products", label: "Products", icon: Package },
   { to: "/admin/categories", label: "Categories", icon: Layers },
@@ -45,6 +45,7 @@ const nav: { to: string; label: string; icon: typeof LayoutDashboard; exact?: bo
   { to: "/admin/orders", label: "Orders", icon: ShoppingBag },
   { to: "/admin/enquiries", label: "Enquiries", icon: Inbox },
   { to: "/admin/offers", label: "Offers", icon: Tag },
+  { to: "/admin/popups", label: "Popups", icon: MessageSquare, child: true },
   { to: "/admin/gifts", label: "Gift Ideas", icon: Gift },
   { to: "/admin/automations", label: "Email", icon: Mail },
   { to: "/admin/seo", label: "SEO", icon: Search },
@@ -116,7 +117,7 @@ function AdminLayout() {
               <Link
                 key={item.to}
                 to={item.to}
-                className={`flex items-center gap-3 px-3 py-2.5 text-sm rounded transition ${
+                className={`flex items-center gap-3 px-3 py-2.5 text-sm rounded transition ${item.child ? "ml-6 text-xs" : ""} ${
                   active ? "bg-foreground text-background" : "hover:bg-muted"
                 }`}
               >
