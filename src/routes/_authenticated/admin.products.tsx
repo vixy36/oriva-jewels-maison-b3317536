@@ -299,6 +299,7 @@ function ProductEditor({ initial, onClose, onSaved }: { initial: Partial<Product
       stock_quantity: form.stock_quantity ?? 0,
       low_stock_threshold: form.low_stock_threshold ?? 3,
       track_inventory: form.track_inventory ?? false,
+      metal_options: (form.metal_options ?? []) as unknown as Product["metal_options"],
     };
 
 
