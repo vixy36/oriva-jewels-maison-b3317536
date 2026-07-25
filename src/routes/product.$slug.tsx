@@ -196,9 +196,6 @@ function ProductPage() {
                 >
                   <Heart className="h-4 w-4" strokeWidth={1.6} fill={isSaved(product.slug) ? "currentColor" : "none"} />
                 </button>
-                <span className="absolute top-4 left-4 text-[11px] font-semibold tracking-[0.4em] uppercase text-gold bg-obsidian/85 px-2.5 py-1 border border-gold/40">
-                  Ref. OR-{product.slug.slice(0, 4).toUpperCase()}
-                </span>
 
                 {media.length > 1 && (
                   <>
