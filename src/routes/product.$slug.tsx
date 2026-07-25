@@ -59,6 +59,8 @@ type MediaItem = { type: "image" | "video"; src: string };
 
 function ProductPage() {
   const { product } = Route.useLoaderData();
+  const { has: isSaved, toggle: toggleSaved } = useWishlist();
+
 
   const [diamondType, setDiamondType] = useState(product.diamondTypes[0]);
   const [karat, setKarat] = useState<"18K" | "14K" | "9K">("18K");
