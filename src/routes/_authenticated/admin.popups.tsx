@@ -109,13 +109,27 @@ function PopupsPage() {
 
   async function uploadImage(file: File) {
     setUploading(true);
-    const ext = file.name.split(".").pop();
-    const key = `popups/${crypto.randomUUID()}.${ext}`;
-    const { error } = await supabase.storage.from("product-images").upload(key, file, { upsert: false });
-    if (error) { toast.error(error.message); setUploading(false); return; }
-    const { data } = supabase.storage.from("product-images").getPublicUrl(key);
-    setForm((f) => ({ ...f, image_url: data.publicUrl }));
-    setUploading(false);
+    try {
+      const ext = file.name.split(".").pop() || "jpg";
+      const key = `popups/${crypto.randomUUID()}.${ext}`;
+      const { error: upErr } = await supabase.storage.from("product-images").upload(key, file, {
+        cacheControl: "3600",
+        upsert: false,
+        contentType: file.type || undefined,
+      });
+      if (upErr) throw upErr;
+      // Bucket is private → use a long-lived signed URL (10 years)
+      const { data: signed, error: sErr } = await supabase.storage
+        .from("product-images")
+        .createSignedUrl(key, 60 * 60 * 24 * 365 * 10);
+      if (sErr) throw sErr;
+      setForm((f) => ({ ...f, image_url: signed.signedUrl }));
+      toast.success("Image uploaded");
+    } catch (e) {
+      toast.error(e instanceof Error ? e.message : "Upload failed");
+    } finally {
+      setUploading(false);
+    }
   }
 
   async function save() {
