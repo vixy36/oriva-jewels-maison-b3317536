@@ -159,7 +159,7 @@ export function SiteHeader() {
             ))}
           </div>
         </div>
-        <div ref={navItemsRef} className="relative mx-auto grid grid-cols-[auto_1fr_auto] lg:grid-cols-[1fr_auto_1fr] items-center gap-6 px-6 py-2.5 md:px-10 md:py-5 max-w-[1600px]">
+        <div ref={navItemsRef} className="relative mx-auto grid grid-cols-[auto_1fr_auto] lg:grid-cols-[1fr_auto_1fr] items-center gap-6 px-6 py-2 md:px-10 md:py-3 max-w-[1600px]">
           <button
             className="lg:hidden text-ivory justify-self-start"
             aria-label="Open menu"
