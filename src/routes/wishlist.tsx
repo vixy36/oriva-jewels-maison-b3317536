@@ -69,7 +69,7 @@ function WishlistPage() {
   const items: Product[] = [...dbItems, ...staticItems.filter((p) => !dbSlugSet.has(p.slug))];
 
   return (
-    <div className="bg-ink text-ivory pt-24 md:pt-28 pb-24 min-h-[70svh]">
+    <div className="bg-ink text-ivory pt-20 md:pt-24 pb-24 min-h-[70svh]">
       <div className="mx-auto max-w-[1500px] px-6 md:px-16">
         <div className="flex items-end justify-between gap-4 border-b border-white/10 pb-6">
           <div>
