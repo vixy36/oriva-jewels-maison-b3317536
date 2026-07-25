@@ -83,6 +83,8 @@ function ProductPage() {
   const gallery = imageList;
 
 
+  const isRing = product.category === "engagement-rings" || product.category === "rings" || product.category === "bridal";
+
   const message = useMemo(() => {
     const lines = [
       "Hello Oriva Jewels,",
@@ -93,17 +95,17 @@ function ProductPage() {
       `Metal: ${karat} ${goldColor} Gold`,
       `Centre Stone: ${caratFrom} ct - ${caratTo} ct`,
     ];
-    if (product.sizes) lines.push(`Ring Size: ${size}`);
+    if (isRing || product.sizes) lines.push(`Ring Size: ${size || "—"}`);
     if (product.backings) lines.push(`Backing: ${backing}`);
     if (product.lengths) lines.push(`Length: ${length}`);
-    if (engraving) lines.push(`Engraving: ${engraving}`);
+    if (specialReq) lines.push(`Special Requirements: ${specialReq}`);
     lines.push(
       "",
       "I would like to attach a reference photo and share more details.",
       "Please share pricing and availability.",
     );
     return lines.join("\n");
-  }, [product, diamondType, karat, goldColor, caratFrom, caratTo, size, backing, length, engraving]);
+  }, [product, diamondType, karat, goldColor, caratFrom, caratTo, size, backing, length, specialReq, isRing]);
 
   const related = products.filter((p) => p.slug !== product.slug).slice(0, 3);
 
