@@ -5,6 +5,8 @@ import { Reveal } from "@/components/site/Reveal";
 import { SortSelect, useSortedProducts } from "@/components/site/SortSelect";
 import { categories, productsByCategory, type ProductCategory } from "@/lib/products";
 import { useDbProductsByCategory } from "@/lib/dbProducts";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
 
 
 
