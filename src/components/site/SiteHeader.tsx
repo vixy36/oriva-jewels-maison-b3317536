@@ -145,20 +145,22 @@ export function SiteHeader() {
         data-surface="dark"
       >
         <div className="border-b border-white/5 bg-obsidian/60">
-          <div className="mx-auto flex items-center justify-center gap-6 md:gap-8 px-6 md:px-10 py-1.5 max-w-[1600px]">
-            {sub.map((s, idx) => (
-              <span key={s.to + s.label} className="flex items-center gap-6 md:gap-8">
-                {idx > 0 && <span className="h-3 w-px bg-white/15" aria-hidden />}
-                <Link
-                  to={s.to as string}
-                  className="text-[10px] md:text-[11px] tracking-[0.28em] uppercase text-ivory/80 hover:text-gold transition"
-                  activeProps={{ className: "text-gold" }}
-                  activeOptions={s.to === "/" ? { exact: true } : undefined}
-                >
-                  {s.label}
-                </Link>
-              </span>
-            ))}
+          <div className="mx-auto max-w-[1600px] px-3 md:px-10">
+            <div className="flex items-center justify-start md:justify-center gap-3 md:gap-8 py-1.5 overflow-x-auto whitespace-nowrap no-scrollbar">
+              {sub.map((s, idx) => (
+                <span key={s.to + s.label} className="flex items-center gap-3 md:gap-8 shrink-0">
+                  {idx > 0 && <span className="h-3 w-px bg-white/15 shrink-0" aria-hidden />}
+                  <Link
+                    to={s.to as string}
+                    className="text-[10px] md:text-[11px] tracking-[0.2em] md:tracking-[0.28em] uppercase text-ivory/80 hover:text-gold transition"
+                    activeProps={{ className: "text-gold" }}
+                    activeOptions={s.to === "/" ? { exact: true } : undefined}
+                  >
+                    {s.label}
+                  </Link>
+                </span>
+              ))}
+            </div>
           </div>
         </div>
         <div ref={navItemsRef} className="relative mx-auto grid grid-cols-[auto_1fr_auto] lg:grid-cols-[1fr_auto_1fr] items-center gap-6 px-6 py-2 md:px-10 md:py-3 max-w-[1600px]">
