@@ -45,6 +45,7 @@ function EnquiriesPage() {
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState<"all" | "unread" | "archived">("unread");
   const [open, setOpen] = useState<Enquiry | null>(null);
+  const [selected, setSelected] = useState<Set<string>>(new Set());
   const triggerAutomations = useServerFn(runStatusAutomations);
 
   const load = useCallback(async () => {
@@ -56,10 +57,42 @@ function EnquiriesPage() {
     const { data, error } = await q;
     if (error) toast.error(error.message);
     setRows((data as unknown as Enquiry[]) ?? []);
+    setSelected(new Set());
     setLoading(false);
   }, [filter]);
 
   useEffect(() => { load(); }, [load]);
+
+  function toggleSelect(id: string) {
+    setSelected((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id); else next.add(id);
+      return next;
+    });
+  }
+  function toggleSelectAll() {
+    setSelected((prev) => (prev.size === rows.length ? new Set() : new Set(rows.map((r) => r.id))));
+  }
+
+  async function bulkUpdate(patch: Partial<Enquiry>, successMsg: string) {
+    const ids = Array.from(selected);
+    if (ids.length === 0) return;
+    const { error } = await supabase.from("enquiries").update(patch as never).in("id", ids);
+    if (error) return toast.error(error.message);
+    toast.success(`${successMsg} (${ids.length})`);
+    if (open && ids.includes(open.id)) setOpen(null);
+    load();
+  }
+  async function bulkDelete() {
+    const ids = Array.from(selected);
+    if (ids.length === 0) return;
+    if (!confirm(`Delete ${ids.length} enquir${ids.length === 1 ? "y" : "ies"}? This cannot be undone.`)) return;
+    const { error } = await supabase.from("enquiries").delete().in("id", ids);
+    if (error) return toast.error(error.message);
+    toast.success(`Deleted ${ids.length}`);
+    if (open && ids.includes(open.id)) setOpen(null);
+    load();
+  }
 
   async function toggleRead(r: Enquiry, val: boolean) {
     await supabase.from("enquiries").update({ is_read: val }).eq("id", r.id);
