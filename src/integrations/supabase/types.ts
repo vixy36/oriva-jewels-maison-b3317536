@@ -411,6 +411,63 @@ export type Database = {
           },
         ]
       }
+      popups: {
+        Row: {
+          active: boolean
+          created_at: string
+          cta_label: string | null
+          delay_seconds: number
+          description: string | null
+          end_at: string | null
+          frequency: string
+          id: string
+          image_url: string | null
+          link_url: string | null
+          pages: string[]
+          priority: number
+          size: string
+          start_at: string | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          active?: boolean
+          created_at?: string
+          cta_label?: string | null
+          delay_seconds?: number
+          description?: string | null
+          end_at?: string | null
+          frequency?: string
+          id?: string
+          image_url?: string | null
+          link_url?: string | null
+          pages?: string[]
+          priority?: number
+          size?: string
+          start_at?: string | null
+          title?: string
+          updated_at?: string
+        }
+        Update: {
+          active?: boolean
+          created_at?: string
+          cta_label?: string | null
+          delay_seconds?: number
+          description?: string | null
+          end_at?: string | null
+          frequency?: string
+          id?: string
+          image_url?: string | null
+          link_url?: string | null
+          pages?: string[]
+          priority?: number
+          size?: string
+          start_at?: string | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       products: {
         Row: {
           categories: string[]
