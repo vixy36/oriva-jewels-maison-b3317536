@@ -198,8 +198,37 @@ function AdminCategoriesPage() {
                 <Textarea rows={3} value={editing.blurb ?? ""} onChange={(e) => setEditing({ ...editing, blurb: e.target.value })} />
               </div>
               <div>
-                <Label>Banner image URL</Label>
-                <Input value={editing.banner_url ?? ""} onChange={(e) => setEditing({ ...editing, banner_url: e.target.value })} placeholder="https://…" />
+                <Label>Hero / header banner image</Label>
+                <p className="text-xs text-muted-foreground mb-2">Shown at the top of /collections/{editing.slug || "…"}. Recommended: 2000×900px landscape.</p>
+                {editing.banner_url ? (
+                  <div className="relative group border rounded overflow-hidden bg-muted">
+                    <img src={editing.banner_url} alt="Banner preview" className="w-full h-40 object-cover" />
+                    <button
+                      type="button"
+                      onClick={() => setEditing({ ...editing, banner_url: "" })}
+                      className="absolute top-2 right-2 bg-black/70 text-white rounded-full p-1.5 hover:bg-black"
+                    >
+                      <X className="h-4 w-4" />
+                    </button>
+                  </div>
+                ) : (
+                  <label className="flex flex-col items-center justify-center border-2 border-dashed rounded h-40 cursor-pointer hover:bg-muted/50 transition">
+                    <Upload className="h-6 w-6 text-muted-foreground mb-2" />
+                    <span className="text-sm text-muted-foreground">{uploading ? "Uploading…" : "Click to upload banner"}</span>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      className="hidden"
+                      onChange={(e) => e.target.files?.[0] && uploadBanner(e.target.files[0])}
+                    />
+                  </label>
+                )}
+                <Input
+                  className="mt-2"
+                  value={editing.banner_url ?? ""}
+                  onChange={(e) => setEditing({ ...editing, banner_url: e.target.value })}
+                  placeholder="Or paste image URL"
+                />
               </div>
               <div className="flex items-center justify-between border rounded px-3 py-2">
                 <Label className="mb-0">Visible on site</Label>
