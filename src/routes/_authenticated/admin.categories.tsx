@@ -35,6 +35,32 @@ function AdminCategoriesPage() {
   const [items, setItems] = useState<Category[]>([]);
   const [editing, setEditing] = useState<Category | null>(null);
   const [open, setOpen] = useState(false);
+  const [uploading, setUploading] = useState(false);
+
+  async function uploadBanner(file: File) {
+    if (!editing) return;
+    setUploading(true);
+    try {
+      const ext = file.name.split(".").pop() || "jpg";
+      const key = `categories/${crypto.randomUUID()}.${ext}`;
+      const { error: upErr } = await supabase.storage.from("product-images").upload(key, file, {
+        cacheControl: "3600",
+        upsert: false,
+        contentType: file.type || undefined,
+      });
+      if (upErr) throw upErr;
+      const { data: signed, error: sErr } = await supabase.storage
+        .from("product-images")
+        .createSignedUrl(key, 60 * 60 * 24 * 365 * 10);
+      if (sErr) throw sErr;
+      setEditing({ ...editing, banner_url: signed.signedUrl });
+      toast.success("Banner uploaded");
+    } catch (e) {
+      toast.error(e instanceof Error ? e.message : "Upload failed");
+    } finally {
+      setUploading(false);
+    }
+  }
 
   const { data, isLoading } = useQuery({
     queryKey: ["admin-categories"],
