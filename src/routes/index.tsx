@@ -89,7 +89,7 @@ function HomePage() {
   return (
     <div className="bg-background">
       {/* HERO */}
-      <section className="relative isolate overflow-hidden bg-obsidian text-ivory pt-20 md:pt-28">
+      <section className="relative isolate overflow-hidden bg-obsidian text-ivory pt-16 md:pt-20">
         <img
           src={heroImg}
           alt="Marquise diamond solitaire"
