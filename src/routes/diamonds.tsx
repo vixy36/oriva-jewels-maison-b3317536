@@ -3,7 +3,6 @@ import { ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/site/Reveal";
 import labgrownImg from "@/assets/collection-labgrown.jpg";
 import naturalImg from "@/assets/collection-engagement.jpg";
-import editorialImg from "@/assets/editorial-emerald.jpg";
 
 export const Route = createFileRoute("/diamonds")({
   head: () => ({
@@ -85,43 +84,6 @@ function DiamondsPage() {
         ))}
       </section>
 
-      <section className="bg-obsidian" data-surface="dark">
-        <div className="mx-auto max-w-[1400px] px-6 md:px-10 py-16 md:py-24 grid gap-10 md:grid-cols-2 items-center">
-          <Reveal>
-            <img src={editorialImg} alt="The 4 Cs" className="w-full aspect-[4/5] object-cover" />
-          </Reveal>
-          <Reveal>
-            <p className="eyebrow text-gold">The 4 Cs</p>
-            <h2 className="mt-4 font-serif text-3xl md:text-5xl text-ivory">
-              A quiet science of light.
-            </h2>
-            <ul className="mt-6 space-y-4 text-ivory/80 text-[15px] leading-relaxed">
-              <li>
-                <strong className="text-ivory">Cut</strong> — the architecture of
-                brilliance. We favour precise, ideal-cut proportions.
-              </li>
-              <li>
-                <strong className="text-ivory">Colour</strong> — from icy D to warm
-                K, chosen to suit metal and skin.
-              </li>
-              <li>
-                <strong className="text-ivory">Clarity</strong> — inclusions are the
-                fingerprint of a stone. Ours read eye-clean.
-              </li>
-              <li>
-                <strong className="text-ivory">Carat</strong> — weight, not size.
-                We help you choose the silhouette that flatters.
-              </li>
-            </ul>
-            <Link
-              to="/education"
-              className="mt-8 inline-flex items-center gap-2 text-[11px] tracking-[0.32em] uppercase text-gold hover:text-ivory transition"
-            >
-              Full education <ArrowRight className="h-3.5 w-3.5" />
-            </Link>
-          </Reveal>
-        </div>
-      </section>
 
       <section className="mx-auto max-w-[1400px] px-6 md:px-10 py-16 md:py-24 text-center">
         <Reveal>
