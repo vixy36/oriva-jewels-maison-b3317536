@@ -183,14 +183,19 @@ function ProductPage() {
                   </button>
                 )}
 
-                <span
-                  role="button"
-                  tabIndex={0}
-                  aria-label="Wishlist"
-                  className="absolute top-4 right-4 grid h-10 w-10 place-items-center bg-obsidian/90 border border-gold/50 text-gold hover:bg-gold hover:text-obsidian transition"
+                <button
+                  type="button"
+                  onClick={() => toggleSaved(product.slug)}
+                  aria-label={isSaved(product.slug) ? "Remove from wishlist" : "Add to wishlist"}
+                  aria-pressed={isSaved(product.slug)}
+                  className={`absolute top-4 right-4 grid h-10 w-10 place-items-center border transition ${
+                    isSaved(product.slug)
+                      ? "bg-gold border-gold text-obsidian"
+                      : "bg-obsidian/90 border-gold/50 text-gold hover:bg-gold hover:text-obsidian"
+                  }`}
                 >
-                  <Heart className="h-4 w-4" strokeWidth={1.6} />
-                </span>
+                  <Heart className="h-4 w-4" strokeWidth={1.6} fill={isSaved(product.slug) ? "currentColor" : "none"} />
+                </button>
                 <span className="absolute top-4 left-4 text-[11px] font-semibold tracking-[0.4em] uppercase text-gold bg-obsidian/85 px-2.5 py-1 border border-gold/40">
                   Ref. OR-{product.slug.slice(0, 4).toUpperCase()}
                 </span>
