@@ -11,7 +11,7 @@ import { useDbProductsByCategory } from "@/lib/dbProducts";
 import engagementImg from "@/assets/collection-engagement.jpg";
 import earringsImg from "@/assets/collection-earrings.jpg";
 import braceletsImg from "@/assets/product-tennis.jpg";
-import pendantsImg from "@/assets/collection-pendants.jpg";
+
 import pendantHero from "@/assets/pendant-hero.jpg.asset.json";
 import bridalImg from "@/assets/collection-bridal.jpg";
 import labgrownImg from "@/assets/collection-labgrown.jpg";
