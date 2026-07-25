@@ -31,6 +31,7 @@ const FALLBACK_NAV: NavItem[] = [
   { label: "Fine Jewelry", to: "/collections/rings", children: FINE_CHILDREN },
   { label: "Engagement Rings", to: "/collections/engagement-rings" },
   { label: "Bespoke", to: "/custom-order" },
+  { label: "Gifts", to: "/gifts" },
   { label: "Hip Hop Jewelry", to: "/collections/hip-hop-jewelry" },
   { label: "Diamonds", to: "/diamonds", children: DIAMOND_CHILDREN },
 ];
@@ -38,7 +39,6 @@ const FALLBACK_NAV: NavItem[] = [
 const FALLBACK_SUB: { label: string; to: string }[] = [
   { label: "Home", to: "/" },
   { label: "Offers", to: "/offers" },
-  { label: "Gifts", to: "/gifts" },
   { label: "About Us", to: "/about" },
   { label: "Wishlist", to: "/wishlist" },
   { label: "Contact", to: "/contact" },
