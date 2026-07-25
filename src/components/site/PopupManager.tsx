@@ -101,9 +101,9 @@ export function PopupManager({ pathname }: { pathname: string }) {
         type="button"
         onClick={close}
         aria-label="Close"
-        className="absolute top-3 right-3 z-10 grid h-9 w-9 place-items-center bg-obsidian/85 text-ivory hover:bg-obsidian"
+        className="absolute -top-3 -right-3 z-20 grid h-10 w-10 place-items-center rounded-full bg-obsidian text-ivory shadow-lg ring-2 ring-ivory hover:bg-obsidian/85 transition"
       >
-        <X className="h-4 w-4" />
+        <X className="h-5 w-5" strokeWidth={2.5} />
       </button>
       {popup.image_url && (
         <img src={popup.image_url} alt={popup.title} className="w-full h-auto max-h-[55vh] object-cover" />
