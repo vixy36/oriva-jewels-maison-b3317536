@@ -38,6 +38,7 @@ const FALLBACK_NAV: NavItem[] = [
 const FALLBACK_SUB: { label: string; to: string }[] = [
   { label: "Home", to: "/" },
   { label: "About Us", to: "/about" },
+  { label: "Wishlist", to: "/wishlist" },
   { label: "Contact", to: "/contact" },
 ];
 
