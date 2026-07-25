@@ -185,6 +185,31 @@ function EnquiriesPage() {
         </div>
       </div>
 
+      {selected.size > 0 && (
+        <div className="mt-4 flex items-center gap-2 flex-wrap border border-border/60 bg-muted/40 rounded p-3">
+          <span className="text-xs uppercase tracking-widest mr-2">{selected.size} selected</span>
+          <Button size="sm" variant="outline" onClick={() => bulkUpdate({ is_read: true }, "Marked read")}>
+            <MailOpen className="h-4 w-4 mr-1.5" /> Mark Read
+          </Button>
+          <Button size="sm" variant="outline" onClick={() => bulkUpdate({ is_read: false }, "Marked unread")}>
+            <Mail className="h-4 w-4 mr-1.5" /> Mark Unread
+          </Button>
+          {filter !== "archived" ? (
+            <Button size="sm" variant="outline" onClick={() => bulkUpdate({ is_archived: true, is_read: true }, "Archived")}>
+              <Archive className="h-4 w-4 mr-1.5" /> Archive
+            </Button>
+          ) : (
+            <Button size="sm" variant="outline" onClick={() => bulkUpdate({ is_archived: false }, "Restored")}>
+              <Archive className="h-4 w-4 mr-1.5" /> Restore
+            </Button>
+          )}
+          <Button size="sm" variant="outline" onClick={bulkDelete} className="text-red-600 hover:text-red-700 hover:bg-red-50 dark:hover:bg-red-950">
+            <Trash2 className="h-4 w-4 mr-1.5" /> Delete
+          </Button>
+          <Button size="sm" variant="ghost" onClick={() => setSelected(new Set())} className="ml-auto">Clear</Button>
+        </div>
+      )}
+
       <div className="mt-6 grid lg:grid-cols-[1fr_1.4fr] gap-4">
         <div className="border border-border/60 bg-card overflow-hidden max-h-[75vh] overflow-y-auto">
           {loading ? (
@@ -192,30 +217,46 @@ function EnquiriesPage() {
           ) : rows.length === 0 ? (
             <div className="p-8 text-center text-sm text-muted-foreground">No enquiries here.</div>
           ) : (
-            <ul>
-              {rows.map((r) => (
-                <li key={r.id}>
-                  <button
-                    onClick={() => { setOpen(r); if (!r.is_read) toggleRead(r, true); }}
-                    className={`w-full text-left p-4 border-b border-border/60 hover:bg-muted/40 transition ${open?.id === r.id ? "bg-muted/40" : ""}`}
-                  >
-                    <div className="flex items-start justify-between gap-2">
-                      <div className="min-w-0">
-                        <div className="flex items-center gap-2">
-                          {!r.is_read && <span className="w-2 h-2 rounded-full bg-foreground" />}
-                          <span className={`font-medium truncate ${!r.is_read ? "text-foreground" : "text-muted-foreground"}`}>{r.name}</span>
-                          <StatusPill status={r.status} />
-                        </div>
-                        <div className="text-xs text-muted-foreground truncate mt-1">{r.subject || r.message.slice(0, 80)}</div>
-                        <div className="text-xs text-muted-foreground mt-1">{r.source} · {new Date(r.created_at).toLocaleString()}</div>
-                      </div>
+            <>
+              <div className="flex items-center gap-2 p-3 border-b border-border/60 bg-muted/20 sticky top-0 z-10">
+                <button onClick={toggleSelectAll} className="flex items-center gap-2 text-xs uppercase tracking-widest hover:text-foreground text-muted-foreground">
+                  {selected.size === rows.length && rows.length > 0 ? <CheckSquare className="h-4 w-4" /> : <Square className="h-4 w-4" />}
+                  {selected.size === rows.length && rows.length > 0 ? "Deselect all" : "Select all"}
+                </button>
+              </div>
+              <ul>
+                {rows.map((r) => (
+                  <li key={r.id} className={`flex items-start gap-2 border-b border-border/60 hover:bg-muted/40 transition ${open?.id === r.id ? "bg-muted/40" : ""} ${selected.has(r.id) ? "bg-muted/30" : ""}`}>
+                    <div className="pl-3 pt-4">
+                      <Checkbox
+                        checked={selected.has(r.id)}
+                        onCheckedChange={() => toggleSelect(r.id)}
+                        aria-label="Select enquiry"
+                      />
                     </div>
-                  </button>
-                </li>
-              ))}
-            </ul>
+                    <button
+                      onClick={() => { setOpen(r); if (!r.is_read) toggleRead(r, true); }}
+                      className="flex-1 text-left p-4"
+                    >
+                      <div className="flex items-start justify-between gap-2">
+                        <div className="min-w-0">
+                          <div className="flex items-center gap-2">
+                            {!r.is_read && <span className="w-2 h-2 rounded-full bg-foreground" />}
+                            <span className={`font-medium truncate ${!r.is_read ? "text-foreground" : "text-muted-foreground"}`}>{r.name}</span>
+                            <StatusPill status={r.status} />
+                          </div>
+                          <div className="text-xs text-muted-foreground truncate mt-1">{r.subject || r.message.slice(0, 80)}</div>
+                          <div className="text-xs text-muted-foreground mt-1">{r.source} · {new Date(r.created_at).toLocaleString()}</div>
+                        </div>
+                      </div>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </>
           )}
         </div>
+
 
         <div className="border border-border/60 bg-card p-6 overflow-y-auto max-h-[75vh]">
           {!open ? (
