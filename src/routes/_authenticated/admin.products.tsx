@@ -16,6 +16,14 @@ export const Route = createFileRoute("/_authenticated/admin/products")({
   component: ProductsPage,
 });
 
+type Variant = {
+  label: string;
+  swatch?: string;
+  image?: string;
+  price_from?: number | null;
+  mrp?: number | null;
+};
+
 type Product = {
   id: string;
   slug: string;
@@ -40,6 +48,7 @@ type Product = {
   stock_quantity: number;
   low_stock_threshold: number;
   track_inventory: boolean;
+  metal_options: Variant[];
 };
 
 type OfferOpt = { id: string; title: string };
@@ -56,6 +65,7 @@ const empty: Partial<Product> = {
   short_description: "", description: "", images: [], video_url: null, diamond_type: "Both",
   is_active: true, is_featured: false, sort_order: 0,
   stock_quantity: 0, low_stock_threshold: 3, track_inventory: false,
+  metal_options: [],
 };
 
 
