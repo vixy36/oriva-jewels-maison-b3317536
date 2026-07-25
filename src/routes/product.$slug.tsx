@@ -13,7 +13,7 @@ import { detectVideo } from "@/lib/video-embed";
 async function fetchDbBySlug(slug: string): Promise<Product | null> {
   const { data } = await supabase
     .from("products")
-    .select("slug,name,category,subcategory,short_description,description,images,video_url,diamond_type,is_active")
+    .select("slug,name,category,subcategory,short_description,description,images,video_url,diamond_type,is_active,product_code,price_from,mrp,currency,show_price")
     .eq("slug", slug)
     .eq("is_active", true)
     .maybeSingle();
@@ -36,6 +36,11 @@ async function fetchDbBySlug(slug: string): Promise<Product | null> {
     metal: "18K White Gold",
     diamondTypes,
     customizable: true,
+    productCode: (data as { product_code?: string | null }).product_code ?? undefined,
+    priceFrom: (data as { price_from?: number | null }).price_from ?? null,
+    mrp: (data as { mrp?: number | null }).mrp ?? null,
+    currency: (data as { currency?: string | null }).currency ?? "USD",
+    showPrice: (data as { show_price?: boolean | null }).show_price ?? true,
   };
 }
 
@@ -89,16 +94,28 @@ function ProductPage() {
 
   const isRing = product.category === "engagement-rings" || product.category === "rings" || product.category === "bridal";
 
+  const showPrice = product.showPrice !== false && !!product.priceFrom;
+  const priceLabel = showPrice
+    ? `${product.currency || "USD"} ${product.priceFrom!.toLocaleString()}`
+    : null;
+  const mrpLabel = showPrice && product.mrp && product.mrp > (product.priceFrom ?? 0)
+    ? `${product.currency || "USD"} ${product.mrp.toLocaleString()}`
+    : null;
+
   const message = useMemo(() => {
     const lines = [
       "Hello Oriva Jewels,",
       "",
       "I'm interested in:",
       `Product: ${product.name}`,
+    ];
+    if (product.productCode) lines.push(`Product Code: ${product.productCode}`);
+    if (priceLabel) lines.push(`Price: ${priceLabel}${mrpLabel ? ` (MRP ${mrpLabel})` : ""}`);
+    lines.push(
       `Diamond Type: ${diamondType}`,
       `Metal: ${karat} ${goldColor} Gold`,
       `Centre Stone: ${caratFrom} ct - ${caratTo} ct`,
-    ];
+    );
     if (isRing || product.sizes) lines.push(`Ring Size: ${size || "—"}`);
     if (product.backings) lines.push(`Backing: ${backing}`);
     if (product.lengths) lines.push(`Length: ${length}`);
@@ -109,7 +126,7 @@ function ProductPage() {
       "Please share pricing and availability.",
     );
     return lines.join("\n");
-  }, [product, diamondType, karat, goldColor, caratFrom, caratTo, size, backing, length, specialReq, isRing]);
+  }, [product, diamondType, karat, goldColor, caratFrom, caratTo, size, backing, length, specialReq, isRing, priceLabel, mrpLabel]);
 
   const related = products.filter((p) => p.slug !== product.slug).slice(0, 3);
 
@@ -280,9 +297,23 @@ function ProductPage() {
             <div className="md:sticky md:top-40">
               <p className="eyebrow">{product.collection}</p>
               <h1 className="mt-5 font-serif text-3xl md:text-4xl leading-[1] text-ivory">{product.name}</h1>
+              {product.productCode && (
+                <p className="mt-3 text-[11px] font-mono tracking-[0.3em] uppercase text-ivory/60">
+                  Ref. {product.productCode}
+                </p>
+              )}
+              {priceLabel && (
+                <div className="mt-4 flex items-baseline gap-3">
+                  <span className="font-serif text-2xl md:text-3xl text-gold">{priceLabel}</span>
+                  {mrpLabel && (
+                    <span className="text-sm text-ivory/50 line-through">{mrpLabel}</span>
+                  )}
+                </div>
+              )}
               <p className="mt-6 text-[15px] leading-[1.8] text-ivory/80 max-w-lg">
                 {product.description}
               </p>
+
 
               <div className="mt-8 hairline-gold w-16" />
 
