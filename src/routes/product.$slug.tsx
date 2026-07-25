@@ -314,7 +314,21 @@ function ProductPage() {
                   <p className="mt-2 text-[11px] tracking-[0.06em] text-ivory/55">Enter your preferred carat range manually.</p>
                 </div>
 
-                {product.sizes && (
+                {isRing && (
+                  <div>
+                    <label className="text-[14px] tracking-[0.42em] uppercase text-gold">Ring Size</label>
+                    <input
+                      value={size}
+                      onChange={(e) => setSize(e.target.value.slice(0, 20))}
+                      placeholder="e.g. US 6, EU 52, HK 13"
+                      className="mt-3 w-full border-b border-white/15 bg-transparent py-2.5 text-sm text-ivory placeholder:text-ivory/40 outline-none focus:border-gold transition"
+                    />
+                    <p className="mt-2 text-[11px] tracking-[0.06em] text-ivory/55">
+                      Not sure? See our <Link to="/ring-size-guide" className="text-gold underline underline-offset-2">ring size guide</Link>.
+                    </p>
+                  </div>
+                )}
+                {!isRing && product.sizes && (
                   <PillGroup label="Ring Size" value={size} options={product.sizes} onChange={setSize} />
                 )}
                 {product.backings && (
@@ -325,13 +339,14 @@ function ProductPage() {
                 )}
                 <div>
                   <label className="text-[14px] tracking-[0.42em] uppercase text-gold">
-                    Engraving (optional)
+                    Special Requirements
                   </label>
-                  <input
-                    value={engraving}
-                    onChange={(e) => setEngraving(e.target.value.slice(0, 20))}
-                    placeholder="Up to 20 characters"
-                    className="mt-3 w-full border-b border-white/15 bg-transparent py-2.5 text-sm text-ivory placeholder:text-ivory/40 outline-none focus:border-gold transition"
+                  <textarea
+                    value={specialReq}
+                    onChange={(e) => setSpecialReq(e.target.value.slice(0, 500))}
+                    placeholder="Share any custom details, engraving, gifting notes, delivery timeline…"
+                    rows={3}
+                    className="mt-3 w-full border-b border-white/15 bg-transparent py-2.5 text-sm text-ivory placeholder:text-ivory/40 outline-none focus:border-gold transition resize-none"
                   />
                 </div>
                 <p className="text-[12px] leading-[1.7] tracking-[0.06em] text-ivory/60">
