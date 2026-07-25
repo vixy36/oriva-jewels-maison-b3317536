@@ -339,6 +339,33 @@ function ProductPage() {
               <div className="mt-8 hairline-gold w-16" />
 
               <div className="mt-8 space-y-7">
+                {variants.length > 0 && (
+                  <div>
+                    <p className="text-[14px] tracking-[0.42em] uppercase text-gold">Options</p>
+                    <div className="mt-4 flex flex-wrap items-center gap-3">
+                      {variants.map((v, i) => {
+                        const active = i === activeVariant;
+                        return (
+                          <button
+                            key={i}
+                            type="button"
+                            onClick={() => { setActiveVariant(i); setActiveIdx(0); }}
+                            title={v.label}
+                            className={`h-10 w-10 rounded-full border-2 transition ${active ? "border-gold ring-2 ring-gold/30" : "border-white/25 hover:border-white/60"}`}
+                            style={{
+                              background: v.image
+                                ? `url(${v.image}) center/cover`
+                                : (v.swatch || "#e5e4e2"),
+                            }}
+                          />
+                        );
+                      })}
+                    </div>
+                    {currentVariant && (
+                      <p className="mt-3 text-[13px] tracking-[0.2em] uppercase text-ivory font-semibold">{currentVariant.label}</p>
+                    )}
+                  </div>
+                )}
                 <PillGroup
                   label="Diamond"
                   value={diamondType}
