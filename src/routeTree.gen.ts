@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WishlistRouteImport } from './routes/wishlist'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as RingSizeGuideRouteImport } from './routes/ring-size-guide'
 import { Route as OffersRouteImport } from './routes/offers'
@@ -41,6 +42,11 @@ import { Route as AuthenticatedAdminCategoriesRouteImport } from './routes/_auth
 import { Route as AuthenticatedAdminAutomationsRouteImport } from './routes/_authenticated/admin.automations'
 import { Route as AuthenticatedAdminOrdersIdLabelRouteImport } from './routes/_authenticated/admin.orders.$id.label'
 
+const WishlistRoute = WishlistRouteImport.update({
+  id: '/wishlist',
+  path: '/wishlist',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
@@ -217,6 +223,7 @@ export interface FileRoutesByFullPath {
   '/offers': typeof OffersRoute
   '/ring-size-guide': typeof RingSizeGuideRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/wishlist': typeof WishlistRoute
   '/admin': typeof AuthenticatedAdminRouteWithChildren
   '/collections/$category': typeof CollectionsCategoryRoute
   '/order/$code': typeof OrderCodeRoute
@@ -249,6 +256,7 @@ export interface FileRoutesByTo {
   '/offers': typeof OffersRoute
   '/ring-size-guide': typeof RingSizeGuideRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/wishlist': typeof WishlistRoute
   '/collections/$category': typeof CollectionsCategoryRoute
   '/order/$code': typeof OrderCodeRoute
   '/product/$slug': typeof ProductSlugRoute
@@ -282,6 +290,7 @@ export interface FileRoutesById {
   '/offers': typeof OffersRoute
   '/ring-size-guide': typeof RingSizeGuideRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/wishlist': typeof WishlistRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRouteWithChildren
   '/collections/$category': typeof CollectionsCategoryRoute
   '/order/$code': typeof OrderCodeRoute
@@ -316,6 +325,7 @@ export interface FileRouteTypes {
     | '/offers'
     | '/ring-size-guide'
     | '/sitemap.xml'
+    | '/wishlist'
     | '/admin'
     | '/collections/$category'
     | '/order/$code'
@@ -348,6 +358,7 @@ export interface FileRouteTypes {
     | '/offers'
     | '/ring-size-guide'
     | '/sitemap.xml'
+    | '/wishlist'
     | '/collections/$category'
     | '/order/$code'
     | '/product/$slug'
@@ -380,6 +391,7 @@ export interface FileRouteTypes {
     | '/offers'
     | '/ring-size-guide'
     | '/sitemap.xml'
+    | '/wishlist'
     | '/_authenticated/admin'
     | '/collections/$category'
     | '/order/$code'
@@ -414,6 +426,7 @@ export interface RootRouteChildren {
   OffersRoute: typeof OffersRoute
   RingSizeGuideRoute: typeof RingSizeGuideRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  WishlistRoute: typeof WishlistRoute
   CollectionsCategoryRoute: typeof CollectionsCategoryRoute
   OrderCodeRoute: typeof OrderCodeRoute
   ProductSlugRoute: typeof ProductSlugRoute
@@ -422,6 +435,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/wishlist': {
+      id: '/wishlist'
+      path: '/wishlist'
+      fullPath: '/wishlist'
+      preLoaderRoute: typeof WishlistRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
@@ -713,6 +733,7 @@ const rootRouteChildren: RootRouteChildren = {
   OffersRoute: OffersRoute,
   RingSizeGuideRoute: RingSizeGuideRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  WishlistRoute: WishlistRoute,
   CollectionsCategoryRoute: CollectionsCategoryRoute,
   OrderCodeRoute: OrderCodeRoute,
   ProductSlugRoute: ProductSlugRoute,

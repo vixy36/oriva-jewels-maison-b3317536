@@ -1,10 +1,11 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { Menu, X, Search, ChevronDown, Plus, Minus } from "lucide-react";
+import { Menu, X, Search, ChevronDown, Plus, Minus, Heart } from "lucide-react";
 import { SearchDialog } from "@/components/site/SearchDialog";
 import { ensureGsap } from "@/lib/gsap";
 import { supabase } from "@/integrations/supabase/client";
+import { useWishlist } from "@/lib/wishlist";
 import orivaLogo from "@/assets/oriva-logo.png.asset.json";
 
 type NavItem = {
