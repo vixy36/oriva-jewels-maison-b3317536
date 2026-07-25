@@ -94,16 +94,28 @@ function ProductPage() {
 
   const isRing = product.category === "engagement-rings" || product.category === "rings" || product.category === "bridal";
 
+  const showPrice = product.showPrice !== false && !!product.priceFrom;
+  const priceLabel = showPrice
+    ? `${product.currency || "USD"} ${product.priceFrom!.toLocaleString()}`
+    : null;
+  const mrpLabel = showPrice && product.mrp && product.mrp > (product.priceFrom ?? 0)
+    ? `${product.currency || "USD"} ${product.mrp.toLocaleString()}`
+    : null;
+
   const message = useMemo(() => {
     const lines = [
       "Hello Oriva Jewels,",
       "",
       "I'm interested in:",
       `Product: ${product.name}`,
+    ];
+    if (product.productCode) lines.push(`Product Code: ${product.productCode}`);
+    if (priceLabel) lines.push(`Price: ${priceLabel}${mrpLabel ? ` (MRP ${mrpLabel})` : ""}`);
+    lines.push(
       `Diamond Type: ${diamondType}`,
       `Metal: ${karat} ${goldColor} Gold`,
       `Centre Stone: ${caratFrom} ct - ${caratTo} ct`,
-    ];
+    );
     if (isRing || product.sizes) lines.push(`Ring Size: ${size || "—"}`);
     if (product.backings) lines.push(`Backing: ${backing}`);
     if (product.lengths) lines.push(`Length: ${length}`);
@@ -114,7 +126,7 @@ function ProductPage() {
       "Please share pricing and availability.",
     );
     return lines.join("\n");
-  }, [product, diamondType, karat, goldColor, caratFrom, caratTo, size, backing, length, specialReq, isRing]);
+  }, [product, diamondType, karat, goldColor, caratFrom, caratTo, size, backing, length, specialReq, isRing, priceLabel, mrpLabel]);
 
   const related = products.filter((p) => p.slug !== product.slug).slice(0, 3);
 
