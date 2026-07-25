@@ -67,6 +67,7 @@ export function SiteHeader() {
   const headerRef = useRef<HTMLElement | null>(null);
   const logoRef = useRef<HTMLAnchorElement | null>(null);
   const navItemsRef = useRef<HTMLDivElement | null>(null);
+  const { count: wishlistCount } = useWishlist();
 
   const { data: menuRows } = useMenu();
 
