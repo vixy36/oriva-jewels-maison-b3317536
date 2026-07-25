@@ -8,7 +8,8 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
-import { Mail, MailOpen, Trash2, Archive, MessageSquare, PackagePlus } from "lucide-react";
+import { Mail, MailOpen, Trash2, Archive, MessageSquare, PackagePlus, CheckSquare, Square } from "lucide-react";
+import { Checkbox } from "@/components/ui/checkbox";
 import { runStatusAutomations } from "@/lib/automations.functions";
 
 export const Route = createFileRoute("/_authenticated/admin/enquiries")({
