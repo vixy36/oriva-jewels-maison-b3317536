@@ -84,7 +84,14 @@ function CollectionPage() {
   const { data: dbItems = [] } = useDbProductsByCategory(category);
   const items = [...dbItems, ...staticItems];
   const { sort, setSort, sorted } = useSortedProducts(items);
-  const banner = banners[category];
+  const { data: dbBanner } = useQuery({
+    queryKey: ["category-banner", category],
+    queryFn: async () => {
+      const { data } = await supabase.from("categories").select("banner_url").eq("slug", category).maybeSingle();
+      return data?.banner_url ?? null;
+    },
+  });
+  const banner = dbBanner || banners[category];
   const labelWords = info.label.split(" ");
 
 
