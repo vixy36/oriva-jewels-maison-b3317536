@@ -361,9 +361,10 @@ function ProductPage() {
                   <dt className="text-ivory/80">Metal</dt><dd className="text-ivory">{karat} {goldColor} Gold</dd>
                   <dt className="text-ivory/80">Centre Stone</dt><dd className="text-ivory">{caratFrom} - {caratTo} ct</dd>
                   {product.sizes && (<><dt className="text-ivory/80">Size</dt><dd className="text-ivory">{size}</dd></>)}
+                  {isRing && !product.sizes && size && (<><dt className="text-ivory/80">Ring Size</dt><dd className="text-ivory">{size}</dd></>)}
                   {product.backings && (<><dt className="text-ivory/80">Backing</dt><dd className="text-ivory">{backing}</dd></>)}
                   {product.lengths && (<><dt className="text-ivory/80">Length</dt><dd className="text-ivory">{length}</dd></>)}
-                  {engraving && (<><dt className="text-ivory/80">Engraving</dt><dd className="text-ivory">"{engraving}"</dd></>)}
+                  {specialReq && (<><dt className="text-ivory/80">Special Requirements</dt><dd className="text-ivory">{specialReq}</dd></>)}
                 </dl>
               </div>
 
