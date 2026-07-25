@@ -117,7 +117,7 @@ function AdminLayout() {
               <Link
                 key={item.to}
                 to={item.to}
-                className={`flex items-center gap-3 px-3 py-2.5 text-sm rounded transition ${
+                className={`flex items-center gap-3 px-3 py-2.5 text-sm rounded transition ${item.child ? "ml-6 text-xs" : ""} ${
                   active ? "bg-foreground text-background" : "hover:bg-muted"
                 }`}
               >
