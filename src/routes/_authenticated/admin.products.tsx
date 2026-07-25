@@ -524,6 +524,16 @@ function ProductEditor({ initial, onClose, onSaved }: { initial: Partial<Product
                 />
               </label>
             </div>
+            <div className="mt-3">
+              <Label className="text-xs font-normal text-muted-foreground">Or paste a video link (YouTube, Vimeo, or direct .mp4 URL)</Label>
+              <Input
+                type="url"
+                placeholder="https://www.youtube.com/watch?v=… or https://…/clip.mp4"
+                value={form.video_url ?? ""}
+                onChange={(e) => upd("video_url", e.target.value.trim() || null)}
+                className="mt-1"
+              />
+            </div>
           </div>
 
           {lightboxIdx !== null && form.images && form.images.length > 0 && (
