@@ -153,7 +153,10 @@ function HomePage() {
               </Link>
               <a
                 href={buildWhatsAppLink("Hello Oriva Jewels, I'd like a private consultation.")}
-                target="_blank"
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.location.href = buildWhatsAppLink("Hello Oriva Jewels, I'd like a private consultation.");
+                }}
                 rel="noreferrer"
                 className="group inline-flex items-center justify-center gap-3 border border-ivory/25 px-9 py-4 text-[10.5px] tracking-[0.4em] uppercase text-ivory hover:border-gold hover:text-gold transition whitespace-nowrap"
               >

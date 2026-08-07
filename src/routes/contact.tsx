@@ -137,7 +137,18 @@ function InfoRow({
     </div>
   );
   return href ? (
-    <a href={href} target="_blank" rel="noreferrer" className="block hover:text-gold transition group">
+    <a
+      href={href}
+      onClick={(e) => {
+        if (href.includes("whatsapp")) {
+          e.preventDefault();
+          window.location.href = href;
+        }
+      }}
+      target="_blank"
+      rel="noreferrer"
+      className="block hover:text-gold transition group"
+    >
       {content}
     </a>
   ) : (
