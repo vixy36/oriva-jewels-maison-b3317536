@@ -155,7 +155,7 @@ function ProductPage() {
 
 
   return (
-    <div className="bg-ink pt-16 md:pt-20">
+    <div className="bg-ink pt-28 md:pt-36">
       <div className="mx-auto max-w-[1600px] px-6 md:px-16">
         <Link
           to="/collections/$category"
@@ -402,12 +402,12 @@ function ProductPage() {
                         >
                           <div className={`mb-2 flex h-12 w-12 items-center justify-center rounded-sm bg-white/5 p-1 transition-colors ${diamondShape === shape ? "bg-white/10" : "group-hover:bg-white/10"}`}>
                             <img 
-                              src={`https://vrai.imgix.net/images/diamond-shapes/${shape.toLowerCase()}.png?auto=format,compress&q=80&w=128`} 
+                              src={`https://oriva-jewels.lovable.app/diamond-shapes/${shape.toLowerCase()}.png`} 
                               alt={shape}
                               className={`h-full w-full object-contain filter invert opacity-90 transition-opacity ${diamondShape === shape ? "opacity-100" : "group-hover:opacity-100"}`}
                               onError={(e) => {
-                                (e.target as HTMLImageElement).style.display = 'none';
-                                (e.target as HTMLImageElement).parentElement!.innerHTML = `<span class="text-[8px] text-ivory/40 uppercase">${shape}</span>`;
+                                // Fallback to a different public CDN if the local assets are missing
+                                (e.target as HTMLImageElement).src = `https://vrai.imgix.net/images/diamond-shapes/${shape.toLowerCase()}.png?auto=format,compress&q=80&w=128`;
                               }}
                             />
                           </div>
