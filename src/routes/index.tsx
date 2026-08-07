@@ -196,77 +196,46 @@ function HomePage() {
       </div>
 
 
-      {/* COLLECTIONS INDEX - Editorial image grid */}
-      <section className="relative overflow-hidden py-8 md:py-14 bg-ink">
-
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-40"
-          style={{
-            background:
-              "radial-gradient(closest-side at 50% 20%, oklch(0.72 0.11 82 / 0.14), transparent 65%)",
-          }}
-        />
-
-        <div className="relative mx-auto max-w-[1280px] px-5 md:px-10">
-          <Reveal className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 border-t border-ivory/15 pt-8 md:pt-10">
-            <div>
-              <p className="eyebrow">- The Index</p>
-              <h2 className="mt-3 font-serif text-2xl md:text-3xl leading-[1.1] text-ivory">
-                Six chapters.{" "}
-                <em className="italic text-gold">One maison.</em>
+      {/* THE INDEX - Clean category grid */}
+      <section className="py-20 bg-background overflow-hidden border-b border-ivory/5">
+        <div className="mx-auto max-w-[1400px] px-6 md:px-12">
+          <Reveal className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
+            <div className="max-w-xl">
+              <span className="eyebrow block mb-4">THE INDEX</span>
+              <h2 className="text-4xl md:text-5xl font-serif leading-tight">
+                Six chapters. <span className="italic font-light">One maison.</span>
               </h2>
             </div>
-            <p className="max-w-sm text-[13px] leading-[1.7] text-ivory/70">
-              A curated volume of six edits — each with its own hand, its own hour of the day.
+            <p className="max-w-xs text-[14px] leading-relaxed text-muted-foreground uppercase tracking-widest">
+              A curated volume of six edits—each with its own character, designed for a lifetime.
             </p>
           </Reveal>
 
-
-          <div className="mt-8 md:mt-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 md:gap-x-6 gap-y-8 md:gap-y-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
             {collections.map((c, i) => (
-              <Reveal key={c.title} delay={i * 60}>
+              <Reveal key={c.title} delay={i * 100}>
                 <Link
                   to={c.to}
-                  className="group relative block overflow-hidden bg-obsidian aspect-square"
+                  className="group block relative"
                 >
-                  <img
-                    src={c.img}
-                    alt={c.title}
-                    loading="lazy"
-                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05]"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-obsidian/85 via-obsidian/25 to-transparent" />
-                  <div className="absolute inset-0 ring-1 ring-inset ring-white/10 group-hover:ring-gold/60 transition duration-500" />
-
-                  <div className="absolute top-3 left-3 md:top-4 md:left-4 flex items-center gap-2">
-                    <span className="h-px w-5 md:w-6 bg-gold/70" />
-                    <span className="font-serif italic text-[11px] md:text-xs text-gold">
-                      Chapter {c.n}
-                    </span>
+                  <div className="relative aspect-[4/5] overflow-hidden bg-muted">
+                    <img
+                      src={c.img}
+                      alt={c.title}
+                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-obsidian/10 group-hover:bg-obsidian/0 transition-colors duration-500" />
                   </div>
-
-                  <div className="absolute inset-x-0 bottom-0 p-3 md:p-4">
-                    <h3 className="font-serif text-base md:text-lg leading-tight text-ivory">
-                      {c.title}
-                    </h3>
-                    <span className="mt-1.5 inline-flex items-center gap-1.5 text-[9px] md:text-[10px] tracking-[0.32em] uppercase text-ivory/75 group-hover:text-gold transition">
-                      Explore <ArrowUpRight className="h-2.5 w-2.5" strokeWidth={1.5} />
-                    </span>
+                  <div className="mt-6 flex items-start justify-between">
+                    <div>
+                      <span className="text-[10px] tracking-[0.3em] uppercase text-gold font-medium mb-1 block">Chapter {c.n}</span>
+                      <h3 className="text-2xl font-serif text-obsidian uppercase tracking-wide">{c.title}</h3>
+                    </div>
+                    <ArrowUpRight className="h-5 w-5 text-obsidian transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
                   </div>
                 </Link>
               </Reveal>
             ))}
-          </div>
-
-
-          <div className="mt-10 md:mt-14 text-center">
-            <Link
-              to="/about"
-              className="inline-flex items-center gap-2 text-[12px] tracking-[0.4em] uppercase text-gold border-b border-gold/60 pb-1 hover:text-ivory hover:border-ivory transition"
-            >
-              Our craftsmanship <ArrowUpRight className="h-3 w-3" />
-            </Link>
           </div>
         </div>
       </section>
