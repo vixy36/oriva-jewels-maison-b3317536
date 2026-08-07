@@ -33,10 +33,10 @@ function BespokePage() {
         <div className="absolute inset-0 bg-gradient-to-b from-obsidian/40 via-obsidian/50 to-obsidian/95" />
         <div className="relative z-10 mx-auto max-w-[1400px] px-6 md:px-16 pt-24 pb-8 md:pt-28 md:pb-12">
           <p className="eyebrow">- Bespoke Commission</p>
-          <h1 className="mt-8 font-serif font-light text-6xl md:text-8xl lg:text-9xl leading-[0.92] tracking-[-0.02em] text-ivory">
-            Commission<br />an <em className="text-gold-gradient drop-shadow-sm">heirloom.</em>
+          <h1 className="mt-8 font-serif font-light text-6xl md:text-8xl lg:text-9xl leading-[0.92] tracking-[-0.02em] text-white">
+            Commission<br />an <em className="text-gold-gradient drop-shadow-md">heirloom.</em>
           </h1>
-          <p className="mt-10 max-w-xl text-[15px] leading-[1.9] text-ivory/95 font-medium drop-shadow-sm">
+          <p className="mt-10 max-w-xl text-[15px] leading-[1.9] text-white font-bold drop-shadow-md">
             One piece. One person. One moment. A private diamond commission, made entirely by hand in our atelier.
           </p>
           <a
@@ -62,8 +62,8 @@ function BespokePage() {
               <Reveal key={s.title} delay={i * 100}>
                 <div className="border-t border-gold/40 pt-8 h-full">
                   <span className="font-serif text-4xl text-gold italic">{s.n}</span>
-                  <h3 className="mt-6 font-serif text-3xl md:text-4xl text-ivory">{s.title}</h3>
-                  <p className="mt-6 text-[15px] leading-[1.9] text-ivory/85">{s.body}</p>
+                  <h3 className="mt-6 font-serif text-3xl md:text-4xl text-foreground">{s.title}</h3>
+                  <p className="mt-6 text-[15px] leading-[1.9] text-foreground font-medium">{s.body}</p>
                 </div>
               </Reveal>
             ))}
@@ -81,12 +81,12 @@ function BespokePage() {
           <div className="flex items-center px-6 py-24 md:px-20 md:py-32">
             <Reveal>
               <p className="eyebrow">- Ready when you are</p>
-              <h2 className="mt-8 font-serif text-3xl md:text-4xl">
-                Every heirloom begins with a <em className="text-gold-gradient">letter.</em>
-              </h2>
-              <p className="mt-8 max-w-md text-[15px] leading-[1.9] text-ivory/80">
-                Share the story, the stone or the sentiment. We'll take it from there.
-              </p>
+                <h2 className="mt-8 font-serif text-3xl md:text-4xl text-foreground">
+                  Every heirloom begins with a <em className="text-gold-gradient">letter.</em>
+                </h2>
+                <p className="mt-8 max-w-md text-[15px] leading-[1.9] text-foreground font-medium">
+                  Share the story, the stone or the sentiment. We'll take it from there.
+                </p>
               <div className="mt-10 flex flex-wrap gap-3">
                 <a
                   href={buildWhatsAppLink("Hello Oriva, I'd like to commission a bespoke piece.")}

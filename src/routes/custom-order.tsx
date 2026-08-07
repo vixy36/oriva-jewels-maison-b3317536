@@ -134,10 +134,10 @@ function CustomOrderPage() {
       <section className="mx-auto max-w-[1400px] px-6 md:px-16">
         <GsapReveal className="text-center">
           <p data-gsap className="text-[12px] tracking-[0.5em] uppercase text-gold">- Atelier Commission -</p>
-          <h1 data-gsap className="mt-6 font-serif text-3xl md:text-4xl lg:text-7xl leading-[1] text-ivory">
-            Custom <em className="italic text-gold-gradient drop-shadow-sm">order request.</em>
+          <h1 data-gsap className="mt-6 font-serif text-3xl md:text-4xl lg:text-7xl leading-[1] text-white">
+            Custom <em className="italic text-gold-gradient drop-shadow-md">order request.</em>
           </h1>
-          <p data-gsap className="mt-6 mx-auto max-w-2xl text-[15px] md:text-[16px] leading-[1.8] text-ivory/90 font-medium">
+          <p data-gsap className="mt-6 mx-auto max-w-2xl text-[15px] md:text-[16px] leading-[1.8] text-white font-bold drop-shadow-md">
             Share the piece you have in mind. Our advisors will respond within hours with sketches,
             certified stone options and a transparent factory-direct quote. No obligation.
           </p>
@@ -153,8 +153,8 @@ function CustomOrderPage() {
             <div key={t.title} className="flex items-center gap-4 px-2">
               <t.icon className="h-5 w-5 text-gold" strokeWidth={1.4} />
               <div>
-                <p className="text-[13px] tracking-[0.28em] uppercase text-ivory">{t.title}</p>
-                <p className="text-[13px] text-ivory/60 mt-1">{t.note}</p>
+                <p className="text-[13px] tracking-[0.28em] uppercase text-white font-bold">{t.title}</p>
+                <p className="text-[13px] text-white/80 mt-1 font-medium">{t.note}</p>
               </div>
             </div>
           ))}
@@ -236,8 +236,8 @@ function CustomOrderPage() {
                 </Field>
               </div>
               <div className="md:col-span-2 border border-dashed border-ivory/20 bg-charcoal/60 px-5 py-6 text-center">
-                <p className="text-[13px] tracking-[0.28em] uppercase text-ivory/70">Reference photos</p>
-                <p className="mt-2 text-[13px] text-ivory/60">
+                <p className="text-[13px] tracking-[0.28em] uppercase text-white font-bold">Reference photos</p>
+                <p className="mt-2 text-[13px] text-white/80 font-medium">
                   After you submit, please share sketches or screenshots directly in the WhatsApp chat that opens.
                 </p>
               </div>
@@ -245,9 +245,9 @@ function CustomOrderPage() {
           </Fieldset>
 
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 border-t border-obsidian/15 pt-8">
-            <p className="text-[13px] text-ivory/60 max-w-md">
+            <p className="text-[13px] text-white/80 max-w-md font-medium">
               By submitting, you consent to be contacted by our advisor on WhatsApp at{" "}
-              <span className="text-ivory">{WHATSAPP_DISPLAY}</span> or email.
+              <span className="text-white font-bold">{WHATSAPP_DISPLAY}</span> or email.
             </p>
             <button
               type="submit"
@@ -264,14 +264,14 @@ function CustomOrderPage() {
 }
 
 const inputCls =
-  "w-full bg-transparent border-b border-ivory/25 py-3 text-[15px] text-ivory placeholder:text-ivory/35 focus:border-gold focus:outline-none transition-colors";
+  "w-full bg-transparent border-b border-white/40 py-3 text-[15px] text-white placeholder:text-white/40 focus:border-gold focus:outline-none transition-colors font-medium";
 
 function Fieldset({ title, step, children }: { title: string; step: string; children: React.ReactNode }) {
   return (
     <GsapReveal>
       <div data-gsap className="flex items-baseline gap-4 border-b border-ivory/15 pb-4 mb-8">
         <span className="font-serif italic text-[15px] text-gold">Step {step}</span>
-        <h2 className="font-serif text-2xl md:text-3xl text-ivory">{title}</h2>
+        <h2 className="font-serif text-2xl md:text-3xl text-white">{title}</h2>
       </div>
       <div data-gsap>{children}</div>
     </GsapReveal>
@@ -291,7 +291,7 @@ function Field({
 }) {
   return (
     <label className="block" data-invalid={invalid ? "true" : undefined}>
-      <span className={`block text-[11px] tracking-[0.32em] uppercase mb-2 ${invalid ? "text-red-600" : "text-ivory/60"}`}>
+      <span className={`block text-[11px] tracking-[0.32em] uppercase mb-2 ${invalid ? "text-red-600" : "text-white/70 font-bold"}`}>
         {label}
         {required ? " *" : ""}
       </span>

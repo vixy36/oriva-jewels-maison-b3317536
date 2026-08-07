@@ -414,18 +414,6 @@ function HomePage() {
             </div>
 
 
-            <div className="mt-12 grid grid-cols-3 gap-8 max-w-lg">
-              {[
-                ["05", "Diamond specialists"],
-                ["100%", "Certified stones"],
-                ["30d", "Bespoke lead time"],
-              ].map(([k, v]) => (
-                <div key={k}>
-                  <p className="font-sans text-3xl md:text-4xl font-bold text-gold-gradient">{k}</p>
-                  <p className="mt-2 text-[10px] md:text-[11px] tracking-[0.32em] uppercase text-ivory/50 font-sans">{v}</p>
-                </div>
-              ))}
-            </div>
 
             <Link
               to="/about"
