@@ -277,7 +277,7 @@ function HomePage() {
 
 
       {/* SHOP BY SHAPE */}
-      <section className="py-24 bg-background border-b border-ivory/5">
+      <section className="py-10 bg-background border-b border-ivory/5">
         <div className="mx-auto max-w-[1400px] px-6 md:px-12">
           <Reveal className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
             <div className="max-w-xl">
@@ -314,7 +314,7 @@ function HomePage() {
       </section>
 
       {/* THE ATELIER - High contrast craftsmanship */}
-      <section className="py-24 bg-obsidian text-ivory overflow-hidden">
+      <section className="py-10 bg-obsidian text-ivory overflow-hidden">
         <div className="mx-auto max-w-[1400px] px-6 md:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
             <Reveal className="lg:col-span-5 lg:pr-12">
