@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { ArrowRight, Sparkles, ShieldCheck, Clock } from "lucide-react";
+import { ArrowRight, Sparkles, ShieldCheck, Clock, ChevronDown, ChevronUp } from "lucide-react";
 import { GsapReveal } from "@/components/site/GsapReveal";
 import { buildWhatsAppLink, WHATSAPP_DISPLAY } from "@/lib/products";
 
@@ -94,6 +94,7 @@ const budgetOptions = ["Under USD 2,000", "USD 2,000 - 5,000", "USD 5,000 - 10,0
 function CustomOrderPage() {
   const [f, setF] = useState<FormState>(initial);
   const [touched, setTouched] = useState(false);
+  const [openStep, setOpenStep] = useState<string | null>("01");
 
   const requiredFilled = useMemo(
     () => f.firstName && f.lastName && f.email && f.phone && f.type && f.metal && f.metalColor,
@@ -184,7 +185,12 @@ function CustomOrderPage() {
       <section className="mx-auto max-w-[1100px] px-6 md:px-16 mt-16 md:mt-20">
         <form onSubmit={onSubmit} className="grid gap-12">
           {/* Contact */}
-          <Fieldset title="Contact information" step="01">
+          <Fieldset 
+            title="Contact information" 
+            step="01" 
+            isOpen={openStep === "01"} 
+            onToggle={() => setOpenStep(openStep === "01" ? null : "01")}
+          >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               <Field label="First name" required invalid={touched && !f.firstName}>
                 <input className={inputCls} value={f.firstName} onChange={(e) => set("firstName", e.target.value)} />
@@ -202,10 +208,22 @@ function CustomOrderPage() {
                 <input className={inputCls} placeholder="+852 …" value={f.phone} onChange={(e) => set("phone", e.target.value)} />
               </Field>
             </div>
+            <button 
+              type="button" 
+              onClick={() => setOpenStep("02")}
+              className="mt-8 text-gold text-[12px] tracking-[0.4em] uppercase flex items-center gap-2 hover:text-white transition-colors"
+            >
+              Next Step <ArrowRight className="h-3 w-3" />
+            </button>
           </Fieldset>
 
           {/* Order details */}
-          <Fieldset title="Order details" step="02">
+          <Fieldset 
+            title="Order details" 
+            step="02"
+            isOpen={openStep === "02"} 
+            onToggle={() => setOpenStep(openStep === "02" ? null : "02")}
+          >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               <Field label="Jewellery type" required invalid={touched && !f.type}>
                 <Select value={f.type} onChange={(v) => set("type", v)} options={typeOptions} placeholder="Select type" />
@@ -288,10 +306,22 @@ function CustomOrderPage() {
                 <Select value={f.budget} onChange={(v) => set("budget", v)} options={budgetOptions} placeholder="Select budget" />
               </Field>
             </div>
+            <button 
+              type="button" 
+              onClick={() => setOpenStep("03")}
+              className="mt-8 text-gold text-[12px] tracking-[0.4em] uppercase flex items-center gap-2 hover:text-white transition-colors"
+            >
+              Next Step <ArrowRight className="h-3 w-3" />
+            </button>
           </Fieldset>
 
           {/* Reference */}
-          <Fieldset title="Reference & notes" step="03">
+          <Fieldset 
+            title="Reference & notes" 
+            step="03"
+            isOpen={openStep === "03"} 
+            onToggle={() => setOpenStep(openStep === "03" ? null : "03")}
+          >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               <Field label="Reference weblink">
                 <input className={inputCls} placeholder="Pinterest, Instagram, competitor URL…" value={f.referenceLink} onChange={(e) => set("referenceLink", e.target.value)} />
@@ -335,14 +365,27 @@ function CustomOrderPage() {
 const inputCls =
   "w-full bg-transparent border-b border-white/40 py-3 text-[15px] text-white placeholder:text-white/40 focus:border-gold focus:outline-none transition-colors font-medium";
 
-function Fieldset({ title, step, children }: { title: string; step: string; children: React.ReactNode }) {
+function Fieldset({ title, step, children, isOpen, onToggle }: { title: string; step: string; children: React.ReactNode; isOpen: boolean; onToggle: () => void }) {
   return (
     <GsapReveal>
-      <div data-gsap className="flex items-baseline gap-4 border-b border-ivory/15 pb-4 mb-8">
-        <span className="font-serif italic text-[15px] text-gold">Step {step}</span>
-        <h2 className="font-serif text-2xl md:text-3xl text-white">{title}</h2>
+      <div className="border border-white/10 overflow-hidden">
+        <button
+          type="button"
+          onClick={onToggle}
+          className="flex w-full items-center justify-between bg-charcoal/50 px-6 py-5 text-left transition-colors hover:bg-charcoal"
+        >
+          <div className="flex items-baseline gap-4">
+            <span className="font-serif italic text-[15px] text-gold">Step {step}</span>
+            <h2 className="font-serif text-2xl md:text-3xl text-white">{title}</h2>
+          </div>
+          {isOpen ? <ChevronUp className="h-5 w-5 text-gold" /> : <ChevronDown className="h-5 w-5 text-gold" />}
+        </button>
+        {isOpen && (
+          <div data-gsap className="p-6 md:p-8 bg-charcoal/20">
+            {children}
+          </div>
+        )}
       </div>
-      <div data-gsap>{children}</div>
     </GsapReveal>
   );
 }
