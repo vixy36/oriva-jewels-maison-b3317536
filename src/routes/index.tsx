@@ -566,7 +566,7 @@ function HomePage() {
           </Reveal>
 
 
-          <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+          <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-[1100px] mx-auto">
             {instagramReels.map((reel) => (
               <a
                 key={reel.href}
@@ -574,7 +574,7 @@ function HomePage() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label={`Open ${reel.title} on Instagram`}
-                className="group relative aspect-[9/16] overflow-hidden bg-obsidian border border-white/5 block"
+                className="group relative aspect-[4/5] overflow-hidden bg-obsidian border border-white/5 block rounded-sm"
               >
                 <img
                   src={reel.img}
