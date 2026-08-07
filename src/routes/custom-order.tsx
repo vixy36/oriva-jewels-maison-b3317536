@@ -72,7 +72,8 @@ const typeOptions = ["Engagement Ring", "Wedding Band", "Earrings", "Pendant", "
 const metalOptions = ["9K", "14K", "18K"];
 const metalColorOptions = ["White Gold", "Yellow Gold", "Rose Gold", "Two-tone"];
 const diamondTypeOptions = ["Natural Diamond", "Lab Grown Diamond", "Advise Me"];
-const qualityOptions = ["F / VVS", "F / VS", "G / VS", "H / SI", "Advise Me"];
+const clarityOptions = ["VVS1", "VVS2", "VS1", "VS2"];
+const colourOptions = ["D", "E", "F", "G", "H"];
 const caratOptions = ["Under 0.50 ct", "0.50 - 1.00 ct", "1.00 - 2.00 ct", "2.00 - 3.00 ct", "3.00 - 5.00 ct", "5.00 ct +"];
 const budgetOptions = ["Under USD 2,000", "USD 2,000 - 5,000", "USD 5,000 - 10,000", "USD 10,000 - 25,000", "USD 25,000 +", "Flexible"];
 
