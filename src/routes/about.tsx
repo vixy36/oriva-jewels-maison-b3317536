@@ -150,18 +150,18 @@ function AboutPage() {
             </p>
             <div className="mt-16 flex flex-col md:flex-row items-center justify-center gap-12">
               <div className="flex flex-col items-center">
-                <span className="text-5xl font-serif text-gold">100%</span>
-                <span className="mt-2 text-[12px] tracking-widest uppercase text-gold font-bold">In-House</span>
+                <span className="text-5xl font-serif text-gold font-bold">100%</span>
+                <span className="mt-2 text-[12px] tracking-widest uppercase text-gold font-black">In-House</span>
               </div>
               <div className="hidden md:block w-px h-16 bg-gold/20" />
               <div className="flex flex-col items-center">
-                <span className="text-5xl font-serif text-gold">05+</span>
-                <span className="mt-2 text-[12px] tracking-widest uppercase text-gold font-bold">Checkpoints</span>
+                <span className="text-5xl font-serif text-gold font-bold">05+</span>
+                <span className="mt-2 text-[12px] tracking-widest uppercase text-gold font-black">Checkpoints</span>
               </div>
               <div className="hidden md:block w-px h-16 bg-gold/20" />
               <div className="flex flex-col items-center">
-                <span className="text-5xl font-serif text-gold">40+</span>
-                <span className="mt-2 text-[12px] tracking-widest uppercase text-gold font-bold">Countries</span>
+                <span className="text-5xl font-serif text-gold font-bold">40+</span>
+                <span className="mt-2 text-[12px] tracking-widest uppercase text-gold font-black">Countries</span>
               </div>
             </div>
           </Reveal>

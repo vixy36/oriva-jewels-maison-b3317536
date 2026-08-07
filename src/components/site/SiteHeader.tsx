@@ -145,8 +145,8 @@ export function SiteHeader() {
         data-surface="dark"
       >
         <div className="border-b border-white/5 bg-obsidian/60">
-          <div className="mx-auto max-w-[1600px] px-3 md:px-10">
-            <div className="flex items-center justify-start md:justify-center gap-3 md:gap-8 py-1.5 overflow-x-auto whitespace-nowrap no-scrollbar">
+          <div className="mx-auto max-w-[1600px] px-3 md:px-10 flex justify-center">
+            <div className="flex items-center justify-center gap-3 md:gap-8 py-1.5 overflow-x-auto whitespace-nowrap no-scrollbar mx-auto">
               {sub.map((s, idx) => (
                 <span key={s.to + s.label} className="flex items-center gap-3 md:gap-8 shrink-0">
                   {idx > 0 && <span className="h-3 w-px bg-white/15 shrink-0" aria-hidden />}
