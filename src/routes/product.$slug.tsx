@@ -374,6 +374,18 @@ function ProductPage() {
                   onChange={(v) => setDiamondType(v as typeof diamondType)}
                 />
                 <PillGroup
+                  label="Diamond Clarity"
+                  value={diamondClarity}
+                  options={["VVS1", "VVS2", "VS1", "VS2"]}
+                  onChange={setDiamondClarity}
+                />
+                <PillGroup
+                  label="Diamond Colour"
+                  value={diamondColour}
+                  options={["D", "E", "F", "G", "H"]}
+                  onChange={setDiamondColour}
+                />
+                <PillGroup
                   label="Gold Karat"
                   value={karat}
                   options={["18K", "14K", "9K"]}
