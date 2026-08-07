@@ -215,12 +215,12 @@ function HomePage() {
             </p>
           </Reveal>
 
-          <div className="flex overflow-x-auto pb-8 snap-x snap-mandatory hide-scrollbar gap-8 md:gap-12 lg:gap-16">
+          <div className="flex overflow-x-auto pb-8 snap-x snap-mandatory hide-scrollbar gap-6 md:gap-8 lg:gap-10">
             {collections.map((c, i) => (
-              <Reveal key={c.title} delay={i * 100} className="flex-none w-[280px] md:w-[380px] snap-center">
+              <Reveal key={c.title} delay={i * 100} className="flex-none w-[200px] md:w-[260px] snap-center">
                 <Link
                   to={c.to}
-                  className="group block relative max-w-[420px] mx-auto"
+                  className="group block relative max-w-[260px] mx-auto"
                 >
                   <div className="relative aspect-[4/5] overflow-hidden bg-muted">
                     <img
@@ -230,12 +230,12 @@ function HomePage() {
                     />
                     <div className="absolute inset-0 bg-obsidian/10 group-hover:bg-obsidian/0 transition-colors duration-500" />
                   </div>
-                  <div className="mt-6 flex items-start justify-between">
+                  <div className="mt-4 flex items-start justify-between">
                     <div>
-                      <span className="text-[10px] tracking-[0.3em] uppercase text-gold font-medium mb-1 block">Chapter {c.n}</span>
-                      <h3 className="text-xl font-serif text-obsidian uppercase tracking-wide">{c.title}</h3>
+                      <span className="text-[9px] tracking-[0.2em] uppercase text-gold font-medium mb-1 block">Chapter {c.n}</span>
+                      <h3 className="text-[15px] font-serif text-obsidian uppercase tracking-wide">{c.title}</h3>
                     </div>
-                    <ArrowUpRight className="h-4 w-4 text-obsidian transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                    <ArrowUpRight className="h-3.5 w-3.5 text-obsidian transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </div>
                 </Link>
               </Reveal>
@@ -266,9 +266,9 @@ function HomePage() {
             </Link>
           </div>
 
-          <div className="flex overflow-x-auto pb-8 snap-x snap-mandatory hide-scrollbar gap-6 md:gap-10">
+          <div className="flex overflow-x-auto pb-8 snap-x snap-mandatory hide-scrollbar gap-5 md:gap-7">
             {selectedSix.map((p, i) => (
-              <Reveal key={p.slug} delay={i * 100} className="flex-none w-[240px] md:w-[320px] snap-center">
+              <Reveal key={p.slug} delay={i * 100} className="flex-none w-[180px] md:w-[240px] snap-center">
                 <ProductCard product={p} />
               </Reveal>
             ))}
@@ -292,7 +292,7 @@ function HomePage() {
             </Link>
           </Reveal>
 
-          <div className="mt-8 flex overflow-x-auto pb-8 snap-x snap-mandatory hide-scrollbar gap-6 md:gap-10 max-w-[1200px] mx-auto">
+          <div className="mt-8 flex overflow-x-auto md:overflow-visible pb-8 md:pb-0 snap-x snap-mandatory hide-scrollbar gap-6 md:gap-12 justify-start md:justify-center max-w-[1200px] mx-auto">
             {[
               { key: "marquise", label: "Marquise", img: heroImg },
               { key: "oval", label: "Oval", img: engagementImg },
@@ -301,12 +301,12 @@ function HomePage() {
               { key: "heart", label: "Heart", img: earringsImg },
               { key: "round", label: "Round", img: braceletsImg },
             ].map((s, i) => (
-              <Reveal key={s.key} delay={i * 60} className="flex-none w-[90px] md:w-[110px] snap-center">
-                <Link to="/shape/$shape" params={{ shape: s.key }} className="group block text-center max-w-[100px] mx-auto">
+              <Reveal key={s.key} delay={i * 60} className="flex-none w-[110px] md:w-[130px] snap-center">
+                <Link to="/shape/$shape" params={{ shape: s.key }} className="group block text-center max-w-[110px] md:max-w-[130px] mx-auto">
                   <div className="relative aspect-square overflow-hidden bg-muted mb-4 rounded-full border border-ivory/10 group-hover:border-gold transition-colors">
                     <img src={s.img} alt={s.label} loading="lazy" className="absolute inset-0 h-full w-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-110" />
                   </div>
-                  <h3 className="font-serif text-[12px] text-obsidian uppercase tracking-[0.2em]">{s.label}</h3>
+                  <h3 className="font-serif text-[13px] md:text-[14px] text-obsidian uppercase tracking-[0.2em] font-medium">{s.label}</h3>
                 </Link>
               </Reveal>
             ))}
