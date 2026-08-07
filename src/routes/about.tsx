@@ -20,7 +20,7 @@ export const Route = createFileRoute("/about")({
 
 function AboutPage() {
   return (
-    <div className="bg-ink overflow-x-hidden">
+    <div className="bg-obsidian overflow-x-hidden">
       {/* Cinematic Hero */}
       <section className="relative h-[90svh] flex items-center justify-center overflow-hidden bg-obsidian text-ivory" data-surface="dark">
         <img src={atelier} alt="Oriva atelier" className="absolute inset-0 h-full w-full object-cover opacity-60 animate-slow-zoom scale-110" />
