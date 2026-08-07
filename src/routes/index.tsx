@@ -586,7 +586,7 @@ function HomePage() {
               A few <em className="text-gold-gradient">answers.</em>
             </h2>
             <p className="mt-6 text-sm leading-[1.85] text-ivory/70">
-              Can't find yours? Message an advisor - available 24×7, worldwide.
+              Can't find yours? Message our concierge - available worldwide.
             </p>
           </Reveal>
 
