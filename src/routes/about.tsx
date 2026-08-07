@@ -138,7 +138,7 @@ function AboutPage() {
       </section>
 
       {/* The Journey Section */}
-      <section className="py-24 md:py-32 bg-ink">
+      <section className="py-24 md:py-32 bg-obsidian border-t border-gold/10">
         <div className="mx-auto max-w-4xl px-6 text-center">
           <Reveal>
             <span className="eyebrow text-gold">The Journey</span>
