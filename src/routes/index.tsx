@@ -51,7 +51,7 @@ const collections = [
   { n: "03", title: "Bracelets", to: "/collections/bracelets", img: braceletsImg },
   { n: "04", title: "Pendants", to: "/collections/pendants", img: pendantsImg },
   { n: "05", title: "Bridal", to: "/collections/bridal", img: bridalImg },
-  { n: "06", title: "Lab Grown", to: "/collections/lab-grown", img: labgrownImg },
+  { n: "06", title: "Lab Grown Diamonds", to: "/collections/lab-grown", img: labgrownImg },
 ];
 
 const occasions = [
