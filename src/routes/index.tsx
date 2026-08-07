@@ -316,58 +316,59 @@ function HomePage() {
         </div>
       </section>
 
-      {/* ATELIER */}
-      <section className="relative bg-obsidian py-8 md:py-10 overflow-hidden">
-        <div className="mx-auto max-w-[1240px] px-6 md:px-16 grid gap-12 md:grid-cols-12 md:gap-16 items-center">
-          <Reveal className="md:col-span-5">
-            <div className="relative aspect-[4/5] overflow-hidden">
-              <img src={atelier} alt="Oriva atelier" loading="lazy" className="h-full w-full object-cover" />
-              <div className="absolute inset-0 border border-gold/20" />
-            </div>
-            <p className="mt-4 text-[14px] tracking-[0.42em] uppercase text-ivory/80">
-              Plate II · The Atelier
-            </p>
-          </Reveal>
+      {/* THE ATELIER - High contrast craftsmanship */}
+      <section className="py-24 bg-obsidian text-ivory overflow-hidden">
+        <div className="mx-auto max-w-[1400px] px-6 md:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+            <Reveal>
+              <div className="relative aspect-[4/5] overflow-hidden rounded-sm">
+                <img
+                  src={atelier}
+                  alt="The Oriva Atelier"
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-obsidian/10" />
+              </div>
+            </Reveal>
 
-          <Reveal delay={150} className="md:col-span-7 md:pl-8">
-            <p className="eyebrow">- The Atelier</p>
-            <h2 className="mt-6 font-serif text-xl md:text-2xl leading-[1.2] text-ivory">
-              Every stone <em className="text-gold-gradient">chosen</em>.
-              <br />Every piece <em className="text-gold-gradient">finished</em> by hand.
-            </h2>
-            <div className="mt-10 space-y-6 text-[15px] leading-[1.8] text-ivory/80 max-w-lg">
-              <p>
-                We are end-to-end manufacturers of diamonds and diamond jewellery. Every piece is
-                sourced, set and signed by the same hands - never outsourced, never rushed.
-              </p>
-              <p>
-                We work in both natural and lab grown diamonds, certified by GIA and IGI, with the
-                same craftsmanship applied to both. The choice is yours; the standard is ours.
-              </p>
-            </div>
-
-
-
-            <div className="flex flex-col sm:flex-row items-start gap-8 mt-12">
-              <Link
-                to="/about"
-                className="inline-flex items-center gap-3 text-[10.5px] tracking-[0.4em] uppercase text-gold border-b border-gold/50 pb-2 hover:text-ivory hover:border-ivory transition shrink-0"
-              >
-                Enter the maison <ArrowRight className="h-4 w-4" strokeWidth={1.4} />
-              </Link>
-
-              <div className="flex items-center gap-10 md:gap-14 border-l border-white/10 pl-8">
-                <div>
-                  <span className="block font-sans text-3xl md:text-5xl font-bold text-ivory tracking-tight">100%</span>
-                  <span className="mt-1 block text-[9px] tracking-[0.3em] uppercase text-gold whitespace-nowrap">Certified stones</span>
+            <Reveal delay={200}>
+              <div className="max-w-2xl">
+                <span className="eyebrow block mb-6 text-gold">- THE ATELIER</span>
+                <h2 className="text-4xl md:text-5xl font-serif leading-tight mb-8">
+                  Every stone <span className="italic">chosen.</span><br />
+                  Every piece <span className="italic">signed by hand.</span>
+                </h2>
+                <div className="space-y-6 text-ivory/70 text-[16px] leading-relaxed mb-12">
+                  <p>
+                    We are end-to-end manufacturers. From the rough stone to the final polish, your piece never leaves our care. This ensures a level of precision and ethical transparency that only a direct maison can provide.
+                  </p>
+                  <p>
+                    Whether natural or lab-grown, our standard remains absolute. Every diamond is hand-selected for its fire and brilliance, certified by GIA or IGI, and set by master craftsmen in our private workshop.
+                  </p>
                 </div>
-                <div>
-                  <span className="block font-sans text-3xl md:text-5xl font-bold text-ivory tracking-tight">30D</span>
-                  <span className="mt-1 block text-[9px] tracking-[0.3em] uppercase text-gold whitespace-nowrap">Bespoke lead time</span>
+                
+                <div className="flex flex-wrap gap-12 border-t border-ivory/10 pt-10">
+                  <div>
+                    <span className="text-4xl font-bold text-ivory block mb-2 font-sans">100%</span>
+                    <span className="text-[10px] tracking-[0.3em] uppercase text-gold">Certified stones</span>
+                  </div>
+                  <div>
+                    <span className="text-4xl font-bold text-ivory block mb-2 font-sans">30D</span>
+                    <span className="text-[10px] tracking-[0.3em] uppercase text-gold">Bespoke lead time</span>
+                  </div>
+                </div>
+
+                <div className="mt-12">
+                  <Link
+                    to="/about"
+                    className="inline-flex items-center gap-4 text-[13px] tracking-[0.4em] uppercase text-gold border-b border-gold pb-1 hover:text-ivory hover:border-ivory transition-colors"
+                  >
+                    Enter the maison <ArrowRight className="h-4 w-4" />
+                  </Link>
                 </div>
               </div>
-            </div>
-          </Reveal>
+            </Reveal>
+          </div>
         </div>
       </section>
 
