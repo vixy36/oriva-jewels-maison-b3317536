@@ -29,11 +29,11 @@ function AboutPage() {
         <div className="relative z-10 text-center px-6">
           <Reveal>
             <span className="inline-block text-gold text-[12px] tracking-[0.6em] uppercase mb-8">Established 2024</span>
-            <h1 className="font-serif text-7xl md:text-[10rem] leading-[0.85] tracking-tight">
+            <h1 className="font-serif text-7xl md:text-[10rem] leading-[0.85] tracking-tight text-white">
               Oriva <br />
               <em className="text-gold-gradient italic">Jewels</em>
             </h1>
-            <p className="mt-12 mx-auto max-w-2xl text-[17px] leading-[1.8] text-ivory/90 font-medium">
+            <p className="mt-12 mx-auto max-w-2xl text-[17px] leading-[1.8] text-white font-medium">
               We are end-to-end manufacturers of Diamonds & Jewellery. 
               A modern maison where heritage meets innovation, crafted for the discerning.
             </p>
@@ -52,11 +52,11 @@ function AboutPage() {
             <div className="relative">
               <div className="absolute -top-12 -left-12 w-48 h-48 bg-gold/5 rounded-full blur-3xl" />
               <span className="eyebrow text-gold">Our Philosophy</span>
-              <h2 className="mt-8 font-serif text-5xl md:text-7xl leading-tight text-ivory">
+              <h2 className="mt-8 font-serif text-5xl md:text-7xl leading-tight text-white">
                 Luxury in its <br />
                 <em className="text-gold-gradient italic">purest form.</em>
               </h2>
-              <p className="mt-10 text-[17px] leading-[1.9] text-ivory/95 max-w-lg font-medium">
+              <p className="mt-10 text-[17px] leading-[1.9] text-white max-w-lg font-medium">
                 We believe fine jewellery should be more than an accessory; it should be an extension of one's identity. 
                 Our approach is defined by restraint—nothing is added for show, everything is included for excellence.
               </p>
@@ -64,12 +64,12 @@ function AboutPage() {
                 <div>
                   <span className="font-serif text-3xl text-gold italic">01.</span>
                   <p className="mt-4 font-sans text-[13px] tracking-widest uppercase text-gold font-bold">Transparency</p>
-                  <p className="mt-2 text-[15px] text-ivory font-medium leading-relaxed">From mine to finger, we own every step of the journey.</p>
+                  <p className="mt-2 text-[15px] text-white font-medium leading-relaxed">From mine to finger, we own every step of the journey.</p>
                 </div>
                 <div>
                   <span className="font-serif text-3xl text-gold italic">02.</span>
                   <p className="mt-4 font-sans text-[13px] tracking-widest uppercase text-gold font-bold">Legacy</p>
-                  <p className="mt-2 text-[15px] text-ivory font-medium leading-relaxed">Designs that transcend trends, meant to be passed down.</p>
+                  <p className="mt-2 text-[15px] text-white font-medium leading-relaxed">Designs that transcend trends, meant to be passed down.</p>
                 </div>
               </div>
             </div>
@@ -95,7 +95,7 @@ function AboutPage() {
         <div className="relative mx-auto max-w-[1500px] px-6 md:px-16 text-center">
           <Reveal>
             <span className="eyebrow">Craftsmanship</span>
-            <h2 className="mt-8 font-serif text-6xl md:text-[8rem] leading-[0.9] text-ivory">
+            <h2 className="mt-8 font-serif text-6xl md:text-[8rem] leading-[0.9] text-white">
               The <em className="text-gold-gradient italic drop-shadow-sm">Atelier</em> Spirit
             </h2>
           </Reveal>
@@ -129,8 +129,8 @@ function AboutPage() {
                 <div className="flex justify-center mb-6">
                   <item.icon className="w-8 h-8 text-gold" strokeWidth={1} />
                 </div>
-                <h3 className="font-serif text-3xl mb-4 text-ivory">{item.title}</h3>
-                <p className="text-ivory text-[15px] max-w-[280px] mx-auto leading-relaxed font-bold">{item.desc}</p>
+                <h3 className="font-serif text-3xl mb-4 text-white">{item.title}</h3>
+                <p className="text-white text-[15px] max-w-[280px] mx-auto leading-relaxed font-bold">{item.desc}</p>
               </Reveal>
             ))}
           </div>
@@ -142,8 +142,8 @@ function AboutPage() {
         <div className="mx-auto max-w-4xl px-6 text-center">
           <Reveal>
             <span className="eyebrow text-gold">The Journey</span>
-            <h2 className="mt-8 font-serif text-5xl md:text-7xl text-ivory">From a sketch <br /><em className="text-gold-gradient italic">to her finger.</em></h2>
-            <p className="mt-12 text-[18px] leading-[2] text-ivory font-medium">
+            <h2 className="mt-8 font-serif text-5xl md:text-7xl text-white">From a sketch <br /><em className="text-gold-gradient italic">to her finger.</em></h2>
+            <p className="mt-12 text-[18px] leading-[2] text-white font-medium">
               Unlike traditional jewellers, we manage the entire lifecycle of our pieces. 
               By sourcing rough diamonds directly and manufacturing in our own facility, 
               we remove the middleman, ensuring both ethical sourcing and unparalleled value.
@@ -176,10 +176,10 @@ function AboutPage() {
         </div>
         
         <Reveal className="relative z-20 text-center px-6">
-          <h2 className="font-serif text-5xl md:text-8xl leading-none text-ivory">
+          <h2 className="font-serif text-5xl md:text-8xl leading-none text-white">
             Join the <em className="text-gold-gradient italic drop-shadow-sm">Conversation.</em>
           </h2>
-          <p className="mt-8 mx-auto max-w-lg text-ivory/95 text-[16px] leading-relaxed font-medium drop-shadow-sm">
+          <p className="mt-8 mx-auto max-w-lg text-white text-[16px] leading-relaxed font-medium drop-shadow-sm">
             Discover the world of Oriva Jewels through a private consultation or by exploring our collection.
           </p>
           <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6">
@@ -191,7 +191,7 @@ function AboutPage() {
             </Link>
             <Link
               to="/contact"
-              className="border border-ivory/40 bg-obsidian/20 backdrop-blur-sm px-12 py-5 text-[12px] tracking-[0.4em] uppercase text-ivory hover:border-gold hover:text-gold transition-all duration-300 w-full sm:w-auto flex items-center justify-center gap-3 font-bold"
+              className="border border-white/40 bg-obsidian/20 backdrop-blur-sm px-12 py-5 text-[12px] tracking-[0.4em] uppercase text-white hover:border-gold hover:text-gold transition-all duration-300 w-full sm:w-auto flex items-center justify-center gap-3 font-bold"
             >
               Contact Us
               <ArrowRight className="w-4 h-4" />
