@@ -130,7 +130,7 @@ function AboutPage() {
                   <item.icon className="w-8 h-8 text-gold" strokeWidth={1} />
                 </div>
                 <h3 className="font-serif text-3xl mb-4 text-ivory">{item.title}</h3>
-                <p className="text-ivory/90 text-[15px] max-w-[280px] mx-auto leading-relaxed font-medium">{item.desc}</p>
+                <p className="text-ivory text-[15px] max-w-[280px] mx-auto leading-relaxed font-bold">{item.desc}</p>
               </Reveal>
             ))}
           </div>
