@@ -10,31 +10,6 @@ import { supabase } from "@/integrations/supabase/client";
 
 
 
-import engagementImg from "@/assets/collection-engagement.jpg";
-import earringsImg from "@/assets/collection-earrings.jpg";
-import braceletsImg from "@/assets/product-tennis.jpg";
-
-import pendantHero from "@/assets/pendant-hero.jpg.asset.json";
-import bridalImg from "@/assets/collection-bridal.jpg";
-import labgrownImg from "@/assets/collection-labgrown.jpg";
-import editorialImg from "@/assets/editorial-emerald.jpg";
-
-const banners: Record<ProductCategory, string> = {
-  "engagement-rings": engagementImg,
-  rings: engagementImg,
-  earrings: earringsImg,
-  bracelets: braceletsImg,
-  necklaces: pendantHero.url,
-  pendants: pendantHero.url,
-  "mens-jewelry": braceletsImg,
-  "hip-hop-jewelry": braceletsImg,
-  bridal: bridalImg,
-  "lab-grown": labgrownImg,
-  natural: engagementImg,
-};
-
-// Categories whose hero image should be shown fully (no crop)
-const containCats = new Set<ProductCategory>(["pendants", "necklaces"]);
 
 
 const validCats: ProductCategory[] = [
@@ -84,37 +59,21 @@ function CollectionPage() {
   const { data: dbItems = [] } = useDbProductsByCategory(category);
   const items = [...dbItems, ...staticItems];
   const { sort, setSort, sorted } = useSortedProducts(items);
-  const { data: dbBanner } = useQuery({
-    queryKey: ["category-banner", category],
-    queryFn: async () => {
-      const { data } = await supabase.from("categories").select("banner_url").eq("slug", category).maybeSingle();
-      return data?.banner_url ?? null;
-    },
-  });
-  const banner = dbBanner || banners[category];
   const labelWords = info.label.split(" ");
 
 
   return (
     <div className="bg-ink">
-      <section className={`relative isolate overflow-hidden text-ivory min-h-[38svh] md:min-h-[48svh] flex items-end ${containCats.has(category) ? "bg-[#071c37]" : "bg-obsidian"}`}>
-        <img
-          src={banner}
-          alt={info.label}
-          className={`absolute inset-0 h-full w-full ${containCats.has(category) ? "object-contain object-center" : "object-cover opacity-70 animate-slow-zoom"}`}
-        />
-        {!containCats.has(category) && <div className="absolute inset-0 bg-gradient-to-b from-obsidian/40 via-obsidian/30 to-obsidian" />}
-        {!containCats.has(category) && <div className="absolute inset-0 vignette" />}
-
-        <div className="relative mx-auto max-w-[1500px] w-full px-6 pt-24 pb-6 md:px-16 md:pt-28 md:pb-8">
-          <h1 className="font-serif text-5xl md:text-7xl leading-[0.95] tracking-[-0.02em]">
+      <section className="bg-ink pt-32 pb-12 md:pt-40 md:pb-16 border-b border-ivory/5">
+        <div className="relative mx-auto max-w-[1500px] w-full px-6 md:px-16">
+          <h1 className="font-serif text-5xl md:text-7xl leading-[0.95] tracking-[-0.02em] text-ivory">
             {labelWords.map((w, i) => (
               <span key={i} className={i === labelWords.length - 1 ? "italic text-gold-gradient" : ""}>
                 {w}{i < labelWords.length - 1 ? " " : ""}
               </span>
             ))}
           </h1>
-          <p className="mt-4 max-w-lg text-[14px] leading-[1.7] text-ivory/75">{info.blurb}</p>
+          <p className="mt-6 max-w-lg text-[14px] md:text-[15px] leading-[1.8] text-ivory/75 font-medium">{info.blurb}</p>
         </div>
       </section>
 
