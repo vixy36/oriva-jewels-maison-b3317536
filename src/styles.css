@@ -113,6 +113,22 @@
   --color-foreground: oklch(0.97 0.008 82);
   --color-border: oklch(1 0 0 / 0.1);
   --color-muted-foreground: oklch(0.75 0.01 80);
+  --input: oklch(1 0 0 / 0.15);
+}
+
+.bg-ink,
+.bg-ink * {
+  --ivory: oklch(0.22 0.05 258);
+  --bone: oklch(0.38 0.04 258);
+  --foreground: oklch(0.22 0.05 258);
+  --border: oklch(0.22 0.05 258 / 0.12);
+  --muted-foreground: oklch(0.45 0.03 258);
+  --color-ivory: oklch(0.22 0.05 258);
+  --color-bone: oklch(0.38 0.04 258);
+  --color-foreground: oklch(0.22 0.05 258);
+  --color-border: oklch(0.22 0.05 258 / 0.12);
+  --color-muted-foreground: oklch(0.45 0.03 258);
+  --input: oklch(0.22 0.05 258 / 0.18);
 }
 
 

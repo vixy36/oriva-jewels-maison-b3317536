@@ -20,21 +20,21 @@ export const Route = createFileRoute("/about")({
 function AboutPage() {
   return (
     <div className="bg-ink">
-      <section className="relative isolate overflow-hidden bg-obsidian text-ivory min-h-[80svh] flex items-end">
-        <img src={atelier} alt="Oriva atelier" className="absolute inset-0 h-full w-full object-cover opacity-55 animate-slow-zoom" />
-        <div className="absolute inset-0 bg-gradient-to-b from-obsidian/50 via-obsidian/40 to-obsidian" />
-        <div className="absolute inset-0 vignette" />
+      <section className="relative isolate overflow-hidden bg-obsidian text-ivory min-h-[80svh] flex items-end" data-surface="dark">
+        <img src={atelier} alt="Oriva atelier" className="absolute inset-0 h-full w-full object-cover opacity-65 animate-slow-zoom" />
+        <div className="absolute inset-0 bg-gradient-to-b from-obsidian/40 via-obsidian/30 to-obsidian/90" />
+        <div className="absolute inset-0 vignette opacity-40" />
         <div className="relative mx-auto max-w-[1500px] w-full px-6 pt-48 pb-24 md:px-16 md:pt-56 md:pb-32">
           <div className="flex items-center gap-4">
             <span className="h-px w-12 bg-gold" />
             <p className="eyebrow">The Maison</p>
           </div>
-          <h1 className="mt-8 font-serif text-6xl md:text-[9rem] leading-[0.9] tracking-[-0.02em]">
-            <span className="block">A quiet</span>
-            <span className="block italic text-gold-gradient">house</span>
-            <span className="block">of light.</span>
+          <h1 className="mt-8 font-serif text-6xl md:text-[9rem] leading-[0.9] tracking-[-0.02em] text-ivory">
+            <span className="block drop-shadow-sm">A quiet</span>
+            <span className="block italic text-gold-gradient drop-shadow-sm">house</span>
+            <span className="block drop-shadow-sm">of light.</span>
           </h1>
-          <p className="mt-10 max-w-xl text-[15px] leading-[1.8] text-ivory/85">
+          <p className="mt-10 max-w-xl text-[15px] leading-[1.8] text-ivory/95 font-medium drop-shadow-sm">
             Oriva Jewels is a modern maison of natural and lab grown diamond jewellery - designed
             with care, finished by hand, worn for a lifetime.
           </p>

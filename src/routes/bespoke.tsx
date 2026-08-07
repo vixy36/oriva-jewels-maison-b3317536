@@ -26,17 +26,17 @@ const steps = [
 
 function BespokePage() {
   return (
-    <div className="bg-obsidian text-ivory">
+    <div className="bg-obsidian text-ivory" data-surface="dark">
       {/* HERO */}
       <section className="relative isolate overflow-hidden min-h-[80svh]">
-        <img src={atelier} alt="Oriva atelier" className="absolute inset-0 h-full w-full object-cover opacity-45" />
-        <div className="absolute inset-0 bg-gradient-to-b from-obsidian/50 via-obsidian/60 to-obsidian" />
+        <img src={atelier} alt="Oriva atelier" className="absolute inset-0 h-full w-full object-cover opacity-55" />
+        <div className="absolute inset-0 bg-gradient-to-b from-obsidian/40 via-obsidian/50 to-obsidian/95" />
         <div className="relative z-10 mx-auto max-w-[1400px] px-6 md:px-16 pt-24 pb-8 md:pt-28 md:pb-12">
           <p className="eyebrow">- Bespoke Commission</p>
-          <h1 className="mt-8 font-serif font-light text-6xl md:text-8xl lg:text-9xl leading-[0.92] tracking-[-0.02em]">
-            Commission<br />an <em className="text-gold-gradient">heirloom.</em>
+          <h1 className="mt-8 font-serif font-light text-6xl md:text-8xl lg:text-9xl leading-[0.92] tracking-[-0.02em] text-ivory">
+            Commission<br />an <em className="text-gold-gradient drop-shadow-sm">heirloom.</em>
           </h1>
-          <p className="mt-10 max-w-xl text-[15px] leading-[1.9] text-ivory/85">
+          <p className="mt-10 max-w-xl text-[15px] leading-[1.9] text-ivory/95 font-medium drop-shadow-sm">
             One piece. One person. One moment. A private diamond commission, made entirely by hand in our atelier.
           </p>
           <a

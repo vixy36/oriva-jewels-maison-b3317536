@@ -15,7 +15,7 @@ export const Route = createFileRoute("/contact")({
 
 function ContactPage() {
   return (
-    <div className="bg-ink pt-28 md:pt-32">
+    <div className="bg-ink pt-28 md:pt-32 min-h-screen">
       <section className="mx-auto max-w-[1500px] px-6 pb-16 md:px-16 md:pb-24">
         <Reveal>
           <div className="flex items-center gap-4">
@@ -23,10 +23,10 @@ function ContactPage() {
             <p className="eyebrow">Correspondence</p>
           </div>
           <h1 className="mt-8 font-serif text-6xl md:text-[8.5rem] leading-[0.92] tracking-[-0.02em] text-ivory max-w-5xl">
-            A private <em className="text-gold-gradient">conversation</em>,
+            A private <em className="text-gold-gradient drop-shadow-sm">conversation</em>,
             at your convenience.
           </h1>
-          <p className="mt-8 max-w-xl text-[15px] leading-[1.8] text-ivory/80">
+          <p className="mt-8 max-w-xl text-[15px] leading-[1.8] text-ivory/95 font-medium">
             Our client advisors are virtually available 24×7, worldwide. Every enquiry receives a
             personal reply, typically within a few hours.
           </p>
