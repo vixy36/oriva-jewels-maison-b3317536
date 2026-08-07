@@ -33,7 +33,7 @@ export function SiteFooter() {
               <SocialLink href="https://www.instagram.com/oriva__jewels" label="Instagram">
                 <Instagram className="h-4 w-4" strokeWidth={1.3} />
               </SocialLink>
-              <SocialLink href="mailto:hello@orivajewels.com" label="Email">
+              <SocialLink href="mailto:orivajewelshk@gmail.com" label="Email">
                 <Mail className="h-4 w-4" strokeWidth={1.3} />
               </SocialLink>
             </div>
@@ -60,10 +60,9 @@ export function SiteFooter() {
             <FooterCol title="Services" links={[
               { label: "Custom Order", to: "/custom-order" },
               { label: "Contact an Advisor", to: "/contact" },
-              { label: "Ring Size Guide", to: "/ring-size-guide" },
-              { label: WHATSAPP_DISPLAY, to: "/contact" },
-              { label: "hello@orivajewels.com", to: "/contact" },
-              { label: "Book Consultation", to: "/contact" },
+               { label: "Ring Size Guide", to: "/ring-size-guide" },
+               { label: "orivajewelshk@gmail.com", to: "/contact" },
+               { label: "Book Consultation", to: "/contact" },
             ]} />
           </div>
         </div>

@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { MessageCircle, Mail, MapPin, Calendar, Globe2 } from "lucide-react";
+import { MessageCircle, Mail, MapPin, Calendar, Globe2, Instagram } from "lucide-react";
 import { buildWhatsAppLink, WHATSAPP_DISPLAY } from "@/lib/products";
 import { Reveal } from "@/components/site/Reveal";
 
@@ -40,16 +40,19 @@ function ContactPage() {
             <InfoRow n="01" icon={MessageCircle} title="WhatsApp" body={WHATSAPP_DISPLAY} href={buildWhatsAppLink("Hello Oriva Jewels")} />
           </Reveal>
           <Reveal delay={80}>
-            <InfoRow n="02" icon={Mail} title="Email" body="hello@orivajewels.com" href="mailto:hello@orivajewels.com" />
+            <InfoRow n="02" icon={Mail} title="Email" body="orivajewelshk@gmail.com" href="mailto:orivajewelshk@gmail.com" />
           </Reveal>
           <Reveal delay={140}>
             <InfoRow n="03" icon={Calendar} title="Advisor Availability" body={"Virtually available 24×7\nWorldwide, every day"} />
           </Reveal>
           <Reveal delay={200}>
-            <InfoRow n="04" icon={Globe2} title="Worldwide Shipping" body="Fully insured, hand-delivered where possible - to 40+ countries." />
+            <InfoRow n="04" icon={Instagram} title="Instagram" body="Oriva__jewels" href="https://www.instagram.com/oriva__jewels" />
           </Reveal>
           <Reveal delay={260}>
-            <InfoRow n="05" icon={MapPin} title="The Maison" body="End-to-end manufacturers of diamonds & fine jewellery." />
+            <InfoRow n="05" icon={Globe2} title="Worldwide Shipping" body="Fully insured, hand-delivered where possible - to 40+ countries." />
+          </Reveal>
+          <Reveal delay={320}>
+            <InfoRow n="06" icon={MapPin} title="The Maison" body="End-to-end manufacturers of diamonds & fine jewellery." />
           </Reveal>
         </div>
 
