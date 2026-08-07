@@ -72,6 +72,10 @@ function AssurancePage() {
           <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
             <a
               href={buildWhatsAppLink("Hello Oriva, I have a question about your maison assurance.")}
+              onClick={(e) => {
+                e.preventDefault();
+                window.location.href = buildWhatsAppLink("Hello Oriva, I have a question about your maison assurance.");
+              }}
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-3 bg-ivory px-9 py-4 text-[11px] tracking-[0.4em] uppercase text-obsidian"

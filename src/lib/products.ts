@@ -210,6 +210,6 @@ export const WHATSAPP_NUMBER = "85253176253";
 export const WHATSAPP_DISPLAY = "+852 5317 6253\n+91 99791 00913";
 
 export function buildWhatsAppLink(message: string) {
-  // Use api.whatsapp.com for better universal redirection to the app
+  // Use api.whatsapp.com/send which reliably triggers the app deep-link on both iOS and Android
   return `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encodeURIComponent(message)}`;
 }

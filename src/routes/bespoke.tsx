@@ -41,6 +41,10 @@ function BespokePage() {
           </p>
           <a
             href={buildWhatsAppLink("Hello Oriva, I'd like to commission a bespoke piece.")}
+            onClick={(e) => {
+              e.preventDefault();
+              window.location.href = buildWhatsAppLink("Hello Oriva, I'd like to commission a bespoke piece.");
+            }}
             target="_blank"
             rel="noreferrer"
             className="mt-12 inline-flex items-center gap-3 bg-ivory px-9 py-4 text-[11px] tracking-[0.4em] uppercase text-obsidian"
@@ -90,6 +94,10 @@ function BespokePage() {
               <div className="mt-10 flex flex-wrap gap-3">
                 <a
                   href={buildWhatsAppLink("Hello Oriva, I'd like to commission a bespoke piece.")}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.location.href = buildWhatsAppLink("Hello Oriva, I'd like to commission a bespoke piece.");
+                  }}
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center gap-3 bg-ivory px-9 py-4 text-[11px] tracking-[0.4em] uppercase text-obsidian"
