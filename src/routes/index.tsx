@@ -215,12 +215,12 @@ function HomePage() {
             </p>
           </Reveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-16">
             {collections.map((c, i) => (
               <Reveal key={c.title} delay={i * 100}>
                 <Link
                   to={c.to}
-                  className="group block relative"
+                  className="group block relative max-w-[420px] mx-auto"
                 >
                   <div className="relative aspect-[4/5] overflow-hidden bg-muted">
                     <img
@@ -233,9 +233,9 @@ function HomePage() {
                   <div className="mt-6 flex items-start justify-between">
                     <div>
                       <span className="text-[10px] tracking-[0.3em] uppercase text-gold font-medium mb-1 block">Chapter {c.n}</span>
-                      <h3 className="text-2xl font-serif text-obsidian uppercase tracking-wide">{c.title}</h3>
+                      <h3 className="text-xl font-serif text-obsidian uppercase tracking-wide">{c.title}</h3>
                     </div>
-                    <ArrowUpRight className="h-5 w-5 text-obsidian transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                    <ArrowUpRight className="h-4 w-4 text-obsidian transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
                   </div>
                 </Link>
               </Reveal>
