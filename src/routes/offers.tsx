@@ -147,11 +147,11 @@ function OffersPage() {
   const visible = filter === "all" ? items : items.filter((o) => o.category === filter);
 
   return (
-    <div className="bg-background text-foreground">
+    <div className="bg-background text-foreground pt-24 md:pt-32">
       {/* Hero */}
       <section className="relative overflow-hidden bg-[#071c37] text-[#fefefe]">
         <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_20%_20%,#d6b98c33,transparent_50%),radial-gradient(circle_at_80%_60%,#d6b98c22,transparent_50%)]" />
-        <div className="relative max-w-[1400px] mx-auto px-6 md:px-10 py-24 md:py-36 text-center">
+        <div className="relative max-w-[1400px] mx-auto px-6 md:px-10 py-16 md:py-24 text-center">
           <p className="eyebrow text-[#d6b98c]">The Maison Offers</p>
           <h1 className="mt-4 font-serif text-4xl md:text-6xl leading-tight text-[#fefefe]">Curated Promotions,<br />Timeless Value.</h1>
           <p className="mt-5 max-w-2xl mx-auto text-sm md:text-base text-white/70 leading-relaxed">
