@@ -551,19 +551,19 @@ function HomePage() {
       </section>
 
       {/* INSTAGRAM */}
-      <section className="py-8 md:py-10 bg-ink">
-
-        <div className="mx-auto max-w-[1600px] px-6 md:px-16">
-          <Reveal className="flex items-end justify-between gap-6 flex-wrap">
+      <section className="py-24 bg-obsidian border-t border-ivory/5">
+        <div className="mx-auto max-w-[1400px] px-6 md:px-12">
+          <Reveal className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
             <div className="max-w-xl">
-              <p className="eyebrow">- @oriva__jewels</p>
-              <h2 className="mt-4 font-serif text-3xl md:text-4xl text-ivory">
-                <em className="text-gold-gradient">Instagram.</em>
+              <span className="eyebrow block mb-4">@ORIVA__JEWELS</span>
+              <h2 className="text-4xl md:text-5xl font-serif leading-tight text-ivory">
+                The <span className="italic">Digital Maison.</span>
               </h2>
-              <p className="mt-4 text-[15px] leading-[1.75] text-ivory/70">
-                Learn, engage and grow. Connect with ORIVA.
-              </p>
             </div>
+            <p className="max-w-xs text-[14px] leading-relaxed text-ivory/60 uppercase tracking-widest">
+              Follow our journey, from raw stones to finished masterworks.
+            </p>
+          </Reveal>
             <a
               href="https://www.instagram.com/oriva__jewels/reels/"
               target="_blank"
