@@ -97,7 +97,7 @@ export function SiteHeader() {
     const container = navItemsRef.current;
     if (!header || !logo || !container) return;
 
-    gsap.set(logo, { scale: 1.05, transformOrigin: "center center" });
+    gsap.set(logo, { scale: 1.1, transformOrigin: "center center" });
 
     let scrolled = false;
     let ticking = false;
@@ -114,7 +114,7 @@ export function SiteHeader() {
         overwrite: "auto",
       });
       gsap.to(logo, {
-        scale: next ? 1 : 1.05,
+        scale: next ? 1.05 : 1.1,
         duration: 0.5,
         ease: "power2.out",
         overwrite: "auto",
@@ -216,7 +216,7 @@ export function SiteHeader() {
             <img
               src={orivaLogo.url}
               alt="Oriva Jewels"
-              className="h-7 md:h-9 w-auto brightness-0 invert"
+              className="h-8 md:h-12 w-auto brightness-0 invert"
               draggable={false}
             />
           </Link>
