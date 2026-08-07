@@ -12,6 +12,8 @@ import pendantsImg from "@/assets/collection-pendants.jpg";
 import bridalImg from "@/assets/collection-bridal.jpg";
 import labgrownImg from "@/assets/collection-labgrown.jpg";
 import editorialImg from "@/assets/editorial-emerald.jpg";
+import emeraldProduct from "@/assets/product-emerald-studs.jpg";
+
 
 import insta1 from "@/assets/insta-1.jpg";
 import insta6 from "@/assets/insta-6.jpg";
