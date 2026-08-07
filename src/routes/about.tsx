@@ -52,11 +52,11 @@ function AboutPage() {
             <div className="relative">
               <div className="absolute -top-12 -left-12 w-48 h-48 bg-gold/5 rounded-full blur-3xl" />
               <span className="eyebrow text-gold">Our Philosophy</span>
-              <h2 className="mt-8 font-serif text-5xl md:text-7xl leading-tight text-ivory">
+              <h2 className="mt-8 font-serif text-5xl md:text-7xl leading-tight text-white">
                 Luxury in its <br />
                 <em className="text-gold-gradient italic">purest form.</em>
               </h2>
-              <p className="mt-10 text-[17px] leading-[1.9] text-ivory/95 max-w-lg font-medium">
+              <p className="mt-10 text-[17px] leading-[1.9] text-white max-w-lg font-medium">
                 We believe fine jewellery should be more than an accessory; it should be an extension of one's identity. 
                 Our approach is defined by restraint—nothing is added for show, everything is included for excellence.
               </p>
