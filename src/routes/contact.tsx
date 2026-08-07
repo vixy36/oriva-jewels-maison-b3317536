@@ -43,7 +43,7 @@ function ContactPage() {
             <InfoRow n="02" icon={Mail} title="Email" body="orivajewelshk@gmail.com" href="mailto:orivajewelshk@gmail.com" />
           </Reveal>
           <Reveal delay={140}>
-            <InfoRow n="03" icon={Calendar} title="Advisor Availability" body={"Virtually available 24×7\nWorldwide, every day"} />
+            <InfoRow n="03" icon={Calendar} title="Advisor Availability" body={"Virtually available 24×7\nWorldwide"} />
           </Reveal>
           <Reveal delay={200}>
             <InfoRow n="04" icon={Instagram} title="Instagram" body="Oriva__jewels" href="https://www.instagram.com/oriva__jewels" />
