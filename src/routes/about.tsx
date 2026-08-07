@@ -20,7 +20,7 @@ export const Route = createFileRoute("/about")({
 
 function AboutPage() {
   return (
-    <div className="bg-ink overflow-x-hidden">
+    <div className="bg-obsidian overflow-x-hidden">
       {/* Cinematic Hero */}
       <section className="relative h-[90svh] flex items-center justify-center overflow-hidden bg-obsidian text-ivory" data-surface="dark">
         <img src={atelier} alt="Oriva atelier" className="absolute inset-0 h-full w-full object-cover opacity-60 animate-slow-zoom scale-110" />
@@ -46,7 +46,7 @@ function AboutPage() {
       </section>
 
       {/* Philosophy Section - Split with Image */}
-      <section className="py-24 md:py-32 bg-ink">
+      <section className="py-24 md:py-32 bg-obsidian">
         <div className="mx-auto max-w-[1500px] px-6 md:px-16 grid gap-20 md:grid-cols-2 items-center">
           <Reveal>
             <div className="relative">
@@ -138,12 +138,12 @@ function AboutPage() {
       </section>
 
       {/* The Journey Section */}
-      <section className="py-24 md:py-32 bg-ink">
+      <section className="py-24 md:py-32 bg-obsidian border-t border-gold/10">
         <div className="mx-auto max-w-4xl px-6 text-center">
           <Reveal>
             <span className="eyebrow text-gold">The Journey</span>
-            <h2 className="mt-8 font-serif text-5xl md:text-7xl text-black">From a sketch <br /><em className="text-gold-gradient italic">to her finger.</em></h2>
-            <p className="mt-12 text-[18px] leading-[2] text-black font-medium">
+            <h2 className="mt-8 font-serif text-5xl md:text-7xl text-white">From a sketch <br /><em className="text-gold-gradient italic">to her finger.</em></h2>
+            <p className="mt-12 text-[18px] leading-[2] text-white font-medium">
               Unlike traditional jewellers, we manage the entire lifecycle of our pieces. 
               By sourcing rough diamonds directly and manufacturing in our own facility, 
               we remove the middleman, ensuring both ethical sourcing and unparalleled value.
