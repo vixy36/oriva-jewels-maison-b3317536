@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { Heart, MessageCircle, ArrowLeft, ShieldCheck, Truck, Sparkles, ArrowRight, ZoomIn, ChevronLeft, ChevronRight, Play } from "lucide-react";
+import { Heart, MessageCircle, ArrowLeft, ShieldCheck, Truck, Sparkles, ArrowRight, ZoomIn, ChevronLeft, ChevronRight, Play, ChevronDown, ChevronUp } from "lucide-react";
 
 import { findProduct, buildWhatsAppLink, products, type Product, type ProductCategory } from "@/lib/products";
 import { ProductCard } from "@/components/site/ProductCard";
@@ -98,6 +98,7 @@ function ProductPage() {
   const [activeIdx, setActiveIdx] = useState(0);
   const variants: NonNullable<Product["variants"]> = product.variants ?? [];
   const [activeVariant, setActiveVariant] = useState(0);
+  const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
   const currentVariant = variants[activeVariant];
 
   const baseImages: string[] = ((product.images && product.images.length ? product.images : [product.image]) as string[]).filter(Boolean);
@@ -514,37 +515,52 @@ function ProductPage() {
               </div>
 
 
-              <button
-                type="button"
-                onClick={async () => {
-                  const configuration = {
-                    diamondType, karat, goldColor, caratSize,
-                    size: (isRing || product.sizes) ? (size || undefined) : undefined,
-                    backing: product.backings ? backing : undefined,
-                    length: product.lengths ? length : undefined,
-                    specialRequirements: specialReq || undefined,
-                  };
-                  try {
-                    await supabase.from("enquiries").insert({
-                      name: "WhatsApp Product Enquiry",
-                      message: message,
-                      source: "whatsapp_product",
-                      product_slug: product.slug,
-                      subject: product.name,
-                      configuration,
-                      metadata: { productName: product.name, category: product.category },
-                    });
-                  } catch {}
-                  window.location.href = buildWhatsAppLink(message);
-                }}
-                className="mt-5 flex w-full items-center justify-center gap-3 bg-gold text-obsidian py-5 text-[14px] font-semibold tracking-[0.4em] uppercase hover:bg-gold-deep hover:text-ivory transition group cursor-pointer"
-              >
-                <MessageCircle className="h-4 w-4" strokeWidth={1.5} />
-                Enquire on WhatsApp
-              </button>
-              <p className="mt-4 text-center text-[14px] tracking-[0.35em] uppercase text-ivory/80">
-                Pricing shared privately · Swift response
-              </p>
+              <div className="mt-8 border border-white/10 overflow-hidden">
+                <button
+                  type="button"
+                  onClick={() => setIsEnquiryOpen(!isEnquiryOpen)}
+                  className="flex w-full items-center justify-between bg-charcoal/50 px-6 py-4 text-[14px] font-bold tracking-[0.42em] uppercase text-gold hover:bg-charcoal transition-colors"
+                >
+                  Enquiry Form
+                  {isEnquiryOpen ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+                </button>
+                
+                {isEnquiryOpen && (
+                  <div className="p-6 space-y-6 bg-charcoal/30">
+                    <button
+                      type="button"
+                      onClick={async () => {
+                        const configuration = {
+                          diamondType, karat, goldColor, caratSize,
+                          size: (isRing || product.sizes) ? (size || undefined) : undefined,
+                          backing: product.backings ? backing : undefined,
+                          length: product.lengths ? length : undefined,
+                          specialRequirements: specialReq || undefined,
+                        };
+                        try {
+                          await supabase.from("enquiries").insert({
+                            name: "WhatsApp Product Enquiry",
+                            message: message,
+                            source: "whatsapp_product",
+                            product_slug: product.slug,
+                            subject: product.name,
+                            configuration,
+                            metadata: { productName: product.name, category: product.category },
+                          });
+                        } catch {}
+                        window.location.href = buildWhatsAppLink(message);
+                      }}
+                      className="flex w-full items-center justify-center gap-3 bg-gold text-obsidian py-5 text-[14px] font-semibold tracking-[0.4em] uppercase hover:bg-gold-deep hover:text-ivory transition group cursor-pointer"
+                    >
+                      <MessageCircle className="h-4 w-4" strokeWidth={1.5} />
+                      Enquire on WhatsApp
+                    </button>
+                    <p className="text-center text-[13px] tracking-[0.3em] uppercase text-ivory/60">
+                      Pricing shared privately · Swift response
+                    </p>
+                  </div>
+                )}
+              </div>
 
               <div className="mt-10 grid grid-cols-3 gap-2 text-center">
                 {[
