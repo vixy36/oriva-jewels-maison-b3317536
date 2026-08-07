@@ -287,7 +287,7 @@ function EnquiriesPage() {
                   </Button>
                   {open.phone && (
                     <Button size="sm" variant="outline" asChild>
-                      <a href={`https://wa.me/${open.phone.replace(/\D/g, "")}`} target="_blank" rel="noreferrer">
+                      <a href={`https://api.whatsapp.com/send?phone=${open.phone.replace(/\D/g, "")}`} target="_blank" rel="noreferrer">
                         <MessageSquare className="h-4 w-4 mr-1.5" /> WhatsApp
                       </a>
                     </Button>
