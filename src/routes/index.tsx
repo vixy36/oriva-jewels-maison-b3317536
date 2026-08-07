@@ -379,9 +379,9 @@ function HomePage() {
             </h2>
           </Reveal>
 
-          <div className="flex overflow-x-auto pb-8 snap-x snap-mandatory hide-scrollbar gap-4 md:gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8">
             {occasions.map((o, i) => (
-              <Reveal key={o.label} delay={i * 100} className="flex-none w-[200px] md:w-[260px] snap-center">
+              <Reveal key={o.label} delay={i * 100}>
                 <Link to="/occasions" className="group block relative w-full">
                   <div className="relative overflow-hidden aspect-square rounded-sm mb-4">
                     <img
