@@ -129,15 +129,15 @@ function CustomOrderPage() {
   };
 
   return (
-    <main className="pt-24 md:pt-28 pb-14 md:pb-20 bg-obsidian text-ivory">
+    <main className="pt-24 md:pt-28 pb-14 md:pb-20 bg-obsidian text-ivory" data-surface="dark">
       {/* HERO */}
       <section className="mx-auto max-w-[1400px] px-6 md:px-16">
         <GsapReveal className="text-center">
           <p data-gsap className="text-[12px] tracking-[0.5em] uppercase text-gold">- Atelier Commission -</p>
           <h1 data-gsap className="mt-6 font-serif text-3xl md:text-4xl lg:text-7xl leading-[1] text-ivory">
-            Custom <em className="italic text-gold-gradient">order request.</em>
+            Custom <em className="italic text-gold-gradient drop-shadow-sm">order request.</em>
           </h1>
-          <p data-gsap className="mt-6 mx-auto max-w-2xl text-[15px] md:text-[16px] leading-[1.8] text-ivory/70">
+          <p data-gsap className="mt-6 mx-auto max-w-2xl text-[15px] md:text-[16px] leading-[1.8] text-ivory/90 font-medium">
             Share the piece you have in mind. Our advisors will respond within hours with sketches,
             certified stone options and a transparent factory-direct quote. No obligation.
           </p>
