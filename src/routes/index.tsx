@@ -215,12 +215,12 @@ function HomePage() {
             </p>
           </Reveal>
 
-          <div className="flex overflow-x-auto pb-8 snap-x snap-mandatory hide-scrollbar gap-6 md:gap-8 lg:gap-10">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 md:gap-8">
             {collections.map((c, i) => (
-              <Reveal key={c.title} delay={i * 100} className="flex-none w-[200px] md:w-[260px] snap-center">
+              <Reveal key={c.title} delay={i * 100}>
                 <Link
                   to={c.to}
-                  className="group block relative max-w-[260px] mx-auto"
+                  className="group block relative w-full"
                 >
                   <div className="relative aspect-[4/5] overflow-hidden bg-muted">
                     <img
@@ -233,9 +233,9 @@ function HomePage() {
                   <div className="mt-4 flex items-start justify-between">
                     <div>
                       <span className="text-[9px] tracking-[0.2em] uppercase text-gold font-medium mb-1 block">Chapter {c.n}</span>
-                      <h3 className="text-[15px] font-serif text-obsidian uppercase tracking-wide">{c.title}</h3>
+                      <h3 className="text-[13px] sm:text-[15px] font-serif text-obsidian uppercase tracking-wide">{c.title}</h3>
                     </div>
-                    <ArrowUpRight className="h-3.5 w-3.5 text-obsidian transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    <ArrowUpRight className="h-3.5 w-3.5 text-obsidian transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 shrink-0" />
                   </div>
                 </Link>
               </Reveal>
@@ -266,9 +266,9 @@ function HomePage() {
             </Link>
           </div>
 
-          <div className="flex overflow-x-auto pb-8 snap-x snap-mandatory hide-scrollbar gap-5 md:gap-7">
-            {selectedSix.map((p, i) => (
-              <Reveal key={p.slug} delay={i * 100} className="flex-none w-[180px] md:w-[240px] snap-center">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5 md:gap-7">
+            {selectedSix.slice(0, 6).map((p, i) => (
+              <Reveal key={p.slug} delay={i * 100}>
                 <ProductCard product={p} />
               </Reveal>
             ))}
