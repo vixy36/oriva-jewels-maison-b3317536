@@ -11,7 +11,7 @@ import { ArrowRight, Sparkles, Shield, Heart } from "lucide-react";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "The Maison - Oriva Jewels" },
+      { title: "The Maison | Oriva Jewels" },
       { name: "description", content: "A modern maison of fine jewellery. Discover our heritage, craftsmanship, and commitment to excellence." },
     ],
   }),

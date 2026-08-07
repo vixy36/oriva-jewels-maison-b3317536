@@ -8,7 +8,7 @@ import { buildWhatsAppLink } from "@/lib/products";
 export const Route = createFileRoute("/education")({
   head: () => ({
     meta: [
-      { title: "The Diamond Guide - Oriva Jewels" },
+      { title: "The Diamond Guide | Oriva Jewels" },
       {
         name: "description",
         content:
