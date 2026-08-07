@@ -499,15 +499,15 @@ function HomePage() {
       </section>
 
       {/* FAQ */}
-      <section className="relative py-8 md:py-10 bg-obsidian">
-        <div className="mx-auto max-w-[1200px] px-6 md:px-16 grid gap-16 md:grid-cols-12">
-          <Reveal className="md:col-span-4">
-            <p className="eyebrow">- Frequently Asked</p>
-            <h2 className="mt-6 font-serif text-2xl md:text-4xl leading-[1.05] text-ivory">
-              A few <em className="text-gold-gradient">answers.</em>
+      <section className="py-24 bg-obsidian text-ivory overflow-hidden">
+        <div className="mx-auto max-w-[1400px] px-6 md:px-12 grid gap-16 lg:grid-cols-12 items-start">
+          <Reveal className="lg:col-span-4">
+            <span className="eyebrow block mb-6 text-gold">- FREQUENTLY ASKED</span>
+            <h2 className="text-4xl font-serif leading-tight mb-8">
+              A few <span className="italic">answers.</span>
             </h2>
-            <p className="mt-6 text-sm leading-[1.85] text-ivory/70">
-              Can't find yours? Message our concierge - available worldwide.
+            <p className="text-ivory/60 text-[15px] leading-relaxed">
+              If your question isn't covered here, our atelier is available for a direct conversation worldwide.
             </p>
           </Reveal>
 
