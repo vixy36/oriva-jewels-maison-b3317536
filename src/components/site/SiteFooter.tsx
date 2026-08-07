@@ -75,6 +75,17 @@ export function SiteFooter() {
           <p className="text-[11px] md:text-[13px] tracking-[0.25em] md:tracking-[0.35em] uppercase text-ivory/80">
             GIA · IGI Certified · Worldwide
           </p>
+          <p className="text-[10px] tracking-[0.2em] uppercase text-ivory/40">
+            designed & maintained by{" "}
+            <a 
+              href="https://osmdigital.in" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="hover:text-gold transition"
+            >
+              OSM DIGITAL
+            </a>
+          </p>
         </div>
       </div>
     </footer>
