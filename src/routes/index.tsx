@@ -670,8 +670,8 @@ function EngagementRingsSection() {
         }}
       />
       <div className="relative mx-auto max-w-[1240px] px-6 md:px-16 grid gap-12 md:grid-cols-12 md:gap-16 items-start">
-        <Reveal className="md:col-span-5">
-          <div className="relative aspect-[4/5] overflow-hidden">
+        <Reveal className="md:col-span-4 lg:col-span-4">
+          <div className="relative aspect-[3/4] overflow-hidden rounded-sm max-w-[380px] mx-auto md:mx-0">
             <img
               src={engagementModel}
               alt="Diamond engagement ring on hand"
@@ -680,14 +680,14 @@ function EngagementRingsSection() {
               height={1024}
               className="h-full w-full object-cover"
             />
-            <div className="absolute inset-0 border border-gold/20" />
+            <div className="absolute inset-0 border border-gold/10" />
           </div>
-          <p className="mt-4 text-[14px] tracking-[0.42em] uppercase text-ivory/80">
+          <p className="mt-4 text-[12px] tracking-[0.4em] uppercase text-ivory/60 text-center md:text-left">
             Plate III · Engagement
           </p>
         </Reveal>
 
-        <Reveal delay={120} className="md:col-span-7 md:pl-8">
+        <Reveal delay={120} className="md:col-span-8 lg:col-span-8 md:pl-8">
           <p className="eyebrow">- Engagement Rings</p>
           <h2 className="mt-6 font-serif text-3xl md:text-4xl leading-[1.05] text-ivory">
             From a sketch to <em className="text-gold-gradient">her finger.</em>
