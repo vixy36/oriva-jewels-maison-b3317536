@@ -86,7 +86,9 @@ export function SiteHeader() {
 
   const sub = useMemo(() => {
     const rows = (menuRows ?? []).filter((r) => r.menu_key === "sub");
-    return rows.length > 0 ? rows.map((r) => ({ label: r.label, to: r.href })) : FALLBACK_SUB;
+    const baseSub = rows.length > 0 ? rows.map((r) => ({ label: r.label, to: r.href })) : FALLBACK_SUB;
+    // Explicitly filter out Offers and Wishlist as requested
+    return baseSub.filter(s => !/offer|wishlist/i.test(s.label));
   }, [menuRows]);
 
   useEffect(() => {
