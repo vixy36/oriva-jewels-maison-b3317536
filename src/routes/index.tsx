@@ -186,6 +186,22 @@ function HomePage() {
         </div>
       </div>
 
+      {/* JOURNEY STATS */}
+      <section className="bg-obsidian py-10 md:py-16 border-b border-white/5">
+        <div className="mx-auto max-w-[1240px] px-6 md:px-16">
+          <div className="grid grid-cols-2 gap-10 md:grid-cols-2 lg:flex lg:items-center lg:justify-center lg:gap-24">
+            <Reveal className="text-center lg:text-left">
+              <span className="block font-sans text-4xl md:text-6xl font-bold text-ivory tracking-tight">100%</span>
+              <span className="mt-2 block text-[11px] tracking-[0.4em] uppercase text-gold">Certified stones</span>
+            </Reveal>
+            <Reveal delay={100} className="text-center lg:text-left">
+              <span className="block font-sans text-4xl md:text-6xl font-bold text-ivory tracking-tight">30D</span>
+              <span className="mt-2 block text-[11px] tracking-[0.4em] uppercase text-gold">Bespoke lead time</span>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
       {/* COLLECTIONS INDEX - Editorial image grid */}
       <section className="relative overflow-hidden py-8 md:py-14 bg-ink">
 
