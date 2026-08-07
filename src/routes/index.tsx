@@ -382,16 +382,18 @@ function HomePage() {
           <div className="flex overflow-x-auto pb-8 snap-x snap-mandatory hide-scrollbar gap-4 md:gap-6">
             {occasions.map((o, i) => (
               <Reveal key={o.label} delay={i * 100} className="flex-none w-[200px] md:w-[260px] snap-center">
-                <Link to="/occasions" className="group block relative overflow-hidden aspect-square rounded-sm">
-                  <img
-                    src={o.img}
-                    alt={o.label}
-                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-1000 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-obsidian/30 group-hover:bg-obsidian/10 transition-colors duration-500" />
-                  <div className="absolute inset-x-0 bottom-0 p-5 md:p-8 text-ivory">
+                <Link to="/occasions" className="group block relative w-full">
+                  <div className="relative overflow-hidden aspect-square rounded-sm mb-4">
+                    <img
+                      src={o.img}
+                      alt={o.label}
+                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-obsidian/10 group-hover:bg-obsidian/0 transition-colors duration-500" />
+                  </div>
+                  <div className="text-left">
                     <span className="text-[9px] tracking-[0.3em] uppercase text-gold block mb-1">{o.tag}</span>
-                    <h3 className="text-lg md:text-xl font-serif tracking-wide uppercase">{o.label}</h3>
+                    <h3 className="text-[13px] md:text-[15px] font-serif tracking-wide uppercase text-obsidian">{o.label}</h3>
                   </div>
                 </Link>
               </Reveal>
