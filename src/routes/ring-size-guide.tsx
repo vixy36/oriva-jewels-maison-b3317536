@@ -271,14 +271,6 @@ function RingSizePage() {
           </div>
 
           <div className="mt-16 flex flex-wrap items-center justify-center gap-3">
-            <a
-              href={buildWhatsAppLink("Hello Oriva, I'd like help sizing my ring. Could you guide me?")}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-3 bg-ivory px-9 py-4 text-[11px] tracking-[0.4em] uppercase text-obsidian hover:bg-gold transition"
-            >
-              Direct Assistance <ArrowRight className="h-4 w-4" strokeWidth={1.4} />
-            </a>
             <Link
               to="/contact"
               className="inline-flex items-center gap-3 border border-ivory/25 px-9 py-4 text-[11px] tracking-[0.4em] uppercase text-ivory hover:border-gold hover:text-gold transition"

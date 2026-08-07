@@ -51,6 +51,7 @@ export function SiteFooter() {
 
             <FooterCol title="The Maison" links={[
               { label: "Our Story", to: "/about" },
+              { label: "About Us", to: "/about" },
               { label: "Maison Assurance", to: "/assurance" },
               { label: "Diamond Guide", to: "/education" },
               { label: "Bespoke Commission", to: "/bespoke" },
@@ -61,7 +62,6 @@ export function SiteFooter() {
               { label: "Custom Order", to: "/custom-order" },
               { label: "Contact the Atelier", to: "/contact" },
                { label: "Ring Size Guide", to: "/ring-size-guide" },
-               { label: "orivajewelshk@gmail.com", to: "/contact" },
                { label: "Book Consultation", to: "/contact" },
             ]} />
           </div>
