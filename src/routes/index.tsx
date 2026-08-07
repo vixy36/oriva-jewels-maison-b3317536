@@ -586,7 +586,7 @@ function HomePage() {
               A few <em className="text-gold-gradient">answers.</em>
             </h2>
             <p className="mt-6 text-sm leading-[1.85] text-ivory/70">
-              Can't find yours? Message an advisor - available 24×7, worldwide.
+              Can't find yours? Message our concierge - available worldwide.
             </p>
           </Reveal>
 
@@ -599,7 +599,7 @@ function HomePage() {
                 },
                 {
                   q: "What metals and karats are available?",
-                  a: "18K, 14K and 9K gold in White, Yellow and Rose - along with Platinum 950 for select pieces. Any Oriva design can be crafted in any of them.",
+                  a: "18K, 14K and 9K gold in White, Yellow and Rose for select pieces. Any Oriva design can be crafted in any of them.",
                 },
                 {
                   q: "How does the enquiry process work?",
@@ -726,7 +726,7 @@ function EngagementRingsSection() {
   });
 
   const goldQualities = ["18K", "14K", "9K"];
-  const goldColors = ["White Gold", "Yellow Gold", "Rose Gold", "Platinum"];
+  const goldColors = ["White Gold", "Yellow Gold", "Rose Gold"];
   const diamondCuts = ["Round", "Oval", "Emerald", "Cushion", "Marquise", "Pear", "Heart", "Princess", "Radiant"];
 
   const submitToWhatsApp = () => {

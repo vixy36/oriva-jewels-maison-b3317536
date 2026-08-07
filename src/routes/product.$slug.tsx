@@ -87,8 +87,7 @@ function ProductPage() {
     product.metal.includes("Yellow") ? "Yellow" : product.metal.includes("Rose") ? "Rose" : "White",
   );
   const [size, setSize] = useState(product.sizes?.[2] ?? "");
-  const [caratFrom, setCaratFrom] = useState<string>("1.00");
-  const [caratTo, setCaratTo] = useState<string>("2.00");
+  const [caratSize, setCaratSize] = useState<number>(1.00);
   const [backing, setBacking] = useState(product.backings?.[0] ?? "");
   const [length, setLength] = useState(product.lengths?.[1] ?? "");
   const [specialReq, setSpecialReq] = useState("");
@@ -136,7 +135,7 @@ function ProductPage() {
     lines.push(
       `Diamond Type: ${diamondType}`,
       `Metal: ${karat} ${goldColor} Gold`,
-      `Centre Stone: ${caratFrom} ct - ${caratTo} ct`,
+      `Centre Stone: ${caratSize.toFixed(2)} ct`,
     );
     if (isRing || product.sizes) lines.push(`Ring Size: ${size || "—"}`);
     if (product.backings) lines.push(`Backing: ${backing}`);
@@ -147,7 +146,7 @@ function ProductPage() {
       "Please share pricing and availability.",
     );
     return lines.join("\n");
-  }, [product, diamondType, karat, goldColor, caratFrom, caratTo, size, backing, length, specialReq, isRing, priceLabel, mrpLabel]);
+  }, [product, diamondType, karat, goldColor, caratSize, size, backing, length, specialReq, isRing, priceLabel, mrpLabel]);
 
   const related = products.filter((p) => p.slug !== product.slug).slice(0, 3);
 
@@ -388,37 +387,23 @@ function ProductPage() {
                 <div>
                   <div className="flex items-baseline justify-between">
                     <p className="text-[14px] tracking-[0.42em] uppercase text-gold">Centre Stone Size</p>
-                    <p className="text-[11px] tracking-[0.3em] uppercase text-ivory/60">Carats</p>
+                    <p className="font-serif text-2xl text-ivory">{caratSize.toFixed(2)} <span className="text-[12px] uppercase tracking-widest text-gold font-sans ml-1">ct</span></p>
                   </div>
-                  <div className="mt-4 grid grid-cols-2 gap-3">
-                    <label className="block">
-                      <span className="text-[11px] tracking-[0.3em] uppercase text-ivory/60">From</span>
-                      <input
-                        type="number"
-                        min={0.1}
-                        max={20}
-                        step={0.05}
-                        value={caratFrom}
-                        onChange={(e) => setCaratFrom(e.target.value)}
-                        placeholder="e.g. 1.00"
-                        className="mt-2 w-full border-b border-white/15 bg-transparent py-2.5 text-sm text-ivory placeholder:text-ivory/40 outline-none focus:border-gold transition"
-                      />
-                    </label>
-                    <label className="block">
-                      <span className="text-[11px] tracking-[0.3em] uppercase text-ivory/60">To</span>
-                      <input
-                        type="number"
-                        min={0.1}
-                        max={20}
-                        step={0.05}
-                        value={caratTo}
-                        onChange={(e) => setCaratTo(e.target.value)}
-                        placeholder="e.g. 2.00"
-                        className="mt-2 w-full border-b border-white/15 bg-transparent py-2.5 text-sm text-ivory placeholder:text-ivory/40 outline-none focus:border-gold transition"
-                      />
-                    </label>
+                  <div className="mt-6">
+                    <input
+                      type="range"
+                      min="0.20"
+                      max="10.00"
+                      step="0.05"
+                      value={caratSize}
+                      onChange={(e) => setCaratSize(parseFloat(e.target.value))}
+                      className="w-full h-1.5 bg-white/10 rounded-full appearance-none cursor-pointer accent-gold hover:accent-gold-deep transition-all"
+                    />
+                    <div className="mt-3 flex justify-between text-[10px] tracking-[0.3em] uppercase text-ivory/40 font-bold">
+                      <span>0.20 ct</span>
+                      <span>10.00 ct</span>
+                    </div>
                   </div>
-                  <p className="mt-2 text-[11px] tracking-[0.06em] text-ivory/55">Enter your preferred carat range manually.</p>
                 </div>
 
                 {isRing && (
@@ -463,7 +448,7 @@ function ProductPage() {
                 <dl className="mt-5 grid grid-cols-2 gap-x-6 gap-y-2.5 text-sm">
                   <dt className="text-ivory/80">Diamond</dt><dd className="text-ivory">{diamondType}</dd>
                   <dt className="text-ivory/80">Metal</dt><dd className="text-ivory">{karat} {goldColor} Gold</dd>
-                  <dt className="text-ivory/80">Centre Stone</dt><dd className="text-ivory">{caratFrom} - {caratTo} ct</dd>
+                  <dt className="text-ivory/80">Centre Stone</dt><dd className="text-ivory">{caratSize.toFixed(2)} ct</dd>
                   {product.sizes && (<><dt className="text-ivory/80">Size</dt><dd className="text-ivory">{size}</dd></>)}
                   {isRing && !product.sizes && size && (<><dt className="text-ivory/80">Ring Size</dt><dd className="text-ivory">{size}</dd></>)}
                   {product.backings && (<><dt className="text-ivory/80">Backing</dt><dd className="text-ivory">{backing}</dd></>)}
@@ -477,7 +462,7 @@ function ProductPage() {
                 type="button"
                 onClick={async () => {
                   const configuration = {
-                    diamondType, karat, goldColor, caratFrom, caratTo,
+                    diamondType, karat, goldColor, caratSize,
                     size: (isRing || product.sizes) ? (size || undefined) : undefined,
                     backing: product.backings ? backing : undefined,
                     length: product.lengths ? length : undefined,
