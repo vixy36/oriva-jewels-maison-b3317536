@@ -276,7 +276,7 @@ function ProductPage() {
                     >
                       <ChevronRight className="h-5 w-5" strokeWidth={1.8} />
                     </button>
-                    <div className="absolute bottom-3 left-1/2 -translate-x-1/2 text-[10px] font-semibold tracking-[0.4em] uppercase text-gold bg-obsidian/85 px-2.5 py-1 border border-gold/40">
+                    <div className="absolute bottom-3 left-1/2 -translate-x-1/2 text-[10px] font-semibold tracking-[0.4em] uppercase text-gold bg-obsidian/95 px-2.5 py-1.5 border border-gold shadow-lg">
                       {String(safeIdx + 1).padStart(2, "0")} / {String(media.length).padStart(2, "0")}
                     </div>
                   </>
@@ -404,7 +404,7 @@ function ProductPage() {
                         >
                           <div className={`mb-2 flex h-12 w-12 items-center justify-center rounded-sm bg-white/5 p-1 transition-colors ${diamondShape === shape ? "bg-white/10" : "group-hover:bg-white/10"}`}>
                             <img 
-                              src={`https://oriva-jewels.lovable.app/diamond-shapes/${shape.toLowerCase()}.png`} 
+                              src={`/diamond-shapes/${shape.toLowerCase()}.png`} 
                               alt={shape}
                               className={`h-full w-full object-contain filter invert opacity-90 transition-opacity ${diamondShape === shape ? "opacity-100" : "group-hover:opacity-100"}`}
                               onError={(e) => {

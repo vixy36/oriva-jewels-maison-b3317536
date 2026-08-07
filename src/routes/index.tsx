@@ -232,7 +232,7 @@ function HomePage() {
                   <div className="mt-4 flex items-start justify-between">
                     <div>
                       <span className="text-[9px] tracking-[0.2em] uppercase text-gold font-medium mb-1 block">Chapter {c.n}</span>
-                      <h3 className="text-[13px] sm:text-[15px] font-serif text-obsidian uppercase tracking-wide">{c.title}</h3>
+                      <h3 className="text-[13px] sm:text-[15px] font-serif text-obsidian uppercase tracking-wide font-bold">{c.title}</h3>
                     </div>
                     <ArrowUpRight className="h-3.5 w-3.5 text-obsidian transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 shrink-0" />
                   </div>
@@ -305,7 +305,7 @@ function HomePage() {
                   <div className="relative aspect-square overflow-hidden bg-muted mb-4 rounded-full border border-ivory/10 group-hover:border-gold transition-colors">
                     <img src={s.img} alt={s.label} loading="lazy" className="absolute inset-0 h-full w-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-110" />
                   </div>
-                  <h3 className="font-serif text-[13px] md:text-[14px] text-obsidian uppercase tracking-[0.2em] font-medium">{s.label}</h3>
+                  <h3 className="font-serif text-[13px] md:text-[14px] text-obsidian uppercase tracking-[0.2em] font-bold">{s.label}</h3>
                 </Link>
               </Reveal>
             ))}

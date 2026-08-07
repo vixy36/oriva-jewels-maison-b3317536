@@ -38,6 +38,7 @@ const FALLBACK_NAV: NavItem[] = [
 
 const FALLBACK_SUB: { label: string; to: string }[] = [
   { label: "Home", to: "/" },
+  { label: "About Us", to: "/about" },
   { label: "Contact", to: "/contact" },
 ];
 
@@ -86,8 +87,8 @@ export function SiteHeader() {
   const sub = useMemo(() => {
     const rows = (menuRows ?? []).filter((r) => r.menu_key === "sub");
     const baseSub = rows.length > 0 ? rows.map((r) => ({ label: r.label, to: r.href })) : FALLBACK_SUB;
-    // Explicitly filter out About Us, Offers and Wishlist as requested
-    return baseSub.filter(s => !/about|offer|wishlist/i.test(s.label));
+    // Explicitly filter out Offers and Wishlist as requested
+    return baseSub.filter(s => !/offer|wishlist/i.test(s.label));
   }, [menuRows]);
 
   useEffect(() => {
