@@ -28,16 +28,7 @@ import { products, buildWhatsAppLink } from "@/lib/products";
 
 export const Route = createFileRoute("/")({
   head: () => ({
-    meta: [
-      { title: "Oriva Jewels - Fine Natural & Lab Grown Diamond Jewellery" },
-      {
-        name: "description",
-        content:
-          "A modern maison of natural and lab grown diamond jewellery. Engagement rings, earrings, bracelets and bridal pieces, made by hand.",
-      },
-      { property: "og:image", content: heroImg },
-      { name: "twitter:image", content: heroImg },
-    ],
+    meta: [{ title: "Oriva Jewels | Fine Natural & Lab Grown Diamond Jewellery" }, { name: "description", content: "A modern maison of fine natural and lab grown diamond jewellery. Shop engagement rings, earrings, and custom pieces at OrivaJewels.com." }],
     links: [
       { rel: "preload", as: "image", href: heroImg, fetchpriority: "high" },
     ],

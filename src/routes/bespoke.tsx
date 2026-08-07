@@ -8,9 +8,9 @@ import { buildWhatsAppLink } from "@/lib/products";
 export const Route = createFileRoute("/bespoke")({
   head: () => ({
     meta: [
-      { title: "Commission an Heirloom - Oriva Jewels" },
-      { name: "description", content: "Design a one-of-one diamond piece with the Oriva atelier. A private, three-step commissioning journey." },
-      { property: "og:title", content: "Commission an Heirloom - Oriva Jewels" },
+      { title: "Commission an Heirloom | Oriva Jewels" },
+      { name: "description", content: "Design a one-of-one diamond piece with the Oriva atelier at OrivaJewels.com. A private, three-step commissioning journey." },
+      { property: "og:title", content: "Commission an Heirloom | Oriva Jewels" },
       { property: "og:description", content: "A private, three-step diamond commissioning journey with our atelier." },
       { property: "og:image", content: atelier },
     ],

@@ -7,10 +7,10 @@ import { buildWhatsAppLink } from "@/lib/products";
 export const Route = createFileRoute("/assurance")({
   head: () => ({
     meta: [
-      { title: "Maison Assurance - Oriva Jewels" },
-      { name: "description", content: "GIA and IGI certification, lifetime warranty, insured worldwide shipping and traceable provenance. The Oriva promise." },
-      { property: "og:title", content: "Maison Assurance - Oriva Jewels" },
-      { property: "og:description", content: "Certification, warranty, insurance and provenance - the Oriva promise." },
+      { title: "Maison Assurance | Oriva Jewels" },
+      { name: "description", content: "GIA and IGI certification, lifetime warranty, and traceable provenance at OrivaJewels.com. The Oriva promise." },
+      { property: "og:title", content: "Maison Assurance | Oriva Jewels" },
+      { property: "og:description", content: "Certification, warranty, and provenance - the Oriva promise at OrivaJewels.com." },
       { property: "og:image", content: atelier },
     ],
   }),
