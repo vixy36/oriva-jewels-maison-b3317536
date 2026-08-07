@@ -372,33 +372,29 @@ function HomePage() {
         </div>
       </section>
 
-      {/* OCCASIONS */}
-      <section className="py-8 md:py-10 bg-ink">
-        <div className="mx-auto max-w-[1240px] px-6 md:px-16">
-          <Reveal className="text-center max-w-xl mx-auto">
-            <p className="eyebrow">- The Occasions</p>
-            <h2 className="mt-6 font-serif text-3xl md:text-4xl text-ivory">
-              For every <em className="text-gold-gradient">moment worth marking.</em>
+      {/* THE OCCASIONS - Bold lifestyle grid */}
+      <section className="py-24 bg-background">
+        <div className="mx-auto max-w-[1400px] px-6 md:px-12">
+          <Reveal className="text-center max-w-2xl mx-auto mb-16">
+            <span className="eyebrow block mb-4">THE OCCASIONS</span>
+            <h2 className="text-4xl md:text-5xl font-serif leading-tight">
+              For every <span className="italic">moment worth marking.</span>
             </h2>
           </Reveal>
 
-          <div className="mt-12 grid grid-cols-2 gap-6 md:grid-cols-5 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
             {occasions.map((o, i) => (
-              <Reveal key={o.label} delay={i * 60} className="group">
-                <Link to="/occasions" className="block">
-                  <div className="relative aspect-[3/4] overflow-hidden">
-                    <img
-                      src={o.img}
-                      alt={o.label}
-                      loading="lazy"
-                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1600ms] ease-out group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-obsidian/80 via-obsidian/10 to-transparent" />
-                    <div className="absolute inset-x-0 bottom-0 p-4 md:p-6">
-                      <p className="text-[14px] tracking-[0.42em] uppercase text-gold">{o.tag}</p>
-                      <p className="mt-1 font-serif text-2xl md:text-3xl text-ivory">{o.label}</p>
-                    </div>
-                    <span className="absolute inset-0 border border-transparent group-hover:border-gold/40 transition duration-500" />
+              <Reveal key={o.label} delay={i * 100}>
+                <Link to="/occasions" className="group block relative overflow-hidden aspect-[3/4]">
+                  <img
+                    src={o.img}
+                    alt={o.label}
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-obsidian/20 group-hover:bg-obsidian/0 transition-colors duration-500" />
+                  <div className="absolute inset-x-0 bottom-0 p-8 text-ivory">
+                    <span className="text-[10px] tracking-[0.3em] uppercase text-gold block mb-2">{o.tag}</span>
+                    <h3 className="text-2xl font-serif tracking-wide uppercase">{o.label}</h3>
                   </div>
                 </Link>
               </Reveal>
