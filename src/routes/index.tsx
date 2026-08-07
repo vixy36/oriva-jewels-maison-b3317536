@@ -416,12 +416,25 @@ function HomePage() {
 
 
 
-            <Link
-              to="/about"
-              className="mt-12 inline-flex items-center gap-3 text-[10.5px] tracking-[0.4em] uppercase text-gold border-b border-gold/50 pb-2 hover:text-ivory hover:border-ivory transition"
-            >
-              Enter the maison <ArrowRight className="h-4 w-4" strokeWidth={1.4} />
-            </Link>
+            <div className="flex flex-col sm:flex-row items-start gap-8 mt-12">
+              <Link
+                to="/about"
+                className="inline-flex items-center gap-3 text-[10.5px] tracking-[0.4em] uppercase text-gold border-b border-gold/50 pb-2 hover:text-ivory hover:border-ivory transition shrink-0"
+              >
+                Enter the maison <ArrowRight className="h-4 w-4" strokeWidth={1.4} />
+              </Link>
+
+              <div className="flex items-center gap-10 md:gap-14 border-l border-white/10 pl-8">
+                <div>
+                  <span className="block font-sans text-3xl md:text-5xl font-bold text-ivory tracking-tight">100%</span>
+                  <span className="mt-1 block text-[9px] tracking-[0.3em] uppercase text-gold whitespace-nowrap">Certified stones</span>
+                </div>
+                <div>
+                  <span className="block font-sans text-3xl md:text-5xl font-bold text-ivory tracking-tight">30D</span>
+                  <span className="mt-1 block text-[9px] tracking-[0.3em] uppercase text-gold whitespace-nowrap">Bespoke lead time</span>
+                </div>
+              </div>
+            </div>
           </Reveal>
         </div>
       </section>
