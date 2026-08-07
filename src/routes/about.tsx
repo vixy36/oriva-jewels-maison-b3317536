@@ -142,8 +142,8 @@ function AboutPage() {
         <div className="mx-auto max-w-4xl px-6 text-center">
           <Reveal>
             <span className="eyebrow text-gold">The Journey</span>
-            <h2 className="mt-8 font-serif text-5xl md:text-7xl text-black">From a sketch <br /><em className="text-gold-gradient italic">to her finger.</em></h2>
-            <p className="mt-12 text-[18px] leading-[2] text-black font-medium">
+            <h2 className="mt-8 font-serif text-5xl md:text-7xl text-white">From a sketch <br /><em className="text-gold-gradient italic">to her finger.</em></h2>
+            <p className="mt-12 text-[18px] leading-[2] text-white font-medium">
               Unlike traditional jewellers, we manage the entire lifecycle of our pieces. 
               By sourcing rough diamonds directly and manufacturing in our own facility, 
               we remove the middleman, ensuring both ethical sourcing and unparalleled value.
