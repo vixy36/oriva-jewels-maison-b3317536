@@ -460,7 +460,7 @@ function ProductPage() {
               <div className="mt-10 border border-white/10 bg-charcoal/50 p-6">
                 <p className="text-[14px] tracking-[0.42em] uppercase text-gold">Your Configuration</p>
                 <dl className="mt-5 grid grid-cols-2 gap-x-6 gap-y-2.5 text-sm">
-                  <dt className="text-ivory/80">Diamond</dt><dd className="text-ivory">{diamondType}</dd>
+                  <dt className="text-ivory/80">Diamond</dt><dd className="text-ivory">{diamondType} ({diamondColour} / {diamondClarity})</dd>
                   <dt className="text-ivory/80">Metal</dt><dd className="text-ivory">{karat} {goldColor} Gold</dd>
                   <dt className="text-ivory/80">Centre Stone</dt><dd className="text-ivory">{caratSize.toFixed(2)} ct</dd>
                   {product.sizes && (<><dt className="text-ivory/80">Size</dt><dd className="text-ivory">{size}</dd></>)}
