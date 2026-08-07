@@ -574,7 +574,7 @@ function HomePage() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label={`Open ${reel.title} on Instagram`}
-                className="group relative aspect-[4/5] overflow-hidden bg-obsidian border border-white/5 block rounded-sm"
+                className="flex-none w-[200px] md:w-[260px] snap-center group relative aspect-[4/5] overflow-hidden bg-obsidian border border-white/5 block rounded-sm"
               >
                 <img
                   src={reel.img}
