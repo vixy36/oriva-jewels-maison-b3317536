@@ -133,7 +133,7 @@ function CollectionPage() {
               <div className="px-5 pb-6 pt-2 space-y-8 border-t border-white/10">
                 <FilterGroup title="Diamond" options={["Natural", "Lab Grown"]} />
                 <FilterGroup title="Shape" options={["Round", "Marquise", "Oval", "Pear", "Emerald", "Heart"]} />
-                <FilterGroup title="Metal" options={["White Gold", "Yellow Gold", "Rose Gold", "Platinum"]} />
+                <FilterGroup title="Metal" options={["White Gold", "Yellow Gold", "Rose Gold"]} />
                 <FilterGroup title="Style" options={["Solitaire", "Halo", "Three Stone", "Pavé"]} />
               </div>
             </details>
@@ -142,7 +142,7 @@ function CollectionPage() {
             <div className="hidden md:block md:sticky md:top-40 space-y-10">
               <FilterGroup title="Diamond" options={["Natural", "Lab Grown"]} />
               <FilterGroup title="Shape" options={["Round", "Marquise", "Oval", "Pear", "Emerald", "Heart"]} />
-              <FilterGroup title="Metal" options={["White Gold", "Yellow Gold", "Rose Gold", "Platinum"]} />
+              <FilterGroup title="Metal" options={["White Gold", "Yellow Gold", "Rose Gold"]} />
               <FilterGroup title="Style" options={["Solitaire", "Halo", "Three Stone", "Pavé"]} />
             </div>
           </aside>

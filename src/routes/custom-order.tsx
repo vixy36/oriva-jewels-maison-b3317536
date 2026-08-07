@@ -67,8 +67,8 @@ const initial: FormState = {
 };
 
 const typeOptions = ["Engagement Ring", "Wedding Band", "Earrings", "Pendant", "Necklace", "Bracelet", "Other"];
-const metalOptions = ["9K", "14K", "18K", "Platinum 950"];
-const metalColorOptions = ["White Gold", "Yellow Gold", "Rose Gold", "Platinum", "Two-tone"];
+const metalOptions = ["9K", "14K", "18K"];
+const metalColorOptions = ["White Gold", "Yellow Gold", "Rose Gold", "Two-tone"];
 const diamondTypeOptions = ["Natural Diamond", "Lab Grown Diamond", "Advise Me"];
 const qualityOptions = ["F / VVS", "F / VS", "G / VS", "H / SI", "Advise Me"];
 const caratOptions = ["Under 0.50 ct", "0.50 - 1.00 ct", "1.00 - 2.00 ct", "2.00 - 3.00 ct", "3.00 - 5.00 ct", "5.00 ct +"];
@@ -147,7 +147,7 @@ function CustomOrderPage() {
         <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 border-y border-ivory/10 py-6">
           {[
             { icon: Sparkles, title: "100% Bespoke", note: "Any design, any stone" },
-            { icon: Clock, title: "24-72h Reply", note: "By our senior advisor" },
+            { icon: Clock, title: "Swift Reply", note: "By our senior advisor" },
             { icon: ShieldCheck, title: "GIA · IGI Certified", note: "Insured worldwide dispatch" },
           ].map((t) => (
             <div key={t.title} className="flex items-center gap-4 px-2">

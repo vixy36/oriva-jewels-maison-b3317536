@@ -599,7 +599,7 @@ function HomePage() {
                 },
                 {
                   q: "What metals and karats are available?",
-                  a: "18K, 14K and 9K gold in White, Yellow and Rose - along with Platinum 950 for select pieces. Any Oriva design can be crafted in any of them.",
+                  a: "18K, 14K and 9K gold in White, Yellow and Rose for select pieces. Any Oriva design can be crafted in any of them.",
                 },
                 {
                   q: "How does the enquiry process work?",
@@ -726,7 +726,7 @@ function EngagementRingsSection() {
   });
 
   const goldQualities = ["18K", "14K", "9K"];
-  const goldColors = ["White Gold", "Yellow Gold", "Rose Gold", "Platinum"];
+  const goldColors = ["White Gold", "Yellow Gold", "Rose Gold"];
   const diamondCuts = ["Round", "Oval", "Emerald", "Cushion", "Marquise", "Pear", "Heart", "Princess", "Radiant"];
 
   const submitToWhatsApp = () => {
