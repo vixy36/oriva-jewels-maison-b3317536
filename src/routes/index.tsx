@@ -215,12 +215,12 @@ function HomePage() {
             </p>
           </Reveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-16">
             {collections.map((c, i) => (
               <Reveal key={c.title} delay={i * 100}>
                 <Link
                   to={c.to}
-                  className="group block relative"
+                  className="group block relative max-w-[420px] mx-auto"
                 >
                   <div className="relative aspect-[4/5] overflow-hidden bg-muted">
                     <img
@@ -233,9 +233,9 @@ function HomePage() {
                   <div className="mt-6 flex items-start justify-between">
                     <div>
                       <span className="text-[10px] tracking-[0.3em] uppercase text-gold font-medium mb-1 block">Chapter {c.n}</span>
-                      <h3 className="text-2xl font-serif text-obsidian uppercase tracking-wide">{c.title}</h3>
+                      <h3 className="text-xl font-serif text-obsidian uppercase tracking-wide">{c.title}</h3>
                     </div>
-                    <ArrowUpRight className="h-5 w-5 text-obsidian transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                    <ArrowUpRight className="h-4 w-4 text-obsidian transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
                   </div>
                 </Link>
               </Reveal>
@@ -292,7 +292,7 @@ function HomePage() {
             </Link>
           </Reveal>
 
-          <div className="mt-8 grid grid-cols-3 gap-3 md:grid-cols-6 md:gap-4 max-w-[1100px] mx-auto">
+          <div className="mt-8 grid grid-cols-3 gap-6 md:grid-cols-6 md:gap-8 max-w-[1000px] mx-auto">
             {[
               { key: "marquise", label: "Marquise", img: heroImg },
               { key: "oval", label: "Oval", img: engagementImg },
@@ -302,11 +302,11 @@ function HomePage() {
               { key: "round", label: "Round", img: braceletsImg },
             ].map((s, i) => (
               <Reveal key={s.key} delay={i * 60}>
-                <Link to="/shape/$shape" params={{ shape: s.key }} className="group block text-center">
-                  <div className="relative aspect-square overflow-hidden bg-muted mb-4">
-                    <img src={s.img} alt={s.label} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <Link to="/shape/$shape" params={{ shape: s.key }} className="group block text-center max-w-[100px] mx-auto">
+                  <div className="relative aspect-square overflow-hidden bg-muted mb-4 rounded-full border border-ivory/10 group-hover:border-gold transition-colors">
+                    <img src={s.img} alt={s.label} loading="lazy" className="absolute inset-0 h-full w-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-110" />
                   </div>
-                  <h3 className="font-serif text-lg text-obsidian uppercase tracking-wider">{s.label}</h3>
+                  <h3 className="font-serif text-[12px] text-obsidian uppercase tracking-[0.2em]">{s.label}</h3>
                 </Link>
               </Reveal>
             ))}
@@ -317,9 +317,9 @@ function HomePage() {
       {/* THE ATELIER - High contrast craftsmanship */}
       <section className="py-24 bg-obsidian text-ivory overflow-hidden">
         <div className="mx-auto max-w-[1400px] px-6 md:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-            <Reveal>
-              <div className="relative aspect-[4/5] overflow-hidden rounded-sm">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
+            <Reveal className="lg:col-span-5 lg:pr-12">
+              <div className="relative aspect-[3/4] overflow-hidden rounded-sm max-w-[450px] mx-auto lg:mx-0">
                 <img
                   src={atelier}
                   alt="The Oriva Atelier"
@@ -329,7 +329,7 @@ function HomePage() {
               </div>
             </Reveal>
 
-            <Reveal delay={200}>
+            <Reveal delay={200} className="lg:col-span-7">
               <div className="max-w-2xl">
                 <span className="eyebrow block mb-6 text-gold">- THE ATELIER</span>
                 <h2 className="text-4xl md:text-5xl font-serif leading-tight mb-8">
@@ -380,19 +380,19 @@ function HomePage() {
             </h2>
           </Reveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
             {occasions.map((o, i) => (
               <Reveal key={o.label} delay={i * 100}>
-                <Link to="/occasions" className="group block relative overflow-hidden aspect-[3/4]">
+                <Link to="/occasions" className="group block relative overflow-hidden aspect-square rounded-sm">
                   <img
                     src={o.img}
                     alt={o.label}
-                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-1000 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-obsidian/20 group-hover:bg-obsidian/0 transition-colors duration-500" />
-                  <div className="absolute inset-x-0 bottom-0 p-8 text-ivory">
-                    <span className="text-[10px] tracking-[0.3em] uppercase text-gold block mb-2">{o.tag}</span>
-                    <h3 className="text-2xl font-serif tracking-wide uppercase">{o.label}</h3>
+                  <div className="absolute inset-0 bg-obsidian/30 group-hover:bg-obsidian/10 transition-colors duration-500" />
+                  <div className="absolute inset-x-0 bottom-0 p-5 md:p-8 text-ivory">
+                    <span className="text-[9px] tracking-[0.3em] uppercase text-gold block mb-1">{o.tag}</span>
+                    <h3 className="text-lg md:text-xl font-serif tracking-wide uppercase">{o.label}</h3>
                   </div>
                 </Link>
               </Reveal>
@@ -566,7 +566,7 @@ function HomePage() {
           </Reveal>
 
 
-          <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+          <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-[1100px] mx-auto">
             {instagramReels.map((reel) => (
               <a
                 key={reel.href}
@@ -574,7 +574,7 @@ function HomePage() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label={`Open ${reel.title} on Instagram`}
-                className="group relative aspect-[9/16] overflow-hidden bg-obsidian border border-white/5 block"
+                className="group relative aspect-[4/5] overflow-hidden bg-obsidian border border-white/5 block rounded-sm"
               >
                 <img
                   src={reel.img}
@@ -670,8 +670,8 @@ function EngagementRingsSection() {
         }}
       />
       <div className="relative mx-auto max-w-[1240px] px-6 md:px-16 grid gap-12 md:grid-cols-12 md:gap-16 items-start">
-        <Reveal className="md:col-span-5">
-          <div className="relative aspect-[4/5] overflow-hidden">
+        <Reveal className="md:col-span-4 lg:col-span-4">
+          <div className="relative aspect-[3/4] overflow-hidden rounded-sm max-w-[380px] mx-auto md:mx-0">
             <img
               src={engagementModel}
               alt="Diamond engagement ring on hand"
@@ -680,14 +680,14 @@ function EngagementRingsSection() {
               height={1024}
               className="h-full w-full object-cover"
             />
-            <div className="absolute inset-0 border border-gold/20" />
+            <div className="absolute inset-0 border border-gold/10" />
           </div>
-          <p className="mt-4 text-[14px] tracking-[0.42em] uppercase text-ivory/80">
+          <p className="mt-4 text-[12px] tracking-[0.4em] uppercase text-ivory/60 text-center md:text-left">
             Plate III · Engagement
           </p>
         </Reveal>
 
-        <Reveal delay={120} className="md:col-span-7 md:pl-8">
+        <Reveal delay={120} className="md:col-span-8 lg:col-span-8 md:pl-8">
           <p className="eyebrow">- Engagement Rings</p>
           <h2 className="mt-6 font-serif text-3xl md:text-4xl leading-[1.05] text-ivory">
             From a sketch to <em className="text-gold-gradient">her finger.</em>
