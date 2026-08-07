@@ -274,18 +274,19 @@ function HomePage() {
 
 
       {/* SHOP BY SHAPE */}
-      <section className="relative py-8 md:py-10 bg-obsidian overflow-hidden">
-        <div className="mx-auto max-w-[1240px] px-6 md:px-16">
-          <Reveal className="flex items-end justify-between gap-6 flex-wrap">
+      <section className="py-24 bg-background border-b border-ivory/5">
+        <div className="mx-auto max-w-[1400px] px-6 md:px-12">
+          <Reveal className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
             <div className="max-w-xl">
-              <p className="eyebrow">- Shop by Shape</p>
-              <h2 className="mt-6 font-serif text-3xl md:text-3xl leading-[1] text-ivory">
-                Find your <em className="text-gold-gradient">silhouette.</em>
+              <span className="eyebrow block mb-4">SHOP BY SHAPE</span>
+              <h2 className="text-4xl md:text-5xl font-serif leading-tight">
+                Find your <span className="italic font-light">silhouette.</span>
               </h2>
-              <p className="mt-6 max-w-md text-[15px] text-ivory/70 leading-[1.8]">
-                Six diamond shapes, each with its own quiet character. Choose the one that feels most yours.
-              </p>
             </div>
+            <Link to="/education" className="text-[13px] tracking-[0.3em] uppercase text-gold border-b border-gold/50 pb-1 hover:text-obsidian hover:border-obsidian transition-colors">
+              The diamond guide
+            </Link>
+          </Reveal>
             <Link to="/education" className="hidden md:inline-flex items-center gap-2 text-[14px] tracking-[0.4em] uppercase text-gold border-b border-gold/50 pb-1 hover:text-ivory hover:border-ivory transition">
               The diamond guide <ArrowUpRight className="h-3.5 w-3.5" />
             </Link>
