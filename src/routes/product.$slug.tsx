@@ -487,7 +487,7 @@ function ProductPage() {
                 Enquire on WhatsApp
               </button>
               <p className="mt-4 text-center text-[14px] tracking-[0.35em] uppercase text-ivory/80">
-                Pricing shared privately · Response within 24h
+                Pricing shared privately · Swift response
               </p>
 
               <div className="mt-10 grid grid-cols-3 gap-2 text-center">
