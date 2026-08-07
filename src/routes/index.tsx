@@ -186,21 +186,6 @@ function HomePage() {
         </div>
       </div>
 
-      {/* JOURNEY STATS */}
-      <section className="bg-obsidian py-10 md:py-16 border-b border-white/5">
-        <div className="mx-auto max-w-[1240px] px-6 md:px-16">
-          <div className="grid grid-cols-2 gap-10 md:grid-cols-2 lg:flex lg:items-center lg:justify-center lg:gap-24">
-            <Reveal className="text-center lg:text-left">
-              <span className="block font-sans text-4xl md:text-6xl font-bold text-ivory tracking-tight">100%</span>
-              <span className="mt-2 block text-[11px] tracking-[0.4em] uppercase text-gold">Certified stones</span>
-            </Reveal>
-            <Reveal delay={100} className="text-center lg:text-left">
-              <span className="block font-sans text-4xl md:text-6xl font-bold text-ivory tracking-tight">30D</span>
-              <span className="mt-2 block text-[11px] tracking-[0.4em] uppercase text-gold">Bespoke lead time</span>
-            </Reveal>
-          </div>
-        </div>
-      </section>
 
       {/* COLLECTIONS INDEX - Editorial image grid */}
       <section className="relative overflow-hidden py-8 md:py-14 bg-ink">
@@ -431,12 +416,25 @@ function HomePage() {
 
 
 
-            <Link
-              to="/about"
-              className="mt-12 inline-flex items-center gap-3 text-[10.5px] tracking-[0.4em] uppercase text-gold border-b border-gold/50 pb-2 hover:text-ivory hover:border-ivory transition"
-            >
-              Enter the maison <ArrowRight className="h-4 w-4" strokeWidth={1.4} />
-            </Link>
+            <div className="flex flex-col sm:flex-row items-start gap-8 mt-12">
+              <Link
+                to="/about"
+                className="inline-flex items-center gap-3 text-[10.5px] tracking-[0.4em] uppercase text-gold border-b border-gold/50 pb-2 hover:text-ivory hover:border-ivory transition shrink-0"
+              >
+                Enter the maison <ArrowRight className="h-4 w-4" strokeWidth={1.4} />
+              </Link>
+
+              <div className="flex items-center gap-10 md:gap-14 border-l border-white/10 pl-8">
+                <div>
+                  <span className="block font-sans text-3xl md:text-5xl font-bold text-ivory tracking-tight">100%</span>
+                  <span className="mt-1 block text-[9px] tracking-[0.3em] uppercase text-gold whitespace-nowrap">Certified stones</span>
+                </div>
+                <div>
+                  <span className="block font-sans text-3xl md:text-5xl font-bold text-ivory tracking-tight">30D</span>
+                  <span className="mt-1 block text-[9px] tracking-[0.3em] uppercase text-gold whitespace-nowrap">Bespoke lead time</span>
+                </div>
+              </div>
+            </div>
           </Reveal>
         </div>
       </section>
