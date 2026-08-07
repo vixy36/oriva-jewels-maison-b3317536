@@ -129,22 +129,22 @@ function CustomOrderPage() {
   };
 
   return (
-    <main className="pt-24 md:pt-28 pb-14 md:pb-20 bg-ivory text-obsidian">
+    <main className="pt-24 md:pt-28 pb-14 md:pb-20 bg-obsidian text-ivory">
       {/* HERO */}
       <section className="mx-auto max-w-[1400px] px-6 md:px-16">
         <GsapReveal className="text-center">
           <p data-gsap className="text-[12px] tracking-[0.5em] uppercase text-gold">- Atelier Commission -</p>
-          <h1 data-gsap className="mt-6 font-serif text-3xl md:text-4xl lg:text-7xl leading-[1] text-obsidian">
+          <h1 data-gsap className="mt-6 font-serif text-3xl md:text-4xl lg:text-7xl leading-[1] text-ivory">
             Custom <em className="italic text-gold-gradient">order request.</em>
           </h1>
-          <p data-gsap className="mt-6 mx-auto max-w-2xl text-[15px] md:text-[16px] leading-[1.8] text-obsidian/70">
+          <p data-gsap className="mt-6 mx-auto max-w-2xl text-[15px] md:text-[16px] leading-[1.8] text-ivory/70">
             Share the piece you have in mind. Our advisors will respond within hours with sketches,
             certified stone options and a transparent factory-direct quote. No obligation.
           </p>
         </GsapReveal>
 
         {/* trust strip */}
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 border-y border-obsidian/10 py-6">
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 border-y border-ivory/10 py-6">
           {[
             { icon: Sparkles, title: "100% Bespoke", note: "Any design, any stone" },
             { icon: Clock, title: "24-72h Reply", note: "By our senior advisor" },
@@ -153,8 +153,8 @@ function CustomOrderPage() {
             <div key={t.title} className="flex items-center gap-4 px-2">
               <t.icon className="h-5 w-5 text-gold" strokeWidth={1.4} />
               <div>
-                <p className="text-[13px] tracking-[0.28em] uppercase text-obsidian">{t.title}</p>
-                <p className="text-[13px] text-obsidian/60 mt-1">{t.note}</p>
+                <p className="text-[13px] tracking-[0.28em] uppercase text-ivory">{t.title}</p>
+                <p className="text-[13px] text-ivory/60 mt-1">{t.note}</p>
               </div>
             </div>
           ))}
@@ -235,9 +235,9 @@ function CustomOrderPage() {
                   <textarea rows={5} className={`${inputCls} resize-none`} placeholder="Describe the piece, engraving, deadlines, sentimental details…" value={f.comments} onChange={(e) => set("comments", e.target.value)} />
                 </Field>
               </div>
-              <div className="md:col-span-2 border border-dashed border-obsidian/20 bg-white/60 px-5 py-6 text-center">
-                <p className="text-[13px] tracking-[0.28em] uppercase text-obsidian/70">Reference photos</p>
-                <p className="mt-2 text-[13px] text-obsidian/60">
+              <div className="md:col-span-2 border border-dashed border-ivory/20 bg-charcoal/60 px-5 py-6 text-center">
+                <p className="text-[13px] tracking-[0.28em] uppercase text-ivory/70">Reference photos</p>
+                <p className="mt-2 text-[13px] text-ivory/60">
                   After you submit, please share sketches or screenshots directly in the WhatsApp chat that opens.
                 </p>
               </div>
@@ -245,13 +245,13 @@ function CustomOrderPage() {
           </Fieldset>
 
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 border-t border-obsidian/15 pt-8">
-            <p className="text-[13px] text-obsidian/60 max-w-md">
+            <p className="text-[13px] text-ivory/60 max-w-md">
               By submitting, you consent to be contacted by our advisor on WhatsApp at{" "}
-              <span className="text-obsidian">{WHATSAPP_DISPLAY}</span> or email.
+              <span className="text-ivory">{WHATSAPP_DISPLAY}</span> or email.
             </p>
             <button
               type="submit"
-              className="group inline-flex items-center justify-center gap-3 bg-obsidian text-ivory px-10 py-4 text-[12px] tracking-[0.4em] uppercase hover:bg-gold hover:text-obsidian transition-colors"
+              className="group inline-flex items-center justify-center gap-3 bg-ivory text-obsidian px-10 py-4 text-[12px] tracking-[0.4em] uppercase hover:bg-gold hover:text-obsidian transition-colors"
             >
               Submit request
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" strokeWidth={1.4} />
@@ -264,14 +264,14 @@ function CustomOrderPage() {
 }
 
 const inputCls =
-  "w-full bg-transparent border-b border-obsidian/25 py-3 text-[15px] text-obsidian placeholder:text-obsidian/35 focus:border-gold focus:outline-none transition-colors";
+  "w-full bg-transparent border-b border-ivory/25 py-3 text-[15px] text-ivory placeholder:text-ivory/35 focus:border-gold focus:outline-none transition-colors";
 
 function Fieldset({ title, step, children }: { title: string; step: string; children: React.ReactNode }) {
   return (
     <GsapReveal>
-      <div data-gsap className="flex items-baseline gap-4 border-b border-obsidian/15 pb-4 mb-8">
+      <div data-gsap className="flex items-baseline gap-4 border-b border-ivory/15 pb-4 mb-8">
         <span className="font-serif italic text-[15px] text-gold">Step {step}</span>
-        <h2 className="font-serif text-2xl md:text-3xl text-obsidian">{title}</h2>
+        <h2 className="font-serif text-2xl md:text-3xl text-ivory">{title}</h2>
       </div>
       <div data-gsap>{children}</div>
     </GsapReveal>
@@ -291,7 +291,7 @@ function Field({
 }) {
   return (
     <label className="block" data-invalid={invalid ? "true" : undefined}>
-      <span className={`block text-[11px] tracking-[0.32em] uppercase mb-2 ${invalid ? "text-red-600" : "text-obsidian/60"}`}>
+      <span className={`block text-[11px] tracking-[0.32em] uppercase mb-2 ${invalid ? "text-red-600" : "text-ivory/60"}`}>
         {label}
         {required ? " *" : ""}
       </span>
@@ -326,7 +326,7 @@ function Select({
           </option>
         ))}
       </select>
-      <span aria-hidden className="pointer-events-none absolute right-1 top-1/2 -translate-y-1/2 text-obsidian/50">
+      <span aria-hidden className="pointer-events-none absolute right-1 top-1/2 -translate-y-1/2 text-ivory/50">
         ▾
       </span>
     </div>
