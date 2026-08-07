@@ -301,14 +301,11 @@ function HomePage() {
               { key: "round", label: "Round", img: braceletsImg },
             ].map((s, i) => (
               <Reveal key={s.key} delay={i * 60}>
-                <Link to="/shape/$shape" params={{ shape: s.key }} className="group relative block aspect-square overflow-hidden">
-                  <img src={s.img} alt={s.label} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1600ms] group-hover:scale-110" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/25 to-transparent" />
-                  <div className="absolute inset-0 border border-transparent group-hover:border-gold/40 transition" />
-                  <div className="absolute inset-x-0 bottom-0 p-2.5 md:p-3">
-                    <p className="text-[9px] tracking-[0.3em] uppercase text-gold">0{i + 1}</p>
-                    <h3 className="mt-0.5 font-serif text-sm md:text-base text-ivory italic">{s.label}</h3>
+                <Link to="/shape/$shape" params={{ shape: s.key }} className="group block text-center">
+                  <div className="relative aspect-square overflow-hidden bg-muted mb-4">
+                    <img src={s.img} alt={s.label} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
                   </div>
+                  <h3 className="font-serif text-lg text-obsidian uppercase tracking-wider">{s.label}</h3>
                 </Link>
               </Reveal>
             ))}
