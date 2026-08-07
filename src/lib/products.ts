@@ -207,7 +207,7 @@ export const categories: Record<ProductCategory, { label: string; blurb: string 
 };
 
 export const WHATSAPP_NUMBER = "85253176253";
-export const WHATSAPP_DISPLAY = "+852 5317 6253";
+export const WHATSAPP_DISPLAY = "+852 5317 6253\n+91 99791 00913";
 
 export function buildWhatsAppLink(message: string) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
