@@ -267,18 +267,6 @@ export function SiteHeader() {
           </nav>
 
           <div className="flex items-center gap-4 justify-self-end lg:hidden">
-            <Link
-              to="/wishlist"
-              aria-label="Wishlist"
-              className="relative text-ivory hover:text-gold transition"
-            >
-              <Heart className="h-5 w-5" strokeWidth={1.6} />
-              {wishlistCount > 0 && (
-                <span className="absolute -top-1.5 -right-2 min-w-[16px] h-[16px] px-1 grid place-items-center bg-gold text-obsidian text-[9px] font-semibold rounded-full">
-                  {wishlistCount}
-                </span>
-              )}
-            </Link>
             <button
               type="button"
               onClick={() => setSearchOpen(true)}
