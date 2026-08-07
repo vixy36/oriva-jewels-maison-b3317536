@@ -98,7 +98,7 @@ function ProductPage() {
   const [activeIdx, setActiveIdx] = useState(0);
   const variants: NonNullable<Product["variants"]> = product.variants ?? [];
   const [activeVariant, setActiveVariant] = useState(0);
-  const [isEnquiryOpen, setIsEnquiryOpen] = useState(true);
+  // Enquiry form is always visible per user request
   const currentVariant = variants[activeVariant];
 
   const baseImages: string[] = ((product.images && product.images.length ? product.images : [product.image]) as string[]).filter(Boolean);

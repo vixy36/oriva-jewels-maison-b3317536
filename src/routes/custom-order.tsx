@@ -94,7 +94,7 @@ const budgetOptions = ["Under USD 2,000", "USD 2,000 - 5,000", "USD 5,000 - 10,0
 function CustomOrderPage() {
   const [f, setF] = useState<FormState>(initial);
   const [touched, setTouched] = useState(false);
-  const [openStep, setOpenStep] = useState<string | null>("01");
+  // Steps are always visible per user request
 
   const requiredFilled = useMemo(
     () => f.firstName && f.lastName && f.email && f.phone && f.type && f.metal && f.metalColor,
@@ -188,8 +188,8 @@ function CustomOrderPage() {
           <Fieldset 
             title="Contact information" 
             step="01" 
-            isOpen={openStep === "01"} 
-            onToggle={() => setOpenStep(openStep === "01" ? null : "01")}
+            isOpen={true} 
+            onToggle={() => {}}
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               <Field label="First name" required invalid={touched && !f.firstName}>
@@ -210,7 +210,7 @@ function CustomOrderPage() {
             </div>
             <button 
               type="button" 
-              onClick={() => setOpenStep("02")}
+              onClick={() => {}}
               className="mt-8 text-gold text-[12px] tracking-[0.4em] uppercase flex items-center gap-2 hover:text-white transition-colors"
             >
               Next Step <ArrowRight className="h-3 w-3" />
@@ -221,8 +221,8 @@ function CustomOrderPage() {
           <Fieldset 
             title="Order details" 
             step="02"
-            isOpen={openStep === "02"} 
-            onToggle={() => setOpenStep(openStep === "02" ? null : "02")}
+            isOpen={true} 
+            onToggle={() => {}}
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               <Field label="Jewellery type" required invalid={touched && !f.type}>
@@ -308,7 +308,7 @@ function CustomOrderPage() {
             </div>
             <button 
               type="button" 
-              onClick={() => setOpenStep("03")}
+              onClick={() => {}}
               className="mt-8 text-gold text-[12px] tracking-[0.4em] uppercase flex items-center gap-2 hover:text-white transition-colors"
             >
               Next Step <ArrowRight className="h-3 w-3" />
@@ -319,8 +319,8 @@ function CustomOrderPage() {
           <Fieldset 
             title="Reference & notes" 
             step="03"
-            isOpen={openStep === "03"} 
-            onToggle={() => setOpenStep(openStep === "03" ? null : "03")}
+            isOpen={true} 
+            onToggle={() => {}}
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               <Field label="Reference weblink">
@@ -371,17 +371,17 @@ function Fieldset({ title, step, children, isOpen, onToggle }: { title: string; 
       <div className="border border-white/10 overflow-hidden">
         <button
           type="button"
-          onClick={onToggle}
-          className="flex w-full items-center justify-between bg-charcoal/50 px-6 py-5 text-left transition-colors hover:bg-charcoal"
+          onClick={() => {}}
+          className="flex w-full items-center justify-between bg-charcoal/50 px-6 py-5 text-left"
         >
           <div className="flex items-baseline gap-4">
             <span className="font-serif italic text-[15px] text-gold">Step {step}</span>
             <h2 className="font-serif text-2xl md:text-3xl text-white">{title}</h2>
           </div>
-          {isOpen ? <ChevronUp className="h-5 w-5 text-gold" /> : <ChevronDown className="h-5 w-5 text-gold" />}
+          {/* chevron removed for static view */}
         </button>
-        {isOpen && (
-          <div data-gsap className="p-6 md:p-8 bg-charcoal/20">
+        {true && (
+          <div className="p-6 md:p-8 bg-charcoal/20">
             {children}
           </div>
         )}

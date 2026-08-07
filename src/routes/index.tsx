@@ -92,8 +92,6 @@ const instagramReels = [
 ];
 
 function HomePage() {
-  const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
-
   const selectedSix = useMemo(() => products.slice(0, 8), []);
   
   return (
@@ -628,6 +626,7 @@ function Sparkle({
 }
 
 function EngagementRingsSection() {
+  const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
   const [form, setForm] = useState({
     name: "",
     goldQuality: "18K",
@@ -755,102 +754,103 @@ function EngagementRingsSection() {
 
           {isEnquiryOpen && (
             <div className="px-6 pb-6 md:px-10 md:pb-10">
+              <div className="mt-8 grid gap-5 md:grid-cols-3">
+                <div>
+                  <label className={labelCls}>Your Name</label>
+                  <input
+                    type="text"
+                    value={form.name}
+                    onChange={(e) => setForm({ ...form, name: e.target.value })}
+                    placeholder="Full name"
+                    className={fieldCls}
+                  />
+                </div>
 
-          <div className="mt-8 grid gap-5 md:grid-cols-3">
-            <div>
-              <label className={labelCls}>Your Name</label>
-              <input
-                type="text"
-                value={form.name}
-                onChange={(e) => setForm({ ...form, name: e.target.value })}
-                placeholder="Full name"
-                className={fieldCls}
-              />
-            </div>
+                <div>
+                  <label className={labelCls}>Gold Quality</label>
+                  <select
+                    value={form.goldQuality}
+                    onChange={(e) => setForm({ ...form, goldQuality: e.target.value })}
+                    className={fieldCls}
+                  >
+                    {goldQualities.map((g) => (
+                      <option key={g} value={g} className="bg-obsidian">{g}</option>
+                    ))}
+                  </select>
+                </div>
 
-            <div>
-              <label className={labelCls}>Gold Quality</label>
-              <select
-                value={form.goldQuality}
-                onChange={(e) => setForm({ ...form, goldQuality: e.target.value })}
-                className={fieldCls}
+                <div>
+                  <label className={labelCls}>Gold Color</label>
+                  <select
+                    value={form.goldColor}
+                    onChange={(e) => setForm({ ...form, goldColor: e.target.value })}
+                    className={fieldCls}
+                  >
+                    {goldColors.map((g) => (
+                      <option key={g} value={g} className="bg-obsidian">{g}</option>
+                    ))}
+                  </select>
+                </div>
+
+                <div>
+                  <label className={labelCls}>Ring Size</label>
+                  <input
+                    type="text"
+                    value={form.ringSize}
+                    onChange={(e) => setForm({ ...form, ringSize: e.target.value })}
+                    placeholder="e.g. US 6 / EU 52"
+                    className={fieldCls}
+                  />
+                </div>
+
+                <div>
+                  <label className={labelCls}>Diamond Cut</label>
+                  <select
+                    value={form.diamondCut}
+                    onChange={(e) => setForm({ ...form, diamondCut: e.target.value })}
+                    className={fieldCls}
+                  >
+                    {diamondCuts.map((c) => (
+                      <option key={c} value={c} className="bg-obsidian">{c}</option>
+                    ))}
+                  </select>
+                </div>
+
+                <div>
+                  <label className={labelCls}>Stone Size</label>
+                  <input
+                    type="text"
+                    value={form.stoneSize}
+                    onChange={(e) => setForm({ ...form, stoneSize: e.target.value })}
+                    placeholder="e.g. 1.00 ct, 1.50 ct"
+                    className={fieldCls}
+                  />
+                </div>
+
+                <div className="md:col-span-3">
+                  <label className={labelCls}>Notes / Reference</label>
+                  <textarea
+                    rows={3}
+                    value={form.notes}
+                    onChange={(e) => setForm({ ...form, notes: e.target.value })}
+                    placeholder="Anything else we should know"
+                    className={fieldCls}
+                  />
+                </div>
+              </div>
+
+              <button
+                type="button"
+                onClick={submitToWhatsApp}
+                className="mt-8 inline-flex items-center gap-3 bg-gold px-8 py-4 text-[12px] tracking-[0.4em] uppercase text-obsidian hover:bg-ivory transition"
               >
-                {goldQualities.map((g) => (
-                  <option key={g} value={g} className="bg-obsidian">{g}</option>
-                ))}
-              </select>
-            </div>
-
-            <div>
-              <label className={labelCls}>Gold Color</label>
-              <select
-                value={form.goldColor}
-                onChange={(e) => setForm({ ...form, goldColor: e.target.value })}
-                className={fieldCls}
-              >
-                {goldColors.map((g) => (
-                  <option key={g} value={g} className="bg-obsidian">{g}</option>
-                ))}
-              </select>
-            </div>
-
-            <div>
-              <label className={labelCls}>Ring Size</label>
-              <input
-                type="text"
-                value={form.ringSize}
-                onChange={(e) => setForm({ ...form, ringSize: e.target.value })}
-                placeholder="e.g. US 6 / EU 52"
-                className={fieldCls}
-              />
-            </div>
-
-            <div>
-              <label className={labelCls}>Diamond Cut</label>
-              <select
-                value={form.diamondCut}
-                onChange={(e) => setForm({ ...form, diamondCut: e.target.value })}
-                className={fieldCls}
-              >
-                {diamondCuts.map((c) => (
-                  <option key={c} value={c} className="bg-obsidian">{c}</option>
-                ))}
-              </select>
-            </div>
-
-            <div>
-              <label className={labelCls}>Stone Size</label>
-              <input
-                type="text"
-                value={form.stoneSize}
-                onChange={(e) => setForm({ ...form, stoneSize: e.target.value })}
-                placeholder="e.g. 1.00 ct, 1.50 ct"
-                className={fieldCls}
-              />
-            </div>
-
-            <div className="md:col-span-3">
-              <label className={labelCls}>Notes / Reference</label>
-              <textarea
-                rows={3}
-                value={form.notes}
-                onChange={(e) => setForm({ ...form, notes: e.target.value })}
-                placeholder="Anything else we should know"
-                className={fieldCls}
-              />
+                <MessageCircle className="h-4 w-4" strokeWidth={1.4} />
+                Send Enquiry on WhatsApp
+              </button>
             </div>
           )}
         </div>
-
-          <button
-            type="button"
-            onClick={submitToWhatsApp}
-            className="mt-8 inline-flex items-center gap-3 bg-gold px-8 py-4 text-[12px] tracking-[0.4em] uppercase text-obsidian hover:bg-ivory transition"
-          >
-            <MessageCircle className="h-4 w-4" strokeWidth={1.4} />
-            Send Enquiry on WhatsApp
-          </button>
-        </div>
+      </Reveal>
       </Reveal>
 
     </section>
