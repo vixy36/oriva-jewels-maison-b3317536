@@ -372,7 +372,7 @@ function HomePage() {
             {[
               { key: "marquise", label: "Marquise", img: heroImg },
               { key: "oval", label: "Oval", img: engagementImg },
-              { key: "emerald", label: "Emerald", img: editorialImg },
+              { key: "emerald", label: "Emerald", img: emeraldProduct },
               { key: "pear", label: "Pear", img: bridalImg },
               { key: "heart", label: "Heart", img: earringsImg },
               { key: "round", label: "Round", img: braceletsImg },
