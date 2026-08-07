@@ -135,7 +135,7 @@ function ProductPage() {
     if (currentVariant) lines.push(`Option: ${currentVariant.label}`);
     if (priceLabel) lines.push(`Price: ${priceLabel}${mrpLabel ? ` (MRP ${mrpLabel})` : ""}`);
     lines.push(
-      `Diamond Type: ${diamondType}`,
+      `Diamond: ${diamondType} (${diamondColour} / ${diamondClarity})`,
       `Metal: ${karat} ${goldColor} Gold`,
       `Centre Stone: ${caratSize.toFixed(2)} ct`,
     );
