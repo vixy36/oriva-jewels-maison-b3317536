@@ -50,7 +50,6 @@ export function SiteFooter() {
             ]} />
 
             <FooterCol title="The Maison" links={[
-              { label: "Our Story", to: "/about" },
               { label: "About Us", to: "/about" },
               { label: "Maison Assurance", to: "/assurance" },
               { label: "Diamond Guide", to: "/education" },
