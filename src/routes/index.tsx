@@ -564,15 +564,6 @@ function HomePage() {
               Follow our journey, from raw stones to finished masterworks.
             </p>
           </Reveal>
-            <a
-              href="https://www.instagram.com/oriva__jewels/reels/"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 text-[14px] tracking-[0.4em] uppercase text-gold border-b border-gold/50 pb-1 hover:text-ivory hover:border-ivory transition"
-            >
-              Watch all reels <ArrowUpRight className="h-3.5 w-3.5" />
-            </a>
-          </Reveal>
 
 
           <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
