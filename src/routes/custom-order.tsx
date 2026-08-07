@@ -207,8 +207,11 @@ function CustomOrderPage() {
               <Field label="Diamond type">
                 <Select value={f.diamondType} onChange={(v) => set("diamondType", v)} options={diamondTypeOptions} placeholder="Natural or Lab" />
               </Field>
-              <Field label="Diamond quality">
-                <Select value={f.diamondQuality} onChange={(v) => set("diamondQuality", v)} options={qualityOptions} placeholder="Colour / clarity" />
+              <Field label="Diamond clarity">
+                <Select value={f.diamondClarity} onChange={(v) => set("diamondClarity", v)} options={clarityOptions} placeholder="Select clarity" />
+              </Field>
+              <Field label="Diamond colour">
+                <Select value={f.diamondColour} onChange={(v) => set("diamondColour", v)} options={colourOptions} placeholder="Select colour" />
               </Field>
               <Field label="Centre stone size">
                 <Select value={f.caratRange} onChange={(v) => set("caratRange", v)} options={caratOptions} placeholder="Approx. carat" />
