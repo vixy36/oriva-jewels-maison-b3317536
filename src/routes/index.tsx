@@ -404,44 +404,43 @@ function HomePage() {
       </section>
 
 
-      {/* PROCESS - From Inspiration to Reality */}
-      <section className="relative py-8 md:py-10 bg-ink overflow-hidden">
-        <div className="mx-auto max-w-[1240px] px-6 md:px-16">
-          <Reveal className="max-w-2xl">
-            <p className="eyebrow">- The Process</p>
-            <h2 className="mt-6 font-serif text-3xl md:text-3xl leading-[1] text-ivory">
-              From a sketch <em className="text-gold-gradient">to her finger.</em>
-            </h2>
-            <p className="mt-6 max-w-md text-[15px] leading-[1.85] text-ivory/70">
-              Three unhurried steps. A private conversation, a CAD reveal, and the moment the piece
-              finally leaves our hands - hers.
+      {/* THE PROCESS - Simple linear steps */}
+      <section className="py-24 bg-background border-t border-ivory/5">
+        <div className="mx-auto max-w-[1400px] px-6 md:px-12">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
+            <div className="max-w-xl">
+              <span className="eyebrow block mb-4">THE PROCESS</span>
+              <h2 className="text-4xl md:text-5xl font-serif leading-tight">
+                From a sketch <span className="italic font-light">to her finger.</span>
+              </h2>
+            </div>
+            <p className="max-w-xs text-[14px] leading-relaxed text-muted-foreground uppercase tracking-widest">
+              Three unhurried steps to your forever piece. Masterfully crafted, personally delivered.
             </p>
-          </Reveal>
+          </div>
 
-          <div className="mt-8 grid grid-cols-3 gap-2 md:gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {[
-              { title: "Consultation", desc: "A private conversation about her, the moment, and the vision behind the piece." },
-              { title: "CAD & Approval", desc: "A photoreal 3D reveal, refined together until every detail feels unmistakably hers." },
-              { title: "Crafted & Delivered", desc: "Hand-set by our master jewellers in Hong Kong and delivered, insured, worldwide." },
+              { n: "01", title: "Consultation", desc: "A private conversation about your vision, the diamond's character, and the budget that moves you." },
+              { n: "02", title: "CAD & Reveal", desc: "A photorealistic 3D rendering of your design. We refine every facet together until it is unmistakably yours." },
+              { n: "03", title: "Craft & Delivery", desc: "Hand-set by our master jewellers and delivered securely to your door, worldwide and fully insured." },
             ].map((s, i) => (
-              <Reveal key={s.title} delay={i * 90}>
-                <div className="group h-full border border-white/10 bg-obsidian/40 px-4 py-3 md:px-6 md:py-4 hover:border-gold/40 transition">
-                  <h3 className="font-serif text-base md:text-xl text-ivory">{s.title}</h3>
-                  <span className="mt-2 block h-px w-8 bg-gold/60" />
-                  <p className="mt-2 text-[12px] md:text-[13px] leading-[1.6] text-ivory/70">{s.desc}</p>
+              <Reveal key={s.title} delay={i * 100}>
+                <div className="relative pt-12 border-t border-ivory/10 group">
+                  <span className="absolute top-0 left-0 text-[11px] tracking-[0.4em] uppercase text-gold py-4">{s.n}</span>
+                  <h3 className="text-2xl font-serif text-obsidian uppercase tracking-wide mb-6 group-hover:text-gold transition-colors">{s.title}</h3>
+                  <p className="text-[15px] leading-relaxed text-muted-foreground max-w-sm">{s.desc}</p>
                 </div>
               </Reveal>
             ))}
           </div>
 
-          <div className="mt-14 flex justify-center">
+          <div className="mt-20 text-center">
             <a
               href={buildWhatsAppLink("Hello Oriva Jewels, I'd like to begin a bespoke design consultation.")}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-3 bg-gold px-10 py-4 text-[12px] tracking-[0.4em] uppercase text-obsidian hover:bg-ivory transition"
+              className="inline-flex items-center justify-center gap-4 bg-obsidian text-ivory px-12 py-5 text-[12px] tracking-[0.5em] uppercase hover:bg-gold hover:text-obsidian transition-colors duration-500"
             >
-              <MessageCircle className="h-4 w-4" strokeWidth={1.4} />
+              <MessageCircle className="h-5 w-5" />
               Begin your piece
             </a>
           </div>
