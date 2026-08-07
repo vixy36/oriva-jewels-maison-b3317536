@@ -46,30 +46,30 @@ function AboutPage() {
       </section>
 
       {/* Philosophy Section - Split with Image */}
-      <section className="py-24 md:py-32">
+      <section className="py-24 md:py-32 bg-ink">
         <div className="mx-auto max-w-[1500px] px-6 md:px-16 grid gap-20 md:grid-cols-2 items-center">
           <Reveal>
             <div className="relative">
               <div className="absolute -top-12 -left-12 w-48 h-48 bg-gold/5 rounded-full blur-3xl" />
-              <span className="eyebrow">Our Philosophy</span>
-              <h2 className="mt-8 font-serif text-5xl md:text-7xl leading-tight">
+              <span className="eyebrow text-gold">Our Philosophy</span>
+              <h2 className="mt-8 font-serif text-5xl md:text-7xl leading-tight text-ivory">
                 Luxury in its <br />
-                <em className="text-gold-gradient">purest form.</em>
+                <em className="text-gold-gradient italic">purest form.</em>
               </h2>
-              <p className="mt-10 text-[16px] leading-[1.9] text-ivory/80 max-w-lg">
+              <p className="mt-10 text-[17px] leading-[1.9] text-ivory/95 max-w-lg font-medium">
                 We believe fine jewellery should be more than an accessory; it should be an extension of one's identity. 
                 Our approach is defined by restraint—nothing is added for show, everything is included for excellence.
               </p>
               <div className="mt-12 grid grid-cols-2 gap-8 border-t border-gold/20 pt-12">
                 <div>
                   <span className="font-serif text-3xl text-gold italic">01.</span>
-                  <p className="mt-4 font-sans text-[13px] tracking-widest uppercase text-ivory/60">Transparency</p>
-                  <p className="mt-2 text-[14px] text-ivory/80">From mine to finger, we own every step of the journey.</p>
+                  <p className="mt-4 font-sans text-[13px] tracking-widest uppercase text-gold font-bold">Transparency</p>
+                  <p className="mt-2 text-[15px] text-ivory font-medium leading-relaxed">From mine to finger, we own every step of the journey.</p>
                 </div>
                 <div>
                   <span className="font-serif text-3xl text-gold italic">02.</span>
-                  <p className="mt-4 font-sans text-[13px] tracking-widest uppercase text-ivory/60">Legacy</p>
-                  <p className="mt-2 text-[14px] text-ivory/80">Designs that transcend trends, meant to be passed down.</p>
+                  <p className="mt-4 font-sans text-[13px] tracking-widest uppercase text-gold font-bold">Legacy</p>
+                  <p className="mt-2 text-[15px] text-ivory font-medium leading-relaxed">Designs that transcend trends, meant to be passed down.</p>
                 </div>
               </div>
             </div>
@@ -130,7 +130,7 @@ function AboutPage() {
                   <item.icon className="w-8 h-8 text-gold" strokeWidth={1} />
                 </div>
                 <h3 className="font-serif text-3xl mb-4 text-ivory">{item.title}</h3>
-                <p className="text-ivory/90 text-[15px] max-w-[280px] mx-auto leading-relaxed font-medium">{item.desc}</p>
+                <p className="text-ivory text-[15px] max-w-[280px] mx-auto leading-relaxed font-bold">{item.desc}</p>
               </Reveal>
             ))}
           </div>
@@ -141,9 +141,9 @@ function AboutPage() {
       <section className="py-24 md:py-32 bg-ink">
         <div className="mx-auto max-w-4xl px-6 text-center">
           <Reveal>
-            <span className="eyebrow">The Journey</span>
-            <h2 className="mt-8 font-serif text-5xl md:text-7xl">From a sketch <br /><em className="text-gold-gradient">to her finger.</em></h2>
-            <p className="mt-12 text-[17px] leading-[2] text-ivory/80">
+            <span className="eyebrow text-gold">The Journey</span>
+            <h2 className="mt-8 font-serif text-5xl md:text-7xl text-ivory">From a sketch <br /><em className="text-gold-gradient italic">to her finger.</em></h2>
+            <p className="mt-12 text-[18px] leading-[2] text-ivory font-medium">
               Unlike traditional jewellers, we manage the entire lifecycle of our pieces. 
               By sourcing rough diamonds directly and manufacturing in our own facility, 
               we remove the middleman, ensuring both ethical sourcing and unparalleled value.
@@ -151,17 +151,17 @@ function AboutPage() {
             <div className="mt-16 flex flex-col md:flex-row items-center justify-center gap-12">
               <div className="flex flex-col items-center">
                 <span className="text-5xl font-serif text-gold">100%</span>
-                <span className="mt-2 text-[12px] tracking-widest uppercase text-ivory/50 font-bold">In-House</span>
+                <span className="mt-2 text-[12px] tracking-widest uppercase text-gold font-bold">In-House</span>
               </div>
               <div className="hidden md:block w-px h-16 bg-gold/20" />
               <div className="flex flex-col items-center">
                 <span className="text-5xl font-serif text-gold">05+</span>
-                <span className="mt-2 text-[12px] tracking-widest uppercase text-ivory/50 font-bold">Checkpoints</span>
+                <span className="mt-2 text-[12px] tracking-widest uppercase text-gold font-bold">Checkpoints</span>
               </div>
               <div className="hidden md:block w-px h-16 bg-gold/20" />
               <div className="flex flex-col items-center">
                 <span className="text-5xl font-serif text-gold">40+</span>
-                <span className="mt-2 text-[12px] tracking-widest uppercase text-ivory/50 font-bold">Countries</span>
+                <span className="mt-2 text-[12px] tracking-widest uppercase text-gold font-bold">Countries</span>
               </div>
             </div>
           </Reveal>
