@@ -380,19 +380,19 @@ function HomePage() {
             </h2>
           </Reveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
             {occasions.map((o, i) => (
               <Reveal key={o.label} delay={i * 100}>
-                <Link to="/occasions" className="group block relative overflow-hidden aspect-[3/4]">
+                <Link to="/occasions" className="group block relative overflow-hidden aspect-square rounded-sm">
                   <img
                     src={o.img}
                     alt={o.label}
-                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-1000 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-obsidian/20 group-hover:bg-obsidian/0 transition-colors duration-500" />
-                  <div className="absolute inset-x-0 bottom-0 p-8 text-ivory">
-                    <span className="text-[10px] tracking-[0.3em] uppercase text-gold block mb-2">{o.tag}</span>
-                    <h3 className="text-2xl font-serif tracking-wide uppercase">{o.label}</h3>
+                  <div className="absolute inset-0 bg-obsidian/30 group-hover:bg-obsidian/10 transition-colors duration-500" />
+                  <div className="absolute inset-x-0 bottom-0 p-5 md:p-8 text-ivory">
+                    <span className="text-[9px] tracking-[0.3em] uppercase text-gold block mb-1">{o.tag}</span>
+                    <h3 className="text-lg md:text-xl font-serif tracking-wide uppercase">{o.label}</h3>
                   </div>
                 </Link>
               </Reveal>
