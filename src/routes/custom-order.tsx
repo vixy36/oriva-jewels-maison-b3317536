@@ -34,6 +34,7 @@ type FormState = {
   size: string;
   metal: string;
   diamondType: string;
+  diamondShape: string;
   diamondClarity: string;
   diamondColour: string;
   caratRange: string;
@@ -56,6 +57,7 @@ const initial: FormState = {
   size: "",
   metal: "",
   diamondType: "",
+  diamondShape: "",
   diamondClarity: "",
   diamondColour: "",
   caratRange: "",
@@ -72,6 +74,18 @@ const typeOptions = ["Engagement Ring", "Wedding Band", "Earrings", "Pendant", "
 const metalOptions = ["9K", "14K", "18K"];
 const metalColorOptions = ["White Gold", "Yellow Gold", "Rose Gold", "Two-tone"];
 const diamondTypeOptions = ["Natural Diamond", "Lab Grown Diamond", "Advise Me"];
+const diamondShapeOptions = [
+  "Round",
+  "Princess",
+  "Oval",
+  "Emerald",
+  "Pear",
+  "Cushion",
+  "Marquise",
+  "Radiant",
+  "Asscher",
+  "Heart",
+];
 const clarityOptions = ["VVS1", "VVS2", "VS1", "VS2"];
 const colourOptions = ["D", "E", "F", "G", "H"];
 const caratOptions = ["Under 0.50 ct", "0.50 - 1.00 ct", "1.00 - 2.00 ct", "2.00 - 3.00 ct", "3.00 - 5.00 ct", "5.00 ct +"];
@@ -103,9 +117,10 @@ function CustomOrderPage() {
       f.size ? `Size: ${f.size}` : null,
       `Metal: ${f.metal} · ${f.metalColor}`,
       f.diamondType ? `Diamond: ${f.diamondType}` : null,
+      f.diamondShape ? `Shape: ${f.diamondShape}` : null,
       f.diamondClarity ? `Clarity: ${f.diamondClarity}` : null,
       f.diamondColour ? `Colour: ${f.diamondColour}` : null,
-      f.caratRange ? `Carat range: ${f.caratRange}` : null,
+      f.caratRange ? `Carat: ${f.caratRange} ct` : null,
       `Quantity: ${f.quantity || "1"}`,
       f.targetDate ? `Target date: ${f.targetDate}` : null,
       f.budget ? `Budget: ${f.budget}` : null,
@@ -207,14 +222,61 @@ function CustomOrderPage() {
               <Field label="Diamond type">
                 <Select value={f.diamondType} onChange={(v) => set("diamondType", v)} options={diamondTypeOptions} placeholder="Natural or Lab" />
               </Field>
+              {f.diamondType === "Lab Grown Diamond" && (
+                <div className="md:col-span-2">
+                  <p className="block text-[11px] tracking-[0.32em] uppercase mb-4 text-white/70 font-bold">Select Diamond Shape</p>
+                  <div className="grid grid-cols-2 sm:grid-cols-5 gap-4">
+                    {diamondShapeOptions.map((shape) => (
+                      <button
+                        key={shape}
+                        type="button"
+                        onClick={() => set("diamondShape", shape)}
+                        className={`group relative flex flex-col items-center justify-center border p-4 transition-all duration-300 ${
+                          f.diamondShape === shape
+                            ? "border-gold bg-gold/10"
+                            : "border-white/10 bg-charcoal/40 hover:border-gold/50"
+                        }`}
+                      >
+                        <div className={`mb-3 flex h-16 w-16 items-center justify-center rounded-sm bg-white/5 p-2 transition-colors ${f.diamondShape === shape ? "bg-white/10" : "group-hover:bg-white/10"}`}>
+                           <img 
+                            src={`https://vrai.imgix.net/images/diamond-shapes/${shape.toLowerCase()}.png?auto=format,compress&q=80&w=128`} 
+                            alt={shape}
+                            className={`h-full w-full object-contain filter invert opacity-90 transition-opacity ${f.diamondShape === shape ? "opacity-100" : "group-hover:opacity-100"}`}
+                            onError={(e) => {
+                              (e.target as HTMLImageElement).style.display = 'none';
+                              (e.target as HTMLImageElement).parentElement!.innerHTML = `<span class="text-[10px] text-ivory/40">${shape}</span>`;
+                            }}
+                          />
+                        </div>
+                        <span className={`text-[12px] font-bold tracking-[0.15em] uppercase transition-colors ${f.diamondShape === shape ? "text-gold" : "text-ivory/80 group-hover:text-gold"}`}>
+                          {shape}
+                        </span>
+                        {f.diamondShape === shape && (
+                          <div className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center bg-gold text-[10px] text-obsidian">
+                            ✓
+                          </div>
+                        )}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
               <Field label="Diamond clarity">
                 <Select value={f.diamondClarity} onChange={(v) => set("diamondClarity", v)} options={clarityOptions} placeholder="Select clarity" />
               </Field>
               <Field label="Diamond colour">
                 <Select value={f.diamondColour} onChange={(v) => set("diamondColour", v)} options={colourOptions} placeholder="Select colour" />
               </Field>
-              <Field label="Centre stone size">
-                <Select value={f.caratRange} onChange={(v) => set("caratRange", v)} options={caratOptions} placeholder="Approx. carat" />
+              <Field label="Centre stone size (ct)">
+                <input
+                  type="number"
+                  step="0.01"
+                  min="0.05"
+                  className={inputCls}
+                  placeholder="e.g. 1.25"
+                  value={f.caratRange}
+                  onChange={(e) => set("caratRange", e.target.value)}
+                />
               </Field>
               <Field label="Quantity">
                 <input type="number" min={1} className={inputCls} value={f.quantity} onChange={(e) => set("quantity", e.target.value)} />
