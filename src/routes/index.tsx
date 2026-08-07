@@ -244,76 +244,30 @@ function HomePage() {
 
 
 
-      {/* MOST REQUESTED - tonal editorial */}
-      <section className="relative py-12 md:py-20 bg-obsidian text-ivory" data-surface="dark">
-        <div className="mx-auto max-w-[1200px] px-5 md:px-10">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10 md:mb-14">
-            <div>
-              <span className="block text-[10px] tracking-[0.4em] uppercase text-gold mb-3">Most Requested</span>
-              <h2 className="font-serif italic font-light leading-[1.05] text-ivory text-4xl md:text-5xl">
-                The Selected Six
+      {/* MOST REQUESTED - Clean product showcase */}
+      <section className="py-20 bg-background overflow-hidden">
+        <div className="mx-auto max-w-[1400px] px-6 md:px-12">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
+            <div className="max-w-xl">
+              <span className="eyebrow block mb-4">MOST REQUESTED</span>
+              <h2 className="text-4xl md:text-5xl font-serif leading-tight">
+                The Selected Six. <span className="italic font-light">Fine diamond edits.</span>
               </h2>
             </div>
             <Link
               to="/collections/engagement-rings"
-              className="hidden md:inline-flex items-center gap-2 text-[11px] tracking-[0.3em] uppercase text-ivory/80 border-b border-gold/40 pb-1 hover:text-gold hover:border-gold transition-colors duration-300"
+              className="text-[13px] tracking-[0.3em] uppercase text-obsidian border-b border-gold/40 pb-1 hover:text-gold transition-colors"
             >
-              View entire collection <ArrowUpRight className="h-3.5 w-3.5" />
+              View entire collection
             </Link>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 md:gap-x-6 gap-y-8 md:gap-y-10">
-            {products.slice(0, 8).map((p) => {
-              const tag =
-                p.diamondTypes.includes("Lab Grown") && p.diamondTypes.includes("Natural")
-                  ? "Nat · Lab"
-                  : p.diamondTypes[0];
-              return (
-                <Link
-                  key={p.slug}
-                  to="/product/$slug"
-                  params={{ slug: p.slug }}
-                  className="group block"
-                >
-                  <div className="relative aspect-square overflow-hidden bg-ivory/[0.04] mb-3 md:mb-4">
-                    <img
-                      src={p.image}
-                      alt={p.name}
-                      loading="lazy"
-                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.06]"
-                    />
-                    <span
-                      aria-hidden
-                      className="pointer-events-none absolute inset-0 bg-obsidian/20 mix-blend-multiply"
-                    />
-                    <span
-                      aria-hidden
-                      className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-obsidian/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                    />
-                    <span className="absolute top-2.5 left-2.5 text-[9px] tracking-[0.28em] uppercase text-ivory/90 bg-obsidian/50 backdrop-blur-sm px-2 py-0.5 border border-white/10">
-                      {tag}
-                    </span>
-                  </div>
-
-                  <h3 className="font-serif text-[15px] md:text-base leading-tight text-ivory transition-colors duration-300 group-hover:text-gold line-clamp-1">
-                    {p.name}
-                  </h3>
-                  <p className="mt-1 text-[10px] tracking-[0.24em] uppercase text-ivory/55 line-clamp-1">
-                    {p.shape} · {p.metal}
-                  </p>
-                </Link>
-              );
-            })}
-          </div>
-
-
-          <div className="mt-12 md:hidden flex justify-center">
-            <Link
-              to="/collections/engagement-rings"
-              className="inline-flex items-center gap-2 text-[11px] tracking-[0.3em] uppercase text-ivory/80 border-b border-gold/40 pb-1"
-            >
-              View entire collection <ArrowUpRight className="h-3.5 w-3.5" />
-            </Link>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+            {products.slice(0, 8).map((p, i) => (
+              <Reveal key={p.slug} delay={i * 100}>
+                <ProductCard product={p} />
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
