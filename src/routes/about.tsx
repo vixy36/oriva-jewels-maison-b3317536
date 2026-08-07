@@ -96,8 +96,12 @@ function AboutPage() {
           <Reveal>
             <span className="eyebrow">Craftsmanship</span>
             <h2 className="mt-8 font-serif text-6xl md:text-[8rem] leading-[0.9] text-white">
-              The <em className="text-gold-gradient italic drop-shadow-sm">Atelier</em> Spirit
+              The <em className="text-gold-gradient italic drop-shadow-sm">Atelier</em>
             </h2>
+            <p className="mt-8 text-gold text-xl md:text-2xl font-serif italic max-w-2xl mx-auto leading-relaxed">
+              Every stone chosen.<br />
+              Every piece finished by hand.
+            </p>
           </Reveal>
           
           <div className="mt-24 grid gap-12 md:grid-cols-3">
