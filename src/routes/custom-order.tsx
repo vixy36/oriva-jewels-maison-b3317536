@@ -17,7 +17,7 @@ export const Route = createFileRoute("/custom-order")({
       {
         property: "og:description",
         content:
-          "From CAD to hand-set finish. Submit a custom order request and our concierge will respond within hours.",
+          "From CAD to hand-set finish. Submit a custom order request and our atelier will respond within hours.",
       },
     ],
   }),
@@ -138,7 +138,7 @@ function CustomOrderPage() {
             Custom <em className="italic text-gold-gradient drop-shadow-md">order request.</em>
           </h1>
           <p data-gsap className="mt-6 mx-auto max-w-2xl text-[15px] md:text-[16px] leading-[1.8] text-white font-bold drop-shadow-md">
-            Share the piece you have in mind. Our concierge will respond within hours with sketches,
+            Share the piece you have in mind. Our atelier will respond within hours with sketches,
             certified stone options and a transparent factory-direct quote. No obligation.
           </p>
         </GsapReveal>
@@ -147,7 +147,7 @@ function CustomOrderPage() {
         <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 border-y border-ivory/10 py-6">
           {[
             { icon: Sparkles, title: "100% Bespoke", note: "Any design, any stone" },
-            { icon: Clock, title: "Swift Reply", note: "By our senior concierge" },
+            { icon: Clock, title: "Swift Reply", note: "Direct from our master atelier" },
             { icon: ShieldCheck, title: "GIA · IGI Certified", note: "Insured worldwide dispatch" },
           ].map((t) => (
             <div key={t.title} className="flex items-center gap-4 px-2">
@@ -246,7 +246,7 @@ function CustomOrderPage() {
 
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 border-t border-obsidian/15 pt-8">
             <p className="text-[13px] text-white/80 max-w-md font-medium">
-              By submitting, you consent to be contacted by our concierge on WhatsApp at{" "}
+              By submitting, you consent to be contacted on WhatsApp at{" "}
               <span className="text-white font-bold">{WHATSAPP_DISPLAY}</span> or email.
             </p>
             <button

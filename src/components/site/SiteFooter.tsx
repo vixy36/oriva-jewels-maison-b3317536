@@ -24,7 +24,7 @@ export function SiteFooter() {
             <p className="mt-1 font-sans text-[14px] tracking-[0.55em] text-gold">- JEWELS -</p>
             <p className="mt-8 max-w-sm text-sm leading-relaxed text-ivory/60">
               End-to-end manufacturers of natural and lab grown diamond jewellery. Designed with
-              quiet intention, finished by hand. Concierge available worldwide.
+              quiet intention, finished by hand. Global support available.
             </p>
             <div className="mt-10 flex gap-2">
               <SocialLink href={buildWhatsAppLink("Hello Oriva Jewels")} label="WhatsApp">
@@ -59,7 +59,7 @@ export function SiteFooter() {
 
             <FooterCol title="Services" links={[
               { label: "Custom Order", to: "/custom-order" },
-              { label: "Contact Concierge", to: "/contact" },
+              { label: "Contact the Atelier", to: "/contact" },
                { label: "Ring Size Guide", to: "/ring-size-guide" },
                { label: "orivajewelshk@gmail.com", to: "/contact" },
                { label: "Book Consultation", to: "/contact" },

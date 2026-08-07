@@ -397,7 +397,7 @@ function ProductPage() {
                       step="0.05"
                       value={caratSize}
                       onChange={(e) => setCaratSize(parseFloat(e.target.value))}
-                      className="w-full h-1.5 bg-white/10 rounded-full appearance-none cursor-pointer accent-gold hover:accent-gold-deep transition-all"
+                      className="h-1.5 w-full cursor-pointer appearance-none rounded-full bg-charcoal ring-1 ring-white/10 accent-gold [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-gold [&::-webkit-slider-thumb]:shadow-[0_0_10px_rgba(212,175,55,0.4)]"
                     />
                     <div className="mt-3 flex justify-between text-[10px] tracking-[0.3em] uppercase text-ivory/40 font-bold">
                       <span>0.20 ct</span>
@@ -487,7 +487,7 @@ function ProductPage() {
                 Enquire on WhatsApp
               </button>
               <p className="mt-4 text-center text-[14px] tracking-[0.35em] uppercase text-ivory/80">
-                Pricing shared privately · Response within 24h
+                Pricing shared privately · Swift response
               </p>
 
               <div className="mt-10 grid grid-cols-3 gap-2 text-center">
