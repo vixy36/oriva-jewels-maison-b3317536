@@ -17,7 +17,7 @@ export const Route = createFileRoute("/custom-order")({
       {
         property: "og:description",
         content:
-          "From CAD to hand-set finish. Submit a custom order request and our advisor will respond within hours.",
+          "From CAD to hand-set finish. Submit a custom order request and our concierge will respond within hours.",
       },
     ],
   }),
