@@ -34,7 +34,8 @@ type FormState = {
   size: string;
   metal: string;
   diamondType: string;
-  diamondQuality: string;
+  diamondClarity: string;
+  diamondColour: string;
   caratRange: string;
   metalColor: string;
   referenceLink: string;
