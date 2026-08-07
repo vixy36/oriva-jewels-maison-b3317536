@@ -453,20 +453,20 @@ function HomePage() {
 
 
 
-      {/* REVIEWS */}
-      <section className="relative py-8 md:py-10 bg-ink">
-        <div className="mx-auto max-w-[1240px] px-6 md:px-16">
-          <Reveal className="text-center max-w-xl mx-auto">
-            <p className="eyebrow">- The Clientele</p>
-            <h2 className="mt-6 font-serif text-3xl md:text-4xl text-ivory">
-              In their <em className="text-gold-gradient">own words.</em>
+      {/* THE CLIENTELE - Refined editorial reviews */}
+      <section className="py-24 bg-background overflow-hidden border-t border-ivory/5">
+        <div className="mx-auto max-w-[1400px] px-6 md:px-12">
+          <Reveal className="text-center max-w-2xl mx-auto mb-20">
+            <span className="eyebrow block mb-4">THE CLIENTELE</span>
+            <h2 className="text-4xl md:text-5xl font-serif leading-tight">
+              In their <span className="italic">own words.</span>
             </h2>
           </Reveal>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-3 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-12">
             {[
               {
-                q: "The most personal buying experience I've ever had. The CAD reveal made me tear up - and the ring somehow exceeded it.",
+                q: "The most personal buying experience I've ever had. The CAD reveal made me tear up—and the ring somehow exceeded it.",
                 a: "Sarah W.",
                 place: "London",
               },
@@ -476,25 +476,24 @@ function HomePage() {
                 place: "Dubai",
               },
               {
-                q: "Lab grown, three carats, hidden halo. Photographed it, showed my jeweller friend - she asked who did it. That says everything.",
+                q: "Lab grown, three carats, hidden halo. Photographed it, showed my jeweller friend—she asked who did it. That says everything.",
                 a: "Amelia K.",
                 place: "New York",
               },
             ].map((r, i) => (
-              <Reveal key={r.a} delay={i * 80}>
-                <figure className="group h-full border border-white/10 bg-obsidian/30 p-8 md:p-10 hover:border-gold/40 transition">
-                  <div className="flex gap-1 text-gold">
+              <Reveal key={r.a} delay={i * 100}>
+                <div className="flex flex-col h-full text-center group">
+                  <div className="flex justify-center gap-1 text-gold mb-8">
                     {Array.from({ length: 5 }).map((_, k) => <span key={k}>★</span>)}
                   </div>
-                  <blockquote className="mt-6 font-serif italic text-xl leading-[1.55] text-ivory/90">
+                  <blockquote className="flex-grow font-serif italic text-2xl md:text-3xl leading-relaxed text-obsidian/90 mb-10 group-hover:text-obsidian transition-colors">
                     "{r.q}"
                   </blockquote>
-                  <figcaption className="mt-8 flex items-center gap-3 text-[13px] tracking-[0.35em] uppercase">
-                    <span className="h-px w-8 bg-gold/60" />
-                    <span className="text-gold">{r.a}</span>
-                    <span className="text-ivory/60">· {r.place}</span>
-                  </figcaption>
-                </figure>
+                  <div className="pt-8 border-t border-ivory/10">
+                    <p className="text-[12px] tracking-[0.4em] uppercase text-obsidian font-semibold mb-1">{r.a}</p>
+                    <p className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground">{r.place}</p>
+                  </div>
+                </div>
               </Reveal>
             ))}
           </div>
