@@ -82,6 +82,8 @@ function ProductPage() {
 
 
   const [diamondType, setDiamondType] = useState(product.diamondTypes[0]);
+  const [diamondClarity, setDiamondClarity] = useState("VVS1");
+  const [diamondColour, setDiamondColour] = useState("D");
   const [karat, setKarat] = useState<"18K" | "14K" | "9K">("18K");
   const [goldColor, setGoldColor] = useState<"White" | "Yellow" | "Rose">(
     product.metal.includes("Yellow") ? "Yellow" : product.metal.includes("Rose") ? "Rose" : "White",
