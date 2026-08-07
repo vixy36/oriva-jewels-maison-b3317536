@@ -1,17 +1,17 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import atelier from "@/assets/about-atelier.jpg";
 import modernLux from "@/assets/insta-6.jpg";
-import editorial from "@/assets/editorial-emerald.jpg";
 import insta5 from "@/assets/insta-5.jpg";
 import bridal from "@/assets/collection-bridal.jpg";
+import editorial from "@/assets/editorial-emerald.jpg";
 import { Reveal } from "@/components/site/Reveal";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Sparkles, Shield, Heart } from "lucide-react";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
       { title: "The Maison - Oriva Jewels" },
-      { name: "description", content: "A modern maison of natural and lab grown diamond jewellery. Our story, our craftsmanship, our beliefs." },
+      { name: "description", content: "A modern maison of fine jewellery. Discover our heritage, craftsmanship, and commitment to excellence." },
     ],
   }),
   component: AboutPage,
@@ -19,115 +19,184 @@ export const Route = createFileRoute("/about")({
 
 function AboutPage() {
   return (
-    <div className="bg-ink">
-      <section className="relative isolate overflow-hidden bg-obsidian text-ivory min-h-[80svh] flex items-end" data-surface="dark">
-        <img src={atelier} alt="Oriva atelier" className="absolute inset-0 h-full w-full object-cover opacity-65 animate-slow-zoom" />
-        <div className="absolute inset-0 bg-gradient-to-b from-obsidian/40 via-obsidian/30 to-obsidian/90" />
-        <div className="absolute inset-0 vignette opacity-40" />
-        <div className="relative mx-auto max-w-[1500px] w-full px-6 pt-48 pb-24 md:px-16 md:pt-56 md:pb-32">
-          <div className="flex items-center gap-4">
-            <span className="h-px w-12 bg-gold" />
-            <p className="eyebrow">The Maison</p>
-          </div>
-          <h1 className="mt-8 font-serif text-6xl md:text-[9rem] leading-[0.9] tracking-[-0.02em] text-ivory">
-            <span className="block drop-shadow-sm">A quiet</span>
-            <span className="block italic text-gold-gradient drop-shadow-sm">house</span>
-            <span className="block drop-shadow-sm">of light.</span>
-          </h1>
-          <p className="mt-10 max-w-xl text-[15px] leading-[1.8] text-ivory/95 font-medium drop-shadow-sm">
-            Oriva Jewels is a modern maison of natural and lab grown diamond jewellery - designed
-            with care, finished by hand, worn for a lifetime.
-          </p>
+    <div className="bg-ink overflow-x-hidden">
+      {/* Cinematic Hero */}
+      <section className="relative h-[90svh] flex items-center justify-center overflow-hidden bg-obsidian text-ivory" data-surface="dark">
+        <img src={atelier} alt="Oriva atelier" className="absolute inset-0 h-full w-full object-cover opacity-60 animate-slow-zoom scale-110" />
+        <div className="absolute inset-0 bg-gradient-to-b from-obsidian/60 via-obsidian/40 to-obsidian" />
+        
+        <div className="relative z-10 text-center px-6">
+          <Reveal>
+            <span className="inline-block text-gold text-[12px] tracking-[0.6em] uppercase mb-8">Established 2024</span>
+            <h1 className="font-serif text-7xl md:text-[10rem] leading-[0.85] tracking-tight">
+              Oriva <br />
+              <em className="text-gold-gradient italic">Jewels</em>
+            </h1>
+            <p className="mt-12 mx-auto max-w-2xl text-[17px] leading-[1.8] text-ivory/90 font-medium">
+              We are end-to-end manufacturers of Diamonds & Jewellery. 
+              A modern maison where heritage meets innovation, crafted for the discerning.
+            </p>
+          </Reveal>
+        </div>
+        
+        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce opacity-40">
+          <div className="w-px h-12 bg-gold" />
         </div>
       </section>
 
-      <section className="mx-auto max-w-4xl px-6 py-32 md:py-48 text-center">
-        <Reveal>
-          <span className="text-gold text-4xl">✦</span>
-          <p className="mt-10 font-serif text-3xl md:text-6xl leading-[1.12] italic text-ivory">
-            "The most beautiful jewellery <span className="text-gold-gradient not-italic">is the piece</span> you never take off."
-          </p>
-          <p className="mt-10 text-[14px] tracking-[0.42em] uppercase text-ivory/80">- Founder's Note</p>
-        </Reveal>
-      </section>
-
-      {[
-        {
-          n: "I",
-          eyebrow: "- Modern Luxury",
-          title: "Refined,",
-          titleAccent: "never showy.",
-          body: "We believe luxury is a whisper. Our pieces are designed to feel personal - quiet from a distance, extraordinary up close. Nothing is added for effect; nothing is spared for craft.",
-          img: modernLux,
-        },
-        {
-          n: "II",
-          eyebrow: "- Certified Craftsmanship",
-          title: "Every stone,",
-          titleAccent: "personally sourced.",
-          body: "We work only with GIA and IGI certified diamonds - Natural and Lab Grown - and finish each piece by hand in our own atelier. Every setting is checked, every prong is tuned.",
-          img: insta5,
-          flip: true,
-        },
-        {
-          n: "III",
-          eyebrow: "- Timeless Design",
-          title: "Made to be",
-          titleAccent: "worn forever.",
-          body: "Silhouettes drawn from decades of jewellery history, made lighter and more wearable for how we live now. Not fashion. Not trend. Something to be handed on.",
-          img: bridal,
-        },
-      ].map((s) => (
-        <section key={s.n} className="py-12 md:py-18">
-          <div className={`mx-auto max-w-[1500px] px-6 md:px-16 grid gap-12 md:grid-cols-12 md:gap-16 md:items-center ${s.flip ? "md:[&>div:first-child]:order-2" : ""}`}>
-            <Reveal className="md:col-span-6">
-              <div className="relative aspect-[4/5] overflow-hidden">
-                <img src={s.img} alt={s.title} loading="lazy" className="h-full w-full object-cover" />
-                <div className="absolute inset-0 border border-gold/15" />
-                <span className="absolute top-4 left-4 text-[14px] tracking-[0.42em] uppercase text-ivory/85 bg-obsidian/60 px-2.5 py-1 backdrop-blur">
-                  Plate {s.n}
-                </span>
-              </div>
-            </Reveal>
-            <Reveal delay={150} className="md:col-span-6 md:pl-6">
-              <p className="eyebrow">{s.eyebrow}</p>
-              <h2 className="mt-6 font-serif text-3xl md:text-5xl leading-[1] text-ivory">
-                {s.title}<br />
-                <em className="text-gold-gradient">{s.titleAccent}</em>
+      {/* Philosophy Section - Split with Image */}
+      <section className="py-32 md:py-48">
+        <div className="mx-auto max-w-[1500px] px-6 md:px-16 grid gap-20 md:grid-cols-2 items-center">
+          <Reveal>
+            <div className="relative">
+              <div className="absolute -top-12 -left-12 w-48 h-48 bg-gold/5 rounded-full blur-3xl" />
+              <span className="eyebrow">Our Philosophy</span>
+              <h2 className="mt-8 font-serif text-5xl md:text-7xl leading-tight">
+                Luxury in its <br />
+                <em className="text-gold-gradient">purest form.</em>
               </h2>
-              <div className="mt-8 hairline-gold w-16" />
-              <p className="mt-8 text-[15px] leading-[1.8] text-ivory/80 max-w-lg">{s.body}</p>
-            </Reveal>
-          </div>
-        </section>
-      ))}
-
-      <section className="relative isolate overflow-hidden bg-obsidian text-ivory">
-        <div
-          aria-hidden
-          className="absolute inset-0 opacity-40 pointer-events-none"
-          style={{
-            backgroundImage:
-              "radial-gradient(ellipse at 50% 100%, oklch(0.79 0.11 82 / 0.2), transparent 55%)",
-          }}
-        />
-        <div className="relative mx-auto max-w-[1200px] px-6 py-32 md:px-16 md:py-40 text-center">
-          <p className="eyebrow">- Private Consultation</p>
-          <h2 className="mt-8 font-serif text-5xl md:text-8xl leading-[0.95]">
-            Design something <em className="text-gold-gradient">singular.</em>
-          </h2>
-          <p className="mx-auto mt-8 max-w-xl text-[15px] leading-[1.8] text-ivory/80">
-            Speak with our atelier about a bespoke piece, an engagement ring, or a family
-            heirloom reimagined for the way you live now.
-          </p>
-          <Link
-            to="/contact"
-            className="mt-12 inline-flex items-center gap-3 bg-gold text-obsidian px-10 py-4 text-[10.5px] tracking-[0.4em] uppercase hover:bg-ivory transition"
-          >
-            Book a Consultation
-            <ArrowRight className="h-4 w-4" strokeWidth={1.4} />
-          </Link>
+              <p className="mt-10 text-[16px] leading-[1.9] text-ivory/80 max-w-lg">
+                We believe fine jewellery should be more than an accessory; it should be an extension of one's identity. 
+                Our approach is defined by restraint—nothing is added for show, everything is included for excellence.
+              </p>
+              <div className="mt-12 grid grid-cols-2 gap-8 border-t border-gold/20 pt-12">
+                <div>
+                  <span className="font-serif text-3xl text-gold italic">01.</span>
+                  <p className="mt-4 font-sans text-[13px] tracking-widest uppercase text-ivory/60">Transparency</p>
+                  <p className="mt-2 text-[14px] text-ivory/80">From mine to finger, we own every step of the journey.</p>
+                </div>
+                <div>
+                  <span className="font-serif text-3xl text-gold italic">02.</span>
+                  <p className="mt-4 font-sans text-[13px] tracking-widest uppercase text-ivory/60">Legacy</p>
+                  <p className="mt-2 text-[14px] text-ivory/80">Designs that transcend trends, meant to be passed down.</p>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+          
+          <Reveal delay={200} className="relative">
+            <div className="aspect-[4/5] overflow-hidden gold-border p-3">
+              <img src={modernLux} alt="Modern Luxury" className="w-full h-full object-cover" />
+            </div>
+            <div className="absolute -bottom-10 -right-10 bg-obsidian p-8 text-ivory border border-gold/20 hidden md:block" data-surface="dark">
+              <p className="font-serif italic text-2xl text-gold">"Quiet from a distance, extraordinary up close."</p>
+            </div>
+          </Reveal>
         </div>
+      </section>
+
+      {/* Craftsmanship - Full width immersive */}
+      <section className="relative bg-obsidian text-ivory py-32 md:py-56 overflow-hidden" data-surface="dark">
+        <div className="absolute inset-0 opacity-20 pointer-events-none">
+          <div className="absolute top-0 right-0 w-[50%] h-full bg-gradient-to-l from-gold/20 to-transparent" />
+        </div>
+        
+        <div className="relative mx-auto max-w-[1500px] px-6 md:px-16 text-center">
+          <Reveal>
+            <span className="eyebrow">Craftsmanship</span>
+            <h2 className="mt-8 font-serif text-6xl md:text-[8rem] leading-[0.9]">
+              The <em className="text-gold-gradient italic">Atelier</em> Spirit
+            </h2>
+          </Reveal>
+          
+          <div className="mt-24 grid gap-12 md:grid-cols-3">
+            {[
+              { 
+                icon: Sparkles, 
+                title: "Certified Selection", 
+                desc: "Every diamond in our collection is hand-selected and certified by GIA or IGI.",
+                img: insta5
+              },
+              { 
+                icon: Shield, 
+                title: "Master Settings", 
+                desc: "Our artisans use traditional techniques combined with cutting-edge technology.",
+                img: editorial
+              },
+              { 
+                icon: Heart, 
+                title: "Eternal Quality", 
+                desc: "Each piece undergoes rigorous quality control to ensure it lasts for generations.",
+                img: bridal
+              }
+            ].map((item, idx) => (
+              <Reveal key={item.title} delay={idx * 150} className="group">
+                <div className="relative aspect-[3/4] mb-8 overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
+                  <img src={item.img} alt={item.title} className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" />
+                  <div className="absolute inset-0 bg-obsidian/40 group-hover:bg-transparent transition-colors duration-700" />
+                </div>
+                <div className="flex justify-center mb-6">
+                  <item.icon className="w-8 h-8 text-gold" strokeWidth={1} />
+                </div>
+                <h3 className="font-serif text-3xl mb-4">{item.title}</h3>
+                <p className="text-ivory/60 text-[15px] max-w-[280px] mx-auto leading-relaxed">{item.desc}</p>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* The Journey Section */}
+      <section className="py-32 md:py-48 bg-ink">
+        <div className="mx-auto max-w-4xl px-6 text-center">
+          <Reveal>
+            <span className="eyebrow">The Journey</span>
+            <h2 className="mt-8 font-serif text-5xl md:text-7xl">From a sketch <br /><em className="text-gold-gradient">to her finger.</em></h2>
+            <p className="mt-12 text-[17px] leading-[2] text-ivory/80">
+              Unlike traditional jewellers, we manage the entire lifecycle of our pieces. 
+              By sourcing rough diamonds directly and manufacturing in our own facility, 
+              we remove the middleman, ensuring both ethical sourcing and unparalleled value.
+            </p>
+            <div className="mt-16 flex flex-col md:flex-row items-center justify-center gap-12">
+              <div className="flex flex-col items-center">
+                <span className="text-5xl font-serif text-gold">100%</span>
+                <span className="mt-2 text-[12px] tracking-widest uppercase text-ivory/50 font-bold">In-House</span>
+              </div>
+              <div className="hidden md:block w-px h-16 bg-gold/20" />
+              <div className="flex flex-col items-center">
+                <span className="text-5xl font-serif text-gold">05+</span>
+                <span className="mt-2 text-[12px] tracking-widest uppercase text-ivory/50 font-bold">Checkpoints</span>
+              </div>
+              <div className="hidden md:block w-px h-16 bg-gold/20" />
+              <div className="flex flex-col items-center">
+                <span className="text-5xl font-serif text-gold">40+</span>
+                <span className="mt-2 text-[12px] tracking-widest uppercase text-ivory/50 font-bold">Countries</span>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="relative h-[80svh] flex items-center justify-center bg-obsidian text-ivory overflow-hidden" data-surface="dark">
+        <div className="absolute inset-0 opacity-30 animate-slow-zoom">
+          <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-obsidian z-10" />
+          <img src={atelier} alt="Background" className="w-full h-full object-cover" />
+        </div>
+        
+        <Reveal className="relative z-20 text-center px-6">
+          <h2 className="font-serif text-5xl md:text-8xl leading-none">
+            Join the <em className="text-gold-gradient italic">Conversation.</em>
+          </h2>
+          <p className="mt-8 mx-auto max-w-lg text-ivory/70 text-[16px] leading-relaxed">
+            Discover the world of Oriva Jewels through a private consultation or by exploring our collection.
+          </p>
+          <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6">
+            <Link
+              to="/collections/engagement-rings"
+              className="bg-gold text-obsidian px-12 py-5 text-[12px] tracking-[0.4em] uppercase hover:bg-ivory transition-all duration-300 w-full sm:w-auto"
+            >
+              Explore Collection
+            </Link>
+            <Link
+              to="/contact"
+              className="border border-ivory/20 px-12 py-5 text-[12px] tracking-[0.4em] uppercase hover:border-gold hover:text-gold transition-all duration-300 w-full sm:w-auto flex items-center justify-center gap-3"
+            >
+              Contact Us
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+        </Reveal>
       </section>
     </div>
   );
