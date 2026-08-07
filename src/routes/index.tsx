@@ -317,9 +317,9 @@ function HomePage() {
       {/* THE ATELIER - High contrast craftsmanship */}
       <section className="py-24 bg-obsidian text-ivory overflow-hidden">
         <div className="mx-auto max-w-[1400px] px-6 md:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-            <Reveal>
-              <div className="relative aspect-[4/5] overflow-hidden rounded-sm">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
+            <Reveal className="lg:col-span-5 lg:pr-12">
+              <div className="relative aspect-[3/4] overflow-hidden rounded-sm max-w-[450px] mx-auto lg:mx-0">
                 <img
                   src={atelier}
                   alt="The Oriva Atelier"
@@ -329,7 +329,7 @@ function HomePage() {
               </div>
             </Reveal>
 
-            <Reveal delay={200}>
+            <Reveal delay={200} className="lg:col-span-7">
               <div className="max-w-2xl">
                 <span className="eyebrow block mb-6 text-gold">- THE ATELIER</span>
                 <h2 className="text-4xl md:text-5xl font-serif leading-tight mb-8">
