@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useState, useMemo } from "react";
+
 import { ArrowRight, ArrowUpRight, MessageCircle, Paperclip, Sparkles } from "lucide-react";
 import { GsapReveal } from "@/components/site/GsapReveal";
 import { Sparkles as GsapSparkles } from "@/components/site/Sparkles";
@@ -12,6 +13,8 @@ import pendantsImg from "@/assets/collection-pendants.jpg";
 import bridalImg from "@/assets/collection-bridal.jpg";
 import labgrownImg from "@/assets/collection-labgrown.jpg";
 import editorialImg from "@/assets/editorial-emerald.jpg";
+import emeraldProduct from "@/assets/product-emerald-studs.jpg";
+
 
 import insta1 from "@/assets/insta-1.jpg";
 import insta6 from "@/assets/insta-6.jpg";
@@ -90,7 +93,10 @@ const instagramReels = [
 ];
 
 function HomePage() {
+  const selectedSix = useMemo(() => products.slice(0, 8), []);
+  
   return (
+
     <div className="bg-background">
       {/* HERO */}
       <section className="relative isolate overflow-hidden bg-obsidian text-ivory pt-16 md:pt-20">
@@ -194,77 +200,46 @@ function HomePage() {
       </div>
 
 
-      {/* COLLECTIONS INDEX - Editorial image grid */}
-      <section className="relative overflow-hidden py-8 md:py-14 bg-ink">
-
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-40"
-          style={{
-            background:
-              "radial-gradient(closest-side at 50% 20%, oklch(0.72 0.11 82 / 0.14), transparent 65%)",
-          }}
-        />
-
-        <div className="relative mx-auto max-w-[1280px] px-5 md:px-10">
-          <Reveal className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 border-t border-ivory/15 pt-8 md:pt-10">
-            <div>
-              <p className="eyebrow">- The Index</p>
-              <h2 className="mt-3 font-serif text-2xl md:text-3xl leading-[1.1] text-ivory">
-                Six chapters.{" "}
-                <em className="italic text-gold">One maison.</em>
+      {/* THE INDEX - Clean category grid */}
+      <section className="py-20 bg-background overflow-hidden border-b border-ivory/5">
+        <div className="mx-auto max-w-[1400px] px-6 md:px-12">
+          <Reveal className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
+            <div className="max-w-xl">
+              <span className="eyebrow block mb-4">THE INDEX</span>
+              <h2 className="text-4xl md:text-5xl font-serif leading-tight">
+                Six chapters. <span className="italic font-light">One maison.</span>
               </h2>
             </div>
-            <p className="max-w-sm text-[13px] leading-[1.7] text-ivory/70">
-              A curated volume of six edits — each with its own hand, its own hour of the day.
+            <p className="max-w-xs text-[14px] leading-relaxed text-muted-foreground uppercase tracking-widest">
+              A curated volume of six edits—each with its own character, designed for a lifetime.
             </p>
           </Reveal>
 
-
-          <div className="mt-8 md:mt-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 md:gap-x-6 gap-y-8 md:gap-y-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
             {collections.map((c, i) => (
-              <Reveal key={c.title} delay={i * 60}>
+              <Reveal key={c.title} delay={i * 100}>
                 <Link
                   to={c.to}
-                  className="group relative block overflow-hidden bg-obsidian aspect-square"
+                  className="group block relative"
                 >
-                  <img
-                    src={c.img}
-                    alt={c.title}
-                    loading="lazy"
-                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05]"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-obsidian/85 via-obsidian/25 to-transparent" />
-                  <div className="absolute inset-0 ring-1 ring-inset ring-white/10 group-hover:ring-gold/60 transition duration-500" />
-
-                  <div className="absolute top-3 left-3 md:top-4 md:left-4 flex items-center gap-2">
-                    <span className="h-px w-5 md:w-6 bg-gold/70" />
-                    <span className="font-serif italic text-[11px] md:text-xs text-gold">
-                      Chapter {c.n}
-                    </span>
+                  <div className="relative aspect-[4/5] overflow-hidden bg-muted">
+                    <img
+                      src={c.img}
+                      alt={c.title}
+                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-obsidian/10 group-hover:bg-obsidian/0 transition-colors duration-500" />
                   </div>
-
-                  <div className="absolute inset-x-0 bottom-0 p-3 md:p-4">
-                    <h3 className="font-serif text-base md:text-lg leading-tight text-ivory">
-                      {c.title}
-                    </h3>
-                    <span className="mt-1.5 inline-flex items-center gap-1.5 text-[9px] md:text-[10px] tracking-[0.32em] uppercase text-ivory/75 group-hover:text-gold transition">
-                      Explore <ArrowUpRight className="h-2.5 w-2.5" strokeWidth={1.5} />
-                    </span>
+                  <div className="mt-6 flex items-start justify-between">
+                    <div>
+                      <span className="text-[10px] tracking-[0.3em] uppercase text-gold font-medium mb-1 block">Chapter {c.n}</span>
+                      <h3 className="text-2xl font-serif text-obsidian uppercase tracking-wide">{c.title}</h3>
+                    </div>
+                    <ArrowUpRight className="h-5 w-5 text-obsidian transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
                   </div>
                 </Link>
               </Reveal>
             ))}
-          </div>
-
-
-          <div className="mt-10 md:mt-14 text-center">
-            <Link
-              to="/about"
-              className="inline-flex items-center gap-2 text-[12px] tracking-[0.4em] uppercase text-gold border-b border-gold/60 pb-1 hover:text-ivory hover:border-ivory transition"
-            >
-              Our craftsmanship <ArrowUpRight className="h-3 w-3" />
-            </Link>
           </div>
         </div>
       </section>
@@ -273,96 +248,47 @@ function HomePage() {
 
 
 
-      {/* MOST REQUESTED - tonal editorial */}
-      <section className="relative py-12 md:py-20 bg-obsidian text-ivory" data-surface="dark">
-        <div className="mx-auto max-w-[1200px] px-5 md:px-10">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10 md:mb-14">
-            <div>
-              <span className="block text-[10px] tracking-[0.4em] uppercase text-gold mb-3">Most Requested</span>
-              <h2 className="font-serif italic font-light leading-[1.05] text-ivory text-4xl md:text-5xl">
-                The Selected Six
+      {/* MOST REQUESTED - Clean product showcase */}
+      <section className="py-20 bg-background overflow-hidden">
+        <div className="mx-auto max-w-[1400px] px-6 md:px-12">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
+            <div className="max-w-xl">
+              <span className="eyebrow block mb-4">MOST REQUESTED</span>
+              <h2 className="text-4xl md:text-5xl font-serif leading-tight">
+                The Selected Six. <span className="italic font-light">Fine diamond edits.</span>
               </h2>
             </div>
             <Link
               to="/collections/engagement-rings"
-              className="hidden md:inline-flex items-center gap-2 text-[11px] tracking-[0.3em] uppercase text-ivory/80 border-b border-gold/40 pb-1 hover:text-gold hover:border-gold transition-colors duration-300"
+              className="text-[13px] tracking-[0.3em] uppercase text-obsidian border-b border-gold/40 pb-1 hover:text-gold transition-colors"
             >
-              View entire collection <ArrowUpRight className="h-3.5 w-3.5" />
+              View entire collection
             </Link>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 md:gap-x-6 gap-y-8 md:gap-y-10">
-            {products.slice(0, 8).map((p) => {
-              const tag =
-                p.diamondTypes.includes("Lab Grown") && p.diamondTypes.includes("Natural")
-                  ? "Nat · Lab"
-                  : p.diamondTypes[0];
-              return (
-                <Link
-                  key={p.slug}
-                  to="/product/$slug"
-                  params={{ slug: p.slug }}
-                  className="group block"
-                >
-                  <div className="relative aspect-square overflow-hidden bg-ivory/[0.04] mb-3 md:mb-4">
-                    <img
-                      src={p.image}
-                      alt={p.name}
-                      loading="lazy"
-                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.06]"
-                    />
-                    <span
-                      aria-hidden
-                      className="pointer-events-none absolute inset-0 bg-obsidian/20 mix-blend-multiply"
-                    />
-                    <span
-                      aria-hidden
-                      className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-obsidian/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                    />
-                    <span className="absolute top-2.5 left-2.5 text-[9px] tracking-[0.28em] uppercase text-ivory/90 bg-obsidian/50 backdrop-blur-sm px-2 py-0.5 border border-white/10">
-                      {tag}
-                    </span>
-                  </div>
-
-                  <h3 className="font-serif text-[15px] md:text-base leading-tight text-ivory transition-colors duration-300 group-hover:text-gold line-clamp-1">
-                    {p.name}
-                  </h3>
-                  <p className="mt-1 text-[10px] tracking-[0.24em] uppercase text-ivory/55 line-clamp-1">
-                    {p.shape} · {p.metal}
-                  </p>
-                </Link>
-              );
-            })}
-          </div>
-
-
-          <div className="mt-12 md:hidden flex justify-center">
-            <Link
-              to="/collections/engagement-rings"
-              className="inline-flex items-center gap-2 text-[11px] tracking-[0.3em] uppercase text-ivory/80 border-b border-gold/40 pb-1"
-            >
-              View entire collection <ArrowUpRight className="h-3.5 w-3.5" />
-            </Link>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+            {selectedSix.map((p, i) => (
+              <Reveal key={p.slug} delay={i * 100}>
+                <ProductCard product={p} />
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
 
 
       {/* SHOP BY SHAPE */}
-      <section className="relative py-8 md:py-10 bg-obsidian overflow-hidden">
-        <div className="mx-auto max-w-[1240px] px-6 md:px-16">
-          <Reveal className="flex items-end justify-between gap-6 flex-wrap">
+      <section className="py-24 bg-background border-b border-ivory/5">
+        <div className="mx-auto max-w-[1400px] px-6 md:px-12">
+          <Reveal className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
             <div className="max-w-xl">
-              <p className="eyebrow">- Shop by Shape</p>
-              <h2 className="mt-6 font-serif text-3xl md:text-3xl leading-[1] text-ivory">
-                Find your <em className="text-gold-gradient">silhouette.</em>
+              <span className="eyebrow block mb-4">SHOP BY SHAPE</span>
+              <h2 className="text-4xl md:text-5xl font-serif leading-tight">
+                Find your <span className="italic font-light">silhouette.</span>
               </h2>
-              <p className="mt-6 max-w-md text-[15px] text-ivory/70 leading-[1.8]">
-                Six diamond shapes, each with its own quiet character. Choose the one that feels most yours.
-              </p>
             </div>
-            <Link to="/education" className="hidden md:inline-flex items-center gap-2 text-[14px] tracking-[0.4em] uppercase text-gold border-b border-gold/50 pb-1 hover:text-ivory hover:border-ivory transition">
-              The diamond guide <ArrowUpRight className="h-3.5 w-3.5" />
+            <Link to="/education" className="text-[13px] tracking-[0.3em] uppercase text-gold border-b border-gold/50 pb-1 hover:text-obsidian hover:border-obsidian transition-colors">
+              The diamond guide
             </Link>
           </Reveal>
 
@@ -370,20 +296,17 @@ function HomePage() {
             {[
               { key: "marquise", label: "Marquise", img: heroImg },
               { key: "oval", label: "Oval", img: engagementImg },
-              { key: "emerald", label: "Emerald", img: editorialImg },
+              { key: "emerald", label: "Emerald", img: emeraldProduct },
               { key: "pear", label: "Pear", img: bridalImg },
               { key: "heart", label: "Heart", img: earringsImg },
               { key: "round", label: "Round", img: braceletsImg },
             ].map((s, i) => (
               <Reveal key={s.key} delay={i * 60}>
-                <Link to="/shape/$shape" params={{ shape: s.key }} className="group relative block aspect-square overflow-hidden">
-                  <img src={s.img} alt={s.label} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1600ms] group-hover:scale-110" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/25 to-transparent" />
-                  <div className="absolute inset-0 border border-transparent group-hover:border-gold/40 transition" />
-                  <div className="absolute inset-x-0 bottom-0 p-2.5 md:p-3">
-                    <p className="text-[9px] tracking-[0.3em] uppercase text-gold">0{i + 1}</p>
-                    <h3 className="mt-0.5 font-serif text-sm md:text-base text-ivory italic">{s.label}</h3>
+                <Link to="/shape/$shape" params={{ shape: s.key }} className="group block text-center">
+                  <div className="relative aspect-square overflow-hidden bg-muted mb-4">
+                    <img src={s.img} alt={s.label} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
                   </div>
+                  <h3 className="font-serif text-lg text-obsidian uppercase tracking-wider">{s.label}</h3>
                 </Link>
               </Reveal>
             ))}
@@ -391,88 +314,85 @@ function HomePage() {
         </div>
       </section>
 
-      {/* ATELIER */}
-      <section className="relative bg-obsidian py-8 md:py-10 overflow-hidden">
-        <div className="mx-auto max-w-[1240px] px-6 md:px-16 grid gap-12 md:grid-cols-12 md:gap-16 items-center">
-          <Reveal className="md:col-span-5">
-            <div className="relative aspect-[4/5] overflow-hidden">
-              <img src={atelier} alt="Oriva atelier" loading="lazy" className="h-full w-full object-cover" />
-              <div className="absolute inset-0 border border-gold/20" />
-            </div>
-            <p className="mt-4 text-[14px] tracking-[0.42em] uppercase text-ivory/80">
-              Plate II · The Atelier
-            </p>
-          </Reveal>
+      {/* THE ATELIER - High contrast craftsmanship */}
+      <section className="py-24 bg-obsidian text-ivory overflow-hidden">
+        <div className="mx-auto max-w-[1400px] px-6 md:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+            <Reveal>
+              <div className="relative aspect-[4/5] overflow-hidden rounded-sm">
+                <img
+                  src={atelier}
+                  alt="The Oriva Atelier"
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-obsidian/10" />
+              </div>
+            </Reveal>
 
-          <Reveal delay={150} className="md:col-span-7 md:pl-8">
-            <p className="eyebrow">- The Atelier</p>
-            <h2 className="mt-6 font-serif text-xl md:text-2xl leading-[1.2] text-ivory">
-              Every stone <em className="text-gold-gradient">chosen</em>.
-              <br />Every piece <em className="text-gold-gradient">finished</em> by hand.
-            </h2>
-            <div className="mt-10 space-y-6 text-[15px] leading-[1.8] text-ivory/80 max-w-lg">
-              <p>
-                We are end-to-end manufacturers of diamonds and diamond jewellery. Every piece is
-                sourced, set and signed by the same hands - never outsourced, never rushed.
-              </p>
-              <p>
-                We work in both natural and lab grown diamonds, certified by GIA and IGI, with the
-                same craftsmanship applied to both. The choice is yours; the standard is ours.
-              </p>
-            </div>
-
-
-
-            <div className="flex flex-col sm:flex-row items-start gap-8 mt-12">
-              <Link
-                to="/about"
-                className="inline-flex items-center gap-3 text-[10.5px] tracking-[0.4em] uppercase text-gold border-b border-gold/50 pb-2 hover:text-ivory hover:border-ivory transition shrink-0"
-              >
-                Enter the maison <ArrowRight className="h-4 w-4" strokeWidth={1.4} />
-              </Link>
-
-              <div className="flex items-center gap-10 md:gap-14 border-l border-white/10 pl-8">
-                <div>
-                  <span className="block font-sans text-3xl md:text-5xl font-bold text-ivory tracking-tight">100%</span>
-                  <span className="mt-1 block text-[9px] tracking-[0.3em] uppercase text-gold whitespace-nowrap">Certified stones</span>
+            <Reveal delay={200}>
+              <div className="max-w-2xl">
+                <span className="eyebrow block mb-6 text-gold">- THE ATELIER</span>
+                <h2 className="text-4xl md:text-5xl font-serif leading-tight mb-8">
+                  Every stone <span className="italic">chosen.</span><br />
+                  Every piece <span className="italic">signed by hand.</span>
+                </h2>
+                <div className="space-y-6 text-ivory/70 text-[16px] leading-relaxed mb-12">
+                  <p>
+                    We are end-to-end manufacturers. From the rough stone to the final polish, your piece never leaves our care. This ensures a level of precision and ethical transparency that only a direct maison can provide.
+                  </p>
+                  <p>
+                    Whether natural or lab-grown, our standard remains absolute. Every diamond is hand-selected for its fire and brilliance, certified by GIA or IGI, and set by master craftsmen in our private workshop.
+                  </p>
                 </div>
-                <div>
-                  <span className="block font-sans text-3xl md:text-5xl font-bold text-ivory tracking-tight">30D</span>
-                  <span className="mt-1 block text-[9px] tracking-[0.3em] uppercase text-gold whitespace-nowrap">Bespoke lead time</span>
+                
+                <div className="flex flex-wrap gap-12 border-t border-ivory/10 pt-10">
+                  <div>
+                    <span className="text-4xl font-bold text-ivory block mb-2 font-sans">100%</span>
+                    <span className="text-[10px] tracking-[0.3em] uppercase text-gold">Certified stones</span>
+                  </div>
+                  <div>
+                    <span className="text-4xl font-bold text-ivory block mb-2 font-sans">30D</span>
+                    <span className="text-[10px] tracking-[0.3em] uppercase text-gold">Bespoke lead time</span>
+                  </div>
+                </div>
+
+                <div className="mt-12">
+                  <Link
+                    to="/about"
+                    className="inline-flex items-center gap-4 text-[13px] tracking-[0.4em] uppercase text-gold border-b border-gold pb-1 hover:text-ivory hover:border-ivory transition-colors"
+                  >
+                    Enter the maison <ArrowRight className="h-4 w-4" />
+                  </Link>
                 </div>
               </div>
-            </div>
-          </Reveal>
+            </Reveal>
+          </div>
         </div>
       </section>
 
-      {/* OCCASIONS */}
-      <section className="py-8 md:py-10 bg-ink">
-        <div className="mx-auto max-w-[1240px] px-6 md:px-16">
-          <Reveal className="text-center max-w-xl mx-auto">
-            <p className="eyebrow">- The Occasions</p>
-            <h2 className="mt-6 font-serif text-3xl md:text-4xl text-ivory">
-              For every <em className="text-gold-gradient">moment worth marking.</em>
+      {/* THE OCCASIONS - Bold lifestyle grid */}
+      <section className="py-24 bg-background">
+        <div className="mx-auto max-w-[1400px] px-6 md:px-12">
+          <Reveal className="text-center max-w-2xl mx-auto mb-16">
+            <span className="eyebrow block mb-4">THE OCCASIONS</span>
+            <h2 className="text-4xl md:text-5xl font-serif leading-tight">
+              For every <span className="italic">moment worth marking.</span>
             </h2>
           </Reveal>
 
-          <div className="mt-12 grid grid-cols-2 gap-6 md:grid-cols-5 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
             {occasions.map((o, i) => (
-              <Reveal key={o.label} delay={i * 60} className="group">
-                <Link to="/occasions" className="block">
-                  <div className="relative aspect-[3/4] overflow-hidden">
-                    <img
-                      src={o.img}
-                      alt={o.label}
-                      loading="lazy"
-                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1600ms] ease-out group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-obsidian/80 via-obsidian/10 to-transparent" />
-                    <div className="absolute inset-x-0 bottom-0 p-4 md:p-6">
-                      <p className="text-[14px] tracking-[0.42em] uppercase text-gold">{o.tag}</p>
-                      <p className="mt-1 font-serif text-2xl md:text-3xl text-ivory">{o.label}</p>
-                    </div>
-                    <span className="absolute inset-0 border border-transparent group-hover:border-gold/40 transition duration-500" />
+              <Reveal key={o.label} delay={i * 100}>
+                <Link to="/occasions" className="group block relative overflow-hidden aspect-[3/4]">
+                  <img
+                    src={o.img}
+                    alt={o.label}
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-obsidian/20 group-hover:bg-obsidian/0 transition-colors duration-500" />
+                  <div className="absolute inset-x-0 bottom-0 p-8 text-ivory">
+                    <span className="text-[10px] tracking-[0.3em] uppercase text-gold block mb-2">{o.tag}</span>
+                    <h3 className="text-2xl font-serif tracking-wide uppercase">{o.label}</h3>
                   </div>
                 </Link>
               </Reveal>
@@ -482,44 +402,43 @@ function HomePage() {
       </section>
 
 
-      {/* PROCESS - From Inspiration to Reality */}
-      <section className="relative py-8 md:py-10 bg-ink overflow-hidden">
-        <div className="mx-auto max-w-[1240px] px-6 md:px-16">
-          <Reveal className="max-w-2xl">
-            <p className="eyebrow">- The Process</p>
-            <h2 className="mt-6 font-serif text-3xl md:text-3xl leading-[1] text-ivory">
-              From a sketch <em className="text-gold-gradient">to her finger.</em>
-            </h2>
-            <p className="mt-6 max-w-md text-[15px] leading-[1.85] text-ivory/70">
-              Three unhurried steps. A private conversation, a CAD reveal, and the moment the piece
-              finally leaves our hands - hers.
+      {/* THE PROCESS - Simple linear steps */}
+      <section className="py-24 bg-background border-t border-ivory/5">
+        <div className="mx-auto max-w-[1400px] px-6 md:px-12">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
+            <div className="max-w-xl">
+              <span className="eyebrow block mb-4">THE PROCESS</span>
+              <h2 className="text-4xl md:text-5xl font-serif leading-tight">
+                From a sketch <span className="italic font-light">to her finger.</span>
+              </h2>
+            </div>
+            <p className="max-w-xs text-[14px] leading-relaxed text-muted-foreground uppercase tracking-widest">
+              Three unhurried steps to your forever piece. Masterfully crafted, personally delivered.
             </p>
-          </Reveal>
+          </div>
 
-          <div className="mt-8 grid grid-cols-3 gap-2 md:gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {[
-              { title: "Consultation", desc: "A private conversation about her, the moment, and the vision behind the piece." },
-              { title: "CAD & Approval", desc: "A photoreal 3D reveal, refined together until every detail feels unmistakably hers." },
-              { title: "Crafted & Delivered", desc: "Hand-set by our master jewellers in Hong Kong and delivered, insured, worldwide." },
+              { n: "01", title: "Consultation", desc: "A private conversation about your vision, the diamond's character, and the budget that moves you." },
+              { n: "02", title: "CAD & Reveal", desc: "A photorealistic 3D rendering of your design. We refine every facet together until it is unmistakably yours." },
+              { n: "03", title: "Craft & Delivery", desc: "Hand-set by our master jewellers and delivered securely to your door, worldwide and fully insured." },
             ].map((s, i) => (
-              <Reveal key={s.title} delay={i * 90}>
-                <div className="group h-full border border-white/10 bg-obsidian/40 px-4 py-3 md:px-6 md:py-4 hover:border-gold/40 transition">
-                  <h3 className="font-serif text-base md:text-xl text-ivory">{s.title}</h3>
-                  <span className="mt-2 block h-px w-8 bg-gold/60" />
-                  <p className="mt-2 text-[12px] md:text-[13px] leading-[1.6] text-ivory/70">{s.desc}</p>
+              <Reveal key={s.title} delay={i * 100}>
+                <div className="relative pt-12 border-t border-ivory/10 group">
+                  <span className="absolute top-0 left-0 text-[11px] tracking-[0.4em] uppercase text-gold py-4">{s.n}</span>
+                  <h3 className="text-2xl font-serif text-obsidian uppercase tracking-wide mb-6 group-hover:text-gold transition-colors">{s.title}</h3>
+                  <p className="text-[15px] leading-relaxed text-muted-foreground max-w-sm">{s.desc}</p>
                 </div>
               </Reveal>
             ))}
           </div>
 
-          <div className="mt-14 flex justify-center">
+          <div className="mt-20 text-center">
             <a
               href={buildWhatsAppLink("Hello Oriva Jewels, I'd like to begin a bespoke design consultation.")}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-3 bg-gold px-10 py-4 text-[12px] tracking-[0.4em] uppercase text-obsidian hover:bg-ivory transition"
+              className="inline-flex items-center justify-center gap-4 bg-obsidian text-ivory px-12 py-5 text-[12px] tracking-[0.5em] uppercase hover:bg-gold hover:text-obsidian transition-colors duration-500"
             >
-              <MessageCircle className="h-4 w-4" strokeWidth={1.4} />
+              <MessageCircle className="h-5 w-5" />
               Begin your piece
             </a>
           </div>
@@ -532,20 +451,20 @@ function HomePage() {
 
 
 
-      {/* REVIEWS */}
-      <section className="relative py-8 md:py-10 bg-ink">
-        <div className="mx-auto max-w-[1240px] px-6 md:px-16">
-          <Reveal className="text-center max-w-xl mx-auto">
-            <p className="eyebrow">- The Clientele</p>
-            <h2 className="mt-6 font-serif text-3xl md:text-4xl text-ivory">
-              In their <em className="text-gold-gradient">own words.</em>
+      {/* THE CLIENTELE - Refined editorial reviews */}
+      <section className="py-24 bg-background overflow-hidden border-t border-ivory/5">
+        <div className="mx-auto max-w-[1400px] px-6 md:px-12">
+          <Reveal className="text-center max-w-2xl mx-auto mb-20">
+            <span className="eyebrow block mb-4">THE CLIENTELE</span>
+            <h2 className="text-4xl md:text-5xl font-serif leading-tight">
+              In their <span className="italic">own words.</span>
             </h2>
           </Reveal>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-3 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-12">
             {[
               {
-                q: "The most personal buying experience I've ever had. The CAD reveal made me tear up - and the ring somehow exceeded it.",
+                q: "The most personal buying experience I've ever had. The CAD reveal made me tear up—and the ring somehow exceeded it.",
                 a: "Sarah W.",
                 place: "London",
               },
@@ -555,25 +474,24 @@ function HomePage() {
                 place: "Dubai",
               },
               {
-                q: "Lab grown, three carats, hidden halo. Photographed it, showed my jeweller friend - she asked who did it. That says everything.",
+                q: "Lab grown, three carats, hidden halo. Photographed it, showed my jeweller friend—she asked who did it. That says everything.",
                 a: "Amelia K.",
                 place: "New York",
               },
             ].map((r, i) => (
-              <Reveal key={r.a} delay={i * 80}>
-                <figure className="group h-full border border-white/10 bg-obsidian/30 p-8 md:p-10 hover:border-gold/40 transition">
-                  <div className="flex gap-1 text-gold">
+              <Reveal key={r.a} delay={i * 100}>
+                <div className="flex flex-col h-full text-center group">
+                  <div className="flex justify-center gap-1 text-gold mb-8">
                     {Array.from({ length: 5 }).map((_, k) => <span key={k}>★</span>)}
                   </div>
-                  <blockquote className="mt-6 font-serif italic text-xl leading-[1.55] text-ivory/90">
+                  <blockquote className="flex-grow font-serif italic text-2xl md:text-3xl leading-relaxed text-obsidian/90 mb-10 group-hover:text-obsidian transition-colors">
                     "{r.q}"
                   </blockquote>
-                  <figcaption className="mt-8 flex items-center gap-3 text-[13px] tracking-[0.35em] uppercase">
-                    <span className="h-px w-8 bg-gold/60" />
-                    <span className="text-gold">{r.a}</span>
-                    <span className="text-ivory/60">· {r.place}</span>
-                  </figcaption>
-                </figure>
+                  <div className="pt-8 border-t border-ivory/10">
+                    <p className="text-[12px] tracking-[0.4em] uppercase text-obsidian font-semibold mb-1">{r.a}</p>
+                    <p className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground">{r.place}</p>
+                  </div>
+                </div>
               </Reveal>
             ))}
           </div>
@@ -581,20 +499,20 @@ function HomePage() {
       </section>
 
       {/* FAQ */}
-      <section className="relative py-8 md:py-10 bg-obsidian">
-        <div className="mx-auto max-w-[1200px] px-6 md:px-16 grid gap-16 md:grid-cols-12">
-          <Reveal className="md:col-span-4">
-            <p className="eyebrow">- Frequently Asked</p>
-            <h2 className="mt-6 font-serif text-2xl md:text-4xl leading-[1.05] text-ivory">
-              A few <em className="text-gold-gradient">answers.</em>
+      <section className="py-24 bg-obsidian text-ivory overflow-hidden">
+        <div className="mx-auto max-w-[1400px] px-6 md:px-12 grid gap-16 lg:grid-cols-12 items-start">
+          <Reveal className="lg:col-span-4">
+            <span className="eyebrow block mb-6 text-gold">- FREQUENTLY ASKED</span>
+            <h2 className="text-4xl font-serif leading-tight mb-8">
+              A few <span className="italic">answers.</span>
             </h2>
-            <p className="mt-6 text-sm leading-[1.85] text-ivory/70">
-              Can't find yours? Message our concierge - available worldwide.
+            <p className="text-ivory/60 text-[15px] leading-relaxed">
+              If your question isn't covered here, our atelier is available for a direct conversation worldwide.
             </p>
           </Reveal>
 
-          <Reveal delay={120} className="md:col-span-8">
-            <div className="divide-y divide-white/10 border-y border-white/10">
+          <Reveal delay={120} className="lg:col-span-8">
+            <div className="divide-y divide-ivory/10 border-y border-ivory/10">
               {[
                 {
                   q: "Do you offer lab grown and natural diamonds?",
@@ -633,27 +551,18 @@ function HomePage() {
       </section>
 
       {/* INSTAGRAM */}
-      <section className="py-8 md:py-10 bg-ink">
-
-        <div className="mx-auto max-w-[1600px] px-6 md:px-16">
-          <Reveal className="flex items-end justify-between gap-6 flex-wrap">
+      <section className="py-24 bg-obsidian border-t border-ivory/5">
+        <div className="mx-auto max-w-[1400px] px-6 md:px-12">
+          <Reveal className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
             <div className="max-w-xl">
-              <p className="eyebrow">- @oriva__jewels</p>
-              <h2 className="mt-4 font-serif text-3xl md:text-4xl text-ivory">
-                <em className="text-gold-gradient">Instagram.</em>
+              <span className="eyebrow block mb-4">@ORIVA__JEWELS</span>
+              <h2 className="text-4xl md:text-5xl font-serif leading-tight text-ivory">
+                The <span className="italic">Digital Maison.</span>
               </h2>
-              <p className="mt-4 text-[15px] leading-[1.75] text-ivory/70">
-                Learn, engage and grow. Connect with ORIVA.
-              </p>
             </div>
-            <a
-              href="https://www.instagram.com/oriva__jewels/reels/"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 text-[14px] tracking-[0.4em] uppercase text-gold border-b border-gold/50 pb-1 hover:text-ivory hover:border-ivory transition"
-            >
-              Watch all reels <ArrowUpRight className="h-3.5 w-3.5" />
-            </a>
+            <p className="max-w-xs text-[14px] leading-relaxed text-ivory/60 uppercase tracking-widest">
+              Follow our journey, from raw stones to finished masterworks.
+            </p>
           </Reveal>
 
 
