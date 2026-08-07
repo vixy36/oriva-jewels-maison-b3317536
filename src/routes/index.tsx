@@ -851,7 +851,6 @@ function EngagementRingsSection() {
           )}
         </div>
       </Reveal>
-      </Reveal>
 
     </section>
   );

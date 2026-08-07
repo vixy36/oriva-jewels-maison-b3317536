@@ -558,8 +558,7 @@ function ProductPage() {
                     <p className="text-center text-[13px] tracking-[0.3em] uppercase text-ivory/60">
                       Pricing shared privately · Swift response
                     </p>
-                  </div>
-                )}
+                    </div>
               </div>
 
               <div className="mt-10 grid grid-cols-3 gap-2 text-center">
