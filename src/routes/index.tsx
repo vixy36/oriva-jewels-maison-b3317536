@@ -215,9 +215,9 @@ function HomePage() {
             </p>
           </Reveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-16">
+          <div className="flex overflow-x-auto pb-8 snap-x snap-mandatory hide-scrollbar gap-8 md:gap-12 lg:gap-16">
             {collections.map((c, i) => (
-              <Reveal key={c.title} delay={i * 100}>
+              <Reveal key={c.title} delay={i * 100} className="flex-none w-[280px] md:w-[380px] snap-center">
                 <Link
                   to={c.to}
                   className="group block relative max-w-[420px] mx-auto"
@@ -266,9 +266,9 @@ function HomePage() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+          <div className="flex overflow-x-auto pb-8 snap-x snap-mandatory hide-scrollbar gap-6 md:gap-10">
             {selectedSix.map((p, i) => (
-              <Reveal key={p.slug} delay={i * 100}>
+              <Reveal key={p.slug} delay={i * 100} className="flex-none w-[240px] md:w-[320px] snap-center">
                 <ProductCard product={p} />
               </Reveal>
             ))}
@@ -292,7 +292,7 @@ function HomePage() {
             </Link>
           </Reveal>
 
-          <div className="mt-8 grid grid-cols-3 gap-6 md:grid-cols-6 md:gap-8 max-w-[1000px] mx-auto">
+          <div className="mt-8 flex overflow-x-auto pb-8 snap-x snap-mandatory hide-scrollbar gap-6 md:gap-10 max-w-[1200px] mx-auto">
             {[
               { key: "marquise", label: "Marquise", img: heroImg },
               { key: "oval", label: "Oval", img: engagementImg },
@@ -301,7 +301,7 @@ function HomePage() {
               { key: "heart", label: "Heart", img: earringsImg },
               { key: "round", label: "Round", img: braceletsImg },
             ].map((s, i) => (
-              <Reveal key={s.key} delay={i * 60}>
+              <Reveal key={s.key} delay={i * 60} className="flex-none w-[90px] md:w-[110px] snap-center">
                 <Link to="/shape/$shape" params={{ shape: s.key }} className="group block text-center max-w-[100px] mx-auto">
                   <div className="relative aspect-square overflow-hidden bg-muted mb-4 rounded-full border border-ivory/10 group-hover:border-gold transition-colors">
                     <img src={s.img} alt={s.label} loading="lazy" className="absolute inset-0 h-full w-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-110" />
@@ -380,9 +380,9 @@ function HomePage() {
             </h2>
           </Reveal>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
+          <div className="flex overflow-x-auto pb-8 snap-x snap-mandatory hide-scrollbar gap-4 md:gap-6">
             {occasions.map((o, i) => (
-              <Reveal key={o.label} delay={i * 100}>
+              <Reveal key={o.label} delay={i * 100} className="flex-none w-[200px] md:w-[260px] snap-center">
                 <Link to="/occasions" className="group block relative overflow-hidden aspect-square rounded-sm">
                   <img
                     src={o.img}
@@ -461,7 +461,7 @@ function HomePage() {
             </h2>
           </Reveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-12">
+          <div className="flex overflow-x-auto pb-8 snap-x snap-mandatory hide-scrollbar gap-8 md:gap-12">
             {[
               {
                 q: "The most personal buying experience I've ever had. The CAD reveal made me tear up—and the ring somehow exceeded it.",
@@ -479,7 +479,7 @@ function HomePage() {
                 place: "New York",
               },
             ].map((r, i) => (
-              <Reveal key={r.a} delay={i * 100}>
+              <Reveal key={r.a} delay={i * 100} className="flex-none w-[280px] md:w-[400px] snap-center">
                 <div className="flex flex-col h-full text-center group">
                   <div className="flex justify-center gap-1 text-gold mb-8">
                     {Array.from({ length: 5 }).map((_, k) => <span key={k}>★</span>)}
@@ -566,7 +566,7 @@ function HomePage() {
           </Reveal>
 
 
-          <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-[1100px] mx-auto">
+          <div className="mt-10 flex overflow-x-auto pb-8 snap-x snap-mandatory hide-scrollbar gap-4 md:gap-6">
             {instagramReels.map((reel) => (
               <a
                 key={reel.href}
@@ -574,7 +574,7 @@ function HomePage() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label={`Open ${reel.title} on Instagram`}
-                className="group relative aspect-[4/5] overflow-hidden bg-obsidian border border-white/5 block rounded-sm"
+                className="flex-none w-[200px] md:w-[260px] snap-center group relative aspect-[4/5] overflow-hidden bg-obsidian border border-white/5 block rounded-sm"
               >
                 <img
                   src={reel.img}
