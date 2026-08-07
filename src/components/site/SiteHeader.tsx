@@ -86,7 +86,9 @@ export function SiteHeader() {
 
   const sub = useMemo(() => {
     const rows = (menuRows ?? []).filter((r) => r.menu_key === "sub");
-    return rows.length > 0 ? rows.map((r) => ({ label: r.label, to: r.href })) : FALLBACK_SUB;
+    const baseSub = rows.length > 0 ? rows.map((r) => ({ label: r.label, to: r.href })) : FALLBACK_SUB;
+    // Explicitly filter out Offers and Wishlist as requested
+    return baseSub.filter(s => !/offer|wishlist/i.test(s.label));
   }, [menuRows]);
 
   useEffect(() => {
@@ -254,18 +256,6 @@ export function SiteHeader() {
                 )}
               </div>
             ))}
-            <Link
-              to="/wishlist"
-              aria-label="Wishlist"
-              className="relative text-ivory hover:text-gold transition ml-2"
-            >
-              <Heart className="h-5 w-5" strokeWidth={1.6} />
-              {wishlistCount > 0 && (
-                <span className="absolute -top-1.5 -right-2 min-w-[16px] h-[16px] px-1 grid place-items-center bg-gold text-obsidian text-[9px] font-semibold rounded-full">
-                  {wishlistCount}
-                </span>
-              )}
-            </Link>
             <button
               type="button"
               onClick={() => setSearchOpen(true)}
@@ -277,18 +267,6 @@ export function SiteHeader() {
           </nav>
 
           <div className="flex items-center gap-4 justify-self-end lg:hidden">
-            <Link
-              to="/wishlist"
-              aria-label="Wishlist"
-              className="relative text-ivory hover:text-gold transition"
-            >
-              <Heart className="h-5 w-5" strokeWidth={1.6} />
-              {wishlistCount > 0 && (
-                <span className="absolute -top-1.5 -right-2 min-w-[16px] h-[16px] px-1 grid place-items-center bg-gold text-obsidian text-[9px] font-semibold rounded-full">
-                  {wishlistCount}
-                </span>
-              )}
-            </Link>
             <button
               type="button"
               onClick={() => setSearchOpen(true)}
