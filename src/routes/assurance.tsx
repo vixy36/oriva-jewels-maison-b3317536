@@ -76,7 +76,7 @@ function AssurancePage() {
               rel="noreferrer"
               className="inline-flex items-center gap-3 bg-ivory px-9 py-4 text-[11px] tracking-[0.4em] uppercase text-obsidian"
             >
-              Speak with our concierge
+              Message the atelier
             </a>
             <Link
               to="/contact"

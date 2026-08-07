@@ -277,7 +277,7 @@ function RingSizePage() {
               rel="noreferrer"
               className="inline-flex items-center gap-3 bg-ivory px-9 py-4 text-[11px] tracking-[0.4em] uppercase text-obsidian hover:bg-gold transition"
             >
-              Concierge Assistance <ArrowRight className="h-4 w-4" strokeWidth={1.4} />
+              Direct Assistance <ArrowRight className="h-4 w-4" strokeWidth={1.4} />
             </a>
             <Link
               to="/contact"

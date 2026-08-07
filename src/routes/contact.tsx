@@ -27,7 +27,7 @@ function ContactPage() {
             at your convenience.
           </h1>
           <p className="mt-8 max-w-xl text-[15px] leading-[1.8] text-ivory/95 font-medium">
-            Our concierge is available worldwide. Every enquiry receives a personal reply, typically within a few hours.
+            Our atelier is available worldwide. Every enquiry receives a personal reply, typically within a few hours.
           </p>
         </Reveal>
       </section>
@@ -42,7 +42,7 @@ function ContactPage() {
             <InfoRow n="02" icon={Mail} title="Email" body="orivajewelshk@gmail.com" href="mailto:orivajewelshk@gmail.com" />
           </Reveal>
           <Reveal delay={140}>
-            <InfoRow n="03" icon={Calendar} title="Concierge Availability" body={"Virtually available worldwide\nClient assistance 24×7"} />
+            <InfoRow n="03" icon={Calendar} title="Availability" body={"Virtually available worldwide\nDirect assistance 24×7"} />
           </Reveal>
           <Reveal delay={200}>
             <InfoRow n="04" icon={Instagram} title="Instagram" body="Oriva__jewels" href="https://www.instagram.com/oriva__jewels" />
