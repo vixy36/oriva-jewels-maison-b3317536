@@ -287,10 +287,6 @@ function HomePage() {
               The diamond guide
             </Link>
           </Reveal>
-            <Link to="/education" className="hidden md:inline-flex items-center gap-2 text-[14px] tracking-[0.4em] uppercase text-gold border-b border-gold/50 pb-1 hover:text-ivory hover:border-ivory transition">
-              The diamond guide <ArrowUpRight className="h-3.5 w-3.5" />
-            </Link>
-          </Reveal>
 
           <div className="mt-8 grid grid-cols-3 gap-3 md:grid-cols-6 md:gap-4 max-w-[1100px] mx-auto">
             {[
