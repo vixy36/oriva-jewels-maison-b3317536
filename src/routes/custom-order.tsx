@@ -129,7 +129,7 @@ function CustomOrderPage() {
       return;
     }
     const url = buildWhatsAppLink(buildMessage());
-    window.open(url, "_blank", "noopener,noreferrer");
+    window.location.href = url;
   };
 
   return (

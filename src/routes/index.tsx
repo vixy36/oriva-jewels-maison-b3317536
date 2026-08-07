@@ -740,7 +740,7 @@ function EngagementRingsSection() {
       `Stone Size: ${form.stoneSize}\n` +
       `Notes: ${form.notes || "-"}\n\n` +
       `(I will attach reference photos in this chat.)`;
-    window.open(buildWhatsAppLink(msg), "_blank");
+    window.location.href = buildWhatsAppLink(msg);
   };
 
   const fieldCls =

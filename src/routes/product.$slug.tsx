@@ -493,7 +493,7 @@ function ProductPage() {
                       metadata: { productName: product.name, category: product.category },
                     });
                   } catch {}
-                  window.open(buildWhatsAppLink(message), "_blank", "noopener");
+                  window.location.href = buildWhatsAppLink(message);
                 }}
                 className="mt-5 flex w-full items-center justify-center gap-3 bg-gold text-obsidian py-5 text-[14px] font-semibold tracking-[0.4em] uppercase hover:bg-gold-deep hover:text-ivory transition group cursor-pointer"
               >
