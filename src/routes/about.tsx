@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import atelier from "@/assets/about-atelier.jpg";
 import modernLux from "@/assets/insta-6.jpg";
 import insta5 from "@/assets/insta-5.jpg";
+import insta2 from "@/assets/insta-2.jpg";
 import bridal from "@/assets/collection-bridal.jpg";
 import editorial from "@/assets/editorial-emerald.jpg";
 import { Reveal } from "@/components/site/Reveal";
@@ -45,7 +46,7 @@ function AboutPage() {
       </section>
 
       {/* Philosophy Section - Split with Image */}
-      <section className="py-32 md:py-48">
+      <section className="py-24 md:py-32">
         <div className="mx-auto max-w-[1500px] px-6 md:px-16 grid gap-20 md:grid-cols-2 items-center">
           <Reveal>
             <div className="relative">
@@ -86,7 +87,7 @@ function AboutPage() {
       </section>
 
       {/* Craftsmanship - Full width immersive */}
-      <section className="relative bg-obsidian text-ivory py-32 md:py-56 overflow-hidden" data-surface="dark">
+      <section className="relative bg-obsidian text-ivory py-24 md:py-40 overflow-hidden" data-surface="dark">
         <div className="absolute inset-0 opacity-20 pointer-events-none">
           <div className="absolute top-0 right-0 w-[50%] h-full bg-gradient-to-l from-gold/20 to-transparent" />
         </div>
@@ -94,8 +95,8 @@ function AboutPage() {
         <div className="relative mx-auto max-w-[1500px] px-6 md:px-16 text-center">
           <Reveal>
             <span className="eyebrow">Craftsmanship</span>
-            <h2 className="mt-8 font-serif text-6xl md:text-[8rem] leading-[0.9]">
-              The <em className="text-gold-gradient italic">Atelier</em> Spirit
+            <h2 className="mt-8 font-serif text-6xl md:text-[8rem] leading-[0.9] text-ivory">
+              The <em className="text-gold-gradient italic drop-shadow-sm">Atelier</em> Spirit
             </h2>
           </Reveal>
           
@@ -111,7 +112,7 @@ function AboutPage() {
                 icon: Shield, 
                 title: "Master Settings", 
                 desc: "Our artisans use traditional techniques combined with cutting-edge technology.",
-                img: editorial
+                img: insta2
               },
               { 
                 icon: Heart, 
@@ -128,8 +129,8 @@ function AboutPage() {
                 <div className="flex justify-center mb-6">
                   <item.icon className="w-8 h-8 text-gold" strokeWidth={1} />
                 </div>
-                <h3 className="font-serif text-3xl mb-4">{item.title}</h3>
-                <p className="text-ivory/60 text-[15px] max-w-[280px] mx-auto leading-relaxed">{item.desc}</p>
+                <h3 className="font-serif text-3xl mb-4 text-ivory">{item.title}</h3>
+                <p className="text-ivory/90 text-[15px] max-w-[280px] mx-auto leading-relaxed font-medium">{item.desc}</p>
               </Reveal>
             ))}
           </div>
@@ -137,7 +138,7 @@ function AboutPage() {
       </section>
 
       {/* The Journey Section */}
-      <section className="py-32 md:py-48 bg-ink">
+      <section className="py-24 md:py-32 bg-ink">
         <div className="mx-auto max-w-4xl px-6 text-center">
           <Reveal>
             <span className="eyebrow">The Journey</span>
@@ -175,22 +176,22 @@ function AboutPage() {
         </div>
         
         <Reveal className="relative z-20 text-center px-6">
-          <h2 className="font-serif text-5xl md:text-8xl leading-none">
-            Join the <em className="text-gold-gradient italic">Conversation.</em>
+          <h2 className="font-serif text-5xl md:text-8xl leading-none text-ivory">
+            Join the <em className="text-gold-gradient italic drop-shadow-sm">Conversation.</em>
           </h2>
-          <p className="mt-8 mx-auto max-w-lg text-ivory/70 text-[16px] leading-relaxed">
+          <p className="mt-8 mx-auto max-w-lg text-ivory/95 text-[16px] leading-relaxed font-medium drop-shadow-sm">
             Discover the world of Oriva Jewels through a private consultation or by exploring our collection.
           </p>
           <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6">
             <Link
               to="/collections/engagement-rings"
-              className="bg-gold text-obsidian px-12 py-5 text-[12px] tracking-[0.4em] uppercase hover:bg-ivory transition-all duration-300 w-full sm:w-auto"
+              className="bg-gold text-obsidian px-12 py-5 text-[12px] tracking-[0.4em] uppercase hover:bg-ivory transition-all duration-300 w-full sm:w-auto font-bold"
             >
               Explore Collection
             </Link>
             <Link
               to="/contact"
-              className="border border-ivory/20 px-12 py-5 text-[12px] tracking-[0.4em] uppercase hover:border-gold hover:text-gold transition-all duration-300 w-full sm:w-auto flex items-center justify-center gap-3"
+              className="border border-ivory/40 bg-obsidian/20 backdrop-blur-sm px-12 py-5 text-[12px] tracking-[0.4em] uppercase text-ivory hover:border-gold hover:text-gold transition-all duration-300 w-full sm:w-auto flex items-center justify-center gap-3 font-bold"
             >
               Contact Us
               <ArrowRight className="w-4 h-4" />
