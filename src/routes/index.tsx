@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, useMemo } from "react";
-
-import { ArrowRight, ArrowUpRight, MessageCircle, Paperclip, Sparkles } from "lucide-react";
+import { ArrowRight, ArrowUpRight, MessageCircle, Paperclip, Sparkles, ChevronDown, ChevronUp } from "lucide-react";
 import { GsapReveal } from "@/components/site/GsapReveal";
 import { Sparkles as GsapSparkles } from "@/components/site/Sparkles";
 
@@ -93,6 +92,8 @@ const instagramReels = [
 ];
 
 function HomePage() {
+  const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
+
   const selectedSix = useMemo(() => products.slice(0, 8), []);
   
   return (
@@ -727,19 +728,33 @@ function EngagementRingsSection() {
 
       {/* Enquiry Form - Full Width */}
       <Reveal delay={80} className="relative mx-auto max-w-[1240px] px-6 md:px-16 mt-16 md:mt-20">
-        <div className="border border-white/10 bg-black/30 p-6 md:p-10">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+        <div className="border border-white/10 bg-black/30 overflow-hidden">
+          <button
+            type="button"
+            onClick={() => setIsEnquiryOpen(!isEnquiryOpen)}
+            className="flex w-full items-center justify-between p-6 md:p-10 text-left"
+          >
             <div>
               <p className="eyebrow">- Enquiry Form</p>
               <h3 className="mt-3 font-serif text-2xl md:text-3xl text-ivory">
                 Begin your <em className="text-gold-gradient">commission.</em>
               </h3>
             </div>
-            <div className="flex items-center gap-2 text-[12px] text-ivory/60">
-              <Paperclip className="h-3.5 w-3.5 text-gold" strokeWidth={1.4} />
-              Attach reference photos directly in the WhatsApp chat.
+            <div className="flex items-center gap-4">
+              <div className="hidden md:flex items-center gap-2 text-[12px] text-ivory/60">
+                <Paperclip className="h-3.5 w-3.5 text-gold" strokeWidth={1.4} />
+                Attach reference photos in WhatsApp.
+              </div>
+              {isEnquiryOpen ? (
+                <ChevronUp className="h-6 w-6 text-gold" />
+              ) : (
+                <ChevronDown className="h-6 w-6 text-gold" />
+              )}
             </div>
-          </div>
+          </button>
+
+          {isEnquiryOpen && (
+            <div className="px-6 pb-6 md:px-10 md:pb-10">
 
           <div className="mt-8 grid gap-5 md:grid-cols-3">
             <div>
@@ -824,7 +839,8 @@ function EngagementRingsSection() {
                 className={fieldCls}
               />
             </div>
-          </div>
+          )}
+        </div>
 
           <button
             type="button"
