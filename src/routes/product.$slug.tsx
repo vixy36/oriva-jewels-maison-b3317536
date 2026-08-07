@@ -82,6 +82,8 @@ function ProductPage() {
 
 
   const [diamondType, setDiamondType] = useState(product.diamondTypes[0]);
+  const [diamondClarity, setDiamondClarity] = useState("VVS1");
+  const [diamondColour, setDiamondColour] = useState("D");
   const [karat, setKarat] = useState<"18K" | "14K" | "9K">("18K");
   const [goldColor, setGoldColor] = useState<"White" | "Yellow" | "Rose">(
     product.metal.includes("Yellow") ? "Yellow" : product.metal.includes("Rose") ? "Rose" : "White",
@@ -133,7 +135,7 @@ function ProductPage() {
     if (currentVariant) lines.push(`Option: ${currentVariant.label}`);
     if (priceLabel) lines.push(`Price: ${priceLabel}${mrpLabel ? ` (MRP ${mrpLabel})` : ""}`);
     lines.push(
-      `Diamond Type: ${diamondType}`,
+      `Diamond: ${diamondType} (${diamondColour} / ${diamondClarity})`,
       `Metal: ${karat} ${goldColor} Gold`,
       `Centre Stone: ${caratSize.toFixed(2)} ct`,
     );
@@ -372,6 +374,18 @@ function ProductPage() {
                   onChange={(v) => setDiamondType(v as typeof diamondType)}
                 />
                 <PillGroup
+                  label="Diamond Clarity"
+                  value={diamondClarity}
+                  options={["VVS1", "VVS2", "VS1", "VS2"]}
+                  onChange={setDiamondClarity}
+                />
+                <PillGroup
+                  label="Diamond Colour"
+                  value={diamondColour}
+                  options={["D", "E", "F", "G", "H"]}
+                  onChange={setDiamondColour}
+                />
+                <PillGroup
                   label="Gold Karat"
                   value={karat}
                   options={["18K", "14K", "9K"]}
@@ -446,7 +460,7 @@ function ProductPage() {
               <div className="mt-10 border border-white/10 bg-charcoal/50 p-6">
                 <p className="text-[14px] tracking-[0.42em] uppercase text-gold">Your Configuration</p>
                 <dl className="mt-5 grid grid-cols-2 gap-x-6 gap-y-2.5 text-sm">
-                  <dt className="text-ivory/80">Diamond</dt><dd className="text-ivory">{diamondType}</dd>
+                  <dt className="text-ivory/80">Diamond</dt><dd className="text-ivory">{diamondType} ({diamondColour} / {diamondClarity})</dd>
                   <dt className="text-ivory/80">Metal</dt><dd className="text-ivory">{karat} {goldColor} Gold</dd>
                   <dt className="text-ivory/80">Centre Stone</dt><dd className="text-ivory">{caratSize.toFixed(2)} ct</dd>
                   {product.sizes && (<><dt className="text-ivory/80">Size</dt><dd className="text-ivory">{size}</dd></>)}

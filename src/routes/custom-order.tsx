@@ -34,7 +34,8 @@ type FormState = {
   size: string;
   metal: string;
   diamondType: string;
-  diamondQuality: string;
+  diamondClarity: string;
+  diamondColour: string;
   caratRange: string;
   metalColor: string;
   referenceLink: string;
@@ -55,7 +56,8 @@ const initial: FormState = {
   size: "",
   metal: "",
   diamondType: "",
-  diamondQuality: "",
+  diamondClarity: "",
+  diamondColour: "",
   caratRange: "",
   metalColor: "",
   referenceLink: "",
@@ -70,7 +72,8 @@ const typeOptions = ["Engagement Ring", "Wedding Band", "Earrings", "Pendant", "
 const metalOptions = ["9K", "14K", "18K"];
 const metalColorOptions = ["White Gold", "Yellow Gold", "Rose Gold", "Two-tone"];
 const diamondTypeOptions = ["Natural Diamond", "Lab Grown Diamond", "Advise Me"];
-const qualityOptions = ["F / VVS", "F / VS", "G / VS", "H / SI", "Advise Me"];
+const clarityOptions = ["VVS1", "VVS2", "VS1", "VS2"];
+const colourOptions = ["D", "E", "F", "G", "H"];
 const caratOptions = ["Under 0.50 ct", "0.50 - 1.00 ct", "1.00 - 2.00 ct", "2.00 - 3.00 ct", "3.00 - 5.00 ct", "5.00 ct +"];
 const budgetOptions = ["Under USD 2,000", "USD 2,000 - 5,000", "USD 5,000 - 10,000", "USD 10,000 - 25,000", "USD 25,000 +", "Flexible"];
 
@@ -100,7 +103,8 @@ function CustomOrderPage() {
       f.size ? `Size: ${f.size}` : null,
       `Metal: ${f.metal} · ${f.metalColor}`,
       f.diamondType ? `Diamond: ${f.diamondType}` : null,
-      f.diamondQuality ? `Quality: ${f.diamondQuality}` : null,
+      f.diamondClarity ? `Clarity: ${f.diamondClarity}` : null,
+      f.diamondColour ? `Colour: ${f.diamondColour}` : null,
       f.caratRange ? `Carat range: ${f.caratRange}` : null,
       `Quantity: ${f.quantity || "1"}`,
       f.targetDate ? `Target date: ${f.targetDate}` : null,
@@ -203,8 +207,11 @@ function CustomOrderPage() {
               <Field label="Diamond type">
                 <Select value={f.diamondType} onChange={(v) => set("diamondType", v)} options={diamondTypeOptions} placeholder="Natural or Lab" />
               </Field>
-              <Field label="Diamond quality">
-                <Select value={f.diamondQuality} onChange={(v) => set("diamondQuality", v)} options={qualityOptions} placeholder="Colour / clarity" />
+              <Field label="Diamond clarity">
+                <Select value={f.diamondClarity} onChange={(v) => set("diamondClarity", v)} options={clarityOptions} placeholder="Select clarity" />
+              </Field>
+              <Field label="Diamond colour">
+                <Select value={f.diamondColour} onChange={(v) => set("diamondColour", v)} options={colourOptions} placeholder="Select colour" />
               </Field>
               <Field label="Centre stone size">
                 <Select value={f.caratRange} onChange={(v) => set("caratRange", v)} options={caratOptions} placeholder="Approx. carat" />
