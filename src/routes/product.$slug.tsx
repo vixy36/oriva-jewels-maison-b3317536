@@ -82,6 +82,7 @@ function ProductPage() {
 
 
   const [diamondType, setDiamondType] = useState(product.diamondTypes[0]);
+  const [diamondShape, setDiamondShape] = useState("Round");
   const [diamondClarity, setDiamondClarity] = useState("VVS1");
   const [diamondColour, setDiamondColour] = useState("D");
   const [karat, setKarat] = useState<"18K" | "14K" | "9K">("18K");
@@ -89,7 +90,7 @@ function ProductPage() {
     product.metal.includes("Yellow") ? "Yellow" : product.metal.includes("Rose") ? "Rose" : "White",
   );
   const [size, setSize] = useState(product.sizes?.[2] ?? "");
-  const [caratSize, setCaratSize] = useState<number>(1.00);
+  const [caratSize, setCaratSize] = useState<number | string>(1.00);
   const [backing, setBacking] = useState(product.backings?.[0] ?? "");
   const [length, setLength] = useState(product.lengths?.[1] ?? "");
   const [specialReq, setSpecialReq] = useState("");
@@ -135,9 +136,9 @@ function ProductPage() {
     if (currentVariant) lines.push(`Option: ${currentVariant.label}`);
     if (priceLabel) lines.push(`Price: ${priceLabel}${mrpLabel ? ` (MRP ${mrpLabel})` : ""}`);
     lines.push(
-      `Diamond: ${diamondType} (${diamondColour} / ${diamondClarity})`,
+      `Diamond: ${diamondType} ${diamondType === "Lab Grown" ? diamondShape : ""} (${diamondColour} / ${diamondClarity})`,
       `Metal: ${karat} ${goldColor} Gold`,
-      `Centre Stone: ${caratSize.toFixed(2)} ct`,
+      `Centre Stone: ${caratSize} ct`,
     );
     if (isRing || product.sizes) lines.push(`Ring Size: ${size || "—"}`);
     if (product.backings) lines.push(`Backing: ${backing}`);
@@ -373,6 +374,51 @@ function ProductPage() {
                   options={product.diamondTypes}
                   onChange={(v) => setDiamondType(v as typeof diamondType)}
                 />
+                {diamondType === "Lab Grown" && (
+                  <div>
+                    <p className="text-[14px] font-bold tracking-[0.42em] uppercase text-gold">Diamond Shape</p>
+                    <div className="mt-4 grid grid-cols-2 sm:grid-cols-5 gap-3">
+                      {[
+                        "Round",
+                        "Princess",
+                        "Oval",
+                        "Emerald",
+                        "Pear",
+                        "Cushion",
+                        "Marquise",
+                        "Radiant",
+                        "Asscher",
+                        "Heart",
+                      ].map((shape) => (
+                        <button
+                          key={shape}
+                          type="button"
+                          onClick={() => setDiamondShape(shape)}
+                          className={`group relative flex flex-col items-center justify-center border p-3 transition-all duration-300 ${
+                            diamondShape === shape
+                              ? "border-gold bg-gold/10"
+                              : "border-white/10 bg-charcoal/40 hover:border-gold/50"
+                          }`}
+                        >
+                          <div className={`mb-2 flex h-12 w-12 items-center justify-center rounded-sm bg-white/5 p-1 transition-colors ${diamondShape === shape ? "bg-white/10" : "group-hover:bg-white/10"}`}>
+                            <img 
+                              src={`https://vrai.imgix.net/images/diamond-shapes/${shape.toLowerCase()}.png?auto=format,compress&q=80&w=128`} 
+                              alt={shape}
+                              className={`h-full w-full object-contain filter invert opacity-90 transition-opacity ${diamondShape === shape ? "opacity-100" : "group-hover:opacity-100"}`}
+                              onError={(e) => {
+                                (e.target as HTMLImageElement).style.display = 'none';
+                                (e.target as HTMLImageElement).parentElement!.innerHTML = `<span class="text-[8px] text-ivory/40 uppercase">${shape}</span>`;
+                              }}
+                            />
+                          </div>
+                          <span className={`text-[10px] font-bold tracking-[0.1em] uppercase transition-colors ${diamondShape === shape ? "text-gold" : "text-ivory/80 group-hover:text-gold"}`}>
+                            {shape}
+                          </span>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
                 <PillGroup
                   label="Diamond Clarity"
                   value={diamondClarity}
@@ -401,23 +447,19 @@ function ProductPage() {
                 <div>
                   <div className="flex items-baseline justify-between">
                     <p className="text-[14px] tracking-[0.42em] uppercase text-gold">Centre Stone Size</p>
-                    <p className="font-serif text-2xl text-ivory">{caratSize.toFixed(2)} <span className="text-[12px] uppercase tracking-widest text-gold font-sans ml-1">ct</span></p>
-                  </div>
-                  <div className="mt-6">
-                    <input
-                      type="range"
-                      min="0.20"
-                      max="10.00"
-                      step="0.05"
-                      value={caratSize}
-                      onChange={(e) => setCaratSize(parseFloat(e.target.value))}
-                      className="h-1.5 w-full cursor-pointer appearance-none rounded-full bg-charcoal ring-1 ring-white/10 accent-gold [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-gold [&::-webkit-slider-thumb]:shadow-[0_0_10px_rgba(212,175,55,0.4)]"
-                    />
-                    <div className="mt-3 flex justify-between text-[10px] tracking-[0.3em] uppercase text-ivory/40 font-bold">
-                      <span>0.20 ct</span>
-                      <span>10.00 ct</span>
+                    <div className="flex items-center gap-2">
+                      <input
+                        type="number"
+                        step="0.01"
+                        min="0.05"
+                        value={caratSize}
+                        onChange={(e) => setCaratSize(parseFloat(e.target.value) || 0)}
+                        className="w-20 border-b border-gold bg-transparent py-1 text-right font-serif text-2xl text-ivory outline-none focus:border-white transition"
+                      />
+                      <span className="text-[12px] uppercase tracking-widest text-gold font-sans">ct</span>
                     </div>
                   </div>
+                  <p className="mt-2 text-[11px] tracking-[0.06em] text-ivory/40">Enter preferred carat weight manually.</p>
                 </div>
 
                 {isRing && (
@@ -460,9 +502,9 @@ function ProductPage() {
               <div className="mt-10 border border-white/10 bg-charcoal/50 p-6">
                 <p className="text-[14px] tracking-[0.42em] uppercase text-gold">Your Configuration</p>
                 <dl className="mt-5 grid grid-cols-2 gap-x-6 gap-y-2.5 text-sm">
-                  <dt className="text-ivory/80">Diamond</dt><dd className="text-ivory">{diamondType} ({diamondColour} / {diamondClarity})</dd>
+                  <dt className="text-ivory/80">Diamond</dt><dd className="text-ivory">{diamondType} {diamondType === "Lab Grown" ? diamondShape : ""} ({diamondColour} / {diamondClarity})</dd>
                   <dt className="text-ivory/80">Metal</dt><dd className="text-ivory">{karat} {goldColor} Gold</dd>
-                  <dt className="text-ivory/80">Centre Stone</dt><dd className="text-ivory">{caratSize.toFixed(2)} ct</dd>
+                  <dt className="text-ivory/80">Centre Stone</dt><dd className="text-ivory">{caratSize} ct</dd>
                   {product.sizes && (<><dt className="text-ivory/80">Size</dt><dd className="text-ivory">{size}</dd></>)}
                   {isRing && !product.sizes && size && (<><dt className="text-ivory/80">Ring Size</dt><dd className="text-ivory">{size}</dd></>)}
                   {product.backings && (<><dt className="text-ivory/80">Backing</dt><dd className="text-ivory">{backing}</dd></>)}
