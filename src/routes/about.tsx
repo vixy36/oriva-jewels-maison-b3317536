@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import atelier from "@/assets/about-atelier.jpg";
+import modernLux from "@/assets/insta-6.jpg";
 import editorial from "@/assets/editorial-emerald.jpg";
 import insta5 from "@/assets/insta-5.jpg";
 import bridal from "@/assets/collection-bridal.jpg";
@@ -57,7 +58,7 @@ function AboutPage() {
           title: "Refined,",
           titleAccent: "never showy.",
           body: "We believe luxury is a whisper. Our pieces are designed to feel personal - quiet from a distance, extraordinary up close. Nothing is added for effect; nothing is spared for craft.",
-          img: editorial,
+          img: modernLux,
         },
         {
           n: "II",

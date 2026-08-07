@@ -421,8 +421,8 @@ function HomePage() {
                 ["30d", "Bespoke lead time"],
               ].map(([k, v]) => (
                 <div key={k}>
-                  <p className="font-serif text-3xl md:text-4xl text-gold-gradient">{k}</p>
-                  <p className="mt-2 text-[14px] tracking-[0.32em] uppercase text-ivory/50">{v}</p>
+                  <p className="font-sans text-3xl md:text-4xl font-bold text-gold-gradient">{k}</p>
+                  <p className="mt-2 text-[10px] md:text-[11px] tracking-[0.32em] uppercase text-ivory/50 font-sans">{v}</p>
                 </div>
               ))}
             </div>
