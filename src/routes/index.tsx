@@ -292,7 +292,7 @@ function HomePage() {
             </Link>
           </Reveal>
 
-          <div className="mt-8 grid grid-cols-3 gap-3 md:grid-cols-6 md:gap-4 max-w-[1100px] mx-auto">
+          <div className="mt-8 grid grid-cols-3 gap-6 md:grid-cols-6 md:gap-8 max-w-[1000px] mx-auto">
             {[
               { key: "marquise", label: "Marquise", img: heroImg },
               { key: "oval", label: "Oval", img: engagementImg },
@@ -302,11 +302,11 @@ function HomePage() {
               { key: "round", label: "Round", img: braceletsImg },
             ].map((s, i) => (
               <Reveal key={s.key} delay={i * 60}>
-                <Link to="/shape/$shape" params={{ shape: s.key }} className="group block text-center">
-                  <div className="relative aspect-square overflow-hidden bg-muted mb-4">
-                    <img src={s.img} alt={s.label} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <Link to="/shape/$shape" params={{ shape: s.key }} className="group block text-center max-w-[100px] mx-auto">
+                  <div className="relative aspect-square overflow-hidden bg-muted mb-4 rounded-full border border-ivory/10 group-hover:border-gold transition-colors">
+                    <img src={s.img} alt={s.label} loading="lazy" className="absolute inset-0 h-full w-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-110" />
                   </div>
-                  <h3 className="font-serif text-lg text-obsidian uppercase tracking-wider">{s.label}</h3>
+                  <h3 className="font-serif text-[12px] text-obsidian uppercase tracking-[0.2em]">{s.label}</h3>
                 </Link>
               </Reveal>
             ))}
