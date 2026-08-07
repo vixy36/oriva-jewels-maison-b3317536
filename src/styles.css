@@ -55,7 +55,14 @@
   --font-serif: "Cormorant Garamond", "Playfair Display", ui-serif, Georgia, serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
-}
+  @utility hide-scrollbar {
+33:     -ms-overflow-style: none;
+34:     scrollbar-width: none;
+35:     &::-webkit-scrollbar {
+36:       display: none;
+37:     }
+38:   }
+39: }
 
 :root {
   --radius: 0px;
