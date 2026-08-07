@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import atelier from "@/assets/about-atelier.jpg";
-import editorial from "@/assets/editorial-emerald.jpg";
+import editorial from "@/assets/engagement-model.jpg";
 import { Reveal } from "@/components/site/Reveal";
 import { buildWhatsAppLink } from "@/lib/products";
 
