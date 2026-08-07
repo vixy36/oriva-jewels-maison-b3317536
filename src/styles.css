@@ -7,7 +7,7 @@
 /*
  * ORIVA JEWELS - Noir & Gold
  * A dark editorial fine jewellery house.
- * Cormorant Garamond (display) × Karla (body).
+ * Cormorant Garamond (display) × Inter (body).
  */
 
 @theme {
@@ -53,7 +53,7 @@
   --color-diamond: var(--diamond);
 
   --font-serif: "Cormorant Garamond", "Playfair Display", ui-serif, Georgia, serif;
-  --font-sans: "Karla", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 }
 
@@ -148,13 +148,13 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
-    font-weight: 600;
+    font-weight: 400;
     letter-spacing: 0.005em;
     font-feature-settings: "ss01", "kern";
   }
 
   p, li, dd, dt, blockquote, figcaption {
-    font-weight: 600;
+    font-weight: 400;
   }
 
   h1, h2, h3, h4, h5 {
