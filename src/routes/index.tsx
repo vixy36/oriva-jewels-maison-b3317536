@@ -511,8 +511,8 @@ function HomePage() {
             </p>
           </Reveal>
 
-          <Reveal delay={120} className="md:col-span-8">
-            <div className="divide-y divide-white/10 border-y border-white/10">
+          <Reveal delay={120} className="lg:col-span-8">
+            <div className="divide-y divide-ivory/10 border-y border-ivory/10">
               {[
                 {
                   q: "Do you offer lab grown and natural diamonds?",
