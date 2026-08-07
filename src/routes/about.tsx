@@ -46,7 +46,7 @@ function AboutPage() {
       </section>
 
       {/* Philosophy Section - Split with Image */}
-      <section className="py-24 md:py-32 bg-ink">
+      <section className="py-24 md:py-32 bg-obsidian">
         <div className="mx-auto max-w-[1500px] px-6 md:px-16 grid gap-20 md:grid-cols-2 items-center">
           <Reveal>
             <div className="relative">
