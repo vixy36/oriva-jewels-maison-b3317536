@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/site/Reveal";
 import labgrownImg from "@/assets/collection-labgrown.jpg";
 import naturalImg from "@/assets/collection-engagement.jpg";
+import heroMarquise from "@/assets/hero-marquise.jpg";
 
 export const Route = createFileRoute("/diamonds")({
   head: () => ({
@@ -31,7 +32,7 @@ function DiamondsPage() {
       <section className="relative overflow-hidden min-h-[70vh] flex items-center justify-center text-center px-6 py-20 mb-12 md:mb-16">
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&q=90&w=2400" 
+            src={heroMarquise} 
             alt="Diamonds background" 
             className="w-full h-full object-cover"
           />
