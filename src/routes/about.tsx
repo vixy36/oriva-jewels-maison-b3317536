@@ -64,12 +64,12 @@ function AboutPage() {
                 <div>
                   <span className="font-serif text-3xl text-gold italic">01.</span>
                   <p className="mt-4 font-sans text-[13px] tracking-widest uppercase text-gold font-bold">Transparency</p>
-                  <p className="mt-2 text-[15px] text-white font-medium leading-relaxed">From mine to finger, we own every step of the journey.</p>
+                  <p className="mt-2 text-[15px] text-white font-medium leading-relaxed drop-shadow-sm">From mine to finger, we own every step of the journey.</p>
                 </div>
                 <div>
                   <span className="font-serif text-3xl text-gold italic">02.</span>
                   <p className="mt-4 font-sans text-[13px] tracking-widest uppercase text-gold font-bold">Legacy</p>
-                  <p className="mt-2 text-[15px] text-white font-medium leading-relaxed">Designs that transcend trends, meant to be passed down.</p>
+                  <p className="mt-2 text-[15px] text-white font-medium leading-relaxed drop-shadow-sm">Designs that transcend trends, meant to be passed down.</p>
                 </div>
               </div>
             </div>
