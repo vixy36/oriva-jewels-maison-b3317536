@@ -29,19 +29,11 @@ export const Route = createFileRoute("/diamonds")({
 function DiamondsPage() {
   return (
     <div className="pt-24 md:pt-28">
-      <section className="relative overflow-hidden min-h-[70vh] flex items-center justify-center text-center px-6 py-20 mb-12 md:mb-16">
-        <div className="absolute inset-0 z-0">
-          <img 
-            src={heroMarquise} 
-            alt="Diamonds background" 
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-obsidian/40" />
-        </div>
+      <section className="bg-obsidian pt-32 pb-12 md:pt-40 md:pb-16 text-center px-6 mb-12 md:mb-16 border-b border-ivory/5">
         
         <Reveal className="relative z-10 mx-auto max-w-[1400px]">
           <p className="eyebrow text-ivory/80">The Stone</p>
-          <h1 className="mt-4 font-serif text-5xl md:text-7xl leading-[1.05] text-white drop-shadow-2xl">
+          <h1 className="mt-4 font-serif text-5xl md:text-7xl leading-[1.05] text-white">
             Diamonds, considered.
           </h1>
           <p className="mt-6 mx-auto max-w-2xl text-[16px] md:text-lg text-ivory leading-relaxed font-medium">
