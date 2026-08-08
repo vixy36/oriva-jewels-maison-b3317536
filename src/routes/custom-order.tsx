@@ -429,11 +429,11 @@ function Select({
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className={`${inputCls} appearance-none pr-8 cursor-pointer`}
+        className={`${inputCls} appearance-none pr-8 cursor-pointer [&>option]:text-black`}
       >
-        <option value="">{placeholder}</option>
+        <option value="" className="text-black">{placeholder}</option>
         {options.map((o) => (
-          <option key={o} value={o}>
+          <option key={o} value={o} className="text-black">
             {o}
           </option>
         ))}
