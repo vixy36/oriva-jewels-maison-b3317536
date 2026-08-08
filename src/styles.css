@@ -153,6 +153,20 @@
     font-feature-settings: "ss01", "kern";
   }
 
+  /* Fix for buttons where text blends on hover */
+  button:hover {
+    color: inherit;
+  }
+  
+  /* If a button has bg-ivory or similar, ensure text stays obsidian on hover */
+  .bg-ivory:hover {
+    color: var(--color-obsidian) !important;
+  }
+  
+  .bg-gold:hover {
+    color: var(--color-obsidian) !important;
+  }
+
   p, li, dd, dt, blockquote, figcaption {
     font-weight: 400;
   }

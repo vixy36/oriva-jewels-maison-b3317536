@@ -434,13 +434,13 @@ function ProductPage() {
                 <PillGroup
                   label="Diamond Clarity"
                   value={diamondClarity}
-                  options={["VVS1", "VVS2", "VS1", "VS2"]}
+                  options={["VVS1", "VVS2", "VS1", "VS2", "SI1", "SI2"]}
                   onChange={setDiamondClarity}
                 />
                 <PillGroup
                   label="Diamond Colour"
                   value={diamondColour}
-                  options={["D", "E", "F", "G", "H"]}
+                  options={["D", "E", "F", "G", "H", "I", "J", "K"]}
                   onChange={setDiamondColour}
                 />
                 <PillGroup
