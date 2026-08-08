@@ -76,13 +76,13 @@ function ContactPage() {
               <label className="text-[14px] tracking-[0.42em] uppercase text-gold">
                 Interest
               </label>
-              <select className="mt-3 w-full border-b border-white/15 bg-transparent py-2.5 text-sm text-ivory outline-none focus:border-gold transition [&>option]:bg-obsidian">
-                <option>Engagement Ring</option>
-                <option>Bridal / Wedding</option>
-                <option>Earrings</option>
-                <option>Bracelet</option>
-                <option>Pendant</option>
-                <option>Bespoke / Custom</option>
+              <select className="mt-3 w-full border-b border-white/15 bg-transparent py-2.5 text-sm text-ivory outline-none focus:border-gold transition [&>option]:bg-white [&>option]:text-black">
+                <option className="bg-white text-black">Engagement Ring</option>
+                <option className="bg-white text-black">Bridal / Wedding</option>
+                <option className="bg-white text-black">Earrings</option>
+                <option className="bg-white text-black">Bracelet</option>
+                <option className="bg-white text-black">Pendant</option>
+                <option className="bg-white text-black">Bespoke / Custom</option>
               </select>
             </div>
             <div>
