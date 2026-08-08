@@ -93,7 +93,9 @@ function CollectionPage() {
                 <FilterGroup title="Diamond" options={["Natural", "Lab Grown"]} />
                 <FilterGroup title="Shape" options={["Round", "Marquise", "Oval", "Pear", "Emerald", "Heart"]} />
                 <FilterGroup title="Metal" options={["White Gold", "Yellow Gold", "Rose Gold"]} />
-                <FilterGroup title="Style" options={["Solitaire", "Halo", "Three Stone", "Pavé"]} />
+                {(category === "rings" || category === "engagement-rings" || category === "bridal") && (
+                  <FilterGroup title="Style" options={["SOLITAIRE", "HALO", "THREE STONE", "PAVE"]} />
+                )}
               </div>
             </details>
 
@@ -102,7 +104,9 @@ function CollectionPage() {
               <FilterGroup title="Diamond" options={["Natural", "Lab Grown"]} />
               <FilterGroup title="Shape" options={["Round", "Marquise", "Oval", "Pear", "Emerald", "Heart"]} />
               <FilterGroup title="Metal" options={["White Gold", "Yellow Gold", "Rose Gold"]} />
-              <FilterGroup title="Style" options={["Solitaire", "Halo", "Three Stone", "Pavé"]} />
+              {(category === "rings" || category === "engagement-rings" || category === "bridal") && (
+                <FilterGroup title="Style" options={["SOLITAIRE", "HALO", "THREE STONE", "PAVE"]} />
+              )}
             </div>
           </aside>
 

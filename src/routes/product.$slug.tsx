@@ -85,6 +85,7 @@ function ProductPage() {
   const [diamondShape, setDiamondShape] = useState("Round");
   const [diamondClarity, setDiamondClarity] = useState("VVS1");
   const [diamondColour, setDiamondColour] = useState("D");
+  const [diamondStyle, setDiamondStyle] = useState("SOLITAIRE");
   const [karat, setKarat] = useState<"18K" | "14K" | "9K">("18K");
   const [goldColor, setGoldColor] = useState<"White" | "Yellow" | "Rose">(
     product.metal.includes("Yellow") ? "Yellow" : product.metal.includes("Rose") ? "Rose" : "White",
@@ -139,6 +140,7 @@ function ProductPage() {
     if (priceLabel) lines.push(`Price: ${priceLabel}${mrpLabel ? ` (MRP ${mrpLabel})` : ""}`);
     lines.push(
       `Diamond: ${diamondType} ${diamondType === "Lab Grown" ? diamondShape : ""} (${diamondColour} / ${diamondClarity})`,
+      ...(isRing ? [`Style: ${diamondStyle}`] : []),
       `Metal: ${karat} ${goldColor} Gold`,
       `Centre Stone: ${caratSize} ct`,
     );
@@ -151,7 +153,7 @@ function ProductPage() {
       "Please share pricing and availability.",
     );
     return lines.join("\n");
-  }, [product, diamondType, karat, goldColor, caratSize, size, backing, length, specialReq, isRing, priceLabel, mrpLabel]);
+  }, [product, diamondType, diamondShape, diamondClarity, diamondColour, diamondStyle, karat, goldColor, caratSize, size, backing, length, specialReq, isRing, priceLabel, mrpLabel, currentVariant]);
 
   const related = products.filter((p) => p.slug !== product.slug).slice(0, 3);
 
@@ -376,6 +378,14 @@ function ProductPage() {
                   options={product.diamondTypes}
                   onChange={(v) => setDiamondType(v as typeof diamondType)}
                 />
+                {isRing && (
+                  <PillGroup
+                    label="Ring Style"
+                    value={diamondStyle}
+                    options={["SOLITAIRE", "HALO", "THREE STONE", "PAVE"]}
+                    onChange={setDiamondStyle}
+                  />
+                )}
                 {diamondType === "Lab Grown" && (
                   <div>
                     <p className="text-[14px] font-bold tracking-[0.42em] uppercase text-gold">Diamond Shape</p>
@@ -506,6 +516,7 @@ function ProductPage() {
                 <dl className="mt-5 grid grid-cols-2 gap-x-6 gap-y-2.5 text-sm">
                   <dt className="text-ivory/80">Diamond</dt><dd className="text-ivory">{diamondType} {diamondType === "Lab Grown" ? diamondShape : ""} ({diamondColour} / {diamondClarity})</dd>
                   <dt className="text-ivory/80">Metal</dt><dd className="text-ivory">{karat} {goldColor} Gold</dd>
+                  {isRing && (<><dt className="text-ivory/80">Style</dt><dd className="text-ivory">{diamondStyle}</dd></>)}
                   <dt className="text-ivory/80">Centre Stone</dt><dd className="text-ivory">{caratSize} ct</dd>
                   {product.sizes && (<><dt className="text-ivory/80">Size</dt><dd className="text-ivory">{size}</dd></>)}
                   {isRing && !product.sizes && size && (<><dt className="text-ivory/80">Ring Size</dt><dd className="text-ivory">{size}</dd></>)}
@@ -526,7 +537,7 @@ function ProductPage() {
                     type="button"
                     onClick={async () => {
                       const configuration = {
-                        diamondType, karat, goldColor, caratSize,
+                        diamondType, diamondStyle: isRing ? diamondStyle : undefined, karat, goldColor, caratSize,
                         size: (isRing || product.sizes) ? (size || undefined) : undefined,
                         backing: product.backings ? backing : undefined,
                         length: product.lengths ? length : undefined,
