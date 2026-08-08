@@ -13,7 +13,24 @@ function WhatsAppIcon({ className = "" }: { className?: string }) {
 export function SiteFooter() {
   return (
     <footer className="relative isolate overflow-hidden bg-obsidian text-ivory/85">
-...
+      <div
+        aria-hidden
+        className="absolute inset-0 opacity-40 pointer-events-none"
+        style={{
+          backgroundImage:
+            "radial-gradient(ellipse at 15% 0%, oklch(0.79 0.11 82 / 0.15), transparent 55%)",
+        }}
+      />
+
+      <div className="relative mx-auto max-w-[1600px] px-6 pt-8 pb-6 md:px-10 md:pt-10 md:pb-8">
+        <div className="grid gap-14 md:grid-cols-12">
+          <div className="md:col-span-4">
+            <p className="font-serif text-3xl tracking-[0.5em] text-ivory">ORIVA</p>
+            <p className="mt-1 font-sans text-[14px] tracking-[0.55em] text-gold">- JEWELS -</p>
+            <p className="mt-8 max-w-sm text-sm leading-relaxed text-ivory/60">
+              End-to-end manufacturers of natural and lab grown diamond jewellery. Designed with
+              quiet intention, finished by hand. Global support available.
+            </p>
             <div className="mt-10 flex gap-2">
               <SocialLink href={buildWhatsAppLink("Hello Oriva Jewels")} label="WhatsApp">
                 <WhatsAppIcon className="h-4 w-4" />
