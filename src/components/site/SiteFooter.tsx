@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Instagram, Mail, Phone } from "lucide-react";
+import { Instagram, Mail, MessageCircle } from "lucide-react";
 import { WHATSAPP_DISPLAY, buildWhatsAppLink } from "@/lib/products";
 
 export function SiteFooter() {
@@ -28,7 +28,7 @@ export function SiteFooter() {
             </p>
             <div className="mt-10 flex gap-2">
               <SocialLink href={buildWhatsAppLink("Hello Oriva Jewels")} label="WhatsApp">
-                <Phone className="h-4 w-4" strokeWidth={1.3} />
+                <MessageCircle className="h-4 w-4" strokeWidth={1.3} />
               </SocialLink>
               <SocialLink href="https://www.instagram.com/oriva__jewels" label="Instagram">
                 <Instagram className="h-4 w-4" strokeWidth={1.3} />
