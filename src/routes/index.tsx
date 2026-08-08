@@ -174,7 +174,7 @@ function HomePage() {
       </section>
 
       {/* MARQUEE */}
-      <div className="relative overflow-hidden border-y border-white/5 bg-obsidian py-3 md:py-4">
+      <div className="relative overflow-hidden border-y border-white/5 bg-obsidian py-1.5 md:py-2">
         <div className="animate-marquee flex gap-10 whitespace-nowrap">
           {Array.from({ length: 3 }).map((_, i) => (
             <div key={i} className="flex items-center gap-10">
