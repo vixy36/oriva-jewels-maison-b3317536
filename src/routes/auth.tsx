@@ -9,7 +9,7 @@ import { toast } from "sonner";
 export const Route = createFileRoute("/auth")({
   head: () => ({
     meta: [
-      { title: "Sign In — Oriva Jewels" },
+      { title: "Sign In - Oriva Jewels" },
       { name: "robots", content: "noindex,nofollow" },
     ],
   }),

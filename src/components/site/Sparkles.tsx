@@ -2,12 +2,12 @@ import { useEffect, useRef } from "react";
 import { ensureGsap } from "@/lib/gsap";
 
 /**
- * Sparkles — GSAP-driven luxury sparkle overlay for diamond imagery.
+ * Sparkles - GSAP-driven luxury sparkle overlay for diamond imagery.
  *
  * - Absolutely positioned; place inside a `relative` container (e.g. a product image).
  * - Each sparkle: opacity 0→1→0, scale 0.2→1.3→0.2, random 360° rotation, 0.6s.
  * - Fires at random 2–5s intervals; never repeats a previously used position.
- * - Very subtle — small (2–4px), luxury white/gold, blurred glow.
+ * - Very subtle - small (2–4px), luxury white/gold, blurred glow.
  */
 export function Sparkles({
   count = 5,
@@ -29,7 +29,7 @@ export function Sparkles({
     if (!nodes.length) return;
 
     const used: Array<{ x: number; y: number }> = [];
-    const minDist = 12; // percent — avoid repeating the same spot
+    const minDist = 12; // percent - avoid repeating the same spot
 
     const pickPosition = () => {
       for (let i = 0; i < 30; i++) {

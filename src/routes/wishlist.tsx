@@ -8,9 +8,9 @@ import { supabase } from "@/integrations/supabase/client";
 export const Route = createFileRoute("/wishlist")({
   head: () => ({
     meta: [
-      { title: "Wishlist — Oriva Jewels" },
-      { name: "description", content: "Your saved pieces from Oriva Jewels — reserve or enquire when you are ready." },
-      { property: "og:title", content: "Wishlist — Oriva Jewels" },
+      { title: "Wishlist - Oriva Jewels" },
+      { name: "description", content: "Your saved pieces from Oriva Jewels - reserve or enquire when you are ready." },
+      { property: "og:title", content: "Wishlist - Oriva Jewels" },
       { property: "og:description", content: "Your curated pieces from the Oriva atelier." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -46,7 +46,7 @@ async function fetchDbProductsBySlugs(slugs: string[]): Promise<Product[]> {
       image: imgs[0] || "",
       images: imgs,
       videoUrl: p.video_url ?? undefined,
-      shape: "—",
+      shape: "-",
       metal: "18K",
       diamondTypes,
       customizable: true,

@@ -191,7 +191,7 @@ function PopupsPage() {
                 <div className="flex-1 min-w-0">
                   <div className="text-sm font-medium truncate">{p.title || "(untitled)"}</div>
                   <div className="text-xs text-muted-foreground truncate">
-                    {p.size} · {p.frequency} · pages: {p.pages?.join(", ") || "—"}
+                    {p.size} · {p.frequency} · pages: {p.pages?.join(", ") || "-"}
                   </div>
                 </div>
                 <Switch checked={p.active} onCheckedChange={() => toggleActive(p)} />

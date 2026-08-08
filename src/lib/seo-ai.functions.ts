@@ -24,7 +24,7 @@ export const generateSeoMeta = createServerFn({ method: "POST" })
     const apiKey = process.env.LOVABLE_API_KEY;
     if (!apiKey) throw new Error("AI gateway not configured");
 
-    const prompt = `You are an SEO expert writing metadata for ORIVA JEWELS — a Hong Kong-based luxury fine jewellery maison specializing in Natural and Lab Grown Diamond jewellery.
+    const prompt = `You are an SEO expert writing metadata for ORIVA JEWELS - a Hong Kong-based luxury fine jewellery maison specializing in Natural and Lab Grown Diamond jewellery.
 
 Generate SEO metadata for the route path: "${data.route_path}"
 ${data.hint ? `\nAdditional context: ${data.hint}` : ""}

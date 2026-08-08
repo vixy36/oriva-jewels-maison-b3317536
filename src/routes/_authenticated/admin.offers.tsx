@@ -124,7 +124,7 @@ function OffersPage() {
                     : o.discount_type === "fixed" ? `$${o.discount_value ?? 0}`
                     : o.discount_type === "free_shipping" ? "Free Ship"
                     : o.discount_type === "gift" ? "Free Gift"
-                    : "—";
+                    : "-";
                   return (
                     <tr key={o.id} className="border-t border-border/60">
                       <td className="p-3">
@@ -136,12 +136,12 @@ function OffersPage() {
                       </td>
                       <td className="p-3">
                         <div className="font-medium">{o.title}</div>
-                        <div className="text-xs text-muted-foreground">{o.category ?? "—"} · Priority {o.priority}</div>
+                        <div className="text-xs text-muted-foreground">{o.category ?? "-"} · Priority {o.priority}</div>
                       </td>
-                      <td className="p-3 font-mono text-xs">{o.promo_code || "—"}</td>
+                      <td className="p-3 font-mono text-xs">{o.promo_code || "-"}</td>
                       <td className="p-3">{val}</td>
                       <td className="p-3 text-xs text-muted-foreground">
-                        {o.starts_at ? new Date(o.starts_at).toLocaleDateString() : "—"}
+                        {o.starts_at ? new Date(o.starts_at).toLocaleDateString() : "-"}
                         <span className="mx-1">→</span>
                         {o.ends_at ? new Date(o.ends_at).toLocaleDateString() : "∞"}
                       </td>
@@ -238,7 +238,7 @@ function OfferEditor({ initial, onClose, onSaved }: { initial: Partial<Offer>; o
         <div className="space-y-4">
           <div>
             <Label>Title *</Label>
-            <Input value={form.title || ""} onChange={(e) => upd("title", e.target.value)} placeholder="Festive Radiance — 15% Off Lab Diamonds" />
+            <Input value={form.title || ""} onChange={(e) => upd("title", e.target.value)} placeholder="Festive Radiance - 15% Off Lab Diamonds" />
           </div>
 
           <div className="grid grid-cols-2 gap-4">

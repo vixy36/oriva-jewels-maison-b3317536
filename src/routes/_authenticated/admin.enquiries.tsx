@@ -137,7 +137,7 @@ function EnquiriesPage() {
   }
 
   async function convertToOrder(r: Enquiry) {
-    if (!r.email) return toast.error("Enquiry has no email — add one first.");
+    if (!r.email) return toast.error("Enquiry has no email - add one first.");
     const { data: code, error: codeErr } = await supabase.rpc("gen_order_code");
     if (codeErr) return toast.error(codeErr.message);
     const items = [{

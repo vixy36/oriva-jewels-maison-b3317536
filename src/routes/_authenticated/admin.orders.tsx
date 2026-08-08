@@ -128,7 +128,7 @@ function OrdersPage() {
                 <td className="p-3"><StatusPill s={o.status} /></td>
                 <td className="p-3 capitalize text-xs">{o.payment_status}</td>
                 <td className="p-3 text-xs">
-                  {o.tracking_number ? <div>{o.carrier} · {o.tracking_number}</div> : <span className="text-muted-foreground">—</span>}
+                  {o.tracking_number ? <div>{o.carrier} · {o.tracking_number}</div> : <span className="text-muted-foreground">-</span>}
                 </td>
                 <td className="p-3 text-right whitespace-nowrap">
                   <Button size="sm" variant="ghost" onClick={() => window.open(`/admin/orders/${o.id}/label`, "_blank")} title="Shipping label">

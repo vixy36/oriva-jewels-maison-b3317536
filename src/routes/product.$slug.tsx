@@ -44,7 +44,7 @@ async function fetchDbBySlug(slug: string): Promise<Product | null> {
     image: imgs[0] || "",
     images: imgs,
     videoUrl: (data as { video_url?: string | null }).video_url ?? undefined,
-    shape: "—",
+    shape: "-",
     metal: "18K White Gold",
     diamondTypes,
     customizable: true,
@@ -142,7 +142,7 @@ function ProductPage() {
       `Metal: ${karat} ${goldColor} Gold`,
       `Centre Stone: ${caratSize} ct`,
     );
-    if (isRing || product.sizes) lines.push(`Ring Size: ${size || "—"}`);
+    if (isRing || product.sizes) lines.push(`Ring Size: ${size || "-"}`);
     if (product.backings) lines.push(`Backing: ${backing}`);
     if (product.lengths) lines.push(`Length: ${length}`);
     if (specialReq) lines.push(`Special Requirements: ${specialReq}`);

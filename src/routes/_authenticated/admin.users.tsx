@@ -170,7 +170,7 @@ function UsersPage() {
                       </div>
                     </td>
                     <td className="p-3 text-xs text-muted-foreground whitespace-nowrap">
-                      {u.last_sign_in_at ? new Date(u.last_sign_in_at).toLocaleDateString() : "—"}
+                      {u.last_sign_in_at ? new Date(u.last_sign_in_at).toLocaleDateString() : "-"}
                     </td>
                     <td className="p-3">
                       <div className="flex flex-wrap gap-3 justify-end">
@@ -254,7 +254,7 @@ function CreateUserDialog({
               placeholder="Min 8 characters"
             />
             <p className="mt-1 text-[11px] text-muted-foreground">
-              Share this with the user — they can change it after signing in.
+              Share this with the user - they can change it after signing in.
             </p>
           </div>
           <div>

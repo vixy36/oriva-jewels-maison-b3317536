@@ -8,9 +8,9 @@ import { Tag, Clock, Copy, Sparkles } from "lucide-react";
 export const Route = createFileRoute("/offers")({
   head: () => ({
     meta: [
-      { title: "Offers & Promotions — Oriva Jewels" },
+      { title: "Offers & Promotions - Oriva Jewels" },
       { name: "description", content: "Limited-time offers, seasonal promotions and exclusive promo codes on natural and lab grown diamond jewellery from Oriva Jewels." },
-      { property: "og:title", content: "Offers & Promotions — Oriva Jewels" },
+      { property: "og:title", content: "Offers & Promotions - Oriva Jewels" },
       { property: "og:description", content: "Discover limited-time offers and exclusive promo codes on fine diamond jewellery." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -187,7 +187,7 @@ function OffersPage() {
           <div className="text-center py-24">
             <Sparkles className="h-10 w-10 mx-auto text-[#d6b98c]" />
             <p className="mt-6 font-serif text-2xl">No live offers right now</p>
-            <p className="mt-2 text-sm text-muted-foreground">Please check back soon — new promotions arrive with each season.</p>
+            <p className="mt-2 text-sm text-muted-foreground">Please check back soon - new promotions arrive with each season.</p>
             <Button asChild className="mt-6" variant="outline"><Link to="/collections/rings">Explore the Collection</Link></Button>
           </div>
         ) : (

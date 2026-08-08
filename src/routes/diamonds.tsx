@@ -7,13 +7,13 @@ import naturalImg from "@/assets/collection-engagement.jpg";
 export const Route = createFileRoute("/diamonds")({
   head: () => ({
     meta: [
-      { title: "Diamonds — Natural & Lab Grown | Oriva Jewels" },
+      { title: "Diamonds - Natural & Lab Grown | Oriva Jewels" },
       {
         name: "description",
         content:
-          "Explore Oriva's natural and lab grown diamonds — certified, ethically sourced, cut for maximum brilliance.",
+          "Explore Oriva's natural and lab grown diamonds - certified, ethically sourced, cut for maximum brilliance.",
       },
-      { property: "og:title", content: "Diamonds — Natural & Lab Grown | Oriva Jewels" },
+      { property: "og:title", content: "Diamonds - Natural & Lab Grown | Oriva Jewels" },
       {
         property: "og:description",
         content: "Certified natural and lab grown diamonds, hand-selected by Oriva Jewels.",
@@ -35,7 +35,7 @@ function DiamondsPage() {
             Diamonds, considered.
           </h1>
           <p className="mt-5 mx-auto max-w-2xl text-[15px] md:text-base text-obsidian/70 leading-relaxed">
-            Every Oriva diamond — whether earth-mined or laboratory-grown — is graded
+            Every Oriva diamond - whether earth-mined or laboratory-grown - is graded
             for cut, colour, clarity, and carat by independent laboratories. Choose the
             origin that speaks to you.
           </p>
@@ -53,7 +53,7 @@ function DiamondsPage() {
           {
             to: "/collections/lab-grown",
             title: "Lab Grown Diamonds",
-            blurb: "Chemically identical to natural — cultivated with a modern conscience.",
+            blurb: "Chemically identical to natural - cultivated with a modern conscience.",
             image: labgrownImg,
           },
         ].map((c) => (
