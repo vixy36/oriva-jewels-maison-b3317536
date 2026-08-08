@@ -136,13 +136,13 @@ function HomePage() {
               <span className="block">Oriva</span>
               <span className="block italic text-gold-gradient -mt-2 md:-mt-4">Jewels</span>
             </h1>
-            <p className="mt-2 md:mt-6 font-serif italic text-lg md:text-4xl text-ivory/90 max-w-3xl">
+            <p className="mt-2 md:mt-6 font-serif italic text-lg md:text-4xl text-ivory/90 max-w-3xl drop-shadow-md">
               We design your dreams <span className="text-gold-gradient not-italic">with diamonds.</span>
             </p>
           </div>
 
           <div className="mt-10 md:mt-14 flex flex-col md:flex-row md:items-end md:justify-between gap-8 md:gap-10 animate-rise-slow" style={{ animationDelay: "0.4s" }}>
-            <p className="mt-6 md:mt-0 max-w-xl font-serif italic text-xl md:text-2xl leading-[1.5] text-gold-gradient">
+            <p className="mt-6 md:mt-0 max-w-xl font-serif italic text-xl md:text-2xl leading-[1.5] text-gold-gradient drop-shadow-md">
               We are end to end manufacturers of
               <span className="not-italic font-sans tracking-[0.08em] text-ivory"> DIAMONDS &amp; JEWELLERY.</span>
             </p>
