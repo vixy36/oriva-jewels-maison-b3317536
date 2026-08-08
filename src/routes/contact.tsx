@@ -23,10 +23,10 @@ function ContactPage() {
             <p className="eyebrow">Correspondence</p>
           </div>
           <h1 className="mt-8 font-serif text-6xl md:text-[8.5rem] leading-[0.92] tracking-[-0.02em] text-ivory max-w-5xl">
-            A private <em className="text-gold-gradient drop-shadow-sm">conversation</em>,
+            A private <em className="text-gold-gradient">conversation</em>,
             at your convenience.
           </h1>
-          <p className="mt-8 max-w-xl text-[15px] leading-[1.8] text-ivory/95 font-medium drop-shadow-md">
+          <p className="mt-8 max-w-xl text-[15px] leading-[1.8] text-ivory/95 font-medium">
             Our atelier is available worldwide. Every enquiry receives a personal reply, typically within a few hours.
           </p>
         </Reveal>

@@ -36,7 +36,7 @@ function DiamondsPage() {
             alt="Diamonds background" 
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-obsidian/60" />
+          <div className="absolute inset-0 bg-obsidian/40" />
         </div>
         
         <Reveal className="relative z-10 mx-auto max-w-[1400px]">
@@ -44,7 +44,7 @@ function DiamondsPage() {
           <h1 className="mt-4 font-serif text-5xl md:text-7xl leading-[1.05] text-white drop-shadow-2xl">
             Diamonds, considered.
           </h1>
-          <p className="mt-6 mx-auto max-w-2xl text-[16px] md:text-lg text-ivory leading-relaxed font-medium drop-shadow-lg">
+          <p className="mt-6 mx-auto max-w-2xl text-[16px] md:text-lg text-ivory leading-relaxed font-medium">
             Every Oriva diamond - whether earth-mined or laboratory-grown - is graded
             for cut, colour, clarity, and carat by independent laboratories. Choose the
             origin that speaks to you.
