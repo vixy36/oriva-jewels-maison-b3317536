@@ -28,26 +28,34 @@ export const Route = createFileRoute("/diamonds")({
 function DiamondsPage() {
   return (
     <div className="pt-24 md:pt-28">
-      <section className="relative overflow-hidden min-h-[60vh] flex items-center justify-center text-center px-6 py-20 mb-12 md:mb-16">
+      <section className="relative overflow-hidden min-h-[70vh] flex items-center justify-center text-center px-6 py-20 mb-12 md:mb-16">
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1573408302382-90cdb53b2303?auto=format&fit=crop&q=90&w=2400" 
+            src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&q=90&w=2400" 
             alt="Diamonds background" 
-            className="w-full h-full object-cover opacity-30 scale-110 blur-[2px]"
+            className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-ivory/95 via-ivory/80 to-ivory" />
+          <div className="absolute inset-0 bg-obsidian/40" />
         </div>
         
         <Reveal className="relative z-10 mx-auto max-w-[1400px]">
-          <p className="eyebrow">The Stone</p>
-          <h1 className="mt-4 font-serif text-5xl md:text-7xl leading-[1.05] text-obsidian text-shadow-sm">
+          <p className="eyebrow text-ivory/80">The Stone</p>
+          <h1 className="mt-4 font-serif text-5xl md:text-7xl leading-[1.05] text-white drop-shadow-2xl">
             Diamonds, considered.
           </h1>
-          <p className="mt-6 mx-auto max-w-2xl text-[16px] md:text-lg text-obsidian/80 leading-relaxed font-medium">
+          <p className="mt-6 mx-auto max-w-2xl text-[16px] md:text-lg text-ivory leading-relaxed font-medium drop-shadow-lg">
             Every Oriva diamond - whether earth-mined or laboratory-grown - is graded
             for cut, colour, clarity, and carat by independent laboratories. Choose the
             origin that speaks to you.
           </p>
+          <div className="mt-10">
+            <Link
+              to="/custom-order"
+              className="inline-flex items-center gap-2 bg-white px-10 py-4 text-[11px] tracking-[0.32em] uppercase text-obsidian hover:bg-gold hover:text-obsidian transition-all duration-300 font-bold"
+            >
+              Begin a bespoke enquiry <ArrowRight className="h-3.5 w-3.5" />
+            </Link>
+          </div>
         </Reveal>
       </section>
 
@@ -106,7 +114,7 @@ function DiamondsPage() {
           </p>
           <Link
             to="/custom-order"
-            className="mt-8 inline-flex items-center gap-2 border border-obsidian px-8 py-3 text-[11px] tracking-[0.32em] uppercase text-obsidian hover:bg-obsidian hover:text-ivory transition"
+            className="mt-8 inline-flex items-center gap-2 bg-white border border-obsidian px-8 py-3 text-[11px] tracking-[0.32em] uppercase text-obsidian hover:bg-obsidian hover:text-ivory transition"
           >
             Begin a bespoke enquiry <ArrowRight className="h-3.5 w-3.5" />
           </Link>
