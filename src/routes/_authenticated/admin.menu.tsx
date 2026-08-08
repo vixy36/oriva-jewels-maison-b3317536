@@ -174,7 +174,7 @@ function MenuEditor({ menuKey }: { menuKey: "main" | "sub" }) {
                         <div className="text-sm font-medium truncate">{child.label}</div>
                         <div className="text-[10px] text-muted-foreground truncate">{child.href}</div>
                       </div>
-                      <Switch size="sm" checked={child.is_active} onCheckedChange={(v) => toggleMut.mutate({ id: child.id, is_active: v })} />
+                      <Switch checked={child.is_active} onCheckedChange={(v) => toggleMut.mutate({ id: child.id, is_active: v })} />
                       <Button size="icon" variant="ghost" className="h-7 w-7" onClick={() => { setEditing(child); setOpen(true); }}>
                         <Pencil className="h-3 w-3" />
                       </Button>
