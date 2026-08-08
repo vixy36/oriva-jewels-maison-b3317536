@@ -47,10 +47,10 @@ export function SortSelect({
         <select
           value={value}
           onChange={(e) => onChange(e.target.value as SortKey)}
-          className="appearance-none bg-transparent border-b border-white/20 pl-1 pr-8 py-1.5 text-[12px] md:text-[13px] tracking-[0.3em] uppercase text-ivory focus:outline-none focus:border-gold cursor-pointer"
+          className="appearance-none bg-transparent border-b border-white/20 pl-1 pr-8 py-1.5 text-[12px] md:text-[13px] tracking-[0.3em] uppercase text-ivory focus:outline-none focus:border-gold cursor-pointer [&>option]:text-black"
         >
           {SORT_OPTIONS.map((o) => (
-            <option key={o.value} value={o.value} className="bg-obsidian text-ivory">
+            <option key={o.value} value={o.value} className="bg-white text-black">
               {o.label}
             </option>
           ))}
