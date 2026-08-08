@@ -36,7 +36,7 @@ function DiamondsPage() {
             alt="Diamonds background" 
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-obsidian/40" />
+          <div className="absolute inset-0 bg-obsidian/60" />
         </div>
         
         <Reveal className="relative z-10 mx-auto max-w-[1400px]">
