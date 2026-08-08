@@ -200,7 +200,7 @@ function HomePage() {
 
 
       {/* THE INDEX - Clean category grid */}
-      <section className="pt-0 pb-10 bg-background overflow-hidden border-b border-ivory/5">
+      <section className="pt-8 pb-10 bg-background overflow-hidden border-b border-ivory/5">
         <div className="mx-auto max-w-[1400px] px-6 md:px-12">
           <Reveal className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
             <div className="max-w-xl">
