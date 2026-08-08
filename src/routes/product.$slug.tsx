@@ -559,7 +559,7 @@ function ProductPage() {
               <div className="mt-10 grid grid-cols-3 gap-2 text-center">
                 {[
                   { icon: ShieldCheck, t: "IGI Certified" },
-                  { icon: Truck, t: "Insured" },
+                  { icon: Truck, t: "Shipping" },
                   { icon: Sparkles, t: "Bespoke" },
                 ].map((i) => (
                   <div key={i.t} className="border-t border-white/10 pt-4">

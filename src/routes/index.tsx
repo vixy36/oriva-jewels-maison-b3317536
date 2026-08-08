@@ -200,7 +200,7 @@ function HomePage() {
 
 
       {/* THE INDEX - Clean category grid */}
-      <section className="py-10 bg-background overflow-hidden border-b border-ivory/5">
+      <section className="pt-0 pb-10 bg-background overflow-hidden border-b border-ivory/5">
         <div className="mx-auto max-w-[1400px] px-6 md:px-12">
           <Reveal className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
             <div className="max-w-xl">
@@ -248,7 +248,7 @@ function HomePage() {
 
 
       {/* MOST REQUESTED - Clean product showcase */}
-      <section className="py-10 bg-background overflow-hidden">
+      <section className="pt-0 pb-10 bg-background overflow-hidden">
         <div className="mx-auto max-w-[1400px] px-6 md:px-12">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
             <div className="max-w-xl">
@@ -277,7 +277,7 @@ function HomePage() {
 
 
       {/* SHOP BY SHAPE */}
-      <section className="py-10 bg-background border-b border-ivory/5">
+      <section className="pt-0 pb-10 bg-background border-b border-ivory/5">
         <div className="mx-auto max-w-[1400px] px-6 md:px-12">
           <Reveal className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
             <div className="max-w-xl">
@@ -314,7 +314,7 @@ function HomePage() {
       </section>
 
       {/* THE ATELIER - High contrast craftsmanship */}
-      <section className="py-10 bg-obsidian text-ivory overflow-hidden">
+      <section className="pt-0 pb-10 bg-obsidian text-ivory overflow-hidden">
         <div className="mx-auto max-w-[1400px] px-6 md:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
             <Reveal className="lg:col-span-5 lg:pr-12">
@@ -370,7 +370,7 @@ function HomePage() {
       </section>
 
       {/* THE OCCASIONS - Bold lifestyle grid */}
-      <section className="py-10 bg-background">
+      <section className="pt-0 pb-10 bg-background">
         <div className="mx-auto max-w-[1400px] px-6 md:px-12">
           <Reveal className="text-center max-w-2xl mx-auto mb-16">
             <span className="eyebrow block mb-4">THE OCCASIONS</span>
@@ -404,7 +404,7 @@ function HomePage() {
 
 
       {/* THE PROCESS - Simple linear steps */}
-      <section className="py-10 bg-background border-t border-ivory/5">
+      <section className="pt-0 pb-10 bg-background border-t border-ivory/5">
         <div className="mx-auto max-w-[1400px] px-6 md:px-12">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
             <div className="max-w-xl">
@@ -453,7 +453,7 @@ function HomePage() {
 
 
       {/* THE CLIENTELE - Refined editorial reviews */}
-      <section className="py-10 bg-background overflow-hidden border-t border-ivory/5">
+      <section className="pt-0 pb-10 bg-background overflow-hidden border-t border-ivory/5">
         <div className="mx-auto max-w-[1400px] px-6 md:px-12">
           <Reveal className="text-center max-w-2xl mx-auto mb-20">
             <span className="eyebrow block mb-4">THE CLIENTELE</span>
@@ -552,7 +552,7 @@ function HomePage() {
       </section>
 
       {/* INSTAGRAM */}
-      <section className="py-10 bg-obsidian border-t border-ivory/5">
+      <section className="pt-0 pb-10 bg-obsidian border-t border-ivory/5">
         <div className="mx-auto max-w-[1400px] px-6 md:px-12">
           <Reveal className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
             <div className="max-w-xl">
@@ -662,7 +662,7 @@ function EngagementRingsSection() {
   const labelCls = "block text-[11px] tracking-[0.32em] uppercase text-gold mb-2";
 
   return (
-    <section className="relative py-8 md:py-10 bg-obsidian overflow-hidden">
+    <section className="relative pt-0 pb-8 md:pb-10 bg-obsidian overflow-hidden">
       <div
         aria-hidden
         className="absolute inset-0 opacity-40 pointer-events-none"
