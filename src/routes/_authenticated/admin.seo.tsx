@@ -154,7 +154,7 @@ function SeoPage() {
 
       {missingRoutes.length > 0 && (
         <div className="mt-4 border border-border/60 bg-muted/30 p-4">
-          <p className="text-xs uppercase tracking-widest text-muted-foreground">Quick add — routes without SEO</p>
+          <p className="text-xs uppercase tracking-widest text-muted-foreground">Quick add - routes without SEO</p>
           <div className="mt-3 flex flex-wrap gap-2">
             {missingRoutes.map((r) => (
               <button
@@ -211,7 +211,7 @@ function SeoPage() {
                     <tr key={r.id} className="border-t border-border/60">
                       <td className="p-3 font-mono text-xs">{r.route_path}</td>
                       <td className="p-3">
-                        <div className="max-w-xs truncate">{r.title || <span className="text-muted-foreground italic">— missing —</span>}</div>
+                        <div className="max-w-xs truncate">{r.title || <span className="text-muted-foreground italic">- missing -</span>}</div>
                         <div className="text-xs text-muted-foreground max-w-xs truncate">{r.description || "no description"}</div>
                       </td>
                       <td className="p-3">
@@ -272,7 +272,7 @@ function SeoEditor({ initial, onClose, onSaved }: { initial: Partial<SeoRow>; on
         og_description: meta.og_description,
         canonical: f.canonical || f.route_path || "",
       }));
-      toast.success("AI generated metadata — review and save");
+      toast.success("AI generated metadata - review and save");
     } catch (e: any) {
       toast.error(e?.message ?? "AI generation failed");
     } finally {
@@ -308,7 +308,7 @@ function SeoEditor({ initial, onClose, onSaved }: { initial: Partial<SeoRow>; on
     <Dialog open onOpenChange={(o) => !o && onClose()}>
       <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle>{isNew ? "New SEO Page" : `Edit SEO — ${initial.route_path}`}</DialogTitle>
+          <DialogTitle>{isNew ? "New SEO Page" : `Edit SEO - ${initial.route_path}`}</DialogTitle>
         </DialogHeader>
         <div className="space-y-4">
           <div>

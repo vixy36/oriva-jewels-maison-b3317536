@@ -32,7 +32,7 @@ function toProduct(p: DbProduct): Product {
     image: p.images?.[0] || "",
     images: p.images ?? [],
     videoUrl: p.video_url ?? undefined,
-    shape: "—",
+    shape: "-",
     metal: "18K",
     diamondTypes,
     customizable: true,

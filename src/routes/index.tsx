@@ -210,7 +210,7 @@ function HomePage() {
               </h2>
             </div>
             <p className="max-w-xs text-[14px] leading-relaxed text-muted-foreground uppercase tracking-widest">
-              A curated volume of six edits—each with its own character, designed for a lifetime.
+              A curated volume of six edits-each with its own character, designed for a lifetime.
             </p>
           </Reveal>
 
@@ -465,7 +465,7 @@ function HomePage() {
           <div className="flex overflow-x-auto pb-8 snap-x snap-mandatory hide-scrollbar gap-8 md:gap-12">
             {[
               {
-                q: "The most personal buying experience I've ever had. The CAD reveal made me tear up—and the ring somehow exceeded it.",
+                q: "The most personal buying experience I've ever had. The CAD reveal made me tear up-and the ring somehow exceeded it.",
                 a: "Sarah W.",
                 place: "London",
               },
@@ -475,7 +475,7 @@ function HomePage() {
                 place: "Dubai",
               },
               {
-                q: "Lab grown, three carats, hidden halo. Photographed it, showed my jeweller friend—she asked who did it. That says everything.",
+                q: "Lab grown, three carats, hidden halo. Photographed it, showed my jeweller friend-she asked who did it. That says everything.",
                 a: "Amelia K.",
                 place: "New York",
               },

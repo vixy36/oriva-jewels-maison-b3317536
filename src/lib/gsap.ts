@@ -1,4 +1,4 @@
-// Shared GSAP setup. Only import from client components (behind useEffect) — gsap is a browser lib.
+// Shared GSAP setup. Only import from client components (behind useEffect) - gsap is a browser lib.
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 

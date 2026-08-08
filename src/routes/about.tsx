@@ -58,7 +58,7 @@ function AboutPage() {
               </h2>
               <p className="mt-10 text-[17px] leading-[1.9] text-white max-w-lg font-medium">
                 We believe fine jewellery should be more than an accessory; it should be an extension of one's identity. 
-                Our approach is defined by restraint—nothing is added for show, everything is included for excellence.
+                Our approach is defined by restraint-nothing is added for show, everything is included for excellence.
               </p>
               <div className="mt-12 grid grid-cols-2 gap-8 border-t border-gold/20 pt-12">
                 <div>

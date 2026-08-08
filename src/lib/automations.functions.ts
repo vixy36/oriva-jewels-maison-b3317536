@@ -49,7 +49,7 @@ export const runStatusAutomations = createServerFn({ method: "POST" })
     let sent = 0;
     let skipped = 0;
 
-    // Attempt to load the email sender lazily — it only exists once emails are scaffolded.
+    // Attempt to load the email sender lazily - it only exists once emails are scaffolded.
     let sendTemplateEmail:
       | ((name: string, to: string, opts?: { templateData?: Record<string, unknown>; subject?: string; idempotencyKey?: string }) => Promise<{ sent: boolean; reason?: string }>)
       | null = null;

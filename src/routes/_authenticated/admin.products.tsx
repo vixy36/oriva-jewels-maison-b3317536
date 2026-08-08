@@ -138,7 +138,7 @@ function ProductsPage() {
                         <div className="w-12 h-12 bg-muted rounded" />
                       )}
                     </td>
-                    <td className="p-3 font-mono text-xs">{p.product_code || "—"}</td>
+                    <td className="p-3 font-mono text-xs">{p.product_code || "-"}</td>
                     <td className="p-3">
                       <div className="font-medium">{p.name}</div>
                       <div className="text-xs text-muted-foreground">/{p.slug}</div>
@@ -154,7 +154,7 @@ function ProductsPage() {
                             <div className="text-[11px] text-muted-foreground line-through">{p.currency} {p.mrp}</div>
                           )}
                         </div>
-                      ) : "—"}
+                      ) : "-"}
                     </td>
 
                     <td className="p-3">
@@ -434,7 +434,7 @@ function ProductEditor({ initial, onClose, onSaved }: { initial: Partial<Product
                 >
                   <SelectTrigger><SelectValue placeholder="No offer" /></SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="__none">— No offer —</SelectItem>
+                    <SelectItem value="__none">- No offer -</SelectItem>
                     {offers.map((o) => (
                       <SelectItem key={o.id} value={o.id}>{o.title}</SelectItem>
                     ))}
