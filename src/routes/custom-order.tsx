@@ -425,7 +425,7 @@ function Select({
         onChange={(e) => onChange(e.target.value)}
         className={`${inputCls} appearance-none pr-8 cursor-pointer [&>option]:bg-white [&>option]:text-black`}
       >
-        <option value="" className="bg-white text-black">{placeholder}</option>
+        <option value="" disabled className="bg-white text-black">{placeholder}</option>
         {options.map((o) => (
           <option key={o} value={o} className="bg-white text-black">
             {o}

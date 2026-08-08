@@ -33,7 +33,7 @@ function AboutPage() {
               Oriva <br />
               <em className="text-gold-gradient italic">Jewels</em>
             </h1>
-            <p className="mt-12 mx-auto max-w-2xl text-[17px] leading-[1.8] text-white font-medium">
+            <p className="mt-12 mx-auto max-w-2xl text-[17px] leading-[1.8] text-white font-medium drop-shadow-md">
               We are end-to-end manufacturers of Diamonds & Jewellery. 
               A modern maison where heritage meets innovation, crafted for the discerning.
             </p>
@@ -64,12 +64,12 @@ function AboutPage() {
                 <div>
                   <span className="font-serif text-3xl text-gold italic">01.</span>
                   <p className="mt-4 font-sans text-[13px] tracking-widest uppercase text-gold font-bold">Transparency</p>
-                  <p className="mt-2 text-[15px] text-white font-medium leading-relaxed">From mine to finger, we own every step of the journey.</p>
+                  <p className="mt-2 text-[15px] text-white font-medium leading-relaxed drop-shadow-sm">From mine to finger, we own every step of the journey.</p>
                 </div>
                 <div>
                   <span className="font-serif text-3xl text-gold italic">02.</span>
                   <p className="mt-4 font-sans text-[13px] tracking-widest uppercase text-gold font-bold">Legacy</p>
-                  <p className="mt-2 text-[15px] text-white font-medium leading-relaxed">Designs that transcend trends, meant to be passed down.</p>
+                  <p className="mt-2 text-[15px] text-white font-medium leading-relaxed drop-shadow-sm">Designs that transcend trends, meant to be passed down.</p>
                 </div>
               </div>
             </div>
@@ -79,7 +79,7 @@ function AboutPage() {
             <div className="aspect-[4/5] overflow-hidden gold-border p-3">
               <img src={modernLux} alt="Modern Luxury" className="w-full h-full object-cover" />
             </div>
-            <div className="absolute -bottom-10 -right-10 bg-obsidian p-8 text-ivory border border-gold/20 hidden md:block" data-surface="dark">
+            <div className="absolute -bottom-10 -right-10 bg-obsidian/90 backdrop-blur-sm p-8 text-ivory border border-gold/20 hidden md:block" data-surface="dark">
               <p className="font-serif italic text-2xl text-gold">"Quiet from a distance, extraordinary up close."</p>
             </div>
           </Reveal>
@@ -147,7 +147,7 @@ function AboutPage() {
           <Reveal>
             <span className="eyebrow text-gold">The Journey</span>
             <h2 className="mt-8 font-serif text-5xl md:text-7xl text-white">From a sketch <br /><em className="text-gold-gradient italic">to her finger.</em></h2>
-            <p className="mt-12 text-[18px] leading-[2] text-white font-medium">
+            <p className="mt-12 text-[18px] leading-[2] text-white font-medium drop-shadow-md">
               Unlike traditional jewellers, we manage the entire lifecycle of our pieces. 
               By sourcing rough diamonds directly and manufacturing in our own facility, 
               we remove the middleman, ensuring both ethical sourcing and unparalleled value.

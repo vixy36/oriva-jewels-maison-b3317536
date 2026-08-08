@@ -26,7 +26,7 @@ function ContactPage() {
             A private <em className="text-gold-gradient drop-shadow-sm">conversation</em>,
             at your convenience.
           </h1>
-          <p className="mt-8 max-w-xl text-[15px] leading-[1.8] text-ivory/95 font-medium">
+          <p className="mt-8 max-w-xl text-[15px] leading-[1.8] text-ivory/95 font-medium drop-shadow-md">
             Our atelier is available worldwide. Every enquiry receives a personal reply, typically within a few hours.
           </p>
         </Reveal>
