@@ -117,10 +117,10 @@ function HomePage() {
           <span />
         </div>
         <div className="pointer-events-none absolute inset-y-0 right-6 hidden md:flex flex-col justify-between py-32 z-10">
-          <span className="text-[14px] tracking-[0.5em] uppercase text-ivory/60 [writing-mode:vertical-rl]">
-            Natural · Lab Grown
+          <span className="text-[10px] tracking-[0.5em] uppercase text-ivory/60 [writing-mode:vertical-rl]">
+            Natural · Lab
           </span>
-          <span className="text-[14px] tracking-[0.5em] uppercase text-ivory/60 [writing-mode:vertical-rl]">
+          <span className="text-[10px] tracking-[0.5em] uppercase text-ivory/60 [writing-mode:vertical-rl]">
             GIA · IGI Certified
           </span>
         </div>
