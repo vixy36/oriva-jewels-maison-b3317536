@@ -48,7 +48,7 @@ function useMenu() {
     queryFn: async () => {
       const { data, error } = await supabase
         .from("menu_items")
-        .select("menu_key,label,href,sort_order,is_active")
+        .select("id,parent_id,menu_key,label,href,sort_order,is_active")
         .eq("is_active", true)
         .order("sort_order", { ascending: true });
       if (error) throw error;
@@ -72,14 +72,29 @@ export function SiteHeader() {
   const { data: menuRows } = useMenu();
 
   const nav = useMemo<NavItem[]>(() => {
-    const mainRows = (menuRows ?? []).filter((r) => r.menu_key === "main");
-    if (mainRows.length === 0) return FALLBACK_NAV;
-    return mainRows.map((r) => {
+    const allMain = (menuRows ?? []).filter((r) => r.menu_key === "main");
+    if (allMain.length === 0) return FALLBACK_NAV;
+
+    // Filter top level main menu items
+    const topLevel = allMain.filter(r => !r.parent_id);
+    
+    return topLevel.map((r) => {
       const label = r.label;
       const to = r.href;
-      // Attach known children menus by heuristic so dropdowns still work.
+      
+      // Get real children from database if they exist
+      const dbChildren = allMain
+        .filter(child => child.parent_id === r.id)
+        .map(child => ({ label: child.label, to: child.href }));
+
+      if (dbChildren.length > 0) {
+        return { label, to, children: dbChildren };
+      }
+
+      // Fallback heuristics for hardcoded children if no DB children found
       if (/fine|jewel/i.test(label)) return { label, to, children: FINE_CHILDREN };
       if (/diamond/i.test(label)) return { label, to, children: DIAMOND_CHILDREN };
+      
       return { label, to };
     });
   }, [menuRows]);
