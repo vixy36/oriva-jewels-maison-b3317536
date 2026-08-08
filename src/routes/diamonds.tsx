@@ -28,13 +28,22 @@ export const Route = createFileRoute("/diamonds")({
 function DiamondsPage() {
   return (
     <div className="pt-24 md:pt-28">
-      <section className="mx-auto max-w-[1400px] px-6 md:px-10 pt-10 md:pt-16 pb-10 text-center">
-        <Reveal>
+      <section className="relative overflow-hidden min-h-[60vh] flex items-center justify-center text-center px-6 py-20 mb-12 md:mb-16">
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="https://images.unsplash.com/photo-1573408302382-90cdb53b2303?auto=format&fit=crop&q=90&w=2400" 
+            alt="Diamonds background" 
+            className="w-full h-full object-cover opacity-30 scale-110 blur-[2px]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-ivory/95 via-ivory/80 to-ivory" />
+        </div>
+        
+        <Reveal className="relative z-10 mx-auto max-w-[1400px]">
           <p className="eyebrow">The Stone</p>
-          <h1 className="mt-4 font-serif text-4xl md:text-6xl leading-[1.05] text-obsidian">
+          <h1 className="mt-4 font-serif text-5xl md:text-7xl leading-[1.05] text-obsidian text-shadow-sm">
             Diamonds, considered.
           </h1>
-          <p className="mt-5 mx-auto max-w-2xl text-[15px] md:text-base text-obsidian/70 leading-relaxed">
+          <p className="mt-6 mx-auto max-w-2xl text-[16px] md:text-lg text-obsidian/80 leading-relaxed font-medium">
             Every Oriva diamond - whether earth-mined or laboratory-grown - is graded
             for cut, colour, clarity, and carat by independent laboratories. Choose the
             origin that speaks to you.
