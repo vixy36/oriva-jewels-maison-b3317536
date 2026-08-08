@@ -40,7 +40,6 @@ type FormState = {
   caratRange: string;
   metalColor: string;
   referenceLink: string;
-  poNumber: string;
   quantity: string;
   targetDate: string;
   budget: string;
@@ -63,7 +62,6 @@ const initial: FormState = {
   caratRange: "",
   metalColor: "",
   referenceLink: "",
-  poNumber: "",
   quantity: "1",
   targetDate: "",
   budget: "",
@@ -86,8 +84,8 @@ const diamondShapeOptions = [
   "Asscher",
   "Heart",
 ];
-const clarityOptions = ["VVS1", "VVS2", "VS1", "VS2"];
-const colourOptions = ["D", "E", "F", "G", "H"];
+const clarityOptions = ["VVS1", "VVS2", "VS1", "VS2", "SI1", "SI2"];
+const colourOptions = ["D", "E", "F", "G", "H", "I", "J", "K"];
 const caratOptions = ["Under 0.50 ct", "0.50 - 1.00 ct", "1.00 - 2.00 ct", "2.00 - 3.00 ct", "3.00 - 5.00 ct", "5.00 ct +"];
 const budgetOptions = ["Under USD 2,000", "USD 2,000 - 5,000", "USD 5,000 - 10,000", "USD 10,000 - 25,000", "USD 25,000 +", "Flexible"];
 
@@ -128,7 +126,6 @@ function CustomOrderPage() {
       "",
       "*Reference*",
       f.referenceLink ? `Link: ${f.referenceLink}` : null,
-      f.poNumber ? `Reference no.: ${f.poNumber}` : null,
       f.comments ? `Notes: ${f.comments}` : null,
       "",
       "_I will share reference photos in this chat._",
@@ -325,9 +322,6 @@ function CustomOrderPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               <Field label="Reference weblink">
                 <input className={inputCls} placeholder="Pinterest, Instagram, competitor URL…" value={f.referenceLink} onChange={(e) => set("referenceLink", e.target.value)} />
-              </Field>
-              <Field label="Customer PO / reference no.">
-                <input className={inputCls} value={f.poNumber} onChange={(e) => set("poNumber", e.target.value)} />
               </Field>
               <div className="md:col-span-2">
                 <Field label="Comments">
