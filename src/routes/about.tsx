@@ -79,7 +79,7 @@ function AboutPage() {
             <div className="aspect-[4/5] overflow-hidden gold-border p-3">
               <img src={modernLux} alt="Modern Luxury" className="w-full h-full object-cover" />
             </div>
-            <div className="absolute -bottom-10 -right-10 bg-obsidian p-8 text-ivory border border-gold/20 hidden md:block" data-surface="dark">
+            <div className="absolute -bottom-10 -right-10 bg-obsidian/90 backdrop-blur-sm p-8 text-ivory border border-gold/20 hidden md:block" data-surface="dark">
               <p className="font-serif italic text-2xl text-gold">"Quiet from a distance, extraordinary up close."</p>
             </div>
           </Reveal>
