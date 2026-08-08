@@ -147,7 +147,7 @@ function EducationPage() {
               href={buildWhatsAppLink("Hello Oriva, I'd like a diamond consultation.")}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-3 bg-ivory px-9 py-4 text-[11px] tracking-[0.4em] uppercase text-obsidian"
+              className="inline-flex items-center gap-3 bg-white px-9 py-4 text-[11px] tracking-[0.4em] uppercase text-obsidian"
             >
               Book a consultation <ArrowRight className="h-4 w-4" strokeWidth={1.4} />
             </a>
