@@ -639,10 +639,10 @@ function PillGroup({
           <select
             value={value}
             onChange={(e) => onChange(e.target.value)}
-            className="w-full appearance-none border-b border-white/15 bg-transparent py-2.5 pr-8 text-[14px] font-bold tracking-[0.15em] text-ivory outline-none focus:border-gold transition cursor-pointer [&>option]:text-black"
+            className="w-full appearance-none border-b border-white/15 bg-transparent py-2.5 pr-8 text-[14px] font-bold tracking-[0.15em] text-ivory outline-none focus:border-gold transition cursor-pointer [&>option]:bg-white [&>option]:text-black"
           >
             {options.map((o) => (
-              <option key={o} value={o} className="text-black">
+              <option key={o} value={o} className="bg-white text-black">
                 {o}
               </option>
             ))}
