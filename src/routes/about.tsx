@@ -33,7 +33,7 @@ function AboutPage() {
               Oriva <br />
               <em className="text-gold-gradient italic">Jewels</em>
             </h1>
-            <p className="mt-12 mx-auto max-w-2xl text-[17px] leading-[1.8] text-white font-medium">
+            <p className="mt-12 mx-auto max-w-2xl text-[17px] leading-[1.8] text-white font-medium drop-shadow-md">
               We are end-to-end manufacturers of Diamonds & Jewellery. 
               A modern maison where heritage meets innovation, crafted for the discerning.
             </p>
@@ -147,7 +147,7 @@ function AboutPage() {
           <Reveal>
             <span className="eyebrow text-gold">The Journey</span>
             <h2 className="mt-8 font-serif text-5xl md:text-7xl text-white">From a sketch <br /><em className="text-gold-gradient italic">to her finger.</em></h2>
-            <p className="mt-12 text-[18px] leading-[2] text-white font-medium">
+            <p className="mt-12 text-[18px] leading-[2] text-white font-medium drop-shadow-md">
               Unlike traditional jewellers, we manage the entire lifecycle of our pieces. 
               By sourcing rough diamonds directly and manufacturing in our own facility, 
               we remove the middleman, ensuring both ethical sourcing and unparalleled value.
