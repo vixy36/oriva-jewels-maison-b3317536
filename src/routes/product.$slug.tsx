@@ -618,6 +618,32 @@ function PillGroup({
   options: string[];
   onChange: (v: string) => void;
 }) {
+  const isSelect = options.length > 5;
+
+  if (isSelect) {
+    return (
+      <div>
+        <p className="text-[14px] font-bold tracking-[0.42em] uppercase text-gold">{label}</p>
+        <div className="relative mt-3.5">
+          <select
+            value={value}
+            onChange={(e) => onChange(e.target.value)}
+            className="w-full appearance-none border-b border-white/15 bg-transparent py-2.5 pr-8 text-[14px] font-bold tracking-[0.15em] text-ivory outline-none focus:border-gold transition cursor-pointer [&>option]:text-black"
+          >
+            {options.map((o) => (
+              <option key={o} value={o} className="text-black">
+                {o}
+              </option>
+            ))}
+          </select>
+          <span aria-hidden className="pointer-events-none absolute right-1 top-1/2 -translate-y-1/2 text-ivory/50">
+            ▾
+          </span>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div>
       <p className="text-[14px] font-bold tracking-[0.42em] uppercase text-gold">{label}</p>
