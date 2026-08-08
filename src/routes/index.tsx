@@ -174,7 +174,7 @@ function HomePage() {
       </section>
 
       {/* MARQUEE */}
-      <div className="relative overflow-hidden border-y border-white/5 bg-obsidian py-6">
+      <div className="relative overflow-hidden border-y border-white/5 bg-obsidian py-3 md:py-4">
         <div className="animate-marquee flex gap-10 whitespace-nowrap">
           {Array.from({ length: 3 }).map((_, i) => (
             <div key={i} className="flex items-center gap-10">
@@ -188,8 +188,8 @@ function HomePage() {
                 "Worldwide Shipping",
                 "Engagement Ring Specialist",
               ].map((t) => (
-                <span key={t} className="flex items-center gap-3 font-serif italic text-2xl md:text-3xl text-ivory/80">
-                  <span className="text-gold text-3xl md:text-4xl">✦</span>
+                <span key={t} className="flex items-center gap-3 font-serif italic text-lg md:text-xl text-ivory/80">
+                  <span className="text-gold text-xl md:text-2xl">✦</span>
                   {t}
                 </span>
               ))}
