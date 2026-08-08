@@ -23,6 +23,7 @@ type MenuItem = {
   href: string;
   sort_order: number;
   is_active: boolean;
+  parent_id?: string | null;
 };
 
 function AdminMenuPage() {
@@ -48,11 +49,10 @@ function AdminMenuPage() {
 
 function MenuEditor({ menuKey }: { menuKey: "main" | "sub" }) {
   const qc = useQueryClient();
-  const [items, setItems] = useState<MenuItem[]>([]);
   const [editing, setEditing] = useState<MenuItem | null>(null);
   const [open, setOpen] = useState(false);
 
-  const { data, isLoading } = useQuery({
+  const { data: allItems, isLoading } = useQuery({
     queryKey: ["admin-menu", menuKey],
     queryFn: async () => {
       const { data, error } = await supabase
@@ -64,8 +64,6 @@ function MenuEditor({ menuKey }: { menuKey: "main" | "sub" }) {
       return (data ?? []) as MenuItem[];
     },
   });
-
-  useEffect(() => { if (data) setItems(data); }, [data]);
 
   const reorderMut = useMutation({
     mutationFn: async (next: MenuItem[]) => {
@@ -95,15 +93,21 @@ function MenuEditor({ menuKey }: { menuKey: "main" | "sub" }) {
 
   const saveMut = useMutation({
     mutationFn: async (m: MenuItem) => {
+      const payload = {
+        label: m.label,
+        href: m.href,
+        is_active: m.is_active,
+        parent_id: m.parent_id || null,
+      };
       if (m.id) {
-        const { error } = await supabase.from("menu_items").update({
-          label: m.label, href: m.href, is_active: m.is_active,
-        }).eq("id", m.id);
+        const { error } = await supabase.from("menu_items").update(payload).eq("id", m.id);
         if (error) throw error;
       } else {
-        const max = Math.max(0, ...items.map((i) => i.sort_order));
+        const max = Math.max(0, ...(allItems?.map((i) => i.sort_order) || []));
         const { error } = await supabase.from("menu_items").insert({
-          menu_key: menuKey, label: m.label, href: m.href, is_active: m.is_active, sort_order: max + 10,
+          ...payload,
+          menu_key: menuKey,
+          sort_order: max + 10,
         });
         if (error) throw error;
       }
@@ -129,17 +133,12 @@ function MenuEditor({ menuKey }: { menuKey: "main" | "sub" }) {
     },
   });
 
+  const topLevelItems = (allItems ?? []).filter(i => !i.parent_id);
+
   return (
     <div>
       <div className="flex justify-end gap-2 mb-4">
-        <Button
-          variant="outline"
-          disabled={reorderMut.isPending || items.length === 0}
-          onClick={() => reorderMut.mutate(items)}
-        >
-          {reorderMut.isPending ? "Saving…" : "Save changes"}
-        </Button>
-        <Button onClick={() => { setEditing({ id: "", menu_key: menuKey, label: "", href: "/", sort_order: 0, is_active: true }); setOpen(true); }}>
+        <Button onClick={() => { setEditing({ id: "", menu_key: menuKey, label: "", href: "/", sort_order: 0, is_active: true, parent_id: null }); setOpen(true); }}>
           <Plus className="h-4 w-4 mr-1" /> Add item
         </Button>
       </div>
@@ -147,25 +146,56 @@ function MenuEditor({ menuKey }: { menuKey: "main" | "sub" }) {
       {isLoading ? (
         <p className="text-sm text-muted-foreground">Loading…</p>
       ) : (
-        <SortableList
-          items={items}
-          onReorder={(next) => { setItems(next); reorderMut.mutate(next); }}
-          renderItem={(m) => (
-            <div className="flex items-center gap-3 w-full">
-              <div className="flex-1 min-w-0">
-                <div className="font-medium truncate">{m.label}</div>
-                <div className="text-xs text-muted-foreground truncate">{m.href}</div>
+        <div className="space-y-4">
+          <SortableList
+            items={topLevelItems}
+            onReorder={(next) => reorderMut.mutate(next)}
+            renderItem={(m) => (
+              <div className="w-full">
+                <div className="flex items-center gap-3 w-full">
+                  <div className="flex-1 min-w-0">
+                    <div className="font-medium truncate">{m.label}</div>
+                    <div className="text-xs text-muted-foreground truncate">{m.href}</div>
+                  </div>
+                  <Switch checked={m.is_active} onCheckedChange={(v) => toggleMut.mutate({ id: m.id, is_active: v })} />
+                  <Button size="sm" variant="ghost" onClick={() => { setEditing(m); setOpen(true); }}>
+                    <Pencil className="h-4 w-4" />
+                  </Button>
+                  <Button size="sm" variant="ghost" onClick={() => { if (confirm(`Delete "${m.label}"?`)) delMut.mutate(m.id); }}>
+                    <Trash2 className="h-4 w-4 text-destructive" />
+                  </Button>
+                </div>
+                
+                {/* Children / Submenu items */}
+                <div className="mt-3 ml-8 space-y-2 border-l border-border/40 pl-4">
+                  {(allItems ?? []).filter(child => child.parent_id === m.id).map(child => (
+                    <div key={child.id} className="flex items-center gap-3 bg-muted/30 p-2 rounded-sm border border-border/20">
+                      <div className="flex-1 min-w-0">
+                        <div className="text-sm font-medium truncate">{child.label}</div>
+                        <div className="text-[10px] text-muted-foreground truncate">{child.href}</div>
+                      </div>
+                      <Switch size="sm" checked={child.is_active} onCheckedChange={(v) => toggleMut.mutate({ id: child.id, is_active: v })} />
+                      <Button size="icon" variant="ghost" className="h-7 w-7" onClick={() => { setEditing(child); setOpen(true); }}>
+                        <Pencil className="h-3 w-3" />
+                      </Button>
+                      <Button size="icon" variant="ghost" className="h-7 w-7" onClick={() => { if (confirm(`Delete "${child.label}"?`)) delMut.mutate(child.id); }}>
+                        <Trash2 className="h-3 w-3 text-destructive" />
+                      </Button>
+                    </div>
+                  ))}
+                  <Button 
+                    variant="ghost" 
+                    size="sm" 
+                    className="h-8 text-[11px] text-muted-foreground hover:text-foreground"
+                    onClick={() => { setEditing({ id: "", menu_key: menuKey, label: "", href: "/", sort_order: 0, is_active: true, parent_id: m.id }); setOpen(true); }}
+                  >
+                    <Plus className="h-3 w-3 mr-1" /> Add sub-item
+                  </Button>
+                </div>
               </div>
-              <Switch checked={m.is_active} onCheckedChange={(v) => toggleMut.mutate({ id: m.id, is_active: v })} />
-              <Button size="sm" variant="ghost" onClick={() => { setEditing(m); setOpen(true); }}>
-                <Pencil className="h-4 w-4" />
-              </Button>
-              <Button size="sm" variant="ghost" onClick={() => { if (confirm(`Delete "${m.label}"?`)) delMut.mutate(m.id); }}>
-                <Trash2 className="h-4 w-4 text-destructive" />
-              </Button>
-            </div>
-          )}
-        />
+            )}
+          />
+        </div>
       )}
 
       <Dialog open={open} onOpenChange={setOpen}>
@@ -183,6 +213,19 @@ function MenuEditor({ menuKey }: { menuKey: "main" | "sub" }) {
                 <Label>Link (href)</Label>
                 <Input value={editing.href} onChange={(e) => setEditing({ ...editing, href: e.target.value })} placeholder="/collections/rings" />
                 <p className="text-xs text-muted-foreground mt-1">Examples: /, /about, /collections/rings, /custom-order</p>
+              </div>
+              <div>
+                <Label>Parent Item (for dropdowns)</Label>
+                <select 
+                  className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                  value={editing.parent_id || ""}
+                  onChange={(e) => setEditing({ ...editing, parent_id: e.target.value || null })}
+                >
+                  <option value="">None (Top Level)</option>
+                  {topLevelItems.filter(i => i.id !== editing.id).map(i => (
+                    <option key={i.id} value={i.id}>{i.label}</option>
+                  ))}
+                </select>
               </div>
               <div className="flex items-center justify-between border rounded px-3 py-2">
                 <Label className="mb-0">Visible</Label>
