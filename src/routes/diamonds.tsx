@@ -1,118 +1,259 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight } from "lucide-react";
-import { Reveal } from "@/components/site/Reveal";
-import labgrownImg from "@/assets/collection-labgrown.jpg";
-import naturalImg from "@/assets/collection-engagement.jpg";
-import heroMarquise from "@/assets/hero-marquise.jpg";
+import { createFileRoute } from "@tanstack/react-router";
+import { useState, useMemo } from "react";
+import { ArrowRight, MessageCircle } from "lucide-react";
+import { GsapReveal } from "@/components/site/GsapReveal";
+import { buildWhatsAppLink } from "@/lib/products";
 
 export const Route = createFileRoute("/diamonds")({
   head: () => ({
     meta: [
-      { title: "Diamonds - Natural & Lab Grown | Oriva Jewels" },
+      { title: "Diamond Search - Certified Natural & Lab Grown | Oriva Jewels" },
       {
         name: "description",
-        content:
-          "Explore Oriva's natural and lab grown diamonds - certified, ethically sourced, cut for maximum brilliance.",
+        content: "Search for certified natural and lab grown diamonds. Select your shape, clarity, colour, and carat to begin your bespoke enquiry.",
       },
-      { property: "og:title", content: "Diamonds - Natural & Lab Grown | Oriva Jewels" },
-      {
-        property: "og:description",
-        content: "Certified natural and lab grown diamonds, hand-selected by Oriva Jewels.",
-      },
+      { property: "og:title", content: "Diamond Search | Oriva Jewels" },
+      { property: "og:description", content: "Certified diamonds tailored to your exact specification." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
-  component: DiamondsPage,
+  component: DiamondsSearchPage,
 });
 
-function DiamondsPage() {
-  return (
-    <div className="pt-24 md:pt-28">
-      <section className="bg-obsidian pt-16 pb-12 md:pt-20 md:pb-16 text-center px-6 mb-12 md:mb-16 border-b border-ivory/5">
-        
-        <Reveal className="relative z-10 mx-auto max-w-[1400px]">
-          <p className="eyebrow text-ivory/80">The Stone</p>
-          <h1 className="mt-4 font-serif text-5xl md:text-7xl leading-[1.05] text-white">
-            Diamonds, considered.
-          </h1>
-          <p className="mt-6 mx-auto max-w-2xl text-[16px] md:text-lg text-ivory leading-relaxed font-medium">
-            Every Oriva diamond - whether earth-mined or laboratory-grown - is graded
-            for cut, colour, clarity, and carat by independent laboratories. Choose the
-            origin that speaks to you.
-          </p>
-          <div className="mt-10">
-            <Link
-              to="/custom-order"
-              className="inline-flex items-center gap-2 bg-white px-10 py-4 text-[11px] tracking-[0.32em] uppercase text-obsidian hover:bg-gold hover:text-obsidian transition-all duration-300 font-bold"
-            >
-              Begin a bespoke enquiry <ArrowRight className="h-3.5 w-3.5" />
-            </Link>
-          </div>
-        </Reveal>
-      </section>
+const shapes = [
+  { name: "Round", icon: "https://vrai.imgix.net/images/diamond-shapes/round.png?auto=format,compress&q=80&w=128" },
+  { name: "Princess", icon: "https://vrai.imgix.net/images/diamond-shapes/princess.png?auto=format,compress&q=80&w=128" },
+  { name: "Oval", icon: "https://vrai.imgix.net/images/diamond-shapes/oval.png?auto=format,compress&q=80&w=128" },
+  { name: "Emerald", icon: "https://vrai.imgix.net/images/diamond-shapes/emerald.png?auto=format,compress&q=80&w=128" },
+  { name: "Pear", icon: "https://vrai.imgix.net/images/diamond-shapes/pear.png?auto=format,compress&q=80&w=128" },
+  { name: "Cushion", icon: "https://vrai.imgix.net/images/diamond-shapes/cushion.png?auto=format,compress&q=80&w=128" },
+  { name: "Marquise", icon: "https://vrai.imgix.net/images/diamond-shapes/marquise.png?auto=format,compress&q=80&w=128" },
+  { name: "Radiant", icon: "https://vrai.imgix.net/images/diamond-shapes/radiant.png?auto=format,compress&q=80&w=128" },
+  { name: "Asscher", icon: "https://vrai.imgix.net/images/diamond-shapes/asscher.png?auto=format,compress&q=80&w=128" },
+  { name: "Heart", icon: "https://vrai.imgix.net/images/diamond-shapes/heart.png?auto=format,compress&q=80&w=128" },
+];
 
-      <section className="mx-auto max-w-[1400px] px-6 md:px-10 pb-16 md:pb-24 grid gap-6 md:grid-cols-2">
-        {[
-          {
-            to: "/collections/natural",
-            title: "Natural Diamonds",
-            blurb: "Formed over billions of years. Ethically sourced, conflict-free, certified.",
-            image: naturalImg,
-          },
-          {
-            to: "/collections/lab-grown",
-            title: "Lab Grown Diamonds",
-            blurb: "Chemically identical to natural - cultivated with a modern conscience.",
-            image: labgrownImg,
-          },
-        ].map((c) => (
-          <Reveal key={c.to}>
-            <Link
-              to={c.to}
-              className="group block relative overflow-hidden bg-obsidian"
+const colorOptions = ["D", "E", "F", "G", "H", "I"];
+const clarityOptions = ["IF", "VVS1", "VVS2", "VS1", "VS2", "SI1", "SI2"];
+const cutOptions = ["Excellent", "Very Good", "Good", "Fair", "Poor"];
+
+function DiamondsSearchPage() {
+  const [diamondType, setDiamondType] = useState<"Certified Lab Grown" | "Non-Certified Lab Grown">("Certified Lab Grown");
+  const [selectedShape, setSelectedShape] = useState("Round");
+  const [selectedColor, setSelectedColor] = useState("D");
+  const [selectedClarity, setSelectedClarity] = useState("IF");
+  const [selectedCut, setSelectedCut] = useState("Excellent");
+  const [minCarat, setMinCarat] = useState("0.23");
+  const [maxCarat, setMaxCarat] = useState("6.00");
+  const [minPrice, setMinPrice] = useState("0");
+  const [maxPrice, setMaxPrice] = useState("9500");
+
+  const message = useMemo(() => {
+    return [
+      "*Diamond Enquiry · Oriva Jewels*",
+      "",
+      `*Type:* ${diamondType}`,
+      `*Shape:* ${selectedShape}`,
+      `*Colour:* ${selectedColor}`,
+      `*Clarity:* ${selectedClarity}`,
+      `*Cut:* ${selectedCut}`,
+      `*Carat Range:* ${minCarat} - ${maxCarat} ct`,
+      `*Price Range:* $${minPrice} - $${maxPrice}`,
+      "",
+      "I'm interested in finding this specific diamond. Please share availability and live pricing.",
+    ].join("\n");
+  }, [diamondType, selectedShape, selectedColor, selectedClarity, selectedCut, minCarat, maxCarat, minPrice, maxPrice]);
+
+  return (
+    <div className="bg-[#f5f4f2] min-h-screen pt-24 pb-20">
+      <div className="mx-auto max-w-[1200px] px-6">
+        <GsapReveal className="text-center mb-12">
+          <h1 className="font-serif text-4xl md:text-5xl text-[#071c37] mb-2 font-medium">Diamond</h1>
+          <p className="text-[13px] tracking-widest text-[#071c37]/60 uppercase">0 Items</p>
+        </GsapReveal>
+
+        <div className="flex justify-center gap-16 mb-16">
+          {[
+            { label: "Certified Lab Grown", img: "https://oriva-jewels.lovable.app/diamond-shapes/round.png" },
+            { label: "Non-Certified Lab Grown", img: "https://oriva-jewels.lovable.app/diamond-shapes/round.png" }
+          ].map((type) => (
+            <button
+              key={type.label}
+              onClick={() => setDiamondType(type.label as any)}
+              className="group flex flex-col items-center gap-4 focus:outline-none"
             >
-              <div className="aspect-[4/5] md:aspect-[5/6] overflow-hidden">
-                <img
-                  src={c.image}
-                  alt={c.title}
-                  className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
+              <div className={`relative w-20 h-20 rounded-full border-2 transition-all p-1 ${diamondType === type.label ? 'border-[#071c37]' : 'border-transparent group-hover:border-[#071c37]/20'}`}>
+                <img src={type.img} alt={type.label} className="w-full h-full object-contain filter grayscale brightness-125" />
+              </div>
+              <span className={`text-[12px] tracking-widest uppercase font-medium transition-colors ${diamondType === type.label ? 'text-[#071c37]' : 'text-[#071c37]/60'}`}>
+                {type.label}
+              </span>
+            </button>
+          ))}
+        </div>
+
+        <div className="bg-white border border-gray-200 p-8 md:p-12 shadow-sm">
+          {/* SHAPE SELECTOR */}
+          <div className="grid grid-cols-5 md:grid-cols-10 gap-2 mb-12">
+            {shapes.map((s) => (
+              <button
+                key={s.name}
+                onClick={() => setSelectedShape(s.name)}
+                className={`group flex flex-col items-center gap-3 p-3 border transition-all ${selectedShape === s.name ? 'border-[#071c37] bg-[#071c37]/5' : 'border-gray-200 hover:border-gray-300'}`}
+              >
+                <img src={s.icon} alt={s.name} className="w-10 h-10 object-contain" />
+                <span className="text-[10px] tracking-widest uppercase font-bold text-[#071c37]/80">{s.name}</span>
+              </button>
+            ))}
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-10 border-t border-gray-100 pt-10">
+            {/* COLOR */}
+            <div>
+              <label className="block text-[10px] tracking-[0.2em] uppercase font-bold text-[#071c37]/60 mb-4">Color</label>
+              <div className="flex flex-wrap gap-2">
+                {colorOptions.map(c => (
+                  <button
+                    key={c}
+                    onClick={() => setSelectedColor(c)}
+                    className={`h-9 min-w-[36px] px-2 border text-[11px] font-bold transition-all ${selectedColor === c ? 'bg-[#071c37] text-white border-[#071c37]' : 'border-gray-200 text-[#071c37]/70 hover:border-gray-300'}`}
+                  >
+                    {c}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* CLARITY */}
+            <div>
+              <label className="block text-[10px] tracking-[0.2em] uppercase font-bold text-[#071c37]/60 mb-4">Clarity</label>
+              <div className="flex flex-wrap gap-2">
+                {clarityOptions.map(c => (
+                  <button
+                    key={c}
+                    onClick={() => setSelectedClarity(c)}
+                    className={`h-9 min-w-[40px] px-2 border text-[11px] font-bold transition-all ${selectedClarity === c ? 'bg-[#071c37] text-white border-[#071c37]' : 'border-gray-200 text-[#071c37]/70 hover:border-gray-300'}`}
+                  >
+                    {c}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* CUT */}
+            <div>
+              <label className="block text-[10px] tracking-[0.2em] uppercase font-bold text-[#071c37]/60 mb-4">Cut</label>
+              <div className="flex flex-wrap gap-2">
+                {cutOptions.map(c => (
+                  <button
+                    key={c}
+                    onClick={() => setSelectedCut(c)}
+                    className={`h-9 px-3 border text-[11px] font-bold transition-all ${selectedCut === c ? 'bg-[#071c37] text-white border-[#071c37]' : 'border-gray-200 text-[#071c37]/70 hover:border-gray-300'}`}
+                  >
+                    {c}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* CARAT */}
+            <div className="md:col-span-1">
+              <label className="block text-[10px] tracking-[0.2em] uppercase font-bold text-[#071c37]/60 mb-4">Carat Weight</label>
+              <div className="flex items-center gap-3">
+                <input
+                  type="text"
+                  value={minCarat}
+                  onChange={(e) => setMinCarat(e.target.value)}
+                  className="w-full h-10 border border-gray-200 px-3 text-center text-[13px] text-[#071c37] focus:outline-none focus:border-[#071c37]"
+                />
+                <span className="text-gray-400">-</span>
+                <input
+                  type="text"
+                  value={maxCarat}
+                  onChange={(e) => setMaxCarat(e.target.value)}
+                  className="w-full h-10 border border-gray-200 px-3 text-center text-[13px] text-[#071c37] focus:outline-none focus:border-[#071c37]"
                 />
               </div>
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-obsidian/85" />
-              <div className="absolute inset-x-0 bottom-0 p-8 md:p-10 text-ivory">
-                <h2 className="font-serif text-3xl md:text-4xl">{c.title}</h2>
-                <p className="mt-3 text-[14px] md:text-[15px] text-ivory/80 max-w-md">
-                  {c.blurb}
-                </p>
-                <span className="mt-5 inline-flex items-center gap-2 text-[11px] tracking-[0.32em] uppercase text-gold">
-                  Explore <ArrowRight className="h-3.5 w-3.5" />
-                </span>
+              <div className="mt-4 h-1.5 w-full bg-[#071c37]/10 relative rounded-full">
+                <div className="absolute left-[5%] right-[20%] top-0 bottom-0 bg-[#071c37] rounded-full" />
+                <div className="absolute left-[5%] top-1/2 -translate-y-1/2 w-4 h-4 bg-white border-2 border-gray-300 shadow-sm" />
+                <div className="absolute right-[20%] top-1/2 -translate-y-1/2 w-4 h-4 bg-white border-2 border-gray-300 shadow-sm" />
               </div>
-            </Link>
-          </Reveal>
-        ))}
-      </section>
+            </div>
 
+            {/* PRICE */}
+            <div className="md:col-span-1">
+              <label className="block text-[10px] tracking-[0.2em] uppercase font-bold text-[#071c37]/60 mb-4">Price Range</label>
+              <div className="flex items-center gap-3">
+                <input
+                  type="text"
+                  value={`$${minPrice}`}
+                  onChange={(e) => setMinPrice(e.target.value.replace('$', ''))}
+                  className="w-full h-10 border border-gray-200 px-3 text-center text-[13px] text-[#071c37] focus:outline-none focus:border-[#071c37]"
+                />
+                <span className="text-gray-400">-</span>
+                <input
+                  type="text"
+                  value={`$${maxPrice}`}
+                  onChange={(e) => setMaxPrice(e.target.value.replace('$', ''))}
+                  className="w-full h-10 border border-gray-200 px-3 text-center text-[13px] text-[#071c37] focus:outline-none focus:border-[#071c37]"
+                />
+              </div>
+              <div className="mt-4 h-1.5 w-full bg-[#071c37]/10 relative rounded-full">
+                <div className="absolute left-0 right-0 top-0 bottom-0 bg-[#071c37] rounded-full" />
+                <div className="absolute left-0 top-1/2 -translate-y-1/2 w-4 h-4 bg-white border-2 border-gray-300 shadow-sm" />
+                <div className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 bg-white border-2 border-gray-300 shadow-sm" />
+              </div>
+            </div>
 
-      <section className="mx-auto max-w-[1400px] px-6 md:px-10 py-16 md:py-24 text-center">
-        <Reveal>
-          <p className="eyebrow">Bespoke</p>
-          <h2 className="mt-4 font-serif text-3xl md:text-5xl text-obsidian">
-            Can't find your stone?
-          </h2>
-          <p className="mt-4 mx-auto max-w-xl text-obsidian/70">
-            Commission a custom cut and setting. Our atelier sources rare diamonds
-            to your exact specification.
-          </p>
-          <Link
-            to="/custom-order"
-            className="mt-8 inline-flex items-center gap-2 bg-white border border-obsidian px-8 py-3 text-[11px] tracking-[0.32em] uppercase text-obsidian hover:bg-obsidian hover:text-ivory transition"
-          >
-            Begin a bespoke enquiry <ArrowRight className="h-3.5 w-3.5" />
-          </Link>
-        </Reveal>
-      </section>
+            {/* SINGLES TOGGLE (UI only) */}
+            <div className="flex items-end justify-center md:justify-end pb-2">
+              <div className="flex items-center gap-4 border border-gray-300 rounded-full px-4 py-2">
+                <div className="w-8 h-8 rounded-full border border-gray-300 bg-gray-50 flex items-center justify-center">
+                  <div className="w-6 h-6 border-2 border-gray-300 rounded-full" />
+                </div>
+                <div className="w-12 h-6 bg-gray-100 rounded-full relative border border-gray-200">
+                  <div className="absolute left-1 top-1 w-4 h-4 bg-white border border-gray-300 rounded-full" />
+                </div>
+                <span className="text-[11px] font-bold text-[#071c37] tracking-wider">Singles</span>
+                <div className="flex -space-x-2">
+                  <div className="w-8 h-8 rounded-full border border-gray-300 bg-gray-50 flex items-center justify-center relative z-10">
+                    <div className="w-6 h-6 border-2 border-gray-300 rounded-full" />
+                  </div>
+                  <div className="w-8 h-8 rounded-full border border-gray-300 bg-gray-50 flex items-center justify-center">
+                    <div className="w-6 h-6 border-2 border-gray-300 rounded-full" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-16 flex justify-center">
+            <a
+              href={buildWhatsAppLink(message)}
+              target="_blank"
+              rel="noreferrer"
+              className="group flex items-center justify-center gap-3 bg-[#071c37] text-white px-12 py-5 text-[12px] tracking-[0.4em] uppercase hover:bg-gold hover:text-obsidian transition-all duration-300 shadow-xl shadow-[#071c37]/10"
+            >
+              <MessageCircle className="h-5 w-5" />
+              Enquire on WhatsApp
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </a>
+          </div>
+        </div>
+
+        <div className="mt-20 text-center">
+          <GsapReveal>
+            <h2 className="font-serif text-3xl text-[#071c37] mb-6">Experience Brilliance</h2>
+            <p className="max-w-2xl mx-auto text-[15px] leading-relaxed text-[#071c37]/70">
+              Our diamond search allows you to filter through thousands of certified stones. 
+              Once you've selected your ideal parameters, our master gemologists will curate a personal 
+              selection for your review.
+            </p>
+          </GsapReveal>
+        </div>
+      </div>
     </div>
   );
 }

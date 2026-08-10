@@ -91,12 +91,10 @@ export function SiteHeader() {
         return { label, to, children: dbChildren };
       }
 
-      // Fallback heuristics for hardcoded children if no DB children found
-      // Only apply heuristics to items that aren't Hip Hop Jewelry
-      if (!/hip\s*hop/i.test(label)) {
-        if (/fine|jewel/i.test(label)) return { label, to, children: FINE_CHILDREN };
-        if (/diamond/i.test(label)) return { label, to, children: DIAMOND_CHILDREN };
-      }
+      // Fallback heuristics for hardcoded children
+      if (/fine|jewel/i.test(label)) return { label, to, children: FINE_CHILDREN };
+      
+      return { label, to };
       
       return { label, to };
     });
