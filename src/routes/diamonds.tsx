@@ -29,7 +29,7 @@ export const Route = createFileRoute("/diamonds")({
 function DiamondsPage() {
   return (
     <div className="pt-24 md:pt-28">
-      <section className="bg-obsidian pt-32 pb-12 md:pt-40 md:pb-16 text-center px-6 mb-12 md:mb-16 border-b border-ivory/5">
+      <section className="bg-obsidian pt-16 pb-12 md:pt-20 md:pb-16 text-center px-6 mb-12 md:mb-16 border-b border-ivory/5">
         
         <Reveal className="relative z-10 mx-auto max-w-[1400px]">
           <p className="eyebrow text-ivory/80">The Stone</p>
