@@ -84,6 +84,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content:
           "Oriva Jewels is a fine jewellery maison crafting exceptional natural and lab grown diamond engagement rings, earrings, bracelets and bridal pieces.",
       },
+      {
+        name: "keywords",
+        content:
+          "Engagement Rings, Lab Grown Diamonds, Natural Diamonds, Diamond Jewellery, Bespoke Rings, Custom Jewellery, Wedding Bands, Diamond Earrings, Diamond Bracelets, Diamond Pendants, GIA Certified Diamonds, IGI Certified Diamonds, Luxury Jewellery, Fine Jewellery Maison, Solitaire Rings, Halo Engagement Rings, Tennis Bracelets, Diamond Studs, Eternity Bands, Marquise Diamonds, Oval Cut Diamonds, Emerald Cut Diamonds, Pear Shaped Diamonds, Round Brilliant Diamonds, Hip Hop Jewellery, High End Diamonds, Bridal Jewellery, Anniversary Gifts, Sustainable Diamonds, Ethical Diamonds, Diamond Manufacturing, Direct Factory Pricing, Handcrafted Jewellery, 18K Gold Jewellery, Platinum Diamond Rings, Rose Gold Rings, Yellow Gold Jewellery, White Gold Diamond Rings, Designer Jewellery, Oriva Jewels",
+      },
       { name: "author", content: "Oriva Jewels" },
       { name: "theme-color", content: "#050505" },
       { property: "og:title", content: "Oriva Jewels - Fine Diamond Jewellery" },

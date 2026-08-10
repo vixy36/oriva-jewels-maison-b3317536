@@ -67,6 +67,10 @@ export const Route = createFileRoute("/product/$slug")({
     meta: [
       { title: loaderData ? `${loaderData.product.name} - Oriva Jewels` : "Oriva Jewels" },
       { name: "description", content: loaderData?.product.short ?? "Fine diamond jewellery." },
+      {
+        name: "keywords",
+        content: `${loaderData?.product.name}, ${loaderData?.product.category}, Oriva Jewels, Diamond Jewellery, ${loaderData?.product.collection}, engagement rings, lab grown diamonds, natural diamonds`,
+      },
       { property: "og:image", content: loaderData?.product.image ?? "" },
     ],
   }),
