@@ -258,9 +258,6 @@ function CustomOrderPage() {
                             src={shapeIcon(shape)} 
                             alt={shape}
                             className={`h-full w-full object-contain filter invert opacity-90 transition-opacity ${f.diamondShape === shape ? "opacity-100" : "group-hover:opacity-100"}`}
-                            onError={(e) => {
-                              // Fallback to a different public CDN if the local assets are missing
-                            }}
                           />
                         </div>
                         <span className={`text-[12px] font-bold tracking-[0.15em] uppercase transition-colors ${f.diamondShape === shape ? "text-gold" : "text-ivory/80 group-hover:text-gold"}`}>
