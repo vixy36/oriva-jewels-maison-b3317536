@@ -154,7 +154,7 @@ function HomePage() {
 
             <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3">
               <Link
-                to="/collections/engagement-rings"
+                to="/collections/$category" params={{ category: "engagement-rings" }}
                 className="group relative inline-flex items-center justify-center gap-3 bg-ivory px-9 py-4 text-[10.5px] tracking-[0.4em] uppercase text-obsidian overflow-hidden whitespace-nowrap"
               >
                 <span className="relative">Explore Collections</span>
@@ -262,7 +262,7 @@ function HomePage() {
               </h2>
             </div>
             <Link
-              to="/collections/engagement-rings"
+              to="/collections/$category" params={{ category: "engagement-rings" }}
               className="text-[13px] tracking-[0.3em] uppercase text-obsidian border-b border-gold/40 pb-1 hover:text-gold transition-colors"
             >
               View entire collection

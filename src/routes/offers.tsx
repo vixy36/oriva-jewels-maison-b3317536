@@ -188,7 +188,7 @@ function OffersPage() {
             <Sparkles className="h-10 w-10 mx-auto text-[#d6b98c]" />
             <p className="mt-6 font-serif text-2xl">No live offers right now</p>
             <p className="mt-2 text-sm text-muted-foreground">Please check back soon - new promotions arrive with each season.</p>
-            <Button asChild className="mt-6" variant="outline"><Link to="/collections/rings">Explore the Collection</Link></Button>
+            <Button asChild className="mt-6" variant="outline"><Link to="/collections/$category" params={{ category: "rings" }}>Explore the Collection</Link></Button>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 md:auto-rows-fr">
