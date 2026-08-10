@@ -69,7 +69,7 @@ export const Route = createFileRoute("/product/$slug")({
       { name: "description", content: loaderData?.product.short ?? "Fine diamond jewellery." },
       {
         name: "keywords",
-        content: "",
+        content: `${loaderData?.product.name}, ${loaderData?.product.category}, lab grown diamond, bespoke ${loaderData?.product.category}, ethical diamonds, VVS clarity lab grown diamond, custom diamond jewelry`,
       },
       { property: "og:image", content: loaderData?.product.image ?? "" },
     ],
