@@ -1,3 +1,4 @@
+import { shapeIcon } from "@/lib/diamond-shapes";
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { ArrowRight, Sparkles, ShieldCheck, Clock, ChevronDown, ChevronUp } from "lucide-react";
@@ -254,12 +255,11 @@ function CustomOrderPage() {
                       >
                         <div className={`mb-3 flex h-16 w-16 items-center justify-center rounded-sm bg-white/5 p-2 transition-colors ${f.diamondShape === shape ? "bg-white/10" : "group-hover:bg-white/10"}`}>
                            <img 
-                            src={`https://oriva-jewels.lovable.app/diamond-shapes/${shape.toLowerCase()}.png`} 
+                            src={shapeIcon(shape)} 
                             alt={shape}
                             className={`h-full w-full object-contain filter invert opacity-90 transition-opacity ${f.diamondShape === shape ? "opacity-100" : "group-hover:opacity-100"}`}
                             onError={(e) => {
                               // Fallback to a different public CDN if the local assets are missing
-                              (e.target as HTMLImageElement).src = `https://vrai.imgix.net/images/diamond-shapes/${shape.toLowerCase()}.png?auto=format,compress&q=80&w=128`;
                             }}
                           />
                         </div>

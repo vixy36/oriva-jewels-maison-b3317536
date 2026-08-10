@@ -3,6 +3,7 @@ import { useState, useMemo } from "react";
 import { ArrowRight, MessageCircle } from "lucide-react";
 import { GsapReveal } from "@/components/site/GsapReveal";
 import { buildWhatsAppLink } from "@/lib/products";
+import { DIAMOND_SHAPES, shapeIcon } from "@/lib/diamond-shapes";
 
 export const Route = createFileRoute("/diamonds")({
   head: () => ({
@@ -65,8 +66,8 @@ function DiamondsSearchPage() {
 
         <div className="flex justify-center gap-16 mb-16">
           {[
-            { label: "Certified Lab Grown", img: "https://oriva-jewels.lovable.app/diamond-shapes/round.png" },
-            { label: "Non-Certified Lab Grown", img: "https://oriva-jewels.lovable.app/diamond-shapes/round.png" }
+            { label: "Certified Lab Grown", img: shapeIcon("round") },
+            { label: "Non-Certified Lab Grown", img: shapeIcon("emerald") }
           ].map((type) => (
             <button
               key={type.label}
