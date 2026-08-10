@@ -188,7 +188,7 @@ function AboutPage() {
           </p>
           <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6">
             <Link
-              to="/collections/engagement-rings"
+              to="/collections/$category" params={{ category: "engagement-rings" }}
               className="bg-gold text-obsidian px-12 py-5 text-[12px] tracking-[0.4em] uppercase hover:bg-ivory transition-all duration-300 w-full sm:w-auto font-bold"
             >
               Explore Collection

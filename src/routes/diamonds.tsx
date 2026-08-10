@@ -3,6 +3,7 @@ import { useState, useMemo } from "react";
 import { ArrowRight, MessageCircle } from "lucide-react";
 import { GsapReveal } from "@/components/site/GsapReveal";
 import { buildWhatsAppLink } from "@/lib/products";
+import { DIAMOND_SHAPES, shapeIcon } from "@/lib/diamond-shapes";
 
 export const Route = createFileRoute("/diamonds")({
   head: () => ({
@@ -21,18 +22,8 @@ export const Route = createFileRoute("/diamonds")({
   component: DiamondsSearchPage,
 });
 
-const shapes = [
-  { name: "Round", icon: "https://vrai.imgix.net/images/diamond-shapes/round.png?auto=format,compress&q=80&w=128" },
-  { name: "Princess", icon: "https://vrai.imgix.net/images/diamond-shapes/princess.png?auto=format,compress&q=80&w=128" },
-  { name: "Oval", icon: "https://vrai.imgix.net/images/diamond-shapes/oval.png?auto=format,compress&q=80&w=128" },
-  { name: "Emerald", icon: "https://vrai.imgix.net/images/diamond-shapes/emerald.png?auto=format,compress&q=80&w=128" },
-  { name: "Pear", icon: "https://vrai.imgix.net/images/diamond-shapes/pear.png?auto=format,compress&q=80&w=128" },
-  { name: "Cushion", icon: "https://vrai.imgix.net/images/diamond-shapes/cushion.png?auto=format,compress&q=80&w=128" },
-  { name: "Marquise", icon: "https://vrai.imgix.net/images/diamond-shapes/marquise.png?auto=format,compress&q=80&w=128" },
-  { name: "Radiant", icon: "https://vrai.imgix.net/images/diamond-shapes/radiant.png?auto=format,compress&q=80&w=128" },
-  { name: "Asscher", icon: "https://vrai.imgix.net/images/diamond-shapes/asscher.png?auto=format,compress&q=80&w=128" },
-  { name: "Heart", icon: "https://vrai.imgix.net/images/diamond-shapes/heart.png?auto=format,compress&q=80&w=128" },
-];
+const shapes = DIAMOND_SHAPES;
+
 
 const colorOptions = ["D", "E", "F", "G", "H", "I"];
 const clarityOptions = ["IF", "VVS1", "VVS2", "VS1", "VS2", "SI1", "SI2"];
@@ -75,8 +66,8 @@ function DiamondsSearchPage() {
 
         <div className="flex justify-center gap-16 mb-16">
           {[
-            { label: "Certified Lab Grown", img: "https://oriva-jewels.lovable.app/diamond-shapes/round.png" },
-            { label: "Non-Certified Lab Grown", img: "https://oriva-jewels.lovable.app/diamond-shapes/round.png" }
+            { label: "Certified Lab Grown", img: shapeIcon("round") },
+            { label: "Non-Certified Lab Grown", img: shapeIcon("emerald") }
           ].map((type) => (
             <button
               key={type.label}
