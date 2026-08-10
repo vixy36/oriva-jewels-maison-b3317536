@@ -21,18 +21,8 @@ export const Route = createFileRoute("/diamonds")({
   component: DiamondsSearchPage,
 });
 
-const shapes = [
-  { name: "Round", icon: "https://vrai.imgix.net/images/diamond-shapes/round.png?auto=format,compress&q=80&w=128" },
-  { name: "Princess", icon: "https://vrai.imgix.net/images/diamond-shapes/princess.png?auto=format,compress&q=80&w=128" },
-  { name: "Oval", icon: "https://vrai.imgix.net/images/diamond-shapes/oval.png?auto=format,compress&q=80&w=128" },
-  { name: "Emerald", icon: "https://vrai.imgix.net/images/diamond-shapes/emerald.png?auto=format,compress&q=80&w=128" },
-  { name: "Pear", icon: "https://vrai.imgix.net/images/diamond-shapes/pear.png?auto=format,compress&q=80&w=128" },
-  { name: "Cushion", icon: "https://vrai.imgix.net/images/diamond-shapes/cushion.png?auto=format,compress&q=80&w=128" },
-  { name: "Marquise", icon: "https://vrai.imgix.net/images/diamond-shapes/marquise.png?auto=format,compress&q=80&w=128" },
-  { name: "Radiant", icon: "https://vrai.imgix.net/images/diamond-shapes/radiant.png?auto=format,compress&q=80&w=128" },
-  { name: "Asscher", icon: "https://vrai.imgix.net/images/diamond-shapes/asscher.png?auto=format,compress&q=80&w=128" },
-  { name: "Heart", icon: "https://vrai.imgix.net/images/diamond-shapes/heart.png?auto=format,compress&q=80&w=128" },
-];
+const shapes = DIAMOND_SHAPES;
+
 
 const colorOptions = ["D", "E", "F", "G", "H", "I"];
 const clarityOptions = ["IF", "VVS1", "VVS2", "VS1", "VS2", "SI1", "SI2"];
