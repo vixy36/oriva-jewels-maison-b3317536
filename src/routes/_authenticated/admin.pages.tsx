@@ -1,0 +1,461 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { useCallback, useEffect, useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { Switch } from "@/components/ui/switch";
+import { toast } from "sonner";
+import {
+  Plus, Trash2, Pencil, ArrowUp, ArrowDown, ExternalLink, Save, ArrowLeft, Eye, EyeOff, Copy,
+} from "lucide-react";
+import { BLOCK_LABELS, newBlock, parseBlocks, slugify, type BlockType, type PageBlock } from "@/lib/page-blocks";
+
+export const Route = createFileRoute("/_authenticated/admin/pages")({
+  component: PagesAdmin,
+});
+
+type PageRow = {
+  id: string;
+  slug: string;
+  title: string;
+  subtitle: string | null;
+  seo_title: string | null;
+  seo_description: string | null;
+  hero_image_url: string | null;
+  blocks: unknown;
+  is_published: boolean;
+  sort_order: number;
+  updated_at: string;
+};
+
+const BUILT_IN: { label: string; path: string }[] = [
+  { label: "Home", path: "/" },
+  { label: "About Us", path: "/about" },
+  { label: "Maison Assurance", path: "/assurance" },
+  { label: "Diamonds", path: "/diamonds" },
+  { label: "Bespoke", path: "/bespoke" },
+  { label: "Custom Order", path: "/custom-order" },
+  { label: "Gift Ideas", path: "/gifts" },
+  { label: "Occasions", path: "/occasions" },
+  { label: "Offers", path: "/offers" },
+  { label: "Education", path: "/education" },
+  { label: "Ring Size Guide", path: "/ring-size-guide" },
+  { label: "Contact", path: "/contact" },
+  { label: "Wishlist", path: "/wishlist" },
+];
+
+type Draft = {
+  id?: string;
+  slug: string;
+  title: string;
+  subtitle: string;
+  seo_title: string;
+  seo_description: string;
+  hero_image_url: string;
+  is_published: boolean;
+  sort_order: number;
+  blocks: PageBlock[];
+};
+
+function emptyDraft(): Draft {
+  return {
+    slug: "",
+    title: "",
+    subtitle: "",
+    seo_title: "",
+    seo_description: "",
+    hero_image_url: "",
+    is_published: true,
+    sort_order: 0,
+    blocks: [newBlock("heading"), newBlock("paragraph")],
+  };
+}
+
+function toDraft(row: PageRow): Draft {
+  return {
+    id: row.id,
+    slug: row.slug,
+    title: row.title,
+    subtitle: row.subtitle ?? "",
+    seo_title: row.seo_title ?? "",
+    seo_description: row.seo_description ?? "",
+    hero_image_url: row.hero_image_url ?? "",
+    is_published: row.is_published,
+    sort_order: row.sort_order,
+    blocks: parseBlocks(row.blocks),
+  };
+}
+
+function PagesAdmin() {
+  const [rows, setRows] = useState<PageRow[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [draft, setDraft] = useState<Draft | null>(null);
+
+  const load = useCallback(async () => {
+    setLoading(true);
+    const { data, error } = await supabase
+      .from("pages")
+      .select("*")
+      .order("sort_order", { ascending: true })
+      .order("created_at", { ascending: false });
+    if (error) toast.error(error.message);
+    setRows((data as unknown as PageRow[]) ?? []);
+    setLoading(false);
+  }, []);
+
+  useEffect(() => { load(); }, [load]);
+
+  async function remove(row: PageRow) {
+    if (!confirm(`Delete "${row.title}"? This cannot be undone.`)) return;
+    const { error } = await supabase.from("pages").delete().eq("id", row.id);
+    if (error) return toast.error(error.message);
+    toast.success("Page deleted");
+    load();
+  }
+
+  async function togglePublished(row: PageRow) {
+    const { error } = await supabase.from("pages").update({ is_published: !row.is_published }).eq("id", row.id);
+    if (error) return toast.error(error.message);
+    load();
+  }
+
+  if (draft) {
+    return (
+      <PageBuilder
+        draft={draft}
+        onCancel={() => setDraft(null)}
+        onSaved={(saved) => { setDraft(saved); load(); }}
+        onClose={() => { setDraft(null); load(); }}
+      />
+    );
+  }
+
+  return (
+    <div>
+      <div className="flex items-center justify-between flex-wrap gap-4">
+        <div>
+          <p className="eyebrow">Content</p>
+          <h1 className="mt-2 font-serif text-3xl">Pages</h1>
+          <p className="mt-2 text-sm text-muted-foreground">Build and manage custom pages, published at /pages/your-slug.</p>
+        </div>
+        <Button onClick={() => setDraft(emptyDraft())}><Plus className="h-4 w-4 mr-2" /> New Page</Button>
+      </div>
+
+      <div className="mt-8 border border-border/60">
+        <div className="px-4 py-3 border-b border-border/60 bg-muted/30 text-xs tracking-[0.24em] uppercase">Custom pages</div>
+        {loading ? (
+          <div className="p-4 space-y-2">
+            {Array.from({ length: 3 }).map((_, i) => <div key={i} className="h-12 bg-muted/50 animate-pulse" />)}
+          </div>
+        ) : rows.length === 0 ? (
+          <p className="p-8 text-center text-sm text-muted-foreground">No custom pages yet. Click "New Page" to build your first.</p>
+        ) : (
+          <ul className="divide-y divide-border/60">
+            {rows.map((row) => (
+              <li key={row.id} className="p-4 flex items-center gap-4 flex-wrap">
+                <div className="min-w-0 flex-1">
+                  <p className="text-sm font-medium truncate">{row.title}</p>
+                  <p className="text-xs text-muted-foreground truncate">/pages/{row.slug}</p>
+                </div>
+                <span className={`text-[10px] tracking-[0.2em] uppercase px-2 py-1 border ${row.is_published ? "border-border/60 text-muted-foreground" : "border-destructive/50 text-destructive"}`}>
+                  {row.is_published ? "Published" : "Draft"}
+                </span>
+                <div className="flex items-center gap-1">
+                  <Button variant="ghost" size="icon" title={row.is_published ? "Unpublish" : "Publish"} onClick={() => togglePublished(row)}>
+                    {row.is_published ? <Eye className="h-4 w-4" /> : <EyeOff className="h-4 w-4" />}
+                  </Button>
+                  <Button variant="ghost" size="icon" title="Edit" onClick={() => setDraft(toDraft(row))}>
+                    <Pencil className="h-4 w-4" />
+                  </Button>
+                  <Button variant="ghost" size="icon" title="View" asChild>
+                    <Link to="/pages/$slug" params={{ slug: row.slug }} target="_blank"><ExternalLink className="h-4 w-4" /></Link>
+                  </Button>
+                  <Button variant="ghost" size="icon" title="Duplicate" onClick={() => {
+                    const d = toDraft(row);
+                    setDraft({ ...d, id: undefined, slug: `${d.slug}-copy`, title: `${d.title} (copy)` });
+                  }}>
+                    <Copy className="h-4 w-4" />
+                  </Button>
+                  <Button variant="ghost" size="icon" title="Delete" onClick={() => remove(row)}>
+                    <Trash2 className="h-4 w-4 text-destructive" />
+                  </Button>
+                </div>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+
+      <div className="mt-8 border border-border/60">
+        <div className="px-4 py-3 border-b border-border/60 bg-muted/30 text-xs tracking-[0.24em] uppercase">Site pages (built-in)</div>
+        <ul className="divide-y divide-border/60">
+          {BUILT_IN.map((p) => (
+            <li key={p.path} className="p-4 flex items-center gap-4">
+              <div className="min-w-0 flex-1">
+                <p className="text-sm font-medium">{p.label}</p>
+                <p className="text-xs text-muted-foreground">{p.path}</p>
+              </div>
+              <a href={p.path} target="_blank" rel="noreferrer" className="text-xs tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground inline-flex items-center gap-2">
+                View <ExternalLink className="h-3.5 w-3.5" />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}
+
+const BLOCK_TYPES = Object.keys(BLOCK_LABELS) as BlockType[];
+
+function PageBuilder({
+  draft, onCancel, onSaved, onClose,
+}: {
+  draft: Draft;
+  onCancel: () => void;
+  onSaved: (d: Draft) => void;
+  onClose: () => void;
+}) {
+  const [d, setD] = useState<Draft>(draft);
+  const [saving, setSaving] = useState(false);
+
+  function set<K extends keyof Draft>(key: K, value: Draft[K]) {
+    setD((prev) => ({ ...prev, [key]: value }));
+  }
+
+  function updateBlock(id: string, patch: Partial<PageBlock>) {
+    setD((prev) => ({ ...prev, blocks: prev.blocks.map((b) => (b.id === id ? { ...b, ...patch } : b)) }));
+  }
+  function removeBlock(id: string) {
+    setD((prev) => ({ ...prev, blocks: prev.blocks.filter((b) => b.id !== id) }));
+  }
+  function moveBlock(index: number, dir: -1 | 1) {
+    setD((prev) => {
+      const next = [...prev.blocks];
+      const target = index + dir;
+      if (target < 0 || target >= next.length) return prev;
+      const a = next[index]!;
+      next[index] = next[target]!;
+      next[target] = a;
+      return { ...prev, blocks: next };
+    });
+  }
+  function addBlock(type: BlockType) {
+    setD((prev) => ({ ...prev, blocks: [...prev.blocks, newBlock(type)] }));
+  }
+
+  async function save() {
+    const title = d.title.trim();
+    if (!title) return toast.error("Please add a page title");
+    const slug = slugify(d.slug || title);
+    if (!slug) return toast.error("Please add a valid URL slug");
+
+    setSaving(true);
+    const payload = {
+      slug,
+      title,
+      subtitle: d.subtitle.trim() || null,
+      seo_title: d.seo_title.trim() || null,
+      seo_description: d.seo_description.trim() || null,
+      hero_image_url: d.hero_image_url.trim() || null,
+      is_published: d.is_published,
+      sort_order: Number(d.sort_order) || 0,
+      blocks: d.blocks as unknown as never,
+    };
+
+    if (d.id) {
+      const { error } = await supabase.from("pages").update(payload).eq("id", d.id);
+      setSaving(false);
+      if (error) return toast.error(error.message);
+      toast.success("Page saved");
+      onSaved({ ...d, slug });
+      return;
+    }
+
+    const { data, error } = await supabase.from("pages").insert(payload).select("id").single();
+    setSaving(false);
+    if (error) {
+      toast.error(error.message.includes("duplicate") ? "That URL slug is already in use" : error.message);
+      return;
+    }
+    toast.success("Page created");
+    onSaved({ ...d, slug, id: (data as { id: string }).id });
+  }
+
+  return (
+    <div className="pb-24">
+      <div className="flex items-start justify-between flex-wrap gap-4">
+        <div>
+          <button onClick={onClose} className="text-xs tracking-[0.24em] uppercase text-muted-foreground hover:text-foreground inline-flex items-center gap-2">
+            <ArrowLeft className="h-3.5 w-3.5" /> All pages
+          </button>
+          <h1 className="mt-3 font-serif text-3xl">{d.id ? "Edit page" : "New page"}</h1>
+          <p className="mt-2 text-sm text-muted-foreground">/pages/{slugify(d.slug || d.title) || "your-slug"}</p>
+        </div>
+        <div className="flex items-center gap-2">
+          <Button variant="outline" onClick={onCancel}>Cancel</Button>
+          <Button onClick={save} disabled={saving}>
+            <Save className="h-4 w-4 mr-2" /> {saving ? "Saving..." : "Save page"}
+          </Button>
+        </div>
+      </div>
+
+      <div className="mt-8 grid gap-6 lg:grid-cols-3">
+        <div className="lg:col-span-1 space-y-4 border border-border/60 p-5 h-fit">
+          <p className="text-xs tracking-[0.24em] uppercase text-muted-foreground">Page settings</p>
+          <div>
+            <Label>Title</Label>
+            <Input value={d.title} onChange={(e) => set("title", e.target.value)} placeholder="The Atelier Story" />
+          </div>
+          <div>
+            <Label>URL slug</Label>
+            <Input value={d.slug} onChange={(e) => set("slug", e.target.value)} placeholder="atelier-story" />
+          </div>
+          <div>
+            <Label>Subtitle</Label>
+            <Textarea rows={2} value={d.subtitle} onChange={(e) => set("subtitle", e.target.value)} />
+          </div>
+          <div>
+            <Label>Hero image URL</Label>
+            <Input value={d.hero_image_url} onChange={(e) => set("hero_image_url", e.target.value)} placeholder="https://..." />
+          </div>
+          <div>
+            <Label>SEO title</Label>
+            <Input value={d.seo_title} onChange={(e) => set("seo_title", e.target.value)} />
+          </div>
+          <div>
+            <Label>SEO description</Label>
+            <Textarea rows={3} value={d.seo_description} onChange={(e) => set("seo_description", e.target.value)} />
+          </div>
+          <div>
+            <Label>Sort order</Label>
+            <Input type="number" value={d.sort_order} onChange={(e) => set("sort_order", Number(e.target.value))} />
+          </div>
+          <div className="flex items-center justify-between pt-2">
+            <Label>Published</Label>
+            <Switch checked={d.is_published} onCheckedChange={(v) => set("is_published", v)} />
+          </div>
+        </div>
+
+        <div className="lg:col-span-2 space-y-4">
+          <div className="border border-border/60 p-5">
+            <p className="text-xs tracking-[0.24em] uppercase text-muted-foreground">Add a block</p>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {BLOCK_TYPES.map((t) => (
+                <button
+                  key={t}
+                  onClick={() => addBlock(t)}
+                  className="border border-border/60 px-3 py-2 text-xs hover:bg-muted transition"
+                >
+                  + {BLOCK_LABELS[t]}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {d.blocks.length === 0 ? (
+            <p className="border border-dashed border-border/60 p-10 text-center text-sm text-muted-foreground">
+              No blocks yet. Add your first block above.
+            </p>
+          ) : (
+            d.blocks.map((b, i) => (
+              <div key={b.id} className="border border-border/60 p-5">
+                <div className="flex items-center justify-between gap-3">
+                  <p className="text-xs tracking-[0.24em] uppercase">{i + 1}. {BLOCK_LABELS[b.type]}</p>
+                  <div className="flex items-center gap-1">
+                    <Button variant="ghost" size="icon" onClick={() => moveBlock(i, -1)} disabled={i === 0}><ArrowUp className="h-4 w-4" /></Button>
+                    <Button variant="ghost" size="icon" onClick={() => moveBlock(i, 1)} disabled={i === d.blocks.length - 1}><ArrowDown className="h-4 w-4" /></Button>
+                    <Button variant="ghost" size="icon" onClick={() => removeBlock(b.id)}><Trash2 className="h-4 w-4 text-destructive" /></Button>
+                  </div>
+                </div>
+                <div className="mt-4 space-y-3">
+                  <BlockFields block={b} onChange={(patch) => updateBlock(b.id, patch)} />
+                </div>
+              </div>
+            ))
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function BlockFields({ block: b, onChange }: { block: PageBlock; onChange: (patch: Partial<PageBlock>) => void }) {
+  switch (b.type) {
+    case "heading":
+      return (
+        <>
+          <div><Label>Eyebrow</Label><Input value={b.eyebrow ?? ""} onChange={(e) => onChange({ eyebrow: e.target.value })} /></div>
+          <div><Label>Heading</Label><Input value={b.title ?? ""} onChange={(e) => onChange({ title: e.target.value })} /></div>
+        </>
+      );
+    case "paragraph":
+      return <div><Label>Text</Label><Textarea rows={5} value={b.text ?? ""} onChange={(e) => onChange({ text: e.target.value })} /></div>;
+    case "image":
+      return (
+        <>
+          <div><Label>Image URL</Label><Input value={b.image ?? ""} onChange={(e) => onChange({ image: e.target.value })} /></div>
+          <div><Label>Caption</Label><Input value={b.caption ?? ""} onChange={(e) => onChange({ caption: e.target.value })} /></div>
+        </>
+      );
+    case "image_text":
+      return (
+        <>
+          <div><Label>Heading</Label><Input value={b.title ?? ""} onChange={(e) => onChange({ title: e.target.value })} /></div>
+          <div><Label>Text</Label><Textarea rows={4} value={b.text ?? ""} onChange={(e) => onChange({ text: e.target.value })} /></div>
+          <div><Label>Image URL</Label><Input value={b.image ?? ""} onChange={(e) => onChange({ image: e.target.value })} /></div>
+          <div className="flex items-center justify-between pt-1">
+            <Label>Image on the right</Label>
+            <Switch checked={Boolean(b.reverse)} onCheckedChange={(v) => onChange({ reverse: v })} />
+          </div>
+        </>
+      );
+    case "gallery":
+      return (
+        <div className="space-y-2">
+          <Label>Image URLs</Label>
+          {(b.images ?? []).map((src, i) => (
+            <div key={i} className="flex gap-2">
+              <Input
+                value={src}
+                onChange={(e) => {
+                  const next = [...(b.images ?? [])];
+                  next[i] = e.target.value;
+                  onChange({ images: next });
+                }}
+                placeholder="https://..."
+              />
+              <Button variant="ghost" size="icon" onClick={() => onChange({ images: (b.images ?? []).filter((_, j) => j !== i) })}>
+                <Trash2 className="h-4 w-4 text-destructive" />
+              </Button>
+            </div>
+          ))}
+          <Button variant="outline" size="sm" onClick={() => onChange({ images: [...(b.images ?? []), ""] })}>
+            <Plus className="h-3.5 w-3.5 mr-2" /> Add image
+          </Button>
+        </div>
+      );
+    case "quote":
+      return (
+        <>
+          <div><Label>Quote</Label><Textarea rows={3} value={b.text ?? ""} onChange={(e) => onChange({ text: e.target.value })} /></div>
+          <div><Label>Attribution</Label><Input value={b.caption ?? ""} onChange={(e) => onChange({ caption: e.target.value })} /></div>
+        </>
+      );
+    case "cta":
+      return (
+        <>
+          <div><Label>Heading</Label><Input value={b.title ?? ""} onChange={(e) => onChange({ title: e.target.value })} /></div>
+          <div><Label>Text</Label><Textarea rows={2} value={b.text ?? ""} onChange={(e) => onChange({ text: e.target.value })} /></div>
+          <div className="grid gap-3 sm:grid-cols-2">
+            <div><Label>Button label</Label><Input value={b.ctaLabel ?? ""} onChange={(e) => onChange({ ctaLabel: e.target.value })} /></div>
+            <div><Label>Button link</Label><Input value={b.ctaHref ?? ""} onChange={(e) => onChange({ ctaHref: e.target.value })} placeholder="/custom-order" /></div>
+          </div>
+        </>
+      );
+    default:
+      return <p className="text-xs text-muted-foreground">No settings for this block.</p>;
+  }
+}

@@ -27,6 +27,7 @@ import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ShapeShapeRouteImport } from './routes/shape.$shape'
 import { Route as ProductSlugRouteImport } from './routes/product.$slug'
+import { Route as PagesSlugRouteImport } from './routes/pages.$slug'
 import { Route as OrderCodeRouteImport } from './routes/order.$code'
 import { Route as CollectionsCategoryRouteImport } from './routes/collections.$category'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
@@ -35,6 +36,7 @@ import { Route as AuthenticatedAdminUsersRouteImport } from './routes/_authentic
 import { Route as AuthenticatedAdminSeoRouteImport } from './routes/_authenticated/admin.seo'
 import { Route as AuthenticatedAdminProductsRouteImport } from './routes/_authenticated/admin.products'
 import { Route as AuthenticatedAdminPopupsRouteImport } from './routes/_authenticated/admin.popups'
+import { Route as AuthenticatedAdminPagesRouteImport } from './routes/_authenticated/admin.pages'
 import { Route as AuthenticatedAdminOrdersRouteImport } from './routes/_authenticated/admin.orders'
 import { Route as AuthenticatedAdminOffersRouteImport } from './routes/_authenticated/admin.offers'
 import { Route as AuthenticatedAdminMenuRouteImport } from './routes/_authenticated/admin.menu'
@@ -133,6 +135,11 @@ const ProductSlugRoute = ProductSlugRouteImport.update({
   path: '/product/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PagesSlugRoute = PagesSlugRouteImport.update({
+  id: '/pages/$slug',
+  path: '/pages/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OrderCodeRoute = OrderCodeRouteImport.update({
   id: '/order/$code',
   path: '/order/$code',
@@ -175,6 +182,11 @@ const AuthenticatedAdminPopupsRoute =
     path: '/popups',
     getParentRoute: () => AuthenticatedAdminRoute,
   } as any)
+const AuthenticatedAdminPagesRoute = AuthenticatedAdminPagesRouteImport.update({
+  id: '/pages',
+  path: '/pages',
+  getParentRoute: () => AuthenticatedAdminRoute,
+} as any)
 const AuthenticatedAdminOrdersRoute =
   AuthenticatedAdminOrdersRouteImport.update({
     id: '/orders',
@@ -241,6 +253,7 @@ export interface FileRoutesByFullPath {
   '/admin': typeof AuthenticatedAdminRouteWithChildren
   '/collections/$category': typeof CollectionsCategoryRoute
   '/order/$code': typeof OrderCodeRoute
+  '/pages/$slug': typeof PagesSlugRoute
   '/product/$slug': typeof ProductSlugRoute
   '/shape/$shape': typeof ShapeShapeRoute
   '/admin/automations': typeof AuthenticatedAdminAutomationsRoute
@@ -250,6 +263,7 @@ export interface FileRoutesByFullPath {
   '/admin/menu': typeof AuthenticatedAdminMenuRoute
   '/admin/offers': typeof AuthenticatedAdminOffersRoute
   '/admin/orders': typeof AuthenticatedAdminOrdersRouteWithChildren
+  '/admin/pages': typeof AuthenticatedAdminPagesRoute
   '/admin/popups': typeof AuthenticatedAdminPopupsRoute
   '/admin/products': typeof AuthenticatedAdminProductsRoute
   '/admin/seo': typeof AuthenticatedAdminSeoRoute
@@ -275,6 +289,7 @@ export interface FileRoutesByTo {
   '/wishlist': typeof WishlistRoute
   '/collections/$category': typeof CollectionsCategoryRoute
   '/order/$code': typeof OrderCodeRoute
+  '/pages/$slug': typeof PagesSlugRoute
   '/product/$slug': typeof ProductSlugRoute
   '/shape/$shape': typeof ShapeShapeRoute
   '/admin/automations': typeof AuthenticatedAdminAutomationsRoute
@@ -284,6 +299,7 @@ export interface FileRoutesByTo {
   '/admin/menu': typeof AuthenticatedAdminMenuRoute
   '/admin/offers': typeof AuthenticatedAdminOffersRoute
   '/admin/orders': typeof AuthenticatedAdminOrdersRouteWithChildren
+  '/admin/pages': typeof AuthenticatedAdminPagesRoute
   '/admin/popups': typeof AuthenticatedAdminPopupsRoute
   '/admin/products': typeof AuthenticatedAdminProductsRoute
   '/admin/seo': typeof AuthenticatedAdminSeoRoute
@@ -312,6 +328,7 @@ export interface FileRoutesById {
   '/_authenticated/admin': typeof AuthenticatedAdminRouteWithChildren
   '/collections/$category': typeof CollectionsCategoryRoute
   '/order/$code': typeof OrderCodeRoute
+  '/pages/$slug': typeof PagesSlugRoute
   '/product/$slug': typeof ProductSlugRoute
   '/shape/$shape': typeof ShapeShapeRoute
   '/_authenticated/admin/automations': typeof AuthenticatedAdminAutomationsRoute
@@ -321,6 +338,7 @@ export interface FileRoutesById {
   '/_authenticated/admin/menu': typeof AuthenticatedAdminMenuRoute
   '/_authenticated/admin/offers': typeof AuthenticatedAdminOffersRoute
   '/_authenticated/admin/orders': typeof AuthenticatedAdminOrdersRouteWithChildren
+  '/_authenticated/admin/pages': typeof AuthenticatedAdminPagesRoute
   '/_authenticated/admin/popups': typeof AuthenticatedAdminPopupsRoute
   '/_authenticated/admin/products': typeof AuthenticatedAdminProductsRoute
   '/_authenticated/admin/seo': typeof AuthenticatedAdminSeoRoute
@@ -349,6 +367,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/collections/$category'
     | '/order/$code'
+    | '/pages/$slug'
     | '/product/$slug'
     | '/shape/$shape'
     | '/admin/automations'
@@ -358,6 +377,7 @@ export interface FileRouteTypes {
     | '/admin/menu'
     | '/admin/offers'
     | '/admin/orders'
+    | '/admin/pages'
     | '/admin/popups'
     | '/admin/products'
     | '/admin/seo'
@@ -383,6 +403,7 @@ export interface FileRouteTypes {
     | '/wishlist'
     | '/collections/$category'
     | '/order/$code'
+    | '/pages/$slug'
     | '/product/$slug'
     | '/shape/$shape'
     | '/admin/automations'
@@ -392,6 +413,7 @@ export interface FileRouteTypes {
     | '/admin/menu'
     | '/admin/offers'
     | '/admin/orders'
+    | '/admin/pages'
     | '/admin/popups'
     | '/admin/products'
     | '/admin/seo'
@@ -419,6 +441,7 @@ export interface FileRouteTypes {
     | '/_authenticated/admin'
     | '/collections/$category'
     | '/order/$code'
+    | '/pages/$slug'
     | '/product/$slug'
     | '/shape/$shape'
     | '/_authenticated/admin/automations'
@@ -428,6 +451,7 @@ export interface FileRouteTypes {
     | '/_authenticated/admin/menu'
     | '/_authenticated/admin/offers'
     | '/_authenticated/admin/orders'
+    | '/_authenticated/admin/pages'
     | '/_authenticated/admin/popups'
     | '/_authenticated/admin/products'
     | '/_authenticated/admin/seo'
@@ -455,6 +479,7 @@ export interface RootRouteChildren {
   WishlistRoute: typeof WishlistRoute
   CollectionsCategoryRoute: typeof CollectionsCategoryRoute
   OrderCodeRoute: typeof OrderCodeRoute
+  PagesSlugRoute: typeof PagesSlugRoute
   ProductSlugRoute: typeof ProductSlugRoute
   ShapeShapeRoute: typeof ShapeShapeRoute
 }
@@ -587,6 +612,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProductSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/pages/$slug': {
+      id: '/pages/$slug'
+      path: '/pages/$slug'
+      fullPath: '/pages/$slug'
+      preLoaderRoute: typeof PagesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/order/$code': {
       id: '/order/$code'
       path: '/order/$code'
@@ -641,6 +673,13 @@ declare module '@tanstack/react-router' {
       path: '/popups'
       fullPath: '/admin/popups'
       preLoaderRoute: typeof AuthenticatedAdminPopupsRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/pages': {
+      id: '/_authenticated/admin/pages'
+      path: '/pages'
+      fullPath: '/admin/pages'
+      preLoaderRoute: typeof AuthenticatedAdminPagesRouteImport
       parentRoute: typeof AuthenticatedAdminRoute
     }
     '/_authenticated/admin/orders': {
@@ -724,6 +763,7 @@ interface AuthenticatedAdminRouteChildren {
   AuthenticatedAdminMenuRoute: typeof AuthenticatedAdminMenuRoute
   AuthenticatedAdminOffersRoute: typeof AuthenticatedAdminOffersRoute
   AuthenticatedAdminOrdersRoute: typeof AuthenticatedAdminOrdersRouteWithChildren
+  AuthenticatedAdminPagesRoute: typeof AuthenticatedAdminPagesRoute
   AuthenticatedAdminPopupsRoute: typeof AuthenticatedAdminPopupsRoute
   AuthenticatedAdminProductsRoute: typeof AuthenticatedAdminProductsRoute
   AuthenticatedAdminSeoRoute: typeof AuthenticatedAdminSeoRoute
@@ -739,6 +779,7 @@ const AuthenticatedAdminRouteChildren: AuthenticatedAdminRouteChildren = {
   AuthenticatedAdminMenuRoute: AuthenticatedAdminMenuRoute,
   AuthenticatedAdminOffersRoute: AuthenticatedAdminOffersRoute,
   AuthenticatedAdminOrdersRoute: AuthenticatedAdminOrdersRouteWithChildren,
+  AuthenticatedAdminPagesRoute: AuthenticatedAdminPagesRoute,
   AuthenticatedAdminPopupsRoute: AuthenticatedAdminPopupsRoute,
   AuthenticatedAdminProductsRoute: AuthenticatedAdminProductsRoute,
   AuthenticatedAdminSeoRoute: AuthenticatedAdminSeoRoute,
@@ -779,6 +820,7 @@ const rootRouteChildren: RootRouteChildren = {
   WishlistRoute: WishlistRoute,
   CollectionsCategoryRoute: CollectionsCategoryRoute,
   OrderCodeRoute: OrderCodeRoute,
+  PagesSlugRoute: PagesSlugRoute,
   ProductSlugRoute: ProductSlugRoute,
   ShapeShapeRoute: ShapeShapeRoute,
 }
