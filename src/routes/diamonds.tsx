@@ -59,11 +59,11 @@ function DiamondsSearchPage() {
   }, [diamondType, selectedShape, isPairs, selectedColor, selectedClarity, selectedCut, minCarat, maxCarat, minPrice, maxPrice]);
 
   return (
-    <div className="bg-[#f5f4f2] min-h-screen pt-32 pb-20">
-      <div className="mx-auto max-w-[1300px] px-6">
-        <GsapReveal className="text-center mb-16">
-          <h1 className="font-serif text-5xl md:text-6xl text-[#071c37] mb-4 font-medium">Diamonds</h1>
-          <p className="text-[14px] tracking-[0.3em] text-[#071c37]/60 uppercase">Curated Brilliance</p>
+    <div className="bg-[#f5f4f2] min-h-screen pt-24 md:pt-32 pb-16 md:pb-20">
+      <div className="mx-auto max-w-[1300px] px-4 md:px-6">
+        <GsapReveal className="text-center mb-10 md:mb-16">
+          <h1 className="font-serif text-4xl md:text-6xl text-[#071c37] mb-3 md:mb-4 font-medium">Diamonds</h1>
+          <p className="text-[12px] md:text-[14px] tracking-[0.2em] md:tracking-[0.3em] text-[#071c37]/60 uppercase">Curated Brilliance</p>
         </GsapReveal>
 
         <div className="flex flex-col md:flex-row justify-center items-center gap-10 md:gap-24 mb-16 md:mb-20">
