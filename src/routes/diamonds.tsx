@@ -257,28 +257,28 @@ function DiamondsSearchPage() {
             </div>
 
             {/* SINGLES/PAIRS TOGGLE */}
-            <div className="flex items-end justify-center md:justify-end pb-2">
+            <div className="flex items-end justify-center md:justify-end pb-2 pt-6 md:pt-0">
               <button 
                 type="button"
                 onClick={() => setIsPairs(!isPairs)}
-                className="flex items-center gap-6 border border-gray-300 rounded-full px-6 py-3 hover:border-[#071c37] transition-all bg-[#f8f8f8]"
+                className="flex items-center gap-3 md:gap-6 border border-gray-300 rounded-full px-4 md:px-6 py-2 md:py-3 hover:border-[#071c37] transition-all bg-[#f8f8f8]"
               >
-                <div className="w-10 h-10 rounded-full border border-gray-200 bg-white shadow-sm flex items-center justify-center overflow-hidden">
-                  <img src={shapeIcon(selectedShape.toLowerCase())} alt="Single" className="w-8 h-8 object-contain" />
+                <div className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-gray-200 bg-white shadow-sm flex items-center justify-center overflow-hidden">
+                  <img src={shapeIcon(selectedShape.toLowerCase())} alt="Single" className="w-6 h-6 md:w-8 md:h-8 object-contain" />
                 </div>
                 
-                <div className={`w-14 h-7 rounded-full relative border transition-colors duration-300 ${isPairs ? 'bg-[#071c37] border-[#071c37]' : 'bg-gray-200 border-gray-300'}`}>
-                  <div className={`absolute top-1 w-5 h-5 bg-white rounded-full shadow-md transition-all duration-300 ${isPairs ? 'left-8' : 'left-1'}`} />
+                <div className={`w-10 md:w-14 h-5 md:h-7 rounded-full relative border transition-colors duration-300 ${isPairs ? 'bg-[#071c37] border-[#071c37]' : 'bg-gray-200 border-gray-300'}`}>
+                  <div className={`absolute top-0.5 md:top-1 w-3.5 h-3.5 md:w-5 md:h-5 bg-white rounded-full shadow-md transition-all duration-300 ${isPairs ? 'left-5.5 md:left-8' : 'left-0.5 md:left-1'}`} />
                 </div>
                 
-                <span className="text-[12px] font-bold text-[#071c37] tracking-[0.2em] uppercase">{isPairs ? 'Pairs' : 'Singles'}</span>
+                <span className="text-[10px] md:text-[12px] font-bold text-[#071c37] tracking-[0.1em] md:tracking-[0.2em] uppercase">{isPairs ? 'Pairs' : 'Singles'}</span>
                 
-                <div className="flex -space-x-3">
-                  <div className="w-10 h-10 rounded-full border border-gray-200 bg-white shadow-sm flex items-center justify-center relative z-10 overflow-hidden">
-                    <img src={shapeIcon(selectedShape.toLowerCase())} alt="Pair 1" className="w-8 h-8 object-contain" />
+                <div className="flex -space-x-2 md:-space-x-3">
+                  <div className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-gray-200 bg-white shadow-sm flex items-center justify-center relative z-10 overflow-hidden">
+                    <img src={shapeIcon(selectedShape.toLowerCase())} alt="Pair 1" className="w-6 h-6 md:w-8 md:h-8 object-contain" />
                   </div>
-                  <div className="w-10 h-10 rounded-full border border-gray-200 bg-white shadow-sm flex items-center justify-center overflow-hidden">
-                    <img src={shapeIcon(selectedShape.toLowerCase())} alt="Pair 2" className="w-8 h-8 object-contain" />
+                  <div className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-gray-200 bg-white shadow-sm flex items-center justify-center overflow-hidden">
+                    <img src={shapeIcon(selectedShape.toLowerCase())} alt="Pair 2" className="w-6 h-6 md:w-8 md:h-8 object-contain" />
                   </div>
                 </div>
               </button>
