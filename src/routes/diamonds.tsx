@@ -198,7 +198,7 @@ function DiamondsSearchPage() {
                   step="0.01"
                   value={maxCarat}
                   onChange={(e) => setMaxCarat(Math.max(Number(e.target.value), minCarat))}
-                  className="absolute w-full h-1.5 bg-transparent appearance-none cursor-pointer accent-[#071c37] z-30 pointer-events-auto"
+                  className="absolute w-full h-1.5 bg-transparent appearance-none cursor-pointer diamond-slider z-30 pointer-events-auto"
                   style={{
                     WebkitAppearance: 'none',
                     appearance: 'none',
@@ -243,7 +243,7 @@ function DiamondsSearchPage() {
                   step="100"
                   value={minPrice}
                   onChange={(e) => setMinPrice(Math.min(Number(e.target.value), maxPrice))}
-                  className="absolute w-full h-1.5 bg-transparent appearance-none cursor-pointer accent-[#071c37] z-30 pointer-events-auto"
+                  className="absolute w-full h-1.5 bg-transparent appearance-none cursor-pointer diamond-slider z-30 pointer-events-auto"
                   style={{
                     WebkitAppearance: 'none',
                     appearance: 'none',
@@ -257,7 +257,7 @@ function DiamondsSearchPage() {
                   step="100"
                   value={maxPrice}
                   onChange={(e) => setMaxPrice(Math.max(Number(e.target.value), minPrice))}
-                  className="absolute w-full h-1.5 bg-transparent appearance-none cursor-pointer accent-[#071c37] z-30 pointer-events-auto"
+                  className="absolute w-full h-1.5 bg-transparent appearance-none cursor-pointer diamond-slider z-30 pointer-events-auto"
                   style={{
                     WebkitAppearance: 'none',
                     appearance: 'none',
