@@ -50,8 +50,9 @@ export function SiteFooter() {
               { label: "Earrings", to: "/collections/earrings" },
               { label: "Bracelets", to: "/collections/bracelets" },
               { label: "Pendants", to: "/collections/pendants" },
-              { label: "Bridal", to: "/collections/bridal" },
-              { label: "Lab Grown", to: "/collections/lab-grown" },
+              { label: "Necklaces", to: "/collections/necklaces" },
+              { label: "HipHop", to: "/collections/hiphop" },
+              { label: "Diamonds", to: "/diamonds" },
             ]} />
 
             <FooterCol title="The Maison" links={[
