@@ -214,7 +214,7 @@ function HomePage() {
               </h2>
             </div>
             <p className="max-w-xs text-[14px] leading-relaxed text-muted-foreground uppercase tracking-widest">
-              I have approved the plan
+              Natural Brilliance. <span className="italic">Expertly Curated.</span>
             </p>
           </Reveal>
 
