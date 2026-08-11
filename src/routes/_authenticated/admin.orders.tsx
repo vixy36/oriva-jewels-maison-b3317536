@@ -131,7 +131,22 @@ function OrdersPage() {
                   {o.tracking_number ? <div>{o.carrier} · {o.tracking_number}</div> : <span className="text-muted-foreground">-</span>}
                 </td>
                 <td className="p-3 text-right whitespace-nowrap">
-                  <Button size="sm" variant="ghost" onClick={() => window.open(`/admin/orders/${o.id}/label`, "_blank")} title="Shipping label">
+                  <Button
+                    size="sm"
+                    variant="ghost"
+                    onClick={() => {
+                      const url = `/admin/orders/${o.id}/label`;
+                      const win = window.open(url, "_blank");
+                      if (win) {
+                        win.onload = () => {
+                          // Note: Browsers usually block automatic print() from scripts 
+                          // unless triggered directly in the new window, 
+                          // so the label page itself handles the print button.
+                        };
+                      }
+                    }}
+                    title="Shipping label"
+                  >
                     <Printer className="h-4 w-4" />
                   </Button>
                   <Button size="sm" variant="ghost" onClick={() => setEditing(o)}><Pencil className="h-4 w-4" /></Button>
