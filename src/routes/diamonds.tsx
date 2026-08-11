@@ -184,11 +184,11 @@ function DiamondsSearchPage() {
                   step="0.01"
                   value={minCarat}
                   onChange={(e) => setMinCarat(Math.min(Number(e.target.value), maxCarat))}
-                  className="absolute w-full h-1.5 bg-transparent appearance-none cursor-pointer diamond-slider z-30 pointer-events-auto"
+                  className="absolute w-full h-1.5 bg-transparent appearance-none cursor-pointer diamond-slider pointer-events-auto"
                   style={{
                     WebkitAppearance: 'none',
                     appearance: 'none',
-                    zIndex: minCarat > 5 ? 31 : 29
+                    zIndex: minCarat > maxCarat - 0.5 ? 35 : 30
                   }}
                 />
                 <input 
@@ -198,11 +198,11 @@ function DiamondsSearchPage() {
                   step="0.01"
                   value={maxCarat}
                   onChange={(e) => setMaxCarat(Math.max(Number(e.target.value), minCarat))}
-                  className="absolute w-full h-1.5 bg-transparent appearance-none cursor-pointer diamond-slider z-30 pointer-events-auto"
+                  className="absolute w-full h-1.5 bg-transparent appearance-none cursor-pointer diamond-slider pointer-events-auto"
                   style={{
                     WebkitAppearance: 'none',
                     appearance: 'none',
-                    zIndex: maxCarat < 5 ? 31 : 29
+                    zIndex: 32
                   }}
                 />
                 <div className="absolute top-0 left-0 w-full h-1.5 bg-[#071c37]/10 rounded-full" />
