@@ -334,8 +334,8 @@ function HomePage() {
 
             <Reveal delay={200} className="lg:col-span-7">
               <div className="max-w-2xl">
-                <span className="eyebrow block mb-6 text-gold">- THE ATELIER</span>
-                <h2 className="text-4xl md:text-5xl font-serif leading-tight mb-8">
+                <span className="eyebrow block mb-8 text-gold mt-12">- THE ATELIER</span>
+                <h2 className="text-5xl md:text-6xl font-serif leading-tight mb-8">
                   Every stone <span className="italic">chosen.</span><br />
                   Every piece <span className="italic">signed by hand.</span>
                 </h2>
