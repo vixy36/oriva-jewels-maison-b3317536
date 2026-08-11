@@ -184,7 +184,7 @@ function DiamondsSearchPage() {
                   step="0.01"
                   value={minCarat}
                   onChange={(e) => setMinCarat(Math.min(Number(e.target.value), maxCarat))}
-                  className="absolute w-full h-1.5 bg-transparent appearance-none cursor-pointer accent-[#071c37] z-20 pointer-events-auto"
+                  className="absolute w-full h-1.5 bg-transparent appearance-none cursor-pointer accent-[#071c37] z-30 pointer-events-auto"
                   style={{
                     WebkitAppearance: 'none',
                     appearance: 'none',
@@ -197,7 +197,7 @@ function DiamondsSearchPage() {
                   step="0.01"
                   value={maxCarat}
                   onChange={(e) => setMaxCarat(Math.max(Number(e.target.value), minCarat))}
-                  className="absolute w-full h-1.5 bg-transparent appearance-none cursor-pointer accent-[#071c37] z-10 pointer-events-auto"
+                  className="absolute w-full h-1.5 bg-transparent appearance-none cursor-pointer accent-[#071c37] z-20 pointer-events-auto"
                   style={{
                     WebkitAppearance: 'none',
                     appearance: 'none',
@@ -241,7 +241,7 @@ function DiamondsSearchPage() {
                   step="100"
                   value={minPrice}
                   onChange={(e) => setMinPrice(Math.min(Number(e.target.value), maxPrice))}
-                  className="absolute w-full h-1.5 bg-transparent appearance-none cursor-pointer accent-[#071c37] z-20 pointer-events-auto"
+                  className="absolute w-full h-1.5 bg-transparent appearance-none cursor-pointer accent-[#071c37] z-30 pointer-events-auto"
                 />
                 <input 
                   type="range"
@@ -250,7 +250,7 @@ function DiamondsSearchPage() {
                   step="100"
                   value={maxPrice}
                   onChange={(e) => setMaxPrice(Math.max(Number(e.target.value), minPrice))}
-                  className="absolute w-full h-1.5 bg-transparent appearance-none cursor-pointer accent-[#071c37] z-10 pointer-events-auto"
+                  className="absolute w-full h-1.5 bg-transparent appearance-none cursor-pointer accent-[#071c37] z-20 pointer-events-auto"
                 />
                 <div className="absolute top-0 left-0 w-full h-1.5 bg-[#071c37]/10 rounded-full" />
               </div>
