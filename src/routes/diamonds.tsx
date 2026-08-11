@@ -264,7 +264,7 @@ function DiamondsSearchPage() {
                 className="flex items-center gap-6 border border-gray-300 rounded-full px-6 py-3 hover:border-[#071c37] transition-all bg-[#f8f8f8]"
               >
                 <div className="w-10 h-10 rounded-full border border-gray-200 bg-white shadow-sm flex items-center justify-center overflow-hidden">
-                  <img src={shapeIcon("round")} alt="Single" className="w-8 h-8 object-contain" />
+                  <img src={shapeIcon(selectedShape.toLowerCase())} alt="Single" className="w-8 h-8 object-contain" />
                 </div>
                 
                 <div className={`w-14 h-7 rounded-full relative border transition-colors duration-300 ${isPairs ? 'bg-[#071c37] border-[#071c37]' : 'bg-gray-200 border-gray-300'}`}>
@@ -275,10 +275,10 @@ function DiamondsSearchPage() {
                 
                 <div className="flex -space-x-3">
                   <div className="w-10 h-10 rounded-full border border-gray-200 bg-white shadow-sm flex items-center justify-center relative z-10 overflow-hidden">
-                    <img src={shapeIcon("round")} alt="Pair 1" className="w-8 h-8 object-contain" />
+                    <img src={shapeIcon(selectedShape.toLowerCase())} alt="Pair 1" className="w-8 h-8 object-contain" />
                   </div>
                   <div className="w-10 h-10 rounded-full border border-gray-200 bg-white shadow-sm flex items-center justify-center overflow-hidden">
-                    <img src={shapeIcon("round")} alt="Pair 2" className="w-8 h-8 object-contain" />
+                    <img src={shapeIcon(selectedShape.toLowerCase())} alt="Pair 2" className="w-8 h-8 object-contain" />
                   </div>
                 </div>
               </button>
