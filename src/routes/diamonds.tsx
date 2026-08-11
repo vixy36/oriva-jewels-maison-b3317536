@@ -299,10 +299,10 @@ function DiamondsSearchPage() {
           </div>
         </div>
 
-        <div className="mt-20 text-center">
+        <div className="mt-16 md:mt-20 text-center px-4">
           <GsapReveal>
-            <h2 className="font-serif text-3xl text-[#071c37] mb-6">Experience Brilliance</h2>
-            <p className="max-w-2xl mx-auto text-[15px] leading-relaxed text-[#071c37]/70">
+            <h2 className="font-serif text-2xl md:text-3xl text-[#071c37] mb-4 md:mb-6">Experience Brilliance</h2>
+            <p className="max-w-2xl mx-auto text-[14px] md:text-[15px] leading-relaxed text-[#071c37]/70">
               Our diamond search allows you to filter through thousands of certified stones. 
               Once you've selected your ideal parameters, our master gemologists will curate a personal 
               selection for your review.
