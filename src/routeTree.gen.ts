@@ -27,6 +27,7 @@ import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ShapeShapeRouteImport } from './routes/shape.$shape'
 import { Route as ProductSlugRouteImport } from './routes/product.$slug'
+import { Route as PagesSlugRouteImport } from './routes/pages.$slug'
 import { Route as OrderCodeRouteImport } from './routes/order.$code'
 import { Route as CollectionsCategoryRouteImport } from './routes/collections.$category'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
@@ -131,6 +132,11 @@ const ShapeShapeRoute = ShapeShapeRouteImport.update({
 const ProductSlugRoute = ProductSlugRouteImport.update({
   id: '/product/$slug',
   path: '/product/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PagesSlugRoute = PagesSlugRouteImport.update({
+  id: '/pages/$slug',
+  path: '/pages/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OrderCodeRoute = OrderCodeRouteImport.update({
@@ -241,6 +247,7 @@ export interface FileRoutesByFullPath {
   '/admin': typeof AuthenticatedAdminRouteWithChildren
   '/collections/$category': typeof CollectionsCategoryRoute
   '/order/$code': typeof OrderCodeRoute
+  '/pages/$slug': typeof PagesSlugRoute
   '/product/$slug': typeof ProductSlugRoute
   '/shape/$shape': typeof ShapeShapeRoute
   '/admin/automations': typeof AuthenticatedAdminAutomationsRoute
@@ -275,6 +282,7 @@ export interface FileRoutesByTo {
   '/wishlist': typeof WishlistRoute
   '/collections/$category': typeof CollectionsCategoryRoute
   '/order/$code': typeof OrderCodeRoute
+  '/pages/$slug': typeof PagesSlugRoute
   '/product/$slug': typeof ProductSlugRoute
   '/shape/$shape': typeof ShapeShapeRoute
   '/admin/automations': typeof AuthenticatedAdminAutomationsRoute
@@ -312,6 +320,7 @@ export interface FileRoutesById {
   '/_authenticated/admin': typeof AuthenticatedAdminRouteWithChildren
   '/collections/$category': typeof CollectionsCategoryRoute
   '/order/$code': typeof OrderCodeRoute
+  '/pages/$slug': typeof PagesSlugRoute
   '/product/$slug': typeof ProductSlugRoute
   '/shape/$shape': typeof ShapeShapeRoute
   '/_authenticated/admin/automations': typeof AuthenticatedAdminAutomationsRoute
@@ -349,6 +358,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/collections/$category'
     | '/order/$code'
+    | '/pages/$slug'
     | '/product/$slug'
     | '/shape/$shape'
     | '/admin/automations'
@@ -383,6 +393,7 @@ export interface FileRouteTypes {
     | '/wishlist'
     | '/collections/$category'
     | '/order/$code'
+    | '/pages/$slug'
     | '/product/$slug'
     | '/shape/$shape'
     | '/admin/automations'
@@ -419,6 +430,7 @@ export interface FileRouteTypes {
     | '/_authenticated/admin'
     | '/collections/$category'
     | '/order/$code'
+    | '/pages/$slug'
     | '/product/$slug'
     | '/shape/$shape'
     | '/_authenticated/admin/automations'
@@ -455,6 +467,7 @@ export interface RootRouteChildren {
   WishlistRoute: typeof WishlistRoute
   CollectionsCategoryRoute: typeof CollectionsCategoryRoute
   OrderCodeRoute: typeof OrderCodeRoute
+  PagesSlugRoute: typeof PagesSlugRoute
   ProductSlugRoute: typeof ProductSlugRoute
   ShapeShapeRoute: typeof ShapeShapeRoute
 }
@@ -585,6 +598,13 @@ declare module '@tanstack/react-router' {
       path: '/product/$slug'
       fullPath: '/product/$slug'
       preLoaderRoute: typeof ProductSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pages/$slug': {
+      id: '/pages/$slug'
+      path: '/pages/$slug'
+      fullPath: '/pages/$slug'
+      preLoaderRoute: typeof PagesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/order/$code': {
@@ -779,6 +799,7 @@ const rootRouteChildren: RootRouteChildren = {
   WishlistRoute: WishlistRoute,
   CollectionsCategoryRoute: CollectionsCategoryRoute,
   OrderCodeRoute: OrderCodeRoute,
+  PagesSlugRoute: PagesSlugRoute,
   ProductSlugRoute: ProductSlugRoute,
   ShapeShapeRoute: ShapeShapeRoute,
 }
