@@ -478,7 +478,7 @@ function HomePage() {
                 },
                 {
                   q: "Do you ship worldwide?",
-                  a: "Yes. We ship fully insured to over 40 countries, hand-delivered where possible. All duties and paperwork handled by our maison.",
+                  a: "Yes. We ship fully insured to over 40 countries, hand-delivered where possible.",
                 },
                 {
                   q: "Can I customise an existing design?",
