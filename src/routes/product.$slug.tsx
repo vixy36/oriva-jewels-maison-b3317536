@@ -488,7 +488,7 @@ function ProductPage() {
                 </div>
                 
                 <div className="p-6 space-y-6">
-                  <div className="space-y-6">
+                  <div className="flex flex-col gap-4">
                     <button
                       type="button"
                       onClick={async () => {
@@ -512,26 +512,25 @@ function ProductPage() {
                         } catch {}
                         window.location.href = buildWhatsAppLink(message);
                       }}
-                      className="flex w-full items-center justify-center gap-3 bg-emerald-600/90 text-white py-4 text-[14px] font-semibold tracking-[0.4em] uppercase hover:bg-emerald-600 transition group cursor-pointer border border-emerald-500/20"
+                      className="flex w-full items-center justify-center gap-2.5 bg-emerald-600 text-white py-4 md:py-5 text-[12px] md:text-[14px] font-bold tracking-[0.25em] md:tracking-[0.4em] uppercase hover:bg-emerald-700 transition-all border border-emerald-500/20 active:scale-[0.98]"
                     >
-                      <MessageCircle className="h-4 w-4" strokeWidth={1.5} />
+                      <MessageCircle className="h-4 w-4 md:h-5 md:w-5" strokeWidth={2} />
                       Enquire on WhatsApp
                     </button>
 
-                    <div className="relative flex items-center justify-center">
-                      <div className="absolute inset-0 flex items-center">
-                        <div className="w-full border-t border-white/10"></div>
-                      </div>
-                      <span className="relative bg-charcoal px-4 text-[12px] font-bold tracking-[0.3em] uppercase text-gold/60">OR</span>
+                    <div className="relative flex items-center py-2">
+                      <div className="flex-grow border-t border-white/10"></div>
+                      <span className="flex-none px-4 text-[11px] font-bold tracking-[0.2em] text-gold/40">OR</span>
+                      <div className="flex-grow border-t border-white/10"></div>
                     </div>
 
                     {!isSubmitOpen ? (
                       <button
                         type="button"
                         onClick={() => setIsSubmitOpen(true)}
-                        className="flex w-full items-center justify-center gap-3 bg-transparent border border-gold/40 text-gold py-4 text-[14px] font-semibold tracking-[0.4em] uppercase hover:bg-gold hover:text-obsidian transition group cursor-pointer"
+                        className="flex w-full items-center justify-center gap-2.5 bg-transparent border border-gold/40 text-gold py-4 md:py-5 text-[12px] md:text-[14px] font-bold tracking-[0.25em] md:tracking-[0.4em] uppercase hover:bg-gold hover:text-obsidian transition-all active:scale-[0.98]"
                       >
-                        Submit Your Enquiry
+                        Submit Order Query
                       </button>
                     ) : (
                       <div className="space-y-5 animate-in fade-in slide-in-from-top-2 duration-500">
