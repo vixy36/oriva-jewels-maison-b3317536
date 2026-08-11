@@ -66,7 +66,7 @@ function DiamondsSearchPage() {
           <p className="text-[14px] tracking-[0.3em] text-[#071c37]/60 uppercase">Curated Brilliance</p>
         </GsapReveal>
 
-        <div className="flex justify-center gap-16 md:gap-24 mb-20">
+        <div className="flex flex-col md:flex-row justify-center items-center gap-10 md:gap-24 mb-16 md:mb-20">
           {[
             { label: "Certified Lab Grown", img: shapeIcon("round") },
             { label: "Non-Certified Lab Grown", img: shapeIcon("emerald") }
@@ -74,12 +74,12 @@ function DiamondsSearchPage() {
             <button
               key={type.label}
               onClick={() => setDiamondType(type.label as any)}
-              className="group flex flex-col items-center gap-6 focus:outline-none"
+              className="group flex flex-col items-center gap-4 md:gap-6 focus:outline-none w-full md:w-auto"
             >
-              <div className={`relative w-28 h-28 rounded-full border-2 transition-all p-2 ${diamondType === type.label ? 'border-[#071c37]' : 'border-transparent group-hover:border-[#071c37]/20'}`}>
+              <div className={`relative w-20 h-20 md:w-28 md:h-28 rounded-full border-2 transition-all p-2 bg-white/50 ${diamondType === type.label ? 'border-[#071c37]' : 'border-transparent group-hover:border-[#071c37]/20'}`}>
                 <img src={type.img} alt={type.label} className="w-full h-full object-contain filter grayscale brightness-125" />
               </div>
-              <span className={`text-[14px] tracking-[0.2em] uppercase font-bold transition-colors ${diamondType === type.label ? 'text-[#071c37]' : 'text-[#071c37]/60'}`}>
+              <span className={`text-[12px] md:text-[14px] tracking-[0.2em] uppercase font-bold transition-colors text-center ${diamondType === type.label ? 'text-[#071c37]' : 'text-[#071c37]/60'}`}>
                 {type.label}
               </span>
             </button>
