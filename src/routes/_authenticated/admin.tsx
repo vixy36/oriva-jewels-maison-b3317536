@@ -42,6 +42,7 @@ const nav: { to: string; label: string; icon: typeof LayoutDashboard; exact?: bo
   { to: "/admin/products", label: "Products", icon: Package },
   { to: "/admin/categories", label: "Categories", icon: Layers },
   { to: "/admin/menu", label: "Menu", icon: ListTree },
+  { to: "/admin/pages", label: "Pages", icon: FileText },
   { to: "/admin/orders", label: "Orders", icon: ShoppingBag },
   { to: "/admin/enquiries", label: "Enquiries", icon: Inbox },
   { to: "/admin/offers", label: "Offers", icon: Tag },
