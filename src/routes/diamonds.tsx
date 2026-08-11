@@ -59,14 +59,14 @@ function DiamondsSearchPage() {
   }, [diamondType, selectedShape, isPairs, selectedColor, selectedClarity, selectedCut, minCarat, maxCarat, minPrice, maxPrice]);
 
   return (
-    <div className="bg-[#f5f4f2] min-h-screen pt-24 pb-20">
-      <div className="mx-auto max-w-[1200px] px-6">
-        <GsapReveal className="text-center mb-12">
-          <h1 className="font-serif text-4xl md:text-5xl text-[#071c37] mb-2 font-medium">Diamond</h1>
-          <p className="text-[13px] tracking-widest text-[#071c37]/60 uppercase">0 Items</p>
+    <div className="bg-[#f5f4f2] min-h-screen pt-32 pb-20">
+      <div className="mx-auto max-w-[1300px] px-6">
+        <GsapReveal className="text-center mb-16">
+          <h1 className="font-serif text-5xl md:text-6xl text-[#071c37] mb-4 font-medium">Diamonds</h1>
+          <p className="text-[14px] tracking-[0.3em] text-[#071c37]/60 uppercase">Curated Brilliance</p>
         </GsapReveal>
 
-        <div className="flex justify-center gap-16 mb-16">
+        <div className="flex justify-center gap-16 md:gap-24 mb-20">
           {[
             { label: "Certified Lab Grown", img: shapeIcon("round") },
             { label: "Non-Certified Lab Grown", img: shapeIcon("emerald") }
@@ -74,12 +74,12 @@ function DiamondsSearchPage() {
             <button
               key={type.label}
               onClick={() => setDiamondType(type.label as any)}
-              className="group flex flex-col items-center gap-4 focus:outline-none"
+              className="group flex flex-col items-center gap-6 focus:outline-none"
             >
-              <div className={`relative w-20 h-20 rounded-full border-2 transition-all p-1 ${diamondType === type.label ? 'border-[#071c37]' : 'border-transparent group-hover:border-[#071c37]/20'}`}>
+              <div className={`relative w-28 h-28 rounded-full border-2 transition-all p-2 ${diamondType === type.label ? 'border-[#071c37]' : 'border-transparent group-hover:border-[#071c37]/20'}`}>
                 <img src={type.img} alt={type.label} className="w-full h-full object-contain filter grayscale brightness-125" />
               </div>
-              <span className={`text-[12px] tracking-widest uppercase font-medium transition-colors ${diamondType === type.label ? 'text-[#071c37]' : 'text-[#071c37]/60'}`}>
+              <span className={`text-[14px] tracking-[0.2em] uppercase font-bold transition-colors ${diamondType === type.label ? 'text-[#071c37]' : 'text-[#071c37]/60'}`}>
                 {type.label}
               </span>
             </button>
@@ -88,29 +88,29 @@ function DiamondsSearchPage() {
 
         <div className="bg-white border border-gray-200 p-8 md:p-12 shadow-sm">
           {/* SHAPE SELECTOR */}
-          <div className="grid grid-cols-5 md:grid-cols-10 gap-2 mb-12">
+          <div className="grid grid-cols-2 sm:grid-cols-5 md:grid-cols-10 gap-4 mb-16">
             {shapes.map((s) => (
               <button
                 key={s.name}
                 onClick={() => setSelectedShape(s.name)}
-                className={`group flex flex-col items-center gap-3 p-3 border transition-all ${selectedShape === s.name ? 'border-[#071c37] bg-[#071c37]/5' : 'border-gray-200 hover:border-gray-300'}`}
+                className={`group flex flex-col items-center gap-4 p-5 border transition-all ${selectedShape === s.name ? 'border-[#071c37] bg-[#071c37]/5 ring-1 ring-[#071c37]' : 'border-gray-200 hover:border-gray-300'}`}
               >
-                <img src={s.icon} alt={s.name} className="w-10 h-10 object-contain" />
-                <span className="text-[10px] tracking-widest uppercase font-bold text-[#071c37]/80">{s.name}</span>
+                <img src={s.icon} alt={s.name} className="w-14 h-14 object-contain transition-transform group-hover:scale-110" />
+                <span className="text-[11px] tracking-[0.2em] uppercase font-bold text-[#071c37]">{s.name}</span>
               </button>
             ))}
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-10 border-t border-gray-100 pt-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-x-16 gap-y-12 border-t border-gray-100 pt-16">
             {/* COLOR */}
             <div>
-              <label className="block text-[10px] tracking-[0.2em] uppercase font-bold text-[#071c37]/60 mb-4">Color</label>
-              <div className="flex flex-wrap gap-2">
+              <label className="block text-[12px] tracking-[0.2em] uppercase font-bold text-[#071c37] mb-6">Color</label>
+              <div className="flex flex-wrap gap-3">
                 {colorOptions.map(c => (
                   <button
                     key={c}
                     onClick={() => setSelectedColor(c)}
-                    className={`h-9 min-w-[36px] px-2 border text-[11px] font-bold transition-all ${selectedColor === c ? 'bg-[#071c37] text-white border-[#071c37]' : 'border-gray-200 text-[#071c37]/70 hover:border-gray-300'}`}
+                    className={`h-12 min-w-[48px] px-3 border text-[13px] font-bold transition-all ${selectedColor === c ? 'bg-[#071c37] text-white border-[#071c37]' : 'border-gray-200 text-[#071c37]/70 hover:border-gray-300'}`}
                   >
                     {c}
                   </button>
@@ -120,13 +120,13 @@ function DiamondsSearchPage() {
 
             {/* CLARITY */}
             <div>
-              <label className="block text-[10px] tracking-[0.2em] uppercase font-bold text-[#071c37]/60 mb-4">Clarity</label>
-              <div className="flex flex-wrap gap-2">
+              <label className="block text-[12px] tracking-[0.2em] uppercase font-bold text-[#071c37] mb-6">Clarity</label>
+              <div className="flex flex-wrap gap-3">
                 {clarityOptions.map(c => (
                   <button
                     key={c}
                     onClick={() => setSelectedClarity(c)}
-                    className={`h-9 min-w-[40px] px-2 border text-[11px] font-bold transition-all ${selectedClarity === c ? 'bg-[#071c37] text-white border-[#071c37]' : 'border-gray-200 text-[#071c37]/70 hover:border-gray-300'}`}
+                    className={`h-12 min-w-[54px] px-3 border text-[13px] font-bold transition-all ${selectedClarity === c ? 'bg-[#071c37] text-white border-[#071c37]' : 'border-gray-200 text-[#071c37]/70 hover:border-gray-300'}`}
                   >
                     {c}
                   </button>
@@ -136,13 +136,13 @@ function DiamondsSearchPage() {
 
             {/* CUT */}
             <div>
-              <label className="block text-[10px] tracking-[0.2em] uppercase font-bold text-[#071c37]/60 mb-4">Cut</label>
-              <div className="flex flex-wrap gap-2">
+              <label className="block text-[12px] tracking-[0.2em] uppercase font-bold text-[#071c37] mb-6">Cut</label>
+              <div className="flex flex-wrap gap-3">
                 {cutOptions.map(c => (
                   <button
                     key={c}
                     onClick={() => setSelectedCut(c)}
-                    className={`h-9 px-3 border text-[11px] font-bold transition-all ${selectedCut === c ? 'bg-[#071c37] text-white border-[#071c37]' : 'border-gray-200 text-[#071c37]/70 hover:border-gray-300'}`}
+                    className={`h-12 px-4 border text-[13px] font-bold transition-all ${selectedCut === c ? 'bg-[#071c37] text-white border-[#071c37]' : 'border-gray-200 text-[#071c37]/70 hover:border-gray-300'}`}
                   >
                     {c}
                   </button>
@@ -152,65 +152,107 @@ function DiamondsSearchPage() {
 
             {/* CARAT */}
             <div className="md:col-span-1">
-              <label className="block text-[10px] tracking-[0.2em] uppercase font-bold text-[#071c37]/60 mb-4">Carat Weight</label>
-              <div className="flex items-center gap-3">
-                <input
-                  type="number"
-                  step="0.01"
-                  value={minCarat}
-                  onChange={(e) => setMinCarat(Number(e.target.value))}
-                  className="w-full h-10 border border-gray-200 px-3 text-center text-[13px] text-[#071c37] focus:outline-none focus:border-[#071c37]"
-                />
-                <span className="text-gray-400">-</span>
-                <input
-                  type="number"
-                  step="0.01"
-                  value={maxCarat}
-                  onChange={(e) => setMaxCarat(Number(e.target.value))}
-                  className="w-full h-10 border border-gray-200 px-3 text-center text-[13px] text-[#071c37] focus:outline-none focus:border-[#071c37]"
-                />
+              <label className="block text-[12px] tracking-[0.2em] uppercase font-bold text-[#071c37] mb-6">Carat Weight</label>
+              <div className="flex items-center gap-4">
+                <div className="relative w-full">
+                  <input
+                    type="number"
+                    step="0.01"
+                    value={minCarat}
+                    onChange={(e) => setMinCarat(Number(e.target.value))}
+                    className="w-full h-12 border border-gray-200 px-3 text-center text-[15px] font-medium text-[#071c37] focus:outline-none focus:border-[#071c37]"
+                  />
+                  <span className="absolute -top-6 left-0 text-[9px] uppercase tracking-tighter text-gray-400">Min Carat</span>
+                </div>
+                <span className="text-gray-400 font-serif text-2xl">—</span>
+                <div className="relative w-full">
+                  <input
+                    type="number"
+                    step="0.01"
+                    value={maxCarat}
+                    onChange={(e) => setMaxCarat(Number(e.target.value))}
+                    className="w-full h-12 border border-gray-200 px-3 text-center text-[15px] font-medium text-[#071c37] focus:outline-none focus:border-[#071c37]"
+                  />
+                  <span className="absolute -top-6 left-0 text-[9px] uppercase tracking-tighter text-gray-400">Max Carat</span>
+                </div>
               </div>
-              <div className="mt-8 px-2">
+              <div className="mt-10 px-2 relative h-6">
                 <input 
                   type="range"
                   min="0"
                   max="10"
-                  step="0.1"
-                  value={maxCarat}
-                  onChange={(e) => setMaxCarat(Number(e.target.value))}
-                  className="w-full h-1.5 bg-[#071c37]/10 rounded-full appearance-none cursor-pointer accent-[#071c37]"
+                  step="0.01"
+                  value={minCarat}
+                  onChange={(e) => setMinCarat(Math.min(Number(e.target.value), maxCarat))}
+                  className="absolute w-full h-1.5 bg-transparent appearance-none cursor-pointer accent-[#071c37] z-20 pointer-events-auto"
+                  style={{
+                    WebkitAppearance: 'none',
+                    appearance: 'none',
+                  }}
                 />
+                <input 
+                  type="range"
+                  min="0"
+                  max="10"
+                  step="0.01"
+                  value={maxCarat}
+                  onChange={(e) => setMaxCarat(Math.max(Number(e.target.value), minCarat))}
+                  className="absolute w-full h-1.5 bg-transparent appearance-none cursor-pointer accent-[#071c37] z-10 pointer-events-auto"
+                  style={{
+                    WebkitAppearance: 'none',
+                    appearance: 'none',
+                  }}
+                />
+                <div className="absolute top-0 left-0 w-full h-1.5 bg-[#071c37]/10 rounded-full" />
               </div>
             </div>
 
             {/* PRICE */}
             <div className="md:col-span-1">
-              <label className="block text-[10px] tracking-[0.2em] uppercase font-bold text-[#071c37]/60 mb-4">Price Range</label>
-              <div className="flex items-center gap-3">
-                <input
-                  type="number"
-                  value={minPrice}
-                  onChange={(e) => setMinPrice(Number(e.target.value))}
-                  className="w-full h-10 border border-gray-200 px-3 text-center text-[13px] text-[#071c37] focus:outline-none focus:border-[#071c37]"
-                />
-                <span className="text-gray-400">-</span>
-                <input
-                  type="number"
-                  value={maxPrice}
-                  onChange={(e) => setMaxPrice(Number(e.target.value))}
-                  className="w-full h-10 border border-gray-200 px-3 text-center text-[13px] text-[#071c37] focus:outline-none focus:border-[#071c37]"
-                />
+              <label className="block text-[12px] tracking-[0.2em] uppercase font-bold text-[#071c37] mb-6">Price Range ($$)</label>
+              <div className="flex items-center gap-4">
+                <div className="relative w-full">
+                  <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-[13px]">$</span>
+                  <input
+                    type="number"
+                    value={minPrice}
+                    onChange={(e) => setMinPrice(Number(e.target.value))}
+                    className="w-full h-12 border border-gray-200 pl-7 pr-3 text-center text-[15px] font-medium text-[#071c37] focus:outline-none focus:border-[#071c37]"
+                  />
+                  <span className="absolute -top-6 left-0 text-[9px] uppercase tracking-tighter text-gray-400">Min Price</span>
+                </div>
+                <span className="text-gray-400 font-serif text-2xl">—</span>
+                <div className="relative w-full">
+                  <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-[13px]">$</span>
+                  <input
+                    type="number"
+                    value={maxPrice}
+                    onChange={(e) => setMaxPrice(Number(e.target.value))}
+                    className="w-full h-12 border border-gray-200 pl-7 pr-3 text-center text-[15px] font-medium text-[#071c37] focus:outline-none focus:border-[#071c37]"
+                  />
+                  <span className="absolute -top-6 left-0 text-[9px] uppercase tracking-tighter text-gray-400">Max Price</span>
+                </div>
               </div>
-              <div className="mt-8 px-2">
+              <div className="mt-10 px-2 relative h-6">
+                <input 
+                  type="range"
+                  min="0"
+                  max="50000"
+                  step="100"
+                  value={minPrice}
+                  onChange={(e) => setMinPrice(Math.min(Number(e.target.value), maxPrice))}
+                  className="absolute w-full h-1.5 bg-transparent appearance-none cursor-pointer accent-[#071c37] z-20 pointer-events-auto"
+                />
                 <input 
                   type="range"
                   min="0"
                   max="50000"
                   step="100"
                   value={maxPrice}
-                  onChange={(e) => setMaxPrice(Number(e.target.value))}
-                  className="w-full h-1.5 bg-[#071c37]/10 rounded-full appearance-none cursor-pointer accent-[#071c37]"
+                  onChange={(e) => setMaxPrice(Math.max(Number(e.target.value), minPrice))}
+                  className="absolute w-full h-1.5 bg-transparent appearance-none cursor-pointer accent-[#071c37] z-10 pointer-events-auto"
                 />
+                <div className="absolute top-0 left-0 w-full h-1.5 bg-[#071c37]/10 rounded-full" />
               </div>
             </div>
 
@@ -219,24 +261,24 @@ function DiamondsSearchPage() {
               <button 
                 type="button"
                 onClick={() => setIsPairs(!isPairs)}
-                className="flex items-center gap-4 border border-gray-300 rounded-full px-4 py-2 hover:border-[#071c37] transition-colors"
+                className="flex items-center gap-6 border border-gray-300 rounded-full px-6 py-3 hover:border-[#071c37] transition-all bg-[#f8f8f8]"
               >
-                <div className="w-8 h-8 rounded-full border border-gray-200 bg-white flex items-center justify-center overflow-hidden">
-                  <img src={shapeIcon("round")} alt="Single" className="w-6 h-6 object-contain" />
+                <div className="w-10 h-10 rounded-full border border-gray-200 bg-white shadow-sm flex items-center justify-center overflow-hidden">
+                  <img src={shapeIcon(selectedShape.toLowerCase())} alt="Single" className="w-8 h-8 object-contain" />
                 </div>
                 
-                <div className={`w-12 h-6 rounded-full relative border transition-colors duration-300 ${isPairs ? 'bg-[#071c37] border-[#071c37]' : 'bg-gray-100 border-gray-200'}`}>
-                  <div className={`absolute top-1 w-4 h-4 bg-white rounded-full transition-all duration-300 ${isPairs ? 'left-7' : 'left-1'}`} />
+                <div className={`w-14 h-7 rounded-full relative border transition-colors duration-300 ${isPairs ? 'bg-[#071c37] border-[#071c37]' : 'bg-gray-200 border-gray-300'}`}>
+                  <div className={`absolute top-1 w-5 h-5 bg-white rounded-full shadow-md transition-all duration-300 ${isPairs ? 'left-8' : 'left-1'}`} />
                 </div>
                 
-                <span className="text-[11px] font-bold text-[#071c37] tracking-wider uppercase">{isPairs ? 'Pairs' : 'Singles'}</span>
+                <span className="text-[12px] font-bold text-[#071c37] tracking-[0.2em] uppercase">{isPairs ? 'Pairs' : 'Singles'}</span>
                 
-                <div className="flex -space-x-2">
-                  <div className="w-8 h-8 rounded-full border border-gray-200 bg-white flex items-center justify-center relative z-10 overflow-hidden">
-                    <img src={shapeIcon("round")} alt="Pair 1" className="w-6 h-6 object-contain" />
+                <div className="flex -space-x-3">
+                  <div className="w-10 h-10 rounded-full border border-gray-200 bg-white shadow-sm flex items-center justify-center relative z-10 overflow-hidden">
+                    <img src={shapeIcon(selectedShape.toLowerCase())} alt="Pair 1" className="w-8 h-8 object-contain" />
                   </div>
-                  <div className="w-8 h-8 rounded-full border border-gray-200 bg-white flex items-center justify-center overflow-hidden">
-                    <img src={shapeIcon("round")} alt="Pair 2" className="w-6 h-6 object-contain" />
+                  <div className="w-10 h-10 rounded-full border border-gray-200 bg-white shadow-sm flex items-center justify-center overflow-hidden">
+                    <img src={shapeIcon(selectedShape.toLowerCase())} alt="Pair 2" className="w-8 h-8 object-contain" />
                   </div>
                 </div>
               </button>
