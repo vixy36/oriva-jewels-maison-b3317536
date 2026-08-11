@@ -285,12 +285,12 @@ function DiamondsSearchPage() {
             </div>
           </div>
 
-          <div className="mt-16 flex justify-center">
+          <div className="mt-12 md:mt-16 flex justify-center">
             <a
               href={buildWhatsAppLink(message)}
               target="_blank"
               rel="noreferrer"
-              className="group flex items-center justify-center gap-3 bg-[#071c37] text-white px-12 py-5 text-[12px] tracking-[0.4em] uppercase hover:bg-gold hover:text-obsidian transition-all duration-300 shadow-xl shadow-[#071c37]/10"
+              className="group flex w-full md:w-auto items-center justify-center gap-3 bg-[#071c37] text-white px-8 md:px-12 py-4 md:py-5 text-[11px] md:text-[12px] tracking-[0.2em] md:tracking-[0.4em] uppercase hover:bg-gold hover:text-obsidian transition-all duration-300 shadow-xl shadow-[#071c37]/10"
             >
               <MessageCircle className="h-5 w-5" />
               Enquire on WhatsApp
