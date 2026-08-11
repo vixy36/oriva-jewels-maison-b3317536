@@ -343,9 +343,7 @@ function ProductPage() {
                 </div>
               )}
               <p className="mt-6 text-[15px] leading-[1.8] text-ivory/95 font-medium max-w-lg">
-                '''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''
-
-                remove drop down  menu list of hip hop
+                I have approved the plan
               </p>
 
 

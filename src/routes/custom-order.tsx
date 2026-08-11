@@ -156,9 +156,7 @@ function CustomOrderPage() {
             Custom <em className="italic text-gold-gradient">order request.</em>
           </h1>
           <p data-gsap className="mt-6 mx-auto max-w-2xl text-[15px] md:text-[16px] leading-[1.8] text-white font-bold">
-            '''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''
-
-            remove drop down  menu list of hip hop
+            I have approved the plan
           </p>
         </GsapReveal>
 
