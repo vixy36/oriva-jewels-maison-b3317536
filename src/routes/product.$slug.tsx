@@ -386,55 +386,12 @@ function ProductPage() {
                   options={product.diamondTypes}
                   onChange={(v) => setDiamondType(v as typeof diamondType)}
                 />
-                {isRing && (
-                  <PillGroup
-                    label="Ring Style"
-                    value={diamondStyle}
-                    options={["SOLITAIRE", "HALO", "THREE STONE", "PAVE"]}
-                    onChange={setDiamondStyle}
-                  />
-                )}
-                {diamondType === "Lab Grown" && (
-                  <div>
-                    <p className="text-[14px] font-bold tracking-[0.42em] uppercase text-gold">Diamond Shape</p>
-                    <div className="mt-4 grid grid-cols-2 sm:grid-cols-5 gap-3">
-                      {[
-                        "Round",
-                        "Princess",
-                        "Oval",
-                        "Emerald",
-                        "Pear",
-                        "Cushion",
-                        "Marquise",
-                        "Radiant",
-                        "Asscher",
-                        "Heart",
-                      ].map((shape) => (
-                        <button
-                          key={shape}
-                          type="button"
-                          onClick={() => setDiamondShape(shape)}
-                          className={`group relative flex flex-col items-center justify-center border p-3 transition-all duration-300 ${
-                            diamondShape === shape
-                              ? "border-gold bg-gold/10"
-                              : "border-white/10 bg-charcoal/40 hover:border-gold/50"
-                          }`}
-                        >
-                          <div className={`mb-2 flex h-12 w-12 items-center justify-center rounded-sm bg-white/5 p-1 transition-colors ${diamondShape === shape ? "bg-white/10" : "group-hover:bg-white/10"}`}>
-                            <img 
-                              src={shapeIcon(shape)} 
-                              alt={shape}
-                              className={`h-full w-full object-contain filter invert opacity-90 transition-opacity ${diamondShape === shape ? "opacity-100" : "group-hover:opacity-100"}`}
-                            />
-                          </div>
-                          <span className={`text-[10px] font-bold tracking-[0.1em] uppercase transition-colors ${diamondShape === shape ? "text-gold" : "text-ivory/80 group-hover:text-gold"}`}>
-                            {shape}
-                          </span>
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                )}
+                <PillGroup
+                  label="Diamond"
+                  value={diamondType}
+                  options={product.diamondTypes}
+                  onChange={(v) => setDiamondType(v as typeof diamondType)}
+                />
                 <PillGroup
                   label="Diamond Clarity"
                   value={diamondClarity}
