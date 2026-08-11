@@ -584,14 +584,9 @@ function ProductPage() {
                       </button>
                     ) : (
                       <div className="space-y-5 animate-in fade-in slide-in-from-top-2 duration-500">
-                        <div className="flex items-center justify-between border-b border-white/10 pb-2">
-                          <h4 className="text-[12px] font-bold tracking-[0.3em] uppercase text-gold">Website Enquiry</h4>
-                          <button 
-                            onClick={() => setIsSubmitOpen(false)}
-                            className="text-[10px] uppercase tracking-widest text-ivory/40 hover:text-ivory transition"
-                          >
-                            Cancel
-                          </button>
+                        <div className="flex flex-col border-b border-white/10 pb-3">
+                          <h4 className="text-[12px] font-bold tracking-[0.3em] uppercase text-gold">Submit Order Query</h4>
+                          <p className="mt-1 text-[10px] tracking-[0.05em] text-ivory/50">Provide your details and we will reach out to discuss your order.</p>
                         </div>
                         
                         <div className="space-y-4">
