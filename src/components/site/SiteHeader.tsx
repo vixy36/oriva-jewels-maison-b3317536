@@ -92,6 +92,9 @@ export function SiteHeader() {
       }
 
       // Fallback heuristics for hardcoded children
+      // Disable dropdown for Hip Hop Jewelry as requested
+      if (/hip\s?hop/i.test(label)) return { label, to };
+
       if (/fine|jewel/i.test(label)) return { label, to, children: FINE_CHILDREN };
       
       return { label, to };
