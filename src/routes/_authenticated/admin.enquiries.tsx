@@ -50,7 +50,7 @@ function EnquiriesPage() {
 
   const load = useCallback(async () => {
     setLoading(true);
-    let q = supabase.from("enquiries").select("*").not("metadata->>hidden", "eq", "true").order("created_at", { ascending: false }).limit(300);
+    let q = supabase.from("enquiries").select("*").order("created_at", { ascending: false }).limit(300);
     if (filter === "unread") q = q.eq("is_read", false).eq("is_archived", false);
     else if (filter === "archived") q = q.eq("is_archived", true);
     else q = q.eq("is_archived", false);
