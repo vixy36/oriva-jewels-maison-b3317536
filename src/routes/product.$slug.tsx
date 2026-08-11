@@ -387,12 +387,6 @@ function ProductPage() {
                   onChange={(v) => setDiamondType(v as typeof diamondType)}
                 />
                 <PillGroup
-                  label="Diamond"
-                  value={diamondType}
-                  options={product.diamondTypes}
-                  onChange={(v) => setDiamondType(v as typeof diamondType)}
-                />
-                <PillGroup
                   label="Diamond Clarity"
                   value={diamondClarity}
                   options={["VVS1", "VVS2", "VS1", "VS2", "SI1", "SI2"]}
