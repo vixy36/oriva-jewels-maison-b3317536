@@ -397,48 +397,6 @@ function HomePage() {
       </section>
 
 
-      {/* THE PROCESS - Simple linear steps */}
-      <section className="pt-0 pb-10 bg-background border-t border-ivory/5">
-        <div className="mx-auto max-w-[1400px] px-6 md:px-12">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
-            <div className="max-w-xl">
-              <span className="eyebrow block mb-4">THE PROCESS</span>
-              <h2 className="text-4xl md:text-5xl font-serif leading-tight">
-                From a sketch <span className="italic font-light">to her finger.</span>
-              </h2>
-            </div>
-            <p className="max-w-xs text-[14px] leading-relaxed text-muted-foreground uppercase tracking-widest">
-              Three unhurried steps to your forever piece. Masterfully crafted, personally delivered.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {[
-              { n: "01", title: "Consultation", desc: "A private conversation about your vision, the diamond's character, and the budget that moves you." },
-              { n: "02", title: "CAD & Reveal", desc: "A photorealistic 3D rendering of your design. We refine every facet together until it is unmistakably yours." },
-              { n: "03", title: "Craft & Delivery", desc: "Hand-set by our master jewellers and delivered securely to your door, worldwide and fully insured." },
-            ].map((s, i) => (
-              <Reveal key={s.title} delay={i * 100}>
-                <div className="relative pt-12 border-t border-ivory/10 group">
-                  <span className="absolute top-0 left-0 text-[11px] tracking-[0.4em] uppercase text-gold py-4">{s.n}</span>
-                  <h3 className="text-2xl font-serif text-obsidian uppercase tracking-wide mb-6 group-hover:text-gold transition-colors">{s.title}</h3>
-                  <p className="text-[15px] leading-relaxed text-muted-foreground max-w-sm">{s.desc}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-
-          <div className="mt-20 text-center">
-            <a
-              href={buildWhatsAppLink("Hello Oriva Jewels, I'd like to begin a bespoke design consultation.")}
-              className="inline-flex items-center justify-center gap-4 bg-obsidian text-ivory px-12 py-5 text-[12px] tracking-[0.5em] uppercase hover:bg-gold hover:text-obsidian transition-colors duration-500"
-            >
-              <MessageCircle className="h-5 w-5" />
-              Begin your piece
-            </a>
-          </div>
-        </div>
-      </section>
 
       {/* ENGAGEMENT RINGS - Custom Commission */}
       <EngagementRingsSection />
