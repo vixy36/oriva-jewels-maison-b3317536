@@ -152,65 +152,107 @@ function DiamondsSearchPage() {
 
             {/* CARAT */}
             <div className="md:col-span-1">
-              <label className="block text-[10px] tracking-[0.2em] uppercase font-bold text-[#071c37]/60 mb-4">Carat Weight</label>
-              <div className="flex items-center gap-3">
-                <input
-                  type="number"
-                  step="0.01"
-                  value={minCarat}
-                  onChange={(e) => setMinCarat(Number(e.target.value))}
-                  className="w-full h-10 border border-gray-200 px-3 text-center text-[13px] text-[#071c37] focus:outline-none focus:border-[#071c37]"
-                />
-                <span className="text-gray-400">-</span>
-                <input
-                  type="number"
-                  step="0.01"
-                  value={maxCarat}
-                  onChange={(e) => setMaxCarat(Number(e.target.value))}
-                  className="w-full h-10 border border-gray-200 px-3 text-center text-[13px] text-[#071c37] focus:outline-none focus:border-[#071c37]"
-                />
+              <label className="block text-[12px] tracking-[0.2em] uppercase font-bold text-[#071c37] mb-6">Carat Weight</label>
+              <div className="flex items-center gap-4">
+                <div className="relative w-full">
+                  <input
+                    type="number"
+                    step="0.01"
+                    value={minCarat}
+                    onChange={(e) => setMinCarat(Number(e.target.value))}
+                    className="w-full h-12 border border-gray-200 px-3 text-center text-[15px] font-medium text-[#071c37] focus:outline-none focus:border-[#071c37]"
+                  />
+                  <span className="absolute -top-6 left-0 text-[9px] uppercase tracking-tighter text-gray-400">Min Carat</span>
+                </div>
+                <span className="text-gray-400 font-serif text-2xl">—</span>
+                <div className="relative w-full">
+                  <input
+                    type="number"
+                    step="0.01"
+                    value={maxCarat}
+                    onChange={(e) => setMaxCarat(Number(e.target.value))}
+                    className="w-full h-12 border border-gray-200 px-3 text-center text-[15px] font-medium text-[#071c37] focus:outline-none focus:border-[#071c37]"
+                  />
+                  <span className="absolute -top-6 left-0 text-[9px] uppercase tracking-tighter text-gray-400">Max Carat</span>
+                </div>
               </div>
-              <div className="mt-8 px-2">
+              <div className="mt-10 px-2 relative h-6">
                 <input 
                   type="range"
                   min="0"
                   max="10"
-                  step="0.1"
-                  value={maxCarat}
-                  onChange={(e) => setMaxCarat(Number(e.target.value))}
-                  className="w-full h-1.5 bg-[#071c37]/10 rounded-full appearance-none cursor-pointer accent-[#071c37]"
+                  step="0.01"
+                  value={minCarat}
+                  onChange={(e) => setMinCarat(Math.min(Number(e.target.value), maxCarat))}
+                  className="absolute w-full h-1.5 bg-transparent appearance-none cursor-pointer accent-[#071c37] z-20 pointer-events-auto"
+                  style={{
+                    WebkitAppearance: 'none',
+                    appearance: 'none',
+                  }}
                 />
+                <input 
+                  type="range"
+                  min="0"
+                  max="10"
+                  step="0.01"
+                  value={maxCarat}
+                  onChange={(e) => setMaxCarat(Math.max(Number(e.target.value), minCarat))}
+                  className="absolute w-full h-1.5 bg-transparent appearance-none cursor-pointer accent-[#071c37] z-10 pointer-events-auto"
+                  style={{
+                    WebkitAppearance: 'none',
+                    appearance: 'none',
+                  }}
+                />
+                <div className="absolute top-0 left-0 w-full h-1.5 bg-[#071c37]/10 rounded-full" />
               </div>
             </div>
 
             {/* PRICE */}
             <div className="md:col-span-1">
-              <label className="block text-[10px] tracking-[0.2em] uppercase font-bold text-[#071c37]/60 mb-4">Price Range</label>
-              <div className="flex items-center gap-3">
-                <input
-                  type="number"
-                  value={minPrice}
-                  onChange={(e) => setMinPrice(Number(e.target.value))}
-                  className="w-full h-10 border border-gray-200 px-3 text-center text-[13px] text-[#071c37] focus:outline-none focus:border-[#071c37]"
-                />
-                <span className="text-gray-400">-</span>
-                <input
-                  type="number"
-                  value={maxPrice}
-                  onChange={(e) => setMaxPrice(Number(e.target.value))}
-                  className="w-full h-10 border border-gray-200 px-3 text-center text-[13px] text-[#071c37] focus:outline-none focus:border-[#071c37]"
-                />
+              <label className="block text-[12px] tracking-[0.2em] uppercase font-bold text-[#071c37] mb-6">Price Range ($$)</label>
+              <div className="flex items-center gap-4">
+                <div className="relative w-full">
+                  <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-[13px]">$</span>
+                  <input
+                    type="number"
+                    value={minPrice}
+                    onChange={(e) => setMinPrice(Number(e.target.value))}
+                    className="w-full h-12 border border-gray-200 pl-7 pr-3 text-center text-[15px] font-medium text-[#071c37] focus:outline-none focus:border-[#071c37]"
+                  />
+                  <span className="absolute -top-6 left-0 text-[9px] uppercase tracking-tighter text-gray-400">Min Price</span>
+                </div>
+                <span className="text-gray-400 font-serif text-2xl">—</span>
+                <div className="relative w-full">
+                  <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-[13px]">$</span>
+                  <input
+                    type="number"
+                    value={maxPrice}
+                    onChange={(e) => setMaxPrice(Number(e.target.value))}
+                    className="w-full h-12 border border-gray-200 pl-7 pr-3 text-center text-[15px] font-medium text-[#071c37] focus:outline-none focus:border-[#071c37]"
+                  />
+                  <span className="absolute -top-6 left-0 text-[9px] uppercase tracking-tighter text-gray-400">Max Price</span>
+                </div>
               </div>
-              <div className="mt-8 px-2">
+              <div className="mt-10 px-2 relative h-6">
+                <input 
+                  type="range"
+                  min="0"
+                  max="50000"
+                  step="100"
+                  value={minPrice}
+                  onChange={(e) => setMinPrice(Math.min(Number(e.target.value), maxPrice))}
+                  className="absolute w-full h-1.5 bg-transparent appearance-none cursor-pointer accent-[#071c37] z-20 pointer-events-auto"
+                />
                 <input 
                   type="range"
                   min="0"
                   max="50000"
                   step="100"
                   value={maxPrice}
-                  onChange={(e) => setMaxPrice(Number(e.target.value))}
-                  className="w-full h-1.5 bg-[#071c37]/10 rounded-full appearance-none cursor-pointer accent-[#071c37]"
+                  onChange={(e) => setMaxPrice(Math.max(Number(e.target.value), minPrice))}
+                  className="absolute w-full h-1.5 bg-transparent appearance-none cursor-pointer accent-[#071c37] z-10 pointer-events-auto"
                 />
+                <div className="absolute top-0 left-0 w-full h-1.5 bg-[#071c37]/10 rounded-full" />
               </div>
             </div>
 
