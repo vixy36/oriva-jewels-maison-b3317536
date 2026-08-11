@@ -35,10 +35,11 @@ function DiamondsSearchPage() {
   const [selectedColor, setSelectedColor] = useState("D");
   const [selectedClarity, setSelectedClarity] = useState("IF");
   const [selectedCut, setSelectedCut] = useState("Excellent");
-  const [minCarat, setMinCarat] = useState("0.23");
-  const [maxCarat, setMaxCarat] = useState("6.00");
-  const [minPrice, setMinPrice] = useState("0");
-  const [maxPrice, setMaxPrice] = useState("9500");
+  const [minCarat, setMinCarat] = useState(0.23);
+  const [maxCarat, setMaxCarat] = useState(6.00);
+  const [minPrice, setMinPrice] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(9500);
+  const [isPairs, setIsPairs] = useState(false);
 
   const message = useMemo(() => {
     return [
