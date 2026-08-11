@@ -68,45 +68,71 @@ function LabelPage() {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-6 mt-6">
+        <div className="grid grid-cols-2 gap-12 mt-10">
           <div>
-            <p className="text-[10px] uppercase tracking-widest text-black/60">From</p>
-            <p className="mt-2 text-sm leading-relaxed">
-              Oriva Jewels<br />
-              Hong Kong<br />
-              +852 5317 6253
-            </p>
+            <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-black/40 mb-3">From</p>
+            <div className="text-sm leading-relaxed space-y-1">
+              <p className="font-bold text-base">Oriva Jewels</p>
+              <p>Unit 1203, 12/F, Tower 1</p>
+              <p>Lippo Centre, 89 Queensway</p>
+              <p>Admiralty, Hong Kong</p>
+              <p className="pt-2">T: +852 5317 6253</p>
+              <p>E: hello@orivajewels.com</p>
+            </div>
           </div>
-          <div>
-            <p className="text-[10px] uppercase tracking-widest text-black/60">Ship To</p>
-            <p className="mt-2 text-sm leading-relaxed">
-              <span className="font-semibold">{o.customer_name}</span><br />
-              {addr.line1}{addr.line1 && <br />}
-              {addr.line2}{addr.line2 && <br />}
-              {[addr.city, addr.state, addr.postal].filter(Boolean).join(", ")}<br />
-              {addr.country}<br />
-              {o.customer_phone}
-            </p>
+          <div className="border-l border-black/10 pl-12">
+            <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-black/40 mb-3">Ship To</p>
+            <div className="text-sm leading-relaxed space-y-1">
+              <p className="font-bold text-base uppercase">{o.customer_name}</p>
+              {addr.line1 && <p>{addr.line1}</p>}
+              {addr.line2 && <p>{addr.line2}</p>}
+              <p>{[addr.city, addr.state, addr.postal].filter(Boolean).join(", ")}</p>
+              <p className="font-bold">{addr.country}</p>
+              {o.customer_phone && <p className="pt-2">T: {o.customer_phone}</p>}
+              <p>E: {o.customer_email}</p>
+            </div>
           </div>
         </div>
 
-        {(o.carrier || o.tracking_number) && (
-          <div className="mt-6 border-t-2 border-black pt-4">
-            <p className="text-[10px] uppercase tracking-widest">Carrier / Tracking</p>
-            <p className="mt-1 font-mono text-lg">{o.carrier} · {o.tracking_number}</p>
+        <div className="mt-12 grid grid-cols-2 gap-12 border-t-2 border-black pt-8">
+          <div>
+            <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-black/40 mb-3">Shipment Details</p>
+            <div className="space-y-2">
+              <div>
+                <p className="text-[10px] uppercase text-black/60">Carrier</p>
+                <p className="font-mono text-base">{o.carrier || "Standard Shipping"}</p>
+              </div>
+              <div>
+                <p className="text-[10px] uppercase text-black/60">Tracking ID</p>
+                <p className="font-mono text-base">{o.tracking_number || "Pending Assignment"}</p>
+              </div>
+            </div>
           </div>
-        )}
-
-        <div className="mt-6 border-t-2 border-black pt-4">
-          <p className="text-[10px] uppercase tracking-widest">Contents</p>
-          <ul className="mt-2 text-sm">
-            {o.items.map((it, i) => (
-              <li key={i}>{it.qty} × {it.name}</li>
-            ))}
-          </ul>
+          <div className="pl-12">
+            <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-black/40 mb-3">Order Items</p>
+            <ul className="text-sm space-y-2">
+              {o.items.map((it, i) => (
+                <li key={i} className="flex justify-between border-b border-black/5 pb-1">
+                  <span>{it.name}</span>
+                  <span className="font-mono font-bold">×{it.qty}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
-        <p className="mt-8 text-[10px] text-black/60">Handle with care · Fully insured · Fine jewellery</p>
+        <div className="mt-12 flex justify-between items-end">
+          <div className="space-y-1">
+            <p className="text-[9px] uppercase tracking-[0.3em] text-black/40 font-bold">Authentication</p>
+            <div className="h-16 w-16 bg-slate-100 flex items-center justify-center border border-black/5">
+              <span className="text-[8px] text-center text-black/30">QR CODE<br/>PLACEHOLDER</span>
+            </div>
+          </div>
+          <div className="text-right">
+            <p className="text-[10px] italic text-black/60">Thank you for choosing Oriva Jewels Maison.</p>
+            <p className="text-[8px] uppercase tracking-widest mt-2 font-bold">Fully Insured · Hand Crafted · Ethical Brilliance</p>
+          </div>
+        </div>
       </div>
     </div>
   );
