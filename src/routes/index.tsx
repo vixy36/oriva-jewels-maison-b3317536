@@ -348,16 +348,6 @@ function HomePage() {
                   </p>
                 </div>
                 
-                <div className="flex flex-wrap gap-12 border-t border-ivory/10 pt-10">
-                  <div>
-                    <span className="text-4xl font-bold text-ivory block mb-2 font-sans">100%</span>
-                    <span className="text-[10px] tracking-[0.3em] uppercase text-gold">Certified stones</span>
-                  </div>
-                  <div>
-                    <span className="text-4xl font-bold text-ivory block mb-2 font-sans">30D</span>
-                    <span className="text-[10px] tracking-[0.3em] uppercase text-gold">Bespoke lead time</span>
-                  </div>
-                </div>
 
                 <div className="mt-12">
                   <Link
