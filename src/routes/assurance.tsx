@@ -26,6 +26,52 @@ const pillars = [
   { Icon: Sparkles, t: "Complimentary Care", b: "Annual cleaning and inspection at our atelier - or by post, with insured return." },
 ];
 
+const advantageItems = [
+  {
+    t: "In-House Manufacturing",
+    b: "Operating our own state-of-the-art facilities ensures absolute quality control at every stage of production."
+  },
+  {
+    t: "Direct Factory Pricing",
+    b: "Eliminating the middleman allows us to deliver unparalleled luxury and value directly from our foundry to you."
+  },
+  {
+    t: "Bespoke Customization",
+    b: "Offering complete design freedom with 100% custom tailoring to bring your unique vision to life."
+  },
+  {
+    t: "Global Reach",
+    b: "Bringing our bespoke craftsmanship to a worldwide clientele with fully insured, seamless international shipping."
+  },
+  {
+    t: "Engagement Ring Specialists",
+    b: "Crafting the ultimate symbols of love with meticulously selected certified lab diamonds and flawless settings."
+  }
+];
+
+const expertiseItems = [
+  {
+    t: "Certified Diamond Cultivation",
+    b: "Creating masterfully grown, fully certified lab diamonds that mirror the flawless brilliance of nature."
+  },
+  {
+    t: "Artisanal Fine Jewelry",
+    b: "Fusing meticulous precision engineering with high-end craftsmanship for exceptional, enduring designs."
+  },
+  {
+    t: "Bespoke Development",
+    b: "Collaborating from initial custom design concepts through to meticulous, large-scale manufacturing."
+  },
+  {
+    t: "Private Label Partnerships",
+    b: "Providing premier OEM solutions and reliable manufacturing excellence for global jewelry brands."
+  },
+  {
+    t: "Conscious Luxury",
+    b: "Leading with uncompromising ethical sourcing and sustainable standards for a modern, greener future."
+  }
+];
+
 function AssurancePage() {
   return (
     <div className="bg-obsidian text-ivory">
@@ -37,29 +83,73 @@ function AssurancePage() {
           <h1 className="mt-8 font-serif font-light text-6xl md:text-8xl lg:text-9xl leading-[0.92] tracking-[-0.02em]">
             The Oriva <em className="text-gold-gradient">promise.</em>
           </h1>
-          <p className="mt-10 max-w-xl text-[15px] leading-[1.9] text-ivory/85">
-            A piece from our atelier arrives with more than a certificate. It arrives with our word.
-          </p>
+          <div className="mt-12 max-w-2xl">
+            <h2 className="text-gold text-[13px] tracking-[0.4em] uppercase mb-6 font-bold">Setting the New Standard for Sustainable Luxury</h2>
+            <p className="text-[17px] leading-[1.9] text-ivory/85 font-medium">
+              Our vision is to become a global leader in conscious fine jewelry, proving that the world's most magnificent designs can be crafted responsibly. By seamlessly bridging a decade of heritage industry knowledge with forward-thinking sustainable innovation, Oriva Jewels aims to shape a greener, more brilliant future where luxury and nature thrive together for generations to come.
+            </p>
+          </div>
         </div>
       </section>
 
-      <section className="py-8 md:py-14 bg-ink">
-        <div className="mx-auto max-w-[1400px] px-6 md:px-16 grid gap-x-14 gap-y-16 md:grid-cols-2">
-          {pillars.map((p, i) => (
-            <Reveal key={p.t} delay={i * 60}>
-              <div className="flex gap-8 border-t border-white/10 pt-10">
-                <div className="shrink-0">
-                  <div className="grid h-14 w-14 place-items-center border border-gold/40 text-gold">
-                    <p.Icon className="h-5 w-5" strokeWidth={1.2} />
+      <section className="py-24 bg-obsidian border-y border-white/5">
+        <div className="mx-auto max-w-[1400px] px-6 md:px-16">
+          <Reveal>
+            <h2 className="font-serif text-5xl md:text-7xl mb-16 text-white">The Oriva <em className="text-gold-gradient italic">Advantage</em></h2>
+          </Reveal>
+          <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
+            {advantageItems.map((item, i) => (
+              <Reveal key={item.t} delay={i * 100}>
+                <div className="group border-l border-gold/30 pl-8 py-4 hover:border-gold transition-colors duration-500">
+                  <h3 className="font-serif text-3xl mb-4 text-white group-hover:text-gold transition-colors duration-500">{item.t}</h3>
+                  <p className="text-ivory/70 text-[15px] leading-[1.8] font-medium">{item.b}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24 bg-ink">
+        <div className="mx-auto max-w-[1400px] px-6 md:px-16">
+          <Reveal>
+            <h2 className="font-serif text-5xl md:text-7xl mb-16 text-white text-right">Our Core <em className="text-gold-gradient italic">Expertise</em></h2>
+          </Reveal>
+          <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
+            {expertiseItems.map((item, i) => (
+              <Reveal key={item.t} delay={i * 100}>
+                <div className="group border-r border-gold/30 pr-8 py-4 text-right hover:border-gold transition-colors duration-500">
+                  <h3 className="font-serif text-3xl mb-4 text-white group-hover:text-gold transition-colors duration-500">{item.t}</h3>
+                  <p className="text-ivory/70 text-[15px] leading-[1.8] font-medium ml-auto max-w-sm">{item.b}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 md:py-32 bg-obsidian">
+        <div className="mx-auto max-w-[1400px] px-6 md:px-16">
+          <Reveal>
+            <span className="eyebrow text-gold mb-12 block">Certification & Service</span>
+          </Reveal>
+          <div className="grid gap-x-14 gap-y-16 md:grid-cols-2">
+            {pillars.map((p, i) => (
+              <Reveal key={p.t} delay={i * 60}>
+                <div className="flex gap-8 border-t border-white/10 pt-10">
+                  <div className="shrink-0">
+                    <div className="grid h-14 w-14 place-items-center border border-gold/40 text-gold">
+                      <p.Icon className="h-5 w-5" strokeWidth={1.2} />
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="font-serif text-3xl md:text-4xl text-ivory italic">{p.t}</h3>
+                    <p className="mt-4 text-[15px] leading-[1.9] text-ivory/80 max-w-md">{p.b}</p>
                   </div>
                 </div>
-                <div>
-                  <h3 className="font-serif text-3xl md:text-4xl text-ivory italic">{p.t}</h3>
-                  <p className="mt-4 text-[15px] leading-[1.9] text-ivory/80 max-w-md">{p.b}</p>
-                </div>
-              </div>
-            </Reveal>
-          ))}
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 

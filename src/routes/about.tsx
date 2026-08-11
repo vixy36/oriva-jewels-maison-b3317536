@@ -51,14 +51,16 @@ function AboutPage() {
           <Reveal>
             <div className="relative">
               <div className="absolute -top-12 -left-12 w-48 h-48 bg-gold/5 rounded-full blur-3xl" />
-              <span className="eyebrow text-gold">Our Philosophy</span>
+              <span className="eyebrow text-gold">Our Legacy</span>
               <h2 className="mt-8 font-serif text-5xl md:text-7xl leading-tight text-white">
-                Luxury in its <br />
-                <em className="text-gold-gradient italic">purest form.</em>
+                The Birth of <br />
+                <em className="text-gold-gradient italic">Conscious Brilliance</em>
               </h2>
-              <p className="mt-10 text-[17px] leading-[1.9] text-white max-w-lg font-medium">
-                We believe fine jewellery should be more than an accessory; it should be an extension of one's identity. 
-                Our approach is defined by restraint-nothing is added for show, everything is included for excellence.
+              <p className="mt-10 text-[17px] leading-[1.9] text-white font-medium">
+                Oriva Jewels was founded with a singular, visionary purpose: to redefine the landscape of fine jewelry by harmonizing absolute luxury with uncompromising ethical responsibility. Inspired by the resilient elegance of the lotus and the timeless sovereignty of the crown, our name represents a new era of sophistication. 
+              </p>
+              <p className="mt-6 text-[17px] leading-[1.9] text-white font-medium">
+                We believe that the world’s most breathtaking jewelry should not come at the cost of our planet. Through forward-thinking innovation and masterful diamond cultivation, we create enduring legacies that honor both human milestones and nature.
               </p>
               <div className="mt-12 grid grid-cols-2 gap-8 border-t border-gold/20 pt-12">
                 <div>
