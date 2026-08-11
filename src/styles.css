@@ -194,7 +194,38 @@
   ::-webkit-scrollbar-track { background: var(--ink); }
   ::-webkit-scrollbar-thumb { background: var(--smoke); }
   ::-webkit-scrollbar-thumb:hover { background: var(--gold-deep); }
+
+  /* Custom Range Slider Styling */
+  input[type="range"].diamond-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+  }
+
+  input[type="range"].diamond-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: #071c37;
+    cursor: pointer;
+    border-radius: 2px; /* Square with slight rounding */
+    border: 2px solid white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    margin-top: -7px; /* Centers thumb on track if needed, though we use absolute positioning in TSX */
+  }
+
+  input[type="range"].diamond-slider::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    background: #071c37;
+    cursor: pointer;
+    border-radius: 2px;
+    border: 2px solid white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  }
 }
+
 
 /* ── Luxury utilities ─────────────────────────── */
 
