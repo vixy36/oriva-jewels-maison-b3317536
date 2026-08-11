@@ -133,22 +133,23 @@ function AssurancePage() {
           <Reveal>
             <span className="eyebrow text-gold mb-12 block">Certification & Service</span>
           </Reveal>
-        <div className="mx-auto max-w-[1400px] px-6 md:px-16 grid gap-x-14 gap-y-16 md:grid-cols-2">
-          {pillars.map((p, i) => (
-            <Reveal key={p.t} delay={i * 60}>
-              <div className="flex gap-8 border-t border-white/10 pt-10">
-                <div className="shrink-0">
-                  <div className="grid h-14 w-14 place-items-center border border-gold/40 text-gold">
-                    <p.Icon className="h-5 w-5" strokeWidth={1.2} />
+          <div className="grid gap-x-14 gap-y-16 md:grid-cols-2">
+            {pillars.map((p, i) => (
+              <Reveal key={p.t} delay={i * 60}>
+                <div className="flex gap-8 border-t border-white/10 pt-10">
+                  <div className="shrink-0">
+                    <div className="grid h-14 w-14 place-items-center border border-gold/40 text-gold">
+                      <p.Icon className="h-5 w-5" strokeWidth={1.2} />
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="font-serif text-3xl md:text-4xl text-ivory italic">{p.t}</h3>
+                    <p className="mt-4 text-[15px] leading-[1.9] text-ivory/80 max-w-md">{p.b}</p>
                   </div>
                 </div>
-                <div>
-                  <h3 className="font-serif text-3xl md:text-4xl text-ivory italic">{p.t}</h3>
-                  <p className="mt-4 text-[15px] leading-[1.9] text-ivory/80 max-w-md">{p.b}</p>
-                </div>
-              </div>
-            </Reveal>
-          ))}
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
