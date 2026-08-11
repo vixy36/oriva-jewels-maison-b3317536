@@ -214,7 +214,9 @@ function HomePage() {
               </h2>
             </div>
             <p className="max-w-xs text-[14px] leading-relaxed text-muted-foreground uppercase tracking-widest">
-              A curated volume of six edits-each with its own character, designed for a lifetime.
+              '''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''
+
+              I have approved the plan
             </p>
           </Reveal>
 
