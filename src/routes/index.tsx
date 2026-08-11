@@ -124,9 +124,6 @@ function HomePage() {
           <span className="text-[12px] tracking-[0.5em] uppercase text-ivory/60 [writing-mode:vertical-rl]">
             Natural · Lab
           </span>
-          <span className="text-[12px] tracking-[0.5em] uppercase text-ivory/60 [writing-mode:vertical-rl]">
-            GIA · IGI Certified
-          </span>
         </div>
 
 
