@@ -200,31 +200,35 @@
     -webkit-appearance: none;
     appearance: none;
     background: transparent;
+    height: 6px;
   }
 
   input[type="range"].diamond-slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
     background: #071c37;
     cursor: pointer;
-    border-radius: 2px; /* Square with slight rounding */
+    border-radius: 1px;
     border: 2px solid white;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-    margin-top: -7px; /* Centers thumb on track if needed, though we use absolute positioning in TSX */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    margin-top: -4px; /* Centering fix */
+    position: relative;
+    z-index: 50;
   }
 
   input[type="range"].diamond-slider::-moz-range-thumb {
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
     background: #071c37;
     cursor: pointer;
-    border-radius: 2px;
+    border-radius: 1px;
     border: 2px solid white;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
   }
 }
+
 
 
 /* ── Luxury utilities ─────────────────────────── */
