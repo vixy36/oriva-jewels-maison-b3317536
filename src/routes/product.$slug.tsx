@@ -346,7 +346,7 @@ function ProductPage() {
                 </div>
               )}
               <p className="mt-6 text-[15px] leading-[1.8] text-ivory/95 font-medium max-w-lg">
-                I have approved the plan
+                {product.short}
               </p>
 
 
