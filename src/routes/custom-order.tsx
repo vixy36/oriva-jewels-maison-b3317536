@@ -156,7 +156,7 @@ function CustomOrderPage() {
             Custom <em className="italic text-gold-gradient">order request.</em>
           </h1>
           <p data-gsap className="mt-6 mx-auto max-w-2xl text-[15px] md:text-[16px] leading-[1.8] text-white font-bold">
-            I have approved the plan
+            From CAD to hand-set finish. Submit a custom order request and our atelier will respond within hours.
           </p>
         </GsapReveal>
 
