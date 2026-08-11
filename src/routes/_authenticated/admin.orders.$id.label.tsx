@@ -35,11 +35,23 @@ function LabelPage() {
   if (!o) return <div className="p-8 text-sm text-muted-foreground">Loading label…</div>;
   const addr = o.shipping_address ?? {};
 
+  const handlePrint = () => {
+    window.print();
+  };
+
   return (
-    <div className="max-w-3xl mx-auto">
-      <div className="flex items-center justify-between mb-4 print:hidden">
-        <h1 className="font-serif text-2xl">Shipping Label · {o.order_code}</h1>
-        <Button onClick={() => window.print()}><Printer className="h-4 w-4 mr-2" /> Print</Button>
+    <div className="max-w-3xl mx-auto p-4 md:p-8">
+      <div className="flex items-center justify-between mb-8 print:hidden">
+        <div>
+          <h1 className="font-serif text-2xl">Shipping Label</h1>
+          <p className="text-sm text-muted-foreground">Order Ref: {o.order_code}</p>
+        </div>
+        <div className="flex gap-3">
+          <Button variant="outline" onClick={() => window.close()}>Close</Button>
+          <Button onClick={handlePrint} className="bg-gold text-obsidian hover:bg-gold/90">
+            <Printer className="h-4 w-4 mr-2" /> Print Label
+          </Button>
+        </div>
       </div>
 
       <div className="border-2 border-black bg-white text-black p-8 print:p-6 print:border" style={{ minHeight: "6in" }}>
