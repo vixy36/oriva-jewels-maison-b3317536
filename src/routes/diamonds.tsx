@@ -47,6 +47,7 @@ function DiamondsSearchPage() {
       "",
       `*Type:* ${diamondType}`,
       `*Shape:* ${selectedShape}`,
+      `*Configuration:* ${isPairs ? 'Pairs' : 'Single'}`,
       `*Colour:* ${selectedColor}`,
       `*Clarity:* ${selectedClarity}`,
       `*Cut:* ${selectedCut}`,
@@ -55,7 +56,7 @@ function DiamondsSearchPage() {
       "",
       "I'm interested in finding this specific diamond. Please share availability and live pricing.",
     ].join("\n");
-  }, [diamondType, selectedShape, selectedColor, selectedClarity, selectedCut, minCarat, maxCarat, minPrice, maxPrice]);
+  }, [diamondType, selectedShape, isPairs, selectedColor, selectedClarity, selectedCut, minCarat, maxCarat, minPrice, maxPrice]);
 
   return (
     <div className="bg-[#f5f4f2] min-h-screen pt-24 pb-20">
