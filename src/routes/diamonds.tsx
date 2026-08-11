@@ -76,8 +76,8 @@ function DiamondsSearchPage() {
               onClick={() => setDiamondType(type.label as any)}
               className="group flex flex-col items-center gap-4 md:gap-6 focus:outline-none w-full md:w-auto"
             >
-              <div className={`relative w-24 h-24 md:w-32 md:h-32 rounded-xl border-2 transition-all p-3 bg-white/50 ${diamondType === type.label ? 'border-[#071c37] shadow-lg scale-105' : 'border-transparent group-hover:border-[#071c37]/20'}`}>
-                <img src={type.img} alt={type.label} className="w-full h-full object-contain filter grayscale brightness-125 transition-transform group-hover:scale-110" />
+              <div className={`relative w-20 h-20 md:w-28 md:h-28 rounded-full border-2 transition-all p-2 bg-white/50 ${diamondType === type.label ? 'border-[#071c37]' : 'border-transparent group-hover:border-[#071c37]/20'}`}>
+                <img src={type.img} alt={type.label} className="w-full h-full object-contain filter grayscale brightness-125" />
               </div>
               <span className={`text-[12px] md:text-[14px] tracking-[0.2em] uppercase font-bold transition-colors text-center ${diamondType === type.label ? 'text-[#071c37]' : 'text-[#071c37]/60'}`}>
                 {type.label}
