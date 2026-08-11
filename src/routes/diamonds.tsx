@@ -88,15 +88,15 @@ function DiamondsSearchPage() {
 
         <div className="bg-white border border-gray-200 p-8 md:p-12 shadow-sm">
           {/* SHAPE SELECTOR */}
-          <div className="grid grid-cols-5 md:grid-cols-10 gap-2 mb-12">
+          <div className="grid grid-cols-2 sm:grid-cols-5 md:grid-cols-10 gap-4 mb-16">
             {shapes.map((s) => (
               <button
                 key={s.name}
                 onClick={() => setSelectedShape(s.name)}
-                className={`group flex flex-col items-center gap-3 p-3 border transition-all ${selectedShape === s.name ? 'border-[#071c37] bg-[#071c37]/5' : 'border-gray-200 hover:border-gray-300'}`}
+                className={`group flex flex-col items-center gap-4 p-5 border transition-all ${selectedShape === s.name ? 'border-[#071c37] bg-[#071c37]/5 ring-1 ring-[#071c37]' : 'border-gray-200 hover:border-gray-300'}`}
               >
-                <img src={s.icon} alt={s.name} className="w-10 h-10 object-contain" />
-                <span className="text-[10px] tracking-widest uppercase font-bold text-[#071c37]/80">{s.name}</span>
+                <img src={s.icon} alt={s.name} className="w-14 h-14 object-contain transition-transform group-hover:scale-110" />
+                <span className="text-[11px] tracking-[0.2em] uppercase font-bold text-[#071c37]">{s.name}</span>
               </button>
             ))}
           </div>
