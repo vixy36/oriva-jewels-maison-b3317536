@@ -1,13 +1,14 @@
 import { shapeIcon } from "@/lib/diamond-shapes";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { Heart, MessageCircle, ArrowLeft, ShieldCheck, Truck, Sparkles, ArrowRight, ZoomIn, ChevronLeft, ChevronRight, Play, ChevronDown, ChevronUp } from "lucide-react";
+import { Heart, MessageCircle, ArrowLeft, ShieldCheck, Truck, Sparkles, ArrowRight, ZoomIn, ChevronLeft, ChevronRight, Play, User, Mail, Phone, Send } from "lucide-react";
 
 import { findProduct, buildWhatsAppLink, products, type Product, type ProductCategory } from "@/lib/products";
 import { ProductCard } from "@/components/site/ProductCard";
 import { Reveal } from "@/components/site/Reveal";
 import { Lightbox } from "@/components/site/Lightbox";
 import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
 import { useWishlist } from "@/lib/wishlist";
 import { detectVideo } from "@/lib/video-embed";
 
@@ -104,7 +105,9 @@ function ProductPage() {
   const [activeIdx, setActiveIdx] = useState(0);
   const variants: NonNullable<Product["variants"]> = product.variants ?? [];
   const [activeVariant, setActiveVariant] = useState(0);
-  // Enquiry form is always visible per user request
+  const [isSubmitOpen, setIsSubmitOpen] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [enquiryForm, setEnquiryForm] = useState({ name: "", email: "", phone: "" });
 
   const currentVariant = variants[activeVariant];
 
@@ -534,35 +537,137 @@ function ProductPage() {
                 </div>
                 
                 <div className="p-6 space-y-6">
-                  <button
-                    type="button"
-                    onClick={async () => {
-                      const configuration = {
-                        diamondType, diamondStyle: isRing ? diamondStyle : undefined, karat, goldColor, caratSize,
-                        size: (isRing || product.sizes) ? (size || undefined) : undefined,
-                        backing: product.backings ? backing : undefined,
-                        length: product.lengths ? length : undefined,
-                        specialRequirements: specialReq || undefined,
-                      };
-                      try {
-                        await supabase.from("enquiries").insert({
-                          name: "WhatsApp Product Enquiry",
-                          message: message,
-                          source: "whatsapp_product",
-                          product_slug: product.slug,
-                          subject: product.name,
-                          configuration,
-                          metadata: { productName: product.name, category: product.category },
-                        });
-                      } catch {}
-                      window.location.href = buildWhatsAppLink(message);
-                    }}
-                    className="flex w-full items-center justify-center gap-3 bg-gold text-obsidian py-5 text-[14px] font-semibold tracking-[0.4em] uppercase hover:bg-gold-deep hover:text-ivory transition group cursor-pointer"
-                  >
-                    <MessageCircle className="h-4 w-4" strokeWidth={1.5} />
-                    Enquire on WhatsApp
-                  </button>
-                  <p className="text-center text-[13px] tracking-[0.3em] uppercase text-ivory/60">
+                  <div className="space-y-4">
+                    <button
+                      type="button"
+                      onClick={async () => {
+                        const configuration = {
+                          diamondType, diamondStyle: isRing ? diamondStyle : undefined, karat, goldColor, caratSize,
+                          size: (isRing || product.sizes) ? (size || undefined) : undefined,
+                          backing: product.backings ? backing : undefined,
+                          length: product.lengths ? length : undefined,
+                          specialRequirements: specialReq || undefined,
+                        };
+                        try {
+                          await supabase.from("enquiries").insert({
+                            name: "WhatsApp Product Enquiry",
+                            message: message,
+                            source: "whatsapp_product",
+                            product_slug: product.slug,
+                            subject: product.name,
+                            configuration,
+                            metadata: { productName: product.name, category: product.category, hidden: true },
+                          });
+                        } catch {}
+                        window.location.href = buildWhatsAppLink(message);
+                      }}
+                      className="flex w-full items-center justify-center gap-3 bg-emerald-600 text-white py-4 text-[14px] font-semibold tracking-[0.4em] uppercase hover:bg-emerald-700 transition group cursor-pointer"
+                    >
+                      <MessageCircle className="h-4 w-4" strokeWidth={1.5} />
+                      Enquire on WhatsApp
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => setIsSubmitOpen(!isSubmitOpen)}
+                      className="flex w-full items-center justify-center gap-3 bg-gold text-obsidian py-4 text-[14px] font-semibold tracking-[0.4em] uppercase hover:bg-gold-deep hover:text-ivory transition group cursor-pointer"
+                    >
+                      {isSubmitOpen ? "Close Enquiry Form" : "Submit Website Enquiry"}
+                    </button>
+
+                    {isSubmitOpen && (
+                      <div className="mt-6 space-y-4 bg-obsidian/40 p-5 border border-white/5 animate-in fade-in slide-in-from-top-2 duration-300">
+                        <div className="space-y-2">
+                          <label className="text-[10px] tracking-[0.3em] uppercase text-gold/80">Full Name *</label>
+                          <div className="relative">
+                            <User className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-ivory/30" />
+                            <input
+                              required
+                              value={enquiryForm.name}
+                              onChange={(e) => setEnquiryForm(f => ({ ...f, name: e.target.value }))}
+                              placeholder="Your Name"
+                              className="w-full bg-charcoal/50 border border-white/10 px-10 py-3 text-sm text-ivory outline-none focus:border-gold transition"
+                            />
+                          </div>
+                        </div>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          <div className="space-y-2">
+                            <label className="text-[10px] tracking-[0.3em] uppercase text-gold/80">Email Address *</label>
+                            <div className="relative">
+                              <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-ivory/30" />
+                              <input
+                                required
+                                type="email"
+                                value={enquiryForm.email}
+                                onChange={(e) => setEnquiryForm(f => ({ ...f, email: e.target.value }))}
+                                placeholder="Email"
+                                className="w-full bg-charcoal/50 border border-white/10 px-10 py-3 text-sm text-ivory outline-none focus:border-gold transition"
+                              />
+                            </div>
+                          </div>
+                          <div className="space-y-2">
+                            <label className="text-[10px] tracking-[0.3em] uppercase text-gold/80">Mobile Number *</label>
+                            <div className="relative">
+                              <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-ivory/30" />
+                              <input
+                                required
+                                type="tel"
+                                value={enquiryForm.phone}
+                                onChange={(e) => setEnquiryForm(f => ({ ...f, phone: e.target.value }))}
+                                placeholder="Phone"
+                                className="w-full bg-charcoal/50 border border-white/10 px-10 py-3 text-sm text-ivory outline-none focus:border-gold transition"
+                              />
+                            </div>
+                          </div>
+                        </div>
+
+                        <button
+                          type="button"
+                          disabled={submitting}
+                          onClick={async () => {
+                            if (!enquiryForm.name || !enquiryForm.email || !enquiryForm.phone) {
+                              toast.error("Please fill all required fields");
+                              return;
+                            }
+                            setSubmitting(true);
+                            const configuration = {
+                              diamondType, diamondStyle: isRing ? diamondStyle : undefined, karat, goldColor, caratSize,
+                              size: (isRing || product.sizes) ? (size || undefined) : undefined,
+                              backing: product.backings ? backing : undefined,
+                              length: product.lengths ? length : undefined,
+                              specialRequirements: specialReq || undefined,
+                            };
+                            const { error } = await supabase.from("enquiries").insert({
+                              name: enquiryForm.name,
+                              email: enquiryForm.email,
+                              phone: enquiryForm.phone,
+                              message: message,
+                              source: "product_page_enquiry",
+                              product_slug: product.slug,
+                              subject: `Enquiry: ${product.name}`,
+                              configuration,
+                              metadata: { productName: product.name, category: product.category },
+                            });
+                            
+                            setSubmitting(false);
+                            if (error) {
+                              toast.error(error.message);
+                            } else {
+                              toast.success("Enquiry submitted successfully! We will contact you soon.");
+                              setIsSubmitOpen(false);
+                              setEnquiryForm({ name: "", email: "", phone: "" });
+                            }
+                          }}
+                          className="flex w-full items-center justify-center gap-3 bg-white text-obsidian py-4 text-[13px] font-bold tracking-[0.4em] uppercase hover:bg-gold transition disabled:opacity-50"
+                        >
+                          <Send className="h-4 w-4" />
+                          {submitting ? "Submitting..." : "Submit Enquiry"}
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                  <p className="mt-4 text-center text-[12px] tracking-[0.2em] uppercase text-ivory/50">
                     Pricing shared privately · Swift response
                   </p>
                 </div>
