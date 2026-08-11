@@ -622,10 +622,17 @@ function ProductPage() {
                                 setEnquiryForm({ name: "", email: "", phone: "" });
                               }
                             }}
-                            className="flex w-full items-center justify-center gap-3 bg-gold text-obsidian py-4 text-[13px] font-bold tracking-[0.4em] uppercase hover:bg-white transition disabled:opacity-50"
+                            className="flex w-full items-center justify-center gap-3 bg-gold text-obsidian py-4 md:py-5 text-[13px] font-bold tracking-[0.3em] uppercase hover:bg-white transition-all active:scale-[0.98] disabled:opacity-50"
                           >
                             <Send className="h-4 w-4" />
-                            {submitting ? "Submitting..." : "Submit Your Enquiry"}
+                            {submitting ? "Submitting..." : "Send Request"}
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => setIsSubmitOpen(false)}
+                            className="w-full text-center text-[10px] uppercase tracking-[0.2em] text-ivory/40 hover:text-gold transition pt-2"
+                          >
+                            Cancel and go back
                           </button>
                         </div>
                       </div>
