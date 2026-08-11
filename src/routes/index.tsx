@@ -366,9 +366,9 @@ function HomePage() {
       {/* THE OCCASIONS - Bold lifestyle grid */}
       <section className="pt-0 pb-10 bg-background">
         <div className="mx-auto max-w-[1400px] px-6 md:px-12">
-          <Reveal className="text-center max-w-2xl mx-auto mb-16">
-            <span className="eyebrow block mb-4">THE OCCASIONS</span>
-            <h2 className="text-4xl md:text-5xl font-serif leading-tight">
+          <Reveal className="text-center max-w-2xl mx-auto mb-16 mt-16">
+            <span className="eyebrow block mb-6">THE OCCASIONS</span>
+            <h2 className="text-5xl md:text-6xl font-serif leading-tight">
               For every <span className="italic">moment worth marking.</span>
             </h2>
           </Reveal>
