@@ -101,16 +101,16 @@ function DiamondsSearchPage() {
             ))}
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-x-16 gap-y-12 border-t border-gray-100 pt-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-x-16 gap-y-10 md:gap-y-12 border-t border-gray-100 pt-12 md:pt-16">
             {/* COLOR */}
             <div>
-              <label className="block text-[12px] tracking-[0.2em] uppercase font-bold text-[#071c37] mb-6">Color</label>
-              <div className="flex flex-wrap gap-3">
+              <label className="block text-[12px] tracking-[0.2em] uppercase font-bold text-[#071c37] mb-5 md:mb-6">Color</label>
+              <div className="flex flex-wrap gap-2 md:gap-3">
                 {colorOptions.map(c => (
                   <button
                     key={c}
                     onClick={() => setSelectedColor(c)}
-                    className={`h-12 min-w-[48px] px-3 border text-[13px] font-bold transition-all ${selectedColor === c ? 'bg-[#071c37] text-white border-[#071c37]' : 'border-gray-200 text-[#071c37]/70 hover:border-gray-300'}`}
+                    className={`h-10 md:h-12 min-w-[40px] md:min-w-[48px] px-2 md:px-3 border text-[12px] md:text-[13px] font-bold transition-all ${selectedColor === c ? 'bg-[#071c37] text-white border-[#071c37]' : 'border-gray-200 text-[#071c37]/70 hover:border-gray-300'}`}
                   >
                     {c}
                   </button>
@@ -120,13 +120,13 @@ function DiamondsSearchPage() {
 
             {/* CLARITY */}
             <div>
-              <label className="block text-[12px] tracking-[0.2em] uppercase font-bold text-[#071c37] mb-6">Clarity</label>
-              <div className="flex flex-wrap gap-3">
+              <label className="block text-[12px] tracking-[0.2em] uppercase font-bold text-[#071c37] mb-5 md:mb-6">Clarity</label>
+              <div className="flex flex-wrap gap-2 md:gap-3">
                 {clarityOptions.map(c => (
                   <button
                     key={c}
                     onClick={() => setSelectedClarity(c)}
-                    className={`h-12 min-w-[54px] px-3 border text-[13px] font-bold transition-all ${selectedClarity === c ? 'bg-[#071c37] text-white border-[#071c37]' : 'border-gray-200 text-[#071c37]/70 hover:border-gray-300'}`}
+                    className={`h-10 md:h-12 min-w-[46px] md:min-w-[54px] px-2 md:px-3 border text-[12px] md:text-[13px] font-bold transition-all ${selectedClarity === c ? 'bg-[#071c37] text-white border-[#071c37]' : 'border-gray-200 text-[#071c37]/70 hover:border-gray-300'}`}
                   >
                     {c}
                   </button>
@@ -136,13 +136,13 @@ function DiamondsSearchPage() {
 
             {/* CUT */}
             <div>
-              <label className="block text-[12px] tracking-[0.2em] uppercase font-bold text-[#071c37] mb-6">Cut</label>
-              <div className="flex flex-wrap gap-3">
+              <label className="block text-[12px] tracking-[0.2em] uppercase font-bold text-[#071c37] mb-5 md:mb-6">Cut</label>
+              <div className="flex flex-wrap gap-2 md:gap-3">
                 {cutOptions.map(c => (
                   <button
                     key={c}
                     onClick={() => setSelectedCut(c)}
-                    className={`h-12 px-4 border text-[13px] font-bold transition-all ${selectedCut === c ? 'bg-[#071c37] text-white border-[#071c37]' : 'border-gray-200 text-[#071c37]/70 hover:border-gray-300'}`}
+                    className={`h-10 md:h-12 px-3 md:px-4 border text-[12px] md:text-[13px] font-bold transition-all ${selectedCut === c ? 'bg-[#071c37] text-white border-[#071c37]' : 'border-gray-200 text-[#071c37]/70 hover:border-gray-300'}`}
                   >
                     {c}
                   </button>
