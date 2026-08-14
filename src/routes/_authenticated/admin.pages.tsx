@@ -9,6 +9,7 @@ import { Switch } from "@/components/ui/switch";
 import { toast } from "sonner";
 import {
   Plus, Trash2, Pencil, ArrowUp, ArrowDown, ExternalLink, Save, ArrowLeft, Eye, EyeOff, Copy,
+  LayoutGrid, ChevronDown, ChevronRight
 } from "lucide-react";
 import { BLOCK_LABELS, newBlock, parseBlocks, slugify, type BlockType, type PageBlock } from "@/lib/page-blocks";
 
@@ -361,13 +362,13 @@ function PageBuilder({
           <div className="border border-border/60 p-5">
             <p className="text-xs tracking-[0.24em] uppercase text-muted-foreground">Add a block</p>
             <div className="mt-3 flex flex-wrap gap-2">
-              {BLOCK_TYPES.map((t) => (
+              {Object.entries(BLOCK_LABELS).map(([t, label]) => (
                 <button
                   key={t}
-                  onClick={() => addBlock(t)}
-                  className="border border-border/60 px-3 py-2 text-xs hover:bg-muted transition"
+                  onClick={() => addBlock(t as BlockType)}
+                  className="border border-border/60 px-3 py-2 text-xs hover:bg-muted transition flex items-center gap-2"
                 >
-                  + {BLOCK_LABELS[t]}
+                  <Plus className="h-3 w-3" /> {label}
                 </button>
               ))}
             </div>
@@ -436,23 +437,79 @@ function BlockFields({ block: b, onChange }: { block: PageBlock; onChange: (patc
           <Label>Image URLs</Label>
           {(b.images ?? []).map((src, i) => (
             <div key={i} className="flex gap-2">
-              <Input
-                value={src}
-                onChange={(e) => {
-                  const next = [...(b.images ?? [])];
-                  next[i] = e.target.value;
-                  onChange({ images: next });
-                }}
-                placeholder="https://..."
-              />
-              <Button variant="ghost" size="icon" onClick={() => onChange({ images: (b.images ?? []).filter((_, j) => j !== i) })}>
-                <Trash2 className="h-4 w-4 text-destructive" />
-              </Button>
+              <Input value={src} onChange={(e) => {
+                const next = [...(b.images ?? [])];
+                next[i] = e.target.value;
+                onChange({ images: next });
+              }} placeholder={`Image ${i + 1} URL`} />
+              <Button variant="ghost" size="icon" onClick={() => {
+                const next = (b.images ?? []).filter((_, idx) => idx !== i);
+                onChange({ images: next });
+              }}><Trash2 className="h-4 w-4 text-destructive" /></Button>
             </div>
           ))}
-          <Button variant="outline" size="sm" onClick={() => onChange({ images: [...(b.images ?? []), ""] })}>
-            <Plus className="h-3.5 w-3.5 mr-2" /> Add image
-          </Button>
+          <Button variant="outline" size="sm" onClick={() => onChange({ images: [...(b.images ?? []), ""] })}>+ Add Image</Button>
+        </div>
+      );
+    case "homepage_section":
+      return (
+        <div className="space-y-4">
+          <div>
+            <Label>Section Type</Label>
+            <select 
+              value={b.sectionType} 
+              onChange={(e) => onChange({ sectionType: e.target.value as any })}
+              className="w-full bg-transparent border border-border/60 px-3 py-2 text-sm"
+            >
+              <option value="index" className="bg-background">The Index (Collections)</option>
+              <option value="atelier" className="bg-background">The Atelier</option>
+              <option value="occasions" className="bg-background">The Occasions</option>
+              <option value="instagram" className="bg-background">Instagram Reels</option>
+              <option value="custom" className="bg-background">Custom Slider</option>
+            </select>
+          </div>
+          <div><Label>Section Heading</Label><Input value={b.title ?? ""} onChange={(e) => onChange({ title: e.target.value })} /></div>
+          <div><Label>Subheading/Description</Label><Textarea rows={2} value={b.text ?? ""} onChange={(e) => onChange({ text: e.target.value })} /></div>
+          <div className="space-y-3">
+            <Label>Items</Label>
+            {(b.items ?? []).map((item, i) => (
+              <div key={item.id} className="border border-border/40 p-3 space-y-2 relative group/item">
+                <Button 
+                  variant="ghost" 
+                  size="icon" 
+                  className="absolute top-1 right-1 h-6 w-6 opacity-0 group-hover/item:opacity-100" 
+                  onClick={() => onChange({ items: b.items?.filter(it => it.id !== item.id) })}
+                >
+                  <Trash2 className="h-3.5 w-3.5 text-destructive" />
+                </Button>
+                <div className="grid grid-cols-2 gap-2">
+                  <div><Label className="text-[10px]">Title</Label><Input className="h-8 text-xs" value={item.title} onChange={(e) => {
+                    const next = [...(b.items ?? [])];
+                    next[i] = { ...item, title: e.target.value };
+                    onChange({ items: next });
+                  }} /></div>
+                  <div><Label className="text-[10px]">Subtitle/Chapter</Label><Input className="h-8 text-xs" value={item.subtitle ?? ""} onChange={(e) => {
+                    const next = [...(b.items ?? [])];
+                    next[i] = { ...item, subtitle: e.target.value };
+                    onChange({ items: next });
+                  }} /></div>
+                </div>
+                <div><Label className="text-[10px]">Image URL</Label><Input className="h-8 text-xs" value={item.image} onChange={(e) => {
+                  const next = [...(b.items ?? [])];
+                  next[i] = { ...item, image: e.target.value };
+                  onChange({ items: next });
+                }} /></div>
+                <div><Label className="text-[10px]">Link</Label><Input className="h-8 text-xs" value={item.link} onChange={(e) => {
+                  const next = [...(b.items ?? [])];
+                  next[i] = { ...item, link: e.target.value };
+                  onChange({ items: next });
+                }} /></div>
+              </div>
+            ))}
+            <Button variant="outline" size="sm" className="w-full text-xs" onClick={() => onChange({ 
+              items: [...(b.items ?? []), { id: Math.random().toString(36).slice(2), title: "New Item", image: "", link: "" }] 
+            })}>+ Add Item</Button>
+          </div>
         </div>
       );
     case "quote":
@@ -473,7 +530,9 @@ function BlockFields({ block: b, onChange }: { block: PageBlock; onChange: (patc
           </div>
         </>
       );
+    case "divider":
+      return <p className="text-xs text-muted-foreground italic">A horizontal line to separate sections.</p>;
     default:
-      return <p className="text-xs text-muted-foreground">No settings for this block.</p>;
+      return null;
   }
 }
