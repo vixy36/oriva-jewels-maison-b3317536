@@ -12,6 +12,7 @@ import {
   LayoutGrid, ChevronDown, ChevronRight
 } from "lucide-react";
 import { BLOCK_LABELS, newBlock, parseBlocks, slugify, type BlockType, type PageBlock } from "@/lib/page-blocks";
+import { getBuiltInBlocks } from "@/lib/built-in-pages";
 
 export const Route = createFileRoute("/_authenticated/admin/pages")({
   component: PagesAdmin,
@@ -204,25 +205,13 @@ function PagesAdmin() {
                   <Button variant="ghost" size="icon" title="Edit Content" onClick={() => {
                     if (customVersion) {
                       setDraft(toDraft(customVersion));
-                    } else if (p.slug === "home") {
-                      // Don't pre-fill homepage with heading/para blocks
-                      // We'll add special handling or just empty blocks
-                      setDraft({
-                        ...emptyDraft(),
-                        title: p.label,
-                        slug: p.slug,
-                        blocks: []
-                      });
                     } else {
-                      // Pre-fill with sensible defaults for built-in pages
+                      // Import built-in content as starting point
                       setDraft({
                         ...emptyDraft(),
                         title: p.label,
                         slug: p.slug,
-                        blocks: [
-                          newBlock("heading"),
-                          newBlock("paragraph")
-                        ]
+                        blocks: getBuiltInBlocks(p.slug)
                       });
                     }
                   }}>
