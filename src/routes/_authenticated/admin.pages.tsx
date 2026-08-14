@@ -456,17 +456,26 @@ function BlockFields({ block: b, onChange }: { block: PageBlock; onChange: (patc
         <div className="space-y-2">
           <Label>Image URLs</Label>
           {(b.images ?? []).map((src, i) => (
-            <div key={i} className="flex gap-2">
-              <Input value={src} onChange={(e) => {
-                const next = [...(b.images ?? [])];
-                next[i] = e.target.value;
-                onChange({ images: next });
-              }} placeholder={`Image ${i + 1} URL`} />
-              <Button variant="ghost" size="icon" onClick={() => {
-                const next = (b.images ?? []).filter((_, idx) => idx !== i);
-                onChange({ images: next });
-              }}><Trash2 className="h-4 w-4 text-destructive" /></Button>
-            </div>
+              <div key={i} className="flex gap-2">
+                <div className="flex-1 space-y-2">
+                  <div className="flex gap-2">
+                    <Input value={src} onChange={(e) => {
+                      const next = [...(b.images ?? [])];
+                      next[i] = e.target.value;
+                      onChange({ images: next });
+                    }} placeholder={`Image ${i + 1} URL`} />
+                    <Button variant="ghost" size="icon" onClick={() => {
+                      const next = (b.images ?? []).filter((_, idx) => idx !== i);
+                      onChange({ images: next });
+                    }}><Trash2 className="h-4 w-4 text-destructive" /></Button>
+                  </div>
+                  {src && (
+                    <div className="h-20 w-full border border-border/60 overflow-hidden bg-muted/20">
+                      <img src={src} alt={`Preview ${i + 1}`} className="h-full w-full object-contain" />
+                    </div>
+                  )}
+                </div>
+              </div>
           ))}
           <Button variant="outline" size="sm" onClick={() => onChange({ images: [...(b.images ?? []), ""] })}>+ Add Image</Button>
         </div>
