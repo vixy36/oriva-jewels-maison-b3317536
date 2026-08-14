@@ -572,8 +572,8 @@ function BlockFields({ block: b, onChange }: { block: PageBlock; onChange: (patc
                       onChange({ items: next });
                     }} />
                     {item.image && (
-                      <div className="h-8 w-8 shrink-0 border border-border/60">
-                        <img src={item.image} alt="Preview" className="h-full w-full object-cover" />
+                      <div className="h-8 w-8 shrink-0 border border-border/60 bg-muted/20 overflow-hidden">
+                        <img src={item.image} alt="Preview" className="h-full w-full object-cover" onError={(e) => (e.currentTarget.style.display = 'none')} />
                       </div>
                     )}
                   </div>
