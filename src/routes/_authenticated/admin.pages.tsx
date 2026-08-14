@@ -30,20 +30,20 @@ type PageRow = {
   updated_at: string;
 };
 
-const BUILT_IN: { label: string; path: string }[] = [
-  { label: "Home", path: "/" },
-  { label: "About Us", path: "/about" },
-  { label: "Maison Assurance", path: "/assurance" },
-  { label: "Diamonds", path: "/diamonds" },
-  { label: "Bespoke", path: "/bespoke" },
-  { label: "Custom Order", path: "/custom-order" },
-  { label: "Gift Ideas", path: "/gifts" },
-  { label: "Occasions", path: "/occasions" },
-  { label: "Offers", path: "/offers" },
-  { label: "Education", path: "/education" },
-  { label: "Ring Size Guide", path: "/ring-size-guide" },
-  { label: "Contact", path: "/contact" },
-  { label: "Wishlist", path: "/wishlist" },
+const BUILT_IN: { label: string; path: string; slug: string }[] = [
+  { label: "Home", path: "/", slug: "home" },
+  { label: "About Us", path: "/about", slug: "about" },
+  { label: "Maison Assurance", path: "/assurance", slug: "assurance" },
+  { label: "Diamonds", path: "/diamonds", slug: "diamonds" },
+  { label: "Bespoke", path: "/bespoke", slug: "bespoke" },
+  { label: "Custom Order", path: "/custom-order", slug: "custom-order" },
+  { label: "Gift Ideas", path: "/gifts", slug: "gifts" },
+  { label: "Occasions", path: "/occasions", slug: "occasions" },
+  { label: "Offers", path: "/offers", slug: "offers" },
+  { label: "Education", path: "/education", slug: "education" },
+  { label: "Ring Size Guide", path: "/ring-size-guide", slug: "ring-size-guide" },
+  { label: "Contact", path: "/contact", slug: "contact" },
+  { label: "Wishlist", path: "/wishlist", slug: "wishlist" },
 ];
 
 type Draft = {
