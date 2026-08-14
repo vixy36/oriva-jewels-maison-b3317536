@@ -510,27 +510,6 @@ function BlockFields({ block: b, onChange }: { block: PageBlock; onChange: (patc
           </div>
         </div>
       );
-    default:
-            <div key={i} className="flex gap-2">
-              <Input
-                value={src}
-                onChange={(e) => {
-                  const next = [...(b.images ?? [])];
-                  next[i] = e.target.value;
-                  onChange({ images: next });
-                }}
-                placeholder="https://..."
-              />
-              <Button variant="ghost" size="icon" onClick={() => onChange({ images: (b.images ?? []).filter((_, j) => j !== i) })}>
-                <Trash2 className="h-4 w-4 text-destructive" />
-              </Button>
-            </div>
-          ))}
-          <Button variant="outline" size="sm" onClick={() => onChange({ images: [...(b.images ?? []), ""] })}>
-            <Plus className="h-3.5 w-3.5 mr-2" /> Add image
-          </Button>
-        </div>
-      );
     case "quote":
       return (
         <>
@@ -549,6 +528,12 @@ function BlockFields({ block: b, onChange }: { block: PageBlock; onChange: (patc
           </div>
         </>
       );
+    case "divider":
+      return <p className="text-xs text-muted-foreground italic">A horizontal line to separate sections.</p>;
+    default:
+      return null;
+  }
+}
     default:
       return <p className="text-xs text-muted-foreground">No settings for this block.</p>;
   }
