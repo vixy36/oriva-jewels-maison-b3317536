@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { MessageCircle, Mail, MapPin, Calendar, Globe2, Instagram } from "lucide-react";
 import { buildWhatsAppLink, WHATSAPP_DISPLAY } from "@/lib/products";
 import { Reveal } from "@/components/site/Reveal";
+import { CustomPageWrapper } from "@/components/site/CustomPageWrapper";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -15,7 +16,8 @@ export const Route = createFileRoute("/contact")({
 
 function ContactPage() {
   return (
-    <div className="bg-ink pt-28 md:pt-32 min-h-screen">
+    <CustomPageWrapper slug="contact">
+      <div className="bg-ink pt-28 md:pt-32 min-h-screen">
       <section className="mx-auto max-w-[1500px] px-6 pb-16 md:px-16 md:pb-24">
         <Reveal>
           <div className="flex items-center gap-4">

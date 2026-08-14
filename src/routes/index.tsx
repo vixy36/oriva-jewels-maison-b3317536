@@ -3,6 +3,7 @@ import { useState, useMemo } from "react";
 import { ArrowRight, ArrowUpRight, MessageCircle, Paperclip, Sparkles, ChevronDown, ChevronUp } from "lucide-react";
 import { GsapReveal } from "@/components/site/GsapReveal";
 import { Sparkles as GsapSparkles } from "@/components/site/Sparkles";
+import { CustomPageWrapper } from "@/components/site/CustomPageWrapper";
 
 import heroImg from "@/assets/hero-diamond-hand.jpg";
 import engagementImg from "@/assets/collection-engagement.jpg";
@@ -545,7 +546,8 @@ function HomePage() {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </CustomPageWrapper>
   );
 }
 

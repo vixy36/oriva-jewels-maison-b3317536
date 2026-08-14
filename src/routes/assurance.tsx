@@ -3,6 +3,7 @@ import { ShieldCheck, Gem, Globe2, Award, HeartHandshake, Sparkles } from "lucid
 import atelier from "@/assets/about-atelier.jpg";
 import { Reveal } from "@/components/site/Reveal";
 import { buildWhatsAppLink } from "@/lib/products";
+import { CustomPageWrapper } from "@/components/site/CustomPageWrapper";
 
 export const Route = createFileRoute("/assurance")({
   head: () => ({
@@ -74,7 +75,8 @@ const expertiseItems = [
 
 function AssurancePage() {
   return (
-    <div className="bg-obsidian text-ivory">
+    <CustomPageWrapper slug="assurance">
+      <div className="bg-obsidian text-ivory">
       <section className="relative isolate overflow-hidden min-h-[70svh]">
         <img src={atelier} alt="Oriva atelier" className="absolute inset-0 h-full w-full object-cover opacity-40" />
         <div className="absolute inset-0 bg-gradient-to-b from-obsidian/50 via-obsidian/60 to-obsidian" />
@@ -182,5 +184,6 @@ function AssurancePage() {
         </div>
       </section>
     </div>
+    </CustomPageWrapper>
   );
 }
