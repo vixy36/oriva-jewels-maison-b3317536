@@ -415,7 +415,17 @@ function BlockFields({ block: b, onChange }: { block: PageBlock; onChange: (patc
     case "image":
       return (
         <>
-          <div><Label>Image URL</Label><Input value={b.image ?? ""} onChange={(e) => onChange({ image: e.target.value })} /></div>
+          <div>
+            <Label>Image URL</Label>
+            <div className="mt-1 flex gap-3">
+              <Input value={b.image ?? ""} onChange={(e) => onChange({ image: e.target.value })} />
+              {b.image && (
+                <div className="h-10 w-10 shrink-0 border border-border/60">
+                  <img src={b.image} alt="Preview" className="h-full w-full object-cover" />
+                </div>
+              )}
+            </div>
+          </div>
           <div><Label>Caption</Label><Input value={b.caption ?? ""} onChange={(e) => onChange({ caption: e.target.value })} /></div>
         </>
       );
