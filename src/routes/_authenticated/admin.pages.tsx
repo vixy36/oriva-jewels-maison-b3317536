@@ -205,10 +205,15 @@ function PagesAdmin() {
                     if (customVersion) {
                       setDraft(toDraft(customVersion));
                     } else {
+                      // Pre-fill with sensible defaults for built-in pages
                       setDraft({
                         ...emptyDraft(),
                         title: p.label,
                         slug: p.slug,
+                        blocks: [
+                          newBlock("heading"),
+                          newBlock("paragraph")
+                        ]
                       });
                     }
                   }}>

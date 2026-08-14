@@ -32,6 +32,7 @@ import { Route as OrderCodeRouteImport } from './routes/order.$code'
 import { Route as CollectionsCategoryRouteImport } from './routes/collections.$category'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
+import { Route as ApiPublicPageContentRouteImport } from './routes/api/public/page-content'
 import { Route as AuthenticatedAdminUsersRouteImport } from './routes/_authenticated/admin.users'
 import { Route as AuthenticatedAdminSeoRouteImport } from './routes/_authenticated/admin.seo'
 import { Route as AuthenticatedAdminProductsRouteImport } from './routes/_authenticated/admin.products'
@@ -160,6 +161,11 @@ const AuthenticatedAdminIndexRoute = AuthenticatedAdminIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AuthenticatedAdminRoute,
 } as any)
+const ApiPublicPageContentRoute = ApiPublicPageContentRouteImport.update({
+  id: '/api/public/page-content',
+  path: '/api/public/page-content',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthenticatedAdminUsersRoute = AuthenticatedAdminUsersRouteImport.update({
   id: '/users',
   path: '/users',
@@ -268,6 +274,7 @@ export interface FileRoutesByFullPath {
   '/admin/products': typeof AuthenticatedAdminProductsRoute
   '/admin/seo': typeof AuthenticatedAdminSeoRoute
   '/admin/users': typeof AuthenticatedAdminUsersRoute
+  '/api/public/page-content': typeof ApiPublicPageContentRoute
   '/admin/': typeof AuthenticatedAdminIndexRoute
   '/admin/orders/$id/label': typeof AuthenticatedAdminOrdersIdLabelRoute
 }
@@ -304,6 +311,7 @@ export interface FileRoutesByTo {
   '/admin/products': typeof AuthenticatedAdminProductsRoute
   '/admin/seo': typeof AuthenticatedAdminSeoRoute
   '/admin/users': typeof AuthenticatedAdminUsersRoute
+  '/api/public/page-content': typeof ApiPublicPageContentRoute
   '/admin': typeof AuthenticatedAdminIndexRoute
   '/admin/orders/$id/label': typeof AuthenticatedAdminOrdersIdLabelRoute
 }
@@ -343,6 +351,7 @@ export interface FileRoutesById {
   '/_authenticated/admin/products': typeof AuthenticatedAdminProductsRoute
   '/_authenticated/admin/seo': typeof AuthenticatedAdminSeoRoute
   '/_authenticated/admin/users': typeof AuthenticatedAdminUsersRoute
+  '/api/public/page-content': typeof ApiPublicPageContentRoute
   '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
   '/_authenticated/admin/orders/$id/label': typeof AuthenticatedAdminOrdersIdLabelRoute
 }
@@ -382,6 +391,7 @@ export interface FileRouteTypes {
     | '/admin/products'
     | '/admin/seo'
     | '/admin/users'
+    | '/api/public/page-content'
     | '/admin/'
     | '/admin/orders/$id/label'
   fileRoutesByTo: FileRoutesByTo
@@ -418,6 +428,7 @@ export interface FileRouteTypes {
     | '/admin/products'
     | '/admin/seo'
     | '/admin/users'
+    | '/api/public/page-content'
     | '/admin'
     | '/admin/orders/$id/label'
   id:
@@ -456,6 +467,7 @@ export interface FileRouteTypes {
     | '/_authenticated/admin/products'
     | '/_authenticated/admin/seo'
     | '/_authenticated/admin/users'
+    | '/api/public/page-content'
     | '/_authenticated/admin/'
     | '/_authenticated/admin/orders/$id/label'
   fileRoutesById: FileRoutesById
@@ -482,6 +494,7 @@ export interface RootRouteChildren {
   PagesSlugRoute: typeof PagesSlugRoute
   ProductSlugRoute: typeof ProductSlugRoute
   ShapeShapeRoute: typeof ShapeShapeRoute
+  ApiPublicPageContentRoute: typeof ApiPublicPageContentRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -646,6 +659,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/admin/'
       preLoaderRoute: typeof AuthenticatedAdminIndexRouteImport
       parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/api/public/page-content': {
+      id: '/api/public/page-content'
+      path: '/api/public/page-content'
+      fullPath: '/api/public/page-content'
+      preLoaderRoute: typeof ApiPublicPageContentRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/_authenticated/admin/users': {
       id: '/_authenticated/admin/users'
@@ -823,6 +843,7 @@ const rootRouteChildren: RootRouteChildren = {
   PagesSlugRoute: PagesSlugRoute,
   ProductSlugRoute: ProductSlugRoute,
   ShapeShapeRoute: ShapeShapeRoute,
+  ApiPublicPageContentRoute: ApiPublicPageContentRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
