@@ -547,9 +547,7 @@ function HomePage() {
         </div>
       </section>
       </div>
-    </CustomPageWrapper>
-  );
-}
+    </section>
 
 function Sparkle({
   style,
