@@ -523,11 +523,21 @@ function BlockFields({ block: b, onChange }: { block: PageBlock; onChange: (patc
                     onChange({ items: next });
                   }} /></div>
                 </div>
-                <div><Label className="text-[10px]">Image URL</Label><Input className="h-8 text-xs" value={item.image} onChange={(e) => {
-                  const next = [...(b.items ?? [])];
-                  next[i] = { ...item, image: e.target.value };
-                  onChange({ items: next });
-                }} /></div>
+                <div>
+                  <Label className="text-[10px]">Image URL</Label>
+                  <div className="mt-1 flex gap-2">
+                    <Input className="h-8 text-xs flex-1" value={item.image} onChange={(e) => {
+                      const next = [...(b.items ?? [])];
+                      next[i] = { ...item, image: e.target.value };
+                      onChange({ items: next });
+                    }} />
+                    {item.image && (
+                      <div className="h-8 w-8 shrink-0 border border-border/60">
+                        <img src={item.image} alt="Preview" className="h-full w-full object-cover" />
+                      </div>
+                    )}
+                  </div>
+                </div>
                 <div><Label className="text-[10px]">Link</Label><Input className="h-8 text-xs" value={item.link} onChange={(e) => {
                   const next = [...(b.items ?? [])];
                   next[i] = { ...item, link: e.target.value };
