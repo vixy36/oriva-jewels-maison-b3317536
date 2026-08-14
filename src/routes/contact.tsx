@@ -3,6 +3,7 @@ import { MessageCircle, Mail, MapPin, Calendar, Globe2, Instagram } from "lucide
 import { buildWhatsAppLink, WHATSAPP_DISPLAY } from "@/lib/products";
 import { Reveal } from "@/components/site/Reveal";
 import { CustomPageWrapper } from "@/components/site/CustomPageWrapper";
+import { CustomPageWrapper } from "@/components/site/CustomPageWrapper";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
