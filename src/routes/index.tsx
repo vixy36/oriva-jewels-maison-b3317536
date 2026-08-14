@@ -805,7 +805,8 @@ function EngagementRingsSection() {
         </div>
       </Reveal>
 
-    </section>
+      </section>
+    </CustomPageWrapper>
   );
 }
 
