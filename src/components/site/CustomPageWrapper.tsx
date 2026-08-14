@@ -52,9 +52,8 @@ export function CustomPageWrapper({ slug, title: defaultTitle, children }: Custo
   // Only use custom page content if it has meaningful blocks
   const hasBlocks = page && page.blocks && Array.isArray(page.blocks) && (page.blocks as any[]).length > 0;
   
-  // For the homepage specifically, we ONLY want to override if the user has explicitly
-  // created blocks. But if they've accidentally saved a blank "home" page, 
-  // we MUST NOT ruin the hardcoded layout.
+  // RENDER BLOCKS + CHILDREN
+
 
   
   // RENDER BLOCKS + CHILDREN
@@ -83,15 +82,10 @@ export function CustomPageWrapper({ slug, title: defaultTitle, children }: Custo
         ) : null}
 
         <PageBlockRenderer blocks={blocks} />
-        
-        {/* If it's the home page, we want to allow blocks to AUGMENT the hardcoded content
-            or if it's the only content, it just shows blocks. 
-            For now, if there are custom blocks, they are the ONLY content.
-            This was what ruined it - it replaced the hardcoded hero/sections.
-        */}
       </article>
     );
   }
+
 
   // If it's a built-in page like About/Assurance, we want to show the HARDCODED content
   // AND the CUSTOM BLOCKS if any exist.
