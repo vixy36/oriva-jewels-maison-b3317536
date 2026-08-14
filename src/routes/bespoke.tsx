@@ -27,7 +27,8 @@ const steps = [
 
 function BespokePage() {
   return (
-    <div className="bg-obsidian text-ivory" data-surface="dark">
+    <CustomPageWrapper slug="bespoke">
+      <div className="bg-obsidian text-ivory" data-surface="dark">
       {/* HERO */}
       <section className="relative isolate overflow-hidden min-h-[80svh]">
         <img src={atelier} alt="Oriva atelier" className="absolute inset-0 h-full w-full object-cover opacity-55" />
