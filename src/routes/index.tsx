@@ -100,8 +100,7 @@ function HomePage() {
   const selectedSix = useMemo(() => products.slice(0, 8), []);
   
   return (
-    <CustomPageWrapper slug="home">
-      <div className="bg-background">
+    <div className="bg-background">
       {/* HERO */}
       <section className="relative isolate overflow-hidden bg-obsidian text-ivory pt-16 md:pt-20">
         <img
@@ -546,10 +545,12 @@ function HomePage() {
           </div>
         </div>
       </section>
-      </div>
-    </CustomPageWrapper>
+      <EngagementRingsSection />
+    </div>
   );
 }
+
+
 
 function Sparkle({
   style,
@@ -808,4 +809,6 @@ function EngagementRingsSection() {
       </section>
   );
 }
+
+
 
