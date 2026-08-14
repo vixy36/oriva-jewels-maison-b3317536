@@ -424,9 +424,15 @@ function PageBuilder({
                     <Button variant="ghost" size="icon" onClick={() => removeBlock(b.id)}><Trash2 className="h-4 w-4 text-destructive" /></Button>
                   </div>
                 </div>
-                <div className="mt-4 space-y-3">
+                <div className="mt-4 space-y-4">
                   <BlockFields block={b} onChange={(patch) => updateBlock(b.id, patch)} />
+                  <div className="pt-4 border-t border-border/40 flex justify-end">
+                    <Button size="sm" variant="ghost" className="text-xs h-8" onClick={save} disabled={saving}>
+                      <Save className="h-3 w-3 mr-2" /> {saving ? "Saving..." : "Save section"}
+                    </Button>
+                  </div>
                 </div>
+
               </div>
             ))
           )}
