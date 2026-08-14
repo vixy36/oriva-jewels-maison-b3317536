@@ -191,17 +191,35 @@ function PagesAdmin() {
       <div className="mt-8 border border-border/60">
         <div className="px-4 py-3 border-b border-border/60 bg-muted/30 text-xs tracking-[0.24em] uppercase">Site pages (built-in)</div>
         <ul className="divide-y divide-border/60">
-          {BUILT_IN.map((p) => (
-            <li key={p.path} className="p-4 flex items-center gap-4">
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-medium">{p.label}</p>
-                <p className="text-xs text-muted-foreground">{p.path}</p>
-              </div>
-              <a href={p.path} target="_blank" rel="noreferrer" className="text-xs tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground inline-flex items-center gap-2">
-                View <ExternalLink className="h-3.5 w-3.5" />
-              </a>
-            </li>
-          ))}
+          {BUILT_IN.map((p) => {
+            const customVersion = rows.find(r => r.slug === p.slug);
+            return (
+              <li key={p.path} className="p-4 flex items-center gap-4">
+                <div className="min-w-0 flex-1">
+                  <p className="text-sm font-medium">{p.label}</p>
+                  <p className="text-xs text-muted-foreground">{p.path}</p>
+                </div>
+                <div className="flex items-center gap-1">
+                  <Button variant="ghost" size="icon" title="Edit Content" onClick={() => {
+                    if (customVersion) {
+                      setDraft(toDraft(customVersion));
+                    } else {
+                      setDraft({
+                        ...emptyDraft(),
+                        title: p.label,
+                        slug: p.slug,
+                      });
+                    }
+                  }}>
+                    <Pencil className="h-4 w-4" />
+                  </Button>
+                  <Button variant="ghost" size="icon" title="View" asChild>
+                    <a href={p.path} target="_blank" rel="noreferrer"><ExternalLink className="h-4 w-4" /></a>
+                  </Button>
+                </div>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </div>
