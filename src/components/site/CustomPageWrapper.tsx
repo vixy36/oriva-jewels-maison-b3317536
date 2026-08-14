@@ -49,9 +49,13 @@ export function CustomPageWrapper({ slug, title: defaultTitle, children }: Custo
     return <div className="min-h-screen bg-obsidian" />;
   }
 
-  // Only use custom page content if it's not the "home" slug OR if it has meaningful blocks
-  // This ensures the hardcoded home page remains the default unless explicitly overridden with blocks.
+  // Only use custom page content if it has meaningful blocks
   const hasBlocks = page && page.blocks && Array.isArray(page.blocks) && (page.blocks as any[]).length > 0;
+  
+  // For the homepage specifically, we ONLY want to override if the user has explicitly
+  // created blocks. But if they've accidentally saved a blank "home" page, 
+  // we MUST NOT ruin the hardcoded layout.
+
   
   // RENDER BLOCKS + CHILDREN
   // We wrap the children (hardcoded content) and prepend/append blocks if desired.
