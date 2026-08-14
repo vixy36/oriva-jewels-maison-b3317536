@@ -80,13 +80,19 @@ export function CustomPageWrapper({ slug, title: defaultTitle, children }: Custo
 
         <PageBlockRenderer blocks={blocks} />
         
-        {/* We still render children but hidden or as a fallback? 
-            Actually, the user said "changes are not updating on home page".
-            If they added blocks to 'home', they want to see them.
+        {/* If it's the home page, we want to allow blocks to AUGMENT the hardcoded content
+            or if it's the only content, it just shows blocks. 
+            For now, if there are custom blocks, they are the ONLY content.
+            This was what ruined it - it replaced the hardcoded hero/sections.
         */}
       </article>
     );
   }
+
+  // If it's a built-in page like About/Assurance, we want to show the HARDCODED content
+  // AND the CUSTOM BLOCKS if any exist.
+  // But for Home, the custom blocks often replace it if the user builds a new one.
+
 
   return <>{children}</>;
 }
