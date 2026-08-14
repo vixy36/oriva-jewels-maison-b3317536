@@ -100,7 +100,9 @@ function HomePage() {
   const selectedSix = useMemo(() => products.slice(0, 8), []);
   
   return (
-    <div className="bg-background">
+    <CustomPageWrapper slug="home">
+      <div className="bg-background">
+
 
 
       {/* HERO */}
