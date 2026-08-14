@@ -204,6 +204,15 @@ function PagesAdmin() {
                   <Button variant="ghost" size="icon" title="Edit Content" onClick={() => {
                     if (customVersion) {
                       setDraft(toDraft(customVersion));
+                    } else if (p.slug === "home") {
+                      // Don't pre-fill homepage with heading/para blocks
+                      // We'll add special handling or just empty blocks
+                      setDraft({
+                        ...emptyDraft(),
+                        title: p.label,
+                        slug: p.slug,
+                        blocks: []
+                      });
                     } else {
                       // Pre-fill with sensible defaults for built-in pages
                       setDraft({
@@ -217,6 +226,7 @@ function PagesAdmin() {
                       });
                     }
                   }}>
+
                     <Pencil className="h-4 w-4" />
                   </Button>
                   <Button variant="ghost" size="icon" title="View" asChild>
