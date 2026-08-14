@@ -52,7 +52,8 @@ const fourCs = [
 
 function EducationPage() {
   return (
-    <div className="bg-obsidian text-ivory">
+    <CustomPageWrapper slug="education">
+      <div className="bg-obsidian text-ivory">
       {/* HERO */}
       <section className="relative isolate overflow-hidden min-h-[70svh]">
         <img src={editorialImg} alt="Diamond study" className="absolute inset-0 h-full w-full object-cover opacity-40" />
@@ -161,6 +162,7 @@ function EducationPage() {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </CustomPageWrapper>
   );
 }
