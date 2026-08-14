@@ -534,7 +534,3 @@ function BlockFields({ block: b, onChange }: { block: PageBlock; onChange: (patc
       return null;
   }
 }
-    default:
-      return <p className="text-xs text-muted-foreground">No settings for this block.</p>;
-  }
-}
