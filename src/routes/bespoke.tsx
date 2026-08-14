@@ -118,5 +118,6 @@ function BespokePage() {
         </div>
       </section>
     </div>
+    </CustomPageWrapper>
   );
 }
