@@ -338,7 +338,14 @@ function PageBuilder({
           </div>
           <div>
             <Label>Hero image URL</Label>
-            <Input value={d.hero_image_url} onChange={(e) => set("hero_image_url", e.target.value)} placeholder="https://..." />
+            <div className="mt-1 flex gap-3">
+              <Input value={d.hero_image_url} onChange={(e) => set("hero_image_url", e.target.value)} placeholder="https://..." />
+              {d.hero_image_url && (
+                <div className="h-10 w-10 shrink-0 border border-border/60">
+                  <img src={d.hero_image_url} alt="Hero Preview" className="h-full w-full object-cover" />
+                </div>
+              )}
+            </div>
           </div>
           <div>
             <Label>SEO title</Label>
