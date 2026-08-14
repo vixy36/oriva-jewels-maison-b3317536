@@ -1,5 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import type { PageBlock } from "@/lib/page-blocks";
+import { ArrowUpRight, ArrowRight } from "lucide-react";
+import { Reveal } from "@/components/site/Reveal";
 
 export function PageBlockRenderer({ blocks }: { blocks: PageBlock[] }) {
   return (
@@ -105,6 +107,60 @@ function BlockView({ block: b }: { block: PageBlock }) {
       );
     case "divider":
       return <div className="max-w-6xl mx-auto px-5 md:px-10"><hr className="border-border/60" /></div>;
+    case "homepage_section":
+      return (
+        <section className={`py-12 md:py-20 ${b.sectionType === "instagram" ? "bg-obsidian text-ivory" : "bg-background"}`}>
+          <div className="mx-auto max-w-[1400px] px-6 md:px-12">
+            <Reveal className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
+              <div className="max-w-xl">
+                <span className="eyebrow block mb-4 tracking-[0.4em] text-gold">{b.title?.toUpperCase()}</span>
+                <h2 className={`text-4xl md:text-5xl font-serif leading-tight ${b.sectionType === "instagram" ? "text-ivory" : "text-obsidian"}`}>
+                  {b.text || "Curated selection."}
+                </h2>
+              </div>
+            </Reveal>
+
+            {b.sectionType === "instagram" ? (
+              <div className="flex overflow-x-auto pb-8 snap-x snap-mandatory hide-scrollbar gap-4 md:gap-6">
+                {(b.items ?? []).map((item) => (
+                  <a
+                    key={item.id}
+                    href={item.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex-none w-[200px] md:w-[260px] snap-center group relative aspect-[4/5] overflow-hidden bg-obsidian border border-white/5 block rounded-sm"
+                  >
+                    <img src={item.image} alt={item.title} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.06]" />
+                    <span className="absolute inset-0 bg-gradient-to-t from-obsidian/75 via-obsidian/10 to-transparent" />
+                    <span className="absolute left-1/2 top-1/2 grid h-12 w-12 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-gold/70 bg-obsidian/75 text-gold backdrop-blur-sm transition group-hover:scale-105 group-hover:bg-gold group-hover:text-obsidian">▶</span>
+                    <span className="absolute inset-x-0 bottom-0 p-4 text-[10px] tracking-[0.32em] uppercase text-ivory/90">{item.title}</span>
+                  </a>
+                ))}
+              </div>
+            ) : (
+              <div className={`grid gap-6 md:gap-8 ${b.sectionType === "index" ? "grid-cols-2 sm:grid-cols-3 lg:grid-cols-6" : "grid-cols-2 sm:grid-cols-3 lg:grid-cols-5"}`}>
+                {(b.items ?? []).map((item, i) => (
+                  <Reveal key={item.id} delay={i * 100}>
+                    <Link to={item.link as any} className="group block relative w-full">
+                      <div className="relative aspect-[4/5] overflow-hidden bg-muted rounded-sm">
+                        <img src={item.image} alt={item.title} className="absolute inset-0 h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+                        <div className="absolute inset-0 bg-obsidian/10 group-hover:bg-obsidian/0 transition-colors duration-500" />
+                      </div>
+                      <div className="mt-4 flex items-start justify-between">
+                        <div>
+                          {item.subtitle && <span className="text-[9px] tracking-[0.2em] uppercase text-gold font-medium mb-1 block">{item.subtitle}</span>}
+                          <h3 className="text-[13px] sm:text-[15px] font-serif text-obsidian uppercase tracking-wide font-bold">{item.title}</h3>
+                        </div>
+                        <ArrowUpRight className="h-3.5 w-3.5 text-obsidian transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 shrink-0" />
+                      </div>
+                    </Link>
+                  </Reveal>
+                ))}
+              </div>
+            )}
+          </div>
+        </section>
+      );
     default:
       return null;
   }

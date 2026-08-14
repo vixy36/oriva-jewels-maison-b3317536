@@ -436,6 +436,82 @@ function BlockFields({ block: b, onChange }: { block: PageBlock; onChange: (patc
           <Label>Image URLs</Label>
           {(b.images ?? []).map((src, i) => (
             <div key={i} className="flex gap-2">
+              <Input value={src} onChange={(e) => {
+                const next = [...(b.images ?? [])];
+                next[i] = e.target.value;
+                onChange({ images: next });
+              }} placeholder={`Image ${i + 1} URL`} />
+              <Button variant="ghost" size="icon" onClick={() => {
+                const next = (b.images ?? []).filter((_, idx) => idx !== i);
+                onChange({ images: next });
+              }}><Trash2 className="h-4 w-4 text-destructive" /></Button>
+            </div>
+          ))}
+          <Button variant="outline" size="sm" onClick={() => onChange({ images: [...(b.images ?? []), ""] })}>+ Add Image</Button>
+        </div>
+      );
+    case "homepage_section":
+      return (
+        <div className="space-y-4">
+          <div>
+            <Label>Section Type</Label>
+            <select 
+              value={b.sectionType} 
+              onChange={(e) => onChange({ sectionType: e.target.value as any })}
+              className="w-full bg-transparent border border-border/60 px-3 py-2 text-sm"
+            >
+              <option value="index" className="bg-background">The Index (Collections)</option>
+              <option value="atelier" className="bg-background">The Atelier</option>
+              <option value="occasions" className="bg-background">The Occasions</option>
+              <option value="instagram" className="bg-background">Instagram Reels</option>
+              <option value="custom" className="bg-background">Custom Slider</option>
+            </select>
+          </div>
+          <div><Label>Section Heading</Label><Input value={b.title ?? ""} onChange={(e) => onChange({ title: e.target.value })} /></div>
+          <div className="space-y-3">
+            <Label>Items</Label>
+            {(b.items ?? []).map((item, i) => (
+              <div key={item.id} className="border border-border/40 p-3 space-y-2 relative group/item">
+                <Button 
+                  variant="ghost" 
+                  size="icon" 
+                  className="absolute top-1 right-1 h-6 w-6 opacity-0 group-hover/item:opacity-100" 
+                  onClick={() => onChange({ items: b.items?.filter(it => it.id !== item.id) })}
+                >
+                  <Trash2 className="h-3.5 w-3.5 text-destructive" />
+                </Button>
+                <div className="grid grid-cols-2 gap-2">
+                  <div><Label className="text-[10px]">Title</Label><Input className="h-8 text-xs" value={item.title} onChange={(e) => {
+                    const next = [...(b.items ?? [])];
+                    next[i] = { ...item, title: e.target.value };
+                    onChange({ items: next });
+                  }} /></div>
+                  <div><Label className="text-[10px]">Subtitle/Chapter</Label><Input className="h-8 text-xs" value={item.subtitle ?? ""} onChange={(e) => {
+                    const next = [...(b.items ?? [])];
+                    next[i] = { ...item, subtitle: e.target.value };
+                    onChange({ items: next });
+                  }} /></div>
+                </div>
+                <div><Label className="text-[10px]">Image URL</Label><Input className="h-8 text-xs" value={item.image} onChange={(e) => {
+                  const next = [...(b.items ?? [])];
+                  next[i] = { ...item, image: e.target.value };
+                  onChange({ items: next });
+                }} /></div>
+                <div><Label className="text-[10px]">Link</Label><Input className="h-8 text-xs" value={item.link} onChange={(e) => {
+                  const next = [...(b.items ?? [])];
+                  next[i] = { ...item, link: e.target.value };
+                  onChange({ items: next });
+                }} /></div>
+              </div>
+            ))}
+            <Button variant="outline" size="sm" className="w-full text-xs" onClick={() => onChange({ 
+              items: [...(b.items ?? []), { id: Math.random().toString(), title: "New Item", image: "", link: "" }] 
+            })}>+ Add Item</Button>
+          </div>
+        </div>
+      );
+    default:
+            <div key={i} className="flex gap-2">
               <Input
                 value={src}
                 onChange={(e) => {
