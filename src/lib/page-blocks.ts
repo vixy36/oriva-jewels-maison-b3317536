@@ -84,8 +84,9 @@ export function newBlock(type: BlockType): PageBlock {
 }
 
 export function parseBlocks(value: unknown): PageBlock[] {
-  if (!Array.isArray(value)) return [];
-  return (value as PageBlock[]).filter((b) => b && typeof b === "object" && typeof b.type === "string");
+  if (!value || !Array.isArray(value)) return [];
+  // Clean up nulls or invalid objects from the array
+  return (value as any[]).filter((b) => b && typeof b === "object" && typeof b.type === "string") as PageBlock[];
 }
 
 export function slugify(input: string) {
