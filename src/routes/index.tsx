@@ -3,6 +3,7 @@ import { useState, useMemo } from "react";
 import { ArrowRight, ArrowUpRight, MessageCircle, Paperclip, Sparkles, ChevronDown, ChevronUp } from "lucide-react";
 import { GsapReveal } from "@/components/site/GsapReveal";
 import { Sparkles as GsapSparkles } from "@/components/site/Sparkles";
+import { CustomPageWrapper } from "@/components/site/CustomPageWrapper";
 
 import heroImg from "@/assets/hero-diamond-hand.jpg";
 import engagementImg from "@/assets/collection-engagement.jpg";
@@ -99,8 +100,8 @@ function HomePage() {
   const selectedSix = useMemo(() => products.slice(0, 8), []);
   
   return (
-
-    <div className="bg-background">
+    <CustomPageWrapper slug="home">
+      <div className="bg-background">
       {/* HERO */}
       <section className="relative isolate overflow-hidden bg-obsidian text-ivory pt-16 md:pt-20">
         <img
@@ -545,7 +546,8 @@ function HomePage() {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </CustomPageWrapper>
   );
 }
 
@@ -803,7 +805,7 @@ function EngagementRingsSection() {
         </div>
       </Reveal>
 
-    </section>
+      </section>
   );
 }
 

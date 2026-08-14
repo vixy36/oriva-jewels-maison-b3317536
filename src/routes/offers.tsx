@@ -4,6 +4,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { Tag, Clock, Copy, Sparkles } from "lucide-react";
+import { CustomPageWrapper } from "@/components/site/CustomPageWrapper";
 
 export const Route = createFileRoute("/offers")({
   head: () => ({
@@ -147,7 +148,8 @@ function OffersPage() {
   const visible = filter === "all" ? items : items.filter((o) => o.category === filter);
 
   return (
-    <div className="bg-background text-foreground pt-24 md:pt-32">
+    <CustomPageWrapper slug="offers">
+      <div className="bg-background text-foreground pt-24 md:pt-32">
       {/* Hero */}
       <section className="relative overflow-hidden bg-[#071c37] text-[#fefefe]">
         <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_20%_20%,#d6b98c33,transparent_50%),radial-gradient(circle_at_80%_60%,#d6b98c22,transparent_50%)]" />
@@ -196,6 +198,7 @@ function OffersPage() {
           </div>
         )}
       </section>
-    </div>
+      </div>
+    </CustomPageWrapper>
   );
 }

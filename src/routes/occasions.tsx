@@ -8,6 +8,7 @@ import insta1 from "@/assets/insta-1.jpg";
 import insta6 from "@/assets/insta-6.jpg";
 import { Reveal } from "@/components/site/Reveal";
 import { buildWhatsAppLink } from "@/lib/products";
+import { CustomPageWrapper } from "@/components/site/CustomPageWrapper";
 
 export const Route = createFileRoute("/occasions")({
   head: () => ({
@@ -33,7 +34,8 @@ const occasions = [
 
 function OccasionsPage() {
   return (
-    <div className="bg-obsidian text-ivory pt-24 md:pt-32">
+    <CustomPageWrapper slug="occasions">
+      <div className="bg-obsidian text-ivory pt-24 md:pt-32">
       <section className="pb-10 md:pb-12 border-b border-white/5">
         <div className="mx-auto max-w-[1400px] px-6 md:px-16 text-center">
           <p className="eyebrow">- Shop by Occasion</p>
@@ -83,6 +85,7 @@ function OccasionsPage() {
           ))}
         </div>
       </section>
-    </div>
+      </div>
+    </CustomPageWrapper>
   );
 }

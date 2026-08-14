@@ -4,6 +4,7 @@ import atelier from "@/assets/about-atelier.jpg";
 import editorial from "@/assets/engagement-model.jpg";
 import { Reveal } from "@/components/site/Reveal";
 import { buildWhatsAppLink } from "@/lib/products";
+import { CustomPageWrapper } from "@/components/site/CustomPageWrapper";
 
 export const Route = createFileRoute("/bespoke")({
   head: () => ({
@@ -26,7 +27,8 @@ const steps = [
 
 function BespokePage() {
   return (
-    <div className="bg-obsidian text-ivory" data-surface="dark">
+    <CustomPageWrapper slug="bespoke">
+      <div className="bg-obsidian text-ivory" data-surface="dark">
       {/* HERO */}
       <section className="relative isolate overflow-hidden min-h-[80svh]">
         <img src={atelier} alt="Oriva atelier" className="absolute inset-0 h-full w-full object-cover opacity-55" />
@@ -116,5 +118,6 @@ function BespokePage() {
         </div>
       </section>
     </div>
+    </CustomPageWrapper>
   );
 }

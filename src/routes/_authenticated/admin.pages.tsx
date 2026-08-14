@@ -30,20 +30,20 @@ type PageRow = {
   updated_at: string;
 };
 
-const BUILT_IN: { label: string; path: string }[] = [
-  { label: "Home", path: "/" },
-  { label: "About Us", path: "/about" },
-  { label: "Maison Assurance", path: "/assurance" },
-  { label: "Diamonds", path: "/diamonds" },
-  { label: "Bespoke", path: "/bespoke" },
-  { label: "Custom Order", path: "/custom-order" },
-  { label: "Gift Ideas", path: "/gifts" },
-  { label: "Occasions", path: "/occasions" },
-  { label: "Offers", path: "/offers" },
-  { label: "Education", path: "/education" },
-  { label: "Ring Size Guide", path: "/ring-size-guide" },
-  { label: "Contact", path: "/contact" },
-  { label: "Wishlist", path: "/wishlist" },
+const BUILT_IN: { label: string; path: string; slug: string }[] = [
+  { label: "Home", path: "/", slug: "home" },
+  { label: "About Us", path: "/about", slug: "about" },
+  { label: "Maison Assurance", path: "/assurance", slug: "assurance" },
+  { label: "Diamonds", path: "/diamonds", slug: "diamonds" },
+  { label: "Bespoke", path: "/bespoke", slug: "bespoke" },
+  { label: "Custom Order", path: "/custom-order", slug: "custom-order" },
+  { label: "Gift Ideas", path: "/gifts", slug: "gifts" },
+  { label: "Occasions", path: "/occasions", slug: "occasions" },
+  { label: "Offers", path: "/offers", slug: "offers" },
+  { label: "Education", path: "/education", slug: "education" },
+  { label: "Ring Size Guide", path: "/ring-size-guide", slug: "ring-size-guide" },
+  { label: "Contact", path: "/contact", slug: "contact" },
+  { label: "Wishlist", path: "/wishlist", slug: "wishlist" },
 ];
 
 type Draft = {
@@ -191,17 +191,35 @@ function PagesAdmin() {
       <div className="mt-8 border border-border/60">
         <div className="px-4 py-3 border-b border-border/60 bg-muted/30 text-xs tracking-[0.24em] uppercase">Site pages (built-in)</div>
         <ul className="divide-y divide-border/60">
-          {BUILT_IN.map((p) => (
-            <li key={p.path} className="p-4 flex items-center gap-4">
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-medium">{p.label}</p>
-                <p className="text-xs text-muted-foreground">{p.path}</p>
-              </div>
-              <a href={p.path} target="_blank" rel="noreferrer" className="text-xs tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground inline-flex items-center gap-2">
-                View <ExternalLink className="h-3.5 w-3.5" />
-              </a>
-            </li>
-          ))}
+          {BUILT_IN.map((p) => {
+            const customVersion = rows.find(r => r.slug === p.slug);
+            return (
+              <li key={p.path} className="p-4 flex items-center gap-4">
+                <div className="min-w-0 flex-1">
+                  <p className="text-sm font-medium">{p.label}</p>
+                  <p className="text-xs text-muted-foreground">{p.path}</p>
+                </div>
+                <div className="flex items-center gap-1">
+                  <Button variant="ghost" size="icon" title="Edit Content" onClick={() => {
+                    if (customVersion) {
+                      setDraft(toDraft(customVersion));
+                    } else {
+                      setDraft({
+                        ...emptyDraft(),
+                        title: p.label,
+                        slug: p.slug,
+                      });
+                    }
+                  }}>
+                    <Pencil className="h-4 w-4" />
+                  </Button>
+                  <Button variant="ghost" size="icon" title="View" asChild>
+                    <a href={p.path} target="_blank" rel="noreferrer"><ExternalLink className="h-4 w-4" /></a>
+                  </Button>
+                </div>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </div>

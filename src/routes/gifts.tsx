@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { ArrowRight, Gift } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import { CustomPageWrapper } from "@/components/site/CustomPageWrapper";
 
 type GiftRow = {
   id: string;
@@ -53,7 +54,8 @@ function GiftsPage() {
   const shown = filter === "all" ? gifts : gifts.filter((g) => g.occasion === filter);
 
   return (
-    <div className="bg-ink pt-24 md:pt-32">
+    <CustomPageWrapper slug="gifts">
+      <div className="bg-ink pt-24 md:pt-32">
       <section className="mx-auto max-w-[1600px] px-6 md:px-16">
         <div className="max-w-3xl">
           <p className="eyebrow">The Gift Edit</p>
@@ -159,6 +161,7 @@ function GiftsPage() {
           )}
         </div>
       </section>
-    </div>
+      </div>
+    </CustomPageWrapper>
   );
 }

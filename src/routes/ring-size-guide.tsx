@@ -3,6 +3,7 @@ import { useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/site/Reveal";
 import { buildWhatsAppLink } from "@/lib/products";
+import { CustomPageWrapper } from "@/components/site/CustomPageWrapper";
 
 export const Route = createFileRoute("/ring-size-guide")({
   head: () => ({
@@ -69,7 +70,8 @@ function RingSizePage() {
   const match = !isNaN(mmCirc) ? findByCircumference(mmCirc) : null;
 
   return (
-    <div className="bg-obsidian text-ivory">
+    <CustomPageWrapper slug="ring-size-guide">
+      <div className="bg-obsidian text-ivory">
       {/* HERO */}
       <section className="pt-28 pb-10 md:pt-32 md:pb-12 border-b border-white/5">
         <div className="mx-auto max-w-[1400px] px-6 md:px-16">
@@ -281,5 +283,6 @@ function RingSizePage() {
         </div>
       </section>
     </div>
+    </CustomPageWrapper>
   );
 }

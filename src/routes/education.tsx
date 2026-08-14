@@ -4,6 +4,7 @@ import editorialImg from "@/assets/editorial-emerald.jpg";
 import atelier from "@/assets/about-atelier.jpg";
 import { Reveal } from "@/components/site/Reveal";
 import { buildWhatsAppLink } from "@/lib/products";
+import { CustomPageWrapper } from "@/components/site/CustomPageWrapper";
 
 export const Route = createFileRoute("/education")({
   head: () => ({
@@ -51,7 +52,8 @@ const fourCs = [
 
 function EducationPage() {
   return (
-    <div className="bg-obsidian text-ivory">
+    <CustomPageWrapper slug="education">
+      <div className="bg-obsidian text-ivory">
       {/* HERO */}
       <section className="relative isolate overflow-hidden min-h-[70svh]">
         <img src={editorialImg} alt="Diamond study" className="absolute inset-0 h-full w-full object-cover opacity-40" />
@@ -160,6 +162,7 @@ function EducationPage() {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </CustomPageWrapper>
   );
 }
