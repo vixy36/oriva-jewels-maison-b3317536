@@ -6,7 +6,8 @@ export type BlockType =
   | "gallery"
   | "quote"
   | "cta"
-  | "divider";
+  | "divider"
+  | "homepage_section";
 
 export type PageBlock = {
   id: string;
@@ -28,6 +29,16 @@ export type PageBlock = {
   ctaHref?: string;
   /** image_text layout */
   reverse?: boolean;
+  /** homepage section configuration */
+  sectionType?: "index" | "atelier" | "occasions" | "instagram" | "custom";
+  items?: {
+    id: string;
+    title: string;
+    subtitle?: string;
+    image: string;
+    link: string;
+    badge?: string;
+  }[];
 };
 
 export const BLOCK_LABELS: Record<BlockType, string> = {
@@ -39,6 +50,7 @@ export const BLOCK_LABELS: Record<BlockType, string> = {
   quote: "Pull quote",
   cta: "Call to action",
   divider: "Divider",
+  homepage_section: "Homepage Section",
 };
 
 export function newBlock(type: BlockType): PageBlock {
@@ -58,6 +70,14 @@ export function newBlock(type: BlockType): PageBlock {
       return { id, type, text: "A quiet obsession with brilliance.", caption: "Oriva Jewels" };
     case "cta":
       return { id, type, title: "Begin your commission", ctaLabel: "Enquire", ctaHref: "/custom-order" };
+    case "homepage_section":
+      return { 
+        id, 
+        type, 
+        sectionType: "index", 
+        title: "New Section", 
+        items: [{ id: "1", title: "Item 1", subtitle: "Chapter 01", image: "", link: "" }] 
+      };
     default:
       return { id, type };
   }
