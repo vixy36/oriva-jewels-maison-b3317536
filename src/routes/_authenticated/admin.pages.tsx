@@ -338,7 +338,14 @@ function PageBuilder({
           </div>
           <div>
             <Label>Hero image URL</Label>
-            <Input value={d.hero_image_url} onChange={(e) => set("hero_image_url", e.target.value)} placeholder="https://..." />
+            <div className="mt-1 flex gap-3">
+              <Input value={d.hero_image_url} onChange={(e) => set("hero_image_url", e.target.value)} placeholder="https://..." />
+              {d.hero_image_url && (
+                <div className="h-10 w-10 shrink-0 border border-border/60">
+                  <img src={d.hero_image_url} alt="Hero Preview" className="h-full w-full object-cover" />
+                </div>
+              )}
+            </div>
           </div>
           <div>
             <Label>SEO title</Label>
@@ -415,7 +422,17 @@ function BlockFields({ block: b, onChange }: { block: PageBlock; onChange: (patc
     case "image":
       return (
         <>
-          <div><Label>Image URL</Label><Input value={b.image ?? ""} onChange={(e) => onChange({ image: e.target.value })} /></div>
+          <div>
+            <Label>Image URL</Label>
+            <div className="mt-1 flex gap-3">
+              <Input value={b.image ?? ""} onChange={(e) => onChange({ image: e.target.value })} />
+              {b.image && (
+                <div className="h-10 w-10 shrink-0 border border-border/60">
+                  <img src={b.image} alt="Preview" className="h-full w-full object-cover" />
+                </div>
+              )}
+            </div>
+          </div>
           <div><Label>Caption</Label><Input value={b.caption ?? ""} onChange={(e) => onChange({ caption: e.target.value })} /></div>
         </>
       );
@@ -424,7 +441,17 @@ function BlockFields({ block: b, onChange }: { block: PageBlock; onChange: (patc
         <>
           <div><Label>Heading</Label><Input value={b.title ?? ""} onChange={(e) => onChange({ title: e.target.value })} /></div>
           <div><Label>Text</Label><Textarea rows={4} value={b.text ?? ""} onChange={(e) => onChange({ text: e.target.value })} /></div>
-          <div><Label>Image URL</Label><Input value={b.image ?? ""} onChange={(e) => onChange({ image: e.target.value })} /></div>
+          <div>
+            <Label>Image URL</Label>
+            <div className="mt-1 flex gap-3">
+              <Input value={b.image ?? ""} onChange={(e) => onChange({ image: e.target.value })} />
+              {b.image && (
+                <div className="h-10 w-10 shrink-0 border border-border/60">
+                  <img src={b.image} alt="Preview" className="h-full w-full object-cover" />
+                </div>
+              )}
+            </div>
+          </div>
           <div className="flex items-center justify-between pt-1">
             <Label>Image on the right</Label>
             <Switch checked={Boolean(b.reverse)} onCheckedChange={(v) => onChange({ reverse: v })} />
@@ -436,17 +463,26 @@ function BlockFields({ block: b, onChange }: { block: PageBlock; onChange: (patc
         <div className="space-y-2">
           <Label>Image URLs</Label>
           {(b.images ?? []).map((src, i) => (
-            <div key={i} className="flex gap-2">
-              <Input value={src} onChange={(e) => {
-                const next = [...(b.images ?? [])];
-                next[i] = e.target.value;
-                onChange({ images: next });
-              }} placeholder={`Image ${i + 1} URL`} />
-              <Button variant="ghost" size="icon" onClick={() => {
-                const next = (b.images ?? []).filter((_, idx) => idx !== i);
-                onChange({ images: next });
-              }}><Trash2 className="h-4 w-4 text-destructive" /></Button>
-            </div>
+              <div key={i} className="flex gap-2">
+                <div className="flex-1 space-y-2">
+                  <div className="flex gap-2">
+                    <Input value={src} onChange={(e) => {
+                      const next = [...(b.images ?? [])];
+                      next[i] = e.target.value;
+                      onChange({ images: next });
+                    }} placeholder={`Image ${i + 1} URL`} />
+                    <Button variant="ghost" size="icon" onClick={() => {
+                      const next = (b.images ?? []).filter((_, idx) => idx !== i);
+                      onChange({ images: next });
+                    }}><Trash2 className="h-4 w-4 text-destructive" /></Button>
+                  </div>
+                  {src && (
+                    <div className="h-20 w-full border border-border/60 overflow-hidden bg-muted/20">
+                      <img src={src} alt={`Preview ${i + 1}`} className="h-full w-full object-contain" />
+                    </div>
+                  )}
+                </div>
+              </div>
           ))}
           <Button variant="outline" size="sm" onClick={() => onChange({ images: [...(b.images ?? []), ""] })}>+ Add Image</Button>
         </div>
@@ -494,11 +530,21 @@ function BlockFields({ block: b, onChange }: { block: PageBlock; onChange: (patc
                     onChange({ items: next });
                   }} /></div>
                 </div>
-                <div><Label className="text-[10px]">Image URL</Label><Input className="h-8 text-xs" value={item.image} onChange={(e) => {
-                  const next = [...(b.items ?? [])];
-                  next[i] = { ...item, image: e.target.value };
-                  onChange({ items: next });
-                }} /></div>
+                <div>
+                  <Label className="text-[10px]">Image URL</Label>
+                  <div className="mt-1 flex gap-2">
+                    <Input className="h-8 text-xs flex-1" value={item.image} onChange={(e) => {
+                      const next = [...(b.items ?? [])];
+                      next[i] = { ...item, image: e.target.value };
+                      onChange({ items: next });
+                    }} />
+                    {item.image && (
+                      <div className="h-8 w-8 shrink-0 border border-border/60">
+                        <img src={item.image} alt="Preview" className="h-full w-full object-cover" />
+                      </div>
+                    )}
+                  </div>
+                </div>
                 <div><Label className="text-[10px]">Link</Label><Input className="h-8 text-xs" value={item.link} onChange={(e) => {
                   const next = [...(b.items ?? [])];
                   next[i] = { ...item, link: e.target.value };
