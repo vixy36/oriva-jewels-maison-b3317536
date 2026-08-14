@@ -9,7 +9,7 @@ import { Switch } from "@/components/ui/switch";
 import { toast } from "sonner";
 import {
   Plus, Trash2, Pencil, ArrowUp, ArrowDown, ExternalLink, Save, ArrowLeft, Eye, EyeOff, Copy,
-  LayoutGrid,
+  LayoutGrid, ChevronDown, ChevronRight
 } from "lucide-react";
 import { BLOCK_LABELS, newBlock, parseBlocks, slugify, type BlockType, type PageBlock } from "@/lib/page-blocks";
 
@@ -362,13 +362,13 @@ function PageBuilder({
           <div className="border border-border/60 p-5">
             <p className="text-xs tracking-[0.24em] uppercase text-muted-foreground">Add a block</p>
             <div className="mt-3 flex flex-wrap gap-2">
-              {BLOCK_TYPES.map((t) => (
+              {Object.entries(BLOCK_LABELS).map(([t, label]) => (
                 <button
                   key={t}
-                  onClick={() => addBlock(t)}
-                  className="border border-border/60 px-3 py-2 text-xs hover:bg-muted transition"
+                  onClick={() => addBlock(t as BlockType)}
+                  className="border border-border/60 px-3 py-2 text-xs hover:bg-muted transition flex items-center gap-2"
                 >
-                  + {BLOCK_LABELS[t]}
+                  <Plus className="h-3 w-3" /> {label}
                 </button>
               ))}
             </div>
