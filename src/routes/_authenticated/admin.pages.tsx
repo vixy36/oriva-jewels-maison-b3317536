@@ -434,7 +434,17 @@ function BlockFields({ block: b, onChange }: { block: PageBlock; onChange: (patc
         <>
           <div><Label>Heading</Label><Input value={b.title ?? ""} onChange={(e) => onChange({ title: e.target.value })} /></div>
           <div><Label>Text</Label><Textarea rows={4} value={b.text ?? ""} onChange={(e) => onChange({ text: e.target.value })} /></div>
-          <div><Label>Image URL</Label><Input value={b.image ?? ""} onChange={(e) => onChange({ image: e.target.value })} /></div>
+          <div>
+            <Label>Image URL</Label>
+            <div className="mt-1 flex gap-3">
+              <Input value={b.image ?? ""} onChange={(e) => onChange({ image: e.target.value })} />
+              {b.image && (
+                <div className="h-10 w-10 shrink-0 border border-border/60">
+                  <img src={b.image} alt="Preview" className="h-full w-full object-cover" />
+                </div>
+              )}
+            </div>
+          </div>
           <div className="flex items-center justify-between pt-1">
             <Label>Image on the right</Label>
             <Switch checked={Boolean(b.reverse)} onCheckedChange={(v) => onChange({ reverse: v })} />
