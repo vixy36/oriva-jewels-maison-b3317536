@@ -75,7 +75,8 @@ const expertiseItems = [
 
 function AssurancePage() {
   return (
-    <CustomPageWrapper slug="assurance">
+    <CustomPageWrapper slug="assurance" title="Maison Assurance">
+
       <div className="bg-obsidian text-ivory">
       <section className="relative isolate overflow-hidden min-h-[70svh]">
         <img src={atelier} alt="Oriva atelier" className="absolute inset-0 h-full w-full object-cover opacity-40" />

@@ -20,7 +20,8 @@ export const Route = createFileRoute("/about")({
 
 function AboutPage() {
   return (
-    <CustomPageWrapper slug="about">
+    <CustomPageWrapper slug="about" title="About Us">
+
       <div className="bg-obsidian overflow-x-hidden">
       {/* Cinematic Hero */}
       <section className="relative h-[90svh] flex items-center justify-center overflow-hidden bg-obsidian text-ivory" data-surface="dark">

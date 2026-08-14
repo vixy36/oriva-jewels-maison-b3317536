@@ -70,7 +70,8 @@ function RingSizePage() {
   const match = !isNaN(mmCirc) ? findByCircumference(mmCirc) : null;
 
   return (
-    <CustomPageWrapper slug="ring-size-guide">
+    <CustomPageWrapper slug="ring-size-guide" title="Ring Size Guide">
+
       <div className="bg-obsidian text-ivory">
       {/* HERO */}
       <section className="pt-28 pb-10 md:pt-32 md:pb-12 border-b border-white/5">

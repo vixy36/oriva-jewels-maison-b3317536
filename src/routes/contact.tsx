@@ -16,7 +16,8 @@ export const Route = createFileRoute("/contact")({
 
 function ContactPage() {
   return (
-    <CustomPageWrapper slug="contact">
+    <CustomPageWrapper slug="contact" title="Contact">
+
       <div className="bg-ink pt-28 md:pt-32 min-h-screen">
         <section className="mx-auto max-w-[1500px] px-6 pb-16 md:px-16 md:pb-24">
           <Reveal>

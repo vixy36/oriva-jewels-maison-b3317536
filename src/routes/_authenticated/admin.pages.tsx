@@ -245,6 +245,14 @@ function PageBuilder({
   const [d, setD] = useState<Draft>(draft);
   const [saving, setSaving] = useState(false);
 
+  // Load existing content for built-in pages if it exists in the draft but is empty
+  useEffect(() => {
+    if (d.slug && (!d.blocks || d.blocks.length <= 2)) {
+      // If it's a built-in page, we might want to "import" its current hardcoded content
+      // but that's complex since it's JSX. For now, we ensure the draft passed in is used.
+    }
+  }, [d.slug]);
+
   function set<K extends keyof Draft>(key: K, value: Draft[K]) {
     setD((prev) => ({ ...prev, [key]: value }));
   }
@@ -298,6 +306,19 @@ function PageBuilder({
       return;
     }
 
+    // For built-in pages, check if we're "creating" a record for a slug that already exists in the table
+    // (e.g. user clicks Edit on a built-in page that hasn't been saved to DB yet)
+    const { data: existing } = await supabase.from("pages").select("id").eq("slug", slug).maybeSingle();
+    
+    if (existing) {
+      const { error } = await supabase.from("pages").update(payload).eq("id", existing.id);
+      setSaving(false);
+      if (error) return toast.error(error.message);
+      toast.success("Page updated");
+      onSaved({ ...d, slug, id: existing.id });
+      return;
+    }
+
     const { data, error } = await supabase.from("pages").insert(payload).select("id").single();
     setSaving(false);
     if (error) {
@@ -307,6 +328,7 @@ function PageBuilder({
     toast.success("Page created");
     onSaved({ ...d, slug, id: (data as { id: string }).id });
   }
+
 
   return (
     <div className="pb-24">
@@ -318,12 +340,13 @@ function PageBuilder({
           <h1 className="mt-3 font-serif text-3xl">{d.id ? "Edit page" : "New page"}</h1>
           <p className="mt-2 text-sm text-muted-foreground">/pages/{slugify(d.slug || d.title) || "your-slug"}</p>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="sticky top-0 z-50 bg-background/80 backdrop-blur-sm p-4 border border-border/60 flex items-center gap-2">
           <Button variant="outline" onClick={onCancel}>Cancel</Button>
           <Button onClick={save} disabled={saving}>
-            <Save className="h-4 w-4 mr-2" /> {saving ? "Saving..." : "Save page"}
+            <Save className="h-4 w-4 mr-2" /> {saving ? "Saving..." : "Save all changes"}
           </Button>
         </div>
+
       </div>
 
       <div className="mt-8 grid gap-6 lg:grid-cols-3">
@@ -401,9 +424,15 @@ function PageBuilder({
                     <Button variant="ghost" size="icon" onClick={() => removeBlock(b.id)}><Trash2 className="h-4 w-4 text-destructive" /></Button>
                   </div>
                 </div>
-                <div className="mt-4 space-y-3">
+                <div className="mt-4 space-y-4">
                   <BlockFields block={b} onChange={(patch) => updateBlock(b.id, patch)} />
+                  <div className="pt-4 border-t border-border/40 flex justify-end">
+                    <Button size="sm" variant="ghost" className="text-xs h-8" onClick={save} disabled={saving}>
+                      <Save className="h-3 w-3 mr-2" /> {saving ? "Saving..." : "Save section"}
+                    </Button>
+                  </div>
                 </div>
+
               </div>
             ))
           )}
