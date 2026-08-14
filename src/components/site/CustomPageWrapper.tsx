@@ -47,7 +47,11 @@ export function CustomPageWrapper({ slug, children }: CustomPageWrapperProps) {
     return <div className="min-h-screen bg-obsidian" />;
   }
 
-  if (page && page.blocks && Array.isArray(page.blocks) && (page.blocks as any[]).length > 0) {
+  // Only use custom page content if it's not the "home" slug OR if it has meaningful blocks
+  // This ensures the hardcoded home page remains the default unless explicitly overridden with blocks.
+  const hasBlocks = page && page.blocks && Array.isArray(page.blocks) && (page.blocks as any[]).length > 0;
+  
+  if (page && hasBlocks) {
     const blocks = parseBlocks(page.blocks);
     return (
       <article className="pb-24 bg-background min-h-screen">
