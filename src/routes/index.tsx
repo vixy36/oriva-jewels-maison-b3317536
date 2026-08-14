@@ -551,9 +551,10 @@ function HomePage() {
       </section>
       <EngagementRingsSection />
       </div>
-    </div>
+    </CustomPageWrapper>
   );
 }
+
 
 
 
