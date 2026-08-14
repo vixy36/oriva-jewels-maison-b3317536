@@ -4,6 +4,7 @@ import atelier from "@/assets/about-atelier.jpg";
 import editorial from "@/assets/engagement-model.jpg";
 import { Reveal } from "@/components/site/Reveal";
 import { buildWhatsAppLink } from "@/lib/products";
+import { CustomPageWrapper } from "@/components/site/CustomPageWrapper";
 
 export const Route = createFileRoute("/bespoke")({
   head: () => ({
