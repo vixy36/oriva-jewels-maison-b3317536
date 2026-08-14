@@ -806,8 +806,8 @@ function EngagementRingsSection() {
       </Reveal>
 
       </section>
-    </div>
   );
 }
+
 
 
