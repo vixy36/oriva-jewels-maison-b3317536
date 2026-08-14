@@ -50,23 +50,14 @@ export function CustomPageWrapper({ slug, title: defaultTitle, children }: Custo
   }
 
   // Only use custom page content if it has meaningful blocks
-  const hasBlocks = page && page.blocks && Array.isArray(page.blocks) && (page.blocks as any[]).length > 0;
-  
-  // RENDER BLOCKS + CHILDREN
-
-
-  
-  // RENDER BLOCKS + CHILDREN
-  // We wrap the children (hardcoded content) and prepend/append blocks if desired.
-  // For simplicity, if there are blocks, we render the editorial layout.
-  // BUT we need to make sure the user can still see the hardcoded content if they want.
+  const blocks = parseBlocks(page?.blocks);
+  const hasBlocks = blocks.length > 0;
   
   if (page && hasBlocks) {
-    const blocks = parseBlocks(page.blocks);
     return (
       <article className="bg-background min-h-screen">
-        {/* If there's a custom hero/title in the DB, show it */}
-        {page.title !== "home" && page.title !== "Home" && (
+        {/* If it's not the home page, show the custom title/subtitle */}
+        {slug !== "home" && (
           <header className="pt-28 md:pt-36 px-5 md:px-10 max-w-5xl mx-auto">
             <p className="eyebrow">Oriva Jewels</p>
             <h1 className="mt-3 font-serif text-3xl md:text-5xl font-bold">{page.title || defaultTitle}</h1>
@@ -74,7 +65,6 @@ export function CustomPageWrapper({ slug, title: defaultTitle, children }: Custo
           </header>
         )}
 
-        
         {page.hero_image_url ? (
           <div className="mt-10 px-5 md:px-10 max-w-6xl mx-auto">
             <img src={page.hero_image_url} alt={page.title} className="w-full aspect-[16/9] object-cover" />
@@ -85,12 +75,6 @@ export function CustomPageWrapper({ slug, title: defaultTitle, children }: Custo
       </article>
     );
   }
-
-
-  // If it's a built-in page like About/Assurance, we want to show the HARDCODED content
-  // AND the CUSTOM BLOCKS if any exist.
-  // But for Home, the custom blocks often replace it if the user builds a new one.
-
 
   return <>{children}</>;
 }
