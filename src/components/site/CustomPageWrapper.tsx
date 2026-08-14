@@ -47,7 +47,7 @@ export function CustomPageWrapper({ slug, children }: CustomPageWrapperProps) {
     return <div className="min-h-screen bg-obsidian" />;
   }
 
-  if (page) {
+  if (page && page.blocks && Array.isArray(page.blocks) && (page.blocks as any[]).length > 0) {
     const blocks = parseBlocks(page.blocks);
     return (
       <article className="pb-24 bg-background min-h-screen">
