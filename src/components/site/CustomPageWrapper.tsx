@@ -49,9 +49,12 @@ export function CustomPageWrapper({ slug, title: defaultTitle, children }: Custo
     return <div className="min-h-screen bg-obsidian" />;
   }
 
-  // Only use custom page content if it's not the "home" slug OR if it has meaningful blocks
-  // This ensures the hardcoded home page remains the default unless explicitly overridden with blocks.
+  // Only use custom page content if it has meaningful blocks
   const hasBlocks = page && page.blocks && Array.isArray(page.blocks) && (page.blocks as any[]).length > 0;
+  
+  // RENDER BLOCKS + CHILDREN
+
+
   
   // RENDER BLOCKS + CHILDREN
   // We wrap the children (hardcoded content) and prepend/append blocks if desired.
@@ -79,14 +82,15 @@ export function CustomPageWrapper({ slug, title: defaultTitle, children }: Custo
         ) : null}
 
         <PageBlockRenderer blocks={blocks} />
-        
-        {/* We still render children but hidden or as a fallback? 
-            Actually, the user said "changes are not updating on home page".
-            If they added blocks to 'home', they want to see them.
-        */}
       </article>
     );
   }
+
+
+  // If it's a built-in page like About/Assurance, we want to show the HARDCODED content
+  // AND the CUSTOM BLOCKS if any exist.
+  // But for Home, the custom blocks often replace it if the user builds a new one.
+
 
   return <>{children}</>;
 }
