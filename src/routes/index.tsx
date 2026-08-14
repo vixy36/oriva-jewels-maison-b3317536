@@ -550,11 +550,10 @@ function HomePage() {
         </div>
       </section>
       <EngagementRingsSection />
-      </div>
     </div>
-
   );
 }
+
 
 
 
