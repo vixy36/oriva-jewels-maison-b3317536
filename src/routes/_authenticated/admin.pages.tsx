@@ -9,6 +9,7 @@ import { Switch } from "@/components/ui/switch";
 import { toast } from "sonner";
 import {
   Plus, Trash2, Pencil, ArrowUp, ArrowDown, ExternalLink, Save, ArrowLeft, Eye, EyeOff, Copy,
+  LayoutGrid,
 } from "lucide-react";
 import { BLOCK_LABELS, newBlock, parseBlocks, slugify, type BlockType, type PageBlock } from "@/lib/page-blocks";
 
