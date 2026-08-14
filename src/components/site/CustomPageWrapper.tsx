@@ -16,10 +16,12 @@ type PageRow = {
 
 interface CustomPageWrapperProps {
   slug: string;
+  title?: string;
   children: ReactNode;
 }
 
-export function CustomPageWrapper({ slug, children }: CustomPageWrapperProps) {
+
+export function CustomPageWrapper({ slug, title: defaultTitle, children }: CustomPageWrapperProps) {
   const [page, setPage] = useState<PageRow | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -61,13 +63,14 @@ export function CustomPageWrapper({ slug, children }: CustomPageWrapperProps) {
     return (
       <article className="bg-background min-h-screen">
         {/* If there's a custom hero/title in the DB, show it */}
-        {page.title !== "Home" && (
+        {page.title !== "home" && page.title !== "Home" && (
           <header className="pt-28 md:pt-36 px-5 md:px-10 max-w-5xl mx-auto">
             <p className="eyebrow">Oriva Jewels</p>
-            <h1 className="mt-3 font-serif text-3xl md:text-5xl font-bold">{page.title}</h1>
+            <h1 className="mt-3 font-serif text-3xl md:text-5xl font-bold">{page.title || defaultTitle}</h1>
             {page.subtitle ? <p className="mt-4 max-w-2xl text-sm md:text-base text-muted-foreground">{page.subtitle}</p> : null}
           </header>
         )}
+
         
         {page.hero_image_url ? (
           <div className="mt-10 px-5 md:px-10 max-w-6xl mx-auto">
