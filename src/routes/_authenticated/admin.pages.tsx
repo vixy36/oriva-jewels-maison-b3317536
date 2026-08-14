@@ -469,6 +469,7 @@ function BlockFields({ block: b, onChange }: { block: PageBlock; onChange: (patc
             </select>
           </div>
           <div><Label>Section Heading</Label><Input value={b.title ?? ""} onChange={(e) => onChange({ title: e.target.value })} /></div>
+          <div><Label>Subheading/Description</Label><Textarea rows={2} value={b.text ?? ""} onChange={(e) => onChange({ text: e.target.value })} /></div>
           <div className="space-y-3">
             <Label>Items</Label>
             {(b.items ?? []).map((item, i) => (
@@ -506,7 +507,7 @@ function BlockFields({ block: b, onChange }: { block: PageBlock; onChange: (patc
               </div>
             ))}
             <Button variant="outline" size="sm" className="w-full text-xs" onClick={() => onChange({ 
-              items: [...(b.items ?? []), { id: Math.random().toString(), title: "New Item", image: "", link: "" }] 
+              items: [...(b.items ?? []), { id: Math.random().toString(36).slice(2), title: "New Item", image: "", link: "" }] 
             })}>+ Add Item</Button>
           </div>
         </div>
