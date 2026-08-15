@@ -33,8 +33,8 @@ type PageRow = {
   updated_at: string;
 };
 
-const BUILT_IN: { label: string; path: string; slug: string }[] = [
-  { label: "Home", path: "/", slug: "home" },
+const BUILT_IN: { label: string; path: string; slug: string; uneditable?: boolean }[] = [
+  { label: "Home", path: "/", slug: "home", uneditable: true },
   { label: "About Us", path: "/about", slug: "about" },
   { label: "Maison Assurance", path: "/assurance", slug: "assurance" },
   { label: "Diamonds", path: "/diamonds", slug: "diamonds" },
@@ -45,7 +45,7 @@ const BUILT_IN: { label: string; path: string; slug: string }[] = [
   { label: "Offers", path: "/offers", slug: "offers" },
   { label: "Education", path: "/education", slug: "education" },
   { label: "Ring Size Guide", path: "/ring-size-guide", slug: "ring-size-guide" },
-  { label: "Contact", path: "/contact", slug: "contact" },
+  { label: "Contact", path: "/contact", slug: "contact", uneditable: true },
   { label: "Wishlist", path: "/wishlist", slug: "wishlist" },
 ];
 
@@ -203,22 +203,25 @@ function PagesAdmin() {
                   <p className="text-xs text-muted-foreground">{p.path}</p>
                 </div>
                 <div className="flex items-center gap-1">
-                  <Button variant="ghost" size="icon" title="Edit Content" onClick={() => {
-                    if (customVersion) {
-                      setDraft(toDraft(customVersion));
-                    } else {
-                      // Import built-in content as starting point
-                      setDraft({
-                        ...emptyDraft(),
-                        title: p.label,
-                        slug: p.slug,
-                        blocks: getBuiltInBlocks(p.slug)
-                      });
-                    }
-                  }}>
-
-                    <Pencil className="h-4 w-4" />
-                  </Button>
+                  {!p.uneditable ? (
+                    <Button variant="ghost" size="icon" title="Edit Content" onClick={() => {
+                      if (customVersion) {
+                        setDraft(toDraft(customVersion));
+                      } else {
+                        // Import built-in content as starting point
+                        setDraft({
+                          ...emptyDraft(),
+                          title: p.label,
+                          slug: p.slug,
+                          blocks: getBuiltInBlocks(p.slug)
+                        });
+                      }
+                    }}>
+                      <Pencil className="h-4 w-4" />
+                    </Button>
+                  ) : (
+                    <span className="text-[10px] tracking-[0.1em] uppercase text-muted-foreground/50 px-2 italic">System Only</span>
+                  )}
                   <Button variant="ghost" size="icon" title="View" asChild>
                     <a href={p.path} target="_blank" rel="noreferrer"><ExternalLink className="h-4 w-4" /></a>
                   </Button>
