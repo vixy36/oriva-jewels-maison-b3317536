@@ -662,6 +662,30 @@ export type Database = {
         }
         Relationships: []
       }
+      settings: {
+        Row: {
+          body_scripts: string | null
+          google_analytics_id: string | null
+          header_scripts: string | null
+          id: string
+          updated_at: string | null
+        }
+        Insert: {
+          body_scripts?: string | null
+          google_analytics_id?: string | null
+          header_scripts?: string | null
+          id?: string
+          updated_at?: string | null
+        }
+        Update: {
+          body_scripts?: string | null
+          google_analytics_id?: string | null
+          header_scripts?: string | null
+          id?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
       site_content: {
         Row: {
           id: string
