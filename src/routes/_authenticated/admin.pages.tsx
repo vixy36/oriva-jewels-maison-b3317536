@@ -431,20 +431,22 @@ function PageBuilder({
         </div>
 
         <div className="lg:col-span-2 space-y-4">
-          <div className="border border-border/60 bg-background shadow-sm min-h-[700px]">
+          <div className="border border-border/60 bg-background shadow-sm min-h-[700px] flex flex-col">
             {(() => {
               const richTextBlock = d.blocks.find(b => b.type === "richtext");
               if (richTextBlock) {
                 return (
-                  <TiptapEditor 
-                    key={richTextBlock.id}
-                    content={richTextBlock.html ?? ""} 
-                    onChange={(html) => updateBlock(richTextBlock.id, { html })} 
-                  />
+                  <div className="flex-1 flex flex-col overflow-hidden">
+                    <TiptapEditor 
+                      key={richTextBlock.id}
+                      content={richTextBlock.html ?? ""} 
+                      onChange={(html) => updateBlock(richTextBlock.id, { html })} 
+                    />
+                  </div>
                 );
               }
               return (
-                <div className="p-20 text-center">
+                <div className="flex-1 flex items-center justify-center p-20 text-center">
                   <Button 
                     variant="outline" 
                     className="border-dashed py-12 px-8"
