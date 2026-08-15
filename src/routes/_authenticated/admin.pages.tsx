@@ -78,6 +78,12 @@ function emptyDraft(): Draft {
 }
 
 function toDraft(row: PageRow): Draft {
+  const blocks = parseBlocks(row.blocks);
+  // Ensure we have a richtext block for the editor to find
+  if (!blocks.find(b => b.type === "richtext")) {
+    blocks.unshift(newBlock("richtext"));
+  }
+  
   return {
     id: row.id,
     slug: row.slug,
@@ -88,7 +94,7 @@ function toDraft(row: PageRow): Draft {
     hero_image_url: row.hero_image_url ?? "",
     is_published: row.is_published,
     sort_order: row.sort_order,
-    blocks: parseBlocks(row.blocks),
+    blocks,
   };
 }
 
