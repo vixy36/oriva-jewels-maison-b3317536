@@ -161,6 +161,12 @@ function BlockView({ block: b }: { block: PageBlock }) {
           </div>
         </section>
       );
+    case "richtext":
+      return (
+        <section className="px-5 md:px-10 py-10 max-w-5xl mx-auto prose prose-sm md:prose-base dark:prose-invert prose-headings:font-serif prose-headings:font-bold prose-p:text-muted-foreground prose-a:text-foreground prose-a:underline underline-offset-4">
+          <div dangerouslySetInnerHTML={{ __html: b.html || "" }} />
+        </section>
+      );
     default:
       return null;
   }
