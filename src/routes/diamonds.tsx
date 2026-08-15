@@ -176,37 +176,6 @@ function DiamondsSearchPage() {
                   <span className="absolute -top-6 left-0 text-[9px] uppercase tracking-tighter text-gray-400">Max Carat</span>
                 </div>
               </div>
-              <div className="mt-10 px-2 relative h-6">
-                <input 
-                  type="range"
-                  min="0"
-                  max="10"
-                  step="0.01"
-                  value={minCarat}
-                  onChange={(e) => setMinCarat(Math.min(Number(e.target.value), maxCarat))}
-                  className="absolute w-full h-1.5 bg-transparent appearance-none cursor-pointer diamond-slider pointer-events-auto"
-                  style={{
-                    WebkitAppearance: 'none',
-                    appearance: 'none',
-                    zIndex: minCarat > maxCarat - 0.5 ? 35 : 30
-                  }}
-                />
-                <input 
-                  type="range"
-                  min="0"
-                  max="10"
-                  step="0.01"
-                  value={maxCarat}
-                  onChange={(e) => setMaxCarat(Math.max(Number(e.target.value), minCarat))}
-                  className="absolute w-full h-1.5 bg-transparent appearance-none cursor-pointer diamond-slider pointer-events-auto"
-                  style={{
-                    WebkitAppearance: 'none',
-                    appearance: 'none',
-                    zIndex: 32
-                  }}
-                />
-                <div className="absolute top-0 left-0 w-full h-1.5 bg-[#071c37]/10 rounded-full" />
-              </div>
             </div>
 
             {/* PRICE */}
@@ -234,37 +203,6 @@ function DiamondsSearchPage() {
                   />
                   <span className="absolute -top-6 left-0 text-[9px] uppercase tracking-tighter text-gray-400">Max Price</span>
                 </div>
-              </div>
-              <div className="mt-10 px-2 relative h-6">
-                <input 
-                  type="range"
-                  min="0"
-                  max="50000"
-                  step="100"
-                  value={minPrice}
-                  onChange={(e) => setMinPrice(Math.min(Number(e.target.value), maxPrice))}
-                  className="absolute w-full h-1.5 bg-transparent appearance-none cursor-pointer diamond-slider pointer-events-auto"
-                  style={{
-                    WebkitAppearance: 'none',
-                    appearance: 'none',
-                    zIndex: minPrice > maxPrice - 2500 ? 35 : 30
-                  }}
-                />
-                <input 
-                  type="range"
-                  min="0"
-                  max="50000"
-                  step="100"
-                  value={maxPrice}
-                  onChange={(e) => setMaxPrice(Math.max(Number(e.target.value), minPrice))}
-                  className="absolute w-full h-1.5 bg-transparent appearance-none cursor-pointer diamond-slider pointer-events-auto"
-                  style={{
-                    WebkitAppearance: 'none',
-                    appearance: 'none',
-                    zIndex: 32
-                  }}
-                />
-                <div className="absolute top-0 left-0 w-full h-1.5 bg-[#071c37]/10 rounded-full" />
               </div>
             </div>
 
