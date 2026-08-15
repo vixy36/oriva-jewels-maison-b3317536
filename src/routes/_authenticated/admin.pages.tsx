@@ -36,6 +36,11 @@ type PageRow = {
 
 const BUILT_IN: { label: string; path: string; slug: string; uneditable?: boolean }[] = [
   { label: "Home", path: "/", slug: "home", uneditable: true },
+  { label: "Engagement Rings", path: "/collections/engagement-rings", slug: "engagement-rings", uneditable: true },
+  { label: "Diamond Rings", path: "/collections/rings", slug: "rings", uneditable: true },
+  { label: "Diamond Earrings", path: "/collections/earrings", slug: "earrings", uneditable: true },
+  { label: "Necklaces & Pendants", path: "/collections/necklaces", slug: "necklaces", uneditable: true },
+  { label: "Bracelets & Bangles", path: "/collections/bracelets", slug: "bracelets", uneditable: true },
   { label: "About Us", path: "/about", slug: "about" },
   { label: "Maison Assurance", path: "/assurance", slug: "assurance" },
   { label: "Diamonds", path: "/diamonds", slug: "diamonds" },
