@@ -160,7 +160,7 @@ function AssurancePage() {
         <div className="mx-auto max-w-[1000px] px-6 md:px-16 text-center">
           <p className="eyebrow">- Questions</p>
           <h2 className="mt-6 font-serif text-3xl md:text-4xl">
-            Something we haven't <em className="text-gold-gradient">answered?</em>
+            Something we haven't <span className="text-gold-gradient">answered?</span>
           </h2>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
             <a
