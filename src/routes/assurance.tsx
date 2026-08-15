@@ -98,7 +98,7 @@ function AssurancePage() {
       <section className="py-24 bg-obsidian border-y border-white/5">
         <div className="mx-auto max-w-[1400px] px-6 md:px-16">
           <Reveal>
-            <h2 className="font-serif text-5xl md:text-7xl mb-16 text-white">The Oriva <em className="text-gold-gradient italic">Advantage</em></h2>
+            <h2 className="font-serif text-5xl md:text-7xl mb-16 text-white">The Oriva <span className="text-gold-gradient italic">Advantage</span></h2>
           </Reveal>
           <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
             {advantageItems.map((item, i) => (
@@ -116,7 +116,7 @@ function AssurancePage() {
       <section className="py-24 bg-ink">
         <div className="mx-auto max-w-[1400px] px-6 md:px-16">
           <Reveal>
-            <h2 className="font-serif text-5xl md:text-7xl mb-16 text-white text-right">Our Core <em className="text-gold-gradient italic">Expertise</em></h2>
+            <h2 className="font-serif text-5xl md:text-7xl mb-16 text-white text-right">Our Core <span className="text-gold-gradient italic">Expertise</span></h2>
           </Reveal>
           <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
             {expertiseItems.map((item, i) => (
