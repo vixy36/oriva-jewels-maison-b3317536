@@ -330,8 +330,8 @@ function ProductPage() {
           <div className="md:col-span-5">
 
             <div className="md:sticky md:top-40">
-              <p className="eyebrow">{product.collection}</p>
-              <h1 className="mt-5 font-serif text-3xl md:text-4xl leading-[1] text-ivory">{product.name}</h1>
+              <p className="eyebrow font-bold">{product.collection}</p>
+              <h1 className="mt-5 font-serif text-3xl md:text-4xl leading-[1] text-ivory font-bold">{product.name}</h1>
               {product.productCode && (
                 <p className="mt-3 text-[11px] font-mono tracking-[0.3em] uppercase text-ivory/60">
                   Ref. {product.productCode}
