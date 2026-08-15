@@ -39,8 +39,9 @@ function CustomPage() {
       setLoading(true);
       const { data } = await supabase
         .from("pages")
-        .select("slug, title, subtitle, seo_title, seo_description, hero_image_url, blocks")
+        .select("slug, title, subtitle, seo_title, seo_description, hero_image_url, blocks, is_published")
         .eq("slug", slug)
+        .eq("is_published", true)
         .maybeSingle();
       if (cancelled) return;
       const row = (data as PageRow | null) ?? null;
@@ -68,7 +69,9 @@ function CustomPage() {
     );
   }
 
-  if (!page) {
+  // Check if this is a built-in page slug
+  const BUILT_IN_SLUGS = ["home", "about", "assurance", "diamonds", "bespoke", "custom-order", "gifts", "occasions", "offers", "education", "ring-size-guide", "contact", "wishlist"];
+  if (!page || BUILT_IN_SLUGS.includes(slug)) {
     return (
       <div className="pt-32 md:pt-40 pb-28 px-5 text-center">
         <p className="eyebrow">Not found</p>
