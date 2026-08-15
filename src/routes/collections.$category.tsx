@@ -116,7 +116,7 @@ function CollectionPage() {
 
           <div className="md:col-span-9">
             <div className="mb-10 flex flex-wrap items-center justify-between gap-4 border-b border-white/8 pb-5">
-              <p className="text-[12px] md:text-[14px] tracking-[0.4em] uppercase text-ivory/80 font-bold">
+              <p className="text-[12px] md:text-[14px] tracking-[0.4em] uppercase text-ivory/80 font-bold italic">
                 {sorted.length} piece{sorted.length !== 1 ? "s" : ""}
               </p>
               <SortSelect value={sort} onChange={setSort} />
