@@ -18,10 +18,11 @@ interface CustomPageWrapperProps {
   slug: string;
   title?: string;
   children: ReactNode;
+  skipHistory?: boolean;
 }
 
 
-export function CustomPageWrapper({ slug, title: defaultTitle, children }: CustomPageWrapperProps) {
+export function CustomPageWrapper({ slug, title: defaultTitle, children, skipHistory }: CustomPageWrapperProps) {
   const [page, setPage] = useState<PageRow | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -52,7 +53,7 @@ export function CustomPageWrapper({ slug, title: defaultTitle, children }: Custo
 
   // Only use custom page content if it has meaningful blocks
   const blocks = parseBlocks(page?.blocks);
-  const hasBlocks = blocks.length > 0;
+  const hasBlocks = blocks.length > 0 && !skipHistory;
   
   if (page && hasBlocks) {
     return (

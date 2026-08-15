@@ -127,36 +127,7 @@ export function getBuiltInBlocks(slug: string): PageBlock[] {
       ];
 
     case 'home':
-      return [
-        {
-          id: 'home_index',
-          type: 'homepage_section',
-          sectionType: 'index',
-          title: 'The Index',
-          items: [] // Admin will fill these
-        },
-        {
-          id: 'home_requested',
-          type: 'homepage_section',
-          sectionType: 'instagram',
-          title: 'Most Requested',
-          items: []
-        },
-        {
-          id: 'home_atelier',
-          type: 'homepage_section',
-          sectionType: 'atelier',
-          title: 'The Atelier',
-          items: []
-        },
-        {
-          id: 'home_occasions',
-          type: 'homepage_section',
-          sectionType: 'occasions',
-          title: 'The Occasions',
-          items: []
-        }
-      ];
+      return []; // Return empty so CustomPageWrapper correctly falls back to hardcoded index.tsx layout
 
     default:
       return [newBlock("heading"), newBlock("paragraph")];
