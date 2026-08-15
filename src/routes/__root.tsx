@@ -8,7 +8,8 @@ import {
   Scripts,
   Link,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
+import { supabase } from "../integrations/supabase/client";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -116,6 +117,20 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 });
 
 function RootShell({ children }: { children: ReactNode }) {
+  const [settings, setSettings] = useState<{
+    google_analytics_id: string | null;
+    header_scripts: string | null;
+    body_scripts: string | null;
+  } | null>(null);
+
+  useEffect(() => {
+    async function loadSettings() {
+      const { data } = await supabase.from("settings").select("google_analytics_id, header_scripts, body_scripts").maybeSingle();
+      if (data) setSettings(data);
+    }
+    loadSettings();
+  }, []);
+
   return (
     <html lang="en">
       <head>
@@ -131,6 +146,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           }}
         />
         {/* End Google Tag Manager */}
+
+        {settings?.google_analytics_id && (
+          <>
+            <script async src={`https://www.googletagmanager.com/gtag/js?id=${settings.google_analytics_id}`} />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', '${settings.google_analytics_id}');
+                `,
+              }}
+            />
+          </>
+        )}
+
+        {settings?.header_scripts && (
+          <script dangerouslySetInnerHTML={{ __html: settings.header_scripts }} />
+        )}
       </head>
       <body>
         {/* Google Tag Manager (noscript) */}
@@ -143,7 +178,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           ></iframe>
         </noscript>
         {/* End Google Tag Manager (noscript) */}
+        
         {children}
+        
+        {settings?.body_scripts && (
+          <script dangerouslySetInnerHTML={{ __html: settings.body_scripts }} />
+        )}
+        
         <Scripts />
       </body>
     </html>
