@@ -156,37 +156,51 @@ function PagesAdmin() {
           <p className="p-8 text-center text-sm text-muted-foreground">No custom pages yet. Click "New Page" to build your first.</p>
         ) : (
           <ul className="divide-y divide-border/60">
-            {rows.map((row) => (
-              <li key={row.id} className="p-4 flex items-center gap-4 flex-wrap">
-                <div className="min-w-0 flex-1">
-                  <p className="text-sm font-medium truncate">{row.title}</p>
-                  <p className="text-xs text-muted-foreground truncate">/pages/{row.slug}</p>
-                </div>
-                <span className={`text-[10px] tracking-[0.2em] uppercase px-2 py-1 border ${row.is_published ? "border-border/60 text-muted-foreground" : "border-destructive/50 text-destructive"}`}>
-                  {row.is_published ? "Published" : "Draft"}
-                </span>
-                <div className="flex items-center gap-1">
-                  <Button variant="ghost" size="icon" title={row.is_published ? "Unpublish" : "Publish"} onClick={() => togglePublished(row)}>
-                    {row.is_published ? <Eye className="h-4 w-4" /> : <EyeOff className="h-4 w-4" />}
-                  </Button>
-                  <Button variant="ghost" size="icon" title="Edit" onClick={() => setDraft(toDraft(row))}>
-                    <Pencil className="h-4 w-4" />
-                  </Button>
-                  <Button variant="ghost" size="icon" title="View" asChild>
-                    <Link to="/pages/$slug" params={{ slug: row.slug }} target="_blank"><ExternalLink className="h-4 w-4" /></Link>
-                  </Button>
-                  <Button variant="ghost" size="icon" title="Duplicate" onClick={() => {
-                    const d = toDraft(row);
-                    setDraft({ ...d, id: undefined, slug: `${d.slug}-copy`, title: `${d.title} (copy)` });
-                  }}>
-                    <Copy className="h-4 w-4" />
-                  </Button>
-                  <Button variant="ghost" size="icon" title="Delete" onClick={() => remove(row)}>
-                    <Trash2 className="h-4 w-4 text-destructive" />
-                  </Button>
-                </div>
-              </li>
-            ))}
+            {rows.map((row) => {
+              const isHome = row.slug === "home";
+              return (
+                <li key={row.id} className="p-4 flex items-center gap-4 flex-wrap">
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm font-medium truncate">{row.title}</p>
+                    <p className="text-xs text-muted-foreground truncate">{isHome ? "/" : `/pages/${row.slug}`}</p>
+                  </div>
+                  <span className={`text-[10px] tracking-[0.2em] uppercase px-2 py-1 border ${row.is_published ? "border-border/60 text-muted-foreground" : "border-destructive/50 text-destructive"}`}>
+                    {row.is_published ? "Published" : "Draft"}
+                  </span>
+                  <div className="flex items-center gap-1">
+                    {!isHome ? (
+                      <>
+                        <Button variant="ghost" size="icon" title={row.is_published ? "Unpublish" : "Publish"} onClick={() => togglePublished(row)}>
+                          {row.is_published ? <Eye className="h-4 w-4" /> : <EyeOff className="h-4 w-4" />}
+                        </Button>
+                        <Button variant="ghost" size="icon" title="Edit" onClick={() => setDraft(toDraft(row))}>
+                          <Pencil className="h-4 w-4" />
+                        </Button>
+                        <Button variant="ghost" size="icon" title="View" asChild>
+                          <Link to="/pages/$slug" params={{ slug: row.slug }} target="_blank"><ExternalLink className="h-4 w-4" /></Link>
+                        </Button>
+                        <Button variant="ghost" size="icon" title="Duplicate" onClick={() => {
+                          const d = toDraft(row);
+                          setDraft({ ...d, id: undefined, slug: `${d.slug}-copy`, title: `${d.title} (copy)` });
+                        }}>
+                          <Copy className="h-4 w-4" />
+                        </Button>
+                        <Button variant="ghost" size="icon" title="Delete" onClick={() => remove(row)}>
+                          <Trash2 className="h-4 w-4 text-destructive" />
+                        </Button>
+                      </>
+                    ) : (
+                      <>
+                        <span className="text-[10px] tracking-[0.1em] uppercase text-muted-foreground/50 px-2 italic">System Only</span>
+                        <Button variant="ghost" size="icon" title="View" asChild>
+                          <a href="/" target="_blank" rel="noreferrer"><ExternalLink className="h-4 w-4" /></a>
+                        </Button>
+                      </>
+                    )}
+                  </div>
+                </li>
+              );
+            })}
           </ul>
         )}
       </div>
