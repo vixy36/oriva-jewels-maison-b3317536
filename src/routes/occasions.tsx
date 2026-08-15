@@ -49,11 +49,11 @@ function OccasionsPage() {
       </section>
 
       <section className="py-10 md:py-16 bg-ink">
-        <div className="mx-auto max-w-[1500px] px-6 md:px-16 grid gap-10 md:grid-cols-2 md:gap-14">
+        <div className="mx-auto max-w-[1400px] px-6 md:px-16 grid gap-8 md:grid-cols-3 md:gap-8">
           {occasions.map((o, i) => (
             <Reveal key={o.label} delay={i * 60}>
-              <div className="group relative overflow-hidden bg-obsidian">
-                <div className="relative aspect-[4/5] overflow-hidden">
+              <div className="group relative overflow-hidden bg-obsidian rounded-sm">
+                <div className="relative aspect-[3/4] overflow-hidden">
                   <img src={o.img} alt={o.label} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] group-hover:scale-105" />
                   <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/30 to-transparent" />
                   <div className="absolute inset-0 border border-white/5 group-hover:border-gold/30 transition-colors duration-700" />
