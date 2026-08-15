@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
-import { LayoutDashboard, Package, Search, Inbox, LogOut, Menu, X, Tag, Users, ShoppingBag, Gift, Mail, Layers, ListTree, MessageSquare, FileText } from "lucide-react";
+import { LayoutDashboard, Package, Search, Inbox, LogOut, Menu, X, Tag, Users, ShoppingBag, Gift, Mail, Layers, ListTree, MessageSquare, FileText, Settings } from "lucide-react";
 
 export const Route = createFileRoute("/_authenticated/admin")({
   ssr: false,
@@ -51,6 +51,7 @@ const nav: { to: string; label: string; icon: typeof LayoutDashboard; exact?: bo
   { to: "/admin/automations", label: "Email", icon: Mail },
   { to: "/admin/seo", label: "SEO", icon: Search },
   { to: "/admin/users", label: "Users & Roles", icon: Users },
+  { to: "/admin/settings", label: "Settings", icon: Settings },
 ];
 
 
