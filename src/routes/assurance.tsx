@@ -83,8 +83,8 @@ function AssurancePage() {
         <div className="absolute inset-0 bg-gradient-to-b from-obsidian/50 via-obsidian/60 to-obsidian" />
         <div className="relative z-10 mx-auto max-w-[1400px] px-6 md:px-16 pt-24 pb-8 md:pt-28 md:pb-12">
           <p className="eyebrow">- Maison Assurance</p>
-          <h1 className="mt-8 font-serif font-light text-6xl md:text-8xl lg:text-9xl leading-[0.92] tracking-[-0.02em]">
-            The Oriva <em className="text-gold-gradient">promise.</em>
+          <h1 className="mt-8 font-serif font-light text-6xl md:text-8xl lg:text-9xl leading-[0.92] tracking-[-0.02em] text-white">
+            The Oriva <em className="text-gold-gradient not-italic">promise.</em>
           </h1>
           <div className="mt-12 max-w-2xl">
             <h2 className="text-gold text-[13px] tracking-[0.4em] uppercase mb-6 font-bold">Setting the New Standard for Sustainable Luxury</h2>
@@ -98,7 +98,7 @@ function AssurancePage() {
       <section className="py-24 bg-obsidian border-y border-white/5">
         <div className="mx-auto max-w-[1400px] px-6 md:px-16">
           <Reveal>
-            <h2 className="font-serif text-5xl md:text-7xl mb-16 text-white">The Oriva <em className="text-gold-gradient italic">Advantage</em></h2>
+            <h2 className="font-serif text-5xl md:text-7xl mb-16 text-white">The Oriva <span className="text-gold-gradient italic">Advantage</span></h2>
           </Reveal>
           <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
             {advantageItems.map((item, i) => (
@@ -116,7 +116,7 @@ function AssurancePage() {
       <section className="py-24 bg-ink">
         <div className="mx-auto max-w-[1400px] px-6 md:px-16">
           <Reveal>
-            <h2 className="font-serif text-5xl md:text-7xl mb-16 text-white text-right">Our Core <em className="text-gold-gradient italic">Expertise</em></h2>
+            <h2 className="font-serif text-5xl md:text-7xl mb-16 text-white text-right">Our Core <span className="text-gold-gradient italic">Expertise</span></h2>
           </Reveal>
           <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
             {expertiseItems.map((item, i) => (
@@ -160,7 +160,7 @@ function AssurancePage() {
         <div className="mx-auto max-w-[1000px] px-6 md:px-16 text-center">
           <p className="eyebrow">- Questions</p>
           <h2 className="mt-6 font-serif text-3xl md:text-4xl">
-            Something we haven't <em className="text-gold-gradient">answered?</em>
+            Something we haven't <span className="text-gold-gradient">answered?</span>
           </h2>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
             <a

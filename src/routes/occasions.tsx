@@ -49,19 +49,19 @@ function OccasionsPage() {
       </section>
 
       <section className="py-10 md:py-16 bg-ink">
-        <div className="mx-auto max-w-[1500px] px-6 md:px-16 grid gap-10 md:grid-cols-2 md:gap-14">
+        <div className="mx-auto max-w-[1400px] px-6 md:px-16 grid gap-8 md:grid-cols-3 md:gap-8">
           {occasions.map((o, i) => (
             <Reveal key={o.label} delay={i * 60}>
-              <div className="group relative overflow-hidden bg-obsidian">
-                <div className="relative aspect-[4/5] overflow-hidden">
+              <div className="group relative overflow-hidden bg-obsidian rounded-sm">
+                <div className="relative aspect-[3/4] overflow-hidden">
                   <img src={o.img} alt={o.label} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] group-hover:scale-105" />
                   <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/30 to-transparent" />
                   <div className="absolute inset-0 border border-white/5 group-hover:border-gold/30 transition-colors duration-700" />
                 </div>
-                <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
-                  <span className="text-[13px] tracking-[0.4em] uppercase text-gold">{o.n}</span>
-                  <h2 className="mt-4 font-serif text-2xl md:text-4xl italic text-ivory">{o.label}</h2>
-                  <p className="mt-4 max-w-md text-[14px] leading-[1.8] text-ivory/85">{o.blurb}</p>
+                <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                  <span className="text-[11px] tracking-[0.4em] uppercase text-gold">{o.n}</span>
+                  <h2 className="mt-2 font-serif text-xl md:text-2xl italic text-ivory">{o.label}</h2>
+                  <p className="mt-3 max-w-md text-[13px] leading-[1.6] text-ivory/85">{o.blurb}</p>
                   <div className="mt-8 flex flex-wrap gap-3">
                     <Link
                       to="/collections/$category"
