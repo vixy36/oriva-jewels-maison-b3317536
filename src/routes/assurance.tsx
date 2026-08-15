@@ -83,8 +83,8 @@ function AssurancePage() {
         <div className="absolute inset-0 bg-gradient-to-b from-obsidian/50 via-obsidian/60 to-obsidian" />
         <div className="relative z-10 mx-auto max-w-[1400px] px-6 md:px-16 pt-24 pb-8 md:pt-28 md:pb-12">
           <p className="eyebrow">- Maison Assurance</p>
-          <h1 className="mt-8 font-serif font-light text-6xl md:text-8xl lg:text-9xl leading-[0.92] tracking-[-0.02em]">
-            The Oriva <em className="text-gold-gradient">promise.</em>
+          <h1 className="mt-8 font-serif font-light text-6xl md:text-8xl lg:text-9xl leading-[0.92] tracking-[-0.02em] text-white">
+            The Oriva <em className="text-gold-gradient not-italic">promise.</em>
           </h1>
           <div className="mt-12 max-w-2xl">
             <h2 className="text-gold text-[13px] tracking-[0.4em] uppercase mb-6 font-bold">Setting the New Standard for Sustainable Luxury</h2>
