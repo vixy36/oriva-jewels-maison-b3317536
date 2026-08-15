@@ -18,10 +18,11 @@ interface CustomPageWrapperProps {
   slug: string;
   title?: string;
   children: ReactNode;
+  skipHistory?: boolean;
 }
 
 
-export function CustomPageWrapper({ slug, title: defaultTitle, children }: CustomPageWrapperProps) {
+export function CustomPageWrapper({ slug, title: defaultTitle, children, skipHistory }: CustomPageWrapperProps) {
   const [page, setPage] = useState<PageRow | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -33,6 +34,7 @@ export function CustomPageWrapper({ slug, title: defaultTitle, children }: Custo
         .select("slug, title, subtitle, seo_title, seo_description, hero_image_url, blocks, is_published")
         .eq("slug", slug)
         .eq("is_published", true)
+        .neq("slug", "home") // Explicitly skip DB overrides for homepage to maintain complex layout
         .maybeSingle();
       
       if (cancelled) return;
@@ -51,7 +53,7 @@ export function CustomPageWrapper({ slug, title: defaultTitle, children }: Custo
 
   // Only use custom page content if it has meaningful blocks
   const blocks = parseBlocks(page?.blocks);
-  const hasBlocks = blocks.length > 0;
+  const hasBlocks = blocks.length > 0 && !skipHistory;
   
   if (page && hasBlocks) {
     return (
