@@ -204,7 +204,6 @@ function RootComponent() {
     window.scrollTo(0, 0);
   }, []);
 
-
   return (
     <QueryClientProvider client={queryClient}>
       <div className="flex min-h-screen flex-col bg-background text-foreground">
