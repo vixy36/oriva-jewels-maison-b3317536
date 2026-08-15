@@ -7,7 +7,8 @@ export type BlockType =
   | "quote"
   | "cta"
   | "divider"
-  | "homepage_section";
+  | "homepage_section"
+  | "richtext";
 
 export type PageBlock = {
   id: string;
@@ -39,6 +40,7 @@ export type PageBlock = {
     link: string;
     badge?: string;
   }[];
+  html?: string;
 };
 
 export const BLOCK_LABELS: Record<BlockType, string> = {
@@ -51,6 +53,7 @@ export const BLOCK_LABELS: Record<BlockType, string> = {
   cta: "Call to action",
   divider: "Divider",
   homepage_section: "Homepage Section",
+  richtext: "Rich Text Content",
 };
 
 export function newBlock(type: BlockType): PageBlock {
@@ -78,6 +81,8 @@ export function newBlock(type: BlockType): PageBlock {
         title: "New Section", 
         items: [{ id: "1", title: "Item 1", subtitle: "Chapter 01", image: "", link: "" }] 
       };
+    case "richtext":
+      return { id, type, html: "<p>Start writing...</p>" };
     default:
       return { id, type };
   }
