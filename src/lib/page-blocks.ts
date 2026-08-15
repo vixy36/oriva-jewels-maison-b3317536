@@ -39,6 +39,7 @@ export type PageBlock = {
     image: string;
     link: string;
     badge?: string;
+  }[];
   html?: string;
 };
 
