@@ -63,6 +63,57 @@ export function getBuiltInBlocks(slug: string): PageBlock[] {
           text: 'Creating masterfully grown, fully certified lab diamonds that mirror the flawless brilliance of nature.'
         }
       ];
+    
+    case 'bespoke':
+      return [
+        {
+          id: 'hero',
+          type: 'heading',
+          eyebrow: 'Bespoke Commission',
+          title: 'Commission an heirloom.',
+          text: 'One piece. One person. One moment. A private diamond commission, made entirely by hand in our atelier.'
+        },
+        {
+          id: 'steps',
+          type: 'heading',
+          eyebrow: 'The Journey',
+          title: 'Three chapters.',
+          text: 'The Conversation, The Design, The Making. A private commissioning journey.'
+        }
+      ];
+
+    case 'occasions':
+      return [
+        {
+          id: 'hero',
+          type: 'heading',
+          eyebrow: 'Shop by Occasion',
+          title: 'The moments worth marking.',
+          text: 'Every Oriva piece is made for a life. Our guide to the moments our clients return to most.'
+        }
+      ];
+
+    case 'education':
+      return [
+        {
+          id: 'hero',
+          type: 'heading',
+          eyebrow: 'The Diamond Guide',
+          title: 'The Four Cs.',
+          text: 'A quiet primer on how we choose the stones that leave our atelier - and how you might choose one for yourself.'
+        }
+      ];
+
+    case 'ring-size-guide':
+      return [
+        {
+          id: 'hero',
+          type: 'heading',
+          eyebrow: 'Client Services',
+          title: 'Ring size, in 30 seconds.',
+          text: 'A quiet method to size your finger at home - or send us an existing ring and we\'ll size it for you. Full international conversion below.'
+        }
+      ];
       
     case 'contact':
       return [
@@ -72,17 +123,6 @@ export function getBuiltInBlocks(slug: string): PageBlock[] {
           eyebrow: 'Correspondence',
           title: 'A private conversation, at your convenience.',
           text: 'Our atelier is available worldwide. Every enquiry receives a personal reply, typically within a few hours.'
-        }
-      ];
-      
-    case 'ring-size-guide':
-      return [
-        {
-          id: 'hero',
-          type: 'heading',
-          eyebrow: 'Client Services',
-          title: 'Ring size, in 30 seconds.',
-          text: 'A quiet method to size your finger at home - or send us an existing ring and we\'ll size it for you. Full international conversion below.'
         }
       ];
 
