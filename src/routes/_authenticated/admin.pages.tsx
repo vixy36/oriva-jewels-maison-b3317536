@@ -170,18 +170,19 @@ function PagesAdmin() {
         ) : (
           <ul className="divide-y divide-border/60">
             {rows.map((row) => {
-              const isHome = row.slug === "home";
+              const builtIn = BUILT_IN.find(b => b.slug === row.slug);
+              const isUneditable = builtIn?.uneditable;
               return (
                 <li key={row.id} className="p-4 flex items-center gap-4 flex-wrap">
                   <div className="min-w-0 flex-1">
                     <p className="text-sm font-medium truncate">{row.title}</p>
-                    <p className="text-xs text-muted-foreground truncate">{isHome ? "/" : `/pages/${row.slug}`}</p>
+                    <p className="text-xs text-muted-foreground truncate">{row.slug === "home" ? "/" : `/pages/${row.slug}`}</p>
                   </div>
                   <span className={`text-[10px] tracking-[0.2em] uppercase px-2 py-1 border ${row.is_published ? "border-border/60 text-muted-foreground" : "border-destructive/50 text-destructive"}`}>
                     {row.is_published ? "Published" : "Draft"}
                   </span>
                   <div className="flex items-center gap-1">
-                    {!isHome ? (
+                    {!isUneditable ? (
                       <>
                         <Button variant="ghost" size="icon" title={row.is_published ? "Unpublish" : "Publish"} onClick={() => togglePublished(row)}>
                           {row.is_published ? <Eye className="h-4 w-4" /> : <EyeOff className="h-4 w-4" />}
@@ -206,7 +207,7 @@ function PagesAdmin() {
                       <>
                         <span className="text-[10px] tracking-[0.1em] uppercase text-muted-foreground/50 px-2 italic">System Only</span>
                         <Button variant="ghost" size="icon" title="View" asChild>
-                          <a href="/" target="_blank" rel="noreferrer"><ExternalLink className="h-4 w-4" /></a>
+                          <a href={builtIn.path} target="_blank" rel="noreferrer"><ExternalLink className="h-4 w-4" /></a>
                         </Button>
                       </>
                     )}
