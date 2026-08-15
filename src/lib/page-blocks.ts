@@ -39,7 +39,7 @@ export type PageBlock = {
     image: string;
     link: string;
     badge?: string;
-  }[];
+  html?: string;
 };
 
 export const BLOCK_LABELS: Record<BlockType, string> = {
@@ -52,6 +52,7 @@ export const BLOCK_LABELS: Record<BlockType, string> = {
   cta: "Call to action",
   divider: "Divider",
   homepage_section: "Homepage Section",
+  richtext: "Rich Text Content",
 };
 
 export function newBlock(type: BlockType): PageBlock {
