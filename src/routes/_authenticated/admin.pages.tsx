@@ -431,30 +431,29 @@ function PageBuilder({
 
         <div className="lg:col-span-2 space-y-4">
           <div className="border border-border/60 bg-background shadow-sm min-h-[700px]">
-            {d.blocks.find(b => b.type === "richtext") ? (
-              d.blocks.map((b) => {
-                if (b.type === "richtext") {
-                  return (
-                    <TiptapEditor 
-                      key={b.id}
-                      content={b.html ?? ""} 
-                      onChange={(html) => updateBlock(b.id, { html })} 
-                    />
-                  );
-                }
-                return null;
-              })
-            ) : (
-              <div className="p-20 text-center">
-                <Button 
-                  variant="outline" 
-                  className="border-dashed py-12 px-8"
-                  onClick={() => addBlock("richtext")}
-                >
-                  <Plus className="h-4 w-4 mr-2" /> Start writing page content
-                </Button>
-              </div>
-            )}
+            {(() => {
+              const richTextBlock = d.blocks.find(b => b.type === "richtext");
+              if (richTextBlock) {
+                return (
+                  <TiptapEditor 
+                    key={richTextBlock.id}
+                    content={richTextBlock.html ?? ""} 
+                    onChange={(html) => updateBlock(richTextBlock.id, { html })} 
+                  />
+                );
+              }
+              return (
+                <div className="p-20 text-center">
+                  <Button 
+                    variant="outline" 
+                    className="border-dashed py-12 px-8"
+                    onClick={() => addBlock("richtext")}
+                  >
+                    <Plus className="h-4 w-4 mr-2" /> Start writing page content
+                  </Button>
+                </div>
+              );
+            })()}
           </div>
 
           <div className="mt-8 border border-border/60 p-5 bg-background">
