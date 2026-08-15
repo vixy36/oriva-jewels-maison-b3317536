@@ -33,6 +33,7 @@ export function CustomPageWrapper({ slug, title: defaultTitle, children }: Custo
         .select("slug, title, subtitle, seo_title, seo_description, hero_image_url, blocks, is_published")
         .eq("slug", slug)
         .eq("is_published", true)
+        .neq("slug", "home") // Explicitly skip DB overrides for homepage to maintain complex layout
         .maybeSingle();
       
       if (cancelled) return;
