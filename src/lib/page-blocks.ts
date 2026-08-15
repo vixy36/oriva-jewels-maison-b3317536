@@ -81,6 +81,8 @@ export function newBlock(type: BlockType): PageBlock {
         title: "New Section", 
         items: [{ id: "1", title: "Item 1", subtitle: "Chapter 01", image: "", link: "" }] 
       };
+    case "richtext":
+      return { id, type, html: "<p>Start writing...</p>" };
     default:
       return { id, type };
   }
