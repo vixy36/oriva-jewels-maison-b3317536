@@ -1,6 +1,9 @@
+import { useEffect } from 'react';
 import { useEditor, EditorContent } from '@tiptap/react';
 import { StarterKit } from '@tiptap/starter-kit';
 import { Underline } from '@tiptap/extension-underline';
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
 import { Link } from '@tiptap/extension-link';
 import { TextAlign } from '@tiptap/extension-text-align';
 import { Image } from '@tiptap/extension-image';
@@ -102,7 +105,11 @@ export function TiptapEditor({ content, onChange }: TiptapEditorProps) {
     },
   });
 
-  if (!editor) return null;
+  useEffect(() => {
+    if (editor && content !== editor.getHTML()) {
+      editor.commands.setContent(content);
+    }
+  }, [content, editor]);
 
   const setLink = () => {
     const previousUrl = editor.getAttributes('link').href;
@@ -118,10 +125,33 @@ export function TiptapEditor({ content, onChange }: TiptapEditorProps) {
   };
 
   const addImage = () => {
-    const url = window.prompt('Image URL');
-    if (url) {
-      editor.chain().focus().setImage({ src: url }).run();
-    }
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*';
+    input.onchange = async () => {
+      const file = input.files?.[0];
+      if (!file) return;
+
+      const toastId = toast.loading("Uploading image...");
+      try {
+        const fileExt = file.name.split(".").pop();
+        const fileName = `${Math.random().toString(36).slice(2, 10)}-${Date.now()}.${fileExt}`;
+        const filePath = `page-content/${fileName}`;
+
+        const { error: uploadError } = await supabase.storage
+          .from("products")
+          .upload(filePath, file);
+
+        if (uploadError) throw uploadError;
+
+        const { data } = supabase.storage.from("products").getPublicUrl(filePath);
+        editor.chain().focus().setImage({ src: data.publicUrl }).run();
+        toast.success("Image uploaded", { id: toastId });
+      } catch (error: any) {
+        toast.error(error.message || "Upload failed", { id: toastId });
+      }
+    };
+    input.click();
   };
 
   const addYoutubeVideo = () => {
