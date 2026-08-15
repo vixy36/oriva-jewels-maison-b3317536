@@ -73,7 +73,7 @@ function CollectionPage() {
               </span>
             ))}
           </h1>
-          <p className="mt-6 max-w-lg text-[14px] md:text-[15px] leading-[1.8] text-ivory/75 font-medium">{info.blurb}</p>
+          <p className="mt-6 max-w-lg text-[14px] md:text-[15px] leading-[1.8] text-ivory/75 font-bold">{info.blurb}</p>
         </div>
       </section>
 

@@ -345,7 +345,7 @@ function ProductPage() {
                   )}
                 </div>
               )}
-              <p className="mt-6 text-[15px] leading-[1.8] text-ivory/95 font-medium max-w-lg">
+              <p className="mt-6 text-[15px] leading-[1.8] text-ivory/95 font-bold max-w-lg">
                 {product.short}
               </p>
 
@@ -734,7 +734,7 @@ function PillGroup({
 
   return (
     <div>
-      <p className="text-[14px] font-bold tracking-[0.42em] uppercase text-gold">{label}</p>
+      <p className="text-[14px] font-bold tracking-[0.42em] uppercase text-gold italic">{label}</p>
       <div className="mt-3.5 flex flex-wrap gap-2">
         {options.map((o) => {
           const active = o === value;
