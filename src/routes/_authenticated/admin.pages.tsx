@@ -368,108 +368,111 @@ function PageBuilder({
       </div>
 
       <div className="mt-8 grid gap-6 lg:grid-cols-3">
-        <div className="lg:col-span-1 space-y-4 border border-border/60 p-5 h-fit">
-          <p className="text-xs tracking-[0.24em] uppercase text-muted-foreground">Page settings</p>
-          <div>
-            <Label>Title</Label>
-            <Input value={d.title} onChange={(e) => set("title", e.target.value)} placeholder="The Atelier Story" />
+        <div className="lg:col-span-1 space-y-6">
+          <div className="border border-border/60 p-5 bg-background shadow-sm">
+            <p className="text-xs tracking-[0.24em] uppercase text-muted-foreground mb-4">Page settings</p>
+            <div className="space-y-4">
+              <div>
+                <Label>Title</Label>
+                <Input value={d.title} onChange={(e) => set("title", e.target.value)} placeholder="The Atelier Story" />
+              </div>
+              <div>
+                <Label>URL slug</Label>
+                <Input value={d.slug} onChange={(e) => set("slug", e.target.value)} placeholder="atelier-story" />
+              </div>
+              <div>
+                <Label>Subtitle</Label>
+                <Textarea rows={2} value={d.subtitle} onChange={(e) => set("subtitle", e.target.value)} />
+              </div>
+              <div>
+                <ImageUpload 
+                  label="Hero image" 
+                  value={d.hero_image_url} 
+                  onChange={(url) => set("hero_image_url", url)} 
+                />
+              </div>
+            </div>
           </div>
-          <div>
-            <Label>URL slug</Label>
-            <Input value={d.slug} onChange={(e) => set("slug", e.target.value)} placeholder="atelier-story" />
-          </div>
-          <div>
-            <Label>Subtitle</Label>
-            <Textarea rows={2} value={d.subtitle} onChange={(e) => set("subtitle", e.target.value)} />
-          </div>
-          <div>
-            <ImageUpload 
-              label="Hero image" 
-              value={d.hero_image_url} 
-              onChange={(url) => set("hero_image_url", url)} 
-            />
-          </div>
-          <div>
-            <Label>SEO title</Label>
-            <Input value={d.seo_title} onChange={(e) => set("seo_title", e.target.value)} />
-          </div>
-          <div>
-            <Label>SEO description</Label>
-            <Textarea rows={3} value={d.seo_description} onChange={(e) => set("seo_description", e.target.value)} />
-          </div>
-          <div>
-            <Label>Sort order</Label>
-            <Input type="number" value={d.sort_order} onChange={(e) => set("sort_order", Number(e.target.value))} />
-          </div>
-          <div className="flex items-center justify-between pt-2">
-            <Label>Published</Label>
-            <Switch checked={d.is_published} onCheckedChange={(v) => set("is_published", v)} />
+
+          <div className="border border-border/60 p-5 bg-background shadow-sm">
+            <p className="text-xs tracking-[0.24em] uppercase text-muted-foreground mb-4">SEO & Publishing</p>
+            <div className="space-y-4">
+              <div>
+                <Label>SEO title</Label>
+                <Input value={d.seo_title} onChange={(e) => set("seo_title", e.target.value)} />
+              </div>
+              <div>
+                <Label>SEO description</Label>
+                <Textarea rows={3} value={d.seo_description} onChange={(e) => set("seo_description", e.target.value)} />
+              </div>
+              <div>
+                <Label>Sort order</Label>
+                <Input type="number" value={d.sort_order} onChange={(e) => set("sort_order", Number(e.target.value))} />
+              </div>
+              <div className="flex items-center justify-between pt-2">
+                <Label>Published</Label>
+                <Switch checked={d.is_published} onCheckedChange={(v) => set("is_published", v)} />
+              </div>
+            </div>
           </div>
         </div>
 
         <div className="lg:col-span-2 space-y-4">
-          <div className="border border-border/60 p-5 bg-background shadow-sm">
-            <p className="text-xs tracking-[0.24em] uppercase text-muted-foreground mb-4">Page Content</p>
-            
-            {d.blocks.length === 0 ? (
-              <Button 
-                variant="outline" 
-                className="w-full border-dashed py-12"
-                onClick={() => addBlock("richtext")}
-              >
-                <Plus className="h-4 w-4 mr-2" /> Start writing page content
-              </Button>
-            ) : (
-              d.blocks.map((b, i) => {
+          <div className="border border-border/60 bg-background shadow-sm min-h-[700px]">
+            {d.blocks.find(b => b.type === "richtext") ? (
+              d.blocks.map((b) => {
                 if (b.type === "richtext") {
                   return (
-                    <div key={b.id} className="space-y-4">
-                      <TiptapEditor 
-                        content={b.html ?? ""} 
-                        onChange={(html) => updateBlock(b.id, { html })} 
-                      />
-                      <div className="flex justify-end">
-                        <Button 
-                          variant="ghost" 
-                          size="sm" 
-                          className="text-destructive h-8 text-[10px] tracking-widest uppercase"
-                          onClick={() => removeBlock(b.id)}
-                        >
-                          <Trash2 className="h-3 w-3 mr-2" /> Remove editor
-                        </Button>
-                      </div>
-                    </div>
+                    <TiptapEditor 
+                      key={b.id}
+                      content={b.html ?? ""} 
+                      onChange={(html) => updateBlock(b.id, { html })} 
+                    />
                   );
                 }
-                
-                return (
-                  <div key={b.id} className="border border-border/60 p-5 relative group bg-muted/5">
-                    <div className="flex items-center justify-between gap-3 mb-4">
-                      <p className="text-xs tracking-[0.24em] uppercase">{i + 1}. {BLOCK_LABELS[b.type]}</p>
-                      <div className="flex items-center gap-1">
-                        <Button variant="ghost" size="icon" onClick={() => moveBlock(i, -1)} disabled={i === 0}><ArrowUp className="h-4 w-4" /></Button>
-                        <Button variant="ghost" size="icon" onClick={() => moveBlock(i, 1)} disabled={i === d.blocks.length - 1}><ArrowDown className="h-4 w-4" /></Button>
-                        <Button variant="ghost" size="icon" onClick={() => removeBlock(b.id)}><Trash2 className="h-4 w-4 text-destructive" /></Button>
-                      </div>
-                    </div>
-                    <BlockFields block={b} onChange={(patch) => updateBlock(b.id, patch)} />
-                  </div>
-                );
+                return null;
               })
+            ) : (
+              <div className="p-20 text-center">
+                <Button 
+                  variant="outline" 
+                  className="border-dashed py-12 px-8"
+                  onClick={() => addBlock("richtext")}
+                >
+                  <Plus className="h-4 w-4 mr-2" /> Start writing page content
+                </Button>
+              </div>
             )}
+          </div>
 
-            <div className="mt-8 pt-6 border-t border-border/60">
-              <p className="text-[10px] tracking-[0.24em] uppercase text-muted-foreground mb-3">Add more elements</p>
-              <div className="flex flex-wrap gap-2">
-                {Object.entries(BLOCK_LABELS).map(([t, label]) => (
-                  <button
-                    key={t}
-                    onClick={() => addBlock(t as BlockType)}
-                    className="border border-border/60 px-3 py-2 text-[10px] tracking-wider uppercase hover:bg-muted transition flex items-center gap-2"
-                  >
-                    <Plus className="h-3 w-3" /> {label}
-                  </button>
-                ))}
+          <div className="mt-8 border border-border/60 p-5 bg-background">
+            <p className="text-[10px] tracking-[0.24em] uppercase text-muted-foreground mb-4">Advanced Elements (Legacy Blocks)</p>
+            <div className="space-y-4">
+              {d.blocks.filter(b => b.type !== "richtext").map((b, i) => (
+                <div key={b.id} className="border border-border/60 p-5 relative group bg-muted/5">
+                  <div className="flex items-center justify-between gap-3 mb-4">
+                    <p className="text-xs tracking-[0.24em] uppercase">{i + 1}. {BLOCK_LABELS[b.type]}</p>
+                    <div className="flex items-center gap-1">
+                      <Button variant="ghost" size="icon" onClick={() => removeBlock(b.id)}><Trash2 className="h-4 w-4 text-destructive" /></Button>
+                    </div>
+                  </div>
+                  <BlockFields block={b} onChange={(patch) => updateBlock(b.id, patch)} />
+                </div>
+              ))}
+              
+              <div className="pt-4 border-t border-border/60">
+                <p className="text-[10px] tracking-[0.24em] uppercase text-muted-foreground mb-3">Add more elements</p>
+                <div className="flex flex-wrap gap-2">
+                  {Object.entries(BLOCK_LABELS).filter(([t]) => t !== "richtext").map(([t, label]) => (
+                    <button
+                      key={t}
+                      onClick={() => addBlock(t as BlockType)}
+                      className="border border-border/60 px-3 py-2 text-[10px] tracking-wider uppercase hover:bg-muted transition flex items-center gap-2"
+                    >
+                      <Plus className="h-3 w-3" /> {label}
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
