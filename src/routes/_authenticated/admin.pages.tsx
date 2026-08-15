@@ -73,7 +73,7 @@ function emptyDraft(): Draft {
     hero_image_url: "",
     is_published: true,
     sort_order: 0,
-    blocks: [newBlock("heading"), newBlock("paragraph")],
+    blocks: [newBlock("richtext")],
   };
 }
 
