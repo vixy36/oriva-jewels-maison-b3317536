@@ -7,7 +7,8 @@ export type BlockType =
   | "quote"
   | "cta"
   | "divider"
-  | "homepage_section";
+  | "homepage_section"
+  | "richtext";
 
 export type PageBlock = {
   id: string;
