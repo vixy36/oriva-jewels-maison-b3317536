@@ -330,8 +330,8 @@ function ProductPage() {
           <div className="md:col-span-5">
 
             <div className="md:sticky md:top-40">
-              <p className="eyebrow">{product.collection}</p>
-              <h1 className="mt-5 font-serif text-3xl md:text-4xl leading-[1] text-ivory">{product.name}</h1>
+              <p className="eyebrow font-bold">{product.collection}</p>
+              <h1 className="mt-5 font-serif text-3xl md:text-4xl leading-[1] text-ivory font-bold">{product.name}</h1>
               {product.productCode && (
                 <p className="mt-3 text-[11px] font-mono tracking-[0.3em] uppercase text-ivory/60">
                   Ref. {product.productCode}
@@ -345,7 +345,7 @@ function ProductPage() {
                   )}
                 </div>
               )}
-              <p className="mt-6 text-[15px] leading-[1.8] text-ivory/95 font-medium max-w-lg">
+              <p className="mt-6 text-[15px] leading-[1.8] text-ivory/95 font-bold max-w-lg">
                 {product.short}
               </p>
 
@@ -734,7 +734,7 @@ function PillGroup({
 
   return (
     <div>
-      <p className="text-[14px] font-bold tracking-[0.42em] uppercase text-gold">{label}</p>
+      <p className="text-[14px] font-bold tracking-[0.42em] uppercase text-gold italic">{label}</p>
       <div className="mt-3.5 flex flex-wrap gap-2">
         {options.map((o) => {
           const active = o === value;

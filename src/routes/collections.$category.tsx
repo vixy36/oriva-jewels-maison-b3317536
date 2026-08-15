@@ -73,7 +73,7 @@ function CollectionPage() {
               </span>
             ))}
           </h1>
-          <p className="mt-6 max-w-lg text-[14px] md:text-[15px] leading-[1.8] text-ivory/75 font-medium">{info.blurb}</p>
+          <p className="mt-6 max-w-lg text-[14px] md:text-[15px] leading-[1.8] text-ivory/75 font-bold">{info.blurb}</p>
         </div>
       </section>
 
@@ -116,7 +116,7 @@ function CollectionPage() {
 
           <div className="md:col-span-9">
             <div className="mb-10 flex flex-wrap items-center justify-between gap-4 border-b border-white/8 pb-5">
-              <p className="text-[12px] md:text-[14px] tracking-[0.4em] uppercase text-ivory/80 font-bold">
+              <p className="text-[12px] md:text-[14px] tracking-[0.4em] uppercase text-ivory/80 font-bold italic">
                 {sorted.length} piece{sorted.length !== 1 ? "s" : ""}
               </p>
               <SortSelect value={sort} onChange={setSort} />

@@ -106,8 +106,12 @@ export function TiptapEditor({ content, onChange }: TiptapEditorProps) {
   });
 
   useEffect(() => {
-    if (editor && content !== editor.getHTML()) {
-      editor.commands.setContent(content);
+    if (editor && content !== undefined) {
+      const currentContent = editor.getHTML();
+      // Only update if content is different AND not empty
+      if (content && content !== currentContent) {
+        editor.commands.setContent(content);
+      }
     }
   }, [content, editor]);
 
@@ -162,7 +166,7 @@ export function TiptapEditor({ content, onChange }: TiptapEditorProps) {
   };
 
   return (
-    <div className="flex flex-col border border-border/60 rounded-sm overflow-hidden bg-background">
+    <div className="flex flex-col h-full border border-border/60 rounded-sm overflow-hidden bg-background">
       {/* Top Toolbar - Sticky */}
       <div className="sticky top-0 z-30 flex flex-wrap items-center gap-0.5 p-1 border-b border-border/60 bg-muted/30 backdrop-blur-md">
         

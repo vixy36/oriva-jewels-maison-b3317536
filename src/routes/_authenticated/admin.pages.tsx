@@ -36,6 +36,11 @@ type PageRow = {
 
 const BUILT_IN: { label: string; path: string; slug: string; uneditable?: boolean }[] = [
   { label: "Home", path: "/", slug: "home", uneditable: true },
+  { label: "Engagement Rings", path: "/collections/engagement-rings", slug: "engagement-rings", uneditable: true },
+  { label: "Diamond Rings", path: "/collections/rings", slug: "rings", uneditable: true },
+  { label: "Diamond Earrings", path: "/collections/earrings", slug: "earrings", uneditable: true },
+  { label: "Necklaces & Pendants", path: "/collections/necklaces", slug: "necklaces", uneditable: true },
+  { label: "Bracelets & Bangles", path: "/collections/bracelets", slug: "bracelets", uneditable: true },
   { label: "About Us", path: "/about", slug: "about" },
   { label: "Maison Assurance", path: "/assurance", slug: "assurance" },
   { label: "Diamonds", path: "/diamonds", slug: "diamonds" },
@@ -80,8 +85,9 @@ function emptyDraft(): Draft {
 function toDraft(row: PageRow): Draft {
   const blocks = parseBlocks(row.blocks);
   // Ensure we have a richtext block for the editor to find
-  if (!blocks.find(b => b.type === "richtext")) {
-    blocks.unshift(newBlock("richtext"));
+  const blockList = [...blocks];
+  if (!blockList.find(b => b.type === "richtext")) {
+    blockList.unshift(newBlock("richtext"));
   }
   
   return {
@@ -94,7 +100,7 @@ function toDraft(row: PageRow): Draft {
     hero_image_url: row.hero_image_url ?? "",
     is_published: row.is_published,
     sort_order: row.sort_order,
-    blocks,
+    blocks: blockList,
   };
 }
 
@@ -164,18 +170,19 @@ function PagesAdmin() {
         ) : (
           <ul className="divide-y divide-border/60">
             {rows.map((row) => {
-              const isHome = row.slug === "home";
+              const builtIn = BUILT_IN.find(b => b.slug === row.slug);
+              const isUneditable = builtIn?.uneditable;
               return (
                 <li key={row.id} className="p-4 flex items-center gap-4 flex-wrap">
                   <div className="min-w-0 flex-1">
                     <p className="text-sm font-medium truncate">{row.title}</p>
-                    <p className="text-xs text-muted-foreground truncate">{isHome ? "/" : `/pages/${row.slug}`}</p>
+                    <p className="text-xs text-muted-foreground truncate">{row.slug === "home" ? "/" : `/pages/${row.slug}`}</p>
                   </div>
                   <span className={`text-[10px] tracking-[0.2em] uppercase px-2 py-1 border ${row.is_published ? "border-border/60 text-muted-foreground" : "border-destructive/50 text-destructive"}`}>
                     {row.is_published ? "Published" : "Draft"}
                   </span>
                   <div className="flex items-center gap-1">
-                    {!isHome ? (
+                    {!isUneditable ? (
                       <>
                         <Button variant="ghost" size="icon" title={row.is_published ? "Unpublish" : "Publish"} onClick={() => togglePublished(row)}>
                           {row.is_published ? <Eye className="h-4 w-4" /> : <EyeOff className="h-4 w-4" />}
@@ -200,7 +207,7 @@ function PagesAdmin() {
                       <>
                         <span className="text-[10px] tracking-[0.1em] uppercase text-muted-foreground/50 px-2 italic">System Only</span>
                         <Button variant="ghost" size="icon" title="View" asChild>
-                          <a href="/" target="_blank" rel="noreferrer"><ExternalLink className="h-4 w-4" /></a>
+                          <a href={builtIn.path} target="_blank" rel="noreferrer"><ExternalLink className="h-4 w-4" /></a>
                         </Button>
                       </>
                     )}
@@ -424,31 +431,32 @@ function PageBuilder({
         </div>
 
         <div className="lg:col-span-2 space-y-4">
-          <div className="border border-border/60 bg-background shadow-sm min-h-[700px]">
-            {d.blocks.find(b => b.type === "richtext") ? (
-              d.blocks.map((b) => {
-                if (b.type === "richtext") {
-                  return (
+          <div className="border border-border/60 bg-background shadow-sm min-h-[700px] flex flex-col">
+            {(() => {
+              const richTextBlock = d.blocks.find(b => b.type === "richtext");
+              if (richTextBlock) {
+                return (
+                  <div className="flex-1 flex flex-col overflow-hidden">
                     <TiptapEditor 
-                      key={b.id}
-                      content={b.html ?? ""} 
-                      onChange={(html) => updateBlock(b.id, { html })} 
+                      key={richTextBlock.id}
+                      content={richTextBlock.html ?? ""} 
+                      onChange={(html) => updateBlock(richTextBlock.id, { html })} 
                     />
-                  );
-                }
-                return null;
-              })
-            ) : (
-              <div className="p-20 text-center">
-                <Button 
-                  variant="outline" 
-                  className="border-dashed py-12 px-8"
-                  onClick={() => addBlock("richtext")}
-                >
-                  <Plus className="h-4 w-4 mr-2" /> Start writing page content
-                </Button>
-              </div>
-            )}
+                  </div>
+                );
+              }
+              return (
+                <div className="flex-1 flex items-center justify-center p-20 text-center">
+                  <Button 
+                    variant="outline" 
+                    className="border-dashed py-12 px-8"
+                    onClick={() => addBlock("richtext")}
+                  >
+                    <Plus className="h-4 w-4 mr-2" /> Start writing page content
+                  </Button>
+                </div>
+              );
+            })()}
           </div>
 
           <div className="mt-8 border border-border/60 p-5 bg-background">
