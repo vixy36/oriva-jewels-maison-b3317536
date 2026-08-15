@@ -102,7 +102,7 @@ export function TiptapEditor({ content, onChange }: TiptapEditorProps) {
         class: 'prose prose-sm md:prose-base max-w-none focus:outline-none min-h-[500px] p-8',
       },
     },
-  });
+  }, [content]); // Added content to dependencies to sync when loading existing pages
 
   if (!editor) return null;
 
