@@ -14,6 +14,7 @@ import {
 import { BLOCK_LABELS, newBlock, parseBlocks, slugify, type BlockType, type PageBlock } from "@/lib/page-blocks";
 import { getBuiltInBlocks } from "@/lib/built-in-pages";
 import { ImageUpload } from "@/components/admin/ImageUpload";
+import { TiptapEditor } from "@/components/admin/TiptapEditor";
 
 export const Route = createFileRoute("/_authenticated/admin/pages")({
   component: PagesAdmin,
