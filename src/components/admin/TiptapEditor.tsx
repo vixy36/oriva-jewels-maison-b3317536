@@ -108,9 +108,9 @@ export function TiptapEditor({ content, onChange }: TiptapEditorProps) {
   useEffect(() => {
     if (editor && content !== undefined) {
       const currentContent = editor.getHTML();
-      // Only update if content is different AND not empty (unless current is also not empty)
-      if (content !== currentContent) {
-        editor.commands.setContent(content || '');
+      // Only update if content is different AND not empty
+      if (content && content !== currentContent) {
+        editor.commands.setContent(content);
       }
     }
   }, [content, editor]);
