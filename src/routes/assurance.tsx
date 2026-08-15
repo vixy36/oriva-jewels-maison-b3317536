@@ -113,7 +113,7 @@ function AssurancePage() {
         </div>
       </section>
 
-      <section className="py-24 bg-ink">
+      <section className="py-24 bg-obsidian border-b border-white/5">
         <div className="mx-auto max-w-[1400px] px-6 md:px-16">
           <Reveal>
             <h2 className="font-serif text-5xl md:text-7xl mb-16 text-white text-right">Our Core <span className="text-gold-gradient italic">Expertise</span></h2>
@@ -123,7 +123,7 @@ function AssurancePage() {
               <Reveal key={item.t} delay={i * 100}>
                 <div className="group border-r border-gold/30 pr-8 py-4 text-right hover:border-gold transition-colors duration-500">
                   <h3 className="font-serif text-3xl mb-4 text-white group-hover:text-gold transition-colors duration-500">{item.t}</h3>
-                  <p className="text-ivory/70 text-[15px] leading-[1.8] font-medium ml-auto max-w-sm">{item.b}</p>
+                  <p className="text-white/80 text-[15px] leading-[1.8] font-medium ml-auto max-w-sm">{item.b}</p>
                 </div>
               </Reveal>
             ))}
