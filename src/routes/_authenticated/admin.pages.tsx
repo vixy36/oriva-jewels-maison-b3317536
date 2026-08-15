@@ -408,48 +408,71 @@ function PageBuilder({
         </div>
 
         <div className="lg:col-span-2 space-y-4">
-          <div className="border border-border/60 p-5">
-            <p className="text-xs tracking-[0.24em] uppercase text-muted-foreground">Add a block</p>
-            <div className="mt-3 flex flex-wrap gap-2">
-              {Object.entries(BLOCK_LABELS).map(([t, label]) => (
-                <button
-                  key={t}
-                  onClick={() => addBlock(t as BlockType)}
-                  className="border border-border/60 px-3 py-2 text-xs hover:bg-muted transition flex items-center gap-2"
-                >
-                  <Plus className="h-3 w-3" /> {label}
-                </button>
-              ))}
+          <div className="border border-border/60 p-5 bg-background shadow-sm">
+            <p className="text-xs tracking-[0.24em] uppercase text-muted-foreground mb-4">Page Content</p>
+            
+            {d.blocks.length === 0 ? (
+              <Button 
+                variant="outline" 
+                className="w-full border-dashed py-12"
+                onClick={() => addBlock("richtext")}
+              >
+                <Plus className="h-4 w-4 mr-2" /> Start writing page content
+              </Button>
+            ) : (
+              d.blocks.map((b, i) => {
+                if (b.type === "richtext") {
+                  return (
+                    <div key={b.id} className="space-y-4">
+                      <TiptapEditor 
+                        content={b.html ?? ""} 
+                        onChange={(html) => updateBlock(b.id, { html })} 
+                      />
+                      <div className="flex justify-end">
+                        <Button 
+                          variant="ghost" 
+                          size="sm" 
+                          className="text-destructive h-8 text-[10px] tracking-widest uppercase"
+                          onClick={() => removeBlock(b.id)}
+                        >
+                          <Trash2 className="h-3 w-3 mr-2" /> Remove editor
+                        </Button>
+                      </div>
+                    </div>
+                  );
+                }
+                
+                return (
+                  <div key={b.id} className="border border-border/60 p-5 relative group bg-muted/5">
+                    <div className="flex items-center justify-between gap-3 mb-4">
+                      <p className="text-xs tracking-[0.24em] uppercase">{i + 1}. {BLOCK_LABELS[b.type]}</p>
+                      <div className="flex items-center gap-1">
+                        <Button variant="ghost" size="icon" onClick={() => moveBlock(i, -1)} disabled={i === 0}><ArrowUp className="h-4 w-4" /></Button>
+                        <Button variant="ghost" size="icon" onClick={() => moveBlock(i, 1)} disabled={i === d.blocks.length - 1}><ArrowDown className="h-4 w-4" /></Button>
+                        <Button variant="ghost" size="icon" onClick={() => removeBlock(b.id)}><Trash2 className="h-4 w-4 text-destructive" /></Button>
+                      </div>
+                    </div>
+                    <BlockFields block={b} onChange={(patch) => updateBlock(b.id, patch)} />
+                  </div>
+                );
+              })
+            )}
+
+            <div className="mt-8 pt-6 border-t border-border/60">
+              <p className="text-[10px] tracking-[0.24em] uppercase text-muted-foreground mb-3">Add more elements</p>
+              <div className="flex flex-wrap gap-2">
+                {Object.entries(BLOCK_LABELS).map(([t, label]) => (
+                  <button
+                    key={t}
+                    onClick={() => addBlock(t as BlockType)}
+                    className="border border-border/60 px-3 py-2 text-[10px] tracking-wider uppercase hover:bg-muted transition flex items-center gap-2"
+                  >
+                    <Plus className="h-3 w-3" /> {label}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
-
-          {d.blocks.length === 0 ? (
-            <p className="border border-dashed border-border/60 p-10 text-center text-sm text-muted-foreground">
-              No blocks yet. Add your first block above.
-            </p>
-          ) : (
-            d.blocks.map((b, i) => (
-              <div key={b.id} className="border border-border/60 p-5">
-                <div className="flex items-center justify-between gap-3">
-                  <p className="text-xs tracking-[0.24em] uppercase">{i + 1}. {BLOCK_LABELS[b.type]}</p>
-                  <div className="flex items-center gap-1">
-                    <Button variant="ghost" size="icon" onClick={() => moveBlock(i, -1)} disabled={i === 0}><ArrowUp className="h-4 w-4" /></Button>
-                    <Button variant="ghost" size="icon" onClick={() => moveBlock(i, 1)} disabled={i === d.blocks.length - 1}><ArrowDown className="h-4 w-4" /></Button>
-                    <Button variant="ghost" size="icon" onClick={() => removeBlock(b.id)}><Trash2 className="h-4 w-4 text-destructive" /></Button>
-                  </div>
-                </div>
-                <div className="mt-4 space-y-4">
-                  <BlockFields block={b} onChange={(patch) => updateBlock(b.id, patch)} />
-                  <div className="pt-4 border-t border-border/40 flex justify-end">
-                    <Button size="sm" variant="ghost" className="text-xs h-8" onClick={save} disabled={saving}>
-                      <Save className="h-3 w-3 mr-2" /> {saving ? "Saving..." : "Save section"}
-                    </Button>
-                  </div>
-                </div>
-
-              </div>
-            ))
-          )}
         </div>
       </div>
     </div>
