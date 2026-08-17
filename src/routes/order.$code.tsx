@@ -56,7 +56,7 @@ function OrderStatusPage() {
     e?.preventDefault();
     setLoading(true);
     setErr(null);
-    const { data, error } = await supabase.rpc("get_order_status", { _email: email.trim(), _order_code: code });
+    const { data, error } = await supabase.rpc("get_order_status" as any, { _email: email.trim(), _order_code: code });
     setLoading(false);
     if (error) return setErr(error.message);
     if (!data || (data as unknown as StatusRow[]).length === 0) {
