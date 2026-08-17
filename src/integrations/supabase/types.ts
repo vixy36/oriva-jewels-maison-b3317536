@@ -737,27 +737,6 @@ export type Database = {
     }
     Functions: {
       gen_order_code: { Args: never; Returns: string }
-      get_order_status: {
-        Args: { _email: string; _order_code: string }
-        Returns: {
-          carrier: string
-          created_at: string
-          currency: string
-          customer_name: string
-          discount: number
-          estimated_delivery: string
-          items: Json
-          order_code: string
-          payment_status: string
-          shipping_address: Json
-          shipping_cost: number
-          status: string
-          subtotal: number
-          total: number
-          tracking_number: string
-          updated_at: string
-        }[]
-      }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
