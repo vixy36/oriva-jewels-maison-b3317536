@@ -29,12 +29,16 @@ const colorOptions = ["D", "E", "F", "G", "H", "I"];
 const clarityOptions = ["IF", "VVS1", "VVS2", "VS1", "VS2", "SI1", "SI2"];
 const cutOptions = ["Excellent", "Very Good", "Good", "Fair", "Poor"];
 
+function toggleValue(list: string[], value: string) {
+  return list.includes(value) ? list.filter((v) => v !== value) : [...list, value];
+}
+
 function DiamondsSearchPage() {
   const [diamondType, setDiamondType] = useState<"Certified Lab Grown" | "Non-Certified Lab Grown">("Certified Lab Grown");
   const [selectedShape, setSelectedShape] = useState("Round");
-  const [selectedColor, setSelectedColor] = useState("D");
-  const [selectedClarity, setSelectedClarity] = useState("IF");
-  const [selectedCut, setSelectedCut] = useState("Excellent");
+  const [selectedColors, setSelectedColors] = useState<string[]>(["D"]);
+  const [selectedClarities, setSelectedClarities] = useState<string[]>(["IF"]);
+  const [selectedCuts, setSelectedCuts] = useState<string[]>(["Excellent"]);
   const [minCarat, setMinCarat] = useState(0.23);
   const [maxCarat, setMaxCarat] = useState(6.00);
   const [minPrice, setMinPrice] = useState(0);
@@ -42,21 +46,22 @@ function DiamondsSearchPage() {
   const [isPairs, setIsPairs] = useState(false);
 
   const message = useMemo(() => {
+    const fmt = (list: string[]) => (list.length ? list.join(", ") : "Any");
     return [
       "*Diamond Enquiry · Oriva Jewels*",
       "",
       `*Type:* ${diamondType}`,
       `*Shape:* ${selectedShape}`,
       `*Configuration:* ${isPairs ? 'Pairs' : 'Single'}`,
-      `*Colour:* ${selectedColor}`,
-      `*Clarity:* ${selectedClarity}`,
-      `*Cut:* ${selectedCut}`,
+      `*Colour:* ${fmt(selectedColors)}`,
+      `*Clarity:* ${fmt(selectedClarities)}`,
+      `*Cut:* ${fmt(selectedCuts)}`,
       `*Carat Range:* ${minCarat} - ${maxCarat} ct`,
       `*Price Range:* $${minPrice} - $${maxPrice}`,
       "",
       "I'm interested in finding this specific diamond. Please share availability and live pricing.",
     ].join("\n");
-  }, [diamondType, selectedShape, isPairs, selectedColor, selectedClarity, selectedCut, minCarat, maxCarat, minPrice, maxPrice]);
+  }, [diamondType, selectedShape, isPairs, selectedColors, selectedClarities, selectedCuts, minCarat, maxCarat, minPrice, maxPrice]);
 
   return (
     <div className="bg-[#f5f4f2] min-h-screen pt-24 md:pt-32 pb-16 md:pb-20">
