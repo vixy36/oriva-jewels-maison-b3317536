@@ -148,8 +148,9 @@ function DiamondsSearchPage() {
                 {cutOptions.map(c => (
                   <button
                     key={c}
-                    onClick={() => setSelectedCut(c)}
-                    className={`h-10 md:h-12 px-3 md:px-4 border text-[12px] md:text-[13px] font-bold transition-all ${selectedCut === c ? 'bg-[#071c37] text-white border-[#071c37]' : 'border-gray-200 text-[#071c37]/70 hover:border-gray-300'}`}
+                    onClick={() => setSelectedCuts((prev) => toggleValue(prev, c))}
+                    aria-pressed={selectedCuts.includes(c)}
+                    className={`h-10 md:h-12 px-3 md:px-4 border text-[12px] md:text-[13px] font-bold transition-all ${selectedCuts.includes(c) ? 'bg-[#071c37] text-white border-[#071c37]' : 'border-gray-200 text-[#071c37]/70 hover:border-gray-300'}`}
                   >
                     {c}
                   </button>
