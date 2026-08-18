@@ -97,8 +97,8 @@ export function SiteHeader() {
 
       if (/fine|jewel/i.test(label)) return { label, to, children: FINE_CHILDREN };
       
-      return { label, to };
-      
+      if (/diamonds/i.test(label)) return { label, to };
+
       return { label, to };
     });
   }, [menuRows]);
