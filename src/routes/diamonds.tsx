@@ -114,8 +114,9 @@ function DiamondsSearchPage() {
                 {colorOptions.map(c => (
                   <button
                     key={c}
-                    onClick={() => setSelectedColor(c)}
-                    className={`h-10 md:h-12 min-w-[40px] md:min-w-[48px] px-2 md:px-3 border text-[12px] md:text-[13px] font-bold transition-all ${selectedColor === c ? 'bg-[#071c37] text-white border-[#071c37]' : 'border-gray-200 text-[#071c37]/70 hover:border-gray-300'}`}
+                    onClick={() => setSelectedColors((prev) => toggleValue(prev, c))}
+                    aria-pressed={selectedColors.includes(c)}
+                    className={`h-10 md:h-12 min-w-[40px] md:min-w-[48px] px-2 md:px-3 border text-[12px] md:text-[13px] font-bold transition-all ${selectedColors.includes(c) ? 'bg-[#071c37] text-white border-[#071c37]' : 'border-gray-200 text-[#071c37]/70 hover:border-gray-300'}`}
                   >
                     {c}
                   </button>
