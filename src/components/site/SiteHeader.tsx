@@ -33,7 +33,7 @@ const FALLBACK_NAV: NavItem[] = [
   { label: "Bespoke", to: "/custom-order" },
   { label: "Gifts", to: "/gifts" },
   { label: "Hip Hop Jewelry", to: "/collections/hip-hop-jewelry" },
-  { label: "Diamonds", to: "/diamonds", children: DIAMOND_CHILDREN },
+  { label: "Diamonds", to: "/diamonds" },
 ];
 
 const FALLBACK_SUB: { label: string; to: string }[] = [
