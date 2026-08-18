@@ -399,8 +399,7 @@ function HomePage() {
 
 
 
-      {/* ENGAGEMENT RINGS - Custom Commission */}
-      <EngagementRingsSection />
+      {/* THE CLIENTELE - Refined editorial reviews */}
 
 
 
