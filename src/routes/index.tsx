@@ -451,6 +451,8 @@ function HomePage() {
         </div>
       </section>
 
+      <EngagementRingsSection />
+
       {/* FAQ */}
       <section className="py-24 bg-obsidian text-ivory overflow-hidden">
         <div className="mx-auto max-w-[1400px] px-6 md:px-12 grid gap-16 lg:grid-cols-12 items-start">
@@ -548,8 +550,6 @@ function HomePage() {
           </div>
         </div>
       </section>
-
-      <EngagementRingsSection />
       </div>
     </CustomPageWrapper>
   );
