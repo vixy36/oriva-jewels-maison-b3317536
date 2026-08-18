@@ -131,8 +131,9 @@ function DiamondsSearchPage() {
                 {clarityOptions.map(c => (
                   <button
                     key={c}
-                    onClick={() => setSelectedClarity(c)}
-                    className={`h-10 md:h-12 min-w-[46px] md:min-w-[54px] px-2 md:px-3 border text-[12px] md:text-[13px] font-bold transition-all ${selectedClarity === c ? 'bg-[#071c37] text-white border-[#071c37]' : 'border-gray-200 text-[#071c37]/70 hover:border-gray-300'}`}
+                    onClick={() => setSelectedClarities((prev) => toggleValue(prev, c))}
+                    aria-pressed={selectedClarities.includes(c)}
+                    className={`h-10 md:h-12 min-w-[46px] md:min-w-[54px] px-2 md:px-3 border text-[12px] md:text-[13px] font-bold transition-all ${selectedClarities.includes(c) ? 'bg-[#071c37] text-white border-[#071c37]' : 'border-gray-200 text-[#071c37]/70 hover:border-gray-300'}`}
                   >
                     {c}
                   </button>
