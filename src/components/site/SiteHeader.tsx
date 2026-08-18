@@ -33,7 +33,7 @@ const FALLBACK_NAV: NavItem[] = [
   { label: "Bespoke", to: "/custom-order" },
   { label: "Gifts", to: "/gifts" },
   { label: "Hip Hop Jewelry", to: "/collections/hip-hop-jewelry" },
-  { label: "Diamonds", to: "/diamonds", children: DIAMOND_CHILDREN },
+  { label: "Diamonds", to: "/diamonds" },
 ];
 
 const FALLBACK_SUB: { label: string; to: string }[] = [
@@ -92,13 +92,10 @@ export function SiteHeader() {
       }
 
       // Fallback heuristics for hardcoded children
-      // Disable dropdown for Hip Hop Jewelry as requested
       if (/hip\s?hop/i.test(label)) return { label, to };
-
       if (/fine|jewel/i.test(label)) return { label, to, children: FINE_CHILDREN };
-      
-      return { label, to };
-      
+      if (/diamonds/i.test(label)) return { label, to };
+
       return { label, to };
     });
   }, [menuRows]);
