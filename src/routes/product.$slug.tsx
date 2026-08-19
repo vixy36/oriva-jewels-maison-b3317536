@@ -65,17 +65,26 @@ export const Route = createFileRoute("/product/$slug")({
     if (!product) throw notFound();
     return { product };
   },
-  head: ({ loaderData }) => ({
-    meta: [
-      { title: loaderData ? `${loaderData.product.name} - Oriva Jewels` : "Oriva Jewels" },
-      { name: "description", content: loaderData?.product.short ?? "Fine diamond jewellery." },
-      {
-        name: "keywords",
-        content: `${loaderData?.product.name}, ${loaderData?.product.category}, lab grown diamond, bespoke ${loaderData?.product.category}, ethical diamonds, VVS clarity lab grown diamond, custom diamond jewelry`,
-      },
-      { property: "og:image", content: loaderData?.product.image ?? "" },
-    ],
-  }),
+  head: ({ loaderData, parentHead }) => {
+    if (!loaderData?.product) return parentHead || {};
+    const { product } = loaderData;
+    return {
+      title: `${product.name} - Oriva Jewels`,
+      meta: [
+        ...(parentHead?.meta || []).filter(m => !('name' in m && m.name === 'description') && !('name' in m && m.name === 'keywords') && !('property' in m && m.property?.startsWith('og:'))),
+        { name: "description", content: product.short || "Fine diamond jewellery." },
+        {
+          name: "keywords",
+          content: `${product.name}, ${product.category}, lab grown diamond, bespoke ${product.category}, ethical diamonds, VVS clarity lab grown diamond, custom diamond jewelry`,
+        },
+        { property: "og:title", content: `${product.name} - Oriva Jewels` },
+        { property: "og:description", content: product.short || "Fine diamond jewellery." },
+        { property: "og:image", content: product.image ?? "" },
+        { property: "og:type", content: "product" },
+      ],
+    };
+  },
+
   component: ProductPage,
 });
 
