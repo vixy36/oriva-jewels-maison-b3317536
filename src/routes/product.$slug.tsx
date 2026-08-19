@@ -65,13 +65,12 @@ export const Route = createFileRoute("/product/$slug")({
     if (!product) throw notFound();
     return { product };
   },
-  head: ({ loaderData, parentHead }) => {
-    if (!loaderData?.product) return parentHead || {};
+  head: ({ loaderData }) => {
+    if (!loaderData?.product) return {};
     const { product } = loaderData;
     return {
       title: `${product.name} - Oriva Jewels`,
       meta: [
-        ...(parentHead?.meta || []).filter(m => !('name' in m && m.name === 'description') && !('name' in m && m.name === 'keywords') && !('property' in m && m.property?.startsWith('og:'))),
         { name: "description", content: product.short || "Fine diamond jewellery." },
         {
           name: "keywords",
@@ -84,6 +83,7 @@ export const Route = createFileRoute("/product/$slug")({
       ],
     };
   },
+
 
   component: ProductPage,
 });

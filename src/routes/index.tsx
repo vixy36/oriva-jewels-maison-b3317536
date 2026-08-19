@@ -30,13 +30,12 @@ import { Reveal } from "@/components/site/Reveal";
 import { products, buildWhatsAppLink } from "@/lib/products";
 
 export const Route = createFileRoute("/")({
-  head: ({ parentHead }) => ({
-    ...parentHead,
+  head: () => ({
     links: [
-      ...(parentHead?.links || []),
       { rel: "preload", as: "image", href: heroImg, fetchpriority: "high" },
     ],
   }),
+
 
   component: HomePage,
 });

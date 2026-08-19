@@ -15,9 +15,8 @@ type PageRow = {
 };
 
 export const Route = createFileRoute("/pages/$slug")({
-  head: ({ parentHead }) => ({
-    ...parentHead,
-  }),
+  head: () => ({}),
+
 
   component: CustomPage,
 });
