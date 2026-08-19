@@ -4,8 +4,8 @@ import { z } from "zod";
 export const getSeoMeta = createServerFn({ method: "GET" })
   .inputValidator((d) => z.object({ path: z.string() }).parse(d))
   .handler(async ({ data }) => {
-    const { supabase } = await import("@/integrations/supabase/client.server");
-    const { data: seo } = await supabase
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const { data: seo } = await supabaseAdmin
       .from("seo_meta")
       .select("*")
       .eq("route_path", data.path)
@@ -14,3 +14,4 @@ export const getSeoMeta = createServerFn({ method: "GET" })
     
     return seo;
   });
+
