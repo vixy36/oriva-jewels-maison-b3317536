@@ -148,11 +148,9 @@ function HomePage() {
           </div>
 
           <div className="mt-10 md:mt-14 flex flex-col md:flex-row md:items-end md:justify-between gap-8 md:gap-10 animate-rise-slow" style={{ animationDelay: "0.4s" }}>
-              <span className="block text-ivory/60 not-italic text-sm tracking-widest uppercase mb-4">Maison Oriva</span>
-              '''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''
-                                        
-                                            
-                                            why you removed admin access of vivekchoudharyjpr@gmail.com ? why you doing things by yourself? make it admin and dpnt show in admin dashboards users list
+            <p className="mt-6 md:mt-0 max-w-xl font-serif italic text-xl md:text-2xl leading-[1.5] text-gold-gradient">
+              We are end-to-end manufacturers of DIAMONDS & JEWELLERY.
+            </p>
 
 
             <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3">
