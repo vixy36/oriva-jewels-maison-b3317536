@@ -6,9 +6,8 @@ import { GsapReveal } from "@/components/site/GsapReveal";
 import { buildWhatsAppLink, WHATSAPP_DISPLAY } from "@/lib/products";
 
 export const Route = createFileRoute("/custom-order")({
-  head: ({ parentHead }) => ({
-    ...parentHead,
-  }),
+  head: () => ({}),
+
 
   component: CustomOrderPage,
 });

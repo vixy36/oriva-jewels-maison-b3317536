@@ -6,9 +6,8 @@ import { buildWhatsAppLink } from "@/lib/products";
 import { CustomPageWrapper } from "@/components/site/CustomPageWrapper";
 
 export const Route = createFileRoute("/assurance")({
-  head: ({ parentHead }) => ({
-    ...parentHead,
-  }),
+  head: () => ({}),
+
 
   component: AssurancePage,
 });

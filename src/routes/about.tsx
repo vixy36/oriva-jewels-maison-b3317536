@@ -9,9 +9,8 @@ import { ArrowRight, Sparkles, Shield, Heart } from "lucide-react";
 import { CustomPageWrapper } from "@/components/site/CustomPageWrapper";
 
 export const Route = createFileRoute("/about")({
-  head: ({ parentHead }) => ({
-    ...parentHead,
-  }),
+  head: () => ({}),
+
 
   component: AboutPage,
 });

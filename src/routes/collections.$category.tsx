@@ -31,7 +31,7 @@ export const Route = createFileRoute("/collections/$category")({
     if (!validCats.includes(params.category as ProductCategory)) throw notFound();
     return { category: params.category as ProductCategory };
   },
-  head: ({ params, parentHead }) => {
+  head: ({ params }) => {
     const key = params.category as ProductCategory;
     const cat = validCats.includes(key) ? categories[key] : undefined;
     const label = cat?.label ?? "Collection";
@@ -41,7 +41,6 @@ export const Route = createFileRoute("/collections/$category")({
     return {
       title,
       meta: [
-        ...(parentHead?.meta || []).filter(m => !('name' in m && m.name === 'description') && !('property' in m && m.property?.startsWith('og:'))),
         { name: "description", content: description },
         { property: "og:title", content: title },
         { property: "og:description", content: description },
@@ -49,6 +48,7 @@ export const Route = createFileRoute("/collections/$category")({
       ],
     };
   },
+
 
   component: CollectionPage,
   notFoundComponent: () => (

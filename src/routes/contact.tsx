@@ -5,9 +5,8 @@ import { Reveal } from "@/components/site/Reveal";
 import { CustomPageWrapper } from "@/components/site/CustomPageWrapper";
 
 export const Route = createFileRoute("/contact")({
-  head: ({ parentHead }) => ({
-    ...parentHead,
-  }),
+  head: () => ({}),
+
 
   component: ContactPage,
 });
