@@ -35,13 +35,21 @@ export const Route = createFileRoute("/collections/$category")({
     const key = params.category as ProductCategory;
     const cat = validCats.includes(key) ? categories[key] : undefined;
     const label = cat?.label ?? "Collection";
+    const title = `${label} - Oriva Jewels`;
+    const description = cat?.blurb ?? "Fine diamond jewellery by Oriva.";
+    
     return {
+      title,
       meta: [
-        { title: `${label} - Oriva Jewels` },
-        { name: "description", content: cat?.blurb ?? "Fine diamond jewellery by Oriva." },
+        { name: "description", content: description },
+        { property: "og:title", content: title },
+        { property: "og:description", content: description },
+        { property: "og:type", content: "website" },
       ],
     };
   },
+
+
   component: CollectionPage,
   notFoundComponent: () => (
     <div className="py-40 text-center">

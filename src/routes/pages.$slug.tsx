@@ -15,15 +15,9 @@ type PageRow = {
 };
 
 export const Route = createFileRoute("/pages/$slug")({
-  head: () => ({
-    meta: [
-      { title: "Oriva Jewels - Diamond & Jewellery Manufacturers" },
-      { name: "description", content: "Explore editorial pages from Oriva Jewels, end to end manufacturers of diamonds and fine jewellery." },
-      { property: "og:title", content: "Oriva Jewels" },
-      { property: "og:description", content: "End to end manufacturers of diamonds and fine jewellery." },
-      { property: "og:type", content: "article" },
-    ],
-  }),
+  head: () => ({}),
+
+
   component: CustomPage,
 });
 
