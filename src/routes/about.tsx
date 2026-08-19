@@ -9,12 +9,10 @@ import { ArrowRight, Sparkles, Shield, Heart } from "lucide-react";
 import { CustomPageWrapper } from "@/components/site/CustomPageWrapper";
 
 export const Route = createFileRoute("/about")({
-  head: () => ({
-    meta: [
-      { title: "The Maison | Oriva Jewels" },
-      { name: "description", content: "A modern maison of fine jewellery. Discover our heritage, craftsmanship, and commitment to excellence." },
-    ],
+  head: ({ parentHead }) => ({
+    ...parentHead,
   }),
+
   component: AboutPage,
 });
 

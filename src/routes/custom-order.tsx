@@ -6,22 +6,10 @@ import { GsapReveal } from "@/components/site/GsapReveal";
 import { buildWhatsAppLink, WHATSAPP_DISPLAY } from "@/lib/products";
 
 export const Route = createFileRoute("/custom-order")({
-  head: () => ({
-    meta: [
-      { title: "Custom Order · Oriva Jewels" },
-      {
-        name: "description",
-        content:
-          "Commission a bespoke piece with Oriva Jewels. Share your reference, choose metal & diamond, and our atelier will hand-craft it for you.",
-      },
-      { property: "og:title", content: "Custom Order · Oriva Jewels" },
-      {
-        property: "og:description",
-        content:
-          "From CAD to hand-set finish. Submit a custom order request and our atelier will respond within hours.",
-      },
-    ],
+  head: ({ parentHead }) => ({
+    ...parentHead,
   }),
+
   component: CustomOrderPage,
 });
 

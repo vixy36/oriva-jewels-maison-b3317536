@@ -5,12 +5,10 @@ import { Reveal } from "@/components/site/Reveal";
 import { CustomPageWrapper } from "@/components/site/CustomPageWrapper";
 
 export const Route = createFileRoute("/contact")({
-  head: () => ({
-    meta: [
-      { title: "Contact | Oriva Jewels" },
-      { name: "description", content: "Contact Oriva Jewels - available worldwide. WhatsApp, email or scheduled video consultations." },
-    ],
+  head: ({ parentHead }) => ({
+    ...parentHead,
   }),
+
   component: ContactPage,
 });
 
