@@ -13,7 +13,7 @@ async function assertAdmin(ctx: { supabase: any; userId: string }) {
 
 export const generateSeoMeta = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) =>
+  .validator((d: { content: string }) =>
     z.object({
       route_path: z.string().min(1),
       hint: z.string().optional(),

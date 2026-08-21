@@ -20,7 +20,7 @@ type Automation = {
  */
 export const runStatusAutomations = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) =>
+  .validator((d: { orderId: string; status: string }) =>
     z.object({
       triggerType: z.enum(["order_status", "enquiry_status"]),
       status: z.string().min(1),
