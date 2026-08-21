@@ -51,6 +51,14 @@ async function fetchDbProductsRaw(): Promise<DbProduct[]> {
 }
 
 
+export function dbProductsRawQueryOptions() {
+  return {
+    queryKey: ["db-products-raw"],
+    queryFn: fetchDbProductsRaw,
+    staleTime: 60_000,
+  };
+}
+
 export function useDbProducts() {
   return useQuery({
     queryKey: ["db-products"],
@@ -60,11 +68,7 @@ export function useDbProducts() {
 }
 
 export function useDbProductsByCategory(category: ProductCategory) {
-  const q = useQuery({
-    queryKey: ["db-products-raw"],
-    queryFn: fetchDbProductsRaw,
-    staleTime: 60_000,
-  });
+  const q = useQuery(dbProductsRawQueryOptions());
   const filtered = (q.data ?? []).filter((p) => {
     const cats = p.categories && p.categories.length ? p.categories : [p.category];
     return cats.includes(category);
