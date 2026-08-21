@@ -137,7 +137,7 @@ function CollectionPage() {
                 <p className="mt-3 text-sm text-ivory/50">Message the atelier for pre-launch access.</p>
               </div>
             ) : (
-              <div className="grid grid-cols-2 gap-x-4 gap-y-10 md:gap-x-8 md:gap-y-16 lg:grid-cols-4 sm:grid-cols-2 [&_img]:h-[300px] sm:[&_img]:h-[450px] md:[&_img]:h-[500px]">
+              <div className="grid grid-cols-2 gap-x-4 gap-y-10 md:gap-x-8 md:gap-y-16 lg:grid-cols-4 sm:grid-cols-2 [&_img]:h-[350px] sm:[&_img]:h-[500px] md:[&_img]:h-[600px]">
                 {sorted.map((p, i) => (
                   <Reveal key={p.slug} delay={i * 60}>
                     <ProductCard product={p} />

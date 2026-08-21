@@ -136,7 +136,7 @@ function HomePage() {
               '''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''
                                         
                                             
-                                            why you writing this prompt i given you to homepage - Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.''' the /rings pages isnt showing any products in mobile. also make item/image box big in ring category page?
+                                            The ring category page isnt showing products /loading the items very late in pc and mobile . also make the image boxes big in /rings category page."
             </p>
 
 
