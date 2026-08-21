@@ -136,7 +136,7 @@ function HomePage() {
               '''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''
                                         
                                             
-                                            The ring category page isnt showing products /loading the items very late in pc and mobile . also make the image boxes big in /rings category page."
+                                            why you adding the prompt to the home screen instead of follow the prompt"
             </p>
 
 
