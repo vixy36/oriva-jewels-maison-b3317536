@@ -78,12 +78,17 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   loader: async ({ context, location }) => {
-    const seo = await context.queryClient.ensureQueryData({
-      queryKey: ["seo-meta", location.pathname],
-      queryFn: () => getSeoMeta({ data: { path: location.pathname } }),
-      staleTime: 60_000,
-    });
-    return { seo };
+    try {
+      const seo = await context.queryClient.ensureQueryData({
+        queryKey: ["seo-meta", location.pathname],
+        queryFn: () => getSeoMeta({ data: { path: location.pathname } }),
+        staleTime: 60_000,
+      });
+      return { seo };
+    } catch (error) {
+      console.error("[Root Loader] Failed to fetch SEO metadata:", error);
+      return { seo: null };
+    }
   },
   head: ({ loaderData }) => {
     const seo = loaderData?.seo;
