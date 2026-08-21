@@ -254,8 +254,8 @@ function HomePage() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5 md:gap-7">
-            {selectedSix.slice(0, 6).map((p, i) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-10">
+            {selectedSix.slice(0, 12).map((p, i) => (
               <Reveal key={p.slug} delay={i * 100}>
                 <ProductCard product={p} />
               </Reveal>
