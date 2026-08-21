@@ -2,7 +2,7 @@ import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 
 export const getSeoMeta = createServerFn({ method: "GET" })
-  .validator((d: { path: string }) => z.object({ path: z.string() }).parse(d))
+  .validator((d: unknown) => z.object({ path: z.string() }).parse(d))
   .handler(async ({ data }) => {
     try {
       console.log(`[SEO] Fetching metadata for path: ${data.path}`);
