@@ -4,7 +4,7 @@ import { ProductCard } from "@/components/site/ProductCard";
 import { Reveal } from "@/components/site/Reveal";
 import { SortSelect, useSortedProducts } from "@/components/site/SortSelect";
 import { categories, productsByCategory, type ProductCategory } from "@/lib/products";
-import { useDbProductsByCategory } from "@/lib/dbProducts";
+import { useDbProductsByCategory, dbProductsRawQueryOptions } from "@/lib/dbProducts";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -27,8 +27,9 @@ const validCats: ProductCategory[] = [
 ];
 
 export const Route = createFileRoute("/collections/$category")({
-  loader: ({ params }) => {
+  loader: ({ params, context }) => {
     if (!validCats.includes(params.category as ProductCategory)) throw notFound();
+    void context.queryClient.prefetchQuery(dbProductsRawQueryOptions());
     return { category: params.category as ProductCategory };
   },
   head: ({ params }) => {
@@ -137,9 +138,9 @@ function CollectionPage() {
                 <p className="mt-3 text-sm text-ivory/50">Message the atelier for pre-launch access.</p>
               </div>
             ) : (
-              <div className="grid grid-cols-2 gap-x-4 gap-y-10 md:gap-x-8 md:gap-y-16 lg:grid-cols-4 sm:grid-cols-2 [&_img]:h-[350px] sm:[&_img]:h-[500px] md:[&_img]:h-[600px]">
+              <div className="grid grid-cols-2 gap-x-4 gap-y-10 md:gap-x-8 md:gap-y-16 lg:grid-cols-4 sm:grid-cols-2 [&_img]:h-[420px] sm:[&_img]:h-[600px] md:[&_img]:h-[720px]">
                 {sorted.map((p, i) => (
-                  <Reveal key={p.slug} delay={i * 60}>
+                  <Reveal key={p.slug} delay={Math.min(i, 6) * 40}>
                     <ProductCard product={p} />
                   </Reveal>
                 ))}
