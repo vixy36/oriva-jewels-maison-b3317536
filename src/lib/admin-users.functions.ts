@@ -42,7 +42,7 @@ export const listAdminUsers = createServerFn({ method: "GET" })
 
 export const setUserRole = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) =>
+  .validator((d: unknown) =>
     z.object({
       userId: z.string().uuid(),
       role: z.enum(["admin", "editor", "user"]),
@@ -73,7 +73,7 @@ export const setUserRole = createServerFn({ method: "POST" })
 
 export const createAdminUser = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) =>
+  .validator((d: unknown) =>
     z.object({
       email: z.string().email(),
       password: z.string().min(8, "Password must be at least 8 characters"),
@@ -103,7 +103,7 @@ export const createAdminUser = createServerFn({ method: "POST" })
 
 export const sendManualEmail = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) =>
+  .validator((d: unknown) =>
     z.object({
       recipients: z.array(z.string().email()).min(1, "At least one recipient"),
       subject: z.string().min(1),
