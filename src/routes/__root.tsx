@@ -103,6 +103,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         { name: "description", content: seo?.description || defaultDesc },
         { name: "keywords", content: seo?.keywords || "" },
         { name: "author", content: "Oriva Jewels" },
+        { name: "p:domain_verify", content: "a23c4de0ab73d5a62bd2e6d7c2446301" },
         { name: "theme-color", content: "#050505" },
         { property: "og:title", content: seo?.og_title || seo?.title || defaultTitle },
         { property: "og:description", content: seo?.og_description || seo?.description || defaultDesc },
